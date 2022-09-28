@@ -1,0 +1,18 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:ScrollView class="window-padding-container">
+        <ui:VisualElement class="division margin-bottom-10px">
+            <ue:FloatField label="Surface Deviation (%)" tooltip="The deviation factor used when comparing mesh surfaces to determine if the objects are similar." value="2" name="surface-deviation-field" />
+            <ue:DoubleField label="Mesh Area Deviation (%)" tooltip="The deviation factor used when comparing total mesh surface area size to determine if the objects are similar." value="2" name="mesh-area-field" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Toggle label="Search in Children" tooltip="Whether or not an extra filter should be applied to the objects using mesh area comparison." name="mesh-area-toggle" />
+            <ue:ObjectField label="Mesh Area Parent" name="mesh-area-parent-field" />
+            <ui:Toggle label="Check Circumference" tooltip="When enabled, use the circumference of a plane on the mesh (an area where connected triangles have a similar normal) as a comparison to check if objects share this plane, as an extra similarity check." value="false" name="perimeter-check-toggle" />
+            <ui:Toggle label="Keep Local Rotation" tooltip="When enabled, ensures that the local rotations of the prefab instances are the same as the object that they replace." value="false" name="change-local-rotation-toggle" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement name="selection-preview" />
+        <ui:Button name="replace-button" text="Replace Similar Meshes in Selection" />
+    </ui:ScrollView>
+</UXML>

@@ -1,0 +1,8 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="kinematic-relation">
+      <ue:ObjectField name="opposing-kinematic-transform" label="Opposing Kinematic Relation"/>
+      <ue:EnumField name="relation-direction" label="Relation Direction"/>
+      <ue:DoubleField name="ratio" label="Ratio (1/x)"/>
+      <ui:Toggle name="invert-relation" label="Invert Relation"/>
+  </ui:VisualElement>
+</UXML>

@@ -1,0 +1,17 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+
+  <ui:TextField class="no-box margin-bottom-10px title" name="title" />
+  
+  <ui:VisualElement class="division margin-bottom-10px" name="settings">
+    <ui:Label class="bold margin-bottom-5px" name="settings-label" text="Settings"/>
+    <ui:Label class="font-italic margin-vertical-5px" name="no-settings-display" text="No settings to display"/>
+    <ui:VisualElement name="settings-container"/>
+  </ui:VisualElement>
+  
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="target-component-foldout" text="Target Component">
+    <ui:IMGUIContainer class="margin-bottom-5px" name="warning-container"/>
+    <ue:ObjectField name="target-gameobject" label="Target Gameobject"/>
+    <ui:VisualElement name="target-component" label="Target Component"/>
+    <ui:Label class="font-italic margin-vertical-5px" name="no-suitable-components" text="No suitable components"/>
+  </ui:Foldout>
+</UXML>

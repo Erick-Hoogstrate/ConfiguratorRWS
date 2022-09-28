@@ -1,0 +1,7 @@
+﻿.unity-base-field__label {
+
+}
+
+Foldout .unity-base-field__label {
+	width: 180px
+}

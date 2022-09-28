@@ -1,0 +1,45 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px" text="Generic Joint Settings">
+		
+    <ui:Label class="bold margin-bottom-5px" 
+              text="Generic Joint Settings" />
+    
+		<ue:IntegerField name="pass-priority" 
+                     label="Pass Priority" 
+                     binding-path="PassPriority" 
+                     tooltip="The priority of this component" />
+    
+		<ui:Toggle name="enforce-outside-playmode" 
+               label="Enforce Outside Playmode" 
+               tooltip="Whether or not this Kinematic Body is updated outside of playmode" />
+    
+		<ui:Toggle name="prevent-update" 
+               label="Prevent Kinematic Update" 
+               binding-path="preventUpdate" 
+               tooltip="Whether or not this Kinematic Relation is updated, generally toggled when an error is encountered" />
+    
+		<ui:Toggle name="prevent-further-update" 
+               label="Prevent Further Updates on Object" 
+               binding-path="preventFurtherKinematicOnThisGameObject" 
+               tooltip="Whether or not lower priority kinematic transforms on this GO receive a kinematic update" />
+    
+		<ui:Foldout name="user-scene-interaction-settings" text="User Scene Interaction Settings" value="false" >
+			
+      <ui:Toggle name="allow-direct-user-input" 
+                 label="Allow Direct User Input" 
+                 binding-path="AllowDirectUserInput" 
+                 tooltip="Whether or not this Kinematic Transform allows direct user input from the scene view" />
+      
+			<ue:FloatField name="min-translation-offset" 
+                     label="Min. User Input Translation Offset" 
+                     binding-path="MinUserInputTranslationResponseOffset" 
+                     tooltip="The minimum translation delta made by the user in scene view invoking a response by the kinematic system" />
+      
+			<ue:FloatField name="min-rotation-offset" 
+                     label="Min. User Input Rotation Offset" 
+                     binding-path="MinUserInputRotationResponseOffset" 
+                     tooltip="The minimum rotation delta made by the user in scene view invoking a response by the kinematic system" />
+		</ui:Foldout>
+    
+	</ui:VisualElement>
+</UXML>

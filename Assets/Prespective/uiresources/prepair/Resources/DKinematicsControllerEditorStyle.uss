@@ -1,0 +1,7 @@
+﻿.list-label {
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	overflow: hidden;
+}

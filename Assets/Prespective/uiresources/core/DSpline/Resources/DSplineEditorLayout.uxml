@@ -1,0 +1,58 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Spline Specifications" />
+		<ue:IntegerField class="no-box" name="spline-id" label="Spline ID" />
+		<ui:Toggle name="close-spline" label="Close Spline" />
+		<ue:EnumField name="transform-precision" label="Transform Precision" />
+		<ue:DoubleField class="no-box" name="spline-length" label="Spline Length (m)" />
+		<ue:DoubleField class="no-box margin-bottom-5px" name="maximum-tolerance" label="Maximum Tolerance" />
+		<ui:Button class="content-fit-button" name="reanalyze-tolerance" text="Reanalyze Tolerance" />
+	</ui:VisualElement>
+
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Spline Modifications" />
+		<ui:Button name="invert-spline" style="width: 200px" text="Invert Spline" />
+		<ui:Button class="margin-bottom-10px" name="auto-name-cps" style="width: 200px" text="Auto-name Control Points"/>
+		<ui:Foldout text="Add/Insert Control Point" value="false">
+			<ui:VisualElement name="target-control-point" />
+			<ue:EnumField name="position" label="Position" />
+			<ue:EnumField name="translation-space" label="Translation Space" />
+			<ui:VisualElement class="margin-bottom-5px" name="translation"/>
+			<ui:Button class="content-fit-button" name="add-control-point" text="Add Control Point" />
+		</ui:Foldout>
+	</ui:VisualElement>
+
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Spline Segment Settings" />
+		<ue:ColorField name="default-color" label="Default Color" binding-path="SplineSegmentDefaultColor" />
+		<ue:DoubleField name="default-tesselation-angle" label="Default Tessellation Angle" binding-path="AngleBetweenSamples"/>
+		<ue:EnumField class="margin-bottom-5px" name="default-rotation-direction" label="Default Rotation Direction" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="apply-defaults" text="Apply Defaults to All Segments" />
+
+		<ui:Foldout name="spline-segments" text="Spline Segments" value="false">
+			<ui:Label class="font-italic" name="no-segments-message" text="No Spline Segments Found" />
+			<ui:VisualElement name="spline-segments-container" />
+		</ui:Foldout>
+	</ui:VisualElement>
+
+	<ui:Foldout class="foldout-division margin-bottom-10px" text="Scene View Settings" value="false">
+		<ui:VisualElement class="row">
+			<ui:Slider class="flex-grow" name="tessellation-slider" label="Level of Detail" binding-path="LoDInScene" low-value="0" high-value="1"/>
+			<ue:FloatField name="tessellation" style="width: 60px" binding-path="LoDInScene" />
+		</ui:VisualElement>
+		<ue:EnumField label="Control Point Label Mode" binding-path="CpLabelMode"/>
+		<ue:ColorField label="Control Point Label Background" binding-path="ControlPointBackgroundColor" />
+		<ue:ColorField label="Control Point Label Text Color" binding-path="SplineLabelTextColor" />
+		<ui:Toggle label="Show Normal Line" binding-path="ShowUpNormalLine" />
+		<ue:ColorField label="Normal Line Color" binding-path="DefaultNormalUpColor" />
+		<ui:Toggle label="Show Forward Line" binding-path="ShowFwdNormalLine" />
+		<ue:ColorField label="Forward Line Color" binding-path="DefaultNormalFwdColor" />
+    <ui:Toggle label="Show Right Line" binding-path="ShowRightNormalLine" />
+    <ue:ColorField label="Right Line Color" binding-path="DefaultNormalRightColor" />
+		<ui:Toggle label="Show Show When Not Selected" binding-path="ShowWhenNotInSelection" />
+    <ui:VisualElement class="row">
+      <ui:Slider class="flex-grow" name="normal-display-modifier-slider" label="Normal Display Modifier" binding-path="NormalDisplayModifier" low-value="0" high-value="1"/>
+      <ue:FloatField name="normal-display-modifier-field" style="width: 60px" binding-path="NormalDisplayModifier" />
+    </ui:VisualElement>
+	</ui:Foldout>
+</UXML>

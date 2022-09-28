@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:ScrollView class="window-padding-container">
+    <ui:VisualElement name="fmu-container" class="division margin-bottom-10px">
+      <ui:Label class="margin-bottom-5px" text="No File Selected" name="fmu-path-label" />
+      <ui:Button class="margin-bottom-5px" text="Select FMU" name="fmu-button" />
+    </ui:VisualElement>
+    
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:Toggle label="Load Visualization" name="load-visualization-toggle" />
+      
+      <ui:VisualElement name="xml-container">
+        <ui:Label class="margin-bottom-5px" text="No File Selected" name="xml-path-label" />
+        <ui:Button text="Select XML" name="xml-button" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Button text="Generate" name="generate-button" label="FMU Control Script" />
+  </ui:ScrollView>
+</ui:UXML>

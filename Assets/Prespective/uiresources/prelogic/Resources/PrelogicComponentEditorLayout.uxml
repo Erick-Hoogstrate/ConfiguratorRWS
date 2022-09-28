@@ -1,0 +1,41 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px" name="custom-editor-ui-container">
+    <ui:Label class="bold margin-bottom-10px" text="Properties" />
+  </ui:VisualElement>
+  
+  <ui:VisualElement class="division margin-bottom-10px" name="signal-container">
+    <ui:Label class="bold margin-bottom-10px" text="Signals"/>
+    <ui:Toggle class="margin-bottom-10px" name="allow-manual-signals" text=" Allow manual input signals from inspector" tooltip="Allows sending manual input signal values for debugging purposes" />
+    <ui:Label class="font-italic margin-bottom-10px display-none" name="no-simulator-message" text="No parent Prelogic Simulator found. Signal values are not shown." />
+    <ui:Label class="font-italic margin-bottom-10px display-none" name="no-stream-connection-message" text="No active stream connection. Signal values are not shown." />
+
+    <ui:Foldout name="input-signal-foldout" text="Input" value="false" />
+    <ui:Foldout name="output-signal-foldout" text="Output" value="false" />
+    <ui:Foldout name="variable-signal-foldout" text="Variable" value="false" />
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="signal-naming-rules-foldout" text="Signal Naming Rule Overrides" value="false">
+    <ui:VisualElement class="row">
+      <ui:Button class="content-fit-button margin-bottom-10px" name="add-signal-naming-rule" text="+ Add New Rule"/>
+      <ui:Button class="content-fit-button margin-bottom-10px" name="delete-all-signal-naming-rules" text="Delete All"/>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="margin-bottom-5px" name="signal-naming-rules-container"/>
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="instance-naming-rule">
+    <ui:Label class="bold margin-bottom-10px" text="Instance Naming Rule"/>
+    <ui:TextField name="instance-naming-rule" />
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="gui-debugging-foldout" text="GUI Debugging" value="false">
+    <ui:Toggle name="show-debugging-gui" label="Show Signal Debugging GUI"  />
+
+    <ui:VisualElement name="gui-debugging-fields">
+      <ue:Vector2Field name="text-offset" label="Text Offset" />
+      <ue:ColorField name="text-color" label="Text Color" />
+      <ue:IntegerField name="text-size" label="Text Size" />
+      <ue:IntegerField name="line-spacing" label="Line Spacing" />
+    </ui:VisualElement>
+  </ui:Foldout>
+</UXML>

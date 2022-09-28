@@ -1,0 +1,30 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ue:ObjectField name="transform-field" />
+	<ui:VisualElement class="display-none" name="settings-container">
+		<ui:VisualElement name="tool-type" />
+		<ue:ColorField name="shape-color" label="Shape Color" />
+
+		<ui:VisualElement class="row display-none" name="n-gon-container">
+			<ue:IntegerField name="n-gon-points-field" label="N-gon Points" />
+			<ui:Button class="add-remove-button" name="add-n-gon-point" text="+" />
+			<ui:Button class="add-remove-button add-remove-margin" name="remove-n-gon-point" text="-" />
+		</ui:VisualElement>
+
+		<ui:Foldout class="margin-vertical-10px" name="advanced-settings" text="Advanced Settings" value="false">
+			<ui:VisualElement class="margin-bottom-10px" name="input-space" />
+			<ui:VisualElement class="unity-base-field unity-composite-field">
+				<ui:Label class="bold unity-base-field__label unity-composite-field__label" text="#" />
+				<ui:Label class="bold unity-base-field unity-base-text-field unity-composite-field__field" text="Position" />
+				<ui:Label class="unity-base-field unity-base-text-field unity-composite-field__field" text="" />
+				<ui:Label class="unity-base-field unity-base-text-field unity-composite-field__field" text="" />
+				<ui:Label class="bold unity-base-field unity-base-text-field unity-composite-field__field" text="Weight" />
+			</ui:VisualElement>
+			<ui:VisualElement class="margin-bottom-10px" name="point-list" />
+			<ui:Button class="content-fit-button margin-bottom-10px" name="invert-alignment-points" text="Invert Alignment Points" />
+			<ue:Vector3Field name="center-point" label="Center Point" />
+			<ue:Vector3Field name="normal-vector" label="Normal Vector" />
+		</ui:Foldout>
+		
+		<ui:Button class="content-fit-button margin-bottom-10px" name="clear-part" text="Clear Part" />
+	</ui:VisualElement>
+</UXML>

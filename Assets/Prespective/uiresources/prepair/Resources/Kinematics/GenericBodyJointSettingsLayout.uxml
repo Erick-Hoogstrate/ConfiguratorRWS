@@ -1,0 +1,10 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-5px" text="Generic Joint Settings" />
+    <ue:IntegerField name="pass-priority" label="Pass Priority"/>
+    <ui:Toggle name="enforce-outside-playmode" label="Enforce Outside Playmode"/>
+    <ui:Toggle name="prevent-kinematic-update" label="Prevent Kinematic Update"/>
+    <ue:DoubleField name="min-translation-delta" label="Min Translation Delta"/>
+    <ue:DoubleField name="min-rotation-delta" label="Min Rotation Delta"/>
+  </ui:VisualElement>
+</UXML>

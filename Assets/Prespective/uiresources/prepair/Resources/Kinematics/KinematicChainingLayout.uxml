@@ -1,0 +1,14 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-5px" text="Kinematic Chaining" />
+    <ui:Toggle name="show-in-scene-view" label="Show in Scene View"/>
+    <ui:Toggle name="show-when-not-selected" label="Show When Not Selected"/>
+    
+    <ui:VisualElement class="objectfield-with-action">
+      <ue:ObjectField name="add-kinematic-transfer-relation" label="Add Kinematic Transfer Relation"/>
+    </ui:VisualElement>
+    
+    <ui:VisualElement name="kinematic-relations-container" />
+    <ui:Label class="font-italic" style="margin-left: 5px" name="no-kinematic-transfer-relations-found" text="No Kinematic Transfer Relations Found" />
+  </ui:VisualElement>
+</UXML>

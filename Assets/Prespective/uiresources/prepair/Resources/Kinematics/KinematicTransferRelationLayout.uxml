@@ -1,0 +1,11 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:VisualElement class="row">
+		<ui:Foldout class="flex-grow" name="kinematic-relation" value="false">
+			<ue:ObjectField name="opposing-kinematic-transform" label="Opposing Kinematic Relation"/>
+			<ue:EnumField name="relation-direction" label="Relation Direction"/>
+			<ue:EnumField name="relation-type" label="Relation Type"/>
+			<ui:Toggle name="reverse-direction" label="Reverse Motion Direction"/>
+		</ui:Foldout>
+		<ui:Button name="delete" text="x" style="align-self: flex-start"/>
+	</ui:VisualElement>
+</UXML>

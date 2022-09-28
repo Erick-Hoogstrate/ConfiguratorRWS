@@ -1,0 +1,14 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px" name="finger-settings" text="Paralell Gripper Finger Settings">
+    <ui:Label class="bold" name="angular-finger-settings" text="Angular Finger Settings"/>
+    <ue:ObjectField name="wheel-joint" label="Wheel Joint"/>
+    <ue:FloatField name="lower-limit" label="Lower Limit (deg)"/>
+    <ue:FloatField name="upper-limit" label="Upper Limit (deg)"/>
+    <ue:ObjectField name="trigger" label="Trigger"/>
+    <ui:Toggle name="generate-rigidbody" label="Generate Rigidbody"/>
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="detected-objects" text="Detected Objects">
+    <ui:Label class="font-italic" name="no-detected-objects" text="No detected objects."/>
+  </ui:Foldout>
+</UXML>

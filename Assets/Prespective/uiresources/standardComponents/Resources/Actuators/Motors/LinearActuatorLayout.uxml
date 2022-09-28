@@ -1,0 +1,27 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px" name="live-data-container">
+    <ui:Label class="bold margin-bottom-5px" text="Live Data"/>
+    <ui:VisualElement name="live-data">
+      <ui:TextField class="no-box" name="target" label="Target (%)"/>
+      <ui:TextField class="no-box" name="position" label="Position (%)"/>
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="properties-container">
+    <ui:Label class="bold margin-bottom-5px" text="Linear Actuator Properties"/>
+    <ui:VisualElement name="properties">
+      <ui:IMGUIContainer class="margin-bottom-5px" name="warning-container"/>
+      <ue:ObjectField name="prismatic-joint-field" label="Prismatic Joint"/>
+      <ui:Toggle name="invert-position" label="Invert Position"/>
+      <ue:FloatField name="extending-speed" label="Extending Speed (m/s)"/>
+      <ue:FloatField name="extending-time" label="Extending Time (s)"/>
+      <ue:FloatField name="retracting-speed" label="Retracting Speed (m/s)"/>
+      <ue:FloatField name="retracting-time" label="Retracting Time (s)"/>
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</UXML>

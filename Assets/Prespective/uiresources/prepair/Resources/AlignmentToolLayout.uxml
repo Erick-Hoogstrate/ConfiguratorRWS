@@ -1,0 +1,25 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ui:VisualElement class="division margin-bottom-10px" name="alignment-part-a">
+			<ui:Label class="bold margin-bottom-10px" text="Part A (Object to move)" />
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px" name="alignment-part-b">
+			<ui:Label class="bold margin-bottom-10px" text="Part B (Destination)" />
+		</ui:VisualElement>
+
+		<ui:VisualElement name="alignment-container">
+			<ui:Foldout class="foldout-division margin-bottom-10px" text="Offset Settings" value="false">
+				<ui:VisualElement class="row margin-bottom-5px">
+					<ui:Button class="content-fit-button" name="add-offset-vector" text="Add Offset Vector" />
+					<ui:Button class="content-fit-button" name="clear-offset-vectors" text="Clear Offset Vectors" />
+				</ui:VisualElement>
+
+				<ui:VisualElement class="margin-bottom-5px" name="offset-vector-container" />
+			</ui:Foldout>
+
+			<ui:VisualElement class="margin-bottom-10px" name="alignment-type" />
+			<ui:Button class="content-fit-button margin-bottom-10px" name="apply-alignment" text="Apply Alignment" />
+		</ui:VisualElement>
+	</ui:ScrollView>
+</UXML>

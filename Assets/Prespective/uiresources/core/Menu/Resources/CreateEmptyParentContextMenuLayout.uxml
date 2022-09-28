@@ -1,0 +1,6 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="context-menu-container" name="utilities-contextmenu">
+		<ue:ToolbarButton class="menu-item menu-action" name="identity-rotation" text="With Identity Rotation"/>
+		<ue:ToolbarButton class="menu-item menu-action" name="child-rotation" text="With Child Rotation"/>
+	</ui:VisualElement>
+</UXML>

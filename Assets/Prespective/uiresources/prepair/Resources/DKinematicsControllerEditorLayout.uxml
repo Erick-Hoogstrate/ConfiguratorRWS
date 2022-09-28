@@ -1,0 +1,23 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Kinematics Controller Settings" />
+		<ui:Toggle name="execute-in-editor-mode" label="Execute in Editor Mode" />
+	</ui:VisualElement>
+
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label name="kinematic-bodies-header" class="bold margin-bottom-5px" text="Kinematic Bodies" />
+		<ui:Label class="list-label" text="Sort by:" />
+		<ue:EnumField class="margin-bottom-5px" style="width: 55%;" name="filter" />
+
+		<ui:VisualElement class="row">
+			<ui:Label class="list-label" style="width: 55%" text="Kinematic Body" />
+			<ui:Label class="list-label" style="width: 20%" text="Pass Priority" />
+			<ui:VisualElement class="row" style="width: 10%" tooltip="Enforce Outside Playmode">
+				<ui:Toggle name="override-eop" />
+				<ui:Label class="list-label" text="EOP" />
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement name="kinematic-bodies" />
+	</ui:VisualElement>
+</UXML>

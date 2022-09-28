@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:ScrollView class="window-padding-container">
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:Label class="bold margin-bottom-10px" text="File Export Location" />
+      <ui:TextElement class="margin-bottom-10px" text="[No Folder Selected]" name="folder-path" />
+      <ui:Button class="content-fit-button" text="Select Folder Location" name="select-folder" />
+    </ui:VisualElement>
+    
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:Label class="bold margin-bottom-10px" text="Options" />
+      <ui:Toggle label="Left-Handed Orientation" name="left-handed-orientation" />
+      <ui:Toggle label="Stored in Global Space" name="stored-global" />
+    </ui:VisualElement>
+
+    <ui:Button class="content-fit-button" text="Export Selection to File" name="export-file" />
+  </ui:ScrollView>
+</ui:UXML>

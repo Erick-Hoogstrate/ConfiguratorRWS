@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:VisualElement name ="FileImportContainer" class="row">
+    <ui:TextField name="FileImport_Textfield" label="Import File Path:" class="flex-grow"></ui:TextField>
+    <ui:Button name="FileImport_Button" text="Select Import File"/>
+  </ui:VisualElement>
+  
+</ui:UXML>

@@ -1,0 +1,40 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:ScrollView>
+      
+        <ui:TextField picking-mode="Ignore" label="Cue Name" value="filler text" text="Cube" name="cue-name-field" />
+        <ui:TextField picking-mode="Ignore" label="Cue ID" value="filler text" text="39493" name="cue-id-field" readonly="true" />
+        <ui:Toggle label="Show Gizmos in Scene" value="true" name="show-gizmos-toggle" />
+      
+        <ui:VisualElement name="cue-position-settings-div" class="margin-bottom-10px">
+            <ui:Label text="Cue Position Settings" name="cue-position-settings-title" style="-unity-font-style: bold;" />
+            <ui:Toggle label="Show Gizmos in Scene" value="true" name="show-gizmos-toggle" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement name="cue-spline-settings-div" class="margin-bottom-10px">
+            <ui:Label text="Cue Spline Settings" name="cue-spline-settings-title" style="-unity-font-style: bold;" />
+            <ui:TextField picking-mode="Ignore" label="Owner Spline" value="filler text" text="NEW_SPLINE (NEW_SPLINE)" name="owner-spline-field" readonly="true" />
+            <ui:Button text="Refresh Spline Ownership" name="refresh-spline-ownership-button" />
+            <ui:TextField picking-mode="Ignore" label="Total Spline Length (m)" value="filler text" text="1" name="total-spline-length-field" readonly="true" />
+            <ui:TextField picking-mode="Ignore" label="Percentual Position" value="filler text" text="0" name="percentual-position-field" />
+            <ui:TextField picking-mode="Ignore" label="Distance from Start (m)" value="filler text" text="0" name="distance-from-start-field" />
+            <ui:TextField picking-mode="Ignore" label="Distance from End (m)" value="filler text" text="1" name="distance-from-end-field" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement name="cue-trigger-and-instructor-settings-div" class="margin-bottom-10px">
+            <ui:Label text="Cue Thickness " name="cue-trigger-and-instructor-settings-title" style="-unity-font-style: bold;" />
+            <uie:ObjectField label="Cue Instructor" allow-scene-objects="true" name="cue-instructor-field" />
+            <ui:Toggle label="Trigger on Actor Rotation" name="trigger-on-actor-rotation-toggle" />
+            <ui:Toggle label="Trigger on Actor Translation" name="trigger-on-actor-translation-toggle" />
+            <ui:Toggle label="Trigger Actor Continously" name="trigger-actor-continously-toggle" />
+            <ui:Toggle label="Trigger Actor Centerpoint Intersect" name="trigger-actor-centerpoint-intersect-toggle" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement name="cue-thickness-settings-div" class="margin-bottom-10px">
+            <ui:Label text="Cue Thickness Settings" name="cue-trigger-and-instructor-settings-title" style="-unity-font-style: bold;" />
+            <uie:FloatField label="Percentual Thickness (%/100)" value="1" name="percentual-thickness-field" />
+            <uie:FloatField label="Thickness in Units (m)" value="1" name="thickness-in-units-field" />
+            <ui:Toggle label="Draw Label in Sceneview" name="draw-label-in-sceneview-toggle" />
+        </ui:VisualElement>
+      
+    </ui:ScrollView>
+</ui:UXML>

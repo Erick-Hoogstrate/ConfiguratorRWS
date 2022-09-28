@@ -1,0 +1,46 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Template src="GenericBodyJointSettingsLayout.uxml" name="generic-joint-settings"/>
+  <ui:Template src="KinematicChainingLayout.uxml" name="kinematic-chaining"/>
+
+  <ui:Instance template="generic-joint-settings" name="generic-joint-settings"/>
+  <ui:Instance template="kinematic-chaining" name="kinematic-chaining-settings"/>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="wheel-joint-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Wheel Joint Settings" />
+    <ue:EnumField name="wheel-joint-notation" label="Notation"/>
+    <ue:DoubleField class="flex-grow" name="wheel-radius" label="Wheel Radius"/>
+    <ui:Toggle name="radius-gizmo-toggle" label="Use Wheel Radius Gizmo"/>
+    <ui:Toggle name="limit-rotation" label="Limit Rotation" binding-path="ApplyKinematicLimit" />
+
+    <ui:VisualElement name="limit-rotation-container" >
+      <ue:DoubleField class="flex-grow" name="min-rotation-deg" label="Minimum Rotation (deg)" />
+      <ue:DoubleField class="flex-grow" name="min-rotation-rad" label="Minimum Rotation (rad)" />
+      <ue:DoubleField class="flex-grow" name="min-rotation-rev" label="Minimum Rotation (rev)" />
+      <ui:Toggle name="min-rotation-gizmo-toggle" label="Use Min Rotation Gizmo" />
+
+      <ue:DoubleField class="flex-grow" name="max-rotation-deg" label="Maximum Rotation (deg)" />
+      <ue:DoubleField class="flex-grow" name="max-rotation-rad" label="Maximum Rotation (rad)" />
+      <ue:DoubleField class="flex-grow" name="max-rotation-rev" label="Maximum Rotation (rev)" />
+      <ui:Toggle name="max-rotation-gizmo-toggle" label="Use Max Rotation Gizmo" />
+    </ui:VisualElement>
+
+    <ue:DoubleField name="current-rotation-state-deg" label="Current Rotation State (deg)" />
+    <ue:DoubleField name="current-rotation-state-rad" label="Current Rotation State (rad)" />
+    <ue:DoubleField name="current-rotation-state-rev" label="Current Rotation State (rev)" />
+
+    <ui:Foldout name="wheel-axis-direction" text="Wheel Axis Direction" value="false" />
+    <ui:Foldout name="wheel-forward-direction" text="Wheel Forward Direction" value="false" />
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="sceneview-settings" text="Sceneview Settings" value ="false">
+    <ui:Toggle name="always-enabled" label="Always Enabled" />
+    <ui:Toggle name="enable-in-sceneview" label="Enable in Sceneview" />
+    <ui:Foldout name="color-settings" text="Color Settings">
+      <ue:ColorField name="wheel-plane-color" label="Wheel Plane"/>
+      <ue:ColorField name="axis-direction-color" label="Axis Direction"/>
+      <ue:ColorField name="forward-direction-color" label="Forward Direction"/>
+      <ue:ColorField name="current-rotation-color" label="Current Rotation"/>
+      <ue:ColorField name="rotation-limit-color" label="Rotation Limit"/>
+    </ui:Foldout>
+  </ui:Foldout>
+</UXML>

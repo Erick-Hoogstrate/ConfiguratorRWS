@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:ScrollView name="scroll" class="window-padding-container">
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:VisualElement class="row">
+        <ui:Label text="Your Prespective license is: " />
+        <ui:Label class="bold" name="license-state" />
+      </ui:VisualElement>
+      
+      <ui:Label name="last-request" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:VisualElement class="row margin-bottom-5px" name="active-license-details">
+        <ui:VisualElement style="margin-right: 10px">
+          <ui:Label text="License Key: " />
+          <ui:Label text="License Type: "/>
+          <ui:Label text="Activation ID: " />
+          <ui:Label text="License Expiry Date: " />
+          <ui:Label text="Offline Expiry Date: " />
+        </ui:VisualElement>
+        
+        <ui:VisualElement>
+          <ui:Label name="license-key" />
+          <ui:Label name="license-type" />
+          <ui:Label name="activation-id" />
+          <ui:Label name="license-expiry" />
+          <ui:Label name="offline-expiry" />
+        </ui:VisualElement>
+      </ui:VisualElement>
+      
+      <ui:TextField picking-mode="Ignore" label="License Key" name="license-key" />
+      <uie:EnumField label="License Type" value="Center" name="license-type" />
+    </ui:VisualElement>
+
+    <ui:IMGUIContainer class="margin-bottom-10px" name="message-box" />
+
+    <ui:Button text="Update License State from Server" name="update-license" />
+    <ui:Button text="Activate License" name="activate-license" />
+    <ui:Button text="Release License" name="release-license" />
+    <ui:Button text="Update Network Status" name="update-network-status" />
+  </ui:ScrollView>
+</ui:UXML>

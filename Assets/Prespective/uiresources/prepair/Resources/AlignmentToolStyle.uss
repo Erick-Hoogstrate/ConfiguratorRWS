@@ -1,0 +1,18 @@
+
+
+#n-gon-points-field {
+    flex-grow: 100;
+}
+
+#offset-vectors-container Foldout{
+    margin-bottom: 5px;
+    min-height: 20px;
+}
+
+#offset-vectors-container Toggle {
+    height: 15px;    
+}
+
+#offset-vectors-container Toggle Button{
+    width: 15px;
+}

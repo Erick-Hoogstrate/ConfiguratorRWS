@@ -1,0 +1,9 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="context-menu-container" name="mechanics-contextmenu">
+		<ue:ToolbarButton class="menu-item menu-action" name="add-prismatic-joint" text="Add Prismatic Joint" />
+		<ue:ToolbarButton class="menu-item menu-action" name="add-wheel-joint" text="Add Wheel Joint" />
+		<ue:ToolbarButton class="menu-item menu-action" name="add-helical-joint" text="Add Helical Joint" />
+		<ue:ToolbarButton class="menu-item menu-action" name="add-gyroscopic-joint" text="Add Gyroscopic Joint" />
+		<ue:ToolbarButton class="menu-item menu-action" name="add-transfer-joint" text="Add Transfer Joint" />
+	</ui:VisualElement>
+</UXML>

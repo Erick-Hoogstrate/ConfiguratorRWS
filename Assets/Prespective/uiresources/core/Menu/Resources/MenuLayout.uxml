@@ -1,0 +1,225 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView>
+		<ui:VisualElement class="division" style="padding-left: 6px" name="no-license-message">
+			<ui:TextElement class="bold margin-bottom-5px" text="No active license found!" />
+			<ui:TextElement class="margin-bottom-5px" text="Activate your license under Prepective → License" />
+		</ui:VisualElement>
+		
+		<ui:VisualElement name="utilities-menu">
+			<ue:ToolbarMenu class="menu-header main-header" name="utilities-menu-header" text="Utilities" />
+			<ui:VisualElement class="menu-items display-none">
+				<ue:ToolbarButton class="menu-item menu-action" name="add-dspline" text="Add DSpline" />
+				
+				<ui:VisualElement class="menu-divider" />
+
+				<ui:VisualElement name="scene-hierarchy-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Scene/Hierarchy" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item menu-action" name="alignment-tool" text="Alignment Tool" />
+						<ue:ToolbarButton class="menu-item menu-action" name="pivot-tool" text="Pivot Tool" />
+						<ue:ToolbarButton class="menu-item menu-action" name="grouping-tool" text="Grouping Tool" />
+						<ue:ToolbarButton class="menu-item menu-action" name="isolation-tool" text="Isolation Tool" />
+
+						<ui:VisualElement class="menu-divider" />
+
+						<ue:ToolbarButton class="menu-item menu-action" name="add-lockable-transform" text="Add Lockable Transform" />
+						<ue:ToolbarButton class="menu-item context-menu" name="create-empty-parent" text="Create Empty Parent">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item menu-action" name="remove-empty-parent" text="Remove Empty Parent" />
+					</ui:VisualElement>
+				</ui:VisualElement>
+
+				<ui:VisualElement class="menu-divider" />
+
+				<ui:VisualElement name="mesh-utilities-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Mesh Tools" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item menu-action" name="triangle-counter" text="Triangle Counter" />
+						<ue:ToolbarButton class="menu-item menu-action" name="mesh-replacer" text="Mesh Replacer" />
+						<ue:ToolbarButton class="menu-item menu-action" name="mesh-query" text="Mesh Query" />
+						<ue:ToolbarButton class="menu-item menu-action" name="mesh-rescaler" text="Mesh Rescaler" />
+						<ue:ToolbarButton class="menu-item menu-action" name="mesh-splitter" text="Mesh Splitter" />
+					</ui:VisualElement>
+				</ui:VisualElement>		
+
+				<ui:VisualElement class="menu-divider" />
+
+				<ue:ToolbarButton class="menu-item menu-action" name="export-collada" text="Export Collada File" />
+				<ue:ToolbarButton class="menu-item menu-action" name="import-collada" text="Import Collada File" />
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement name="standard-components-menu">
+			<ue:ToolbarMenu class="menu-header main-header" text="Standard Components" />
+			<ui:VisualElement class="menu-items display-none">
+				<ue:ToolbarButton class="menu-item menu-action" name="add-control-panel" text="Add Control Panel" />
+
+				<ui:Label class="menu-divider" text="ACTUATORS"/>
+
+				<ui:VisualElement name="motor-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Motors" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="dc-motor" text="DC Motor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+
+						<ui:VisualElement class="menu-divider" />
+
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="driven-servo-motor" text="Driven Servo Motor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="limited-servo-motor" text="Limited Servo Motor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="continuous-servo-motor" text="Continuous Servo Motor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+
+						<ui:VisualElement class="menu-divider" />
+
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="driven-stepper-motor" text="Driven Stepper Motor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+					</ui:VisualElement>
+				</ui:VisualElement>
+        
+        <ui:VisualElement class="menu-divider" />
+
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="linear-actuator" text="Linear Actuator">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+
+				<ui:VisualElement class="menu-divider" />
+
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="indicator-light" text="Indicator Light">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+
+				<ui:Label class="menu-divider" text="MATERIAL HANDLING"/>
+
+				<ui:VisualElement name="gripper-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Gripper" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="gripper-base" text="Gripper Base">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="parallel-gripper-finger" text="Parallel Gripper Finger">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="angular-gripper-finger" text="Angular Gripper Finger">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+            <ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="vacuum-gripper-finger" text="Vacuum Gripper Finger">
+              <ui:VisualElement class="context-icon" />
+            </ue:ToolbarButton>
+					</ui:VisualElement>
+				</ui:VisualElement>
+
+        <ui:VisualElement name="belt-system-submenu">
+          <ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Belt System" />
+          <ui:VisualElement class="submenu menu-items display-none">
+            <ue:ToolbarButton class="menu-item menu-action" name="belt-system-add-physical-component" text="Add Physical Component" />
+            <ue:ToolbarButton class="menu-item menu-action" name="belt-renderer" text="Add Belt Renderer" />
+            <ue:ToolbarButton class="menu-item menu-action" name="belt-roll" text="Add Belt Roll" />
+          </ui:VisualElement>
+        </ui:VisualElement>
+
+				<ui:Label class="menu-divider" text="SENSORS"/>
+
+				<ui:VisualElement name="beam-sensor-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Beam Sensor" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="beam-emitter" text="Emitter">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="beam-receiver" text="Receiver">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="beam-reflector" text="Reflector">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+					</ui:VisualElement>
+				</ui:VisualElement>
+
+				<ui:VisualElement name="color-sensor-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" text="Color Sensor" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="color-sensor" text="Color Sensor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="color-detector" text="Color Detector">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="contrast-sensor" text="Contrast Sensor">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+					</ui:VisualElement>
+				</ui:VisualElement>
+
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="proximity-sensor" text="Proximity Sensor">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+
+				<ui:Label class="menu-divider" text="SWITCHES"/>
+
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="slide-switch" text="Slide Switch">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="rotary-switch" text="Rotary Switch">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+
+				<ui:Label class="menu-divider" text="ENCODERS"/>
+				
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="linear-encoder" text="Linear Encoder">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+				<ue:ToolbarButton class="menu-item context-menu standard-component-context-menu" name="rotary-encoder" text="Rotary Encoder">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+
+				<ui:Label class="menu-divider" text="UNITY UI"/>
+
+				<ue:ToolbarButton class="menu-item menu-action" name="add-unity-ui-logic-component" text="Add Unity UI Logic" />
+				
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement name="mechanics-menu">
+			<ue:ToolbarMenu class="menu-header main-header" text="Mechanics" />
+			<ui:VisualElement class="menu-items display-none">
+				<ui:VisualElement name="kinematics-submenu">
+					<ue:ToolbarMenu class="menu-item menu-header submenu-header" name="kinematics-submenu-header" text="Kinematics" />
+					<ui:VisualElement class="submenu menu-items display-none">
+						<ue:ToolbarButton class="menu-item menu-action" name="add-kinematics-controller" text="Add Kinematics Controller" />
+						<ue:ToolbarButton class="menu-item context-menu" name="kinematic-joints" text="Kinematic Joints">
+							<ui:VisualElement class="context-icon" />
+						</ue:ToolbarButton>
+						<ue:ToolbarButton class="menu-item menu-action" name="add-bar-linkage-solver" text="Add Bar Linkage Solver" />
+					</ui:VisualElement>
+				</ui:VisualElement>
+
+				<ui:VisualElement class="menu-divider" />
+
+				<ue:ToolbarButton class="menu-item context-menu" name="collider-generators" text="Collider Generators">
+					<ui:VisualElement class="context-icon" />
+				</ue:ToolbarButton>
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement name="logic-menu">
+			<ue:ToolbarMenu class="menu-header main-header" text="Logic" />
+			<ui:VisualElement class="menu-items display-none">
+				<ue:ToolbarButton class="menu-item menu-action" name="add-logic-simulator" text="Add Logic Simulator" />
+				<ui:VisualElement class="menu-divider" />
+				<ue:ToolbarButton class="menu-item menu-action" name="fmu-visualizer" text="FMU Visualizer" />
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement name="alpha-features-menu">
+			<ue:ToolbarMenu class="menu-header main-header" text="Alpha Features" />
+			<ui:VisualElement class="menu-items display-none" />
+		</ui:VisualElement>
+	</ui:ScrollView>
+</UXML>

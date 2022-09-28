@@ -1,0 +1,12 @@
+#finger-settings-container {
+	
+}
+
+#finger {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+#invert Label {
+	min-width: 40px;
+}

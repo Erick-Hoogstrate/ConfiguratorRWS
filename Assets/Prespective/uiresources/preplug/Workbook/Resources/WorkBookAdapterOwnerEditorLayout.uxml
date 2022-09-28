@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:Foldout name ="SETTINGS_FOLDOUT" class="foldout-division margin-bottom-10px" text="Workbook Source Settings" value="false">
+    <!-- Here the Popup field with source options is inserted! -->
+  </ui:Foldout>
+</ui:UXML>

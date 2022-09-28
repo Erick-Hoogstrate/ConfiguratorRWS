@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:ScrollView class="window-padding-container">
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:Label class="bold margin-bottom-10px" text="File Location" />
+      <ui:TextElement class="margin-bottom-10px" text="[No File Selected]" name="file-path" />
+      <ui:Button class="content-fit-button" text="Select File" name="select-file" />
+    </ui:VisualElement>
+    
+    <ui:VisualElement class="division margin-bottom-10px">
+      <ui:Label class="bold margin-bottom-10px" text="Options" />
+      <ui:TextField label="Folder for Imported Assets" text="Resources" name="imported-assets-folder" />
+    </ui:VisualElement>
+
+    <ui:Button class="content-fit-button" name="import-file" text="Import File" />
+  </ui:ScrollView>
+</ui:UXML>

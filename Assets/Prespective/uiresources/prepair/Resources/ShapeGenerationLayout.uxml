@@ -1,0 +1,28 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+
+		<ue:EnumField class="margin-bottom-10px" name="type" label="Shape Type" />
+		<ui:VisualElement name="center" />
+		<ui:VisualElement name="direction" />
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:VisualElement class="margin-bottom-10px" name="tessellation">
+				<ui:Label text="Tesselation" />
+				<ue:IntegerField />
+			</ui:VisualElement>
+			<ui:VisualElement name="radii" />
+			<ui:VisualElement name="extents" />
+			<ui:VisualElement class="margin-bottom-10px" name="radius">
+				<ui:Label text="Radius" />
+				<ue:DoubleField />
+			</ui:VisualElement>
+			<ui:VisualElement class="margin-bottom-10px" name="height">
+				<ui:Label text="Height" />
+				<ue:DoubleField />
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:Button class="content-fit-button margin-bottom-10px" name="create-shape" text="Create Shape" />
+		
+	</ui:ScrollView>
+</UXML>

@@ -1,0 +1,102 @@
+﻿.menu-header {
+	height: 24px;
+	margin-left: 0px;
+	margin-top: 2px;
+	padding-left: 8px;
+	border-left-width: 3px;
+	-unity-font-style: bold;
+}
+
+.menu-item {
+	height: 24px;
+	left:0px;
+	padding-top: 5px;
+	padding-left: 28px;
+	border-left-width: 3px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.context-icon {
+	height: 12px;
+	width: 12px;
+	align-self: flex-end;
+	-unity-text-align: middle-center;
+	left: 3px;
+}
+
+.context-menu-container .menu-item {
+	padding-left: 8px;
+}
+
+.submenu-header {
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	-unity-font-style: normal;
+}
+
+.submenu .menu-item {
+	padding-left: 48px;
+}
+
+#utilities-menu .menu-header, #utilities-menu .menu-item, #utilities-contextmenu .menu-item {
+	border-left-color: rgb(103, 103, 103);
+}
+
+#utilities-menu .menu-header:hover, #utilities-menu .menu-item:hover, #utilities-contextmenu .menu-item:hover {
+	border-left-color: rgba(103, 103, 103, 0.5);
+}
+
+#standard-components-menu .menu-header, #standard-components-menu .menu-item, #standard-components-contextmenu .menu-item {
+	border-left-color: rgb(36, 175, 78);
+}
+
+#standard-components-menu .menu-header:hover, #standard-components-menu .menu-item:hover,  #standard-components-contextmenu .menu-item:hover {
+	border-left-color: rgba(36, 175, 78, 0.5);
+}
+
+#mechanics-menu .menu-header, #mechanics-menu .menu-item, #mechanics-contextmenu .menu-item {
+	border-left-color: rgb(72, 144, 191);
+}
+
+#mechanics-menu .menu-header:hover, #mechanics-menu .menu-item:hover, #mechanics-contextmenu .menu-item:hover {
+	border-left-color: rgba(72, 144, 191, 0.5);
+}
+
+#logic-menu .menu-header, #logic-menu .menu-item {
+	border-left-color: rgb(189, 76, 0);
+}
+
+#logic-menu .menu-header:hover, #logic-menu .menu-item:hover {
+	border-left-color: rgba(189, 76, 0, 0.5);
+}
+
+#prespective-menu .menu-header, #prespective-menu .menu-item {
+	border-left-color: rgb(0, 0, 0);
+}
+
+#prespective-menu .menu-header:hover, #prespective-menu .menu-item:hover {
+	border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.menu-divider {
+	margin-top: 2px;
+}
+
+Label.menu-divider {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding-right: 10px;
+	font-size: 10px;
+	-unity-text-align: middle-right;
+}
+
+.display-none {
+	display: none;
+}
+
+.row {
+	flex-direction: row;
+}

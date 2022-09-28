@@ -1,0 +1,18 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="state" label="State"/>
+    <ui:TextField class="no-box" name="intensity" label="Intensity"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Indicator Light Properties">
+    <ue:ColorField name="light-color" label="Light Color"/>
+    <ue:ColorField class="margin-bottom-5px" name="base-color" label="Base Color"/>
+    <ui:Label class="bold" text="Materials"/>
+    <ui:VisualElement name="material-container"/>
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</UXML>

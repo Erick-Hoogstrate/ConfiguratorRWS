@@ -1,0 +1,11 @@
+.prespective-background {
+	background-color: #aaaaaa;
+}
+
+.utility-window-background-fix {
+	background-color: #c2c2c2;
+}
+
+.foldout-division, .division {
+	background-color: #cfcfcf;
+}

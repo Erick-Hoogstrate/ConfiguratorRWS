@@ -1,0 +1,10 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="row">
+		<ui:Foldout class="flex-grow margin-bottom-5px" value="false">
+			<ui:VisualElement name="target-component" label="Target Component" />
+			<ui:TextField name="naming-rule" label="Naming Rule" />
+		</ui:Foldout>
+
+		<ui:Button class="content-fit-button" name="delete" text="x" />
+	</ui:VisualElement>
+</UXML>

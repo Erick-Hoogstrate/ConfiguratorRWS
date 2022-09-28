@@ -1,0 +1,5 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="context-menu-container" name="standard-components-contextmenu">
+		<ue:ToolbarButton class="menu-item menu-action" name="add-physical-component" text="Add Physical Component"/>
+	</ui:VisualElement>
+</UXML>

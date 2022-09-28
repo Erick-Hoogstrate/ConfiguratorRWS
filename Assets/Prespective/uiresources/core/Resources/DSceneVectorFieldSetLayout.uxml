@@ -1,0 +1,8 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement name="global-direction-container" />
+  <ue:EnumField name="vector-tracking-space" label="Vector Tracking Space" />
+	<ue:EnumField name="vector-space" label="Vector Space" />
+	<ue:EnumField name="vector-direction" label="Vector Direction" />
+  <ui:VisualElement name="manual-vector-container" />
+	<ui:Toggle name="use-scene-gizmo" label="Use Scene Gizmo" />
+</UXML>

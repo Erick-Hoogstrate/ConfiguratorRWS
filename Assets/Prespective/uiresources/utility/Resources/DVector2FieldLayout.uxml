@@ -1,0 +1,8 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="unity-composite-field">
+		<ui:VisualElement class="unity-composite-field__input">
+			<ue:DoubleField class="unity-composite-field__field unity-composite-field__field--first" label="X" name="dvector-x"/>
+			<ue:DoubleField class="unity-composite-field__field" label="Y" name="dvector-y"/>
+		</ui:VisualElement>
+	</ui:VisualElement>
+</UXML>

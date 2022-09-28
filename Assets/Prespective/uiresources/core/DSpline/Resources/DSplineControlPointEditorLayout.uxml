@@ -1,0 +1,56 @@
+﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Control Point handles Settings" />
+    <ue:EnumField name="handle-type" label="Handle Type"/>
+    <ue:EnumField name="handle-gizmo" label="Handle Gizmo"/>
+    <ue:EnumField name="handle-space" label="Handle Space"/>
+    <ui:VisualElement name="handle-in"/>
+    <ui:VisualElement name="handle-out"/>
+    <ue:DoubleField name="handle-in-length" label="Handle IN length"/>
+    <ue:DoubleField name="handle-out-length"  label="Handle OUT length"/>
+    <ue:DoubleField name="handle-in-out-length"  label="Handle IN/OUT length"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Handle Limit" />
+    <ui:Toggle label="Activate Limiting" name="activate-limiting"/>
+    <ui:VisualElement name="handle-limit-settings">
+      <ue:EnumField label="Handle Limit Space" name="handle-limit-space"/>
+      <ui:VisualElement name="handle-limit-plane"/>
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Transform Tracking" />
+    <ui:Toggle label="Activate Transform Tracking" name="activate-transform-tracking"/>
+    <ui:VisualElement name="transform-tracking-settings">
+      <ui:Toggle label="Track transform Position" name="track-transform-position"/>
+      <ui:Toggle label="Track Transform Rotation" name="track-transform-rotation"/>
+      <ue:ObjectField label="Tracking Transform" name="tracking-transform"/>
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Control Point Rotation Settings" />
+    <ue:EnumField label="Match Rotation Space" name="match-rotation-space"/>
+    <ue:DoubleField label="Rotation Offset (Deg)" name="rotation-offset"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Leading And Trailing Segment Settings" />
+    <ui:Label class="standalone-inspector-label font-italic" name="multi-select-message" text="Not available in inspector with multi-select." />
+    <ui:VisualElement name="segments-container"/>
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Scene View Settings" value="false">
+    <ui:Toggle label="Show Normal X Axis" name="show-normal-x-axis"/>
+    <ui:Toggle label="Show Normal Y Axis" name="show-normal-y-axis"/>
+    <ui:Toggle label="Show Normal Z Axis" name="show-normal-z-axis"/>
+    <ui:Toggle label="Show Gizmo When Not Selected" name="show-gizmo-when-not-selected"/>
+    <ui:VisualElement class="row">
+      <ui:Slider class="flex-grow" name="normal-display-modifier-slider" label="Normal Display Modifier" />
+      <ue:FloatField name="normal-display-modifier-field" style="width: 60px" />
+    </ui:VisualElement>
+    <ui:Toggle label="Show Handle Limit Axis" name="show-handle-limit-axis"/>
+  </ui:Foldout>
+</UXML>
