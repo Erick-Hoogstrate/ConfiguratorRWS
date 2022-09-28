@@ -1,0 +1,28 @@
+{
+    "name": "Wrappers",
+    "references": [
+        "Prescripted",
+        "Core",
+        "PrescriptedEditor",
+        "Utility",
+        "Prelogic",
+        "PrelogicEditor",
+        "Prepair",
+        "PrepairEditor",
+        "Prescissor",
+        "PrescissorEditor",
+        "Prestore",
+        "PrestoreEditor",
+        "Fact",
+        "FactEditor"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,8 @@
+<linker>
+  <assembly fullname="System.Core">
+    <type fullname="System.Linq.Expressions.Interpreter.LightLambda" preserve="all" />
+  </assembly>
+  <assembly fullname="Prelogic" preserve="all"/>
+  <assembly fullname="Utility" preserve="all"/>
+  <assembly fullname="Prescripted" preserve="all"/>
+</linker>

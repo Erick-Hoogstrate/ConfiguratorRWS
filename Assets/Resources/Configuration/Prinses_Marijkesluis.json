@@ -1,0 +1,1526 @@
+{
+    "name": "Prinses_Marijkesluis",
+    "tagType": "Folder",
+    "tags": [
+        {
+            "name": "Gates",
+            "tagType": "Folder",
+            "tags": [
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_G_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Up_G_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Up_G_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_G_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Up_G_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_G_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Up_G_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_G_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Down_G_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Down_G_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_G_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Down_G_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_G_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Down_G_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownGateOpen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownGateOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownGateClose_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownGateClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpGateOpen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpGateOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpGateClose_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpGateClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_G_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Up_G_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Up_G_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_G_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Up_G_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_G_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Up_G_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_G_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Down_G_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Down_G_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_G_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Down_G_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_G_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Down_G_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownGateOpen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownGateOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownGateClose_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownGateClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpGateOpen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpGateOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpGateClose_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpGateClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                }
+            ]
+        },
+        {
+            "name": "Paddles",
+            "tagType": "Folder",
+            "tags": [
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_P_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Up_P_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Up_P_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_P_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Up_P_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_P_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Up_P_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_P_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Down_P_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Down_P_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_P_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "N_Down_P_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_P_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "N_Down_P_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownPaddleOpen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownPaddleOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownPaddleClose_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownPaddleClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpPaddleOpen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpPaddleOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpPaddleClose_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpPaddleClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_P_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Up_P_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Up_P_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_P_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Up_P_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_P_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Up_P_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_P_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_E_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Down_P_E_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_E_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Down_P_E_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_P_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_W_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "S_Down_P_W_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_P_W_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "S_Down_P_W_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownPaddleOpen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownPaddleOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownPaddleClose_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownPaddleClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpPaddleOpen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpPaddleOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpPaddleClose_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpPaddleClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                }
+            ]
+        },
+        {
+            "name": "Traffic_Lights",
+            "tagType": "Folder",
+            "tags": [
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_EntTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_E_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_E_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_E_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_E_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_EntTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_W_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_W_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EntTLs_W_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EntTLs_W_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_LeavTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_LeavTLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_LeavTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Up_LeavTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_LeavTLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_LeavTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Up_LeavTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_EntTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_E_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_E_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_E_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_E_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_EntTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_W_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_W_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EntTLs_W_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EntTLs_W_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_LeavTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_LeavTLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_LeavTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "N_Down_LeavTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_LeavTLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_LeavTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "N_Down_LeavTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownEntTLRedRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownEntTLRedRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownEntTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownEntTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownEntTLRedGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownEntTLRedGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownEntTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownEntTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownLeavTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownLeavTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownLeavTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownLeavTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpEntTLRedRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpEntTLRedRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpEntTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpEntTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpEntTLRedGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpEntTLRedGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpEntTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpEntTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpLeavTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpLeavTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpLeavTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpLeavTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_EntTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_E_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_E_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_E_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_E_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_EntTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_W_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_W_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EntTLs_W_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EntTLs_W_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_LeavTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_LeavTLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_LeavTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Up_LeavTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_LeavTLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_LeavTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Up_LeavTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_EntTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_E_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_E_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_E_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_E_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_EntTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_W_SenR1_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_W_SenR1_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EntTLs_W_SenR2_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EntTLs_W_SenR2_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_LeavTLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_LeavTLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_LeavTLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "S_Down_LeavTLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_LeavTLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_LeavTLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "S_Down_LeavTLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownEntTLRedRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownEntTLRedRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownEntTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownEntTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownEntTLRedGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownEntTLRedGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownEntTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownEntTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownLeavTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownLeavTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownLeavTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownLeavTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpEntTLRedRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpEntTLRedRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpEntTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpEntTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpEntTLRedGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpEntTLRedGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpEntTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpEntTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpLeavTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpLeavTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpLeavTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpLeavTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Down_TLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Down_TLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Down_TLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Down_TLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Down_TLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Down_TLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Down_TLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_E_Act_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Up_TLs_E_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_E_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Up_TLs_E_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_E_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Up_TLs_E_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_W_Act_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Up_TLs_W_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_W_SenR_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Up_TLs_W_SenR_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Up_TLs_W_SenG_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Up_TLs_W_SenG_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_DownTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_DownTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_DownTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_DownTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_UpTLRed_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_UpTLRed_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_UpTLGreen_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_UpTLGreen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                }
+            ]
+        },
+        {
+            "name": "Miscellaneous",
+            "tagType": "Folder",
+            "tags": [
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Up_EqualWaterSen_I_equal",
+                    "dataType": "Boolean",
+                    "name": "N_Up_EqualWaterSen_I_equal",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Down_EqualWaterSen_I_equal",
+                    "dataType": "Boolean",
+                    "name": "N_Down_EqualWaterSen_I_equal",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_EmergencyStop_state",
+                    "dataType": "Int4",
+                    "name": "N_EmergencyStop_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_EmergencyStop_I",
+                    "dataType": "Boolean",
+                    "name": "N_EmergencyStop_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_state",
+                    "dataType": "Int4",
+                    "name": "N_Com_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownGtop_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownGtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_DownPtop_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_DownPtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpGtop_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpGtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.N_Com_I_UpPtop_act",
+                    "dataType": "Boolean",
+                    "name": "N_Com_I_UpPtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Up_EqualWaterSen_I_equal",
+                    "dataType": "Boolean",
+                    "name": "S_Up_EqualWaterSen_I_equal",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Down_EqualWaterSen_I_equal",
+                    "dataType": "Boolean",
+                    "name": "S_Down_EqualWaterSen_I_equal",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_EmergencyStop_state",
+                    "dataType": "Int4",
+                    "name": "S_EmergencyStop_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_EmergencyStop_I",
+                    "dataType": "Boolean",
+                    "name": "S_EmergencyStop_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_state",
+                    "dataType": "Int4",
+                    "name": "S_Com_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownGtop_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownGtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_DownPtop_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_DownPtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpGtop_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpGtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.S_Com_I_UpPtop_act",
+                    "dataType": "Boolean",
+                    "name": "S_Com_I_UpPtop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Barrier_Act_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Barrier_Act_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Barrier_Sen_I_open",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Barrier_Sen_I_open",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Barrier_Sen_I_closed",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Barrier_Sen_I_closed",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_EmergencyStop_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_EmergencyStop_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_EmergencyStop_I",
+                    "dataType": "Boolean",
+                    "name": "Barrier_EmergencyStop_I",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_state",
+                    "dataType": "Int4",
+                    "name": "Barrier_Com_state",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_BarrierOpen_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_BarrierOpen_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_BarrierClose_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_BarrierClose_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                },
+                {
+                    "valueSource": "opc",
+                    "opcItemPath": "Applications.Application_1.Diagram1.state0.Barrier_Com_I_BarrierStop_act",
+                    "dataType": "Boolean",
+                    "name": "Barrier_Com_I_BarrierStop_act",
+                    "tagType": "AtomicTag",
+                    "opcServer": "ABB OPC Server"
+                }
+            ]
+        }
+    ]
+}
