@@ -1,0 +1,165 @@
+<ControllerSpecification>
+  <ActiveController>
+    <ADS>
+      <Name>BSserver</Name>
+      <AmsNetId />
+      <Port>851</Port>
+    </ADS>
+    <Inputs>
+      <!--INPUTS 's_waterlevel' of type: 'ProximitySensorLogic-->
+      <Input>
+        <Name>GVLs.ProximitySensorLogic[0].iSensorOutput</Name>
+        <Address>GVLs.ProximitySensorLogic[0].iSensorOutput</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Flagged</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+        <Fidelity>-1</Fidelity>
+      </Input>
+      <!--INPUTS 's_waterlevel' of type: 'ProximitySensorLogic-->
+      <Input>
+        <Name>GVLs.ProximitySensorLogic[0].iActive</Name>
+        <Address>GVLs.ProximitySensorLogic[0].iActive</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Active</Description>
+        <Initvalue>True</Initvalue>
+        <Priority>0</Priority>
+        <Fidelity>-1</Fidelity>
+      </Input>
+    </Inputs>
+    <Outputs>
+      <!--OUTPUTS 'a_lamp' of type: 'IndicatorLightLogic-->
+      <Output>
+        <Name>GVLs.INDICATORLIGHT[0].oActive</Name>
+        <Address>GVLs.INDICATORLIGHT[0].oActive</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Light active</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+        <Fidelity>-1</Fidelity>
+      </Output>
+      <!--OUTPUTS 'a_lamp' of type: 'IndicatorLightLogic-->
+      <Output>
+        <Name>GVLs.INDICATORLIGHT[0].oIntensity</Name>
+        <Address>GVLs.INDICATORLIGHT[0].oIntensity</Address>
+        <Type>REAL32</Type>
+        <Description>DEF: Light intensity</Description>
+        <Initvalue>1</Initvalue>
+        <Priority>0</Priority>
+        <Fidelity>-1</Fidelity>
+      </Output>
+      <!--OUTPUTS 's_waterlevel' of type: 'ProximitySensorLogic-->
+      <Output>
+        <Name>GVLs.ProximitySensorLogic[0].oActive</Name>
+        <Address>GVLs.ProximitySensorLogic[0].oActive</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Active</Description>
+        <Initvalue>True</Initvalue>
+        <Priority>0</Priority>
+        <Fidelity>-1</Fidelity>
+      </Output>
+    </Outputs>
+    <Variables />
+  </ActiveController>
+  <TypeDefinitions>
+    <Basetypes>
+      <BaseType>
+        <Name>STRING</Name>
+        <Bytes>81</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>BOOL</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>BYTE</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>SBYTE</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>WORD</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>DWORD</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>SHORT</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>USHORT</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT16</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT16</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>REAL32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>REAL64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+    </Basetypes>
+    <Structs />
+  </TypeDefinitions>
+</ControllerSpecification>

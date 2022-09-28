@@ -1,0 +1,95 @@
+{
+    "name": "Prinses_Marijkesluis",
+    "cluster": "5",
+    "lock": {
+        "waterways": [
+            {
+                "position": ["10","5"], // dit kan gebruikt worden als er meerdere water strepen zijn
+                "length": "100", //lengte water
+                "doors": [
+                    {
+                        "type": "0", // mitre gate
+                        "direction": "-1", // duidt een richting aan (vermenigvuldigen met indetity tensor x-richting?)
+                        "width": "10", // breedte sluis
+                        "position": ["10","5"] // locatie
+                    },
+                    {
+                        "type": "0",
+                        "direction": "-1",
+                        "width": "10",
+                        "position": ["10","50"]
+                    }
+                ],
+                "traffic_lights": [
+                    {
+                        "type": "0", // Entering lights
+                        "position": [
+                            {
+                                "x": "10",
+                                "y":"5"
+                            },
+                            {
+                                "x": "20",
+                                "y":"5"
+                            }
+                        ] // TL on either side of the channel
+                    },
+                    {
+                        "type": "1", // leaving lights
+                        "position": [
+                            {
+                                "x": "10",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            }
+                        ] // TL on either side of the channel
+                    }
+                ],
+                "wall": [
+                    {
+                        "position": [ // alle posities voor wall onderdelen
+                            {
+                                "x": "20",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            }
+                        ]
+                    }
+                ],
+                "water": [
+                    {                        
+                        "position": [
+                            {
+                                "x": "10",
+                                "y":"25"
+                            },
+                            {
+                                "x": "20",
+                                "y":"25"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+    
+}

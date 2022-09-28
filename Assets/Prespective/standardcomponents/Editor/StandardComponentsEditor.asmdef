@@ -1,0 +1,28 @@
+{
+    "name": "StandardComponentsEditor",
+    "references": [
+        "StandardComponents",
+        "Prepair",
+        "Utility",
+        "Core",
+        "UtilityEditor",
+        "CoreEditor",
+        "PrepairEditor",
+        "APAEditor",
+        "PrelogicEditor",
+        "APA",
+        "Prelogic",
+        "Prescissor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,218 @@
+{
+    "name": "Prinses_Marijkesluis",
+    "cluster": 5,
+    "waterways": [
+        {
+            "position": [0,0,0],
+            "name": "Noord",
+            "doors": [
+                {
+                    "type": 0,
+                    "direction": 1,
+                    "width": 10,
+                    "name": "North_HW_Gate_BNH_East",
+                    "position": [10,0,5]
+                },
+                {
+                    "type": 0,
+                    "direction": 1,
+                    "width": 10,
+                    "name": "dvar_M2_M_North_HW_Gate_BNH_West_Q_Open",
+                    "position": [10,0,50]
+                }
+            ],
+            "traffic_lights": [
+                {
+                    "type": 0,
+                    "direction": -1,
+                    "scale": 10,
+                    "name": "North_HW_EnteringTL_BNH_East",
+                    "position": [23,11,5]
+                },
+                {
+                    "type": 1,
+                    "direction": 1,
+                    "scale": 10,
+                    "name": "dvar_M2_M_North_HW_EnteringTL_BNH_West",
+                    "position": [23,11,15]
+                },
+                {
+                    "type": 0,
+                    "direction": -1,
+                    "scale": 10,
+                    "name": "Upstream_East",
+                    "position": [4,11,5]
+                },
+                {
+                    "type": 1,
+                    "direction": 1,
+                    "scale": 10,
+                    "name": "Upstream_West",
+                    "position": [4,11,15]
+                }
+            ],
+            "walls": [
+                {
+                    "direction": 1,
+                    "length": 10,
+                    "position": [17.5,0,13.5]
+                },
+                {
+                    "direction": 1,
+                    "length": 10,
+                    "position": [17.5,0,30]
+                },
+                {
+                    "direction": -1,
+                    "length": 10,
+                    "position": [5.0,0,13.5]
+                },
+                {
+                    "direction": -1,
+                    "length": 10,
+                    "position": [5.0,0,30]
+                }    
+            ],
+            "water": [
+                {
+                    "length": 10,
+                    "width": 16,
+                    "position": [14,6,65]
+                },
+                {
+                    "length": 50,
+                    "width": 16,
+                    "position": [14,6,35]
+                },
+                {
+                    "length": 10,
+                    "width": 16,
+                    "position": [14,6,6]
+                }
+            ],
+            "embankments": [
+                {
+                    "length": 75,
+                    "width": 10,
+                    "height": 7.5,
+                    "position": [26.0,4.5,36]
+                },
+                {
+                    "length": 75,
+                    "width": 10,
+                    "height": 7.5,
+                    "position": [2.5,4.5,36]
+                }
+            ]
+        },
+        {
+            "position": [30,0,0],
+            "name": "Zuid",
+            "doors": [
+                {
+                    "type": 0,
+                    "direction": 1,
+                    "width": 10,
+                    "name": "dvar_M2_M_South_HW_Gate_BNH_West_Q_Open",
+                    "position": [10,0,5]
+                },
+                {
+                    "type": 0,
+                    "direction": 1,
+                    "width": 10,
+                    "name": "dvar_M2_M_South_HW_Gate_BNH_West_Q_Close",
+                    "position": [10,0,-45]
+                }
+            ],
+            "traffic_lights": [
+                {
+                    "type": 0,
+                    "direction": -1,
+                    "scale": 10,
+                    "name": "Downstream_East",
+                    "position": [23,11,5]
+                },
+                {
+                    "type": 1,
+                    "direction": 1,
+                    "scale": 10,
+                    "name": "Downstream_West",
+                    "position": [23,11,15]
+                },
+                {
+                    "type": 0,
+                    "direction": -1,
+                    "scale": 10,
+                    "name": "Upstream_East",
+                    "position": [4,11,5]
+                },
+                {
+                    "type": 1,
+                    "direction": 1,
+                    "scale": 10,
+                    "name": "Upstream_West",
+                    "position": [4,11,15]
+                }
+            ],
+            "walls": [
+                {
+                    "direction": 1,
+                    "length": 10,
+                    "position": [17.5,0,13.5]
+                },
+                {
+                    "direction": 1,
+                    "length": 10,
+                    "position": [17.5,0,30]
+                },
+                {
+                    "direction": -1,
+                    "length": 10,
+                    "position": [5.0,0,13.5]
+                },
+                {
+                    "direction": -1,
+                    "length": 10,
+                    "position": [5.0,0,30]
+                },
+                {
+                    "direction": -1,
+                    "length": 10,
+                    "position": [-5.0,0,30]
+                }      
+            ],
+            "water": [
+                {
+                    "length": 10,
+                    "width": 16,
+                    "position": [14,6,65]
+                },
+                {
+                    "length": 50,
+                    "width": 16,
+                    "position": [14,6,35]
+                },
+                {
+                    "length": 10,
+                    "width": 16,
+                    "position": [14,6,6]
+                }
+            ],
+            "embankments": [
+                {
+                    "length": 75,
+                    "width": 10,
+                    "height": 7.5,
+                    "position": [26.0,4.5,36]
+                },
+                {
+                    "length": 75,
+                    "width": 10,
+                    "height": 7.5,
+                    "position": [2.5,4.5,36]
+                }
+            ]
+        }
+    ]
+    
+}
