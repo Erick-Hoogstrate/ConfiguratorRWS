@@ -1,0 +1,223 @@
+<ControllerSpecification>
+  <ActiveController>
+    <ADS>
+      <Name />
+      <AmsNetId />
+      <Port>851</Port>
+    </ADS>
+    <Inputs>
+      <!--INPUTS 'dvar_M2_M_North_HW_Gate_BNH_East_Q_Open' of type: 'DOORS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_Gate_BNH_East_Open</Name>
+        <Address>INPUTS.ivar_North_HW_Gate_BNH_East_Open</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+      <!--INPUTS 'dvar_M2_M_North_HW_Gate_BNH_East_Q_Close' of type: 'DOORS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_Gate_BNH_East_Closed</Name>
+        <Address>INPUTS.ivar_North_HW_Gate_BNH_East_Closed</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+      <!--INPUTS 'dvar_M2_M_North_HW_Gate_BNH_West_Q_Open' of type: 'DOORS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_Gate_BNH_West_Open</Name>
+        <Address>INPUTS.ivar_North_HW_Gate_BNH_West_Open</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+      <!--INPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red' of type: 'LIGHTS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_EnteringTL_BNH_East_Red</Name>
+        <Address>INPUTS.ivar_North_HW_EnteringTL_BNH_East_Red</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+      <!--INPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green' of type: 'LIGHTS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_EnteringTL_BNH_East_Green</Name>
+        <Address>INPUTS.ivar_North_HW_EnteringTL_BNH_East_Green</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+      <!--INPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed' of type: 'LIGHTS-->
+      <Input>
+        <Name>INPUTS.ivar_North_HW_EnteringTL_BNH_East_RedRed</Name>
+        <Address>INPUTS.ivar_North_HW_EnteringTL_BNH_East_RedRed</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Sensor Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Input>
+    </Inputs>
+    <Outputs>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_Gate_BNH_East_Q_Open' of type: 'DOORS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_Gate_BNH_East_Q_Open</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_Gate_BNH_East_Q_Open</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_Gate_BNH_East_Q_Close' of type: 'DOORS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_Gate_BNH_East_Q_Close</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_Gate_BNH_East_Q_Close</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_Gate_BNH_West_Q_Open' of type: 'DOORS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_Gate_BNH_West_Q_Open</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_Gate_BNH_West_Q_Open</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red' of type: 'LIGHTS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green' of type: 'LIGHTS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+      <!--OUTPUTS 'dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed' of type: 'LIGHTS-->
+      <Output>
+        <Name>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed</Name>
+        <Address>Main.state0.dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed</Address>
+        <Type>BOOL</Type>
+        <Description>DEF: Actuator Value</Description>
+        <Initvalue>False</Initvalue>
+        <Priority>0</Priority>
+      </Output>
+    </Outputs>
+    <Variables />
+  </ActiveController>
+  <TypeDefinitions>
+    <Basetypes>
+      <BaseType>
+        <Name>BOOL</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>BYTE</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>SBYTE</Name>
+        <Bytes>1</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>WORD</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>DWORD</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>SHORT</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>USHORT</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT16</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT16</Name>
+        <Bytes>2</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>INT64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>UINT64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>REAL32</Name>
+        <Bytes>4</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>REAL64</Name>
+        <Bytes>8</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+      <BaseType>
+        <Name>STRING</Name>
+        <Bytes>81</Bytes>
+        <LeadBytes>0</LeadBytes>
+        <TrailBytes>0</TrailBytes>
+      </BaseType>
+    </Basetypes>
+    <Structs />
+  </TypeDefinitions>
+</ControllerSpecification>
