@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 4309621600525317956}
   - component: {fileID: 4309621600525317959}
   m_Layer: 0
-  m_Name: color sensor red
+  m_Name: color sensor Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1319,7 +1319,7 @@ GameObject:
   - component: {fileID: 6768072075048646974}
   - component: {fileID: 1977239443967247245}
   m_Layer: 0
-  m_Name: indicator green
+  m_Name: indicator Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 2854682270667120460}
   - component: {fileID: 2211960772275491203}
   m_Layer: 0
-  m_Name: indicator red
+  m_Name: indicator Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,7 +1594,7 @@ GameObject:
   - component: {fileID: 4309621601921607869}
   - component: {fileID: 4309621601921607868}
   m_Layer: 0
-  m_Name: color sensor green
+  m_Name: color sensor Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

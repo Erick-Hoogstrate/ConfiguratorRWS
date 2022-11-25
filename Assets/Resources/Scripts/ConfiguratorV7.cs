@@ -250,12 +250,28 @@ public class ConfiguratorV7 : MonoBehaviour
                 UnityEngine.GameObject DoorObject;
                 DoorObject = SpawnObject("Mitre", "Mitre gate || " + data[i].data_doors[g].name, data[i].data_doors[g].positionX, data[i].data_doors[g].positionY, data[i].data_doors[g].positionZ, data[i].data_doors[g].direction, data[i].data_doors[g].width, data[i].data_doors[g].width, data[i].data_doors[g].width, config);
 
-
+                // Link DLinearActuator to the PLC tag
                 foreach (Transform item in TwinCAT_Actuators.transform)
                 {
-                    if (item.name.Contains(data[i].data_doors[g].name))
+                    // Link the East DLinearActuator directly to the corresponding tag 
+                    if (data[i].data_doors[g].name.Contains("East") && item.name.Contains(data[i].data_doors[g].name))
                     {
-                        item.GetComponent<CO_DOORS>().BarLinkageSovler = DoorObject.GetComponentInChildren<DLinearActuator>();
+                        item.GetComponent<CO_DOORS>().BarLinkageSovler = DoorObject.transform.GetChild(0).GetChild(1).GetComponentInChildren<DLinearActuator>();
+                    }
+                    // Link the West DLinearActuator directly to the corresponding tag
+                    if (data[i].data_doors[g].name.Contains("West") && item.name.Contains(data[i].data_doors[g].name))
+                    {
+                        item.GetComponent<CO_DOORS>().BarLinkageSovler = DoorObject.transform.GetChild(0).GetChild(0).GetComponentInChildren<DLinearActuator>();
+                    }
+                    // Link the West DLinearActuator when the East name is given
+                    if (data[i].data_doors[g].name.Contains("East") && item.name.Contains(data[i].data_doors[g].name.Replace("East","West")))
+                    {
+                        item.GetComponent<CO_DOORS>().BarLinkageSovler = DoorObject.transform.GetChild(0).GetChild(0).GetComponentInChildren<DLinearActuator>();
+                    }
+                    // Link the East DLinearActuator when the West name is given
+                    if (data[i].data_doors[g].name.Contains("West") && item.name.Contains(data[i].data_doors[g].name.Replace("West","East")))
+                    {
+                        item.GetComponent<CO_DOORS>().BarLinkageSovler = DoorObject.transform.GetChild(0).GetChild(1).GetComponentInChildren<DLinearActuator>();
                     }
                 }
             }
@@ -332,35 +348,6 @@ public class ConfiguratorV7 : MonoBehaviour
             config.transform.localPosition = new Vector3(data[i].position_lock[0].positionX, data[i].position_lock[0].positionY, data[i].position_lock[0].positionZ);
         }
 
-        /*        //Delete empty tags
-                foreach (Transform tags in TwinCAT_Actuators.transform)
-                {
-                    Debug.Log(tags);
-                    Debug.Log(tags.childCount);
-                    if (tags.childCount == 0)
-                    {
-                        Debug.Log(tags);
-                        DestroyImmediate(tags.gameObject);
-                    }
-                }*/
-
-        /*        //Delete empty tags
-                int t = 0;
-                while (t < TwinCAT_Actuators.transform.childCount)
-                {
-                    Debug.Log(t);
-                    Debug.Log(TwinCAT_Actuators.transform.GetChild(t));
-                    Debug.Log(TwinCAT_Actuators.transform.GetChild(t).childCount);
-                    if (TwinCAT_Actuators.transform.GetChild(t).childCount == 0)
-                    {
-                        Debug.Log(TwinCAT_Actuators.transform.GetChild(t));
-                        DestroyImmediate(TwinCAT_Actuators.transform.GetChild(t).gameObject);
-                    }
-                    else
-                    {
-                        t++;
-                    }
-                }*/
         RemoveUnusedTags();
     }
 
@@ -522,6 +509,10 @@ public class ConfiguratorV7 : MonoBehaviour
             {
                 DestroyImmediate(TwinCAT_Actuators.transform.GetChild(t).gameObject);
             }
+            else if (TwinCAT_Actuators.transform.GetChild(t).name.Contains("SCADA") || TwinCAT_Actuators.transform.GetChild(t).name.Contains("_sup_"))
+            {
+                DestroyImmediate(TwinCAT_Actuators.transform.GetChild(t).gameObject);
+            }
             else
             {
                 t++;
@@ -532,6 +523,10 @@ public class ConfiguratorV7 : MonoBehaviour
         while (z < TwinCAT_TL_Actuators.transform.childCount)
         {
             if (TwinCAT_TL_Actuators.transform.GetChild(z).gameObject.GetComponent<LIGHTS>() == null)
+            {
+                DestroyImmediate(TwinCAT_TL_Actuators.transform.GetChild(z).gameObject);
+            }
+            else if (TwinCAT_TL_Actuators.transform.GetChild(z).name.Contains("SCADA") || TwinCAT_TL_Actuators.transform.GetChild(z).name.Contains("_sup_"))
             {
                 DestroyImmediate(TwinCAT_TL_Actuators.transform.GetChild(z).gameObject);
             }

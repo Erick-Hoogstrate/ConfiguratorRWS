@@ -1,0 +1,5 @@
+
+************************* Logging started at 10/03/2022 15:36:02
+10/3/2022 15:36:02.638 Checking application instance certificate.
+10/3/2022 15:36:02.645 Creating application instance certificate.
+10/3/2022 15:36:02.647 Deleting application instance certificate.
