@@ -1,0 +1,16 @@
+automaton $name$: //$type$	
+    controllable c_start, c_stop;
+    uncontrollable u_timeout;
+    cont t = 0.0 der if Running: 1.0 else 0.0 end;
+
+    location Off:
+        initial;
+        edge c_start when $startcondition$ goto Running;
+
+    location Running:
+        edge c_stop  when $stopcondition$ goto Off;
+        edge u_timeout when t >= $duration$ do t := 0.0 goto Finished;
+
+    location Finished:
+        edge c_stop  when $stopcondition$ goto Off;
+end

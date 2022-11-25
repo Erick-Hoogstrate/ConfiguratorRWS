@@ -1,0 +1,17 @@
+group $name$: //$type$ - Actuated via $SSactuatedVia$.
+  plant automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+  plant automaton PhysicalRelations:
+    location: initial; marked;
+      edge Sensor.u_on  when $SSactuatedVia$.Actuator.On;
+      edge Sensor.u_off when $SSactuatedVia$.Actuator.Off;
+  end
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+end

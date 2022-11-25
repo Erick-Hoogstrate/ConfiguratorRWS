@@ -1,0 +1,25 @@
+<g
+   id="$name$"
+   transform="translate($X$,$Y$) rotate($rotation$)">
+  <rect
+     y="-13.388748"
+     x="-67.107956"
+     height="7.5685754mm"
+     width="35.821354mm"
+     id="$name$.stroke"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:3.83136082;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     y="-11.894791"
+     x="-65.41011"
+     height="25.521343"
+     width="17.137466mm"
+     id="$name$.open"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:7.86617947;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     y="-14.037643"
+     x="-0.49687275"
+     height="28.313021"
+     width="18.186136mm"
+     id="$name$.closed"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:8.53497219;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" />
+</g>

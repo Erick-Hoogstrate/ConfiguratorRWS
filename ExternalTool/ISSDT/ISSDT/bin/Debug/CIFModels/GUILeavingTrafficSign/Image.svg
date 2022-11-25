@@ -1,0 +1,23 @@
+<g
+   id="$name$"
+   transform="translate($X$,$Y$) rotate($rotation$)">
+  <rect
+     style="opacity:1;fill:#000000;stroke:#000000;stroke-width:0.87590945;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+     id="$name$.background"
+     width="25.22813"
+     height="49.333748"
+     x="-12.562279"
+     y="-24.619196" />
+  <circle
+     style="opacity:1;fill:#ff0000;stroke:#000000;stroke-width:1.0666666;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+     id="$name$.red"
+     cx="0.051788174"
+     cy="-11.956484"
+     r="9.333333" />
+  <circle
+     style="opacity:1;fill:#008000;stroke:#000000;stroke-width:1.0666666;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+     id="$name$.green"
+     cx="0.051788174"
+     cy="12.051829"
+     r="9.333333" />
+</g>

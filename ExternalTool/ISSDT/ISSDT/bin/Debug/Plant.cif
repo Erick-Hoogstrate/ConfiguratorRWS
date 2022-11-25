@@ -1,0 +1,59 @@
+group SS: //StopSign - Actuated via ACT.
+  plant automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+  plant automaton PhysicalRelations:
+    location: initial; marked;
+      edge Sensor.u_on  when ACT.Actuator.On;
+      edge Sensor.u_off when ACT.Actuator.Off;
+  end
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+end
+group AS: //ApproachSign - Actuated via ACT.
+  plant automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+  plant automaton PhysicalRelations:
+    location: initial; marked;
+      edge Sensor.u_on  when ACT.Actuator.On;
+      edge Sensor.u_off when ACT.Actuator.Off;
+  end
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+end
+group ACT: //Actuator
+  controllable c_on, c_off;
+  plant automaton Actuator:
+    location On:
+      edge c_off goto Off;
+    location Off:
+      initial; marked;
+      edge c_on  goto On;
+  end
+  alg bool On  = Actuator.On;
+  alg bool Off = Actuator.Off;
+end
+group Btn: //Sensor
+  plant automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+end

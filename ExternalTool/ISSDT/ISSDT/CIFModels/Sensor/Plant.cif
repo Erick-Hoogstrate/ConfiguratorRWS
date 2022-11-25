@@ -1,0 +1,13 @@
+group $name$: //$type$
+  plant automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+end

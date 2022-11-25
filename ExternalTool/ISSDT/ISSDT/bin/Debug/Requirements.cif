@@ -1,0 +1,56 @@
+import "Plant.cif";
+
+requirement STS1.c_on needs Window.StopLandTraffic ;
+requirement STS2.c_on needs Window.StopLandTraffic ;
+requirement STS3.c_on needs Window.StopLandTraffic ;
+requirement STS4.c_on needs Window.StopLandTraffic ;
+requirement STS5.c_on needs Window.StopLandTraffic ;
+requirement STS1.c_off needs Window.ReleaseLandTraffic ;
+requirement STS2.c_off needs Window.ReleaseLandTraffic ;
+requirement STS3.c_off needs Window.ReleaseLandTraffic ;
+requirement STS4.c_off needs Window.ReleaseLandTraffic ;
+requirement STS5.c_off needs Window.ReleaseLandTraffic ;
+requirement BB1.c_close needs Window.CloseBarriers ;
+requirement BB2.c_close needs Window.CloseBarriers ;
+requirement BB1.c_open needs Window.OpenBarriers ;
+requirement BB2.c_open needs Window.OpenBarriers ;
+requirement BB1.c_emergencystop needs Window.BarriersStop ;
+requirement BB2.c_emergencystop needs Window.BarriersStop ;
+requirement Bridge.c_open needs Window.OpenBridge ;
+requirement Bridge.c_close needs Window.CloseBridge ;
+requirement Bridge.c_emergencystop needs Window.BridgeStop ;
+requirement BB1.c_close needs STS1.On and STS2.On and STS3.On and STS4.On and STS5.On ; // SAFE
+requirement BB2.c_close needs STS1.On and STS2.On and STS3.On and STS4.On and STS5.On ; // SAFE
+requirement Bridge.c_open needs BB2.Closed and BB1.Closed ; // SAFE
+requirement SVS1.c_g needs Bridge.Open and SVS5.RedAspect and SVS6.RedAspect ; // SAFE
+requirement SVS2.c_g needs Bridge.Open and SVS5.RedAspect and SVS6.RedAspect ; // SAFE
+requirement SVS3.c_g needs Bridge.Open and SVS7.RedAspect and SVS8.RedAspect ; // SAFE
+requirement SVS4.c_g needs Bridge.Open and SVS7.RedAspect and SVS8.RedAspect ; // SAFE
+requirement SVS5.c_g needs Bridge.Open and SVS1.RedAspect and SVS2.RedAspect ; // SAFE
+requirement SVS6.c_g needs Bridge.Open and SVS1.RedAspect and SVS2.RedAspect ; // SAFE
+requirement SVS7.c_g needs Bridge.Open and SVS3.RedAspect and SVS4.RedAspect ; // SAFE
+requirement SVS8.c_g needs Bridge.Open and SVS3.RedAspect and SVS4.RedAspect ; // SAFE
+requirement Bridge.c_close needs SVS1.RedAspect and SVS2.RedAspect and SVS3.RedAspect and SVS4.RedAspect and SVS5.RedAspect and SVS6.RedAspect and SVS7.RedAspect and SVS8.RedAspect ; // SAFE
+requirement BB1.c_open needs Bridge.Closed ; // SAFE
+requirement BB2.c_open needs Bridge.Closed ; // SAFE
+requirement STS1.c_off needs BB1.Open and BB2.Open ; // SAFE
+requirement STS2.c_off needs BB1.Open and BB2.Open ; // SAFE
+requirement STS3.c_off needs BB1.Open and BB2.Open ; // SAFE
+requirement STS4.c_off needs BB1.Open and BB2.Open ; // SAFE
+requirement STS5.c_off needs BB1.Open and BB2.Open ; // SAFE
+requirement SVS8.c_emergencystop needs Window.BridgeStop ;
+requirement SVS7.c_emergencystop needs Window.BridgeStop ;
+requirement SVS6.c_emergencystop needs Window.BridgeStop ;
+requirement SVS5.c_emergencystop needs Window.BridgeStop ;
+requirement SVS4.c_emergencystop needs Window.BridgeStop ;
+requirement SVS3.c_emergencystop needs Window.BridgeStop ;
+requirement SVS2.c_emergencystop needs Window.BridgeStop ;
+requirement SVS1.c_emergencystop needs Window.BridgeStop ;
+requirement SVS8.c_rg needs not Window.BridgeStop ;
+requirement SVS7.c_rg needs not Window.BridgeStop ;
+requirement SVS6.c_rg needs not Window.BridgeStop ;
+requirement SVS5.c_rg needs not Window.BridgeStop ;
+requirement SVS4.c_rg needs not Window.BridgeStop ;
+requirement SVS3.c_rg needs not Window.BridgeStop ;
+requirement SVS2.c_rg needs not Window.BridgeStop ;
+requirement SVS1.c_rg needs not Window.BridgeStop ;

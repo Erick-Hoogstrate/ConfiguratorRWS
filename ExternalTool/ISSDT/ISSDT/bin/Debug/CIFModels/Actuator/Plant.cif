@@ -1,0 +1,12 @@
+group $name$: //$type$
+  controllable c_on, c_off;
+  plant automaton Actuator:
+    location On:
+      edge c_off goto Off;
+    location Off:
+      initial; marked;
+      edge c_on  goto On;
+  end
+  alg bool On  = Actuator.On;
+  alg bool Off = Actuator.Off;
+end

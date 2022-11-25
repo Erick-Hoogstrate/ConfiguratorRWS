@@ -1,0 +1,7 @@
+<rect
+     style="fill:#$color$;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="$name$"
+     width="$width$"
+     height="$height$"
+     x="$TL_X$"
+     y="$TL_Y$" />

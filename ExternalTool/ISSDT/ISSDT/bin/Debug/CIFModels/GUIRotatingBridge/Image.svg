@@ -1,0 +1,12 @@
+<g
+   id="$name$"
+   transform="translate($X$,$Y$) rotate($rotation$)">
+  <g
+     id="$name$.rotate">
+    <path
+      inkscape:connector-curvature="0"
+       id="$name$.background"
+       d="m -68.415134,-150.11808 -0.0054,305.99757 139.006602,0.002 0.0054,-305.99758 z M 1.0857915,-15.448728 A 18.534282,18.330943 0 0 1 19.62022,2.8814356 18.534282,18.330943 0 0 1 1.0851446,21.212518 18.534282,18.330943 0 0 1 -17.449274,2.8807957 18.534282,18.330943 0 0 1 1.0857915,-15.448728 Z"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.07205558;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</g>

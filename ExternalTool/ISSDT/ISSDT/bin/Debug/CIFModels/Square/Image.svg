@@ -1,0 +1,7 @@
+<rect
+   style="opacity:1;fill:#$color$;fill-opacity:1;stroke-width:0"
+   id="square"
+   width="$width$"
+   height="$height$"
+   x="$TL_X$"
+   y="$TL_Y$" />

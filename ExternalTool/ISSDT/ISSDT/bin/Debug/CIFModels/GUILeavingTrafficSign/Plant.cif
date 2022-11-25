@@ -1,0 +1,14 @@
+group $name$: //$type$
+  plant automaton Buttons:
+    monitor u_r, u_g;
+    uncontrollable u_r, u_g, u_emerg;
+    location Red:
+      initial; marked;
+      edge u_g      when $greenallowedleaving$   goto Green;
+    location Green:
+      edge u_r                            goto Red;
+      edge u_emerg  when $emergencystop$  goto Red;
+  end
+  alg bool Red   = Buttons.Red;
+  alg bool Green = Buttons.Green;
+end

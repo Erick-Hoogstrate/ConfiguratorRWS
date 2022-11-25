@@ -1,0 +1,3 @@
+group $name$: //$type$
+  svgout id "$name$.lamp" attr "fill" value if $enabledss$: "red" else "grey" end file $filename$;
+end

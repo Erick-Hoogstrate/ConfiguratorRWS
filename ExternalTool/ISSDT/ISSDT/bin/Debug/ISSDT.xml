@@ -1,0 +1,650 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ISSDT
+</name>
+</assembly>
+<members>
+<member name="T:ISSDT.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ISSDT.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ISSDT.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:ISSDT.CCanvas.pnlCanvas_Click(System.Object,System.Windows.Forms.MouseEventArgs)">
+ <summary>
+ This method adds a component to the canvas when it is clicked when a component creation tool is active.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.CCanvas.ResetActive">
+ <summary>
+ This method resets the active component.
+ </summary>
+</member>
+<member name="M:ISSDT.CCanvas.ResetActive(ISSDT.CComponent)">
+ <summary>
+ This method resets the active component.
+ </summary>
+</member>
+<member name="M:ISSDT.CCanvas.SetActive(ISSDT.CComponent)">
+ <summary>
+ Sets a new active component and resets the old active component, if there is one.
+ </summary>
+ <param name="comp"></param>
+</member>
+<member name="E:ISSDT.CComponent.NameChanged">
+ <summary>
+ Raises an event when the Value of the Name property is changed
+ </summary>
+ <param name="NewName">The new name.</param>
+</member>
+<member name="M:ISSDT.CComponent.SetActive">
+ <summary>
+ Sets this component as active component, i.e., it shows the resize boxes, the border, and its options.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.ResetActive">
+ <summary>
+ Removes this component as active component, i.e., it removes the resize boxes, the border, and its options.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.Rotate(System.Int32)">
+ <summary>
+ Rotates a component around its center.
+ </summary>
+ <param name="NewRotation">Rotation, either 0, 90, 180, or 270 degrees</param>
+</member>
+<member name="M:ISSDT.CComponent.ShowResizeBoxes">
+ <summary>
+ Shows the six resize boxes around the component.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.HideResizeBoxes">
+ <summary>
+ Hides the six resize boxes around the component.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.HandleComponentMouseDown(ISSDT.CComponent,System.Windows.Forms.MouseEventArgs)">
+ <summary>
+ Sets the component active if not already. Implements drag functionality.
+ </summary>
+ <param name="comp"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.CComponent.HandleComponentMouseUp">
+ <summary>
+ Resets the drag functionality.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.HandleComponentMouseMove">
+ <summary>
+ Drags the component around the canvas.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.HandleComponentMouseClick(ISSDT.CComponent,System.Windows.Forms.MouseEventArgs)">
+ <summary>
+ Implements the right click item box.
+ </summary>
+ <param name="comp"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.CComponent.AddRequirement(System.Windows.Forms.ToolStripMenuItem,System.EventArgs)">
+ <summary>
+ Adds an event saved under item.tag to the requirement window.
+ </summary>
+ <param name="item"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.CComponent.AddState(System.Windows.Forms.ToolStripMenuItem,System.EventArgs)">
+ <summary>
+ Adds a state saved under item.tag to the condition of a requirement.
+ </summary>
+ <param name="item"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.CComponent.renameComponent">
+ <summary>
+ This method requests a new name from the user for a component.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.deleteComponent">
+ <summary>
+ This method removes the component from the canvas and resets the active component.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.rotateClockwise">
+ <summary>
+ This method rotates a component 90 degrees clockwise on the canvas.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.rotateCounterClockwise">
+ <summary>
+ This method rotates a component 90 degrees counter-clockwise on the canvas.
+ </summary>
+</member>
+<member name="M:ISSDT.CComponent.getEvents">
+ <summary>
+ Returns all the events for which requirements can be specified.
+ </summary>
+ <returns>A list of events for which requirements can be specified.</returns>
+</member>
+<member name="M:ISSDT.CComponent.getStates">
+ <summary>
+ Returns all the states that can be used in conditions of requirements.
+ </summary>
+ <returns>A list of states that can be used in conditions of requirements.</returns>
+</member>
+<member name="M:ISSDT.CComponent.readEventsFromFile">
+ <summary>
+ Reads all events from the Events file.
+ </summary>
+ <returns>A list of events denoted in the events file.</returns>
+</member>
+<member name="M:ISSDT.CComponent.readStatesFromFile">
+ <summary>
+ Reads all states from the States file.
+ </summary>
+ <returns>A list of states denoted in the states file.</returns>
+</member>
+<member name="M:ISSDT.MWriter.getModelFileLocation(ISSDT.CComponent)">
+ <summary>
+ Returns the file location of the models necesary for generation of code.
+ </summary>
+ <param name="component">The component to get the file location for.</param>
+ <returns>The file location that can be appended to the application directory path.</returns>
+</member>
+<member name="M:ISSDT.MWriter.Replacements(System.String@,ISSDT.CComponent)">
+ <summary>
+ Replaces all $replacementID$ by a value. 
+ </summary>
+ <param name="Line">The line in which the $ values have to be replaced.</param>
+</member>
+<member name="M:ISSDT.FComponentName.getComponentName">
+ <summary>
+ Asks the user for a component name and checks its validity.
+ </summary>
+ <returns>Valid component name</returns>
+</member>
+<member name="T:ISSDT.MComponentTypes.ComponentTypesEnum">
+ <summary>
+ All different types of components that can be used as building blocks.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.StopSign">
+ <summary>
+ The stop sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.StopSignOptions">
+ <summary>
+ The option window for the stop sign component. 
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.ApproachSign">
+ <summary>
+ The approach sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.ApproachSignOptions">
+ <summary>
+ The option window for the approach sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.BoomBarrier">
+ <summary>
+ The boom barrier component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.BoomBarrierOptions">
+ <summary>
+ The option window for the boom barrier component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.EnteringTrafficSign">
+ <summary>
+ The entering traffic sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.LeavingTrafficSign">
+ <summary>
+ The leaving traffic sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.LeavingTrafficSignOptions">
+ <summary>
+ The option window for the leaving traffic sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.RotatingBridge">
+ <summary>
+ The rotating bridge component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.RotatingBridgeOptions">
+ <summary>
+ The option window for the rotating bridge component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUILeavingTrafficSign">
+ <summary>
+ The leaving traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUILeavingTrafficSignOptions">
+ <summary>
+ The option window for the leaving traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIEnteringTrafficSign">
+ <summary>
+ The entering traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIEnteringTrafficSignOptions">
+ <summary>
+ The option window for the entering traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIRotatingBridge">
+ <summary>
+ The rotating bridge GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIRotatingBridgeOptions">
+ <summary>
+ The option window for the rotating bridge GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIStopSign">
+ <summary>
+ The land traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIStopSignOptions">
+ <summary>
+ The option window for the land traffic sign GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIBoomBarrier">
+ <summary>
+ The boom barrier GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIBoomBarrierOptions">
+ <summary>
+ The option window for the boom barrier GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIBridgeWindow">
+ <summary>
+ The bridge window GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.GUIBridgeWindowOptions">
+ <summary>
+ The option window for the bridge window GUI component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.Timer">
+ <summary>
+ The Timer component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.TimerOptions">
+ <summary>
+ The option window for the Timer component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.Actuator">
+ <summary>
+ The actuator component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.ActuatorOptions">
+ <summary>
+ The option window for the actuator component. 
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.Sensor">
+ <summary>
+ The sensor component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.SensorOptions">
+ <summary>
+ The option window for the sensor component. 
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.StopSignDouble">
+ <summary>
+ The double stop sign component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.StopSignDoubleOptions">
+ <summary>
+ The option window for the double stop sign component. 
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.DrawBridge">
+ <summary>
+ The draw bridge component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.DrawBridgeOptions">
+ <summary>
+ The option window for the draw bridge component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.TextLabel">
+ <summary>
+ The text label component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.TextLabelOptions">
+ <summary>
+ The option window for the text label component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.Options">
+ <summary>
+ Base class for the option window, must be inheritted.
+ </summary>
+</member>
+<member name="M:ISSDT.MComponentTypes.CreateCheckBox(System.String,System.Drawing.Size,System.Drawing.Point,System.Boolean)">
+ <summary>
+ Creates a check box control.
+ </summary>
+ <param name="Text">The check box text.</param>
+ <param name="Size">The check box size.</param>
+ <param name="Location">The check box location.</param>
+ <param name="InitialValue">The initial value of the check box</param>
+ <returns>The check box control.</returns>
+</member>
+<member name="M:ISSDT.MComponentTypes.CreateLabelAndTextBox(System.String,System.Drawing.Point,System.String,System.Boolean,System.Int32)">
+ <summary>
+ Creates a label control and a text box control.
+ </summary>
+ <param name="LabelText">The label text.</param>
+ <param name="Location">The label location.</param>
+ <param name="InitialValue">The initial value of the text box.</param>
+ <param name="ReadOnlyy">Whether the textbox is read only.</param>
+ <returns>The label control and the text box control.</returns>
+</member>
+<member name="M:ISSDT.MComponentTypes.CreateLabelAndComboBox(System.String,System.Drawing.Point,System.String)">
+ <summary>
+ Creates a label control and a combo box control.
+ </summary>
+ <param name="LabelText">The label text.</param>
+ <param name="Location">The label location.</param>
+ <param name="InitialValue">The initial value of the combo box.</param>
+ <returns>The label control and the combo box control.</returns>
+</member>
+<member name="M:ISSDT.MComponentTypes.AddComponentsOfTypeToComboBox``1(System.Windows.Forms.ComboBox@)">
+ <summary>
+ Adds all components on the canvas of a specific type to the item list of a combo box.
+ </summary>
+ <typeparam name="componentType">The component type to add.</typeparam>
+ <param name="comboBox">The combo box to add the components to.</param>
+</member>
+<member name="M:ISSDT.MComponentTypes.AddComponentsOfTypeToComboBox``2(System.Windows.Forms.ComboBox@)">
+ <summary>
+ Adds all components on the canvas of a specific type to the item list of a combo box. If the item already exists in the combobox, the original item is kept. 
+ If an item is in the combo box that does not exist on the canvas it is removed.
+ </summary>
+ <typeparam name="componentType">The component type to add.</typeparam>
+ <param name="comboBox">The combo box to add the components to.</param>
+</member>
+<member name="M:ISSDT.MComponentTypes.AddComponentsOfTypeToComboBox``3(System.Windows.Forms.ComboBox@)">
+ <summary>
+ Adds all components on the canvas of a specific type to the item list of a combo box. If the item already exists in the combobox, the original item is kept. 
+ If an item is in the combo box that does not exist on the canvas it is removed.
+ </summary>
+ <typeparam name="componentType">The component type to add.</typeparam>
+ <param name="comboBox">The combo box to add the components to.</param>
+</member>
+<member name="M:ISSDT.MComponentTypes.UpdateComboBoxAccordingToCanvas(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Windows.Forms.ComboBox)">
+ <summary>
+ Adds items that are in the canvas, but not in the combo box and removes items that are not in the canvas, but are in the combo box.
+ </summary>
+ <param name="itemsInComboBox">The items in the combo box.</param>
+ <param name="itemsInCanvas">The items in the canvas.</param>
+ <param name="comboBox">The combo box to update</param>
+</member>
+<member name="M:ISSDT.MComponentTypes.CreateLabelAndCheckedListBox(System.String,System.Drawing.Point)">
+ <summary>
+ Creates a label control and a checked list control.
+ </summary>
+ <param name="LabelText">The label text.</param>
+ <param name="Location">The label location.</param>
+ <returns>The label control and the chcked list control.</returns>
+</member>
+<member name="M:ISSDT.MComponentTypes.VerifyExpression(System.String)">
+ <summary>
+ Verifies whether the provided expression is a valid expression.
+ </summary>
+ <param name="expression">The expression to verify.</param>
+ <returns>True is the expression is valid, false otherwise.</returns>
+</member>
+<member name="M:ISSDT.MComponentTypes.VerifyExpressionTextBox(System.Windows.Forms.TextBox)">
+ <summary>
+ Verifies whether the expression in a textbox is a valid expression. If it is, the backcolor will be set to white, otherwise to red.
+ </summary>
+ <param name="textBox">The text box to verify.</param>
+</member>
+<member name="M:ISSDT.MComponentTypes.VerifyNumericTextBox(System.Windows.Forms.TextBox)">
+ <summary>
+ Verifies whether the numeric input in a textbox is valid (in the form "digit" or "digit.digit"). If it is, the backcolor will be set to white, otherwise to red.
+ </summary>
+ <param name="textBox">The text box to verify.</param>
+</member>
+<member name="M:ISSDT.ISSDT.BtRefresh_Click">
+ <summary>
+ This method collects the ccomponent data and fills the data grid.
+ </summary>
+</member>
+<member name="M:ISSDT.ISSDT.frmProgramma_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ This method lets the user close the program. If the current canvas is not saved, a confirmation is requested.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="T:ISSDT.MFileOptions">
+ <summary>
+ This module contains all code related to saving and opening files and the info button and new file button.
+ </summary>
+</member>
+<member name="M:ISSDT.MFileOptions.Initialize(ISSDT.CCanvas@,ISSDT.CCanvas@,System.Windows.Forms.DataGridView@,System.Boolean@)">
+ <summary>
+ Initializes the MFileOptions module.
+ </summary>
+ <param name="newCanvasPlant">The canvas to draw the plant on.</param>
+ <param name="newCanvasGUI">The canvas to draw the GUI on.</param>
+ <param name="newRequirements">The DataGrid where the requirements are defined.</param>
+ <param name="newChangedAfterSave">The variable that represents if a save is necessary.</param>
+</member>
+<member name="M:ISSDT.MFileOptions.OpenToolStripMenuItem_Click">
+ <summary>
+ This method lets the user open a file from windows explorer. If the current model is not saved, a confirmation is requested.
+ </summary>
+</member>
+<member name="M:ISSDT.MFileOptions.OpenRoutine(System.String)">
+ <summary>
+ This method creates a model from a loaded file.
+ </summary>
+ <param name="fileName">The file to load.</param>
+</member>
+<member name="M:ISSDT.MFileOptions.CreateComponent(System.String[])">
+ <summary>
+ Creates a component from a string generated by the save file routine.
+ </summary>
+ <param name="compString">The string that represents the component.</param>
+ <returns>The component.</returns>
+</member>
+<member name="M:ISSDT.MFileOptions.SaveRoutine(System.String)">
+ <summary>
+ This method saves the canvas to a file. 
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:ISSDT.MFileOptions.SaveComponent(ISSDT.CComponent,System.IO.StreamWriter)">
+ <summary>
+ Saves the component information as a line in a file.
+ </summary>
+ <param name="comp">The component to save.</param>
+ <param name="saveFile">The file to save to.</param>
+</member>
+<member name="M:ISSDT.MFileOptions.SaveRequirement(System.Windows.Forms.DataGridViewRow,System.IO.StreamWriter)">
+ <summary>
+ Save the requirement information as a line in a file.
+ </summary>
+ <param name="req">The requirement to save.</param>
+ <param name="saveFile">The file to save to.</param>
+</member>
+<member name="M:ISSDT.MFileOptions.ComponentCanvasToInt(ISSDT.CComponent)">
+ <summary>
+ Returns the component parent as an Integer.
+ </summary>
+ <param name="comp">The component to get the parent for</param>
+ <returns>0 = canvasPlant, 1 = canvasGUI, and 2 otherwise.</returns>
+</member>
+<member name="M:ISSDT.MFileOptions.IntToComponentCanvas(System.Int16)">
+ <summary>
+ Returns the canvas represented by the integer value.
+ </summary>
+ <param name="i">The integer value.</param>
+ <returns>0 -> canvasPlant, 1 -> canvasGUI, else -> nothing.</returns>
+</member>
+<member name="M:ISSDT.MFileOptions.NewToolStripMenuItem_Click">
+ <summary>
+ This method clears the canvas. If the current canvas is not saved, a confirmation is requested.
+ </summary>
+</member>
+<member name="M:ISSDT.MFileOptions.ClearCanvas">
+ <summary>
+ This method removes all the component from the canvas.
+ </summary>
+</member>
+<member name="M:ISSDT.MFileOptions.ExtractJSON(System.String)">
+ <summary>
+ This method saves the canvas to a file. 
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="T:ISSDT.MRequirements.ConditionElementEnum">
+ <summary>
+ The elements that can occur in a condition.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.MenuItemDeleteRow_Click(System.Object,System.EventArgs)">
+ <summary>
+ Implements the delete row function.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonAnd_Click">
+ <summary>
+ Adds an 'and' as the last element of the selected requirement.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonOr_Click">
+ <summary>
+ Adds an 'or' as the last element of the selected requirement.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonNot_Click">
+ <summary>
+ Adds a 'not' as the last element of the selected requirement.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonOpenBracket_Click">
+ <summary>
+ Adds an open bracket as the last element of the selected requirement.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonCloseBracket_Click">
+ <summary>
+ Adds a closing bracket as the last element of the selected requirement.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonState_Click(System.String)">
+ <summary>
+ Adds a state as the last element of the selected requirement.
+ </summary>
+ <param name="state">The state to add.</param>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonRemove_Click">
+ <summary>
+ Implements the remove function button. It removes the last element in the requirement of the selected row.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.ButtonVerify_Click">
+ <summary>
+ Implements the verification function button. It checks for each requirements the validity of the state names and event names.
+ </summary>
+</member>
+<member name="M:ISSDT.MRequirements.getLastConditionElement(System.String)">
+ <summary>
+ Returns the last elements in a conditions (e.g., and, or, bracket, state).
+ </summary>
+ <param name="condition">The conditions in which to find the last element.</param>
+ <returns>The last element in the conditions.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.getUnfinishedOpenBrackets(System.String)">
+ <summary>
+ Counts the number of open brackets that have not been closed.
+ </summary>
+ <param name="condition">The conditions in which to find the brackets.</param>
+ <returns>The number of open brackets that have not been closed.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.CountCharacter(System.String,System.Char)">
+ <summary>
+ Counts the number of occurences of a character in a string.
+ </summary>
+ <param name="word">The string in which to count the character.</param>
+ <param name="ch">The character to count.</param>
+ <returns>The number of occurences of a character in a string.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.GetAllValidStates">
+ <summary>
+ A list of all states for all components on the canvas.
+ </summary>
+ <returns>A list of all states that can be refered to in requirements.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.GetAllValidEvents">
+ <summary>
+ A list of all events for all components on the canvas.
+ </summary>
+ <returns>A list of all events that can be refered used to specify requirements for.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.GetAllExpressionStates(System.String)">
+ <summary>
+ Returns a list of states that is used in an expression.
+ </summary>
+ <param name="expression">The expression for which to return the states.</param>
+ <returns>The list of states used in an expression.</returns>
+</member>
+<member name="M:ISSDT.MRequirements.VerifyStates(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+ <summary>
+ Checks whether all elements of a list are contained within another list.
+ </summary>
+ <param name="ValidStates">A list of valid states.</param>
+ <param name="ExpressionStates">A list of states to be checked.</param>
+ <returns>True if all expression states are contained in the valid states.</returns>
+</member>
+</members>
+</doc>

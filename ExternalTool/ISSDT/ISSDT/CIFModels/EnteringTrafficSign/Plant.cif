@@ -1,0 +1,72 @@
+﻿group $name$: //$type$
+  controllable c_r, c_rg, c_g,
+               c_block_on, c_block_off,
+               c_emergencystop;
+  plant automaton ActuatorRG:
+    location Red:
+      initial; marked;
+      edge c_rg            goto RedGreen;
+    location RedGreen:
+      edge c_r             goto Red;
+      edge c_g             goto Green;
+      edge c_emergencystop goto Red;
+    location Green:
+      edge c_r             goto Red;
+      edge c_emergencystop goto Red;
+  end
+  plant automaton ActuatorBlock:
+    location On:
+      initial; marked;
+      edge c_block_off goto Off;
+    location Off:
+      edge c_block_on  goto On;
+  end
+  plant automaton RedSensor:
+    uncontrollable u_on, u_off;
+    location On:
+      initial; marked;
+      edge u_off goto Off;
+    location Off:
+      edge u_on  goto On;
+  end
+  plant automaton GreenSensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial; marked;
+      edge u_on  goto On;
+  end
+  plant automaton BlockSensor:
+    uncontrollable u_on, u_off;
+    location On:
+      initial; marked;
+      edge u_off goto Off;
+    location Off:
+      edge u_on  goto On;
+  end
+
+  plant automaton PhysicalRelations:
+    location: initial; marked;
+      edge RedSensor.u_on    when ActuatorRG.Red or ActuatorRG.RedGreen;
+      edge RedSensor.u_off   when ActuatorRG.Green;
+      edge GreenSensor.u_on  when ActuatorRG.Green or ActuatorRG.RedGreen;
+      edge GreenSensor.u_off when ActuatorRG.Red;
+      edge BlockSensor.u_on  when ActuatorBlock.On;
+      edge BlockSensor.u_off when ActuatorBlock.Off;
+  end
+
+  requirement c_r  needs $ETSVia$.Red;
+  requirement c_rg needs $ETSVia$.RedGreen;
+  requirement c_g  needs $ETSVia$.Green;
+  requirement c_block_on  needs $ETSVia$.Block;
+  requirement c_block_off needs not $ETSVia$.Block;
+
+  alg bool RedAspect      = RedSensor.On  and GreenSensor.Off and BlockSensor.Off;
+  alg bool RedGreenAspect = RedSensor.On  and GreenSensor.On  and BlockSensor.Off;
+  alg bool GreenAspect    = RedSensor.Off and GreenSensor.On  and BlockSensor.Off;
+  alg bool BlockAspect    = RedSensor.Off and GreenSensor.On  and BlockSensor.On;
+  alg bool RedOn          = RedSensor.On;
+  alg bool GreenOn        = GreenSensor.On;
+  alg bool BlockOn        = BlockSensor.On;
+end

@@ -1,0 +1,27 @@
+group $name$: //$type$
+  controllable c_on, c_off;
+  automaton Actuator:
+    location On:
+      edge c_off goto Off;
+    location Off:
+      initial;
+      edge c_on  goto On;
+  end
+  automaton Sensor:
+    uncontrollable u_on, u_off;
+    location On:
+      edge u_off goto Off;
+    location Off:
+      initial;
+      edge u_on  goto On;
+  end
+  automaton PhysicalRelations:
+    location: initial; 
+      edge Sensor.u_on  when Actuator.On;
+      edge Sensor.u_off when Actuator.Off;
+  end
+  alg bool On  = Sensor.On;
+  alg bool Off = Sensor.Off;
+
+  svgout id "$name$.lamp" attr "fill" value if Sensor.On: "red" else "grey" end file $filename$;
+end

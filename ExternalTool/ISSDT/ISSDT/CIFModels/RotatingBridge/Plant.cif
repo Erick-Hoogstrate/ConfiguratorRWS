@@ -1,0 +1,44 @@
+group $name$: //$type$
+  controllable c_open, c_close, c_stop,
+               c_emergencystop;
+
+  plant automaton Actuator:
+    location Idle:
+      initial; marked;
+      edge c_open  goto Opening;
+      edge c_close goto Closing;
+    location Opening:
+      edge c_stop          goto Idle;
+      edge c_emergencystop goto Idle;
+    location Closing:
+      edge c_stop          goto Idle;
+      edge c_emergencystop goto Idle;
+  end
+  plant automaton Sensors:
+    uncontrollable u_open_on, u_open_off,
+                   u_closed_on, u_closed_off;
+    location Open:
+      edge u_open_off   goto Intermediate;
+    location Intermediate:
+      edge u_open_on    goto Open;
+      edge u_closed_on  goto Closed;
+    location Closed:
+      initial; marked;
+      edge u_closed_off goto Intermediate;
+  end
+  plant automaton PhysicalRelations:
+    location: initial; marked;
+      edge Sensors.u_open_on    when Actuator.Opening;
+      edge Sensors.u_open_off   when Actuator.Closing;
+      edge Sensors.u_closed_on  when Actuator.Closing;
+      edge Sensors.u_closed_off when Actuator.Opening;
+  end
+  alg bool Open   = Sensors.Open;
+  alg bool Closed = Sensors.Closed;
+  alg bool Moving = not Actuator.Idle;
+
+  requirement c_stop needs (Actuator.Opening and Sensors.Open) or
+                           (Actuator.Closing and Sensors.Closed);
+  requirement c_close needs not Closed;
+  requirement c_open  needs not Open;
+end

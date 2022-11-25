@@ -1,0 +1,48 @@
+  <g
+             id="$name$"
+             transform="translate($X$,$Y$) rotate($rotation$)">
+    <path
+       inkscape:connector-curvature="0"
+       d="M -66.53955,6.74426 87.61516,2.67689 m 0,-6.50788 -154.15471,-2.84721 m 0,18.30335 V 6.74426 m 0,0 h -2.4405 V -6.6782 h 2.4405 v -4.88087 m -23.18424,23.18422 v -23.18422 m 0,23.18422 h 23.18424 m -23.18424,-23.18422 h 23.18424"
+       style="fill:none;stroke:#000000;stroke-width:1.220222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+               id="$name$.background"
+       witdh="3cm" />
+    <path
+       d="m -49.45648,-6.6782 28.06509,0.81348 -28.06509,12.20224 z m 28.06509,0.81348 -28.06509,12.20224 28.06509,-0.81348 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.220222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
+               id="$name$.lamp1"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+               id="$name$.lamp2"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.220222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
+       d="M 6.26703,-5.45796 33.92536,-4.64448 6.26703,4.71056 Z M 33.92536,-4.64448 6.26703,4.71056 33.92536,3.89708 Z" />
+    <path
+       d="M 62.39721,-4.23775 87.61516,-3.83099 62.39721,3.0836 Z M 87.61516,-3.83099 62.39721,3.0836 87.61516,2.67687 Z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.220222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
+               id="$name$.lamp3"
+       inkscape:connector-curvature="0" />
+    <path
+        style="fill:#ffffff;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+        d="m -68.98005,-6.6782 18.97519,0.782 V 5.6743202 l -18.97519,1.06994 z"
+        id="$name$.sq1"
+        inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -21.39139,-5.86472 6.26703,-5.45796 V 4.71056 l -27.65842,0.81348 z"
+       id="$name$.sq2"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 33.92536,-4.64448 28.47185,0.40673 V 3.0836 L 33.92536,3.89708 Z"
+       id="$name$.sq3"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.30055198;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="$name$.movement"
+       width="0.18077363"
+       height="16.086697"
+       x="-90.020828"
+       y="-8.0763903"
+       transform="scale(-1)" />
+  </g>

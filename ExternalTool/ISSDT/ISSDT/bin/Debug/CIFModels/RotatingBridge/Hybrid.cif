@@ -1,0 +1,46 @@
+group $name$: //$type$
+  controllable c_open, c_close, c_stop,
+               c_emergencystop;
+
+  automaton Actuator:
+    cont position = 10.0 der if Opening and position > 0.0 : -1.0
+                           elif Closing and position < 10.0: +1.0
+                           else                               0.0 end;
+    location Idle:
+      initial;
+      edge c_open  goto Opening;
+      edge c_close goto Closing;
+    location Opening:
+      edge c_stop, c_emergencystop goto Idle;
+    location Closing:
+      edge c_stop, c_emergencystop goto Idle;
+  end
+  automaton Sensors:
+    uncontrollable u_open_on, u_open_off, u_closed_on, u_closed_off;
+    location Open:
+      edge u_open_off   goto Intermediate;
+    location Intermediate:
+      edge u_open_on    goto Open;
+      edge u_closed_on  goto Closed;
+    location Closed:
+      initial;
+      edge u_closed_off goto Intermediate;
+  end
+  automaton PhysicalRelations:
+    location: initial;
+      edge Sensors.u_open_on    when Actuator.position <= 0.0;
+      edge Sensors.u_open_off   when Actuator.position >  0.0;
+      edge Sensors.u_closed_on  when Actuator.position >= 10.0;
+      edge Sensors.u_closed_off when Actuator.position <  10.0;
+  end
+  alg bool Open   = Sensors.Open;
+  alg bool Closed = Sensors.Closed;
+  alg bool Moving = not Actuator.Idle;
+
+  requirement c_stop needs (Actuator.Opening and Sensors.Open) or
+                           (Actuator.Closing and Sensors.Closed);
+  requirement c_close needs not Closed;
+  requirement c_open  needs not Open;
+
+  svgout id "$name$.rotate" attr "transform" value fmt("rotate(%s)", scale(Actuator.position, 10, 0, 0, 90)) file $filename$;
+end
