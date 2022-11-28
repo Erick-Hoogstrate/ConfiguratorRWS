@@ -428,9 +428,20 @@ Module MFileOptions
             If String.IsNullOrEmpty(workingFileName) Then Exit Sub
         End If
 
-        Dim saveFile As IO.StreamWriter
-        saveFile = IO.File.CreateText(workingFileName)
 
+
+        'Initialize Json data
+        Dim initJson As String = Newtonsoft.Json.Linq.JObject.FromObject(New With {
+            .name = "Prinses_Marijkesluis",
+            .cluster = 5,
+            .waterways = New Newtonsoft.Json.Linq.JArray({})
+        }).ToString
+
+
+
+
+
+        'Data to store
 
         'saveFile.WriteLine("Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color")
 
@@ -441,66 +452,43 @@ Module MFileOptions
         '                           + ", " + comp.Rotation.ToString + ", " + comp.BackColor.ToArgb.ToString)
         'Next
 
-        'saveFile.Close()
-        'changedAfterSave = False
-
-        'Gebruik maken van classes
-        'Dim json As String = JsonConvert.SerializeObject(iets)
-
-        'Dim file As IO.StreamWriter
-        'file = My.Computer.FileSystem.OpenTextFileWriter("Data.json", True)
-        'file.WriteLine(json)
 
 
-
-        'create JSON Object on-the-fly
-        Dim sStr As String = Newtonsoft.Json.Linq.JObject.FromObject(New With {
-            .Name = "Name",
-            .Value = 12
-        }).ToString
-
-        ''create JSON Object
-        'Dim oError As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'oError.Add(New Newtonsoft.Json.Linq.JProperty("Error", "Help"))
-        'oError.Add(New Newtonsoft.Json.Linq.JProperty("URL", "URL"))
+        'create JSON Object
+        Dim oError As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        oError.Add(New Newtonsoft.Json.Linq.JProperty("Error", "Help"))
+        oError.Add(New Newtonsoft.Json.Linq.JProperty("URL", "URL"))
 
         'Create jArray
-        'Dim jAssingments As New Newtonsoft.Json.Linq.JObject
-        'For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)().Concat(canvasGUI.Controls.OfType(Of CComponent)())
-        '    jAssingments.Add(comp.Name)
-        'Next
-        'tbAssignment.Value = jAssingments.ToString
+
+        'New Newtonsoft.Json.Linq.JArray({itm.ActionRequest, itm.QueryState})
+
+
+
 
         'Parse jObject
         Dim jParams As Newtonsoft.Json.Linq.JObject = Nothing
         Try
-            jParams = Newtonsoft.Json.Linq.JObject.Parse(sStr)
+            jParams = Newtonsoft.Json.Linq.JObject.Parse(initJson)
         Catch ex As Exception
             jParams = New Newtonsoft.Json.Linq.JObject()
         End Try
 
-        'output
-        'response.write(jParams("Name").ToString)
-        'response.write(jParams.ToString(Newtonsoft.Json.Formatting.Indented))
-        'response.write(jResults("LocationGroups").First("Id")("Value"))
 
-        'little LINQ
-        'Dim jUser = jResults("Users").Where(Function(f) f("UserName").ToString = sUsername).FirstOrDefault
-
-        'For Each itm As Newtonsoft.Json.Linq.JObject In jResults("Tags")
-        '    If itm("TagName").ToString.ToLower.Equals(sTag) Then iTag = itm("Id")("Value")
-        '    If iTag IsNot Nothing Then Exit For
-        'Next
 
         'add
         jParams.Add("DeviceId", 123)
 
 
-        MsgBox(jParams.ToString(Newtonsoft.Json.Formatting.Indented))
-        'saveFile.WriteLine(sStr)
 
+
+
+        'Saving
+        MsgBox(jParams.ToString(Newtonsoft.Json.Formatting.Indented))
         IO.File.WriteAllText(workingFileName, jParams.ToString(Newtonsoft.Json.Formatting.Indented))
-        saveFile.WriteLine(jParams.ToString(Newtonsoft.Json.Formatting.Indented))
+
+
+        changedAfterSave = False
 
     End Sub
 

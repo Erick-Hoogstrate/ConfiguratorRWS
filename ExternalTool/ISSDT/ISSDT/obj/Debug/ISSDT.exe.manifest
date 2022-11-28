@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="192512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="193024">
       <assemblyIdentity name="ISSDT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f9D45DmNQst2CcLFqYieOcRdhx0hShJJ7Oz6MA15x9M=</dsig:DigestValue>
+        <dsig:DigestValue>/7gVyiKtHPfVJp/KQBAR5OedP7IN7AxqJlRWKziacnE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
