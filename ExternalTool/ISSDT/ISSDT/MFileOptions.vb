@@ -7,6 +7,8 @@ Imports System.Net
 Imports Microsoft.VisualBasic.Devices
 Imports System.Security.Policy
 Imports Newtonsoft
+Imports System.Security.Cryptography
+Imports System.Runtime.InteropServices.ComTypes
 ''' <summary>
 ''' This module contains all code related to saving and opening files and the info button and new file button.
 ''' </summary>
@@ -421,6 +423,14 @@ Module MFileOptions
     ''' <param name="fileName"></param>
     Public Sub ExtractJSON(fileName As String)
 
+
+        Dim tempvarposition = New Newtonsoft.Json.Linq.JArray({0, 0, 0})
+        Dim tempvarname = "Mario"
+        Dim tempvarempty = New Newtonsoft.Json.Linq.JArray({})
+
+
+
+
         If String.IsNullOrEmpty(fileName) Then
             ISSDT.SaveFileDialogJSON.ShowDialog()
             workingFileName = ISSDT.SaveFileDialogJSON.FileName
@@ -438,6 +448,98 @@ Module MFileOptions
         }).ToString
 
 
+        'Parse jObject
+        Dim initial As Newtonsoft.Json.Linq.JObject = Nothing
+        Try
+            initial = Newtonsoft.Json.Linq.JObject.Parse(initJson)
+        Catch ex As Exception
+            initial = New Newtonsoft.Json.Linq.JObject()
+        End Try
+
+
+        'Define general waterway Json structure
+        Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        'Add general waterway Json structure
+        Dim waterway As JArray = initial("waterways")
+        waterway.Add(waterwaysinit)
+
+
+
+        'Define general door Json structure template
+        Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        door.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
+        door.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        door.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        door.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        door.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        'Add general doors Json structure
+        Dim doors As JArray = waterwaysinit("doors")
+        doors.Add(door)
+
+
+
+
+        'Define general traffic light Json structure template
+        Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        TL.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
+        TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", tempvarname))
+        TL.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        TL.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        'Add general traffic light Json structure
+        Dim TLs As JArray = waterwaysinit("traffic_lights")
+        TLs.Add(TL)
+
+
+
+
+        'Define general wall Json structure template
+        Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        wall.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        wall.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        'Add general wall Json structure
+        Dim walls As JArray = waterwaysinit("walls")
+        walls.Add(wall)
+
+
+
+
+        'Define general water Json structure template
+        Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        water.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        water.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        water.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        'Add general water Json structure
+        Dim waters As JArray = waterwaysinit("water")
+        waters.Add(water)
+
+
+
+
+
+        'Define general embankment Json structure template
+        Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", tempvarname))
+        embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        'Add general water Json structure
+        Dim embankments As JArray = waterwaysinit("embankments")
+        embankments.Add(embankment)
 
 
 
@@ -454,42 +556,70 @@ Module MFileOptions
 
 
 
-        'create JSON Object
-        Dim oError As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        oError.Add(New Newtonsoft.Json.Linq.JProperty("Error", "Help"))
-        oError.Add(New Newtonsoft.Json.Linq.JProperty("URL", "URL"))
-
-        'Create jArray
-
-        'New Newtonsoft.Json.Linq.JArray({itm.ActionRequest, itm.QueryState})
-
-
-
-
-        'Parse jObject
-        Dim jParams As Newtonsoft.Json.Linq.JObject = Nothing
-        Try
-            jParams = Newtonsoft.Json.Linq.JObject.Parse(initJson)
-        Catch ex As Exception
-            jParams = New Newtonsoft.Json.Linq.JObject()
-        End Try
-
-
-
-        'add
-        jParams.Add("DeviceId", 123)
-
-
-
-
 
         'Saving
-        MsgBox(jParams.ToString(Newtonsoft.Json.Formatting.Indented))
-        IO.File.WriteAllText(workingFileName, jParams.ToString(Newtonsoft.Json.Formatting.Indented))
-
+        MsgBox(initial.ToString(Newtonsoft.Json.Formatting.Indented))
+        IO.File.WriteAllText(workingFileName, initial.ToString(Newtonsoft.Json.Formatting.Indented))
 
         changedAfterSave = False
 
     End Sub
 
 End Module
+
+
+
+
+
+''create JSON Object
+'Dim oError As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+'oError.Add(New Newtonsoft.Json.Linq.JProperty("Error", "Help"))
+'oError.Add(New Newtonsoft.Json.Linq.JProperty("URL", "URL"))
+
+'Create jArray
+
+'New Newtonsoft.Json.Linq.JArray({itm.ActionRequest, itm.QueryState})
+
+'add
+'jParams.Add("DeviceId", 123)
+
+
+
+
+
+'Backup solitions for writing JSON inside "waterways"
+''Option 1
+'Dim json2 = JObject.Parse("{
+'            ""waterways"": [{
+'                ""width"": ""id2"",
+'                ""height"": ""field2""
+'            }]
+'        }")
+
+'Dim dataOfJson1 As JArray = jParams.SelectToken("waterways")
+
+'Dim dataofJson2 As JArray = json2.SelectToken("waterways")
+
+'For Each innerData As JObject In dataofJson2
+'dataOfJson1.Add(innerData)
+'Next
+
+
+
+
+
+
+''Options 2
+'Dim dataObject2 = JObject.Parse("{
+'            ""waterways"": [{
+'                ""id"": ""id2"",
+'                ""field"": ""field2""
+'            }]
+'        }")
+
+'Dim tussenstop As JArray = jParams.SelectToken("waterways")
+
+'tussenstop.Merge(dataObject2.SelectToken("waterways"))
+
+'Dim mergedArray = jParams.SelectToken("waterways")
+'MsgBox(mergedArray.ToString)
