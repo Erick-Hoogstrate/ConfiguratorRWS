@@ -67,6 +67,9 @@
             If ISSDT.toolSelected = ComponentTypesEnum.StopSign Then
                 comp = New StopSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
 
+            ElseIf ISSDT.toolSelected = ComponentTypesEnum.Quay Then
+                comp = New Quay(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
             ElseIf ISSDT.toolSelected = ComponentTypesEnum.ApproachSign Then
                 comp = New ApproachSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
 
@@ -114,6 +117,7 @@
 
             ElseIf ISSDT.toolSelected = ComponentTypesEnum.DrawBridge Then
                 comp = New DrawBridge(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
 
             Else
                 MsgBox("Error")

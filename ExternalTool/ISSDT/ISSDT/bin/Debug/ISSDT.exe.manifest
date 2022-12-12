@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="194048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="202752">
       <assemblyIdentity name="ISSDT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wtHRzWNkmzE9rMa7xUURth73B1CdmSxHKbKmPm1RRN8=</dsig:DigestValue>
+        <dsig:DigestValue>jph2Kq4UmCdxH4Nv/f9aYynQNkf4g35/xvSGKopO2vY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -623,6 +623,51 @@
       <dsig:DigestValue>rgk7DJNf8FaRjfjbnwK5dWoxWzh6iXTO4MD+KYpFxiM=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="CIFModels\Quay\Events" size="0">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CIFModels\Quay\Hybrid.cif" size="0">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CIFModels\Quay\Image.svg" size="1232">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>D8t9RUSGpMitpl7CJQaEs/vGJ05J/oCkqwzdAAKC8Vk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CIFModels\Quay\Plant.cif" size="0">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CIFModels\Quay\States" size="0">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="CIFModels\RotatingBridge\Events" size="40">
     <hash>
       <dsig:Transforms>
@@ -999,6 +1044,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>yqJBcMJejHvqR9MLoinad/iJB3bg/A4sp9jAxloxNuc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Icons\Quay.png" size="2234">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YqXaJPegLjzC6VRwFtujNFPZY+nUPGaBw8M5/YkNm+M=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Icons\RotatingBridge.png" size="3613">

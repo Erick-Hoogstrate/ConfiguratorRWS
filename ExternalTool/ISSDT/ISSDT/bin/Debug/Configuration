@@ -1,6 +1,74 @@
 {
   "name": "Prinses_Marijkesluis",
   "cluster": 5,
-  "waterways": [],
-  "DeviceId": 123
+  "waterways": [
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "name": "Mario",
+      "doors": [
+        {
+          "type": "Mario",
+          "direction": "Mario",
+          "width": "Mario",
+          "name": "Mario",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "traffic_lights": [
+        {
+          "type": "Mario",
+          "direction": "Mario",
+          "scale": "Mario",
+          "name": "Mario",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "walls": [
+        {
+          "direction": "Mario",
+          "length": "Mario",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "water": [
+        {
+          "length": "Mario",
+          "width": "Mario",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "embankments": [
+        {
+          "length": "300",
+          "width": "100",
+          "height": "7.5",
+          "position": [
+            "555",
+            "197",
+            0
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -50,7 +50,7 @@ Public Class ISSDT
 
         For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
             If comp.Type <> ComponentTypesEnum.Square Then
-                Dim row As String() = New String() {i, comp.Name, comp.Type.ToString}
+                Dim row As String() = New String() {1, comp.Name, comp.Type.ToString, i}
                 DGVoverview.Rows.Add(row)
                 i += 1
             End If
@@ -74,7 +74,7 @@ Public Class ISSDT
         End If
     End Sub
 
-
+    'Temporary function for creating JSON data
     Private Sub JSONbtn_Click(sender As Object, e As EventArgs) Handles JSONbtn.Click
 
         MsgBox("Generate JSON file")

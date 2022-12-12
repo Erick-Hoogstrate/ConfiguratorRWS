@@ -40,7 +40,7 @@ Module MFileOptions
     End Sub
 
     Private Sub InfoToolStripMenuItem_Click()
-        MsgBox("This application acts as a proof-of-concept for modeling of infrastructural systems via templates", vbOKOnly + vbInformation, "Info")
+        MsgBox("This application is used to create a JSON file that can be used to create a Digital Twin of a waterlock", vbOKOnly + vbInformation, "Info")
     End Sub
 
     ''' <summary>
@@ -530,16 +530,40 @@ Module MFileOptions
 
 
 
-        'Define general embankment Json structure template
-        Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", tempvarname))
-        embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        ''Define general embankment Json structure template
+        'Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", tempvarname))
+        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
 
-        'Add general water Json structure
-        Dim embankments As JArray = waterwaysinit("embankments")
-        embankments.Add(embankment)
+        ''Add general water Json structure
+        'Dim embankments As JArray = waterwaysinit("embankments")
+        'embankments.Add(embankment)
+
+
+
+
+        MsgBox(ISSDT.DGVoverview.Rows(0).Cells(0).Value)
+
+        For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)().Concat(canvasGUI.Controls.OfType(Of CComponent)())
+
+            If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Quay Then
+
+                Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width.ToString))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", "7.5"))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general water Json structure
+                Dim embankments As JArray = waterwaysinit("embankments")
+                embankments.Add(embankment)
+
+            End If
+
+        Next
+
 
 
 

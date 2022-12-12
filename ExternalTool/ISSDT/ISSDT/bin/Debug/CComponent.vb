@@ -4,6 +4,7 @@
     Private Name_ As String
     Public Rotation As Integer = 0
     Public Type As ComponentTypesEnum
+    Public Waterway As Integer = 0
     Public Options As Options
 
     Private Active As Boolean = False

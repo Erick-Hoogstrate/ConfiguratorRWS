@@ -348,6 +348,16 @@ ISSDT
  The option window for the draw bridge component.
  </summary>
 </member>
+<member name="T:ISSDT.MComponentTypes.Quay">
+ <summary>
+ The quay component.
+ </summary>
+</member>
+<member name="T:ISSDT.MComponentTypes.QuayOptions">
+ <summary>
+ The option window for the quay component.
+ </summary>
+</member>
 <member name="T:ISSDT.MComponentTypes.TextLabel">
  <summary>
  The text label component.

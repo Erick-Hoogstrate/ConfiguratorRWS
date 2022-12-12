@@ -411,3 +411,9 @@ C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\obj\Debug\ISSDT.vbpro
 C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\obj\Debug\ISSDT.exe
 C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\obj\Debug\ISSDT.xml
 C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\obj\Debug\ISSDT.pdb
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\CIFModels\Quay\Image.svg
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\CIFModels\Quay\Events
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\CIFModels\Quay\Hybrid.cif
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\CIFModels\Quay\Plant.cif
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\CIFModels\Quay\States
+C:\Users\20191695\ConfiguratorRWS\ExternalTool\ISSDT\ISSDT\bin\Debug\Icons\Quay.png

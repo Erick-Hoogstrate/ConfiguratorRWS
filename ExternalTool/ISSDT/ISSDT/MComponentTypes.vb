@@ -6,6 +6,7 @@
     Public Enum ComponentTypesEnum
         StopSign
         BoomBarrier
+        Quay
         ApproachSign
         RotatingBridge
         EnteringTrafficSign
@@ -1574,6 +1575,75 @@
         End Sub
     End Class
 
+
+
+
+
+
+    ''' <summary>
+    ''' The quay component.
+    ''' </summary>
+    Public Class Quay : Inherits CComponent
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png"))
+            Size = New Size(300, 100)
+
+            Options = New QuayOptions(Me)
+        End Sub
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png")))
+
+            Options = New QuayOptions(Me)
+        End Sub
+    End Class
+
+    ''' <summary>
+    ''' The option window for the quay component.
+    ''' </summary>
+    Public Class QuayOptions
+        Inherits Options
+
+        Dim Quay As Quay
+
+        Public Sub New(ByRef NewQuay As Quay)
+            MyBase.New()
+            Quay = NewQuay
+            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
+
+            textBoxName.Text = Quay.Name
+            textBoxType.Text = Quay.Type.ToString
+            textBoxWaterway.Text = Quay.Waterway
+            AddHandler Quay.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+        Private Sub UpdateOptionWindowValues()
+            If Visible Then
+                'Nothing to update
+
+                VerifyAll()
+            End If
+        End Sub
+
+        Public Sub VerifyAll()
+            'Nothing to verify
+        End Sub
+    End Class
+
+
+
+
+
+
+
+
     ''' <summary>
     ''' The text label component.
     ''' </summary>
@@ -1645,6 +1715,7 @@
         Public textBoxName As TextBox = New TextBox()
         Public LabelType As Label = New Label()
         Public textBoxType As TextBox = New TextBox()
+        Public textBoxWaterway As TextBox = New TextBox()
 
         Public Sub New()
             Location = New Point(1016, 373)

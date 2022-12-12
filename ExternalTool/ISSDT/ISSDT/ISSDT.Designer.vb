@@ -32,9 +32,6 @@ Partial Class ISSDT
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.DGVoverview = New System.Windows.Forms.DataGridView()
-        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,6 +80,7 @@ Partial Class ISSDT
         Me.SaveFileDialogJSON = New System.Windows.Forms.SaveFileDialog()
         Me.canvasPlant = New CCanvas()
         Me.canvasGUI = New CCanvas()
+        Me.Quay = New CTool()
         Me.CTool3 = New CTool()
         Me.CTool2 = New CTool()
         Me.CTool1 = New CTool()
@@ -99,11 +97,16 @@ Partial Class ISSDT
         Me.ToolLeavingTrafficSign = New CTool()
         Me.ToolEnteringTrafficSign = New CTool()
         Me.ToolBoomBarrier = New CTool()
+        Me.ToolQuay = New CTool()
         Me.ToolApproachSign = New CTool()
         Me.ToolStopSign = New CTool()
         Me.LblTextLabel = New CTool()
         Me.LblSquare = New CTool()
         Me.CToolBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Waterway = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DGVoverview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl.SuspendLayout()
@@ -144,7 +147,7 @@ Partial Class ISSDT
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGVoverview.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DGVoverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVoverview.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ObjectID, Me.ObjectName, Me.ObjectType})
+        Me.DGVoverview.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Waterway, Me.ObjectName, Me.ObjectType, Me.ObjectID})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -156,34 +159,9 @@ Partial Class ISSDT
         Me.DGVoverview.Location = New System.Drawing.Point(1355, 694)
         Me.DGVoverview.Margin = New System.Windows.Forms.Padding(4)
         Me.DGVoverview.Name = "DGVoverview"
-        Me.DGVoverview.ReadOnly = True
         Me.DGVoverview.RowHeadersWidth = 51
-        Me.DGVoverview.Size = New System.Drawing.Size(485, 310)
+        Me.DGVoverview.Size = New System.Drawing.Size(501, 310)
         Me.DGVoverview.TabIndex = 15
-        '
-        'ObjectID
-        '
-        Me.ObjectID.HeaderText = "ObjectID"
-        Me.ObjectID.MinimumWidth = 6
-        Me.ObjectID.Name = "ObjectID"
-        Me.ObjectID.ReadOnly = True
-        Me.ObjectID.Width = 70
-        '
-        'ObjectName
-        '
-        Me.ObjectName.HeaderText = "Name"
-        Me.ObjectName.MinimumWidth = 6
-        Me.ObjectName.Name = "ObjectName"
-        Me.ObjectName.ReadOnly = True
-        Me.ObjectName.Width = 125
-        '
-        'ObjectType
-        '
-        Me.ObjectType.HeaderText = "Type"
-        Me.ObjectType.MinimumWidth = 6
-        Me.ObjectType.Name = "ObjectType"
-        Me.ObjectType.ReadOnly = True
-        Me.ObjectType.Width = 125
         '
         'btRefresh
         '
@@ -200,7 +178,7 @@ Partial Class ISSDT
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.GenerateHybridPlantModel, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 26)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'NewToolStripMenuItem
@@ -303,7 +281,7 @@ Partial Class ISSDT
         'InfoToolStripMenuItem
         '
         Me.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem"
-        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(49, 26)
+        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(49, 24)
         Me.InfoToolStripMenuItem.Text = "Info"
         '
         'MenuStrip1
@@ -312,7 +290,7 @@ Partial Class ISSDT
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.InfoToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1846, 30)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1856, 28)
         Me.MenuStrip1.TabIndex = 17
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -331,6 +309,7 @@ Partial Class ISSDT
         '
         Me.TabTools.AutoScroll = True
         Me.TabTools.BackColor = System.Drawing.SystemColors.Control
+        Me.TabTools.Controls.Add(Me.Quay)
         Me.TabTools.Controls.Add(Me.CTool3)
         Me.TabTools.Controls.Add(Me.CTool2)
         Me.TabTools.Controls.Add(Me.CTool1)
@@ -347,6 +326,7 @@ Partial Class ISSDT
         Me.TabTools.Controls.Add(Me.ToolLeavingTrafficSign)
         Me.TabTools.Controls.Add(Me.ToolEnteringTrafficSign)
         Me.TabTools.Controls.Add(Me.ToolBoomBarrier)
+        Me.TabTools.Controls.Add(Me.ToolQuay)
         Me.TabTools.Controls.Add(Me.ToolApproachSign)
         Me.TabTools.Controls.Add(Me.ToolStopSign)
         Me.TabTools.Location = New System.Drawing.Point(4, 25)
@@ -654,6 +634,18 @@ Partial Class ISSDT
         Me.canvasGUI.Size = New System.Drawing.Size(1199, 984)
         Me.canvasGUI.TabIndex = 1
         '
+        'Quay
+        '
+        Me.Quay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Quay.Image = CType(resources.GetObject("Quay.Image"), System.Drawing.Image)
+        Me.Quay.Location = New System.Drawing.Point(280, 68)
+        Me.Quay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Quay.Name = "Quay"
+        Me.Quay.Size = New System.Drawing.Size(105, 49)
+        Me.Quay.TabIndex = 69
+        Me.ToolTip.SetToolTip(Me.Quay, "Quay")
+        Me.Quay.toolType = MComponentTypes.ComponentTypesEnum.Quay
+        '
         'CTool3
         '
         Me.CTool3.BackColor = System.Drawing.Color.Transparent
@@ -852,6 +844,18 @@ Partial Class ISSDT
         Me.ToolTip.SetToolTip(Me.ToolBoomBarrier, "Boom Barrier")
         Me.ToolBoomBarrier.toolType = MComponentTypes.ComponentTypesEnum.BoomBarrier
         '
+        'ToolQuay
+        '
+        Me.ToolQuay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.ToolQuay.Image = CType(resources.GetObject("ToolQuay.Image"), System.Drawing.Image)
+        Me.ToolQuay.Location = New System.Drawing.Point(8, 68)
+        Me.ToolQuay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.ToolQuay.Name = "ToolQuay"
+        Me.ToolQuay.Size = New System.Drawing.Size(150, 50)
+        Me.ToolQuay.TabIndex = 69
+        Me.ToolTip.SetToolTip(Me.ToolQuay, "Quay")
+        Me.ToolQuay.toolType = MComponentTypes.ComponentTypesEnum.Quay
+        '
         'ToolApproachSign
         '
         Me.ToolApproachSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -903,13 +907,52 @@ Partial Class ISSDT
         '
         Me.CToolBindingSource.DataSource = GetType(CTool)
         '
+        'Waterway
+        '
+        Me.Waterway.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Waterway.Frozen = True
+        Me.Waterway.HeaderText = "Waterway"
+        Me.Waterway.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
+        Me.Waterway.MinimumWidth = 6
+        Me.Waterway.Name = "Waterway"
+        Me.Waterway.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Waterway.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Waterway.Width = 75
+        '
+        'ObjectName
+        '
+        Me.ObjectName.Frozen = True
+        Me.ObjectName.HeaderText = "Name"
+        Me.ObjectName.MinimumWidth = 6
+        Me.ObjectName.Name = "ObjectName"
+        Me.ObjectName.ReadOnly = True
+        Me.ObjectName.Width = 125
+        '
+        'ObjectType
+        '
+        Me.ObjectType.Frozen = True
+        Me.ObjectType.HeaderText = "Type"
+        Me.ObjectType.MinimumWidth = 6
+        Me.ObjectType.Name = "ObjectType"
+        Me.ObjectType.ReadOnly = True
+        Me.ObjectType.Width = 125
+        '
+        'ObjectID
+        '
+        Me.ObjectID.Frozen = True
+        Me.ObjectID.HeaderText = "ObjectID"
+        Me.ObjectID.MinimumWidth = 6
+        Me.ObjectID.Name = "ObjectID"
+        Me.ObjectID.ReadOnly = True
+        Me.ObjectID.Width = 70
+        '
         'ISSDT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1791, 1090)
+        Me.ClientSize = New System.Drawing.Size(1812, 1111)
         Me.Controls.Add(Me.JSONbtn)
         Me.Controls.Add(Me.btnVerify)
         Me.Controls.Add(Me.btnRemove)
@@ -974,9 +1017,6 @@ Partial Class ISSDT
     Friend WithEvents lblColorWeg As Label
     Friend WithEvents LblColorWaterweg As Label
     Friend WithEvents lblColorWhite As Label
-    Friend WithEvents ObjectID As DataGridViewTextBoxColumn
-    Friend WithEvents ObjectName As DataGridViewTextBoxColumn
-    Friend WithEvents ObjectType As DataGridViewTextBoxColumn
     Friend WithEvents ToolTip As ToolTip
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage3 As TabPage
@@ -1002,6 +1042,7 @@ Partial Class ISSDT
     Friend WithEvents ToolStopSign As CTool
     Friend WithEvents ToolApproachSign As CTool
     Friend WithEvents ToolBoomBarrier As CTool
+    Friend WithEvents ToolQuay As CTool
     Friend WithEvents ToolEnteringTrafficSign As CTool
     Friend WithEvents ToolGUIEnteringTrafficSign As CTool
     Friend WithEvents ToolRotatingBridge As CTool
@@ -1023,4 +1064,9 @@ Partial Class ISSDT
     Friend WithEvents LblTextLabel As CTool
     Friend WithEvents JSONbtn As Button
     Friend WithEvents SaveFileDialogJSON As SaveFileDialog
+    Friend WithEvents Quay As CTool
+    Friend WithEvents Waterway As DataGridViewComboBoxColumn
+    Friend WithEvents ObjectName As DataGridViewTextBoxColumn
+    Friend WithEvents ObjectType As DataGridViewTextBoxColumn
+    Friend WithEvents ObjectID As DataGridViewTextBoxColumn
 End Class
