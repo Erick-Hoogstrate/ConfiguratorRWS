@@ -15,21 +15,15 @@ Imports System.Runtime.InteropServices.ComTypes
 Module MFileOptions
     Dim workingFileName As String
     Dim canvasPlant As CCanvas
-    Dim canvasGUI As CCanvas
-    Dim requirements As DataGridView
     Dim changedAfterSave As Boolean
 
     ''' <summary>
     ''' Initializes the MFileOptions module.
     ''' </summary>
     ''' <param name="newCanvasPlant">The canvas to draw the plant on.</param>
-    ''' <param name="newCanvasGUI">The canvas to draw the GUI on.</param>
-    ''' <param name="newRequirements">The DataGrid where the requirements are defined.</param>
     ''' <param name="newChangedAfterSave">The variable that represents if a save is necessary.</param>
-    Public Sub Initialize(ByRef newCanvasPlant As CCanvas, ByRef newCanvasGUI As CCanvas, ByRef newRequirements As DataGridView, ByRef newChangedAfterSave As Boolean)
+    Public Sub Initialize(ByRef newCanvasPlant As CCanvas, ByRef newChangedAfterSave As Boolean)
         canvasPlant = newCanvasPlant
-        canvasGUI = newCanvasGUI
-        requirements = newRequirements
         changedAfterSave = newChangedAfterSave
 
         AddHandler ISSDT.InfoToolStripMenuItem.Click, AddressOf InfoToolStripMenuItem_Click
@@ -83,12 +77,9 @@ Module MFileOptions
                         Continue While
                     End If
 
-                    If Not requirementPart Then
-                        Dim comp As CComponent = CreateComponent(currentRow)
-                        comp.canvas.Controls.Add(comp)
-                    Else
-                        AddRequirement(currentRow(0), currentRow(1), currentRow(2) + " ", currentRow(3))
-                    End If
+
+                    Dim comp As CComponent = CreateComponent(currentRow)
+                    comp.canvas.Controls.Add(comp)
 
                 Catch ex As FileIO.MalformedLineException
                     MsgBox("File error, please correct.", vbCritical, "Error")
@@ -106,7 +97,7 @@ Module MFileOptions
         Dim name As String = compString(0)
         Dim compType As ComponentTypesEnum = compString(1)
         Dim location As Point = New Point(compString(2), compString(3))
-        Dim canvas As CCanvas = IntToComponentCanvas(compString(4))
+        Dim canvas As CCanvas = canvasPlant
         Dim size As Size = New Size(compString(5), compString(6))
         Dim rotation As Integer = compString(7)
         Dim color As Color = Color.FromArgb(compString(8))
@@ -245,14 +236,8 @@ Module MFileOptions
         Dim saveFile As IO.StreamWriter
         saveFile = IO.File.CreateText(workingFileName)
 
-        For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)().Concat(canvasGUI.Controls.OfType(Of CComponent)())
+        For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
             SaveComponent(comp, saveFile)
-        Next
-
-        saveFile.WriteLine("<Requirements>")
-
-        For Each req As DataGridViewRow In requirements.Rows
-            SaveRequirement(req, saveFile)
         Next
 
         saveFile.Close()
@@ -265,9 +250,9 @@ Module MFileOptions
     ''' <param name="comp">The component to save.</param>
     ''' <param name="saveFile">The file to save to.</param>
     Private Sub SaveComponent(comp As CComponent, saveFile As IO.StreamWriter)
-        'Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color.
+        'Name, Type, Location.X, Location.Y, Size.Width, Size.Height, Rotation, Color.
         saveFile.Write(comp.Name + ", " + Convert.ToInt32(comp.Type).ToString + ", " + comp.Location.X.ToString + ", " _
-                               + comp.Location.Y.ToString + ", " + ComponentCanvasToInt(comp).ToString + ", " + comp.Size.Width.ToString + ", " + comp.Size.Height.ToString _
+                               + comp.Location.Y.ToString + ", " + comp.Size.Width.ToString + ", " + comp.Size.Height.ToString _
                                + ", " + comp.Rotation.ToString + ", " + comp.BackColor.ToArgb.ToString)
 
 
@@ -353,45 +338,6 @@ Module MFileOptions
     End Sub
 
     ''' <summary>
-    ''' Save the requirement information as a line in a file.
-    ''' </summary>
-    ''' <param name="req">The requirement to save.</param>
-    ''' <param name="saveFile">The file to save to.</param>
-    Private Sub SaveRequirement(req As DataGridViewRow, saveFile As IO.StreamWriter)
-        saveFile.WriteLine(req.Cells(0).Value + ", " + req.Cells(1).Value.ToString + ", " + req.Cells(2).Value + ", " + req.Cells(3).Value.ToString)
-    End Sub
-
-    ''' <summary>
-    ''' Returns the component parent as an Integer.
-    ''' </summary>
-    ''' <param name="comp">The component to get the parent for</param>
-    ''' <returns>0 = canvasPlant, 1 = canvasGUI, and 2 otherwise.</returns>
-    Private Function ComponentCanvasToInt(comp As CComponent) As Int16
-        If comp.Parent Is ISSDT.canvasPlant Then
-            Return 0
-        ElseIf comp.Parent Is ISSDT.canvasGUI Then
-            Return 1
-        Else
-            Return 2
-        End If
-    End Function
-
-    ''' <summary>
-    ''' Returns the canvas represented by the integer value.
-    ''' </summary>
-    ''' <param name="i">The integer value.</param>
-    ''' <returns>0 -> canvasPlant, 1 -> canvasGUI, else -> nothing.</returns>
-    Private Function IntToComponentCanvas(i As Int16) As CCanvas
-        If i = 0 Then
-            Return canvasPlant
-        ElseIf i = 1 Then
-            Return canvasGUI
-        Else
-            Return Nothing
-        End If
-    End Function
-
-    ''' <summary>
     ''' This method clears the canvas. If the current canvas is not saved, a confirmation is requested.
     ''' </summary>
     Private Sub NewToolStripMenuItem_Click()
@@ -409,12 +355,9 @@ Module MFileOptions
     ''' </summary>
     Private Sub ClearCanvas()
         canvasPlant.Controls.Clear()
-        canvasGUI.Controls.Clear()
 
         ISSDT.canvasPlant.ResetActive()
-        ISSDT.canvasGUI.ResetActive()
 
-        requirements.Rows.Clear()
     End Sub
 
     ''' <summary>
@@ -544,9 +487,9 @@ Module MFileOptions
 
 
 
-        MsgBox(ISSDT.DGVoverview.Rows(0).Cells(0).Value)
+        'MsgBox(ISSDT.DGVoverview.Rows(0).Cells(0).Value)
 
-        For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)().Concat(canvasGUI.Controls.OfType(Of CComponent)())
+        For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
 
             If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Quay Then
 
@@ -571,7 +514,7 @@ Module MFileOptions
 
         'saveFile.WriteLine("Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color")
 
-        'For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)().Concat(canvasGUI.Controls.OfType(Of CComponent)())
+        'For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
         '    'Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color.
         '    saveFile.WriteLine(comp.Name + ", " + Convert.ToInt32(comp.Type).ToString + ", " + comp.Location.X.ToString + ", " _
         '                           + comp.Location.Y.ToString + ", " + ComponentCanvasToInt(comp).ToString + ", " + comp.Size.Width.ToString + ", " + comp.Size.Height.ToString _

@@ -29,7 +29,7 @@
         Next
 
         'Names must be unique. 
-        For Each component As CComponent In ISSDT.canvasPlant.Controls.OfType(Of CComponent)().Concat(ISSDT.canvasGUI.Controls.OfType(Of CComponent)())
+        For Each component As CComponent In ISSDT.canvasPlant.Controls.OfType(Of CComponent)()
             If name.Equals(component.Name) Then
                 MsgBox("Name already exists.")
                 Return getComponentName()

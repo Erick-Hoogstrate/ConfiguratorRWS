@@ -23,8 +23,6 @@ Partial Class ISSDT
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ISSDT))
@@ -32,54 +30,24 @@ Partial Class ISSDT
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.DGVoverview = New System.Windows.Forms.DataGridView()
+        Me.Waterway = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateHybridPlantModel = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateDiscPlant = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateRequirements = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateHybridPlant = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Generate = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateSvgImage = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateEventList = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateStateList = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateIOTable = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerateJSON = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabTools = New System.Windows.Forms.TabPage()
-        Me.TabDrawings = New System.Windows.Forms.TabPage()
-        Me.pnlColors = New System.Windows.Forms.Panel()
-        Me.lblColorWhite = New System.Windows.Forms.Label()
-        Me.lblColorWeg = New System.Windows.Forms.Label()
-        Me.LblColorWaterweg = New System.Windows.Forms.Label()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.rbRequirementsModel = New System.Windows.Forms.RadioButton()
-        Me.rbPlantModel = New System.Windows.Forms.RadioButton()
-        Me.DGRequirements = New System.Windows.Forms.DataGridView()
-        Me.EventName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReqType = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.EventCondition = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EventSafety = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DeleteRequirement = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.MenuItemDeleteRow = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BtnAnd = New System.Windows.Forms.Button()
-        Me.btnOr = New System.Windows.Forms.Button()
-        Me.btnNot = New System.Windows.Forms.Button()
-        Me.btnLeftBracket = New System.Windows.Forms.Button()
-        Me.btnRightBracket = New System.Windows.Forms.Button()
-        Me.btnRemove = New System.Windows.Forms.Button()
-        Me.btnVerify = New System.Windows.Forms.Button()
-        Me.JSONbtn = New System.Windows.Forms.Button()
-        Me.SaveFileDialogJSON = New System.Windows.Forms.SaveFileDialog()
-        Me.canvasPlant = New CCanvas()
-        Me.canvasGUI = New CCanvas()
         Me.Quay = New CTool()
         Me.CTool3 = New CTool()
         Me.CTool2 = New CTool()
@@ -100,24 +68,30 @@ Partial Class ISSDT
         Me.ToolQuay = New CTool()
         Me.ToolApproachSign = New CTool()
         Me.ToolStopSign = New CTool()
+        Me.TabDrawings = New System.Windows.Forms.TabPage()
         Me.LblTextLabel = New CTool()
         Me.LblSquare = New CTool()
+        Me.pnlColors = New System.Windows.Forms.Panel()
+        Me.lblColorWhite = New System.Windows.Forms.Label()
+        Me.lblColorWeg = New System.Windows.Forms.Label()
+        Me.LblColorWaterweg = New System.Windows.Forms.Label()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DeleteRequirement = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MenuItemDeleteRow = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveFileDialogJSON = New System.Windows.Forms.SaveFileDialog()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.canvasPlant = New CCanvas()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.CToolBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Waterway = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DGVoverview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl.SuspendLayout()
         Me.TabTools.SuspendLayout()
         Me.TabDrawings.SuspendLayout()
         Me.pnlColors.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        CType(Me.DGRequirements, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DeleteRequirement.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
         CType(Me.CToolBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -138,30 +112,69 @@ Partial Class ISSDT
         Me.DGVoverview.AllowUserToAddRows = False
         Me.DGVoverview.AllowUserToDeleteRows = False
         Me.DGVoverview.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVoverview.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVoverview.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DGVoverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVoverview.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Waterway, Me.ObjectName, Me.ObjectType, Me.ObjectID})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVoverview.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVoverview.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVoverview.Location = New System.Drawing.Point(1355, 694)
         Me.DGVoverview.Margin = New System.Windows.Forms.Padding(4)
         Me.DGVoverview.Name = "DGVoverview"
         Me.DGVoverview.RowHeadersWidth = 51
         Me.DGVoverview.Size = New System.Drawing.Size(501, 310)
         Me.DGVoverview.TabIndex = 15
+        '
+        'Waterway
+        '
+        Me.Waterway.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Waterway.Frozen = True
+        Me.Waterway.HeaderText = "Waterway"
+        Me.Waterway.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
+        Me.Waterway.MinimumWidth = 6
+        Me.Waterway.Name = "Waterway"
+        Me.Waterway.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Waterway.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Waterway.Width = 75
+        '
+        'ObjectName
+        '
+        Me.ObjectName.Frozen = True
+        Me.ObjectName.HeaderText = "Name"
+        Me.ObjectName.MinimumWidth = 6
+        Me.ObjectName.Name = "ObjectName"
+        Me.ObjectName.ReadOnly = True
+        Me.ObjectName.Width = 125
+        '
+        'ObjectType
+        '
+        Me.ObjectType.Frozen = True
+        Me.ObjectType.HeaderText = "Type"
+        Me.ObjectType.MinimumWidth = 6
+        Me.ObjectType.Name = "ObjectType"
+        Me.ObjectType.ReadOnly = True
+        Me.ObjectType.Width = 125
+        '
+        'ObjectID
+        '
+        Me.ObjectID.Frozen = True
+        Me.ObjectID.HeaderText = "ObjectID"
+        Me.ObjectID.MinimumWidth = 6
+        Me.ObjectID.Name = "ObjectID"
+        Me.ObjectID.ReadOnly = True
+        Me.ObjectID.Width = 70
         '
         'btRefresh
         '
@@ -176,7 +189,7 @@ Partial Class ISSDT
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.GenerateHybridPlantModel, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.Generate, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
         Me.FileToolStripMenuItem.Text = "File"
@@ -210,66 +223,28 @@ Partial Class ISSDT
         Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(229, 26)
         Me.SaveAsToolStripMenuItem.Text = "Save as..."
         '
-        'GenerateHybridPlantModel
+        'Generate
         '
-        Me.GenerateHybridPlantModel.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerateDiscPlant, Me.GenerateRequirements, Me.GenerateHybridPlant, Me.GenerateSvgImage, Me.GenerateEventList, Me.GenerateStateList, Me.GenerateIOTable})
-        Me.GenerateHybridPlantModel.Name = "GenerateHybridPlantModel"
-        Me.GenerateHybridPlantModel.Size = New System.Drawing.Size(229, 26)
-        Me.GenerateHybridPlantModel.Text = "Generate"
-        '
-        'GenerateDiscPlant
-        '
-        Me.GenerateDiscPlant.Name = "GenerateDiscPlant"
-        Me.GenerateDiscPlant.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.GenerateDiscPlant.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateDiscPlant.Text = "Discrete plant"
-        '
-        'GenerateRequirements
-        '
-        Me.GenerateRequirements.Name = "GenerateRequirements"
-        Me.GenerateRequirements.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.GenerateRequirements.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateRequirements.Text = "Requirements"
-        '
-        'GenerateHybridPlant
-        '
-        Me.GenerateHybridPlant.Name = "GenerateHybridPlant"
-        Me.GenerateHybridPlant.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
-        Me.GenerateHybridPlant.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateHybridPlant.Text = "Hybrid plant"
+        Me.Generate.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerateSvgImage, Me.GenerateJSON})
+        Me.Generate.Name = "Generate"
+        Me.Generate.Size = New System.Drawing.Size(229, 26)
+        Me.Generate.Text = "Generate"
         '
         'GenerateSvgImage
         '
         Me.GenerateSvgImage.Name = "GenerateSvgImage"
         Me.GenerateSvgImage.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.GenerateSvgImage.Size = New System.Drawing.Size(277, 26)
+        Me.GenerateSvgImage.Size = New System.Drawing.Size(256, 26)
         Me.GenerateSvgImage.Text = "SVG Image"
         '
-        'GenerateEventList
+        'GenerateJSON
         '
-        Me.GenerateEventList.Name = "GenerateEventList"
-        Me.GenerateEventList.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.GenerateEventList.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateEventList.Text = "Event list"
-        '
-        'GenerateStateList
-        '
-        Me.GenerateStateList.Name = "GenerateStateList"
-        Me.GenerateStateList.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.GenerateStateList.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateStateList.Text = "State list"
-        '
-        'GenerateIOTable
-        '
-        Me.GenerateIOTable.Name = "GenerateIOTable"
-        Me.GenerateIOTable.Size = New System.Drawing.Size(277, 26)
-        Me.GenerateIOTable.Text = "I/O Table"
+        Me.GenerateJSON.Name = "GenerateJSON"
+        Me.GenerateJSON.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.J), System.Windows.Forms.Keys)
+        Me.GenerateJSON.Size = New System.Drawing.Size(256, 26)
+        Me.GenerateJSON.Text = "JSON"
         '
         'ExitToolStripMenuItem
         '
@@ -336,303 +311,6 @@ Partial Class ISSDT
         Me.TabTools.Size = New System.Drawing.Size(483, 339)
         Me.TabTools.TabIndex = 0
         Me.TabTools.Text = "Components"
-        '
-        'TabDrawings
-        '
-        Me.TabDrawings.BackColor = System.Drawing.SystemColors.Control
-        Me.TabDrawings.Controls.Add(Me.LblTextLabel)
-        Me.TabDrawings.Controls.Add(Me.LblSquare)
-        Me.TabDrawings.Controls.Add(Me.pnlColors)
-        Me.TabDrawings.Location = New System.Drawing.Point(4, 25)
-        Me.TabDrawings.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabDrawings.Name = "TabDrawings"
-        Me.TabDrawings.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabDrawings.Size = New System.Drawing.Size(483, 339)
-        Me.TabDrawings.TabIndex = 1
-        Me.TabDrawings.Text = "Drawing"
-        '
-        'pnlColors
-        '
-        Me.pnlColors.Controls.Add(Me.lblColorWhite)
-        Me.pnlColors.Controls.Add(Me.lblColorWeg)
-        Me.pnlColors.Controls.Add(Me.LblColorWaterweg)
-        Me.pnlColors.Location = New System.Drawing.Point(11, 273)
-        Me.pnlColors.Margin = New System.Windows.Forms.Padding(4)
-        Me.pnlColors.Name = "pnlColors"
-        Me.pnlColors.Size = New System.Drawing.Size(461, 52)
-        Me.pnlColors.TabIndex = 23
-        '
-        'lblColorWhite
-        '
-        Me.lblColorWhite.BackColor = System.Drawing.Color.White
-        Me.lblColorWhite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblColorWhite.Location = New System.Drawing.Point(81, 12)
-        Me.lblColorWhite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblColorWhite.Name = "lblColorWhite"
-        Me.lblColorWhite.Size = New System.Drawing.Size(31, 28)
-        Me.lblColorWhite.TabIndex = 2
-        '
-        'lblColorWeg
-        '
-        Me.lblColorWeg.BackColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        Me.lblColorWeg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblColorWeg.Location = New System.Drawing.Point(43, 12)
-        Me.lblColorWeg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblColorWeg.Name = "lblColorWeg"
-        Me.lblColorWeg.Size = New System.Drawing.Size(31, 28)
-        Me.lblColorWeg.TabIndex = 1
-        '
-        'LblColorWaterweg
-        '
-        Me.LblColorWaterweg.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(144, Byte), Integer))
-        Me.LblColorWaterweg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblColorWaterweg.Location = New System.Drawing.Point(4, 12)
-        Me.LblColorWaterweg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.LblColorWaterweg.Name = "LblColorWaterweg"
-        Me.LblColorWaterweg.Size = New System.Drawing.Size(31, 28)
-        Me.LblColorWaterweg.TabIndex = 0
-        '
-        'TabPage4
-        '
-        Me.TabPage4.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.TabPage4.Controls.Add(Me.canvasGUI)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage4.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage4.Size = New System.Drawing.Size(1339, 983)
-        Me.TabPage4.TabIndex = 1
-        Me.TabPage4.Text = "GUI"
-        Me.ToolTip.SetToolTip(Me.TabPage4, "Timer")
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 33)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1347, 1012)
-        Me.TabControl1.TabIndex = 22
-        '
-        'TabPage3
-        '
-        Me.TabPage3.AutoScroll = True
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.TabPage3.Controls.Add(Me.canvasPlant)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Size = New System.Drawing.Size(1339, 983)
-        Me.TabPage3.TabIndex = 0
-        Me.TabPage3.Text = "Physical plant"
-        '
-        'rbRequirementsModel
-        '
-        Me.rbRequirementsModel.AutoSize = True
-        Me.rbRequirementsModel.Location = New System.Drawing.Point(1484, 431)
-        Me.rbRequirementsModel.Margin = New System.Windows.Forms.Padding(4)
-        Me.rbRequirementsModel.Name = "rbRequirementsModel"
-        Me.rbRequirementsModel.Size = New System.Drawing.Size(153, 20)
-        Me.rbRequirementsModel.TabIndex = 23
-        Me.rbRequirementsModel.Text = "Requirements model"
-        Me.rbRequirementsModel.UseVisualStyleBackColor = True
-        '
-        'rbPlantModel
-        '
-        Me.rbPlantModel.AutoSize = True
-        Me.rbPlantModel.Location = New System.Drawing.Point(1355, 431)
-        Me.rbPlantModel.Margin = New System.Windows.Forms.Padding(4)
-        Me.rbPlantModel.Name = "rbPlantModel"
-        Me.rbPlantModel.Size = New System.Drawing.Size(99, 20)
-        Me.rbPlantModel.TabIndex = 24
-        Me.rbPlantModel.Text = "Plant model"
-        Me.rbPlantModel.UseVisualStyleBackColor = True
-        '
-        'DGRequirements
-        '
-        Me.DGRequirements.AllowUserToAddRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGRequirements.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.DGRequirements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGRequirements.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EventName, Me.ReqType, Me.EventCondition, Me.EventSafety})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGRequirements.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DGRequirements.Location = New System.Drawing.Point(5, 1052)
-        Me.DGRequirements.Margin = New System.Windows.Forms.Padding(4)
-        Me.DGRequirements.Name = "DGRequirements"
-        Me.DGRequirements.RowHeadersWidth = 51
-        Me.DGRequirements.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGRequirements.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGRequirements.Size = New System.Drawing.Size(1341, 251)
-        Me.DGRequirements.TabIndex = 25
-        '
-        'EventName
-        '
-        Me.EventName.Frozen = True
-        Me.EventName.HeaderText = "Event name"
-        Me.EventName.MinimumWidth = 6
-        Me.EventName.Name = "EventName"
-        Me.EventName.ReadOnly = True
-        Me.EventName.Width = 125
-        '
-        'ReqType
-        '
-        Me.ReqType.Frozen = True
-        Me.ReqType.HeaderText = "Needs/Disables"
-        Me.ReqType.Items.AddRange(New Object() {"needs", "is disabled when"})
-        Me.ReqType.MinimumWidth = 6
-        Me.ReqType.Name = "ReqType"
-        Me.ReqType.Width = 130
-        '
-        'EventCondition
-        '
-        Me.EventCondition.HeaderText = "Condition"
-        Me.EventCondition.MinimumWidth = 6
-        Me.EventCondition.Name = "EventCondition"
-        Me.EventCondition.ReadOnly = True
-        Me.EventCondition.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.EventCondition.Width = 600
-        '
-        'EventSafety
-        '
-        Me.EventSafety.HeaderText = "Safety requirement"
-        Me.EventSafety.MinimumWidth = 6
-        Me.EventSafety.Name = "EventSafety"
-        Me.EventSafety.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.EventSafety.Width = 130
-        '
-        'DeleteRequirement
-        '
-        Me.DeleteRequirement.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.DeleteRequirement.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemDeleteRow})
-        Me.DeleteRequirement.Name = "DeleteRow"
-        Me.DeleteRequirement.Size = New System.Drawing.Size(208, 28)
-        '
-        'MenuItemDeleteRow
-        '
-        Me.MenuItemDeleteRow.Name = "MenuItemDeleteRow"
-        Me.MenuItemDeleteRow.Size = New System.Drawing.Size(207, 24)
-        Me.MenuItemDeleteRow.Text = "Delete requirement"
-        '
-        'BtnAnd
-        '
-        Me.BtnAnd.Location = New System.Drawing.Point(1355, 1142)
-        Me.BtnAnd.Margin = New System.Windows.Forms.Padding(4)
-        Me.BtnAnd.Name = "BtnAnd"
-        Me.BtnAnd.Size = New System.Drawing.Size(100, 28)
-        Me.BtnAnd.TabIndex = 26
-        Me.BtnAnd.Text = "AND"
-        Me.BtnAnd.UseVisualStyleBackColor = True
-        '
-        'btnOr
-        '
-        Me.btnOr.Location = New System.Drawing.Point(1355, 1178)
-        Me.btnOr.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnOr.Name = "btnOr"
-        Me.btnOr.Size = New System.Drawing.Size(100, 28)
-        Me.btnOr.TabIndex = 27
-        Me.btnOr.Text = "OR"
-        Me.btnOr.UseVisualStyleBackColor = True
-        '
-        'btnNot
-        '
-        Me.btnNot.Location = New System.Drawing.Point(1355, 1214)
-        Me.btnNot.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnNot.Name = "btnNot"
-        Me.btnNot.Size = New System.Drawing.Size(100, 28)
-        Me.btnNot.TabIndex = 28
-        Me.btnNot.Text = "NOT"
-        Me.btnNot.UseVisualStyleBackColor = True
-        '
-        'btnLeftBracket
-        '
-        Me.btnLeftBracket.Location = New System.Drawing.Point(1463, 1142)
-        Me.btnLeftBracket.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnLeftBracket.Name = "btnLeftBracket"
-        Me.btnLeftBracket.Size = New System.Drawing.Size(100, 28)
-        Me.btnLeftBracket.TabIndex = 29
-        Me.btnLeftBracket.Text = "("
-        Me.btnLeftBracket.UseVisualStyleBackColor = True
-        '
-        'btnRightBracket
-        '
-        Me.btnRightBracket.Location = New System.Drawing.Point(1463, 1178)
-        Me.btnRightBracket.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnRightBracket.Name = "btnRightBracket"
-        Me.btnRightBracket.Size = New System.Drawing.Size(100, 28)
-        Me.btnRightBracket.TabIndex = 30
-        Me.btnRightBracket.Text = ")"
-        Me.btnRightBracket.UseVisualStyleBackColor = True
-        '
-        'btnRemove
-        '
-        Me.btnRemove.Location = New System.Drawing.Point(1463, 1214)
-        Me.btnRemove.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(100, 28)
-        Me.btnRemove.TabIndex = 31
-        Me.btnRemove.Text = "<--"
-        Me.btnRemove.UseVisualStyleBackColor = True
-        '
-        'btnVerify
-        '
-        Me.btnVerify.Location = New System.Drawing.Point(1355, 1249)
-        Me.btnVerify.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnVerify.Name = "btnVerify"
-        Me.btnVerify.Size = New System.Drawing.Size(208, 28)
-        Me.btnVerify.TabIndex = 32
-        Me.btnVerify.Text = "Verify"
-        Me.btnVerify.UseVisualStyleBackColor = True
-        '
-        'JSONbtn
-        '
-        Me.JSONbtn.Location = New System.Drawing.Point(1080, 5)
-        Me.JSONbtn.Name = "JSONbtn"
-        Me.JSONbtn.Size = New System.Drawing.Size(75, 23)
-        Me.JSONbtn.TabIndex = 33
-        Me.JSONbtn.Text = "JSON"
-        Me.JSONbtn.UseVisualStyleBackColor = True
-        '
-        'SaveFileDialogJSON
-        '
-        Me.SaveFileDialogJSON.DefaultExt = "json"
-        Me.SaveFileDialogJSON.FileName = "Configuration"
-        Me.SaveFileDialogJSON.Filter = "JSON file (*.json)|*.json"
-        '
-        'canvasPlant
-        '
-        Me.canvasPlant.BackColor = System.Drawing.Color.White
-        Me.canvasPlant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.canvasPlant.Location = New System.Drawing.Point(5, 5)
-        Me.canvasPlant.Margin = New System.Windows.Forms.Padding(4)
-        Me.canvasPlant.Name = "canvasPlant"
-        Me.canvasPlant.Size = New System.Drawing.Size(1199, 971)
-        Me.canvasPlant.TabIndex = 0
-        '
-        'canvasGUI
-        '
-        Me.canvasGUI.BackColor = System.Drawing.Color.White
-        Me.canvasGUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.canvasGUI.Location = New System.Drawing.Point(5, 5)
-        Me.canvasGUI.Margin = New System.Windows.Forms.Padding(4)
-        Me.canvasGUI.Name = "canvasGUI"
-        Me.canvasGUI.Size = New System.Drawing.Size(1199, 984)
-        Me.canvasGUI.TabIndex = 1
         '
         'Quay
         '
@@ -880,6 +558,20 @@ Partial Class ISSDT
         Me.ToolTip.SetToolTip(Me.ToolStopSign, "Stop Sign")
         Me.ToolStopSign.toolType = MComponentTypes.ComponentTypesEnum.StopSign
         '
+        'TabDrawings
+        '
+        Me.TabDrawings.BackColor = System.Drawing.SystemColors.Control
+        Me.TabDrawings.Controls.Add(Me.LblTextLabel)
+        Me.TabDrawings.Controls.Add(Me.LblSquare)
+        Me.TabDrawings.Controls.Add(Me.pnlColors)
+        Me.TabDrawings.Location = New System.Drawing.Point(4, 25)
+        Me.TabDrawings.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabDrawings.Name = "TabDrawings"
+        Me.TabDrawings.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabDrawings.Size = New System.Drawing.Size(483, 339)
+        Me.TabDrawings.TabIndex = 1
+        Me.TabDrawings.Text = "Drawing"
+        '
         'LblTextLabel
         '
         Me.LblTextLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -903,48 +595,101 @@ Partial Class ISSDT
         Me.LblSquare.TabIndex = 27
         Me.LblSquare.toolType = MComponentTypes.ComponentTypesEnum.Square
         '
+        'pnlColors
+        '
+        Me.pnlColors.Controls.Add(Me.lblColorWhite)
+        Me.pnlColors.Controls.Add(Me.lblColorWeg)
+        Me.pnlColors.Controls.Add(Me.LblColorWaterweg)
+        Me.pnlColors.Location = New System.Drawing.Point(11, 273)
+        Me.pnlColors.Margin = New System.Windows.Forms.Padding(4)
+        Me.pnlColors.Name = "pnlColors"
+        Me.pnlColors.Size = New System.Drawing.Size(461, 52)
+        Me.pnlColors.TabIndex = 23
+        '
+        'lblColorWhite
+        '
+        Me.lblColorWhite.BackColor = System.Drawing.Color.White
+        Me.lblColorWhite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblColorWhite.Location = New System.Drawing.Point(81, 12)
+        Me.lblColorWhite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblColorWhite.Name = "lblColorWhite"
+        Me.lblColorWhite.Size = New System.Drawing.Size(31, 28)
+        Me.lblColorWhite.TabIndex = 2
+        '
+        'lblColorWeg
+        '
+        Me.lblColorWeg.BackColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        Me.lblColorWeg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblColorWeg.Location = New System.Drawing.Point(43, 12)
+        Me.lblColorWeg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblColorWeg.Name = "lblColorWeg"
+        Me.lblColorWeg.Size = New System.Drawing.Size(31, 28)
+        Me.lblColorWeg.TabIndex = 1
+        '
+        'LblColorWaterweg
+        '
+        Me.LblColorWaterweg.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(144, Byte), Integer))
+        Me.LblColorWaterweg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblColorWaterweg.Location = New System.Drawing.Point(4, 12)
+        Me.LblColorWaterweg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblColorWaterweg.Name = "LblColorWaterweg"
+        Me.LblColorWaterweg.Size = New System.Drawing.Size(31, 28)
+        Me.LblColorWaterweg.TabIndex = 0
+        '
+        'DeleteRequirement
+        '
+        Me.DeleteRequirement.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.DeleteRequirement.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemDeleteRow})
+        Me.DeleteRequirement.Name = "DeleteRow"
+        Me.DeleteRequirement.Size = New System.Drawing.Size(208, 28)
+        '
+        'MenuItemDeleteRow
+        '
+        Me.MenuItemDeleteRow.Name = "MenuItemDeleteRow"
+        Me.MenuItemDeleteRow.Size = New System.Drawing.Size(207, 24)
+        Me.MenuItemDeleteRow.Text = "Delete requirement"
+        '
+        'SaveFileDialogJSON
+        '
+        Me.SaveFileDialogJSON.DefaultExt = "json"
+        Me.SaveFileDialogJSON.FileName = "Configuration"
+        Me.SaveFileDialogJSON.Filter = "JSON file (*.json)|*.json"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.AutoScroll = True
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.TabPage3.Controls.Add(Me.canvasPlant)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabPage3.Size = New System.Drawing.Size(1339, 983)
+        Me.TabPage3.TabIndex = 0
+        '
+        'canvasPlant
+        '
+        Me.canvasPlant.BackColor = System.Drawing.Color.White
+        Me.canvasPlant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.canvasPlant.Location = New System.Drawing.Point(5, 5)
+        Me.canvasPlant.Margin = New System.Windows.Forms.Padding(4)
+        Me.canvasPlant.Name = "canvasPlant"
+        Me.canvasPlant.Size = New System.Drawing.Size(1199, 971)
+        Me.canvasPlant.TabIndex = 0
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Location = New System.Drawing.Point(0, 33)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1347, 1012)
+        Me.TabControl1.TabIndex = 22
+        '
         'CToolBindingSource
         '
         Me.CToolBindingSource.DataSource = GetType(CTool)
-        '
-        'Waterway
-        '
-        Me.Waterway.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Waterway.Frozen = True
-        Me.Waterway.HeaderText = "Waterway"
-        Me.Waterway.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.Waterway.MinimumWidth = 6
-        Me.Waterway.Name = "Waterway"
-        Me.Waterway.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Waterway.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Waterway.Width = 75
-        '
-        'ObjectName
-        '
-        Me.ObjectName.Frozen = True
-        Me.ObjectName.HeaderText = "Name"
-        Me.ObjectName.MinimumWidth = 6
-        Me.ObjectName.Name = "ObjectName"
-        Me.ObjectName.ReadOnly = True
-        Me.ObjectName.Width = 125
-        '
-        'ObjectType
-        '
-        Me.ObjectType.Frozen = True
-        Me.ObjectType.HeaderText = "Type"
-        Me.ObjectType.MinimumWidth = 6
-        Me.ObjectType.Name = "ObjectType"
-        Me.ObjectType.ReadOnly = True
-        Me.ObjectType.Width = 125
-        '
-        'ObjectID
-        '
-        Me.ObjectID.Frozen = True
-        Me.ObjectID.HeaderText = "ObjectID"
-        Me.ObjectID.MinimumWidth = 6
-        Me.ObjectID.Name = "ObjectID"
-        Me.ObjectID.ReadOnly = True
-        Me.ObjectID.Width = 70
         '
         'ISSDT
         '
@@ -952,18 +697,7 @@ Partial Class ISSDT
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1812, 1111)
-        Me.Controls.Add(Me.JSONbtn)
-        Me.Controls.Add(Me.btnVerify)
-        Me.Controls.Add(Me.btnRemove)
-        Me.Controls.Add(Me.btnRightBracket)
-        Me.Controls.Add(Me.btnLeftBracket)
-        Me.Controls.Add(Me.btnNot)
-        Me.Controls.Add(Me.btnOr)
-        Me.Controls.Add(Me.BtnAnd)
-        Me.Controls.Add(Me.DGRequirements)
-        Me.Controls.Add(Me.rbPlantModel)
-        Me.Controls.Add(Me.rbRequirementsModel)
+        Me.ClientSize = New System.Drawing.Size(1812, 1055)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.DGVoverview)
@@ -972,7 +706,7 @@ Partial Class ISSDT
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "ISSDT"
-        Me.Text = "Infrastructural System Design Tool"
+        Me.Text = "JSON Tool For Digital Twin Creation"
         CType(Me.DGVoverview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -980,11 +714,9 @@ Partial Class ISSDT
         Me.TabTools.ResumeLayout(False)
         Me.TabDrawings.ResumeLayout(False)
         Me.pnlColors.ResumeLayout(False)
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage3.ResumeLayout(False)
-        CType(Me.DGRequirements, System.ComponentModel.ISupportInitialize).EndInit()
         Me.DeleteRequirement.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
         CType(Me.CToolBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1000,13 +732,8 @@ Partial Class ISSDT
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveAsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GenerateHybridPlantModel As ToolStripMenuItem
-    Friend WithEvents GenerateDiscPlant As ToolStripMenuItem
-    Friend WithEvents GenerateHybridPlant As ToolStripMenuItem
+    Friend WithEvents Generate As ToolStripMenuItem
     Friend WithEvents GenerateSvgImage As ToolStripMenuItem
-    Friend WithEvents GenerateEventList As ToolStripMenuItem
-    Friend WithEvents GenerateStateList As ToolStripMenuItem
-    Friend WithEvents GenerateIOTable As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InfoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MenuStrip1 As MenuStrip
@@ -1018,27 +745,8 @@ Partial Class ISSDT
     Friend WithEvents LblColorWaterweg As Label
     Friend WithEvents lblColorWhite As Label
     Friend WithEvents ToolTip As ToolTip
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents TabPage4 As TabPage
-    Friend WithEvents rbRequirementsModel As RadioButton
-    Friend WithEvents rbPlantModel As RadioButton
-    Friend WithEvents DGRequirements As DataGridView
     Friend WithEvents DeleteRequirement As ContextMenuStrip
     Friend WithEvents MenuItemDeleteRow As ToolStripMenuItem
-    Friend WithEvents BtnAnd As Button
-    Friend WithEvents btnOr As Button
-    Friend WithEvents btnNot As Button
-    Friend WithEvents btnLeftBracket As Button
-    Friend WithEvents btnRightBracket As Button
-    Friend WithEvents btnRemove As Button
-    Friend WithEvents EventName As DataGridViewTextBoxColumn
-    Friend WithEvents ReqType As DataGridViewComboBoxColumn
-    Friend WithEvents EventCondition As DataGridViewTextBoxColumn
-    Friend WithEvents EventSafety As DataGridViewCheckBoxColumn
-    Friend WithEvents GenerateRequirements As ToolStripMenuItem
-    Friend WithEvents canvasPlant As CCanvas
-    Friend WithEvents canvasGUI As CCanvas
     Friend WithEvents ToolStopSign As CTool
     Friend WithEvents ToolApproachSign As CTool
     Friend WithEvents ToolBoomBarrier As CTool
@@ -1055,18 +763,20 @@ Partial Class ISSDT
     Friend WithEvents ToolGUIWindow As CTool
     Friend WithEvents CToolBindingSource As BindingSource
     Friend WithEvents ToolTimer As CTool
-    Friend WithEvents btnVerify As Button
     Friend WithEvents ToolSensor As CTool
     Friend WithEvents ToolActuator As CTool
     Friend WithEvents CTool1 As CTool
     Friend WithEvents CTool2 As CTool
     Friend WithEvents CTool3 As CTool
     Friend WithEvents LblTextLabel As CTool
-    Friend WithEvents JSONbtn As Button
     Friend WithEvents SaveFileDialogJSON As SaveFileDialog
     Friend WithEvents Quay As CTool
     Friend WithEvents Waterway As DataGridViewComboBoxColumn
     Friend WithEvents ObjectName As DataGridViewTextBoxColumn
     Friend WithEvents ObjectType As DataGridViewTextBoxColumn
     Friend WithEvents ObjectID As DataGridViewTextBoxColumn
+    Friend WithEvents GenerateJSON As ToolStripMenuItem
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents canvasPlant As CCanvas
+    Friend WithEvents TabControl1 As TabControl
 End Class

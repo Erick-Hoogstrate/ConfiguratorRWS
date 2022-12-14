@@ -131,7 +131,6 @@
     Private Sub HandleComponentMouseDown(comp As CComponent, e As MouseEventArgs) Handles Me.MouseDown
         If Not Active Then
             ISSDT.canvasPlant.ResetActive()
-            ISSDT.canvasGUI.ResetActive()
             SetActive()
         End If
 
@@ -187,66 +186,24 @@
         If e.Button = Windows.Forms.MouseButtons.Right Then
             If Not Active Then
                 ISSDT.canvasPlant.ResetActive()
-                ISSDT.canvasGUI.ResetActive()
                 SetActive()
             End If
             comp.HideResizeBoxes()
             Dim cms = New ContextMenuStrip
-            If ISSDT.rbPlantModel.Checked Then
-                Dim item1 As ToolStripMenuItem = New ToolStripMenuItem("Rename", Nothing, AddressOf renameComponent)
-                Dim item2 As ToolStripMenuItem = New ToolStripMenuItem("Delete", Nothing, AddressOf deleteComponent)
-                Dim item3 As ToolStripMenuItem = New ToolStripMenuItem("Rotate clockwise", Nothing, AddressOf rotateClockwise)
-                Dim item4 As ToolStripMenuItem = New ToolStripMenuItem("Rotate counter-clockwise", Nothing, AddressOf rotateCounterClockwise)
-                Dim item5 As ToolStripMenuItem = New ToolStripMenuItem("Raise to top", Nothing, AddressOf BringToFront)
-                Dim item6 As ToolStripMenuItem = New ToolStripMenuItem("Send to bottom", Nothing, AddressOf SendToBack)
-                Dim item7 As ToolStripMenuItem = New ToolStripMenuItem("Show model", Nothing, AddressOf ShowModel)
+            Dim item1 As ToolStripMenuItem = New ToolStripMenuItem("Rename", Nothing, AddressOf renameComponent)
+            Dim item2 As ToolStripMenuItem = New ToolStripMenuItem("Delete", Nothing, AddressOf deleteComponent)
+            Dim item3 As ToolStripMenuItem = New ToolStripMenuItem("Rotate clockwise", Nothing, AddressOf rotateClockwise)
+            Dim item4 As ToolStripMenuItem = New ToolStripMenuItem("Rotate counter-clockwise", Nothing, AddressOf rotateCounterClockwise)
+            Dim item5 As ToolStripMenuItem = New ToolStripMenuItem("Raise to top", Nothing, AddressOf BringToFront)
+            Dim item6 As ToolStripMenuItem = New ToolStripMenuItem("Send to bottom", Nothing, AddressOf SendToBack)
+            Dim item7 As ToolStripMenuItem = New ToolStripMenuItem("Show model", Nothing, AddressOf showModel)
 
-                cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6, item7})
-                cms.Show(comp, e.Location)
-
-            ElseIf ISSDT.rbRequirementsModel.Checked Then
-                If comp.Type = ComponentTypesEnum.Square Then
-                    Exit Sub
-                End If
-
-                Dim itemSeeAll = cms.Items.Add("See all requirements")
-
-                For Each eventName As String In comp.getEvents()
-                    Dim item As ToolStripItem = New ToolStripMenuItem("Add requirement for " + eventName, Nothing, AddressOf AddRequirement) With {
-                        .Tag = comp.Name + "." + eventName}
-
-                    cms.Items.Add(item)
-                Next
-
-                For Each stateName As String In comp.getStates()
-                    Dim item As ToolStripItem = New ToolStripMenuItem("Use state: " + stateName, Nothing, AddressOf AddState) With {
-                        .Tag = comp.Name + "." + stateName}
-
-                    cms.Items.Add(item)
-                Next
-
-                    cms.Show(comp, e.Location)
-                End If
-            End If
+            cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6, item7})
+            cms.Show(comp, e.Location)
+        End If
     End Sub
 
-    ''' <summary>
-    ''' Adds an event saved under item.tag to the requirement window.
-    ''' </summary>
-    ''' <param name="item"></param>
-    ''' <param name="e"></param>
-    Private Sub AddRequirement(item As ToolStripMenuItem, e As EventArgs)
-        MRequirements.AddRequirement(item.Tag)
-    End Sub
 
-    ''' <summary>
-    ''' Adds a state saved under item.tag to the condition of a requirement.
-    ''' </summary>
-    ''' <param name="item"></param>
-    ''' <param name="e"></param>
-    Private Sub AddState(item As ToolStripMenuItem, e As EventArgs)
-        MRequirements.ButtonState_Click(item.Tag)
-    End Sub
 
     ''' <summary>
     ''' This method requests a new name from the user for a component.

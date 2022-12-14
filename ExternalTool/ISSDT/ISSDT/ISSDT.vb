@@ -14,14 +14,11 @@ Public Class ISSDT
 
 
         Dim rc1 As ResizeableControl = New ResizeableControl(canvasPlant)
-        Dim rc2 As ResizeableControl = New ResizeableControl(canvasGUI)
         Dim rc3 As ResizeableControl = New ResizeableControl(TabControl1)
         Dim rc4 As ResizeableControl = New ResizeableControl(TabPage3)
-        rbPlantModel.Checked = True
 
-        MRequirements.Initialize(DGRequirements)
-        MWriter.Initialize(canvasPlant, canvasGUI, DGRequirements)
-        MFileOptions.Initialize(canvasPlant, canvasGUI, DGRequirements, changedAfterSave)
+        MWriter.Initialize(canvasPlant)
+        MFileOptions.Initialize(canvasPlant, changedAfterSave)
     End Sub
 
 
@@ -73,13 +70,4 @@ Public Class ISSDT
             End Select
         End If
     End Sub
-
-    'Temporary function for creating JSON data
-    Private Sub JSONbtn_Click(sender As Object, e As EventArgs) Handles JSONbtn.Click
-
-        MsgBox("Generate JSON file")
-        MFileOptions.ExtractJSON("")
-
-    End Sub
-
 End Class

@@ -15,7 +15,6 @@
 
     Private Sub Tool_Click(sender As Label, e As EventArgs) Handles Me.Click
         ISSDT.canvasPlant.ResetActive()
-        ISSDT.canvasGUI.ResetActive()
         Deselect_all()
 
         If ISSDT.toolSelected = _toolType Then

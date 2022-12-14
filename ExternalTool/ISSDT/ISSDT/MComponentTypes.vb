@@ -610,20 +610,15 @@
 
         Private Sub GreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUILeavingTrafficSign.Green = sender.Text
-            VerifyExpressionTextBox(sender)
         End Sub
 
         Private Sub UpdateOptionWindowValues()
             If Visible Then
                 textBoxGreen.Text = GUILeavingTrafficSign.Green
 
-                VerifyAll()
             End If
         End Sub
 
-        Public Sub VerifyAll()
-            VerifyExpressionTextBox(textBoxGreen)
-        End Sub
     End Class
 
     ''' <summary>
@@ -698,27 +693,19 @@
 
         Private Sub GreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIEnteringTrafficSign.Green = sender.Text
-            VerifyExpressionTextBox(sender)
         End Sub
 
         Private Sub RedGreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIEnteringTrafficSign.RedGreen = sender.Text
-            VerifyExpressionTextBox(sender)
         End Sub
 
         Private Sub UpdateOptionWindowValues()
             If Visible Then
                 textBoxGreen.Text = GUIEnteringTrafficSign.Green
                 textBoxRedGreen.Text = GUIEnteringTrafficSign.RedGreen
-
-                VerifyAll()
             End If
         End Sub
 
-        Public Sub VerifyAll()
-            VerifyExpressionTextBox(textBoxGreen)
-            VerifyExpressionTextBox(textBoxRedGreen)
-        End Sub
     End Class
 
     ''' <summary>
@@ -856,20 +843,14 @@
 
         Private Sub ActivatedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIStopSign.ActivatedCondition = sender.Text
-            VerifyExpressionTextBox(TextBoxActivated)
         End Sub
 
         Private Sub UpdateOptionWindowValues()
             If Visible Then
                 TextBoxActivated.Text = GUIStopSign.ActivatedCondition
-
-                VerifyAll()
             End If
         End Sub
 
-        Public Sub VerifyAll()
-            VerifyExpressionTextBox(TextBoxActivated)
-        End Sub
     End Class
 
     ''' <summary>
@@ -1090,42 +1071,34 @@
 
         Private Sub LTStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.LTStopped = sender.Text
-            VerifyExpressionTextBox(TextBoxLTStopped)
         End Sub
 
         Private Sub LTReleasedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.LTReleased = sender.Text
-            VerifyExpressionTextBox(TextBoxLTReleased)
         End Sub
 
         Private Sub BBClosedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BBClosed = sender.Text
-            VerifyExpressionTextBox(TextBoxBBClosed)
         End Sub
 
         Private Sub BBOpenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BBOpen = sender.Text
-            VerifyExpressionTextBox(TextBoxBBOpen)
         End Sub
 
         Private Sub BBStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BBStopped = sender.Text
-            VerifyExpressionTextBox(TextBoxBBStopped)
         End Sub
 
         Private Sub BOpenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BOpen = sender.Text
-            VerifyExpressionTextBox(TextBoxBOpen)
         End Sub
 
         Private Sub BClosedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BClosed = sender.Text
-            VerifyExpressionTextBox(TextBoxBClosed)
         End Sub
 
         Private Sub BStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             GUIBridgeWindow.BStopped = sender.Text
-            VerifyExpressionTextBox(TextBoxBStopped)
         End Sub
 
         Private Sub UpdateOptionWindowValues()
@@ -1139,20 +1112,9 @@
                 TextBoxBClosed.Text = GUIBridgeWindow.BClosed
                 TextBoxBStopped.Text = GUIBridgeWindow.BStopped
 
-                VerifyAll()
             End If
         End Sub
 
-        Public Sub VerifyAll()
-            VerifyExpressionTextBox(TextBoxLTStopped)
-            VerifyExpressionTextBox(TextBoxLTReleased)
-            VerifyExpressionTextBox(TextBoxBBClosed)
-            VerifyExpressionTextBox(TextBoxBBOpen)
-            VerifyExpressionTextBox(TextBoxBBStopped)
-            VerifyExpressionTextBox(TextBoxBOpen)
-            VerifyExpressionTextBox(TextBoxBClosed)
-            VerifyExpressionTextBox(TextBoxBStopped)
-        End Sub
     End Class
 
     Public Class Square : Inherits CComponent
@@ -1278,12 +1240,10 @@
 
         Private Sub StartConditionChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             timer.startCondition = sender.Text
-            VerifyExpressionTextBox(sender)
         End Sub
 
         Private Sub StopConditionChanged(ByVal sender As TextBox, ByVal e As EventArgs)
             timer.stopCondition = sender.Text
-            VerifyExpressionTextBox(sender)
         End Sub
 
         Private Sub UpdateOptionWindowValues()
@@ -1291,16 +1251,9 @@
                 textBoxDuration.Text = timer.duration
                 textBoxStartCondition.Text = timer.startCondition
                 textBoxStopCondition.Text = timer.stopCondition
-
-                VerifyAll()
             End If
         End Sub
 
-        Public Sub VerifyAll()
-            VerifyNumericTextBox(textBoxDuration)
-            VerifyExpressionTextBox(textBoxStartCondition)
-            VerifyExpressionTextBox(textBoxStopCondition)
-        End Sub
     End Class
 
     ''' <summary>
@@ -1815,7 +1768,7 @@
         Dim itemsInCanvas As List(Of String) = New List(Of String)
         Dim itemsInComboBox As List(Of String) = New List(Of String)
 
-        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)().Concat(ISSDT.canvasGUI.Controls.OfType(Of componentType)())
+        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)()
             itemsInCanvas.Add(component.Name)
         Next
 
@@ -1836,11 +1789,11 @@
         Dim itemsInCanvas As List(Of String) = New List(Of String)
         Dim itemsInComboBox As List(Of String) = New List(Of String)
 
-        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)().Concat(ISSDT.canvasGUI.Controls.OfType(Of componentType)())
+        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)()
             itemsInCanvas.Add(component.Name)
         Next
 
-        For Each component As ComponentType2 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType2)().Concat(ISSDT.canvasGUI.Controls.OfType(Of ComponentType2)())
+        For Each component As ComponentType2 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType2)()
             itemsInCanvas.Add(component.Name)
         Next
 
@@ -1861,15 +1814,15 @@
         Dim itemsInCanvas As List(Of String) = New List(Of String)
         Dim itemsInComboBox As List(Of String) = New List(Of String)
 
-        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)().Concat(ISSDT.canvasGUI.Controls.OfType(Of componentType)())
+        For Each component As componentType In ISSDT.canvasPlant.Controls.OfType(Of componentType)()
             itemsInCanvas.Add(component.Name)
         Next
 
-        For Each component As ComponentType2 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType2)().Concat(ISSDT.canvasGUI.Controls.OfType(Of ComponentType2)())
+        For Each component As ComponentType2 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType2)()
             itemsInCanvas.Add(component.Name)
         Next
 
-        For Each component As ComponentType3 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType3)().Concat(ISSDT.canvasGUI.Controls.OfType(Of ComponentType3)())
+        For Each component As ComponentType3 In ISSDT.canvasPlant.Controls.OfType(Of ComponentType3)()
             itemsInCanvas.Add(component.Name)
         Next
 
@@ -1923,35 +1876,6 @@
 
         Return (Label, checkedListBox)
     End Function
-
-    ''' <summary>
-    ''' Verifies whether the provided expression is a valid expression.
-    ''' </summary>
-    ''' <param name="expression">The expression to verify.</param>
-    ''' <returns>True is the expression is valid, false otherwise.</returns>
-    Public Function VerifyExpression(expression As String) As Boolean
-        Dim validStates As List(Of String) = GetAllValidStates()
-        validStates.Add("")
-
-        Dim expressionStates As New List(Of String)
-
-        'Check validity of the states in the expression.
-        expressionStates = GetAllExpressionStates(expression)
-        Return VerifyStates(validStates, expressionStates)
-    End Function
-
-    ''' <summary>
-    ''' Verifies whether the expression in a textbox is a valid expression. If it is, the backcolor will be set to white, otherwise to red.
-    ''' </summary>
-    ''' <param name="textBox">The text box to verify.</param>
-    Public Sub VerifyExpressionTextBox(textBox As TextBox)
-        If Not VerifyExpression(textBox.Text) Then
-            textBox.BackColor = Color.Red
-        ElseIf textBox.BackColor = Color.Red Then
-            textBox.BackColor = Color.White
-        End If
-
-    End Sub
 
     ''' <summary>
     ''' Verifies whether the numeric input in a textbox is valid (in the form "digit" or "digit.digit"). If it is, the backcolor will be set to white, otherwise to red.

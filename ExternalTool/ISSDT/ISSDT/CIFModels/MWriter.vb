@@ -4,47 +4,22 @@
     Dim guiCanvas As CCanvas
     Dim requirements As DataGridView
 
-    Public Sub Initialize(ByRef newPlantCanvas As CCanvas, newGuiCanvas As CCanvas, ByRef newRequirements As DataGridView)
+    Public Sub Initialize(ByRef newPlantCanvas As CCanvas)
         plantCanvas = newPlantCanvas
-        guiCanvas = newGuiCanvas
-        requirements = newRequirements
 
-        AddHandler ISSDT.GenerateDiscPlant.Click, AddressOf GenerateDiscPlantModel_Click
-        AddHandler ISSDT.GenerateRequirements.Click, AddressOf GenerateRequirementsModel_Click
-        AddHandler ISSDT.GenerateHybridPlant.Click, AddressOf GenerateHybridPlantModel_Click
         AddHandler ISSDT.GenerateSvgImage.Click, AddressOf GenerateSvgImage_Click
-        AddHandler ISSDT.GenerateEventList.Click, AddressOf GenerateEventList_Click
-        AddHandler ISSDT.GenerateStateList.Click, AddressOf GenerateStateList_Click
-        AddHandler ISSDT.GenerateIOTable.Click, AddressOf GenerateIOTable_Click
+        AddHandler ISSDT.GenerateJSON.Click, AddressOf GenerateJSON_Click
     End Sub
 
-    Private Sub GenerateDiscPlantModel_Click()
-        WriteCifModel(plantCanvas, guiCanvas, "Plant.cif")
-    End Sub
-
-    Private Sub GenerateRequirementsModel_Click()
-        WriteRequirementsModel(requirements)
-    End Sub
-
-    Private Sub GenerateHybridPlantModel_Click()
-        WriteCifModel(plantCanvas, guiCanvas, "Hybrid.cif")
-    End Sub
 
     Private Sub GenerateSvgImage_Click()
         WriteSvgFile(plantCanvas, "plant.svg")
         WriteSvgFile(guiCanvas, "GUI.svg")
     End Sub
 
-    Private Sub GenerateEventList_Click()
-        WriteEventList(plantCanvas, guiCanvas)
-    End Sub
-
-    Private Sub GenerateStateList_Click()
-        WriteStateList(plantCanvas, guiCanvas)
-    End Sub
-
-    Private Sub GenerateIOTable_Click()
-        MsgBox("Generate I/O table is currently not supported.", vbOKOnly + vbExclamation, "Warning")
+    Private Sub GenerateJSON_Click()
+        'WriteJSONList(plantCanvas, guiCanvas)
+        MFileOptions.ExtractJSON("")
     End Sub
 
     ''' <summary>

@@ -38,7 +38,7 @@
     Private Sub pnlCanvas_Click(sender As Object, e As MouseEventArgs) Handles Me.Click
         ResetActive()
 
-        If e.Button = MouseButtons.Left And ISSDT.rbPlantModel.Checked And ISSDT.toolSelected <> ComponentTypesEnum.NoType Then
+        If e.Button = MouseButtons.Left And ISSDT.toolSelected <> ComponentTypesEnum.NoType Then
 
             Dim comp As CComponent
 
