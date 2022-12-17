@@ -1,8 +1,6 @@
 ﻿Module MWriter
     Dim workingGenerationFolder As String
     Dim plantCanvas As CCanvas
-    Dim guiCanvas As CCanvas
-    Dim requirements As DataGridView
 
     Public Sub Initialize(ByRef newPlantCanvas As CCanvas)
         plantCanvas = newPlantCanvas
@@ -13,12 +11,10 @@
 
 
     Private Sub GenerateSvgImage_Click()
-        WriteSvgFile(plantCanvas, "plant.svg")
-        WriteSvgFile(guiCanvas, "GUI.svg")
+        WriteSvgFile(plantCanvas, "Configuration.svg")
     End Sub
 
     Private Sub GenerateJSON_Click()
-        'WriteJSONList(plantCanvas, guiCanvas)
         MFileOptions.ExtractJSON("")
     End Sub
 
@@ -46,75 +42,6 @@
         Return component.Type.ToString
     End Function
 
-    Public Sub WriteCifModel(plantCanvas As CCanvas, guiCanvas As CCanvas, ModelType As String)
-        Dim FileOutput As IO.StreamWriter
-        Dim PathDirectory As String = My.Application.Info.DirectoryPath
-
-        GenerateFileRoutine(workingGenerationFolder)
-
-        FileOutput = IO.File.CreateText(System.IO.Path.Combine(workingGenerationFolder, ModelType))
-
-        For Each Comp As CComponent In plantCanvas.Controls.OfType(Of CComponent).Concat(guiCanvas.Controls.OfType(Of CComponent))
-            If Comp.Type = ComponentTypesEnum.Square Then
-                Continue For
-            End If
-
-            Dim PathInput As String = System.IO.Path.Combine(PathDirectory, String.Format("CIFModels\{0}\{1}", getModelFileLocation(Comp), ModelType))
-            Dim FileInput As IO.StreamReader
-
-            Try
-                FileInput = New System.IO.StreamReader(PathInput)
-            Catch ex As IO.FileNotFoundException
-                MessageBox.Show(ex.Message)
-                Exit Sub
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                Exit Sub
-            End Try
-
-            Dim Line As String
-            Line = FileInput.ReadLine()
-
-            While Line IsNot Nothing
-                Replacements(Line, Comp)
-
-                FileOutput.WriteLine(Line)
-                Line = FileInput.ReadLine()
-            End While
-
-            FileInput.Close()
-        Next
-
-        FileOutput.Close()
-        MsgBox(String.Format("File {0} generated succesfully.", ModelType), vbOKOnly, "Succes")
-    End Sub
-
-    Public Sub WriteRequirementsModel(Requirements As DataGridView)
-        Dim FileOutput As IO.StreamWriter
-        Dim PathDirectory As String = My.Application.Info.DirectoryPath
-
-        GenerateFileRoutine(workingGenerationFolder)
-
-        FileOutput = IO.File.CreateText(System.IO.Path.Combine(workingGenerationFolder, "Requirements.cif"))
-
-        FileOutput.WriteLine("import ""Plant.cif"";" + vbCrLf)
-
-        For Each Requirement As DataGridViewRow In Requirements.Rows
-            If Requirement.Cells(1).Value = "needs" Then
-                FileOutput.Write(String.Format("requirement {0} needs {1};", Requirement.Cells(0).Value, Requirement.Cells(2).Value))
-            Else
-                FileOutput.Write(String.Format("requirement {1} disables {0};", Requirement.Cells(0).Value, Requirement.Cells(2).Value))
-            End If
-            If Requirement.Cells(3).Value Then
-                FileOutput.WriteLine(" // SAFE")
-            Else
-                FileOutput.WriteLine("")
-            End If
-        Next
-
-        FileOutput.Close()
-        MsgBox("File Requirements.cif generated succesfully.", vbOKOnly, "Succes")
-    End Sub
 
     Public Sub WriteSvgFile(Canvas As CCanvas, outputName As String)
         Dim FileOutput As IO.StreamWriter
@@ -159,42 +86,6 @@
         FileOutput.Close()
         MsgBox(String.Format("File {0} generated succesfully.", outputName), vbOKOnly, "Succes")
 
-    End Sub
-
-    Public Sub WriteStateList(plantCanvas As CCanvas, guiCanvas As CCanvas)
-        Dim FileOutput As IO.StreamWriter
-        Dim PathDirectory As String = My.Application.Info.DirectoryPath
-
-        GenerateFileRoutine(workingGenerationFolder)
-
-        FileOutput = IO.File.CreateText(System.IO.Path.Combine(workingGenerationFolder, "States"))
-
-        For Each Comp As CComponent In plantCanvas.Controls.OfType(Of CComponent).Concat(guiCanvas.Controls.OfType(Of CComponent))
-            For Each state As String In Comp.getStates
-                FileOutput.WriteLine(Comp.Name + "." + state)
-            Next
-        Next
-
-        FileOutput.Close()
-        MsgBox("State list generated succesfully.", vbOKOnly, "Succes")
-    End Sub
-
-    Public Sub WriteEventList(plantCanvas As CCanvas, guiCanvas As CCanvas)
-        Dim FileOutput As IO.StreamWriter
-        Dim PathDirectory As String = My.Application.Info.DirectoryPath
-
-        GenerateFileRoutine(workingGenerationFolder)
-
-        FileOutput = IO.File.CreateText(System.IO.Path.Combine(workingGenerationFolder, "Events"))
-
-        For Each Comp As CComponent In plantCanvas.Controls.OfType(Of CComponent).Concat(guiCanvas.Controls.OfType(Of CComponent))
-            For Each evt As String In Comp.getEvents
-                FileOutput.WriteLine(Comp.Name + "." + evt)
-            Next
-        Next
-
-        FileOutput.Close()
-        MsgBox("Event list generated succesfully.", vbOKOnly, "Succes")
     End Sub
 
     ''' <summary>

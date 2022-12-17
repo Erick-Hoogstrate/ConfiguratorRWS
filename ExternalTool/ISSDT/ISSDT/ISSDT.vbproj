@@ -117,7 +117,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="CIFModels\MWriter.vb" />
-    <Compile Include="Expressions.vb" />
     <Compile Include="FComponentName.vb" />
     <Compile Include="MComponentTypes.vb" />
     <Compile Include="ISSDT.vb">

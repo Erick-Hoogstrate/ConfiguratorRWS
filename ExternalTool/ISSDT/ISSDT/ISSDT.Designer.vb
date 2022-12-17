@@ -23,8 +23,8 @@ Partial Class ISSDT
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ISSDT))
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
@@ -112,24 +112,24 @@ Partial Class ISSDT
         Me.DGVoverview.AllowUserToAddRows = False
         Me.DGVoverview.AllowUserToDeleteRows = False
         Me.DGVoverview.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVoverview.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVoverview.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DGVoverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVoverview.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Waterway, Me.ObjectName, Me.ObjectType, Me.ObjectID})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVoverview.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVoverview.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVoverview.Location = New System.Drawing.Point(1355, 694)
         Me.DGVoverview.Margin = New System.Windows.Forms.Padding(4)
         Me.DGVoverview.Name = "DGVoverview"
@@ -178,7 +178,7 @@ Partial Class ISSDT
         '
         'btRefresh
         '
-        Me.btRefresh.Location = New System.Drawing.Point(1355, 1012)
+        Me.btRefresh.Location = New System.Drawing.Point(1354, 1012)
         Me.btRefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btRefresh.Name = "btRefresh"
         Me.btRefresh.Size = New System.Drawing.Size(100, 28)
@@ -265,7 +265,7 @@ Partial Class ISSDT
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.InfoToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1856, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1870, 28)
         Me.MenuStrip1.TabIndex = 17
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -277,7 +277,7 @@ Partial Class ISSDT
         Me.TabControl.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
-        Me.TabControl.Size = New System.Drawing.Size(491, 368)
+        Me.TabControl.Size = New System.Drawing.Size(491, 388)
         Me.TabControl.TabIndex = 20
         '
         'TabTools
@@ -308,7 +308,7 @@ Partial Class ISSDT
         Me.TabTools.Margin = New System.Windows.Forms.Padding(4)
         Me.TabTools.Name = "TabTools"
         Me.TabTools.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabTools.Size = New System.Drawing.Size(483, 339)
+        Me.TabTools.Size = New System.Drawing.Size(483, 359)
         Me.TabTools.TabIndex = 0
         Me.TabTools.Text = "Components"
         '
@@ -568,7 +568,7 @@ Partial Class ISSDT
         Me.TabDrawings.Margin = New System.Windows.Forms.Padding(4)
         Me.TabDrawings.Name = "TabDrawings"
         Me.TabDrawings.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabDrawings.Size = New System.Drawing.Size(483, 339)
+        Me.TabDrawings.Size = New System.Drawing.Size(483, 359)
         Me.TabDrawings.TabIndex = 1
         Me.TabDrawings.Text = "Drawing"
         '
@@ -669,12 +669,13 @@ Partial Class ISSDT
         '
         'canvasPlant
         '
+        Me.canvasPlant.AutoScroll = True
         Me.canvasPlant.BackColor = System.Drawing.Color.White
         Me.canvasPlant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.canvasPlant.Location = New System.Drawing.Point(5, 5)
         Me.canvasPlant.Margin = New System.Windows.Forms.Padding(4)
         Me.canvasPlant.Name = "canvasPlant"
-        Me.canvasPlant.Size = New System.Drawing.Size(1199, 971)
+        Me.canvasPlant.Size = New System.Drawing.Size(1326, 970)
         Me.canvasPlant.TabIndex = 0
         '
         'TabControl1
@@ -697,7 +698,7 @@ Partial Class ISSDT
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1812, 1055)
+        Me.ClientSize = New System.Drawing.Size(1870, 1163)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.DGVoverview)
@@ -707,6 +708,7 @@ Partial Class ISSDT
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "ISSDT"
         Me.Text = "JSON Tool For Digital Twin Creation"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DGVoverview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

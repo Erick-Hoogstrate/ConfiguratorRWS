@@ -121,30 +121,6 @@ ISSDT
  This method rotates a component 90 degrees counter-clockwise on the canvas.
  </summary>
 </member>
-<member name="M:ISSDT.CComponent.getEvents">
- <summary>
- Returns all the events for which requirements can be specified.
- </summary>
- <returns>A list of events for which requirements can be specified.</returns>
-</member>
-<member name="M:ISSDT.CComponent.getStates">
- <summary>
- Returns all the states that can be used in conditions of requirements.
- </summary>
- <returns>A list of states that can be used in conditions of requirements.</returns>
-</member>
-<member name="M:ISSDT.CComponent.readEventsFromFile">
- <summary>
- Reads all events from the Events file.
- </summary>
- <returns>A list of events denoted in the events file.</returns>
-</member>
-<member name="M:ISSDT.CComponent.readStatesFromFile">
- <summary>
- Reads all states from the States file.
- </summary>
- <returns>A list of states denoted in the states file.</returns>
-</member>
 <member name="M:ISSDT.MWriter.getModelFileLocation(ISSDT.CComponent)">
  <summary>
  Returns the file location of the models necesary for generation of code.
