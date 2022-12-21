@@ -9,6 +9,7 @@ Imports System.Security.Policy
 Imports Newtonsoft
 Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices.ComTypes
+Imports System.Runtime.Remoting.Contexts
 ''' <summary>
 ''' This module contains all code related to saving and opening files and the info button and new file button.
 ''' </summary>
@@ -103,109 +104,38 @@ Module MFileOptions
         Dim color As Color = Color.FromArgb(compString(8))
 
         Select Case compType
-            Case ComponentTypesEnum.StopSign
-                Dim compStopSign = New StopSign(name, compType, location, canvas, size, rotation, color)
-                compStopSign.standAlone = compString(9)
-                compStopSign.actuator = compString(10)
-                Return compStopSign
-
-            Case ComponentTypesEnum.ApproachSign
-                Dim compApproachSign = New ApproachSign(name, compType, location, canvas, size, rotation, color)
-                compApproachSign.StandAlone = compString(9)
-                compApproachSign.Actuator = compString(10)
-                Return compApproachSign
-
-            Case ComponentTypesEnum.BoomBarrier
-                Dim compBoomBarrier = New BoomBarrier(name, compType, location, canvas, size, rotation, color)
-                compBoomBarrier.barrierLights = compString(9)
-                compBoomBarrier.BarrierLightsActuator = compString(10)
-                Return compBoomBarrier
-
-            Case ComponentTypesEnum.EnteringTrafficSign
-                Dim compEnteringTrafficSign = New EnteringTrafficSign(name, compType, location, canvas, size, rotation, color)
-                compEnteringTrafficSign.ControlledVia = compString(9)
-                Return compEnteringTrafficSign
-
-            Case ComponentTypesEnum.LeavingTrafficSign
-                Dim compLeavingTrafficSign = New LeavingTrafficSign(name, compType, location, canvas, size, rotation, color)
-                compLeavingTrafficSign.ControlledVia = compString(9)
-                Return compLeavingTrafficSign
-
-            Case ComponentTypesEnum.RotatingBridge
-                Dim compRotatingBridge = New RotatingBridge(name, compType, location, canvas, size, rotation, color)
-                Return compRotatingBridge
-
-            Case ComponentTypesEnum.GUILeavingTrafficSign
-                Dim compGUILeavingTrafficSign = New GUILeavingTrafficSign(name, compType, location, canvas, size, rotation, color)
-                compGUILeavingTrafficSign.Green = compString(9)
-                Return compGUILeavingTrafficSign
-
-            Case ComponentTypesEnum.GUIEnteringTrafficSign
-                Dim compGUIEnteringTrafficSign = New GUIEnteringTrafficSign(name, compType, location, canvas, size, rotation, color)
-                compGUIEnteringTrafficSign.Green = compString(9)
-                compGUIEnteringTrafficSign.RedGreen = compString(10)
-                Return compGUIEnteringTrafficSign
-
-            Case ComponentTypesEnum.GUIRotatingBridge
-                Dim compGUIRotatingBridge = New GUIRotatingBridge(name, compType, location, canvas, size, rotation, color)
-                compGUIRotatingBridge.Bridge = compString(9)
-                Return compGUIRotatingBridge
-
-            Case ComponentTypesEnum.GUIStopSign
-                Dim compGUIStopSign = New GUIStopSign(name, compType, location, canvas, size, rotation, color)
-                compGUIStopSign.ActivatedCondition = compString(9)
-                Return compGUIStopSign
-
-            Case ComponentTypesEnum.GUIBoomBarrier
-                Dim compGUIBoombarrier = New GUIBoomBarrier(name, compType, location, canvas, size, rotation, color)
-                compGUIBoombarrier.BoomBarrier = compString(9)
-                Return compGUIBoombarrier
-
-            Case ComponentTypesEnum.GUIBridgeWindow
-                Dim compGUIBridgeWindow = New GUIBridgeWindow(name, compType, location, canvas, size, rotation, color)
-                compGUIBridgeWindow.LTStopped = compString(9)
-                compGUIBridgeWindow.LTReleased = compString(10)
-                compGUIBridgeWindow.BBClosed = compString(11)
-                compGUIBridgeWindow.BBOpen = compString(12)
-                compGUIBridgeWindow.BBStopped = compString(13)
-                compGUIBridgeWindow.BOpen = compString(14)
-                compGUIBridgeWindow.BClosed = compString(15)
-                compGUIBridgeWindow.BStopped = compString(16)
-                Return compGUIBridgeWindow
-
             Case ComponentTypesEnum.Square
                 Dim compSquare = New Square(name, compType, location, canvas, size, color)
                 Return compSquare
-
-            Case ComponentTypesEnum.Timer
-                Dim compTimer = New Timer(name, compType, location, canvas, size, rotation, color)
-                compTimer.duration = compString(9)
-                compTimer.startCondition = compString(10)
-                compTimer.stopCondition = compString(11)
-                Return compTimer
-
-            Case ComponentTypesEnum.Actuator
-                Dim compActuator = New Actuator(name, compType, location, canvas, size, rotation, color)
-                Return compActuator
-
-            Case ComponentTypesEnum.Sensor
-                Dim compSensor = New Sensor(name, compType, location, canvas, size, rotation, color)
-                Return compSensor
-
-            Case ComponentTypesEnum.StopSignDouble
-                Dim compStopSignDouble = New StopSignDouble(name, compType, location, canvas, size, rotation, color)
-                compStopSignDouble.standAlone = compString(9)
-                compStopSignDouble.actuator = compString(10)
-                Return compStopSignDouble
-
-            Case ComponentTypesEnum.DrawBridge
-                Dim compDrawBridge = New DrawBridge(name, compType, location, canvas, size, rotation, color)
-                Return compDrawBridge
 
             Case ComponentTypesEnum.TextLabel
                 Dim compTextLabel = New TextLabel(name, compType, location, canvas, size, color)
                 compTextLabel.Text = compString(9)
                 Return compTextLabel
+
+            Case ComponentTypesEnum.MitreGate
+                Dim compMitreGate = New MitreGate(name, compType, location, canvas, size, rotation, color)
+                Return compMitreGate
+
+            Case ComponentTypesEnum.TL_Entering
+                Dim compTL_Entering = New TL_Entering(name, compType, location, canvas, size, rotation, color)
+                Return compTL_Entering
+
+            Case ComponentTypesEnum.TL_Leaving
+                Dim compTL_Leaving = New TL_Leaving(name, compType, location, canvas, size, rotation, color)
+                Return compTL_Leaving
+
+            Case ComponentTypesEnum.LockWall
+                Dim compLockWall = New LockWall(name, compType, location, canvas, size, rotation, color)
+                Return compLockWall
+
+            Case ComponentTypesEnum.Water
+                Dim compWater = New Water(name, compType, location, canvas, size, rotation, color)
+                Return compWater
+
+            Case ComponentTypesEnum.Quay
+                Dim compQuay = New Quay(name, compType, location, canvas, size, rotation, color)
+                Return compQuay
 
             Case Else
                 'Something went wrong.
@@ -258,78 +188,15 @@ Module MFileOptions
 
         'Component specific save options.
         Select Case comp.GetType
-            Case GetType(StopSign)
-                Dim compStopSign As StopSign = DirectCast(comp, StopSign)
-                saveFile.Write(", " + compStopSign.standAlone.ToString + ", " + compStopSign.actuator)
-
-            Case GetType(ApproachSign)
-                Dim compApproachSign As ApproachSign = DirectCast(comp, ApproachSign)
-                saveFile.Write(", " + compApproachSign.StandAlone.ToString + ", " + compApproachSign.Actuator)
-
-            Case GetType(BoomBarrier)
-                Dim compBoomBarrier As BoomBarrier = DirectCast(comp, BoomBarrier)
-                saveFile.Write(", " + compBoomBarrier.barrierLights + ", " + compBoomBarrier.BarrierLightsActuator)
-
-            Case GetType(EnteringTrafficSign)
-                Dim compEnteringTrafficSign As EnteringTrafficSign = DirectCast(comp, EnteringTrafficSign)
-                saveFile.Write(", " + compEnteringTrafficSign.ControlledVia)
-
-            Case GetType(LeavingTrafficSign)
-                Dim compLeavingTrafficSign As LeavingTrafficSign = DirectCast(comp, LeavingTrafficSign)
-                saveFile.Write(", " + compLeavingTrafficSign.ControlledVia)
-
-            Case GetType(RotatingBridge)
-                Dim compRotatingBridge As RotatingBridge = DirectCast(comp, RotatingBridge)
-
-            Case GetType(GUILeavingTrafficSign)
-                Dim compGUILeavingTrafficSign As GUILeavingTrafficSign = DirectCast(comp, GUILeavingTrafficSign)
-                saveFile.Write(", " + compGUILeavingTrafficSign.Green)
-
-            Case GetType(GUIEnteringTrafficSign)
-                Dim compGUIEnteringTrafficSign As GUIEnteringTrafficSign = DirectCast(comp, GUIEnteringTrafficSign)
-                saveFile.Write(", " + compGUIEnteringTrafficSign.Green + ", " + compGUIEnteringTrafficSign.RedGreen)
-
-            Case GetType(GUIRotatingBridge)
-                Dim compGUIRotatingBridge As GUIRotatingBridge = DirectCast(comp, GUIRotatingBridge)
-                saveFile.Write(", " + compGUIRotatingBridge.Bridge)
-
-            Case GetType(GUIStopSign)
-                Dim compGUIStopSign As GUIStopSign = DirectCast(comp, GUIStopSign)
-                saveFile.Write(", " + compGUIStopSign.ActivatedCondition)
-
-            Case GetType(GUIBoomBarrier)
-                Dim compGUIBoomBarrier As GUIBoomBarrier = DirectCast(comp, GUIBoomBarrier)
-                saveFile.Write(", " + compGUIBoomBarrier.BoomBarrier)
-
-            Case GetType(GUIBridgeWindow)
-                Dim compGUIBridgeWindow As GUIBridgeWindow = DirectCast(comp, GUIBridgeWindow)
-                saveFile.Write(", " + compGUIBridgeWindow.LTStopped + ", " + compGUIBridgeWindow.LTReleased + ", " + compGUIBridgeWindow.BBClosed +
-                               ", " + compGUIBridgeWindow.BBOpen + ", " + compGUIBridgeWindow.BBStopped + ", " + compGUIBridgeWindow.BOpen +
-                               ", " + compGUIBridgeWindow.BClosed + ", " + compGUIBridgeWindow.BStopped)
-
             Case GetType(Square)
                 Dim compSquare As Square = DirectCast(comp, Square)
-
-            Case GetType(Timer)
-                Dim compTimer As Timer = DirectCast(comp, Timer)
-                saveFile.Write(", " + compTimer.duration + ", " + compTimer.startCondition + ", " + compTimer.stopCondition)
-
-            Case GetType(Actuator)
-                Dim compActuator As Actuator = DirectCast(comp, Actuator)
-
-            Case GetType(Sensor)
-                Dim compActuator As Sensor = DirectCast(comp, Sensor)
-
-            Case GetType(StopSignDouble)
-                Dim compStopSignDouble As StopSignDouble = DirectCast(comp, StopSignDouble)
-                saveFile.Write(", " + compStopSignDouble.standAlone.ToString + ", " + compStopSignDouble.actuator)
-
-            Case GetType(DrawBridge)
-                Dim compDrawBridge As DrawBridge = DirectCast(comp, DrawBridge)
 
             Case GetType(TextLabel)
                 Dim compTextLabel As TextLabel = DirectCast(comp, TextLabel)
                 saveFile.Write(", " + compTextLabel.Text)
+
+                'Case GetType(RotatingBridge)
+                '    Dim compRotatingBridge As RotatingBridge = DirectCast(comp, RotatingBridge)
 
             Case Else
                 MsgBox("Error undefined component type: " + comp.GetType.ToString, MsgBoxStyle.Critical)
@@ -366,9 +233,19 @@ Module MFileOptions
     ''' <param name="fileName"></param>
     Public Sub ExtractJSON(fileName As String)
 
+        Dim name = InputBox("Enter a name for this configuration", "Name")
+
+        If name = "" Then
+            name = "MyConfiguration" + Date.Now.ToString("MMddyyyy")
+
+        End If
+
+        Dim cluster As Integer
+        cluster = InputBox(Prompt:="To which cluster does this configuration belong?", DefaultResponse:=5)
+
 
         Dim tempvarposition = New Newtonsoft.Json.Linq.JArray({0, 0, 0})
-        Dim tempvarname = "Mario"
+        Dim tempvarname = "Template"
         Dim tempvarempty = New Newtonsoft.Json.Linq.JArray({})
 
 
@@ -385,8 +262,8 @@ Module MFileOptions
 
         'Initialize Json data
         Dim initJson As String = Newtonsoft.Json.Linq.JObject.FromObject(New With {
-            .name = "Prinses_Marijkesluis",
-            .cluster = 5,
+            .name = name,
+            .cluster = cluster.ToString,
             .waterways = New Newtonsoft.Json.Linq.JArray({})
         }).ToString
 
@@ -400,74 +277,85 @@ Module MFileOptions
         End Try
 
 
-        'Define general waterway Json structure
-        Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
 
-        'Add general waterway Json structure
-        Dim waterway As JArray = initial("waterways")
-        waterway.Add(waterwaysinit)
-
-
-
-        'Define general door Json structure template
-        Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        door.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
-        door.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        door.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        door.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        door.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        'Add general doors Json structure
-        Dim doors As JArray = waterwaysinit("doors")
-        doors.Add(door)
+        'MsgBox(overview.Rows)
 
 
 
 
-        'Define general traffic light Json structure template
-        Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        TL.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
-        TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", tempvarname))
-        TL.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        TL.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        'Add general traffic light Json structure
-        Dim TLs As JArray = waterwaysinit("traffic_lights")
-        TLs.Add(TL)
 
 
 
 
-        'Define general wall Json structure template
-        Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        wall.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        wall.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
 
-        'Add general wall Json structure
-        Dim walls As JArray = waterwaysinit("walls")
-        walls.Add(wall)
+        ''Define general waterway Json structure
+        'Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        ''Add general waterway Json structure
+        'Dim waterway As JArray = initial("waterways")
+        'waterway.Add(waterwaysinit)
+
+
+
+        ''Define general door Json structure template
+        'Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'door.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
+        'door.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        'door.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        'door.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        'door.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        ''Add general doors Json structure
+        'Dim doors As JArray = waterwaysinit("doors")
+        'doors.Add(door)
 
 
 
 
-        'Define general water Json structure template
-        Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        water.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        water.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        water.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        ''Define general traffic light Json structure template
+        'Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'TL.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
+        'TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        'TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", tempvarname))
+        'TL.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        'TL.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
 
-        'Add general water Json structure
-        Dim waters As JArray = waterwaysinit("water")
-        waters.Add(water)
+        ''Add general traffic light Json structure
+        'Dim TLs As JArray = waterwaysinit("traffic_lights")
+        'TLs.Add(TL)
+
+
+
+
+        ''Define general wall Json structure template
+        'Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
+        'wall.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        'wall.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        ''Add general wall Json structure
+        'Dim walls As JArray = waterwaysinit("walls")
+        'walls.Add(wall)
+
+
+
+
+        ''Define general water Json structure template
+        'Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'water.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
+        'water.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
+        'water.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+
+        ''Add general water Json structure
+        'Dim waters As JArray = waterwaysinit("water")
+        'waters.Add(water)
 
 
 
@@ -485,18 +373,95 @@ Module MFileOptions
         'embankments.Add(embankment)
 
 
+        'Define general waterway Json structure
+        Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
 
+        'Add general waterway Json structure
+        Dim waterway As JArray = initial("waterways")
+        waterway.Add(waterwaysinit)
 
-        'MsgBox(ISSDT.DGVoverview.Rows(0).Cells(0).Value)
 
         For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
 
-            If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Quay Then
+
+            If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.MitreGate Then
+
+                Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                door.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general doors Json structure
+                Dim doors As JArray = waterwaysinit("doors")
+                doors.Add(door)
+
+            ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.TL_Entering Then
+
+                'Define general traffic light Json structure template
+                Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general traffic light Json structure
+                Dim TLs As JArray = waterwaysinit("traffic_lights")
+                TLs.Add(TL)
+
+            ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.TL_Leaving Then
+
+                'Define general traffic light Json structure template
+                Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general traffic light Json structure
+                Dim TLs As JArray = waterwaysinit("traffic_lights")
+                TLs.Add(TL)
+
+            ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.LockWall Then
+
+                'Define general wall Json structure template
+                Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height.ToString))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general wall Json structure
+                Dim walls As JArray = waterwaysinit("walls")
+                walls.Add(wall)
+
+            ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Water Then
+
+                'Define general water Json structure template
+                Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+                water.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height.ToString))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+
+                'Add general water Json structure
+                Dim waters As JArray = waterwaysinit("water")
+                waters.Add(water)
+
+            ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Quay Then
 
                 Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width.ToString))
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", "7.5"))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", "-1"))
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
 
                 'Add general water Json structure

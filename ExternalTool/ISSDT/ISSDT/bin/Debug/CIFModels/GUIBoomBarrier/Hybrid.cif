@@ -1,5 +1,0 @@
-group $name$: //$type$
-  svgout id "$name$.stroke" attr "stroke" value if     $barrier$.Moving: "yellow" else "white" end file $filename$;
-  svgout id "$name$.closed" attr "fill"   value if not $barrier$.Closed: "none" elif $barrier$.Moving: "yellow" else "white" end file $filename$;
-  svgout id "$name$.open"   attr "fill"   value if     $barrier$.Open:   "none" elif $barrier$.Moving: "yellow" else "white" end file $filename$;
-end

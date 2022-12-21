@@ -48,26 +48,15 @@ Partial Class ISSDT
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabTools = New System.Windows.Forms.TabPage()
-        Me.Quay = New CTool()
-        Me.CTool3 = New CTool()
-        Me.CTool2 = New CTool()
+        Me.QuayTool = New CTool()
+        Me.WaterTool = New CTool()
+        Me.LockWallTool = New CTool()
+        Me.MitreGateTool = New CTool()
+        Me.TL_LeavingTool = New CTool()
+        Me.TL_EnteringTool = New CTool()
         Me.CTool1 = New CTool()
-        Me.ToolSensor = New CTool()
-        Me.ToolActuator = New CTool()
-        Me.ToolTimer = New CTool()
-        Me.ToolGUIWindow = New CTool()
-        Me.ToolGUIStopSign = New CTool()
-        Me.ToolGUIBoomBarrier = New CTool()
-        Me.ToolGUIRotatingBridge = New CTool()
         Me.ToolGUIOutgoingTrafficSign = New CTool()
         Me.ToolGUIEnteringTrafficSign = New CTool()
-        Me.ToolRotatingBridge = New CTool()
-        Me.ToolLeavingTrafficSign = New CTool()
-        Me.ToolEnteringTrafficSign = New CTool()
-        Me.ToolBoomBarrier = New CTool()
-        Me.ToolQuay = New CTool()
-        Me.ToolApproachSign = New CTool()
-        Me.ToolStopSign = New CTool()
         Me.TabDrawings = New System.Windows.Forms.TabPage()
         Me.LblTextLabel = New CTool()
         Me.LblSquare = New CTool()
@@ -284,26 +273,15 @@ Partial Class ISSDT
         '
         Me.TabTools.AutoScroll = True
         Me.TabTools.BackColor = System.Drawing.SystemColors.Control
-        Me.TabTools.Controls.Add(Me.Quay)
-        Me.TabTools.Controls.Add(Me.CTool3)
-        Me.TabTools.Controls.Add(Me.CTool2)
+        Me.TabTools.Controls.Add(Me.QuayTool)
+        Me.TabTools.Controls.Add(Me.WaterTool)
+        Me.TabTools.Controls.Add(Me.LockWallTool)
+        Me.TabTools.Controls.Add(Me.MitreGateTool)
+        Me.TabTools.Controls.Add(Me.TL_LeavingTool)
+        Me.TabTools.Controls.Add(Me.TL_EnteringTool)
         Me.TabTools.Controls.Add(Me.CTool1)
-        Me.TabTools.Controls.Add(Me.ToolSensor)
-        Me.TabTools.Controls.Add(Me.ToolActuator)
-        Me.TabTools.Controls.Add(Me.ToolTimer)
-        Me.TabTools.Controls.Add(Me.ToolGUIWindow)
-        Me.TabTools.Controls.Add(Me.ToolGUIStopSign)
-        Me.TabTools.Controls.Add(Me.ToolGUIBoomBarrier)
-        Me.TabTools.Controls.Add(Me.ToolGUIRotatingBridge)
         Me.TabTools.Controls.Add(Me.ToolGUIOutgoingTrafficSign)
         Me.TabTools.Controls.Add(Me.ToolGUIEnteringTrafficSign)
-        Me.TabTools.Controls.Add(Me.ToolRotatingBridge)
-        Me.TabTools.Controls.Add(Me.ToolLeavingTrafficSign)
-        Me.TabTools.Controls.Add(Me.ToolEnteringTrafficSign)
-        Me.TabTools.Controls.Add(Me.ToolBoomBarrier)
-        Me.TabTools.Controls.Add(Me.ToolQuay)
-        Me.TabTools.Controls.Add(Me.ToolApproachSign)
-        Me.TabTools.Controls.Add(Me.ToolStopSign)
         Me.TabTools.Location = New System.Drawing.Point(4, 25)
         Me.TabTools.Margin = New System.Windows.Forms.Padding(4)
         Me.TabTools.Name = "TabTools"
@@ -312,251 +290,107 @@ Partial Class ISSDT
         Me.TabTools.TabIndex = 0
         Me.TabTools.Text = "Components"
         '
-        'Quay
+        'QuayTool
         '
-        Me.Quay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Quay.Image = CType(resources.GetObject("Quay.Image"), System.Drawing.Image)
-        Me.Quay.Location = New System.Drawing.Point(280, 68)
-        Me.Quay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Quay.Name = "Quay"
-        Me.Quay.Size = New System.Drawing.Size(105, 49)
-        Me.Quay.TabIndex = 69
-        Me.ToolTip.SetToolTip(Me.Quay, "Quay")
-        Me.Quay.toolType = MComponentTypes.ComponentTypesEnum.Quay
+        Me.QuayTool.BackColor = System.Drawing.Color.Transparent
+        Me.QuayTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.QuayTool.Image = CType(resources.GetObject("QuayTool.Image"), System.Drawing.Image)
+        Me.QuayTool.Location = New System.Drawing.Point(192, 210)
+        Me.QuayTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.QuayTool.Name = "QuayTool"
+        Me.QuayTool.Size = New System.Drawing.Size(223, 48)
+        Me.QuayTool.TabIndex = 38
+        Me.ToolTip.SetToolTip(Me.QuayTool, "Quay")
+        Me.QuayTool.toolType = MComponentTypes.ComponentTypesEnum.Quay
         '
-        'CTool3
+        'WaterTool
         '
-        Me.CTool3.BackColor = System.Drawing.Color.Transparent
-        Me.CTool3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.CTool3.Image = CType(resources.GetObject("CTool3.Image"), System.Drawing.Image)
-        Me.CTool3.Location = New System.Drawing.Point(228, 415)
-        Me.CTool3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.CTool3.Name = "CTool3"
-        Me.CTool3.Size = New System.Drawing.Size(117, 202)
-        Me.CTool3.TabIndex = 42
-        Me.ToolTip.SetToolTip(Me.CTool3, "GUI Rotating Bridge")
-        Me.CTool3.toolType = MComponentTypes.ComponentTypesEnum.GUIRotatingBridge
+        Me.WaterTool.BackColor = System.Drawing.Color.Transparent
+        Me.WaterTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.WaterTool.Image = CType(resources.GetObject("WaterTool.Image"), System.Drawing.Image)
+        Me.WaterTool.Location = New System.Drawing.Point(164, 97)
+        Me.WaterTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.WaterTool.Name = "WaterTool"
+        Me.WaterTool.Size = New System.Drawing.Size(265, 93)
+        Me.WaterTool.TabIndex = 37
+        Me.ToolTip.SetToolTip(Me.WaterTool, "Water")
+        Me.WaterTool.toolType = MComponentTypes.ComponentTypesEnum.Water
         '
-        'CTool2
+        'LockWallTool
         '
-        Me.CTool2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.CTool2.Image = CType(resources.GetObject("CTool2.Image"), System.Drawing.Image)
-        Me.CTool2.Location = New System.Drawing.Point(131, 164)
-        Me.CTool2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.CTool2.Name = "CTool2"
-        Me.CTool2.Size = New System.Drawing.Size(200, 47)
-        Me.CTool2.TabIndex = 41
-        Me.ToolTip.SetToolTip(Me.CTool2, "Draw Bridge")
-        Me.CTool2.toolType = MComponentTypes.ComponentTypesEnum.DrawBridge
+        Me.LockWallTool.BackColor = System.Drawing.Color.Transparent
+        Me.LockWallTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LockWallTool.Image = CType(resources.GetObject("LockWallTool.Image"), System.Drawing.Image)
+        Me.LockWallTool.Location = New System.Drawing.Point(175, 41)
+        Me.LockWallTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LockWallTool.Name = "LockWallTool"
+        Me.LockWallTool.Size = New System.Drawing.Size(96, 26)
+        Me.LockWallTool.TabIndex = 36
+        Me.ToolTip.SetToolTip(Me.LockWallTool, "Lock Wall")
+        Me.LockWallTool.toolType = MComponentTypes.ComponentTypesEnum.LockWall
+        '
+        'MitreGateTool
+        '
+        Me.MitreGateTool.BackColor = System.Drawing.Color.Transparent
+        Me.MitreGateTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.MitreGateTool.Image = CType(resources.GetObject("MitreGateTool.Image"), System.Drawing.Image)
+        Me.MitreGateTool.Location = New System.Drawing.Point(17, 121)
+        Me.MitreGateTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.MitreGateTool.Name = "MitreGateTool"
+        Me.MitreGateTool.Size = New System.Drawing.Size(113, 151)
+        Me.MitreGateTool.TabIndex = 35
+        Me.ToolTip.SetToolTip(Me.MitreGateTool, "Mitre Gate")
+        Me.MitreGateTool.toolType = MComponentTypes.ComponentTypesEnum.MitreGate
+        '
+        'TL_LeavingTool
+        '
+        Me.TL_LeavingTool.BackColor = System.Drawing.Color.Transparent
+        Me.TL_LeavingTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.TL_LeavingTool.Image = CType(resources.GetObject("TL_LeavingTool.Image"), System.Drawing.Image)
+        Me.TL_LeavingTool.Location = New System.Drawing.Point(69, 4)
+        Me.TL_LeavingTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.TL_LeavingTool.Name = "TL_LeavingTool"
+        Me.TL_LeavingTool.Size = New System.Drawing.Size(53, 92)
+        Me.TL_LeavingTool.TabIndex = 34
+        Me.ToolTip.SetToolTip(Me.TL_LeavingTool, "Leaving Traffic Sign")
+        Me.TL_LeavingTool.toolType = MComponentTypes.ComponentTypesEnum.TL_Leaving
+        '
+        'TL_EnteringTool
+        '
+        Me.TL_EnteringTool.BackColor = System.Drawing.Color.Transparent
+        Me.TL_EnteringTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.TL_EnteringTool.Image = CType(resources.GetObject("TL_EnteringTool.Image"), System.Drawing.Image)
+        Me.TL_EnteringTool.Location = New System.Drawing.Point(8, 4)
+        Me.TL_EnteringTool.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.TL_EnteringTool.Name = "TL_EnteringTool"
+        Me.TL_EnteringTool.Size = New System.Drawing.Size(53, 92)
+        Me.TL_EnteringTool.TabIndex = 33
+        Me.ToolTip.SetToolTip(Me.TL_EnteringTool, "Entering Traffic Sign" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.TL_EnteringTool.toolType = MComponentTypes.ComponentTypesEnum.TL_Entering
         '
         'CTool1
         '
-        Me.CTool1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.CTool1.Image = CType(resources.GetObject("CTool1.Image"), System.Drawing.Image)
-        Me.CTool1.Location = New System.Drawing.Point(131, 4)
-        Me.CTool1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.CTool1.Location = New System.Drawing.Point(0, 0)
         Me.CTool1.Name = "CTool1"
-        Me.CTool1.Size = New System.Drawing.Size(73, 49)
-        Me.CTool1.TabIndex = 40
-        Me.ToolTip.SetToolTip(Me.CTool1, "Stop Sign Double")
-        Me.CTool1.toolType = MComponentTypes.ComponentTypesEnum.StopSignDouble
-        '
-        'ToolSensor
-        '
-        Me.ToolSensor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolSensor.Image = CType(resources.GetObject("ToolSensor.Image"), System.Drawing.Image)
-        Me.ToolSensor.Location = New System.Drawing.Point(277, 4)
-        Me.ToolSensor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolSensor.Name = "ToolSensor"
-        Me.ToolSensor.Size = New System.Drawing.Size(53, 49)
-        Me.ToolSensor.TabIndex = 39
-        Me.ToolTip.SetToolTip(Me.ToolSensor, "Sensor")
-        Me.ToolSensor.toolType = MComponentTypes.ComponentTypesEnum.Sensor
-        '
-        'ToolActuator
-        '
-        Me.ToolActuator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolActuator.Image = CType(resources.GetObject("ToolActuator.Image"), System.Drawing.Image)
-        Me.ToolActuator.Location = New System.Drawing.Point(212, 4)
-        Me.ToolActuator.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolActuator.Name = "ToolActuator"
-        Me.ToolActuator.Size = New System.Drawing.Size(53, 49)
-        Me.ToolActuator.TabIndex = 38
-        Me.ToolTip.SetToolTip(Me.ToolActuator, "Actuator")
-        Me.ToolActuator.toolType = MComponentTypes.ComponentTypesEnum.Actuator
-        '
-        'ToolTimer
-        '
-        Me.ToolTimer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolTimer.Image = CType(resources.GetObject("ToolTimer.Image"), System.Drawing.Image)
-        Me.ToolTimer.Location = New System.Drawing.Point(339, 4)
-        Me.ToolTimer.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolTimer.Name = "ToolTimer"
-        Me.ToolTimer.Size = New System.Drawing.Size(53, 49)
-        Me.ToolTimer.TabIndex = 37
-        Me.ToolTip.SetToolTip(Me.ToolTimer, "Timer")
-        Me.ToolTimer.toolType = MComponentTypes.ComponentTypesEnum.Timer
-        '
-        'ToolGUIWindow
-        '
-        Me.ToolGUIWindow.BackColor = System.Drawing.Color.Transparent
-        Me.ToolGUIWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIWindow.Image = CType(resources.GetObject("ToolGUIWindow.Image"), System.Drawing.Image)
-        Me.ToolGUIWindow.Location = New System.Drawing.Point(8, 226)
-        Me.ToolGUIWindow.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolGUIWindow.Name = "ToolGUIWindow"
-        Me.ToolGUIWindow.Size = New System.Drawing.Size(161, 188)
-        Me.ToolGUIWindow.TabIndex = 36
-        Me.ToolTip.SetToolTip(Me.ToolGUIWindow, "Bridge operator window")
-        Me.ToolGUIWindow.toolType = MComponentTypes.ComponentTypesEnum.GUIBridgeWindow
-        '
-        'ToolGUIStopSign
-        '
-        Me.ToolGUIStopSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIStopSign.Image = CType(resources.GetObject("ToolGUIStopSign.Image"), System.Drawing.Image)
-        Me.ToolGUIStopSign.Location = New System.Drawing.Point(181, 336)
-        Me.ToolGUIStopSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolGUIStopSign.Name = "ToolGUIStopSign"
-        Me.ToolGUIStopSign.Size = New System.Drawing.Size(53, 49)
-        Me.ToolGUIStopSign.TabIndex = 35
-        Me.ToolTip.SetToolTip(Me.ToolGUIStopSign, "GUI Land Traffic Signs")
-        Me.ToolGUIStopSign.toolType = MComponentTypes.ComponentTypesEnum.GUIStopSign
-        '
-        'ToolGUIBoomBarrier
-        '
-        Me.ToolGUIBoomBarrier.BackColor = System.Drawing.Color.Transparent
-        Me.ToolGUIBoomBarrier.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIBoomBarrier.Image = CType(resources.GetObject("ToolGUIBoomBarrier.Image"), System.Drawing.Image)
-        Me.ToolGUIBoomBarrier.Location = New System.Drawing.Point(8, 415)
-        Me.ToolGUIBoomBarrier.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolGUIBoomBarrier.Name = "ToolGUIBoomBarrier"
-        Me.ToolGUIBoomBarrier.Size = New System.Drawing.Size(196, 48)
-        Me.ToolGUIBoomBarrier.TabIndex = 34
-        Me.ToolTip.SetToolTip(Me.ToolGUIBoomBarrier, "GUI Boom Barrier")
-        Me.ToolGUIBoomBarrier.toolType = MComponentTypes.ComponentTypesEnum.GUIBoomBarrier
-        '
-        'ToolGUIRotatingBridge
-        '
-        Me.ToolGUIRotatingBridge.BackColor = System.Drawing.Color.Transparent
-        Me.ToolGUIRotatingBridge.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIRotatingBridge.Image = CType(resources.GetObject("ToolGUIRotatingBridge.Image"), System.Drawing.Image)
-        Me.ToolGUIRotatingBridge.Location = New System.Drawing.Point(304, 226)
-        Me.ToolGUIRotatingBridge.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolGUIRotatingBridge.Name = "ToolGUIRotatingBridge"
-        Me.ToolGUIRotatingBridge.Size = New System.Drawing.Size(93, 188)
-        Me.ToolGUIRotatingBridge.TabIndex = 33
-        Me.ToolTip.SetToolTip(Me.ToolGUIRotatingBridge, "GUI Rotating Bridge")
-        Me.ToolGUIRotatingBridge.toolType = MComponentTypes.ComponentTypesEnum.GUIRotatingBridge
+        Me.CTool1.Size = New System.Drawing.Size(100, 23)
+        Me.CTool1.TabIndex = 39
+        Me.CTool1.toolType = MComponentTypes.ComponentTypesEnum.NoType
         '
         'ToolGUIOutgoingTrafficSign
         '
-        Me.ToolGUIOutgoingTrafficSign.BackColor = System.Drawing.Color.Transparent
-        Me.ToolGUIOutgoingTrafficSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIOutgoingTrafficSign.Image = CType(resources.GetObject("ToolGUIOutgoingTrafficSign.Image"), System.Drawing.Image)
-        Me.ToolGUIOutgoingTrafficSign.Location = New System.Drawing.Point(243, 228)
-        Me.ToolGUIOutgoingTrafficSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.ToolGUIOutgoingTrafficSign.Location = New System.Drawing.Point(0, 0)
         Me.ToolGUIOutgoingTrafficSign.Name = "ToolGUIOutgoingTrafficSign"
-        Me.ToolGUIOutgoingTrafficSign.Size = New System.Drawing.Size(53, 92)
-        Me.ToolGUIOutgoingTrafficSign.TabIndex = 32
-        Me.ToolTip.SetToolTip(Me.ToolGUIOutgoingTrafficSign, "GUI Leaving Traffic Sign")
-        Me.ToolGUIOutgoingTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.GUILeavingTrafficSign
+        Me.ToolGUIOutgoingTrafficSign.Size = New System.Drawing.Size(100, 23)
+        Me.ToolGUIOutgoingTrafficSign.TabIndex = 40
+        Me.ToolGUIOutgoingTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.NoType
         '
         'ToolGUIEnteringTrafficSign
         '
-        Me.ToolGUIEnteringTrafficSign.BackColor = System.Drawing.Color.Transparent
-        Me.ToolGUIEnteringTrafficSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolGUIEnteringTrafficSign.Image = CType(resources.GetObject("ToolGUIEnteringTrafficSign.Image"), System.Drawing.Image)
-        Me.ToolGUIEnteringTrafficSign.Location = New System.Drawing.Point(181, 228)
-        Me.ToolGUIEnteringTrafficSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.ToolGUIEnteringTrafficSign.Location = New System.Drawing.Point(0, 0)
         Me.ToolGUIEnteringTrafficSign.Name = "ToolGUIEnteringTrafficSign"
-        Me.ToolGUIEnteringTrafficSign.Size = New System.Drawing.Size(53, 92)
-        Me.ToolGUIEnteringTrafficSign.TabIndex = 31
-        Me.ToolTip.SetToolTip(Me.ToolGUIEnteringTrafficSign, "GUI Entering Traffic Sign")
-        Me.ToolGUIEnteringTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.GUIEnteringTrafficSign
-        '
-        'ToolRotatingBridge
-        '
-        Me.ToolRotatingBridge.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolRotatingBridge.Image = CType(resources.GetObject("ToolRotatingBridge.Image"), System.Drawing.Image)
-        Me.ToolRotatingBridge.Location = New System.Drawing.Point(131, 117)
-        Me.ToolRotatingBridge.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolRotatingBridge.Name = "ToolRotatingBridge"
-        Me.ToolRotatingBridge.Size = New System.Drawing.Size(200, 47)
-        Me.ToolRotatingBridge.TabIndex = 30
-        Me.ToolTip.SetToolTip(Me.ToolRotatingBridge, "Rotating Bridge")
-        Me.ToolRotatingBridge.toolType = MComponentTypes.ComponentTypesEnum.RotatingBridge
-        '
-        'ToolLeavingTrafficSign
-        '
-        Me.ToolLeavingTrafficSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolLeavingTrafficSign.Image = CType(resources.GetObject("ToolLeavingTrafficSign.Image"), System.Drawing.Image)
-        Me.ToolLeavingTrafficSign.Location = New System.Drawing.Point(69, 117)
-        Me.ToolLeavingTrafficSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolLeavingTrafficSign.Name = "ToolLeavingTrafficSign"
-        Me.ToolLeavingTrafficSign.Size = New System.Drawing.Size(53, 92)
-        Me.ToolLeavingTrafficSign.TabIndex = 29
-        Me.ToolTip.SetToolTip(Me.ToolLeavingTrafficSign, "Leaving Traffic Sign")
-        Me.ToolLeavingTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.LeavingTrafficSign
-        '
-        'ToolEnteringTrafficSign
-        '
-        Me.ToolEnteringTrafficSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolEnteringTrafficSign.Image = CType(resources.GetObject("ToolEnteringTrafficSign.Image"), System.Drawing.Image)
-        Me.ToolEnteringTrafficSign.Location = New System.Drawing.Point(8, 117)
-        Me.ToolEnteringTrafficSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolEnteringTrafficSign.Name = "ToolEnteringTrafficSign"
-        Me.ToolEnteringTrafficSign.Size = New System.Drawing.Size(53, 92)
-        Me.ToolEnteringTrafficSign.TabIndex = 28
-        Me.ToolTip.SetToolTip(Me.ToolEnteringTrafficSign, "Entering Traffic Sign")
-        Me.ToolEnteringTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.EnteringTrafficSign
-        '
-        'ToolBoomBarrier
-        '
-        Me.ToolBoomBarrier.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolBoomBarrier.Image = CType(resources.GetObject("ToolBoomBarrier.Image"), System.Drawing.Image)
-        Me.ToolBoomBarrier.Location = New System.Drawing.Point(8, 68)
-        Me.ToolBoomBarrier.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolBoomBarrier.Name = "ToolBoomBarrier"
-        Me.ToolBoomBarrier.Size = New System.Drawing.Size(253, 49)
-        Me.ToolBoomBarrier.TabIndex = 27
-        Me.ToolTip.SetToolTip(Me.ToolBoomBarrier, "Boom Barrier")
-        Me.ToolBoomBarrier.toolType = MComponentTypes.ComponentTypesEnum.BoomBarrier
-        '
-        'ToolQuay
-        '
-        Me.ToolQuay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolQuay.Image = CType(resources.GetObject("ToolQuay.Image"), System.Drawing.Image)
-        Me.ToolQuay.Location = New System.Drawing.Point(8, 68)
-        Me.ToolQuay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolQuay.Name = "ToolQuay"
-        Me.ToolQuay.Size = New System.Drawing.Size(150, 50)
-        Me.ToolQuay.TabIndex = 69
-        Me.ToolTip.SetToolTip(Me.ToolQuay, "Quay")
-        Me.ToolQuay.toolType = MComponentTypes.ComponentTypesEnum.Quay
-        '
-        'ToolApproachSign
-        '
-        Me.ToolApproachSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolApproachSign.Image = CType(resources.GetObject("ToolApproachSign.Image"), System.Drawing.Image)
-        Me.ToolApproachSign.Location = New System.Drawing.Point(69, 4)
-        Me.ToolApproachSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolApproachSign.Name = "ToolApproachSign"
-        Me.ToolApproachSign.Size = New System.Drawing.Size(53, 49)
-        Me.ToolApproachSign.TabIndex = 26
-        Me.ToolTip.SetToolTip(Me.ToolApproachSign, "Approach Sign")
-        Me.ToolApproachSign.toolType = MComponentTypes.ComponentTypesEnum.ApproachSign
-        '
-        'ToolStopSign
-        '
-        Me.ToolStopSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.ToolStopSign.Image = CType(resources.GetObject("ToolStopSign.Image"), System.Drawing.Image)
-        Me.ToolStopSign.Location = New System.Drawing.Point(8, 4)
-        Me.ToolStopSign.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.ToolStopSign.Name = "ToolStopSign"
-        Me.ToolStopSign.Size = New System.Drawing.Size(53, 49)
-        Me.ToolStopSign.TabIndex = 25
-        Me.ToolTip.SetToolTip(Me.ToolStopSign, "Stop Sign")
-        Me.ToolStopSign.toolType = MComponentTypes.ComponentTypesEnum.StopSign
+        Me.ToolGUIEnteringTrafficSign.Size = New System.Drawing.Size(100, 23)
+        Me.ToolGUIEnteringTrafficSign.TabIndex = 41
+        Me.ToolGUIEnteringTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.NoType
         '
         'TabDrawings
         '
@@ -749,30 +583,12 @@ Partial Class ISSDT
     Friend WithEvents ToolTip As ToolTip
     Friend WithEvents DeleteRequirement As ContextMenuStrip
     Friend WithEvents MenuItemDeleteRow As ToolStripMenuItem
-    Friend WithEvents ToolStopSign As CTool
-    Friend WithEvents ToolApproachSign As CTool
-    Friend WithEvents ToolBoomBarrier As CTool
-    Friend WithEvents ToolQuay As CTool
-    Friend WithEvents ToolEnteringTrafficSign As CTool
     Friend WithEvents ToolGUIEnteringTrafficSign As CTool
-    Friend WithEvents ToolRotatingBridge As CTool
-    Friend WithEvents ToolLeavingTrafficSign As CTool
     Friend WithEvents LblSquare As CTool
     Friend WithEvents ToolGUIOutgoingTrafficSign As CTool
-    Friend WithEvents ToolGUIRotatingBridge As CTool
-    Friend WithEvents ToolGUIBoomBarrier As CTool
-    Friend WithEvents ToolGUIStopSign As CTool
-    Friend WithEvents ToolGUIWindow As CTool
     Friend WithEvents CToolBindingSource As BindingSource
-    Friend WithEvents ToolTimer As CTool
-    Friend WithEvents ToolSensor As CTool
-    Friend WithEvents ToolActuator As CTool
-    Friend WithEvents CTool1 As CTool
-    Friend WithEvents CTool2 As CTool
-    Friend WithEvents CTool3 As CTool
     Friend WithEvents LblTextLabel As CTool
     Friend WithEvents SaveFileDialogJSON As SaveFileDialog
-    Friend WithEvents Quay As CTool
     Friend WithEvents Waterway As DataGridViewComboBoxColumn
     Friend WithEvents ObjectName As DataGridViewTextBoxColumn
     Friend WithEvents ObjectType As DataGridViewTextBoxColumn
@@ -781,4 +597,11 @@ Partial Class ISSDT
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents canvasPlant As CCanvas
     Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents CTool1 As CTool
+    Friend WithEvents QuayTool As CTool
+    Friend WithEvents WaterTool As CTool
+    Friend WithEvents LockWallTool As CTool
+    Friend WithEvents MitreGateTool As CTool
+    Friend WithEvents TL_LeavingTool As CTool
+    Friend WithEvents TL_EnteringTool As CTool
 End Class

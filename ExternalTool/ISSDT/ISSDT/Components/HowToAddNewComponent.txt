@@ -1,0 +1,7 @@
+﻿1. Add component models in \Components\<ComponentName>, set build action to 'Content' and Copy to Output Directory to 'Always' (For SVG export)
+2. Add component icon in \Icons\, set Build Action to 'Content' and Copy to Output Directory to 'Always'
+3. Add component name to the ComponentTypesEnum in MCompontTypes.vb
+4. Add component class in MComponentTypes.vb
+5. Add component option class in MComponentTypes.vb
+6. Add component to pnlCanvas_Click Sub in CCanvas.vb
+7. Add component to Components library in ISSDT.vb [Design]

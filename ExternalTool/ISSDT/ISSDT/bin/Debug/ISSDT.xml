@@ -22,6 +22,19 @@ ISSDT
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:ISSDT.MWriter.getModelFileLocation(ISSDT.CComponent)">
+ <summary>
+ Returns the file location of the models necesary for generation of code.
+ </summary>
+ <param name="component">The component to get the file location for.</param>
+ <returns>The file location that can be appended to the application directory path.</returns>
+</member>
+<member name="M:ISSDT.MWriter.Replacements(System.String@,ISSDT.CComponent)">
+ <summary>
+ Replaces all $replacementID$ by a value. 
+ </summary>
+ <param name="Line">The line in which the $ values have to be replaced.</param>
+</member>
 <member name="M:ISSDT.CCanvas.pnlCanvas_Click(System.Object,System.Windows.Forms.MouseEventArgs)">
  <summary>
  This method adds a component to the canvas when it is clicked when a component creation tool is active.
@@ -121,193 +134,92 @@ ISSDT
  This method rotates a component 90 degrees counter-clockwise on the canvas.
  </summary>
 </member>
-<member name="M:ISSDT.MWriter.getModelFileLocation(ISSDT.CComponent)">
- <summary>
- Returns the file location of the models necesary for generation of code.
- </summary>
- <param name="component">The component to get the file location for.</param>
- <returns>The file location that can be appended to the application directory path.</returns>
-</member>
-<member name="M:ISSDT.MWriter.Replacements(System.String@,ISSDT.CComponent)">
- <summary>
- Replaces all $replacementID$ by a value. 
- </summary>
- <param name="Line">The line in which the $ values have to be replaced.</param>
-</member>
 <member name="M:ISSDT.FComponentName.getComponentName">
  <summary>
  Asks the user for a component name and checks its validity.
  </summary>
  <returns>Valid component name</returns>
 </member>
+<member name="M:ISSDT.ISSDT.BtRefresh_Click">
+ <summary>
+ This method collects the ccomponent data and fills the data grid.
+ </summary>
+</member>
+<member name="M:ISSDT.ISSDT.frmProgramma_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ This method lets the user close the program. If the current canvas is not saved, a confirmation is requested.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
 <member name="T:ISSDT.MComponentTypes.ComponentTypesEnum">
  <summary>
  All different types of components that can be used as building blocks.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.StopSign">
+<member name="T:ISSDT.MComponentTypes.Square">
+ -------------------------------------------------------------------------------------------------------------------------------------------------------
+ --------------------------------------------------START COMPONENT DECLARATION--------------------------------------------------------------------------
+ -------------------------------------------------------------------------------------------------------------------------------------------------------
+</member>
+<member name="T:ISSDT.MComponentTypes.TextLabel">
  <summary>
- The stop sign component.
+ The text label component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.StopSignOptions">
+<member name="T:ISSDT.MComponentTypes.TextLabelOptions">
  <summary>
- The option window for the stop sign component. 
+ The option window for the text label component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.ApproachSign">
+<member name="T:ISSDT.MComponentTypes.MitreGate">
  <summary>
- The approach sign component.
+ The mitre gate component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.ApproachSignOptions">
+<member name="T:ISSDT.MComponentTypes.MitreGateOptions">
  <summary>
- The option window for the approach sign component.
+ The option window for the mitre gate component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.BoomBarrier">
+<member name="T:ISSDT.MComponentTypes.TL_Entering">
  <summary>
- The boom barrier component.
+ The traffic light entering component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.BoomBarrierOptions">
+<member name="T:ISSDT.MComponentTypes.TL_EnteringOptions">
  <summary>
- The option window for the boom barrier component.
+ The option window for the traffic light entering component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.EnteringTrafficSign">
+<member name="T:ISSDT.MComponentTypes.TL_Leaving">
  <summary>
- The entering traffic sign component.
+ The traffic light leaving component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.LeavingTrafficSign">
+<member name="T:ISSDT.MComponentTypes.TL_LeavingOptions">
  <summary>
- The leaving traffic sign component.
+ The option window for the traffic light leaving component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.LeavingTrafficSignOptions">
+<member name="T:ISSDT.MComponentTypes.LockWall">
  <summary>
- The option window for the leaving traffic sign component.
+ The lock wall component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.RotatingBridge">
+<member name="T:ISSDT.MComponentTypes.LockWallOptions">
  <summary>
- The rotating bridge component.
+ The option window for the lock wall component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.RotatingBridgeOptions">
+<member name="T:ISSDT.MComponentTypes.Water">
  <summary>
- The option window for the rotating bridge component.
+ The water component.
  </summary>
 </member>
-<member name="T:ISSDT.MComponentTypes.GUILeavingTrafficSign">
+<member name="T:ISSDT.MComponentTypes.WaterOptions">
  <summary>
- The leaving traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUILeavingTrafficSignOptions">
- <summary>
- The option window for the leaving traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIEnteringTrafficSign">
- <summary>
- The entering traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIEnteringTrafficSignOptions">
- <summary>
- The option window for the entering traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIRotatingBridge">
- <summary>
- The rotating bridge GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIRotatingBridgeOptions">
- <summary>
- The option window for the rotating bridge GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIStopSign">
- <summary>
- The land traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIStopSignOptions">
- <summary>
- The option window for the land traffic sign GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIBoomBarrier">
- <summary>
- The boom barrier GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIBoomBarrierOptions">
- <summary>
- The option window for the boom barrier GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIBridgeWindow">
- <summary>
- The bridge window GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.GUIBridgeWindowOptions">
- <summary>
- The option window for the bridge window GUI component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.Timer">
- <summary>
- The Timer component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.TimerOptions">
- <summary>
- The option window for the Timer component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.Actuator">
- <summary>
- The actuator component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.ActuatorOptions">
- <summary>
- The option window for the actuator component. 
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.Sensor">
- <summary>
- The sensor component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.SensorOptions">
- <summary>
- The option window for the sensor component. 
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.StopSignDouble">
- <summary>
- The double stop sign component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.StopSignDoubleOptions">
- <summary>
- The option window for the double stop sign component. 
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.DrawBridge">
- <summary>
- The draw bridge component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.DrawBridgeOptions">
- <summary>
- The option window for the draw bridge component.
+ The option window for the water component.
  </summary>
 </member>
 <member name="T:ISSDT.MComponentTypes.Quay">
@@ -318,16 +230,6 @@ ISSDT
 <member name="T:ISSDT.MComponentTypes.QuayOptions">
  <summary>
  The option window for the quay component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.TextLabel">
- <summary>
- The text label component.
- </summary>
-</member>
-<member name="T:ISSDT.MComponentTypes.TextLabelOptions">
- <summary>
- The option window for the text label component.
  </summary>
 </member>
 <member name="T:ISSDT.MComponentTypes.Options">
@@ -408,18 +310,6 @@ ISSDT
  Verifies whether the numeric input in a textbox is valid (in the form "digit" or "digit.digit"). If it is, the backcolor will be set to white, otherwise to red.
  </summary>
  <param name="textBox">The text box to verify.</param>
-</member>
-<member name="M:ISSDT.ISSDT.BtRefresh_Click">
- <summary>
- This method collects the ccomponent data and fills the data grid.
- </summary>
-</member>
-<member name="M:ISSDT.ISSDT.frmProgramma_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
- <summary>
- This method lets the user close the program. If the current canvas is not saved, a confirmation is requested.
- </summary>
- <param name="sender"></param>
- <param name="e"></param>
 </member>
 <member name="T:ISSDT.MFileOptions">
  <summary>

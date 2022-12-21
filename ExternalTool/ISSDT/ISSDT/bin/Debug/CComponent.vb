@@ -196,9 +196,8 @@
             Dim item4 As ToolStripMenuItem = New ToolStripMenuItem("Rotate counter-clockwise", Nothing, AddressOf rotateCounterClockwise)
             Dim item5 As ToolStripMenuItem = New ToolStripMenuItem("Raise to top", Nothing, AddressOf BringToFront)
             Dim item6 As ToolStripMenuItem = New ToolStripMenuItem("Send to bottom", Nothing, AddressOf SendToBack)
-            Dim item7 As ToolStripMenuItem = New ToolStripMenuItem("Show model", Nothing, AddressOf showModel)
 
-            cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6, item7})
+            cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6})
             cms.Show(comp, e.Location)
         End If
     End Sub
@@ -243,31 +242,5 @@
         Rotate(270)
         ISSDT.changedAfterSave = True
     End Sub
-
-    Private Sub showModel()
-        Dim formModel As Form = New Form()
-        formModel.Location = New Point(0, 0)
-
-        Dim pictureBoxModel As PictureBox = New PictureBox()
-        pictureBoxModel.Image = getModelImage()
-        pictureBoxModel.Size = pictureBoxModel.Image.Size
-
-        formModel.Size = pictureBoxModel.Image.Size
-        formModel.Controls.Add(pictureBoxModel)
-        formModel.Text = "Template of the " + Type.ToString + " template"
-
-
-        formModel.Show()
-    End Sub
-
-    Private Function getModelImage() As Image
-        Dim directoryPath As String = My.Application.Info.DirectoryPath
-        Dim modelName As String = ""
-        If Type = ComponentTypesEnum.BoomBarrier Then
-            modelName = "BB.PNG"
-        End If
-
-        Return Image.FromFile(System.IO.Path.Combine(directoryPath, "Automata\" + modelName))
-    End Function
 
 End Class

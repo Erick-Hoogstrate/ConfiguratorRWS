@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="179200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ISSDT.exe" size="125440">
       <assemblyIdentity name="ISSDT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pS1R2/+HBDDG9GxGFCWeetFobOGjJjLKXPk6/VJ42yk=</dsig:DigestValue>
+        <dsig:DigestValue>HlQV9Af7hT2TR0DLjVqPYqcqLduWrJ1fEoWXwHFOSSc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -65,196 +65,7 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Automata\BB.PNG" size="37218">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yi8863pGkbwTewKrRgGbWQJf+Dmaqg6AkT3U/2IlKjs=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Actuator\Events" size="11">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PF2gzUMhIK0+hR5nMiTf+vF/A+pYyCCB+3pYm/Nbgro=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Actuator\Hybrid.cif" size="360">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4JPrJnQZBRu5ht7LXtWoACnVfcXZ6OgBVaAY9jF6+/M=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Actuator\Image.svg" size="741">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KeTsfQWlGyj5gOvv/lWznlu5THhaVuIiVtuQqZQJTlI=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Actuator\Plant.cif" size="273">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Vdg7MlJ9caDeXWeVseGtk2XCHyksbRTPLS1Mlilo1+s=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Actuator\States" size="7">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\Central\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\Central\Hybrid.cif" size="572">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WBfkR5JOEC5VaJx2R5NP+zu2bE4ErXNBGImEA3aovZM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\Central\Image.svg" size="920">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yeXZ8+/KdwFqhIWZNX9C2r+wrnL0IFLez1r99sAPKM8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\Central\Plant.cif" size="499">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sKIZ+Z/Xed95kZO/T4/lrY3H9glWV0Rkg3KovI6w7XU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\Central\States" size="7">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\StandAlone\Events" size="11">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PF2gzUMhIK0+hR5nMiTf+vF/A+pYyCCB+3pYm/Nbgro=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\StandAlone\Hybrid.cif" size="677">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>uPP5HbGx3Ibuf0cgoYLCQ2Xvo5t1SZpS5Lj6i8elnRY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\StandAlone\Image.svg" size="920">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yeXZ8+/KdwFqhIWZNX9C2r+wrnL0IFLez1r99sAPKM8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\StandAlone\Plant.cif" size="616">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mpfMQIsz0HCwSoBez4u8skO23Tj6pgLvFXSt4t4/Q2M=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\ApproachSign\StandAlone\States" size="7">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\BoomBarrier\Events" size="40">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LaBDsaF9pSVSv2R2QP7xK25/HQgwrFTxCREzwlBUzkU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\BoomBarrier\Hybrid.cif" size="1687">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>moukks8wPNX9sCU+XGzFJygqJcXORwM9Vr8ozLDrPVY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\BoomBarrier\Image.svg" size="3043">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KK/G+t+qUH7RnPW2OmXFbTIOUQnCMf9QRxrJoFM8kcQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\BoomBarrier\Plant.cif" size="1465">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bmCQeXgM0o4SE0kRVRkbX1N8C70Rv+3vL+Z9CFx1JUQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\BoomBarrier\States" size="20">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>udzIUoDnMLhzlEkDIUymKN7jbTpIF7G/NYUsal6sdjU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Drawing\Image.svg" size="235">
+  <file name="Components\Drawing\Image.svg" size="235">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -263,511 +74,7 @@
       <dsig:DigestValue>XFpz47CjrYoHjWhz+A768DDKc0cUbbiyfn2EPqir+mo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\EnteringTrafficSign\Events" size="56">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JuosfESScCebtILZUFcxsfUex4N1/PY2D4KSuNHsN3Y=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\EnteringTrafficSign\Hybrid.cif" size="2602">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YFssioQij23LC2xKkXOopBC/CHcwdIwaZOxP4KsXiM4=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\EnteringTrafficSign\Image.svg" size="2523">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>pGn6BcOCn8lWf7Q5afzt24hue4n5pOshfMFzTmAA2o0=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\EnteringTrafficSign\Plant.cif" size="2369">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WJpS0xIbYg7zZR/ZK2eLg0qIkr9vwa56cfd1QaS5hrY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\EnteringTrafficSign\States" size="76">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>wOl3ZgZwcls231tr0eaQCjAjRVUgrLaz5BzPPc8qHZc=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBoomBarrier\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBoomBarrier\Hybrid.cif" size="438">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7IFMLXBNZURQdjVgIgY7CjIAzUryAbexI1SFUETMVpk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBoomBarrier\Image.svg" size="880">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2q9iUanZsj8fch2IpMyyvV3+Y1x+jKsCfT1d/4QcJJY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBoomBarrier\Plant.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBoomBarrier\States" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBridgeWindow\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBridgeWindow\Hybrid.cif" size="13419">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WB3m8wijx0f2d9lSklFqUcE+JFK0bW8i5hlKhgA0qL4=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBridgeWindow\Image.svg" size="33336">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Re2SlYeEqT3fFAEILPfhue+VKHVjfdC0kXOteJbHOMk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBridgeWindow\Plant.cif" size="4253">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tuxFxZxovLm/sPso4KKMrsD2KvyJ/+Z8MjMlXrQJeNI=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIBridgeWindow\States" size="132">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YOTfmEIN2FsBO0unNbb8NAhp3PkMasMMH7xNp/0ubpM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIEnteringTrafficSign\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIEnteringTrafficSign\Hybrid.cif" size="1507">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KQ1+/ujuiVjfUr5u/GlO7bjwKYkuR9dKbAd8XfTF1QE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIEnteringTrafficSign\Image.svg" size="1210">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CqRnBSltmrTTzgOwV0BdyxyAJs50SuPypirvjLILJgk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIEnteringTrafficSign\Plant.cif" size="962">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LBIZ6u+lAakY0DxWbo02cDoxOFuNBOPcZaT/mASPAOY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIEnteringTrafficSign\States" size="27">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ry7wnKKddU7p7upgx5qkeOkAAhoFYOdj7SUY0DFJwz0=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUILeavingTrafficSign\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUILeavingTrafficSign\Hybrid.cif" size="749">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bgJzC3Ze8i6ZZb0toSZMSTucQUen4x5xNFPks1s/6P8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUILeavingTrafficSign\Image.svg" size="933">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LwE7TN7Z2hyCSPIX7vMxRdDDWbdnCJ6qXF2nZd/Pg5s=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUILeavingTrafficSign\Plant.cif" size="426">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rtuJtZgPlTxe2KeaRv6MY8U8JwRfOOvAZd/JZ6zKDys=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUILeavingTrafficSign\States" size="10">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qSwmB7WpMy/ln0+swoawLaE2fSeR45d7N55ayQKQ5Uo=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIRotatingBridge\Hybrid.cif" size="640">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>dJBTFJAfWxcDvHFLxoWgjx16MtQ+f4QIWwyd4Px3lYY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIRotatingBridge\Image.svg" size="648">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1AroB+hkNfgwR4a0qJIudCcD7zVWAYJMFD7TOsn9nLw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIRotatingBridge\Plant.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIRotatingBridge\States" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIStopSign\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIStopSign\Hybrid.cif" size="127">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gyJNUdXPmRYN9xGCjTDLO46QzRDwtQ1F8Z+sylSSmgk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIStopSign\Image.svg" size="544">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>88lfLFDxNooO1LTNhEP+fd/0MyDA7bPZpdeRKAEZ6D8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIStopSign\Plant.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\GUIStopSign\States" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\HowToAddNewComponent.txt" size="457">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>H7avhkJJQAsQwrDwo6fAArCbcsx39klY+R7FTRXRdSg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\LeavingTrafficSign\Events" size="25">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Cv/JL+ul36HMCkjdtA82k5vEn0azh1Y/U3Xuy+KCF3A=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\LeavingTrafficSign\Hybrid.cif" size="1327">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rzbK+zyeUmlqesMgdxFRrIH24azJTxczcA8sF/ngRbk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\LeavingTrafficSign\Image.svg" size="2079">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8Xdt4c5jO5qVruchPz6lm8TuXt5q1+aZvLJ3gK6LfWI=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\LeavingTrafficSign\Plant.cif" size="1172">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eS9rj8Urwui75ET+d6oQj/KduuzZOqAXtHdS+3tyweg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\LeavingTrafficSign\States" size="38">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rgk7DJNf8FaRjfjbnwK5dWoxWzh6iXTO4MD+KYpFxiM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Quay\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Quay\Hybrid.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Quay\Image.svg" size="1232">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>D8t9RUSGpMitpl7CJQaEs/vGJ05J/oCkqwzdAAKC8Vk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Quay\Plant.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Quay\States" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\RotatingBridge\Events" size="40">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LaBDsaF9pSVSv2R2QP7xK25/HQgwrFTxCREzwlBUzkU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\RotatingBridge\Hybrid.cif" size="1708">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Rx/mpWzk+eJ2Ank7P8opJMUF8rrnC+Yo2y1KsRcJ5SE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\RotatingBridge\Image.svg" size="1232">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>D8t9RUSGpMitpl7CJQaEs/vGJ05J/oCkqwzdAAKC8Vk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\RotatingBridge\Plant.cif" size="1465">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HU3GafclMuqwPHDz3l9XNnSyFxcc0ACS6fN2HDlb2Bw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\RotatingBridge\States" size="20">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>udzIUoDnMLhzlEkDIUymKN7jbTpIF7G/NYUsal6sdjU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Sensor\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Sensor\Hybrid.cif" size="454">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>O2fzGESBZ4S2mwv+LIybHg6t1R+neJmH08j1Bo7Pl4c=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Sensor\Image.svg" size="744">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>cV25HfwbDaBhJtZkDhkAL17l8cpQtDpNbR5IBQl+pXs=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Sensor\Plant.cif" size="273">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7qZr7Cy6T89cspz2RmMyYk9z2tzObeDbHiyKOvhkMJo=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Sensor\States" size="7">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Square\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Square\Image.svg" size="162">
+  <file name="Components\Square\Image.svg" size="162">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -776,7 +83,7 @@
       <dsig:DigestValue>fswSP+Nh8Afg7LLDzKFUWKRxZqAjx+vhiTBxvo/ECf0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\Square\States" size="0">
+  <file name="Components\TextLabel\Image.svg" size="0">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -785,241 +92,52 @@
       <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\Central\Events" size="0">
+  <file name="Components\TL_Entering\Image.svg" size="1210">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
+      <dsig:DigestValue>CqRnBSltmrTTzgOwV0BdyxyAJs50SuPypirvjLILJgk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\Central\Hybrid.cif" size="569">
+  <file name="Components\TL_Leaving\Image.svg" size="933">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>aW86sIqru0eCTacgfrtofb2tQRla6FsebsuAeIWSBS8=</dsig:DigestValue>
+      <dsig:DigestValue>LwE7TN7Z2hyCSPIX7vMxRdDDWbdnCJ6qXF2nZd/Pg5s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\Central\Image.svg" size="924">
+  <file name="Icons\LockWall.png" size="1976">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>r9Lt2sJiWs/0vtVjF3j2pUGbudDZ8B6Jkhc3Bt2/0ts=</dsig:DigestValue>
+      <dsig:DigestValue>NqI2sF6kWPWOKDqvl7M2pfWGnSuBRBoDW4cH9/wBxkw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\Central\Plant.cif" size="499">
+  <file name="Icons\MitreGate.png" size="812">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AxdJvl1mOWejt2b1TiCuyoAXu7bOre6tIVfoNdNZ060=</dsig:DigestValue>
+      <dsig:DigestValue>5jb2UQdyNAscxdMoP95Ih82xO90MatU3TMjoWXxKukM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\Central\States" size="7">
+  <file name="Icons\Quay.png" size="1776">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
+      <dsig:DigestValue>aLXuTabEo1CokIDHGcKnOqmqQz4NmF6WNv8PXarK81E=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CIFModels\StopSign\StandAlone\Events" size="11">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PF2gzUMhIK0+hR5nMiTf+vF/A+pYyCCB+3pYm/Nbgro=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\StopSign\StandAlone\Hybrid.cif" size="673">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>vsvN22qfwgSsEFHPnGO9T7AWFvPaQo/26tfMLtYRHwg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\StopSign\StandAlone\Image.svg" size="924">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>r9Lt2sJiWs/0vtVjF3j2pUGbudDZ8B6Jkhc3Bt2/0ts=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\StopSign\StandAlone\Plant.cif" size="616">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mpfMQIsz0HCwSoBez4u8skO23Tj6pgLvFXSt4t4/Q2M=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\StopSign\StandAlone\States" size="7">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JC6PpFLu8YtZXTsBmaY9WVs73Yv4+UAcADxNiP2SJRM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\TextLabel\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\TextLabel\Hybrid.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\TextLabel\Image.svg" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\TextLabel\Plant.cif" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\TextLabel\States" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Timer\Events" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Timer\Hybrid.cif" size="478">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>S0X9dX9mXDYkh2nO+kahpSsmF4i3C2GPEAz/1XOvkcA=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Timer\Image.svg" size="0">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Timer\Plant.cif" size="409">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EW82gH8kTko2EmfTQSWCUBcxHA07LhL6F+OkdrTQPZo=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="CIFModels\Timer\States" size="13">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6EZsBMBuwWPNHHbJ9yKE/4zuv2AxMhfIToWVdG6QPUU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\Actuator.png" size="635">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sU+fn9YZZG/1+6TSUHXnyWwb1HXqfbbqqow6/XfGHSM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\ApproachSign.png" size="743">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>35yP37qCY0sc/tz0ScOhe21ZntG0sGX/gKA8wfzS8QE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\BoomBarrier.png" size="2127">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>V0DvlFAm/Iie2k3OKtIu2xBB7hok+G+RNqPEQfxD+CM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\BoomBarrierGUI.png" size="284">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Lkju90diUsyxezIvhcKtGh1BuwQRpbgUD1t3KIiJPyY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\DrawBridge.png" size="715">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bcXkce4DgIWqCiLjzTtU/HKFowCEhlVOVhU7tzBD8PQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\EnteringTrafficSign.png" size="1902">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4cSZwn4tAVzzwnuQZmLDElJesqCDQztiMZqfMqC1LgE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\EVTLGUI.png" size="1078">
+  <file name="Icons\TL_Entering.png" size="1078">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1028,16 +146,7 @@
       <dsig:DigestValue>BtDY36Ni1NFwAPTJjqVye1U81G+nbXeJDx+4HrMoeV8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Icons\LeavingTrafficSign.png" size="1669">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>VWZXqjmt6Fbh7PggtuDMrbDxPkSxleWHw/O2e3vksxo=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\OVTLGUI.png" size="819">
+  <file name="Icons\TL_Leaving.png" size="819">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1046,112 +155,13 @@
       <dsig:DigestValue>yqJBcMJejHvqR9MLoinad/iJB3bg/A4sp9jAxloxNuc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Icons\Quay.png" size="2234">
+  <file name="Icons\Water.png" size="3838">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YqXaJPegLjzC6VRwFtujNFPZY+nUPGaBw8M5/YkNm+M=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\RotatingBridge.png" size="3613">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>klvv9qJ2v4HVDv7ofwkKWfw5bUgis/oxMtnbyd6Npbk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\RotatingBridgeGUI.png" size="2724">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mw2O3Ih17urW2ybGXJMxjr9qO1GuCsSWR+WYz7lT04s=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\RotatingBridgeGUI2.png" size="2724">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mw2O3Ih17urW2ybGXJMxjr9qO1GuCsSWR+WYz7lT04s=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\RotatingBridgeGUI3.png" size="2432">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/v8d1A+c3DvKLZXDcPh2eEE6S5FNbFJYtO/GRu8OtRA=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\RotatingBridgeS.png" size="1114">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>E4hmNUPIv/jeseFY3impAPiOMI9bb4WCWLRxlDJW6hs=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\Sensor.png" size="682">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>L3dI0KcKYoEobEoapq7eKF7jhwMEVYR7KTTuVCLm/Gw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\StopSign.png" size="751">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>NC6B9LzPikWdTQwR55/KqJT9BilI1gamRNg9/dowYI4=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\StopSignDouble.png" size="1779">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>wYxieg1A1aQQKNjPwg2T/rVcRU/S0rec7fZ0/wbI8CU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\StopSignGUI.png" size="486">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>69W6up2hfQ+rPfpAhsayVJP9JQ3hvnD/9KKVW5B11Vs=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\Timer.png" size="1634">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qGzHeKENXKBgfR8T0tv9gRn0s9DgddEHLdqV+qcLiuE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Icons\Window.png" size="6340">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mFDCzSdH6ll5m9m7ItglvG+o2JSs604uLjNZJ1Ca/PI=</dsig:DigestValue>
+      <dsig:DigestValue>LZQiPm+E56lWU7qqPztWMqi/nPdppW+zYxdZMP5MgV8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ISSDT.exe.config" size="188">

@@ -4,1118 +4,22 @@
     ''' All different types of components that can be used as building blocks.
     ''' </summary>
     Public Enum ComponentTypesEnum
-        StopSign
-        BoomBarrier
-        Quay
-        ApproachSign
-        RotatingBridge
-        EnteringTrafficSign
-        LeavingTrafficSign
-        GUIEnteringTrafficSign
-        GUILeavingTrafficSign
-        Square
         NoType
-        GUIRotatingBridge
-        GUIStopSign
-        GUIBoomBarrier
-        GUIBridgeWindow
-        Timer
-        Actuator
-        Sensor
-        StopSignDouble
-        DrawBridge
+        Square
         TextLabel
+        MitreGate
+        TL_Entering
+        TL_Leaving
+        LockWall
+        Water
+        Quay
     End Enum
 
-    ''' <summary>
-    ''' The stop sign component.
-    ''' </summary>
-    Public Class StopSign : Inherits CComponent
-        Public standAlone As Boolean = True
-        Public actuator As String
+    ''' -------------------------------------------------------------------------------------------------------------------------------------------------------
+    ''' --------------------------------------------------START COMPONENT DECLARATION--------------------------------------------------------------------------
+    ''' -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSign.png"))
-            Size = New Size(19, 19)
 
-            Options = New StopSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSign.png")))
-
-            Options = New StopSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the stop sign component. 
-    ''' </summary>
-    Public Class StopSignOptions
-        Inherits Options
-
-        Dim stopSign As StopSign
-        Dim checkBoxStandAlone As CheckBox
-        Dim lblActuator As Label
-        Dim comboBoxActuator As ComboBox
-
-        Public Sub New(ByRef NewStopSign As StopSign)
-            MyBase.New()
-            StopSign = NewStopSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = StopSign.Name
-            textBoxType.Text = StopSign.Type.ToString
-            AddHandler StopSign.NameChanged, AddressOf NameChanged
-
-            'Stand alone option
-            CheckboxStandAlone = CreateCheckBox("Standalone", New Size(80, 17), New Point(3, 64), True)
-            AddHandler CheckboxStandAlone.CheckedChanged, AddressOf StandAloneChanged
-            ISSDT.ToolTip.SetToolTip(CheckboxStandAlone, "Whether the stop sign has its own actuator or is controlled via another actuator.")
-
-            'Actuator option
-            Dim LblComboBoxActuator = CreateLabelAndComboBox("Actuator:", New Point(3, 88), "")
-            lblActuator = LblComboBoxActuator.Label
-            comboBoxActuator = LblComboBoxActuator.comboBox
-            AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-            comboBoxActuator.Items.Add(StopSign.Name)
-            AddHandler comboBoxActuator.SelectionChangeCommitted, AddressOf ActuatorChanged
-            ISSDT.ToolTip.SetToolTip(lblActuator, "The actuator that controls this stop sign.")
-
-            If StopSign.StandAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            End If
-
-            Controls.Add(CheckboxStandAlone)
-            Controls.Add(lblActuator)
-            Controls.Add(comboBoxActuator)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub StandAloneChanged(ByVal sender As CheckBox, ByVal e As EventArgs)
-            StopSign.StandAlone = sender.Checked
-
-            If StopSign.StandAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            Else
-                lblActuator.Show()
-                comboBoxActuator.Show()
-            End If
-        End Sub
-
-        Private Sub ActuatorChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            StopSign.Actuator = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                checkBoxStandAlone.Checked = stopSign.standAlone
-                AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-                comboBoxActuator.SelectedIndex = comboBoxActuator.FindStringExact(stopSign.actuator)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The approach sign component.
-    ''' </summary>
-    Public Class ApproachSign : Inherits CComponent
-        Public StandAlone As Boolean = True
-        Public Actuator As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\ApproachSign.png"))
-            Size = New Size(19, 19)
-
-            Options = New ApproachSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\ApproachSign.png")))
-
-            Options = New ApproachSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the approach sign component.
-    ''' </summary>
-    Public Class ApproachSignOptions
-        Inherits Options
-
-        Dim approachSign As ApproachSign
-        Dim checkBoxStandAlone As CheckBox
-        Dim lblActuator As Label
-        Dim comboBoxActuator As ComboBox
-
-        Public Sub New(ByRef NewApproachSign As ApproachSign)
-            MyBase.New()
-            ApproachSign = NewApproachSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = ApproachSign.Name
-            textBoxType.Text = ApproachSign.Type.ToString
-
-            'Stand alone option
-            CheckboxStandAlone = CreateCheckBox("Standalone", New Size(80, 17), New Point(3, 64), True)
-            AddHandler CheckboxStandAlone.CheckedChanged, AddressOf StandAloneChanged
-            ISSDT.ToolTip.SetToolTip(CheckboxStandAlone, "Whether the approach sign has its own actuator or is controlled via another actuator.")
-
-            'Actuator option
-            Dim LblComboBoxActuator = CreateLabelAndComboBox("Actuator:", New Point(3, 88), "")
-            lblActuator = LblComboBoxActuator.Label
-            comboBoxActuator = LblComboBoxActuator.comboBox
-            AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-            comboBoxActuator.Items.Add(ApproachSign.Name)
-            AddHandler comboBoxActuator.SelectionChangeCommitted, AddressOf ActuatorChanged
-            ISSDT.ToolTip.SetToolTip(comboBoxActuator, "The actuator that controls this approach sign.")
-
-            If ApproachSign.StandAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            End If
-
-            Controls.Add(CheckboxStandAlone)
-            Controls.Add(lblActuator)
-            Controls.Add(comboBoxActuator)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Private Sub CheckChanged(ByVal sender As CheckBox, ByVal e As EventArgs)
-            ApproachSign.StandAlone = sender.Checked
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub StandAloneChanged(ByVal sender As CheckBox, ByVal e As EventArgs)
-            ApproachSign.StandAlone = sender.Checked
-
-            If ApproachSign.StandAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            Else
-                lblActuator.Show()
-                comboBoxActuator.Show()
-            End If
-        End Sub
-
-        Private Sub ActuatorChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            ApproachSign.Actuator = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                checkBoxStandAlone.Checked = approachSign.StandAlone
-                AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-                comboBoxActuator.SelectedIndex = comboBoxActuator.FindStringExact(approachSign.Actuator)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The boom barrier component.
-    ''' </summary>
-    Public Class BoomBarrier : Inherits CComponent
-        Public barrierLights As String
-        Public BarrierLightsActuator As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\BoomBarrier.png"))
-            Size = New Size(181, 25)
-
-            Options = New BoomBarrierOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\BoomBarrier.png")))
-
-            Options = New BoomBarrierOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the boom barrier component.
-    ''' </summary>
-    Public Class BoomBarrierOptions
-        Inherits Options
-
-        Dim boomBarrier As BoomBarrier
-        Dim lblBarrierLights As Label
-        Dim comboBoxBarrierLights As ComboBox
-        Dim lblBarrierLightsActuator As Label
-        Dim comboBoxBarrierLightsActuator As ComboBox
-
-        Public Sub New(ByRef NewBoomBarrier As BoomBarrier)
-            MyBase.New()
-            boomBarrier = NewBoomBarrier
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = boomBarrier.Name
-            textBoxType.Text = boomBarrier.Type.ToString
-            AddHandler boomBarrier.NameChanged, AddressOf NameChanged
-
-            'Barrier lights option
-            Dim lblComboBoxBarrierLights = CreateLabelAndComboBox("Barrier_lights", New Point(3, 64), "None")
-            lblBarrierLights = lblComboBoxBarrierLights.Label
-            comboBoxBarrierLights = lblComboBoxBarrierLights.comboBox
-            comboBoxBarrierLights.Items.AddRange({"None", "Stand alone", "Central"})
-            AddHandler comboBoxBarrierLights.SelectionChangeCommitted, AddressOf BarrierLightsChanged
-            ISSDT.ToolTip.SetToolTip(lblBarrierLights, "Whether there are barrier Lights present. Use central if it is actuated via a central actuator.")
-
-            'Barrier lights actuator option
-            Dim LblComboBoxBarrierLightsActuator = CreateLabelAndComboBox("Actuator:", New Point(3, 88), "")
-            lblBarrierLightsActuator = LblComboBoxBarrierLightsActuator.Label
-            comboBoxBarrierLightsActuator = LblComboBoxBarrierLightsActuator.comboBox
-            AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxBarrierLightsActuator)
-            AddHandler comboBoxBarrierLightsActuator.SelectionChangeCommitted, AddressOf BarrierLightsActuatorChanged
-            ISSDT.ToolTip.SetToolTip(lblBarrierLightsActuator, "The actuator that controls the barrier lights.")
-
-            lblBarrierLightsActuator.Hide()
-            comboBoxBarrierLightsActuator.Hide()
-
-            Controls.Add(lblBarrierLights)
-            Controls.Add(comboBoxBarrierLights)
-            Controls.Add(lblBarrierLightsActuator)
-            Controls.Add(comboBoxBarrierLightsActuator)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub BarrierLightsChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            boomBarrier.barrierLights = sender.SelectedItem
-        End Sub
-
-        Private Sub BarrierLightsActuatorChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            boomBarrier.BarrierLightsActuator = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                comboBoxBarrierLights.SelectedIndex = comboBoxBarrierLights.FindStringExact(boomBarrier.barrierLights)
-
-                AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxBarrierLightsActuator)
-                comboBoxBarrierLightsActuator.SelectedIndex = comboBoxBarrierLightsActuator.FindStringExact(boomBarrier.BarrierLightsActuator)
-
-                If comboBoxBarrierLights.SelectedItem IsNot "Central" Then
-                    lblBarrierLightsActuator.Hide()
-                    comboBoxBarrierLightsActuator.Hide()
-                Else
-                    lblBarrierLightsActuator.Show()
-                    comboBoxBarrierLightsActuator.Show()
-                End If
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The entering traffic sign component.
-    ''' </summary>
-    Public Class EnteringTrafficSign : Inherits CComponent
-        Public ControlledVia As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\EnteringTrafficSign.png"))
-            Size = New Size(20, 51)
-
-            Options = New EnteringTrafficSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\EnteringTrafficSign.png")))
-
-            Options = New EnteringTrafficSignOptions(Me)
-        End Sub
-    End Class
-
-    Public Class EnteringTrafficSignOptions
-        Inherits Options
-
-        Dim enteringTrafficSign As EnteringTrafficSign
-        Dim lblControlledVia As Label
-        Dim comboBoxControlledVia As ComboBox
-
-        Public Sub New(ByRef NewEnteringTrafficSign As EnteringTrafficSign)
-            MyBase.New()
-            enteringTrafficSign = NewEnteringTrafficSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name Option
-            textBoxName.Text = enteringTrafficSign.Name
-            textBoxType.Text = enteringTrafficSign.Type.ToString
-            AddHandler enteringTrafficSign.NameChanged, AddressOf NameChanged
-
-            'Controlled via option  
-            Dim LblComboBoxControlledVia = CreateLabelAndComboBox("Controlled via:", New Point(3, 64), "")
-            lblControlledVia = LblComboBoxControlledVia.Label
-            comboBoxControlledVia = LblComboBoxControlledVia.comboBox
-            AddComponentsOfTypeToComboBox(Of GUIEnteringTrafficSign)(comboBoxControlledVia)
-            AddHandler comboBoxControlledVia.SelectionChangeCommitted, AddressOf ControlledViaChanged
-            ISSDT.ToolTip.SetToolTip(lblControlledVia, "The GUI element that controls this entering traffic sign.")
-
-            Controls.Add(lblControlledVia)
-            Controls.Add(comboBoxControlledVia)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub ControlledViaChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            enteringTrafficSign.ControlledVia = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                AddComponentsOfTypeToComboBox(Of GUIEnteringTrafficSign)(comboBoxControlledVia)
-                comboBoxControlledVia.SelectedIndex = comboBoxControlledVia.FindStringExact(enteringTrafficSign.ControlledVia)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The leaving traffic sign component.
-    ''' </summary>
-    Public Class LeavingTrafficSign : Inherits CComponent
-        Public ControlledVia As String
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\LeavingTrafficSign.png"))
-            Size = New Size(22, 38)
-
-            Options = New LeavingTrafficSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\LeavingTrafficSign.png")))
-
-            Options = New LeavingTrafficSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the leaving traffic sign component.
-    ''' </summary>
-    Public Class LeavingTrafficSignOptions
-        Inherits Options
-
-        Dim LeavingTrafficSign As LeavingTrafficSign
-        Dim lblControlledVia As Label
-        Dim comboBoxControlledVia As ComboBox
-
-        Public Sub New(ByRef NewLeavingTrafficSign As LeavingTrafficSign)
-            MyBase.New()
-            LeavingTrafficSign = NewLeavingTrafficSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name options.
-            textBoxName.Text = LeavingTrafficSign.Name
-            textBoxType.Text = LeavingTrafficSign.Type.ToString
-            AddHandler LeavingTrafficSign.NameChanged, AddressOf NameChanged
-
-            'Controlled via option  
-            Dim LblComboBoxControlledVia = CreateLabelAndComboBox("Controlled via:", New Point(3, 64), "")
-            lblControlledVia = LblComboBoxControlledVia.Label
-            comboBoxControlledVia = LblComboBoxControlledVia.comboBox
-            AddComponentsOfTypeToComboBox(Of GUILeavingTrafficSign)(comboBoxControlledVia)
-            AddHandler comboBoxControlledVia.SelectionChangeCommitted, AddressOf ControlledViaChanged
-            ISSDT.ToolTip.SetToolTip(lblControlledVia, "The GUI element that controls this leaving traffic sign.")
-
-            Controls.Add(lblControlledVia)
-            Controls.Add(comboBoxControlledVia)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub ControlledViaChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            LeavingTrafficSign.ControlledVia = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                AddComponentsOfTypeToComboBox(Of GUILeavingTrafficSign)(comboBoxControlledVia)
-                comboBoxControlledVia.SelectedIndex = comboBoxControlledVia.FindStringExact(LeavingTrafficSign.ControlledVia)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The rotating bridge component.
-    ''' </summary>
-    Public Class RotatingBridge : Inherits CComponent
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\RotatingBridge.png"))
-            Size = New Size(395, 96)
-
-            Options = New RotatingBridgeOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\RotatingBridge.png")))
-
-            Options = New RotatingBridgeOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the rotating bridge component.
-    ''' </summary>
-    Public Class RotatingBridgeOptions
-        Inherits Options
-
-        Dim RotatingBridge As RotatingBridge
-
-        Public Sub New(ByRef NewRotatingBridge As RotatingBridge)
-            MyBase.New()
-            RotatingBridge = NewRotatingBridge
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            textBoxName.Text = RotatingBridge.Name
-            textBoxType.Text = RotatingBridge.Type.ToString
-            AddHandler RotatingBridge.NameChanged, AddressOf NameChanged
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                'Nothing to update
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The leaving traffic sign GUI component.
-    ''' </summary>
-    Public Class GUILeavingTrafficSign : Inherits CComponent
-        Public Green As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\OVTLGUI.png"))
-            Size = New Size(27, 51)
-
-            Options = New GUILeavingTrafficSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\OVTLGUI.png")))
-
-            Options = New GUILeavingTrafficSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the leaving traffic sign GUI component.
-    ''' </summary>
-    Public Class GUILeavingTrafficSignOptions
-        Inherits Options
-
-        Dim GUILeavingTrafficSign As GUILeavingTrafficSign
-        Dim LabelGreen As Label
-        Dim textBoxGreen As TextBox
-
-        Public Sub New(ByRef NewGUILeavingTrafficSign As GUILeavingTrafficSign)
-            MyBase.New()
-            GUILeavingTrafficSign = NewGUILeavingTrafficSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = GUILeavingTrafficSign.Name
-            textBoxType.Text = GUILeavingTrafficSign.Type.ToString
-            AddHandler GUILeavingTrafficSign.NameChanged, AddressOf NameChanged
-
-            'Green option
-            Dim LbltextBoxGreen = CreateLabelAndTextBox("Green Ok:", New Point(3, 64), "", False, 200)
-            LabelGreen = LbltextBoxGreen.Label
-            textBoxGreen = LbltextBoxGreen.textBox
-            ISSDT.ToolTip.SetToolTip(LabelGreen, "The condition for when a green command may be given.")
-            AddHandler textBoxGreen.TextChanged, AddressOf GreenChanged
-
-            Controls.Add(LabelGreen)
-            Controls.Add(textBoxGreen)
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub GreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUILeavingTrafficSign.Green = sender.Text
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                textBoxGreen.Text = GUILeavingTrafficSign.Green
-
-            End If
-        End Sub
-
-    End Class
-
-    ''' <summary>
-    ''' The entering traffic sign GUI component.
-    ''' </summary>
-    Public Class GUIEnteringTrafficSign : Inherits CComponent
-        Public Green As String
-        Public RedGreen As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\EVTLGUI.png"))
-            Size = New Size(27, 75)
-
-            Options = New GUIEnteringTrafficSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\EVTLGUI.png")))
-
-            Options = New GUIEnteringTrafficSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the entering traffic sign GUI component.
-    ''' </summary>
-    Public Class GUIEnteringTrafficSignOptions
-        Inherits Options
-
-        Dim GUIEnteringTrafficSign As GUIEnteringTrafficSign
-        Dim LabelGreen As Label
-        Dim textBoxGreen As TextBox
-        Dim LabelRedGreen As Label
-        Dim textBoxRedGreen As TextBox
-
-        Public Sub New(ByRef NewGUIEnteringTrafficSign As GUIEnteringTrafficSign)
-            MyBase.New()
-            GUIEnteringTrafficSign = NewGUIEnteringTrafficSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = GUIEnteringTrafficSign.Name
-            textBoxType.Text = GUIEnteringTrafficSign.Type.ToString
-            AddHandler GUIEnteringTrafficSign.NameChanged, AddressOf NameChanged
-
-            'Green option
-            Dim LbltextBoxGreen = CreateLabelAndTextBox("Green Ok:", New Point(3, 64), "", False, 200)
-            LabelGreen = LbltextBoxGreen.Label
-            textBoxGreen = LbltextBoxGreen.textBox
-            ISSDT.ToolTip.SetToolTip(LabelGreen, "The condition for when a green command may be given.")
-            AddHandler textBoxGreen.TextChanged, AddressOf GreenChanged
-
-            'RedGreen option
-            Dim LbltextBoxRedGreen = CreateLabelAndTextBox("Red-Green Ok:", New Point(3, 88), "", False, 200)
-            LabelRedGreen = LbltextBoxRedGreen.Label
-            textBoxRedGreen = LbltextBoxRedGreen.textBox
-            ISSDT.ToolTip.SetToolTip(LabelRedGreen, "The condition for when a red-green command may be given.")
-            AddHandler textBoxRedGreen.TextChanged, AddressOf RedGreenChanged
-
-            Controls.Add(LabelGreen)
-            Controls.Add(textBoxGreen)
-            Controls.Add(LabelRedGreen)
-            Controls.Add(textBoxRedGreen)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub GreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIEnteringTrafficSign.Green = sender.Text
-        End Sub
-
-        Private Sub RedGreenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIEnteringTrafficSign.RedGreen = sender.Text
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                textBoxGreen.Text = GUIEnteringTrafficSign.Green
-                textBoxRedGreen.Text = GUIEnteringTrafficSign.RedGreen
-            End If
-        End Sub
-
-    End Class
-
-    ''' <summary>
-    ''' The rotating bridge GUI component.
-    ''' </summary>
-    Public Class GUIRotatingBridge : Inherits CComponent
-        Public Bridge As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\RotatingBridgeGUI3.png"))
-            Size = New Size(140, 306)
-
-            Options = New GUIRotatingBridgeOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\RotatingBridgeGUI3.png")))
-
-            Options = New GUIRotatingBridgeOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the rotating bridge GUI component.
-    ''' </summary>
-    Public Class GUIRotatingBridgeOptions
-        Inherits Options
-
-        Dim GUIRotatingBridge As GUIRotatingBridge
-        Dim lblBridge As Label
-        Dim comboBoxBridge As ComboBox
-
-        Public Sub New(ByRef NewGUIRotatingBridge As GUIRotatingBridge)
-            MyBase.New()
-            GUIRotatingBridge = NewGUIRotatingBridge
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name Option
-            textBoxName.Text = GUIRotatingBridge.Name
-            textBoxType.Text = GUIRotatingBridge.Type.ToString
-            AddHandler GUIRotatingBridge.NameChanged, AddressOf NameChanged
-
-            'Bridge Option
-            Dim LblComboBoxBridge = CreateLabelAndComboBox("Bridge:", New Point(3, 64), "")
-            lblBridge = LblComboBoxBridge.Label
-            comboBoxBridge = LblComboBoxBridge.comboBox
-            AddComponentsOfTypeToComboBox(Of RotatingBridge)(comboBoxBridge)
-            AddHandler comboBoxBridge.SelectionChangeCommitted, AddressOf BridgeChanged
-            ISSDT.ToolTip.SetToolTip(lblBridge, "The bridge that is connected to this GUI element.")
-
-            Controls.Add(lblBridge)
-            Controls.Add(comboBoxBridge)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub BridgeChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            GUIRotatingBridge.Bridge = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                AddComponentsOfTypeToComboBox(Of RotatingBridge)(comboBoxBridge)
-                comboBoxBridge.SelectedIndex = comboBoxBridge.FindStringExact(GUIRotatingBridge.Bridge)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The land traffic sign GUI component.
-    ''' </summary>
-    Public Class GUIStopSign : Inherits CComponent
-        Public ActivatedCondition As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSignGUI.png"))
-            Size = New Size(27, 26)
-
-            Options = New GUIStopSignOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSignGUI.png")))
-
-            Options = New GUIStopSignOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the land traffic sign GUI component.
-    ''' </summary>
-    Public Class GUIStopSignOptions
-        Inherits Options
-
-        Dim GUIStopSign As GUIStopSign
-        Dim labelActivated As Label
-        Dim TextBoxActivated As TextBox
-
-        Public Sub New(ByRef NewGUIStopSign As GUIStopSign)
-            MyBase.New()
-            GUIStopSign = NewGUIStopSign
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = GUIStopSign.Name
-            textBoxType.Text = GUIStopSign.Type.ToString
-            AddHandler GUIStopSign.NameChanged, AddressOf NameChanged
-
-            'Enablement option
-            Dim LblTextBoxActivated = CreateLabelAndTextBox("Activated when:", New Point(3, 64), "", False, 200)
-            labelActivated = LblTextBoxActivated.Label
-            TextBoxActivated = LblTextBoxActivated.textBox
-            ISSDT.ToolTip.SetToolTip(labelActivated, "The condition for when the land traffic sign is activated.")
-            AddHandler TextBoxActivated.TextChanged, AddressOf ActivatedChanged
-
-            Controls.Add(labelActivated)
-            Controls.Add(TextBoxActivated)
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub ActivatedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIStopSign.ActivatedCondition = sender.Text
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                TextBoxActivated.Text = GUIStopSign.ActivatedCondition
-            End If
-        End Sub
-
-    End Class
-
-    ''' <summary>
-    ''' The boom barrier GUI component.
-    ''' </summary>
-    Public Class GUIBoomBarrier : Inherits CComponent
-        Public BoomBarrier As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\BoomBarrierGUI.png"))
-            Size = New Size(140, 33)
-
-            Options = New GUIBoomBarrierOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\BoomBarrierGUI.png")))
-
-            Options = New GUIBoomBarrierOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the boom barrier GUI component.
-    ''' </summary>
-    Public Class GUIBoomBarrierOptions
-        Inherits Options
-
-        Dim GUIBoomBarrier As GUIBoomBarrier
-        Dim lblBoomBarrier As Label
-        Dim comboBoxBoomBarrier As ComboBox
-
-        Public Sub New(ByRef NewGUIBoomBarrier As GUIBoomBarrier)
-            MyBase.New()
-            GUIBoomBarrier = NewGUIBoomBarrier
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name Option
-            textBoxName.Text = GUIBoomBarrier.Name
-            textBoxType.Text = GUIBoomBarrier.Type.ToString
-            AddHandler GUIBoomBarrier.NameChanged, AddressOf NameChanged
-
-            'Boom Barrier Option
-            Dim LblComboBoxBoomBarrier = CreateLabelAndComboBox("BoomBarrier:", New Point(3, 64), "")
-            lblBoomBarrier = LblComboBoxBoomBarrier.Label
-            comboBoxBoomBarrier = LblComboBoxBoomBarrier.comboBox
-            AddComponentsOfTypeToComboBox(Of BoomBarrier)(comboBoxBoomBarrier)
-            AddHandler comboBoxBoomBarrier.SelectionChangeCommitted, AddressOf BoomBarrierChanged
-            ISSDT.ToolTip.SetToolTip(lblBoomBarrier, "The boom barrier that is connected to this GUI element.")
-
-            Controls.Add(lblBoomBarrier)
-            Controls.Add(comboBoxBoomBarrier)
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub BoomBarrierChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            GUIBoomBarrier.BoomBarrier = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                AddComponentsOfTypeToComboBox(Of BoomBarrier)(comboBoxBoomBarrier)
-                comboBoxBoomBarrier.SelectedIndex = comboBoxBoomBarrier.FindStringExact(GUIBoomBarrier.BoomBarrier)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The bridge window GUI component.
-    ''' </summary>
-    Public Class GUIBridgeWindow : Inherits CComponent
-        Public LTStopped As String
-        Public LTReleased As String
-        Public BBClosed As String
-        Public BBOpen As String
-        Public BBStopped As String
-        Public BOpen As String
-        Public BClosed As String
-        Public BStopped As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Window.png"))
-            Size = New Size(122, 152)
-
-            Options = New GUIBridgeWindowOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Window.png")))
-
-            Options = New GUIBridgeWindowOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the bridge window GUI component.
-    ''' </summary>
-    Public Class GUIBridgeWindowOptions
-        Inherits Options
-
-        Dim GUIBridgeWindow As GUIBridgeWindow
-        Dim labelLTStopped As Label
-        Dim TextBoxLTStopped As TextBox
-        Dim labelLTReleased As Label
-        Dim TextBoxLTReleased As TextBox
-        Dim labelBBClosed As Label
-        Dim TextBoxBBClosed As TextBox
-        Dim labelBBOpen As Label
-        Dim TextBoxBBOpen As TextBox
-        Dim labelBBStopped As Label
-        Dim TextBoxBBStopped As TextBox
-        Dim labelBOpen As Label
-        Dim TextBoxBOpen As TextBox
-        Dim labelBClosed As Label
-        Dim TextBoxBClosed As TextBox
-        Dim labelBStopped As Label
-        Dim TextBoxBStopped As TextBox
-
-        Public Sub New(ByRef NewGUIBridgeWindow As GUIBridgeWindow)
-            MyBase.New()
-            GUIBridgeWindow = NewGUIBridgeWindow
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = GUIBridgeWindow.Name
-            textBoxType.Text = GUIBridgeWindow.Type.ToString
-            AddHandler GUIBridgeWindow.NameChanged, AddressOf NameChanged
-
-            'Land traffic stopped option
-            Dim LblTextBoxLTStopped = CreateLabelAndTextBox("LTStopped:", New Point(3, 64), "", False, 200)
-            labelLTStopped = LblTextBoxLTStopped.Label
-            TextBoxLTStopped = LblTextBoxLTStopped.textBox
-            ISSDT.ToolTip.SetToolTip(labelLTStopped, "The condition for when the land traffic is stopped.")
-            AddHandler TextBoxLTStopped.TextChanged, AddressOf LTStoppedChanged
-
-            'Land traffic released option
-            Dim LblTextBoxLTReleased = CreateLabelAndTextBox("LTReleased:", New Point(3, 88), "", False, 200)
-            labelLTReleased = LblTextBoxLTReleased.Label
-            TextBoxLTReleased = LblTextBoxLTReleased.textBox
-            ISSDT.ToolTip.SetToolTip(labelLTReleased, "The condition for when the land traffic is Released.")
-            AddHandler TextBoxLTReleased.TextChanged, AddressOf LTReleasedChanged
-
-            'Boom barrier closed option
-            Dim LblTextBoxBBClosed = CreateLabelAndTextBox("BBClosed:", New Point(3, 112), "", False, 200)
-            labelBBClosed = LblTextBoxBBClosed.Label
-            TextBoxBBClosed = LblTextBoxBBClosed.textBox
-            ISSDT.ToolTip.SetToolTip(labelBBClosed, "The condition for when the boom barrier are closed.")
-            AddHandler TextBoxBBClosed.TextChanged, AddressOf BBClosedChanged
-
-            'Boom barrier open option
-            Dim LblTextBoxBBOpen = CreateLabelAndTextBox("BBOpen:", New Point(3, 136), "", False, 200)
-            labelBBOpen = LblTextBoxBBOpen.Label
-            TextBoxBBOpen = LblTextBoxBBOpen.textBox
-            ISSDT.ToolTip.SetToolTip(labelBBOpen, "The condition for when the boom barriers are open.")
-            AddHandler TextBoxBBOpen.TextChanged, AddressOf BBOpenChanged
-
-            'Boom barrier stopped option
-            Dim LblTextBoxBBStopped = CreateLabelAndTextBox("BBStopped:", New Point(3, 160), "", False, 200)
-            labelBBStopped = LblTextBoxBBStopped.Label
-            TextBoxBBStopped = LblTextBoxBBStopped.textBox
-            ISSDT.ToolTip.SetToolTip(labelBBStopped, "The condition for when the boom barriers are stopped.")
-            AddHandler TextBoxBBStopped.TextChanged, AddressOf BBStoppedChanged
-
-            'Bridge open option
-            Dim LblTextBoxBOpen = CreateLabelAndTextBox("BOpen:", New Point(3, 184), "", False, 200)
-            labelBOpen = LblTextBoxBOpen.Label
-            TextBoxBOpen = LblTextBoxBOpen.textBox
-            ISSDT.ToolTip.SetToolTip(labelBOpen, "The condition for when the Bridge is open.")
-            AddHandler TextBoxBOpen.TextChanged, AddressOf BOpenChanged
-
-            'Bridge closed option
-            Dim LblTextBoxBClosed = CreateLabelAndTextBox("BClosed:", New Point(3, 208), "", False, 200)
-            labelBClosed = LblTextBoxBClosed.Label
-            TextBoxBClosed = LblTextBoxBClosed.textBox
-            ISSDT.ToolTip.SetToolTip(labelBClosed, "The condition for when the bridge is closed.")
-            AddHandler TextBoxBClosed.TextChanged, AddressOf BClosedChanged
-
-            'Bridge stopped option
-            Dim LblTextBoxBStopped = CreateLabelAndTextBox("BStopped:", New Point(3, 232), "", False, 200)
-            labelBStopped = LblTextBoxBStopped.Label
-            TextBoxBStopped = LblTextBoxBStopped.textBox
-            ISSDT.ToolTip.SetToolTip(labelBStopped, "The condition for when the bridge is stopped.")
-            AddHandler TextBoxBStopped.TextChanged, AddressOf BStoppedChanged
-
-            Controls.Add(labelLTStopped)
-            Controls.Add(TextBoxLTStopped)
-            Controls.Add(labelLTReleased)
-            Controls.Add(TextBoxLTReleased)
-            Controls.Add(labelBBClosed)
-            Controls.Add(TextBoxBBClosed)
-            Controls.Add(labelBBOpen)
-            Controls.Add(TextBoxBBOpen)
-            Controls.Add(labelBBStopped)
-            Controls.Add(TextBoxBBStopped)
-            Controls.Add(labelBOpen)
-            Controls.Add(TextBoxBOpen)
-            Controls.Add(labelBClosed)
-            Controls.Add(TextBoxBClosed)
-            Controls.Add(labelBStopped)
-            Controls.Add(TextBoxBStopped)
-            ISSDT.Controls.Add(Me)
-        End Sub
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub LTStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.LTStopped = sender.Text
-        End Sub
-
-        Private Sub LTReleasedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.LTReleased = sender.Text
-        End Sub
-
-        Private Sub BBClosedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BBClosed = sender.Text
-        End Sub
-
-        Private Sub BBOpenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BBOpen = sender.Text
-        End Sub
-
-        Private Sub BBStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BBStopped = sender.Text
-        End Sub
-
-        Private Sub BOpenChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BOpen = sender.Text
-        End Sub
-
-        Private Sub BClosedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BClosed = sender.Text
-        End Sub
-
-        Private Sub BStoppedChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            GUIBridgeWindow.BStopped = sender.Text
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                TextBoxLTStopped.Text = GUIBridgeWindow.LTStopped
-                TextBoxLTReleased.Text = GUIBridgeWindow.LTReleased
-                TextBoxBBClosed.Text = GUIBridgeWindow.BBClosed
-                TextBoxBBOpen.Text = GUIBridgeWindow.BBOpen
-                TextBoxBBStopped.Text = GUIBridgeWindow.BBStopped
-                TextBoxBOpen.Text = GUIBridgeWindow.BOpen
-                TextBoxBClosed.Text = GUIBridgeWindow.BClosed
-                TextBoxBStopped.Text = GUIBridgeWindow.BStopped
-
-            End If
-        End Sub
-
-    End Class
 
     Public Class Square : Inherits CComponent
         Public Sub New(newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
@@ -1151,449 +55,6 @@
             textBoxName.Text = NewName
         End Sub
     End Class
-
-    ''' <summary>
-    ''' The Timer component.
-    ''' </summary>
-    Public Class Timer : Inherits CComponent
-        Public duration As String = ""
-        Public startCondition As String = ""
-        Public stopCondition As String = ""
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Timer.png"))
-            Size = New Size(30, 36)
-
-            Options = New TimerOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Timer.png")))
-
-            Options = New TimerOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the Timer component.
-    ''' </summary>
-    Public Class TimerOptions
-        Inherits Options
-
-        Dim timer As Timer
-        Dim lblDuration As Label
-        Dim textBoxDuration As TextBox
-        Dim lblStartCondition As Label
-        Dim textBoxStartCondition As TextBox
-        Dim lblStopCondition As Label
-        Dim textBoxStopCondition As TextBox
-
-        Public Sub New(ByRef newTimer As Timer)
-            MyBase.New()
-            timer = newTimer
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = timer.Name
-            textBoxType.Text = timer.Type.ToString
-            AddHandler timer.NameChanged, AddressOf NameChanged
-
-            'Duration option
-            Dim LbltextBoxDuration = CreateLabelAndTextBox("Duration [s]:", New Point(3, 64), "", False)
-            lblDuration = LbltextBoxDuration.Label
-            textBoxDuration = LbltextBoxDuration.textBox
-            ISSDT.ToolTip.SetToolTip(lblDuration, "The duration of the timer in seconds.")
-            AddHandler textBoxDuration.TextChanged, AddressOf DurationChanged
-
-            'StartCondition option
-            Dim LbltextBoxStartCondition = CreateLabelAndTextBox("StartCondition:", New Point(3, 88), "", False, 200)
-            lblStartCondition = LbltextBoxStartCondition.Label
-            textBoxStartCondition = LbltextBoxStartCondition.textBox
-            ISSDT.ToolTip.SetToolTip(lblStartCondition, "The start condition of the timer.")
-            AddHandler textBoxStartCondition.TextChanged, AddressOf StartConditionChanged
-
-            'StopCondition option
-            Dim LbltextBoxStopCondition = CreateLabelAndTextBox("StopCondition:", New Point(3, 112), "", False, 200)
-            lblStopCondition = LbltextBoxStopCondition.Label
-            textBoxStopCondition = LbltextBoxStopCondition.textBox
-            ISSDT.ToolTip.SetToolTip(lblStopCondition, "The stop condition of the timer.")
-            AddHandler textBoxStopCondition.TextChanged, AddressOf StopConditionChanged
-
-            Controls.Add(lblDuration)
-            Controls.Add(textBoxDuration)
-            Controls.Add(lblStartCondition)
-            Controls.Add(textBoxStartCondition)
-            Controls.Add(lblStopCondition)
-            Controls.Add(textBoxStopCondition)
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub DurationChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            timer.duration = sender.Text
-            VerifyNumericTextBox(textBoxDuration)
-        End Sub
-
-        Private Sub StartConditionChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            timer.startCondition = sender.Text
-        End Sub
-
-        Private Sub StopConditionChanged(ByVal sender As TextBox, ByVal e As EventArgs)
-            timer.stopCondition = sender.Text
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                textBoxDuration.Text = timer.duration
-                textBoxStartCondition.Text = timer.startCondition
-                textBoxStopCondition.Text = timer.stopCondition
-            End If
-        End Sub
-
-    End Class
-
-    ''' <summary>
-    ''' The actuator component.
-    ''' </summary>
-    Public Class Actuator : Inherits CComponent
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Actuator.png"))
-            Size = New Size(19, 19)
-
-            Options = New ActuatorOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Actuator.png")))
-
-            Options = New ActuatorOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the actuator component. 
-    ''' </summary>
-    Public Class ActuatorOptions
-        Inherits Options
-
-        Dim actuator As Actuator
-
-        Public Sub New(ByRef newActuator As Actuator)
-            MyBase.New()
-            actuator = newActuator
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = actuator.Name
-            textBoxType.Text = actuator.Type.ToString
-            AddHandler actuator.NameChanged, AddressOf NameChanged
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The sensor component.
-    ''' </summary>
-    Public Class Sensor : Inherits CComponent
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Sensor.png"))
-            Size = New Size(19, 19)
-
-            Options = New SensorOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Sensor.png")))
-
-            Options = New SensorOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the sensor component. 
-    ''' </summary>
-    Public Class SensorOptions
-        Inherits Options
-
-        Dim sensor As Sensor
-
-        Public Sub New(ByRef newSensor As Sensor)
-            MyBase.New()
-            sensor = newSensor
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = sensor.Name
-            textBoxType.Text = sensor.Type.ToString
-            AddHandler sensor.NameChanged, AddressOf NameChanged
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The double stop sign component.
-    ''' </summary>
-    Public Class StopSignDouble : Inherits CComponent
-        Public standAlone As Boolean = True
-        Public actuator As String
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSignDouble.png"))
-            Size = New Size(43, 23)
-
-            Options = New StopSignDoubleOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\StopSignDouble.png")))
-
-            Options = New StopSignDoubleOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the double stop sign component. 
-    ''' </summary>
-    Public Class StopSignDoubleOptions
-        Inherits Options
-
-        Dim stopSignDouble As StopSignDouble
-        Dim checkBoxStandAlone As CheckBox
-        Dim lblActuator As Label
-        Dim comboBoxActuator As ComboBox
-
-        Public Sub New(ByRef NewStopSignDouble As StopSignDouble)
-            MyBase.New()
-            stopSignDouble = NewStopSignDouble
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            'Name option
-            textBoxName.Text = stopSignDouble.Name
-            textBoxType.Text = stopSignDouble.Type.ToString
-            AddHandler stopSignDouble.NameChanged, AddressOf NameChanged
-
-            'Stand alone option
-            checkBoxStandAlone = CreateCheckBox("Standalone", New Size(80, 17), New Point(3, 64), True)
-            AddHandler checkBoxStandAlone.CheckedChanged, AddressOf StandAloneChanged
-            ISSDT.ToolTip.SetToolTip(checkBoxStandAlone, "Whether the stop sign has its own actuator or is controlled via another actuator.")
-
-            'Actuator option
-            Dim LblComboBoxActuator = CreateLabelAndComboBox("Actuator:", New Point(3, 88), "")
-            lblActuator = LblComboBoxActuator.Label
-            comboBoxActuator = LblComboBoxActuator.comboBox
-            AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-            comboBoxActuator.Items.Add(stopSignDouble.Name)
-            AddHandler comboBoxActuator.SelectionChangeCommitted, AddressOf ActuatorChanged
-            ISSDT.ToolTip.SetToolTip(lblActuator, "The actuator that controls this stop sign.")
-
-            If stopSignDouble.standAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            End If
-
-            Controls.Add(checkBoxStandAlone)
-            Controls.Add(lblActuator)
-            Controls.Add(comboBoxActuator)
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub StandAloneChanged(ByVal sender As CheckBox, ByVal e As EventArgs)
-            stopSignDouble.standAlone = sender.Checked
-
-            If stopSignDouble.standAlone Then
-                lblActuator.Hide()
-                comboBoxActuator.Hide()
-            Else
-                lblActuator.Show()
-                comboBoxActuator.Show()
-            End If
-        End Sub
-
-        Private Sub ActuatorChanged(ByVal sender As ComboBox, ByVal e As EventArgs)
-            stopSignDouble.actuator = sender.SelectedItem
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                checkBoxStandAlone.Checked = stopSignDouble.standAlone
-                AddComponentsOfTypeToComboBox(Of StopSign, ApproachSign, Actuator)(comboBoxActuator)
-                comboBoxActuator.SelectedIndex = comboBoxActuator.FindStringExact(stopSignDouble.actuator)
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The draw bridge component.
-    ''' </summary>
-    Public Class DrawBridge : Inherits CComponent
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\DrawBridge.png"))
-            Size = New Size(384, 97)
-
-            Options = New DrawBridgeOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\DrawBridge.png")))
-
-            Options = New DrawBridgeOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the draw bridge component.
-    ''' </summary>
-    Public Class DrawBridgeOptions
-        Inherits Options
-
-        Dim DrawBridge As DrawBridge
-
-        Public Sub New(ByRef NewDrawBridge As DrawBridge)
-            MyBase.New()
-            DrawBridge = NewDrawBridge
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            textBoxName.Text = DrawBridge.Name
-            textBoxType.Text = DrawBridge.Type.ToString
-            AddHandler DrawBridge.NameChanged, AddressOf NameChanged
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                'Nothing to update
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-
-
-
-
-
-    ''' <summary>
-    ''' The quay component.
-    ''' </summary>
-    Public Class Quay : Inherits CComponent
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
-            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png"))
-            Size = New Size(300, 100)
-
-            Options = New QuayOptions(Me)
-        End Sub
-
-        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
-            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png")))
-
-            Options = New QuayOptions(Me)
-        End Sub
-    End Class
-
-    ''' <summary>
-    ''' The option window for the quay component.
-    ''' </summary>
-    Public Class QuayOptions
-        Inherits Options
-
-        Dim Quay As Quay
-
-        Public Sub New(ByRef NewQuay As Quay)
-            MyBase.New()
-            Quay = NewQuay
-            AddHandler VisibleChanged, AddressOf UpdateOptionWindowValues
-
-            textBoxName.Text = Quay.Name
-            textBoxType.Text = Quay.Type.ToString
-            textBoxWaterway.Text = Quay.Waterway
-            AddHandler Quay.NameChanged, AddressOf NameChanged
-
-            ISSDT.Controls.Add(Me)
-        End Sub
-
-        Public Sub NameChanged(Sender As CComponent, NewName As String)
-            textBoxName.Text = NewName
-        End Sub
-
-        Private Sub UpdateOptionWindowValues()
-            If Visible Then
-                'Nothing to update
-
-                VerifyAll()
-            End If
-        End Sub
-
-        Public Sub VerifyAll()
-            'Nothing to verify
-        End Sub
-    End Class
-
-
-
-
-
 
 
 
@@ -1657,6 +118,308 @@
             textLabel.Text = sender.Text
         End Sub
     End Class
+
+
+
+
+    ''' <summary>
+    ''' The mitre gate component.
+    ''' </summary>
+    Public Class MitreGate : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\MitreGate.png"))
+            Size = New Size(60, 100)
+
+            Options = New MitreGateOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\MitreGate.png")))
+
+            Options = New MitreGateOptions(Me)
+        End Sub
+    End Class
+
+    ''' <summary>
+    ''' The option window for the mitre gate component.
+    ''' </summary>
+    Public Class MitreGateOptions
+        Inherits Options
+
+        Dim mitregate As MitreGate
+
+        Public Sub New(ByRef NewMitreGate As MitreGate)
+            MyBase.New()
+            mitregate = NewMitreGate
+
+            'Name Option
+            textBoxName.Text = mitregate.Name
+            textBoxType.Text = mitregate.Type.ToString
+            AddHandler mitregate.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' <summary>
+    ''' The traffic light entering component.
+    ''' </summary>
+    Public Class TL_Entering : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\TL_Entering.png"))
+            Size = New Size(30, 75)
+
+            Options = New TL_EnteringOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\TL_Entering.png")))
+
+            Options = New TL_EnteringOptions(Me)
+        End Sub
+
+    End Class
+
+    ''' <summary>
+    ''' The option window for the traffic light entering component.
+    ''' </summary>
+    Public Class TL_EnteringOptions
+        Inherits Options
+
+        Dim tl_entering As TL_Entering
+
+        Public Sub New(ByRef NewTL_Entering As TL_Entering)
+            MyBase.New()
+            TL_Entering = NewTL_Entering
+
+            'Name Option
+            textBoxName.Text = tl_entering.Name
+            textBoxType.Text = tl_entering.Type.ToString
+            AddHandler tl_entering.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' <summary>
+    ''' The traffic light leaving component.
+    ''' </summary>
+    Public Class TL_Leaving : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\TL_Leaving.png"))
+            Size = New Size(25, 50)
+
+            Options = New TL_LeavingOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\TL_Leaving.png")))
+
+            Options = New TL_LeavingOptions(Me)
+        End Sub
+
+    End Class
+
+    ''' <summary>
+    ''' The option window for the traffic light leaving component.
+    ''' </summary>
+    Public Class TL_LeavingOptions
+        Inherits Options
+
+        Dim tl_leaving As TL_Leaving
+
+        Public Sub New(ByRef NewTL_Leaving As TL_Leaving)
+            MyBase.New()
+            tl_leaving = NewTL_Leaving
+
+            'Name Option
+            textBoxName.Text = tl_leaving.Name
+            textBoxType.Text = tl_leaving.Type.ToString
+            AddHandler tl_leaving.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' <summary>
+    ''' The lock wall component.
+    ''' </summary>
+    Public Class LockWall : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\LockWall.png"))
+            Size = New Size(100, 20)
+
+            Options = New LockWallOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\LockWall.png")))
+
+            Options = New LockWallOptions(Me)
+        End Sub
+
+    End Class
+
+    ''' <summary>
+    ''' The option window for the lock wall component.
+    ''' </summary>
+    Public Class LockWallOptions
+        Inherits Options
+
+        Dim lock_wall As LockWall
+
+        Public Sub New(ByRef NewLockWall As LockWall)
+            MyBase.New()
+            lock_wall = NewLockWall
+
+            'Name Option
+            textBoxName.Text = lock_wall.Name
+            textBoxType.Text = lock_wall.Type.ToString
+            AddHandler lock_wall.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' <summary>
+    ''' The water component.
+    ''' </summary>
+    Public Class Water : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Water.png"))
+            Size = New Size(200, 100)
+
+            Options = New WaterOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Water.png")))
+
+            Options = New WaterOptions(Me)
+        End Sub
+
+    End Class
+
+    ''' <summary>
+    ''' The option window for the water component.
+    ''' </summary>
+    Public Class WaterOptions
+        Inherits Options
+
+        Dim water As Water
+
+        Public Sub New(ByRef NewWater As Water)
+            MyBase.New()
+            water = NewWater
+
+            'Name Option
+            textBoxName.Text = water.Name
+            textBoxType.Text = water.Type.ToString
+            AddHandler water.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' <summary>
+    ''' The quay component.
+    ''' </summary>
+    Public Class Quay : Inherits CComponent
+
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, ByRef newCanvas As CCanvas)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas)
+            Image = Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png"))
+            Size = New Size(250, 50)
+
+            Options = New QuayOptions(Me)
+        End Sub
+        Public Sub New(NewName As String, newComponentType As ComponentTypesEnum, NewLocation As Point, newCanvas As CCanvas, NewSize As Size, NewRotation As Integer, NewColor As Color)
+            MyBase.New(NewName, newComponentType, NewLocation, newCanvas, NewSize, NewRotation, NewColor, Image.FromFile(System.IO.Path.Combine(path, "Icons\Quay.png")))
+
+            Options = New QuayOptions(Me)
+        End Sub
+
+    End Class
+
+    ''' <summary>
+    ''' The option window for the quay component.
+    ''' </summary>
+    Public Class QuayOptions
+        Inherits Options
+
+        Dim quay As Quay
+
+        Public Sub New(ByRef NewQuay As Quay)
+            MyBase.New()
+            quay = NewQuay
+
+            'Name Option
+            textBoxName.Text = quay.Name
+            textBoxType.Text = quay.Type.ToString
+            AddHandler quay.NameChanged, AddressOf NameChanged
+
+            ISSDT.Controls.Add(Me)
+        End Sub
+
+        Public Sub NameChanged(Sender As CComponent, NewName As String)
+            textBoxName.Text = NewName
+        End Sub
+
+    End Class
+
+
+
+
+    ''' -------------------------------------------------------------------------------------------------------------------------------------------------------
+    ''' --------------------------------------------------END COMPONENT DECLARATION----------------------------------------------------------------------------
+    ''' -------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
     ''' <summary>
     ''' Base class for the option window, must be inheritted.

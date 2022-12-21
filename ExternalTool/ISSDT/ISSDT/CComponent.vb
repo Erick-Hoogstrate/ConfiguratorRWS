@@ -197,7 +197,7 @@
             Dim item5 As ToolStripMenuItem = New ToolStripMenuItem("Raise to top", Nothing, AddressOf BringToFront)
             Dim item6 As ToolStripMenuItem = New ToolStripMenuItem("Send to bottom", Nothing, AddressOf SendToBack)
 
-            cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6, item7})
+            cms.Items.AddRange(New System.Windows.Forms.ToolStripItem() {item1, item2, item3, item4, item5, item6})
             cms.Show(comp, e.Location)
         End If
     End Sub

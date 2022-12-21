@@ -64,60 +64,23 @@
                 Exit Sub
             End If
 
-            If ISSDT.toolSelected = ComponentTypesEnum.StopSign Then
-                comp = New StopSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+            If ISSDT.toolSelected = ComponentTypesEnum.MitreGate Then
+                comp = New MitreGate(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
+            ElseIf ISSDT.toolSelected = ComponentTypesEnum.TL_Entering Then
+                comp = New TL_Entering(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
+            ElseIf ISSDT.toolSelected = ComponentTypesEnum.TL_Leaving Then
+                comp = New TL_Leaving(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
+            ElseIf ISSDT.toolSelected = ComponentTypesEnum.LockWall Then
+                comp = New LockWall(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
+
+            ElseIf ISSDT.toolSelected = ComponentTypesEnum.Water Then
+                comp = New Water(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
 
             ElseIf ISSDT.toolSelected = ComponentTypesEnum.Quay Then
                 comp = New Quay(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.ApproachSign Then
-                comp = New ApproachSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.BoomBarrier Then
-                comp = New BoomBarrier(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.EnteringTrafficSign Then
-                comp = New EnteringTrafficSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.LeavingTrafficSign Then
-                comp = New LeavingTrafficSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.RotatingBridge Then
-                comp = New RotatingBridge(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUILeavingTrafficSign Then
-                comp = New GUILeavingTrafficSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUIEnteringTrafficSign Then
-                comp = New GUIEnteringTrafficSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUIRotatingBridge Then
-                comp = New GUIRotatingBridge(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUIStopSign Then
-                comp = New GUIStopSign(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUIBoomBarrier Then
-                comp = New GUIBoomBarrier(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.GUIBridgeWindow Then
-                comp = New GUIBridgeWindow(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.Timer Then
-                comp = New Timer(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.Actuator Then
-                comp = New Actuator(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.Sensor Then
-                comp = New Sensor(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.StopSignDouble Then
-                comp = New StopSignDouble(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
-            ElseIf ISSDT.toolSelected = ComponentTypesEnum.DrawBridge Then
-                comp = New DrawBridge(NewComponentName, ISSDT.toolSelected, New Point(e.X, e.Y), Me)
-
 
             Else
                 MsgBox("Error")

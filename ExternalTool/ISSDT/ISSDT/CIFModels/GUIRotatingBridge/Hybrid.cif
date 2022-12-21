@@ -1,7 +1,0 @@
-group $name$: //$type$
-  svgout id "$name$.background" attr "fill"   value if $bridge$.Open:               "none"   elif $bridge$.Moving: "yellow" else "white" end file $filename$;
-  svgout id "$name$.background" attr "stroke" value if $bridge$.Open and $bridge$.Moving: "yellow" elif $bridge$.Open:   "white"  else "none"  end file $filename$;
-  svgout id "$name$.rotate"     attr "transform" value if $bridge$.Closed: "rotate(0)"
-                                                     elif $bridge$.Open:   "rotate(90)"
-                                                     else                  "rotate(45)" end file $filename$;
-end
