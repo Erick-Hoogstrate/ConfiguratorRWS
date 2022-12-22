@@ -1,5 +1,5 @@
 {
-  "name": "henk",
+  "name": "MyConfiguration12222022",
   "cluster": "5",
   "waterways": [
     {
@@ -9,6 +9,69 @@
         0
       ],
       "name": "Template",
+      "doors": [],
+      "traffic_lights": [],
+      "walls": [],
+      "water": [
+        {
+          "length": "100",
+          "width": "100",
+          "position": [
+            "458",
+            "336",
+            0
+          ]
+        },
+        {
+          "length": "100",
+          "width": "100",
+          "position": [
+            "661",
+            "515",
+            0
+          ]
+        },
+        {
+          "length": "100",
+          "width": "100",
+          "position": [
+            "675",
+            "200",
+            0
+          ]
+        },
+        {
+          "length": "100",
+          "width": "100",
+          "position": [
+            "421",
+            "187",
+            0
+          ]
+        }
+      ],
+      "embankments": []
+    },
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "name": "Waterway1",
+      "doors": [],
+      "traffic_lights": [],
+      "walls": [],
+      "water": [],
+      "embankments": []
+    },
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "name": "Waterway2",
       "doors": [],
       "traffic_lights": [],
       "walls": [],

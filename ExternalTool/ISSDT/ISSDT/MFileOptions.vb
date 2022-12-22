@@ -237,11 +237,14 @@ Module MFileOptions
 
         If name = "" Then
             name = "MyConfiguration" + Date.Now.ToString("MMddyyyy")
-
         End If
 
         Dim cluster As Integer
-        cluster = InputBox(Prompt:="To which cluster does this configuration belong?", DefaultResponse:=5)
+        Dim dummycluster = InputBox(Prompt:="To which cluster does this configuration belong?", DefaultResponse:=5)
+
+        If dummycluster = "" Or dummycluster = "5" Then
+            cluster = 5
+        End If
 
 
         Dim tempvarposition = New Newtonsoft.Json.Linq.JArray({0, 0, 0})
@@ -275,14 +278,6 @@ Module MFileOptions
         Catch ex As Exception
             initial = New Newtonsoft.Json.Linq.JObject()
         End Try
-
-
-
-        'MsgBox(overview.Rows)
-
-
-
-
 
 
 
@@ -374,21 +369,136 @@ Module MFileOptions
 
 
         'Define general waterway Json structure
-        Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
-        waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+        Dim waterwaysinit1 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("name", "Waterway1"))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        Dim waterwaysinit2 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("name", "Waterway2"))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit2.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        Dim waterwaysinit3 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("name", "Waterway3"))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit3.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        Dim waterwaysinit4 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("name", "Waterway4"))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit4.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        Dim waterwaysinit5 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("name", "Waterway5"))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+
+        ''Define general waterway Json structure
+        'Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
+        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
+
+        ''Add general waterway Json structure
+        'Dim waterway2 As JArray = initial("waterways")
+        'waterway2.Add(waterwaysinit)
+
+
+
+        'Dim variables As New Dictionary(Of String, Newtonsoft.Json.Linq.JObject)()
+        'variables("waterwaysinit1") = waterwaysinit1
+        'variables("waterwaysinit2") = waterwaysinit2
+        'variables("waterwaysinit3") = waterwaysinit3
+        'variables("waterwaysinit4") = waterwaysinit4
+        'variables("waterwaysinit5") = waterwaysinit5
+
+        'Dim value1 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit1")
+        'Dim value2 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit2")
+        'Dim value3 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit3")
+        'Dim value4 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit4")
+        'Dim value5 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit5")
+
 
         'Add general waterway Json structure
         Dim waterway As JArray = initial("waterways")
-        waterway.Add(waterwaysinit)
+        'value2("name") = "Hendriks"
+
+
+        Dim activate1 = False
+        Dim activate2 = False
+        Dim activate3 = False
+        Dim activate4 = False
+        Dim activate5 = False
+
+
+        For Each row As DataGridViewRow In ISSDT.DGVoverview.Rows
+            If row.Cells(0).Value = 1 And Not activate1 Then
+                waterway.Add(waterwaysinit1)
+                activate1 = True
+            ElseIf row.Cells(0).Value = 2 And Not activate2 Then
+                waterway.Add(waterwaysinit2)
+                activate2 = True
+            ElseIf row.Cells(0).Value = 3 And Not activate3 Then
+                waterway.Add(waterwaysinit3)
+                activate3 = True
+            ElseIf row.Cells(0).Value = 4 And Not activate4 Then
+                waterway.Add(waterwaysinit4)
+                activate4 = True
+            ElseIf row.Cells(0).Value = 5 And Not activate5 Then
+                waterway.Add(waterwaysinit5)
+                activate5 = True
+            End If
+        Next
+
+
+
 
 
         For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
+
+            Dim waterwaysinit = waterwaysinit1
+            For Each row As DataGridViewRow In ISSDT.DGVoverview.Rows
+                If row.Cells(1).Value = comp.Name Then
+                    If row.Cells(0).Value = 1 Then
+                        waterwaysinit = waterwaysinit1
+                    ElseIf row.Cells(0).Value = 2 Then
+                        waterwaysinit = waterwaysinit2
+                    ElseIf row.Cells(0).Value = 3 Then
+                        waterwaysinit = waterwaysinit3
+                    ElseIf row.Cells(0).Value = 4 Then
+                        waterwaysinit = waterwaysinit4
+                    ElseIf row.Cells(0).Value = 5 Then
+                        waterwaysinit = waterwaysinit5
+                    End If
+
+                End If
+            Next
 
 
             If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.MitreGate Then
@@ -470,9 +580,8 @@ Module MFileOptions
 
             End If
 
+
         Next
-
-
 
 
         'Data to store

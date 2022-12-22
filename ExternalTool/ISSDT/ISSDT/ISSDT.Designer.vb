@@ -30,10 +30,6 @@ Partial Class ISSDT
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.DGVoverview = New System.Windows.Forms.DataGridView()
-        Me.Waterway = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,18 +44,7 @@ Partial Class ISSDT
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabTools = New System.Windows.Forms.TabPage()
-        Me.QuayTool = New CTool()
-        Me.WaterTool = New CTool()
-        Me.LockWallTool = New CTool()
-        Me.MitreGateTool = New CTool()
-        Me.TL_LeavingTool = New CTool()
-        Me.TL_EnteringTool = New CTool()
-        Me.CTool1 = New CTool()
-        Me.ToolGUIOutgoingTrafficSign = New CTool()
-        Me.ToolGUIEnteringTrafficSign = New CTool()
         Me.TabDrawings = New System.Windows.Forms.TabPage()
-        Me.LblTextLabel = New CTool()
-        Me.LblSquare = New CTool()
         Me.pnlColors = New System.Windows.Forms.Panel()
         Me.lblColorWhite = New System.Windows.Forms.Label()
         Me.lblColorWeg = New System.Windows.Forms.Label()
@@ -69,9 +54,24 @@ Partial Class ISSDT
         Me.MenuItemDeleteRow = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveFileDialogJSON = New System.Windows.Forms.SaveFileDialog()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.canvasPlant = New CCanvas()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.canvasPlant = New CCanvas()
+        Me.QuayTool = New CTool()
+        Me.WaterTool = New CTool()
+        Me.LockWallTool = New CTool()
+        Me.MitreGateTool = New CTool()
+        Me.TL_LeavingTool = New CTool()
+        Me.TL_EnteringTool = New CTool()
+        Me.CTool1 = New CTool()
+        Me.ToolGUIOutgoingTrafficSign = New CTool()
+        Me.ToolGUIEnteringTrafficSign = New CTool()
+        Me.LblTextLabel = New CTool()
+        Me.LblSquare = New CTool()
         Me.CToolBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Waterway = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ObjectName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObjectID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DGVoverview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl.SuspendLayout()
@@ -123,47 +123,8 @@ Partial Class ISSDT
         Me.DGVoverview.Margin = New System.Windows.Forms.Padding(4)
         Me.DGVoverview.Name = "DGVoverview"
         Me.DGVoverview.RowHeadersWidth = 51
-        Me.DGVoverview.Size = New System.Drawing.Size(501, 310)
+        Me.DGVoverview.Size = New System.Drawing.Size(579, 310)
         Me.DGVoverview.TabIndex = 15
-        '
-        'Waterway
-        '
-        Me.Waterway.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Waterway.Frozen = True
-        Me.Waterway.HeaderText = "Waterway"
-        Me.Waterway.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.Waterway.MinimumWidth = 6
-        Me.Waterway.Name = "Waterway"
-        Me.Waterway.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Waterway.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Waterway.Width = 75
-        '
-        'ObjectName
-        '
-        Me.ObjectName.Frozen = True
-        Me.ObjectName.HeaderText = "Name"
-        Me.ObjectName.MinimumWidth = 6
-        Me.ObjectName.Name = "ObjectName"
-        Me.ObjectName.ReadOnly = True
-        Me.ObjectName.Width = 125
-        '
-        'ObjectType
-        '
-        Me.ObjectType.Frozen = True
-        Me.ObjectType.HeaderText = "Type"
-        Me.ObjectType.MinimumWidth = 6
-        Me.ObjectType.Name = "ObjectType"
-        Me.ObjectType.ReadOnly = True
-        Me.ObjectType.Width = 125
-        '
-        'ObjectID
-        '
-        Me.ObjectID.Frozen = True
-        Me.ObjectID.HeaderText = "ObjectID"
-        Me.ObjectID.MinimumWidth = 6
-        Me.ObjectID.Name = "ObjectID"
-        Me.ObjectID.ReadOnly = True
-        Me.ObjectID.Width = 70
         '
         'btRefresh
         '
@@ -254,7 +215,7 @@ Partial Class ISSDT
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.InfoToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1870, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1934, 28)
         Me.MenuStrip1.TabIndex = 17
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -289,6 +250,113 @@ Partial Class ISSDT
         Me.TabTools.Size = New System.Drawing.Size(483, 359)
         Me.TabTools.TabIndex = 0
         Me.TabTools.Text = "Components"
+        '
+        'TabDrawings
+        '
+        Me.TabDrawings.BackColor = System.Drawing.SystemColors.Control
+        Me.TabDrawings.Controls.Add(Me.LblTextLabel)
+        Me.TabDrawings.Controls.Add(Me.LblSquare)
+        Me.TabDrawings.Controls.Add(Me.pnlColors)
+        Me.TabDrawings.Location = New System.Drawing.Point(4, 25)
+        Me.TabDrawings.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabDrawings.Name = "TabDrawings"
+        Me.TabDrawings.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabDrawings.Size = New System.Drawing.Size(483, 359)
+        Me.TabDrawings.TabIndex = 1
+        Me.TabDrawings.Text = "Drawing"
+        '
+        'pnlColors
+        '
+        Me.pnlColors.Controls.Add(Me.lblColorWhite)
+        Me.pnlColors.Controls.Add(Me.lblColorWeg)
+        Me.pnlColors.Controls.Add(Me.LblColorWaterweg)
+        Me.pnlColors.Location = New System.Drawing.Point(11, 273)
+        Me.pnlColors.Margin = New System.Windows.Forms.Padding(4)
+        Me.pnlColors.Name = "pnlColors"
+        Me.pnlColors.Size = New System.Drawing.Size(461, 52)
+        Me.pnlColors.TabIndex = 23
+        '
+        'lblColorWhite
+        '
+        Me.lblColorWhite.BackColor = System.Drawing.Color.White
+        Me.lblColorWhite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblColorWhite.Location = New System.Drawing.Point(81, 12)
+        Me.lblColorWhite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblColorWhite.Name = "lblColorWhite"
+        Me.lblColorWhite.Size = New System.Drawing.Size(31, 28)
+        Me.lblColorWhite.TabIndex = 2
+        '
+        'lblColorWeg
+        '
+        Me.lblColorWeg.BackColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        Me.lblColorWeg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblColorWeg.Location = New System.Drawing.Point(43, 12)
+        Me.lblColorWeg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblColorWeg.Name = "lblColorWeg"
+        Me.lblColorWeg.Size = New System.Drawing.Size(31, 28)
+        Me.lblColorWeg.TabIndex = 1
+        '
+        'LblColorWaterweg
+        '
+        Me.LblColorWaterweg.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(144, Byte), Integer))
+        Me.LblColorWaterweg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblColorWaterweg.Location = New System.Drawing.Point(4, 12)
+        Me.LblColorWaterweg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblColorWaterweg.Name = "LblColorWaterweg"
+        Me.LblColorWaterweg.Size = New System.Drawing.Size(31, 28)
+        Me.LblColorWaterweg.TabIndex = 0
+        '
+        'DeleteRequirement
+        '
+        Me.DeleteRequirement.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.DeleteRequirement.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemDeleteRow})
+        Me.DeleteRequirement.Name = "DeleteRow"
+        Me.DeleteRequirement.Size = New System.Drawing.Size(208, 28)
+        '
+        'MenuItemDeleteRow
+        '
+        Me.MenuItemDeleteRow.Name = "MenuItemDeleteRow"
+        Me.MenuItemDeleteRow.Size = New System.Drawing.Size(207, 24)
+        Me.MenuItemDeleteRow.Text = "Delete requirement"
+        '
+        'SaveFileDialogJSON
+        '
+        Me.SaveFileDialogJSON.DefaultExt = "json"
+        Me.SaveFileDialogJSON.FileName = "Configuration"
+        Me.SaveFileDialogJSON.Filter = "JSON file (*.json)|*.json"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.AutoScroll = True
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.TabPage3.Controls.Add(Me.canvasPlant)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabPage3.Size = New System.Drawing.Size(1339, 983)
+        Me.TabPage3.TabIndex = 0
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Location = New System.Drawing.Point(0, 33)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1347, 1012)
+        Me.TabControl1.TabIndex = 22
+        '
+        'canvasPlant
+        '
+        Me.canvasPlant.AutoScroll = True
+        Me.canvasPlant.BackColor = System.Drawing.Color.White
+        Me.canvasPlant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.canvasPlant.Location = New System.Drawing.Point(5, 5)
+        Me.canvasPlant.Margin = New System.Windows.Forms.Padding(4)
+        Me.canvasPlant.Name = "canvasPlant"
+        Me.canvasPlant.Size = New System.Drawing.Size(1326, 970)
+        Me.canvasPlant.TabIndex = 0
         '
         'QuayTool
         '
@@ -392,20 +460,6 @@ Partial Class ISSDT
         Me.ToolGUIEnteringTrafficSign.TabIndex = 41
         Me.ToolGUIEnteringTrafficSign.toolType = MComponentTypes.ComponentTypesEnum.NoType
         '
-        'TabDrawings
-        '
-        Me.TabDrawings.BackColor = System.Drawing.SystemColors.Control
-        Me.TabDrawings.Controls.Add(Me.LblTextLabel)
-        Me.TabDrawings.Controls.Add(Me.LblSquare)
-        Me.TabDrawings.Controls.Add(Me.pnlColors)
-        Me.TabDrawings.Location = New System.Drawing.Point(4, 25)
-        Me.TabDrawings.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabDrawings.Name = "TabDrawings"
-        Me.TabDrawings.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabDrawings.Size = New System.Drawing.Size(483, 359)
-        Me.TabDrawings.TabIndex = 1
-        Me.TabDrawings.Text = "Drawing"
-        '
         'LblTextLabel
         '
         Me.LblTextLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -429,102 +483,48 @@ Partial Class ISSDT
         Me.LblSquare.TabIndex = 27
         Me.LblSquare.toolType = MComponentTypes.ComponentTypesEnum.Square
         '
-        'pnlColors
-        '
-        Me.pnlColors.Controls.Add(Me.lblColorWhite)
-        Me.pnlColors.Controls.Add(Me.lblColorWeg)
-        Me.pnlColors.Controls.Add(Me.LblColorWaterweg)
-        Me.pnlColors.Location = New System.Drawing.Point(11, 273)
-        Me.pnlColors.Margin = New System.Windows.Forms.Padding(4)
-        Me.pnlColors.Name = "pnlColors"
-        Me.pnlColors.Size = New System.Drawing.Size(461, 52)
-        Me.pnlColors.TabIndex = 23
-        '
-        'lblColorWhite
-        '
-        Me.lblColorWhite.BackColor = System.Drawing.Color.White
-        Me.lblColorWhite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblColorWhite.Location = New System.Drawing.Point(81, 12)
-        Me.lblColorWhite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblColorWhite.Name = "lblColorWhite"
-        Me.lblColorWhite.Size = New System.Drawing.Size(31, 28)
-        Me.lblColorWhite.TabIndex = 2
-        '
-        'lblColorWeg
-        '
-        Me.lblColorWeg.BackColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        Me.lblColorWeg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblColorWeg.Location = New System.Drawing.Point(43, 12)
-        Me.lblColorWeg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblColorWeg.Name = "lblColorWeg"
-        Me.lblColorWeg.Size = New System.Drawing.Size(31, 28)
-        Me.lblColorWeg.TabIndex = 1
-        '
-        'LblColorWaterweg
-        '
-        Me.LblColorWaterweg.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(144, Byte), Integer))
-        Me.LblColorWaterweg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblColorWaterweg.Location = New System.Drawing.Point(4, 12)
-        Me.LblColorWaterweg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.LblColorWaterweg.Name = "LblColorWaterweg"
-        Me.LblColorWaterweg.Size = New System.Drawing.Size(31, 28)
-        Me.LblColorWaterweg.TabIndex = 0
-        '
-        'DeleteRequirement
-        '
-        Me.DeleteRequirement.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.DeleteRequirement.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemDeleteRow})
-        Me.DeleteRequirement.Name = "DeleteRow"
-        Me.DeleteRequirement.Size = New System.Drawing.Size(208, 28)
-        '
-        'MenuItemDeleteRow
-        '
-        Me.MenuItemDeleteRow.Name = "MenuItemDeleteRow"
-        Me.MenuItemDeleteRow.Size = New System.Drawing.Size(207, 24)
-        Me.MenuItemDeleteRow.Text = "Delete requirement"
-        '
-        'SaveFileDialogJSON
-        '
-        Me.SaveFileDialogJSON.DefaultExt = "json"
-        Me.SaveFileDialogJSON.FileName = "Configuration"
-        Me.SaveFileDialogJSON.Filter = "JSON file (*.json)|*.json"
-        '
-        'TabPage3
-        '
-        Me.TabPage3.AutoScroll = True
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.TabPage3.Controls.Add(Me.canvasPlant)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Size = New System.Drawing.Size(1339, 983)
-        Me.TabPage3.TabIndex = 0
-        '
-        'canvasPlant
-        '
-        Me.canvasPlant.AutoScroll = True
-        Me.canvasPlant.BackColor = System.Drawing.Color.White
-        Me.canvasPlant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.canvasPlant.Location = New System.Drawing.Point(5, 5)
-        Me.canvasPlant.Margin = New System.Windows.Forms.Padding(4)
-        Me.canvasPlant.Name = "canvasPlant"
-        Me.canvasPlant.Size = New System.Drawing.Size(1326, 970)
-        Me.canvasPlant.TabIndex = 0
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 33)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1347, 1012)
-        Me.TabControl1.TabIndex = 22
-        '
         'CToolBindingSource
         '
         Me.CToolBindingSource.DataSource = GetType(CTool)
+        '
+        'Waterway
+        '
+        Me.Waterway.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Waterway.Frozen = True
+        Me.Waterway.HeaderText = "Waterway"
+        Me.Waterway.Items.AddRange(New Object() {"1", "2", "3", "4", "5"})
+        Me.Waterway.MinimumWidth = 6
+        Me.Waterway.Name = "Waterway"
+        Me.Waterway.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Waterway.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Waterway.Width = 75
+        '
+        'ObjectName
+        '
+        Me.ObjectName.Frozen = True
+        Me.ObjectName.HeaderText = "Name"
+        Me.ObjectName.MinimumWidth = 6
+        Me.ObjectName.Name = "ObjectName"
+        Me.ObjectName.ReadOnly = True
+        Me.ObjectName.Width = 125
+        '
+        'ObjectType
+        '
+        Me.ObjectType.Frozen = True
+        Me.ObjectType.HeaderText = "Type"
+        Me.ObjectType.MinimumWidth = 6
+        Me.ObjectType.Name = "ObjectType"
+        Me.ObjectType.ReadOnly = True
+        Me.ObjectType.Width = 125
+        '
+        'ObjectID
+        '
+        Me.ObjectID.Frozen = True
+        Me.ObjectID.HeaderText = "ObjectID"
+        Me.ObjectID.MinimumWidth = 6
+        Me.ObjectID.Name = "ObjectID"
+        Me.ObjectID.ReadOnly = True
+        Me.ObjectID.Width = 70
         '
         'ISSDT
         '
@@ -532,7 +532,7 @@ Partial Class ISSDT
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1870, 1163)
+        Me.ClientSize = New System.Drawing.Size(1870, 1055)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.DGVoverview)
@@ -589,10 +589,6 @@ Partial Class ISSDT
     Friend WithEvents CToolBindingSource As BindingSource
     Friend WithEvents LblTextLabel As CTool
     Friend WithEvents SaveFileDialogJSON As SaveFileDialog
-    Friend WithEvents Waterway As DataGridViewComboBoxColumn
-    Friend WithEvents ObjectName As DataGridViewTextBoxColumn
-    Friend WithEvents ObjectType As DataGridViewTextBoxColumn
-    Friend WithEvents ObjectID As DataGridViewTextBoxColumn
     Friend WithEvents GenerateJSON As ToolStripMenuItem
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents canvasPlant As CCanvas
@@ -604,4 +600,8 @@ Partial Class ISSDT
     Friend WithEvents MitreGateTool As CTool
     Friend WithEvents TL_LeavingTool As CTool
     Friend WithEvents TL_EnteringTool As CTool
+    Friend WithEvents Waterway As DataGridViewComboBoxColumn
+    Friend WithEvents ObjectName As DataGridViewTextBoxColumn
+    Friend WithEvents ObjectType As DataGridViewTextBoxColumn
+    Friend WithEvents ObjectID As DataGridViewTextBoxColumn
 End Class
