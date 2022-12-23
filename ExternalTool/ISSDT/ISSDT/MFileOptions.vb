@@ -266,7 +266,7 @@ Module MFileOptions
         'Initialize Json data
         Dim initJson As String = Newtonsoft.Json.Linq.JObject.FromObject(New With {
             .name = name,
-            .cluster = cluster.ToString,
+            .cluster = cluster,
             .waterways = New Newtonsoft.Json.Linq.JArray({})
         }).ToString
 
@@ -415,39 +415,8 @@ Module MFileOptions
         waterwaysinit5.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
 
 
-        ''Define general waterway Json structure
-        'Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
-
-        ''Add general waterway Json structure
-        'Dim waterway2 As JArray = initial("waterways")
-        'waterway2.Add(waterwaysinit)
-
-
-
-        'Dim variables As New Dictionary(Of String, Newtonsoft.Json.Linq.JObject)()
-        'variables("waterwaysinit1") = waterwaysinit1
-        'variables("waterwaysinit2") = waterwaysinit2
-        'variables("waterwaysinit3") = waterwaysinit3
-        'variables("waterwaysinit4") = waterwaysinit4
-        'variables("waterwaysinit5") = waterwaysinit5
-
-        'Dim value1 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit1")
-        'Dim value2 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit2")
-        'Dim value3 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit3")
-        'Dim value4 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit4")
-        'Dim value5 As Newtonsoft.Json.Linq.JObject = variables("waterwaysinit5")
-
-
         'Add general waterway Json structure
         Dim waterway As JArray = initial("waterways")
-        'value2("name") = "Hendriks"
 
 
         Dim activate1 = False
@@ -501,14 +470,26 @@ Module MFileOptions
             Next
 
 
+            Dim rotation = 1
+            If comp.Rotation = 0 Then
+                rotation = 1
+            ElseIf comp.Rotation = 90 Then
+                rotation = 1
+            ElseIf comp.Rotation = 180 Then
+                rotation = -1
+            ElseIf comp.Rotation = 270 Then
+                rotation = -1
+            End If
+
+
             If Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.MitreGate Then
 
                 Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                door.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
-                door.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
-                door.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("type", 0))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
                 door.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                door.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, comp.Location.Y, comp.Location.X})))
 
                 'Add general doors Json structure
                 Dim doors As JArray = waterwaysinit("doors")
@@ -519,10 +500,10 @@ Module MFileOptions
                 'Define general traffic light Json structure template
                 Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
 
                 'Add general traffic light Json structure
                 Dim TLs As JArray = waterwaysinit("traffic_lights")
@@ -533,10 +514,10 @@ Module MFileOptions
                 'Define general traffic light Json structure template
                 Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
 
                 'Add general traffic light Json structure
                 Dim TLs As JArray = waterwaysinit("traffic_lights")
@@ -546,9 +527,9 @@ Module MFileOptions
 
                 'Define general wall Json structure template
                 Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", comp.Rotation))
-                wall.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height.ToString))
-                wall.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
 
                 'Add general wall Json structure
                 Dim walls As JArray = waterwaysinit("walls")
@@ -558,9 +539,9 @@ Module MFileOptions
 
                 'Define general water Json structure template
                 Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                water.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height.ToString))
-                water.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
-                water.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
 
                 'Add general water Json structure
                 Dim waters As JArray = waterwaysinit("water")
@@ -569,10 +550,10 @@ Module MFileOptions
             ElseIf Convert.ToInt32(comp.Type).ToString = MComponentTypes.ComponentTypesEnum.Quay Then
 
                 Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width.ToString))
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height.ToString))
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", "-1"))
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X.ToString, comp.Location.Y.ToString, 0})))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", CDbl(comp.Size.Height.ToString)))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({CDbl(comp.Location.Y.ToString), CDbl(comp.Location.X.ToString), 0})))
 
                 'Add general water Json structure
                 Dim embankments As JArray = waterwaysinit("embankments")

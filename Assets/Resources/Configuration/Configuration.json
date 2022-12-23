@@ -1,0 +1,73 @@
+{
+  "name": "MyConfiguration12232022",
+  "cluster": 5,
+  "waterways": [
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "name": "Waterway1",
+      "doors": [
+        {
+          "type": 0,
+          "direction": 1,
+          "width": 100,
+          "name": "q",
+          "position": [
+            317,
+            317,
+            363
+          ]
+        },
+        {
+          "type": 0,
+          "direction": 1,
+          "width": 100,
+          "name": "qw",
+          "position": [
+            324,
+            324,
+            720
+          ]
+        }
+      ],
+      "traffic_lights": [],
+      "walls": [],
+      "water": [
+        {
+          "length": 409,
+          "width": 100,
+          "position": [
+            371,
+            326,
+            0
+          ]
+        }
+      ],
+      "embankments": [
+        {
+          "length": 250,
+          "width": 50,
+          "height": 50.0,
+          "position": [
+            419.0,
+            428.0,
+            0
+          ]
+        },
+        {
+          "length": 250,
+          "width": 50,
+          "height": 50.0,
+          "position": [
+            283.0,
+            439.0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}
