@@ -1,0 +1,96 @@
+{
+  "name": "Template_test",
+  "cluster": 5,
+  "waterways": [
+    {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "name": "Waterway1",
+      "doors": [
+        {
+          "type": 0,
+          "direction": 1,
+          "width": 157,
+          "name": "dvar_M2_M_Gate1_East",
+          "position": [
+            270,
+            0,
+            275
+          ]
+        },
+        {
+          "type": 0,
+          "direction": 1,
+          "width": 159,
+          "name": "dvar_M2_M_Gate2_West",
+          "position": [
+            269,
+            0,
+            719
+          ]
+        }
+      ],
+      "traffic_lights": [
+        {
+          "type": 1,
+          "direction": 1,
+          "scale": 50,
+          "name": "TL_Leaving_East",
+          "position": [
+            428,
+            150,
+            710
+          ]
+        },
+        {
+          "type": 0,
+          "direction": 1,
+          "scale": 75,
+          "name": "TL_Entering_West",
+          "position": [
+            201,
+            150,
+            332
+          ]
+        }
+      ],
+      "walls": [],
+      "water": [
+        {
+          "length": 383,
+          "width": 249,
+          "position": [
+            339,
+            100,
+            588
+          ]
+        }
+      ],
+      "embankments": [
+        {
+          "length": 508,
+          "width": 50,
+          "height": 50.0,
+          "position": [
+            468.6,
+            87.5,
+            500
+          ]
+        },
+        {
+          "length": 483,
+          "width": 50,
+          "height": 50.0,
+          "position": [
+            242.0,
+            87.5,
+            518
+          ]
+        }
+      ]
+    }
+  ]
+}
