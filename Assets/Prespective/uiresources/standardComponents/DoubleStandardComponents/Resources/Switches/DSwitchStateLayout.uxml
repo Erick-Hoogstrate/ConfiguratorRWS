@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
 	<ui:Foldout name="switch-state" text="New State" value="false">
 		<ui:VisualElement class="row">
 			<ui:TextField class="no-box flex-grow" name="id" label="ID"/>
@@ -11,4 +11,4 @@
 		<ue:PropertyField name="on-selected" />
 		<ue:PropertyField name="on-unselected" />
 	</ui:Foldout>
-</UXML>
+</ui:UXML>

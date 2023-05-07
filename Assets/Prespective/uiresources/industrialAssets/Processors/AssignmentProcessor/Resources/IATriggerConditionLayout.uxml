@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ue:ObjectField label="Target Cue" name="target-cue-field"/>
+    <ui:Foldout name="assignment-condition-foldout" class="custom-exposure-foldout" text="{index}:{Test Description}">       
+        <ui:VisualElement name="selected-condition-options-container" />
+        <ui:VisualElement name="selected-condition-container" />
+        <ue:EnumField name="selected-failure-action" label="On Failure:" class="custom-exposure"/>
+    </ui:Foldout>
+</ui:UXML>

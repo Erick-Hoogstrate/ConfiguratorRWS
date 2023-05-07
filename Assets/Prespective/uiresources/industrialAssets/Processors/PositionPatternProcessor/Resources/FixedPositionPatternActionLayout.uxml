@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Toggle name="same-recipe-for-all-toggle" label="Same Recipe for all positions"/>
+    <ui:VisualElement class="row">
+        <ui:Label text="Offset"/>
+        <ui:Label text="Recipe"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="fixed-positions-settings-container"/>
+    <ui:Button name="add-position-button" text="Add Position"/>
+</ui:UXML>

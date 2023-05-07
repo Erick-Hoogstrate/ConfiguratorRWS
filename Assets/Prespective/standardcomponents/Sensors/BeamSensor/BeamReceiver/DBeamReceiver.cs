@@ -1,28 +1,51 @@
-using System.Reflection;
-using u040.prespective.prepair.inspector;
 using UnityEngine;
-using u040.prespective.prepair.components.sensors;
-using u040.prespective.standardcomponents;
-using u040.prespective.math.doubles;
-using u040.prespective.math;
+using System.Collections.Generic;
+using u040.prespective.prepair.virtualhardware.sensors;
+using u040.prespective.prepair.virtualhardware.systems.beam;
 
-namespace u040.prespective.standardcomponents.sensors.beamsensor
+namespace u040.prespective.standardcomponents.virtualhardware.systems.beam
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class DBeamReceiver : QuantitativeSensor, IDBeamTarget, ISensor
     {
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
+        #region<properties>
+        private List<IDBeamEmitter> hitEmitters = new List<IDBeamEmitter>();
+        #endregion
 
-        public DBeamPathRedirectionPoint resolveHit(DVector3 _hitVector, RaycastHit hit)
+        #region<hit>
+        /// <summary>
+        /// This method is triggered when the Beam Receiver is being hit by a beam
+        /// </summary>
+        /// <param name="_hitVector">The direction the beam is coming from</param>
+        /// <param name="_hit">The hit info from the raycast</param>
+        /// <param name="_emitter">The Beam Emitter sending out the beam</param>
+        /// <returns></returns>
+        public DBeamPathRedirectionPoint ResolveHit(Vector3 _hitVector, RaycastHit _hit, IDBeamEmitter _emitter)
         {
-            this.Flagged = true;
-            return new DBeamPathRedirectionPoint(this, hit.point.ToDouble(), hit.point.ToDouble(), DVector3.Zero); //Vector3.zero means absorb ray
+            if (!hitEmitters.Contains(_emitter))
+            {
+                hitEmitters.Add(_emitter);
+            }
+            this.flagged = true;
+            return new DBeamPathRedirectionPoint(this, _hit.point, _hit.point, Vector3.zero);
         }
 
-        public void lostHit()
+        /// <summary>
+        /// This method is triggered when the Beam Receiver is no longer being hit by a beam
+        /// </summary>
+        /// <param name="_emitter">The Beam Emitter sending out the beam</param>
+        public void LostHit(IDBeamEmitter _emitter)
         {
-            this.Flagged = false;
+            hitEmitters.Remove(_emitter);
+            if (hitEmitters.Count == 0)
+            {
+                this.flagged = false;
+            }
         }
+        #endregion
     }
 }

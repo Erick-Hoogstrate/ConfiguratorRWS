@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Spelling"/>
+    <ui:TextElement class="margin-bottom-5px" text="Because Prespective depends on Unity as its host software, it makes sense to utilize the same spelling as Unity." />
+    <ui:TextElement class="margin-bottom-5px" text="Unity generally uses American English spelling: use 'center', 'initialize', 'color', 'analog' and 'license', as opposed to 'centre', 'initialise', 'colour', 'analogue' and 'licence'." />
+    <ui:TextElement class="margin-bottom-5px" text="An exception to this within Unity is the use of '(Mono)Behaviour' rather than 'Behavior'."/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Capitalization"/>
+    <ui:TextElement class="margin-bottom-10px" text="Similar to Unity, we capitalize words that are not prepositions (in, of, at, on, by etc.) in headers, buttons, labels etc. "/>
+    <ui:Label class="margin-bottom-10px" text="Examples:"/>
+    <ui:Slider label="Field of View" />
+    <ue:IntegerField class="margin-bottom-10px" label="Number of Entries" />
+    <ui:Button class="content-fit-button" text="Delete Entries outside Field of View"/>
+  </ui:VisualElement>
+</ui:UXML>

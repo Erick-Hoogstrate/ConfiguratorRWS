@@ -1,16 +1,17 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ue:ObjectField name="transform-field" />
 	<ui:VisualElement class="display-none" name="settings-container">
 		<ui:VisualElement name="tool-type" />
 		<ue:ColorField name="shape-color" label="Shape Color" />
-
-		<ui:VisualElement class="row display-none" name="n-gon-container">
+    
+    <ui:VisualElement class="row display-none" name="n-gon-container">
 			<ue:IntegerField name="n-gon-points-field" label="N-gon Points" />
 			<ui:Button class="add-remove-button" name="add-n-gon-point" text="+" />
 			<ui:Button class="add-remove-button add-remove-margin" name="remove-n-gon-point" text="-" />
 		</ui:VisualElement>
 
 		<ui:Foldout class="margin-vertical-10px" name="advanced-settings" text="Advanced Settings" value="false">
+			<ui:VisualElement class="margin-bottom-10px" name="gizmo-type" />
 			<ui:VisualElement class="margin-bottom-10px" name="input-space" />
 			<ui:VisualElement class="unity-base-field unity-composite-field">
 				<ui:Label class="bold unity-base-field__label unity-composite-field__label" text="#" />
@@ -26,5 +27,16 @@
 		</ui:Foldout>
 		
 		<ui:Button class="content-fit-button margin-bottom-10px" name="clear-part" text="Clear Part" />
+	
+		<ui:Label class="bold margin-bottom-10px" text="Second Relation" />
+		<ue:EnumField class="margin-bottom-10px" name="second-relation-type" label="Tool Type" />
+		<ui:VisualElement class="row display-none" name="second-relation-container">
+			<ui:Foldout class="margin-vertical-10px" name="advanced-settings-second-relation" text="Advanced Settings" value="false">
+				<ui:VisualElement class="margin-bottom-10px" name="gizmo-type-second-relation" />
+				<ui:VisualElement class="margin-bottom-10px" name="input-space-second-relation" />
+				<ui:Toggle name="plane-projection-second-relation" label="Project Forward On Plane" />
+				<ue:Vector3Field name="point-second-relation" label="Forward Point" />
+			</ui:Foldout>
+		</ui:VisualElement>
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

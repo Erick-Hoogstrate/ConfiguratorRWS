@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PreplugEditor</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.preplug.fmu.geometricfmu.FMUTool.CreatedFMUSimulation(System.String,System.String,System.Type,System.Boolean)" -->
+    </members>
+</doc>

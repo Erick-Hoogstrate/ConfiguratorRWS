@@ -1,20 +1,35 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Reflection;
 using UnityEngine;
-using u040.prespective.prepair.inspector;
-using u040.prespective.prepair.physics.kinetics.motor;
-using u040.prespective.standardcomponents;
 using u040.prespective.math.doubles;
 using u040.prespective.math;
+using u040.prespective.prepair.virtualhardware.actuators;
+using u040.prespective.prepair.virtualhardware.actuators.motors;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
+namespace u040.prespective.standardcomponents.virtualhardware.actuators.motors
 {
+    /// <summary>
+    /// A servomotor that is not limited but can move continuously. Which is a common component in electronics
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class DContinuousServoMotor : DBaseMotor, IActuator
     {
-        public enum Range { D_180 = 180, D_270 = 270 };
+        #region<enums>
+        /// <summary>
+        /// Maximum range of rotation
+        /// </summary>
+        public enum Range
+        {
+            D_180 = 180,
+            D_270 = 270
+        };
+        #endregion
+
+        #region<properties>
         [SerializeField] private Range rotationRange = Range.D_180;
+        /// <summary>
+        /// Maximum range of rotation for the motor
+        /// </summary>
         public Range RotationRange
         {
             get
@@ -26,11 +41,14 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
                 if (this.rotationRange != value)
                 {
                     this.rotationRange = value;
-                    this.rangeValue = (double)value;
+
                 }
             }
         }
 
+        /// <summary>
+        /// Seconds required to rotate 60 degrees
+        /// </summary>
         public double SecondsPer60Degrees
         {
             get
@@ -39,39 +57,61 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
             }
             set
             {
-                if (this.SecondsPer60Degrees != value && value > 0d)
+                if (this.SecondsPer60Degrees != value)
                 {
+                    value = PreSpectiveMath.Max(value, 0.001d);
                     this.MaxVelocity = 60d / value;
-                    this.Acceleration = this.MaxVelocity * 10d; //FIXME: This * 10f is random. Depends on load on motor but cannot be integrated without physics.
-                    this.Deceleration = MaxVelocity * 10d;
+                    this.Acceleration = this.MaxVelocity * 10d;
+                    this.Deceleration = this.MaxVelocity * 10d;
                 }
             }
         }
 
-        [SerializeField] protected double rangeValue = 180d;
+        /// <summary>
+        /// Numeric value for the Rotation Range
+        /// </summary>
+        protected double rangeValue
+        {
+            get 
+            {
+                return (double)RotationRange;
+            }
+        }
 
-        [SerializeField] protected double _target = 90d;
+        [SerializeField] protected double storedTarget = 90d;
+        /// <summary>
+        /// Target position for the motor in degrees
+        /// </summary>
         public virtual double Target
         {
             get
             {
-                return this._target;
+                return this.storedTarget;
             }
             set
             {
-                if (this._target != value)
+                if (this.storedTarget != value)
                 {
-                    this._target = PreSpectiveMath.Clamp(value, 0d, rangeValue);
+                    this.storedTarget = PreSpectiveMath.Clamp(value, 0d, rangeValue);
                 }
             }
         }
 
+        /// <summary>
+        /// Current position of the motor in degrees
+        /// </summary>
         public double Position
         {
-            get { return this.KinematicWheelJoint ? this.KinematicWheelJoint.CurrentRevolutionDegrees : -1d; }
+            get 
+            { 
+                return this.KinematicWheelJoint ? this.KinematicWheelJoint.CurrentRevolutionDegrees : 0d; 
+            }
         }
 
         [SerializeField] private double deadAngle = 0.05d;
+        /// <summary>
+        /// The angle within which the motor will define itself being 'on target'
+        /// </summary>
         public double DeadAngle
         {
             get
@@ -82,27 +122,40 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
             {
                 if (this.deadAngle != value)
                 {
-                    this.deadAngle = value;
+                    this.deadAngle = PreSpectiveMath.Max(value, 0d);
                 }
             }
         }
 
-
-        protected override void FixedUpdate()
-        {
-            UpdatePreferredVelocity();
-            base.FixedUpdate();
-        }
-
-        protected virtual void UpdatePreferredVelocity()
-        {
-            this.TargetVelocity = ((Target - (0.5d * rangeValue)) / (0.5d * rangeValue)) * this.MaxVelocity;
-        }
-
         #region <<PWM>>
+        /// <summary>
+        /// Enable Pulse Width Modulation
+        /// </summary>
         public bool EnablePWM = false;
 
-        public DVector2 PulseWidthDefinition = new DVector2(1.0d, 2.0d);
+        [SerializeField]  DVector2 pulseWidthDefinition = new DVector2(1d, 2d);
+        /// <summary>
+        /// Defining the upper and lower band for the PWM
+        /// </summary>
+        public DVector2 PulseWidthDefinition
+        {
+            get
+            {
+                return this.pulseWidthDefinition;
+            }
+            set
+            {
+                if (this.pulseWidthDefinition != value)
+                {
+                    value = new DVector2(PreSpectiveMath.Max(0d, PreSpectiveMath.Min(value.X, value.Y)), PreSpectiveMath.Max(0d, PreSpectiveMath.Max(value.X, value.Y)));
+                    this.pulseWidthDefinition = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// PWM range
+        /// </summary>
         private double pulseWidthRange
         {
             get
@@ -112,6 +165,9 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
         }
 
         [SerializeField] private double pulseWidth = 1.5d;
+        /// <summary>
+        /// Pulse Width
+        /// </summary>
         public double PulseWidth
         {
             get
@@ -121,16 +177,19 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
             }
             set
             {
-                //Include check to prevent unnecessary calculations calculations
+                //Include check to prevent unnecessary calculations
                 if (pulseWidth != value)
                 {
-                    this.pulseWidth = value;
+                    this.pulseWidth = PreSpectiveMath.Max(value, 0.001d);
                     this.Target = (PreSpectiveMath.Clamp(value, PulseWidthDefinition.X, PulseWidthDefinition.Y) - PulseWidthDefinition.X) / pulseWidthRange * rangeValue;
                 }
             }
         }
 
-        [SerializeField] private double deadBandWidth = -1d;
+        [SerializeField]  private double deadBandWidth = 0d;
+        /// <summary>
+        /// The Pulse Width within which the motor will define itself being 'on target'
+        /// </summary>
         public double DeadBandWidth
         {
             get
@@ -145,12 +204,25 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
             {
                 if (this.deadBandWidth != value)
                 {
-                    this.deadBandWidth = value;
-                    this.deadAngle = (value / pulseWidthRange) * rangeValue;
+                    this.deadBandWidth = PreSpectiveMath.Clamp(value, 0d, pulseWidthRange);
+                    this.deadAngle = (this.deadBandWidth / pulseWidthRange) * rangeValue;
                 }
             }
         }
         #endregion
+        #endregion
+
+        #region<update>
+        protected override void onFixedUpdate()
+        {
+            updatePreferredVelocity();
+            base.onFixedUpdate();
+        }
+
+        protected virtual void updatePreferredVelocity()
+        {
+            this.TargetVelocity = (Target - 0.5d * rangeValue) / (0.5d * rangeValue) * this.MaxVelocity;
+        }
+        #endregion
     }
 }
-

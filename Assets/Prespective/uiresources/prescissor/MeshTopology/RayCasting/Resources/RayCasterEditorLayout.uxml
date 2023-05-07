@@ -1,0 +1,77 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+
+	  <ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-5px" text="Run" />
+		  <ui:VisualElement class="row">
+			<ui:Button class="content-fit-button margin-bottom-10px" name="start-button" text="Start" />
+			<ui:Button class="content-fit-button margin-bottom-10px" name="reset-button" text="Reset" />
+		  </ui:VisualElement>
+	  </ui:VisualElement>
+		
+	  <ui:Foldout class="foldout-division margin-bottom-10px" text="Device" >
+		<ue:ObjectField name="inspection-object" label="Object To Be Inspected" />
+		<ui:Toggle name="use-facade" label="Use Facade"/>
+		<ui:VisualElement name="facade-container" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="add-facade-button" text="Add Facade Object" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="undo-button" text="Previous Version" />
+	  </ui:Foldout>
+		
+	  <ui:Foldout class="foldout-division margin-bottom-10px" text="Measure Curve Around Device">
+		<ui:Toggle name="use-measure-curve" label="Use Measure Curve"/>
+		<ui:VisualElement name="curve-container" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="add-curve-button" text="Add Curve" />
+		<ue:Vector3Field name="radii" label="Radius" />
+		<ue:IntegerField name="number-ellipses" label="Number Of Ellipses" />
+		<ui:Toggle name="use-focus" label="Use Focus Point"/>
+		<ue:ObjectField name="focus-object" label="Focus Object" />
+		<ue:Vector3Field name="focus-coordinate" label="Focus Coordinates" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="measure-button" text="Measure" />
+	  </ui:Foldout>
+		
+	  <ui:Foldout class="foldout-division margin-bottom-10px" text="Measurements precision">
+		<ui:Toggle name="show-whole-object" label="Show Whole Object"/>
+		<ue:IntegerField name="number-iterations" label="Number Of Iterations" />
+		<ue:IntegerField name="number-pixels" label="Number Of Pixels" />
+		<ue:FloatField name="minimum-distance" label="Minimum Distance" />
+	  </ui:Foldout>
+		
+	  <ui:Foldout class="foldout-division margin-bottom-10px" text="Focus Point">
+		<ue:ObjectField name="look-at-object" label="Object To Look At" />
+		<ui:Toggle name="use-curve" label="Use Curve"/>
+		<ue:ObjectField name="curve" label="Curve" />
+		<ue:IntegerField name="points-on-curve" label="Points On Curve" />
+		<ui:Toggle name="use-circle" label="Use Circle"/>
+		<ue:FloatField name="circle-radius" label="Circle Radius" />
+		<ue:Vector3Field name="circle-angle" label="Circle Angle" />
+		<ue:IntegerField name="points-on-circle" label="Points On Circle" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="extra-measurement-button" text="Take Extra Measurement" />
+	  </ui:Foldout>
+		
+	  <ui:Foldout class="foldout-division margin-bottom-10px" text="Measure From Vertex Normals">
+		<ue:FloatField name="distance" label="Distance" />
+		<ue:IntegerField name="number-pixels-normal-looker" label="Number Of Pixels" />
+		<ui:Toggle name="recursive" label="Recursive"/>
+		<ui:Toggle name="bounds" label="Bounds"/>
+		<ue:Vector3Field name="lower-bounds" label="Lower Bounds" />
+		<ue:Vector3Field name="higher-bounds" label="Higher Bounds" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="normal-looker-button" text="Measure" />
+	  </ui:Foldout>
+		
+	  <ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-5px" text="Add Object To Result" />
+		<ue:ObjectField name="whole-object" label="Object" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="add-whole-button" text="Add Object" />
+	  </ui:VisualElement>
+		
+	  <ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-5px" text="Hole Filler" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="hole-finder-button" text="Fill Holes" />
+	  </ui:VisualElement>
+		
+	  <ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-5px" text="Stop" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="stop-facade-button" text="Go To Next Facade Measurement" />
+		<ui:TextField name="facade-name" label="Facade Event Name" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="stop-button" text="Stop Measurement" />
+	  </ui:VisualElement>
+</ui:UXML>

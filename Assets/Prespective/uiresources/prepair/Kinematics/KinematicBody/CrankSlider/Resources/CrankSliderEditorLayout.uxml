@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Template src="../../Resources/GenericBodyJointSettingsLayout.uxml" name="generic-joint-settings"/>
+  <ui:Template src="../../Resources/KinematicChainingLayout.uxml" name="kinematic-chaining"/>
+
+  <ui:Instance template="generic-joint-settings" name="generic-joint-settings"/>
+  <ui:Instance template="kinematic-chaining" name="kinematic-chaining-settings"/>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="crank-slider-settings" text="Crank Slider Settings">
+    <ui:Label class="bold margin-bottom-10px" text="Crank Slider Joint Settings"/>
+    <ue:ObjectField name="wheel" label="Wheel" />
+    <ue:ObjectField name="slider" label="Slider" />
+  </ui:VisualElement>
+</ui:UXML>

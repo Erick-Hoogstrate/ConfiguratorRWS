@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:Foldout class="foldout-division custom-exposure-foldout" text="Scene View Settings" value="false">
+    <ui:Toggle name="enable-billboard-selection" label="Enable Billboard Selection" text="" />
+  </ui:Foldout>
+</ui:UXML>

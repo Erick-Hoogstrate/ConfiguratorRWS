@@ -1,60 +1,94 @@
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using u040.prespective.utility;
-using u040.prespective.core;
-using u040.prespective.prepair.components.sensors;
+using u040.prespective.utility.collectionmanagement;
+using System.Reflection;
+using u040.prespective.prepair.virtualhardware.sensors;
+using u040.prespective.core.events;
 
-namespace u040.prespective.standardcomponents.sensors.proximitysensor
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.position
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class ProximitySensor : QuantitativeSensor, ISensor
     {
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
-        [SerializeField] private List<Collider> colliderList = new List<Collider>();
-        [SerializeField] private List<Collider> triggerList = new List<Collider>();
+        #region<properties>
+        [SerializeField]  private List<Collider> colliderList = new List<Collider>();
+        [SerializeField]  private List<Collider> storedTriggerList = new List<Collider>();
+
+        /// <summary>
+        /// A list of all the Game Objects that hold Trigger Colliders and form the Detection Area for the Proximity Sensor
+        /// </summary>
         public List<Collider> TriggerList
         {
-            get { return this.triggerList; }
-            private set { this.triggerList = value; }
+            get 
+            { 
+                return this.storedTriggerList; 
+            }
+            private set 
+            { 
+                this.storedTriggerList = value; 
+            }
         }
-        public bool GenerateTriggerRigidbodies = true;
 
-        private void Awake()
+        /// <summary>
+        /// Whether to automatically generate a Rigid body on each Trigger Game Object upon entering Play mode
+        /// </summary>
+        public bool GenerateTriggerRigidbodies = true;
+        #endregion
+
+        #region<unity function>
+        /// <summary>
+        /// Unity awake
+        /// </summary>
+        public void Awake()
         {
             //Create trigger linkage with each collider
-            for (int _i = TriggerList.Count - 1; _i >= 0; _i--)
+            for (int i = TriggerList.Count - 1; i >= 0; i--)
             {
-                if (TriggerList[_i] != null && TriggerList[_i].isTrigger)
+                if (TriggerList[i] != null && TriggerList[i].isTrigger)
                 {
                     if (this.GenerateTriggerRigidbodies)
                     {
-                        Rigidbody _rb = TriggerList[_i].gameObject.GetComponent<Rigidbody>();
-                        if (_rb == null)
+                        Rigidbody rigidBody = TriggerList[i].gameObject.GetComponent<Rigidbody>();
+                        if (rigidBody == null)
                         {
-                            _rb = TriggerList[_i].gameObject.AddComponent<Rigidbody>();
+                            rigidBody = TriggerList[i].gameObject.AddComponent<Rigidbody>();
                         }
-                        _rb.useGravity = false;
-                        _rb.isKinematic = true;
+                        rigidBody.useGravity = false;
+                        rigidBody.isKinematic = true;
                     }
 
-                    LocalEventLink _link = TriggerList[_i].gameObject.AddComponent<LocalEventLink>();
-                    _link.Listener = this;
-                    _link.TriggerEnter = addCollider;
-                    _link.TriggerExit = removeCollider;
+                    ALocalEventLink link = ALocalEventLink.Create(TriggerList[i].gameObject, this);
+                    link.TriggerEnter = addCollider;
+                    link.TriggerExit = removeCollider;
                 }
                 else
                 { 
-                    TriggerList.RemoveAt(_i);
+                    TriggerList.RemoveAt(i);
                 }
             }
         }
-        
+
+        /// <summary>
+        /// Unity fixed update
+        /// </summary>
+        public void FixedUpdate()
+        {
+            if (colliderList.RemoveAll(_entry => _entry == null) > 0)
+            {
+                updateFlag();
+            }
+        }
+        #endregion
+
+        #region<collider>
         private void addCollider(Collider _collider)
         {
-            List<Transform> _transformList = TypedList.GetAllTypedComponents<Transform>(this.transform);
-            if (!_transformList.Contains(_collider.transform))
+            List<Transform> transformList = TypedList.GetAllTypedComponents<Transform>(this.transform);
+            if (!transformList.Contains(_collider.transform))
             {
                 this.colliderList.Add(_collider);
             }
@@ -69,32 +103,24 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor
 
         private void updateFlag()
         {
-            Flagged = colliderList.Count > 0;
-        }
-
-        private void FixedUpdate()
-        {
-            if (colliderList.RemoveAll(_entry => _entry == null) > 0)
-            {
-                updateFlag();
-            }
+            flagged = colliderList.Count > 0;
         }
 
         /// <summary>
-        /// Remove a certain Trigger collider from the ProximitySensor
+        /// Remove a Trigger Collider from the Proximity Sensor
         /// </summary>
         /// <param name="_collider"></param>
-        /// <returns></returns>
+        /// <returns>Whether the trigger was successfully removed</returns>
         public bool RemoveTrigger(Collider _collider)
         {
             return TriggerList.Remove(_collider);
         }
 
         /// <summary>
-        /// Add a certain Trigger collider to the ProximitySensor. Collider must be a trigger unique to the list.
+        /// Add a Trigger Collider to the Proximity Sensor. Collider must be a Trigger unique to the list.
         /// </summary>
         /// <param name="_collider"></param>
-        /// <returns></returns>
+        /// <returns>Whether the trigger was successfully added</returns>
         public bool AddTrigger(Collider _collider)
         {
             if (!_collider.isTrigger)
@@ -113,7 +139,6 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor
                 return true;
             }
         }
-
-
+        #endregion
     }
 }

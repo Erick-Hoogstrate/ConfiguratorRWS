@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.logic;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor
+namespace u040.prespective.standardcomponents.virtualhardware.actuators.motors.logic
 {
     public class DDCMotorLogic : StandardLogicComponent<DDCMotor>
     {
@@ -61,7 +62,7 @@ namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor
         /// <param name="_oldValueReceived">the time of the old value change</param>
         void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
         {
-            switch (_signal.definition.defaultSignalName)
+            switch (_signal.Definition.DefaultSignalName)
             {
                 case oPreferredVelocity:
                     Target.TargetVelocity = (double) _newValue;

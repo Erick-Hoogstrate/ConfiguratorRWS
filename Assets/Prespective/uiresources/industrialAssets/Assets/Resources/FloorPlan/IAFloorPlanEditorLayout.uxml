@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container">
+        <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label name="floor-settings-label" text="Settings" class="margin-bottom-10px bold"/>
+            
+            <ui:VisualElement name="edit-collider-container" class="unity-base-field unity-object-field margin-bottom-5px" >
+                <ui:Label text="Edit Floors" class="unity-text-element unity-label unity-base-field__label " />
+                <ui:Button name="edit-collider-button" class="unity-base-field__input  content-fit-button edit-collider-disabled" >
+                    <ui:Image name="edit-collider-image"/>
+                </ui:Button>
+            </ui:VisualElement>
+            
+            <ue:ObjectField name="floor-material-field" label="Material" class="margin-bottom-5px"/>
+            <ui:Slider name="floor-slider" label="Material Scale" low-value="0.01" high-value="1" class="margin-bottom-5px" inverted="true"/>
+        </ui:VisualElement>
+
+        <ui:Foldout name="floor-foldout" class="foldout-division margin-bottom-10px" text="Floors">
+            <ui:VisualElement name="floor-container"/>
+            <ui:Button name="new-floor-button" text="New floor" class="content-fit-button margin-bottom-5px"/>
+        </ui:Foldout>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="conflicting-mesh-found-container" class="display-none">
+        <ui:HelpBox name="conflicting-mesh-helpbox" message-type="Warning"
+                    text="A conflicting mesh has been found on this GameObject. Unable to draw floors while another mesh is present."
+                    class="margin-bottom-10px"/>
+        <ui:Button name="conflicting-mesh-button" text="Replace Conflicting Mesh"/>
+    </ui:VisualElement>
+</ui:UXML>

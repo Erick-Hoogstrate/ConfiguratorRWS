@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Prestore</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prestore.ASSETGETTYPE">
+            <summary>
+            enum that determines the get type
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.PreStoreUtility.SetReadOnlyDirectory(System.String)">
+            <summary>
+            sets the files as not read only
+            </summary>
+            <param name="_directoryPath">starting directory to set all subfiles and directories as not read only</param>
+        </member>
+        <member name="M:u040.prespective.prestore.PreStoreUtility.GetFiles(System.String)">
+            <summary>
+            gets all the files from a directory including the ones from subdirectories
+            </summary>
+            <param name="_directoryPath">directorypath</param>
+            <returns>file paths</returns>
+        </member>
+        <member name="T:u040.prespective.data.texture.TextureScale">
+            <summary>
+            @CLASS : TextureScale
+            
+            @ABOUT : Class that enables scaling of 2D textures
+            
+            @AUTHOR: Andrik (Unit040) - Source ???
+            
+            @VERSION: V1.0 - 29/03/2017 - Implemented as part of the GEA Configurator
+            </summary>
+        </member>
+        <member name="T:u040.prespective.data.texture.TextureScale.ThreadData">
+            <summary>
+            contrains thread data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.data.texture.TextureScale.ThreadData.start">
+            <summary>
+            start thread
+            </summary>
+        </member>
+        <member name="F:u040.prespective.data.texture.TextureScale.ThreadData.end">
+            <summary>
+            end thread
+            </summary>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.ThreadData.#ctor(System.Int32,System.Int32)">
+            <summary>
+            constructor
+            </summary>
+            <param name="s"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.Point(UnityEngine.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            remakes texture with new width and height
+            </summary>
+            <param name="_tex">texture</param>
+            <param name="_newWidth">new width</param>
+            <param name="_newHeight">new height</param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.Bilinear(UnityEngine.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            remakes texture with new width and height bilinear
+            </summary>
+            <param name="_tex">texture</param>
+            <param name="_newWidth">new width</param>
+            <param name="_newHeight">new height</param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.threadedScale(UnityEngine.Texture2D,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            remakes texture with new width and height
+            </summary>
+            <param name="_tex">texture</param>
+            <param name="_newWidth">new width</param>
+            <param name="_newHeight">new height</param>
+            <param name="_useBilinear">if bilinear</param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.BilinearScale(System.Object)">
+            <summary>
+            bilinear resizes texture
+            </summary>
+            <param name="_obj">thread data</param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.PointScale(System.Object)">
+            <summary>
+            resizes texture
+            </summary>
+            <param name="_obj">thread data</param>
+        </member>
+        <member name="M:u040.prespective.data.texture.TextureScale.colorLerpUnclamped(UnityEngine.Color,UnityEngine.Color,System.Single)">
+            <summary>
+            make colour between to given colours unclamped
+            </summary>
+            <param name="_c1">colour 1</param>
+            <param name="_c2">colour 2</param>
+            <param name="_value"></param>
+            <returns>new colour</returns>
+        </member>
+    </members>
+</doc>

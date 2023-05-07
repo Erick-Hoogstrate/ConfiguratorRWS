@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:ScrollView class="window-padding-container">
+    
+
+    <ui:VisualElement class="division margin-bottom-10px" name="folder-selection-pane">
+      <ui:Label class="bold margin-bottom-10px" text="Folder Selection" />
+      
+      <ui:Label name="target-folder-path" text="DLL Project Target Folder: [Not Selected]" tooltip="the path of the Assets (sub-)folder within the Prespective Build Project in which to perform the setup"/>
+      <ui:Button class="margin-bottom-10px" name="select-target-folder" text="Select DLL Project Target Folder" tooltip="Click to select the Asset (sub-)folder within the Prespective Build Project in which to perform the setup"/>
+      
+      <ui:Label name="source-test-folder-path" text="Source Test Folder: [Not Selected]" tooltip="the path of the Test Module within this source project"/>
+      <ui:Button class="margin-bottom-10px" name="select-source-test-folder" text="Select Source Test Folder" tooltip="Click to select the path of the Test Module within this source project" />
+    </ui:VisualElement>
+
+    
+    <ui:VisualElement class="division margin-bottom-10px" name="settings-division">
+      <ui:Label class="bold margin-bottom-10px" text="Assembly Prefix Settings" />
+      <ui:TextField name="assembly-prefix-text" label="Folder and Assembly Prefix" tooltip="Prefix used for the Production Code-, Playmode Testing- and EditMode Testing Assemblies (generally a 4-letter code matching the JIRA Project)"/>
+    </ui:VisualElement>
+
+    
+    <ui:VisualElement class="division margin-bottom-10px" name="settings-division">
+      <ui:Label class="bold margin-bottom-10px" text="Production Code Assembly Settings" />
+      <ui:Toggle name="create-production-code-assembly" label="Create Production Code Folder and Assembly" tooltip="If selected, this creates a production code folder within the target project" />
+      <ui:TextField name="production-code-suffix-text" label="Production Code Folder and Assembly Suffix" tooltip="Suffix to use for the Production Code folder and Assembly"/>
+
+      <ui:Toggle name="create-production-editorcode-assembly" label="Create Production Editor-only code Folder and Assembly" tooltip="If selected, this creates a production Editor-only code folder in the target DLL project" />
+      <ui:TextField name="production-editorcode-suffix-text" label="Production Editor-only code Folder and Assembly Suffix" tooltip="Suffix to use for Editor-only Production Code folder and Assembly"/>
+      <ui:Toggle name="setup-production-e2e-testing" label="Setup E2E Testing for Project" tooltip="If selected, this sets up the E2E Test suite for this project" />
+      <ui:Toggle name="create-windows-for-all-existing-E2E-test-Types" label="Create Windows for all existing E2E test types" tooltip="If selected, this automatically creates windows for all existing E2E test types" />
+    </ui:VisualElement>
+
+    
+    <ui:VisualElement class="division margin-bottom-10px" name="settings-division">
+      <ui:Label class="bold margin-bottom-10px" text="Testing Code Assembly Settings" />
+      <ui:Toggle name="create-playmode-test-assembly" label="Create Playmode Test Folder and Assembly" tooltip="If selected, this creates a playmode test folder and assembly" />
+      <ui:TextField name="playmode-test-suffix-text" label="Playmode Test Code Folder and Assembly Suffix" tooltip="Suffix to use for the Playmode Test Code folder and Assembly"/>
+      <ui:Toggle name="copy-all-playmode-tests" label="Copy all Playmode Tests" tooltip="If selected, this automatically copies all playmode tests from this source project to the playmode test folder in the target DLL Project" />
+
+      <ui:VisualElement class="margin-bottom-5px" name="no-playmode-test-warning-container" style="justify-content: right;"/>
+
+      <ui:Toggle name="create-editmode-test-assembly" label="Create Editmode Test Folder and Assembly" tooltip="If selected, this creates an Editmode test folder and assembly" />
+      <ui:TextField name="editmode-test-suffix-text" label="Editmode Test Code Folder and Assembly Suffix" tooltip="Suffix to use for the Editmode Test Code folder and Assembly"/>
+      <ui:Toggle name="copy-all-editmode-tests" label="Copy all Editmode Tests" tooltip="If selected, this automatically copies all editmode tests from this source project to the editmode test folder in the target DLL project" />
+      <ui:Toggle name="create-sample-e2e-test" label="Create Sample E2E Test" tooltip="If selected, this creates a sample E2E test within the editor testing assembly" />
+      <ui:Toggle name="create-sample-unit-test" label="Create Sample Unit Test" tooltip="If selected, this creates a sample Unity Unit test within the editor testing assembly" />
+    </ui:VisualElement>
+    
+    
+    <ui:Button class="margin-bottom-10px" name="setup-build-project" text="Setup Build Project" />
+  </ui:ScrollView>
+</ui:UXML>

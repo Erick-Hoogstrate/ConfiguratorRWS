@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container">
+        <ui:VisualElement name="components-container" class="division margin-bottom-10px">
+            <ui:Label name="components-label" text="Components" class="bold margin-bottom-5px"/>
+            <ue:ObjectField name="components-asset-field" label="Asset" allow-scene-objects="true"/>
+            <ue:ObjectField name="components-conveyor-field" label="Conveyor" allow-scene-objects="true"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="synchronization-settings-container" class="division margin-bottom-10px">
+            <ui:Label name="synchronization-settings-label" text="Synchronization Settings" class="bold margin-bottom-5px"/>
+            <ue:EnumField name="synchronization-axis-field" label="Axis"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="cues-container" class="division">
+            <ui:Label name="segment-synchronizer-settings-label" text="Cues on conveyor" class="bold margin-bottom-5px"/>
+            <ui:Label name="no-action-cues-on-conveyor-label" class="font-italic" text="No Action Cues on Conveyor"/>
+            <ui:VisualElement name="segment-synchronizer-settings-container" class="margin-bottom-10px">
+            </ui:VisualElement>
+            <ui:VisualElement name="reindex-cues-container">
+                <ui:Button name="reindex-cues-button" text="(Re)Index Cues" class="content-fit-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="dependency-not-met-warning-container" class="display-none">
+        <ui:HelpBox name="unable-to-initialize-label" text="Unable to initialize without a BoxAsset and Conveyor selected." message-type="Warning"/>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row">
+      <ui:Label name="position-index-label" />
+      <ue:DoubleField name="position-value-field" />
+      <ui:VisualElement name="spawn-recipe-popupfield-container" class="disabled"/>
+      <ui:Button name="remove-position" text="X"/>
+    </ui:VisualElement>
+</ui:UXML>

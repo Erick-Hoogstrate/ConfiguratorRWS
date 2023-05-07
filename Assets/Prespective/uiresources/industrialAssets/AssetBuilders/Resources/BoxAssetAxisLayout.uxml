@@ -1,0 +1,6 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="row">
+		<ui:Slider name="axis-length-slider" label="#-Axis" />
+		<ue:FloatField name="axis-length-field" />
+	</ui:VisualElement>
+</ui:UXML>

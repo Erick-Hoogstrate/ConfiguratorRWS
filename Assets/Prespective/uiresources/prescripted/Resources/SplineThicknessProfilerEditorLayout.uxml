@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ue:ObjectField name="actor" label="DES Actor" />
+  
+  <ui:VisualElement class="margin-bottom-10px">
+    <ue:Vector3Field name="extents" label="Extents Box" />
+    <ue:Vector3Field name="offset" label="Offset Box" />
+  </ui:VisualElement>
+  
+  <ui:TextField class="margin-bottom-10px" name="profile-name"  binding-path="ProfileName" label="Profile Name" />
+  <ui:Button class="content-fit-button margin-bottom-10px" name="add-profile" text="Add Profile" />
+  <ui:Button class="content-fit-button margin-bottom-10px" name="update-profile" text="Update Profile" />
+  <ui:Button class="content-fit-button margin-bottom-10px" name="remove-profile" text="Remove Profile" />
+</ui:UXML>

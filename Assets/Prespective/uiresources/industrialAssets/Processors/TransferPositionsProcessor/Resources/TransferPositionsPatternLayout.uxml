@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:TextField name="pattern-name" label="Pattern Name" class="custom-exposure"/>
+  <ui:VisualElement name="staging-pattern-popupfield-container"/>
+  <ue:ObjectField name="manipulator" label="Manipulator" class="custom-exposure disabled"/>
+  <ui:Foldout name="transfer-positions-container" text="Manipulator Transfer Positions" class="custom-exposure-foldout">
+	  <ui:Button name="add-transfer-position" text="Add Transfer Position" class="content-fit-button custom-exposure"/>
+	  <ui:VisualElement name="transfer-positions-container" />
+  </ui:Foldout>
+</ui:UXML>

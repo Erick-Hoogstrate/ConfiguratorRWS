@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:Foldout name="worker-settings-foldout" class="foldout-division margin-bottom-10px" text="Worker Settings" binding-path="EditorExpandVisualization">
+    <ue:DoubleField name="walking-speed" label="Walking Speed" />
+    <ui:Toggle name="return-to-start" label="Return to Start" tooltip="Forces the Worker to return to Start when an assignment is completed."/>
+    <ui:Toggle name="show-waypoints" label="Show Waypoints" />
+    <uie:Vector3Field label="Transport Offset" name="transport-offset" />
+  </ui:Foldout>
+  
+  <ui:Foldout name="worker-waypoint-settings-foldout" class="foldout-division margin-bottom-10px" text="Waypoint settings" binding-path="EditorExpandCuesInReach">
+    <ui:Button class="content-fit-button margin-bottom-10px" name="index-web" text="Refresh Motionweb" />
+    <ui:Label class="margin-bottom-10px" text="Waypoints to use in Transfer Instructions" />
+    <ui:VisualElement name="splines-in-reach-container" />
+    <ui:Button class="content-fit-button margin-bottom-10px" name="add-waypoint" text="Add Waypoint" />
+  </ui:Foldout>
+
+  <ui:Foldout name="transfer-instruction-foldout" class="foldout-division margin-bottom-10px" binding-path="EditorExpandTransferInstructions" text="Transfer Instructions">
+    <ui:Button class="content-fit-button margin-bottom-10px" name="add-transfer-instruction" text="Add Transfer Instruction" />
+    <ui:Label class="font-italic" name="no-pickup-or-dropoff" text="Select at least one pick up and one drop off cue from the cues in reach." />
+    <ui:VisualElement name="transfer-instructions-container" />
+  </ui:Foldout>
+</ui:UXML>

@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Visualization" binding-path="EditorExpandVisualization">
+    <ui:Toggle name="visualize-point-clouds" label="Visualize Point Clouds" />
+    <ue:DoubleField name="point-size" label="Point Size" />
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Configuration" binding-path="EditorExpandConfiguration">
+    <ui:VisualElement class="row">
+      <ui:Label name="config-header" class="bold margin-bottom-5px" style="width: 55%" text="Kinematic Bodies &amp; Targets" />
+      <ui:Button name="auto-assign-button" class="margin-bottom-10px" style="width: 45%" text="Auto Assign" tooltip="Sets up/Alters list by getting all kinematic bodies in children." />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="row">
+      <ui:Label class="list-label" style="width: 55%" text="Bodies Chain" name="list-header"/>
+      <ui:Label class="list-label" style="width: 20%" text="Iterations" />
+      <ui:Label class="list-label" style="width: 15%" text="Index" />
+      <ui:Button class="list-label" style="width: 5%" text="+" tooltip="Insert body at base" name="body-base-append-button"/>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="bodies-container" class="margin-bottom-10px" />
+
+    <ui:VisualElement class="row">
+      <ui:Label class="targets-list-label" style="width: 35%" text="Targets" name="targets-list-header"/>
+      <ui:Label class="targets-list-label" style="width: 35%" text="Local Direction"/>
+      <ui:Label class="targets-list-label" style="width: 20%" text="Color Point Cloud" />
+      <ui:Button class="targets-list-label" style="width: 10%" text="Add" tooltip="Add a target" name="add-target-button"/>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="targets-container" class="margin-bottom-5px" />
+  </ui:Foldout>
+
+  <ui:Button name="generate-point-clouds" text="Generate Point Clouds" />
+  <ue:DoubleField name="check-distance" label="Check Distance" />
+  <ui:Button name="filter-outer" text="Filter Out Inner Points" />
+
+  <ui:VisualElement name="default-inspector-container" />
+</ui:UXML>

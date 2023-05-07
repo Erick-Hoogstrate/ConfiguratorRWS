@@ -1,0 +1,45 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:ScrollView class="window-padding-container">
+
+        <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label class="bold margin-bottom-10px" text="Object Settings"/>
+            <ue:ObjectField label="Game Object to Export" name="gameobject-field" tooltip="The GameObject that will be exported to the Asset Library"/>
+            <ue:FloatField name="object-scene-height" label="Height in Scene" tooltip="The height at which the asset is exported determines the height at which it will be imported from the Library." />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label class="bold margin-bottom-10px" text="Export Settings"/>
+            <ui:Toggle name="ignore-nested-assets-toggle" label="Ignore Nested Assets" value="false" tooltip="Ignore nested assets when exporting and export as a single asset."/>
+            <ui:Toggle name="use-existing-id-toggle" label="Use Existing ID" value="false" tooltip="Select when adding new versions of an existing asset."/>
+            <ui:TextField label="ID" name="override-versioning-id-input" class="indented-field-10px" tooltip="Input the ID of the existing asset when adding a new version of an asset."/>
+            <ui:TextField label="Name" name="asset-name" tooltip="Name of the asset and the name of the asset once dragged into the scene"/>
+            <ui:TextField label="Version" name="version" text="1.0" tooltip="The version of the asset. In the format numbers separated by dots. Example 1.0.02 or 1.2"/>
+            <ui:HelpBox name="version-error" message-type="Error" text="The version can only contain numbers separated by single dots."/>
+            <ui:VisualElement name="category-field-container"/>
+            <ui:Foldout text="Add New Category" name="new-category-foldout" value="false">
+                <ui:VisualElement class="row">
+                    <ui:TextField class="flex-grow" name="new-category"/>
+                    <ui:Button class="content-fit-button" name="add-category-button" text="Add Category"/>
+                </ui:VisualElement>
+
+                <ui:Label class="standalone-inspector-label" name="category-seperator-label" text="Use '/' for subcategories (category/sub/sub)"/>
+                <ui:VisualElement class="margin-bottom-5px"/>
+            </ui:Foldout>
+
+            <ui:VisualElement name="version-field-container"/>
+            
+            <ui:Toggle name="override-image-toggle" label="Use Custom Image" value="false" tooltip="Enable to select an image that will be used as the asset preview. When disabled the export will create a preview for the asset."/>
+            <ui:VisualElement name="preview-image-container" style="margin-left:10px">
+                <ui:VisualElement class="row unity-base-field">
+                    <ui:Label text="Preview image" name="preview-image-label" class="unity-base-field__label"/>
+                    <ui:Button text="Browse..." name="preview-image-button" class="content-fit-button"/>
+                </ui:VisualElement>
+                <ui:Image name="preview-image" style="max-width:128px; max-height:128px;border-style: solid;border-width:1px"/>
+                <ui:Button text="Clear Selected Image" name="preview-image-clear-button" class="content-fit-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:HelpBox name="asset-exists-error" message-type="Error" text="An asset with that ID and version already exists. Please change the ID or version."/>
+        <ui:Button class="content-fit-button" name="export-button" text="Export"/>
+    </ui:ScrollView>
+</ui:UXML>

@@ -1,0 +1,15 @@
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+    <!-- Field for the name of the recipe -->
+    <ui:TextField name="recipe-name-field" label="Recipe Name" class="custom-exposure"/>
+
+    <!-- Container for setting the result product -->
+    <ui:VisualElement name="result-Product-Container" class="custom-exposure" /> 
+
+    <!-- Foldout with Production Steps -->
+    <ui:Foldout name="production-steps-foldout" text="Production Steps" class="custom-exposure-foldout">
+        <ui:VisualElement name="result-Product-steps-container" class="custom-exposure" /> 
+    </ui:Foldout>
+
+</ui:UXML>

@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Template src="../../Resources/GenericBodyJointSettingsLayout.uxml" name="generic-joint-settings"/>
+  <ui:Template src="../../Resources/KinematicChainingLayout.uxml" name="kinematic-chaining"/>
+
+  <ui:Instance template="generic-joint-settings" name="generic-joint-settings"/>
+  <ui:Instance template="kinematic-chaining" name="kinematic-chaining-settings"/>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="ball-joint-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Ball Joint Settings" />
+
+    <ue:DoubleField name="current-degrees" label="Current Rotation State (deg)" />
+    
+    <ue:DoubleField class="flex-grow" name="min-rotation" label="Minimum Rotation (deg)" />
+    <ue:DoubleField class="flex-grow" name="max-rotation" label="Maximum Rotation (deg)" />
+
+    <ui:Foldout name="axis-direction" text="Axis Direction" value="false" />>
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="sceneview-settings" text="Sceneview Settings" value ="false">
+    <ui:Toggle name="enable-in-sceneview" label="Enable in Sceneview" />
+    <ui:Foldout name="color-settings" text="Color Settings">>
+      <ue:ColorField name="axis-direction-color" label="Axis Direction"/>
+      <ue:ColorField name="current-direction-color" label="Current Direction"/>
+      <ue:ColorField name="limit-color" label="Limit"/>
+    </ui:Foldout>
+  </ui:Foldout>
+</ui:UXML>

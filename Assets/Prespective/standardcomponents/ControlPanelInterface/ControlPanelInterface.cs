@@ -1,26 +1,32 @@
-#if UNITY_EDITOR
-using System.Reflection;
-using UnityEditor;
 using UnityEngine;
 
-namespace u040.prespective.prepair.inspector
+namespace u040.prespective.standardcomponents.userinterface
 {
-    public class ControlPanelInterface : MonoBehaviour
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
+    public abstract class ControlPanelInterface : MonoBehaviour
     {
-        //Inspector value
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
-
         //Control Panel Title
         private const string DEFAULT_NAME = "Unassigned Control Panel";
+        
+        /// <summary>
+        /// Title of the Control Panel
+        /// </summary>
         public string Title = DEFAULT_NAME;
 
-
-        //The selected gameobject on which the component exists
+        /// <summary>
+        /// The Game Object of the selected Component
+        /// </summary>
         public GameObject SelectedGameObject;
 
-        [SerializeField] [Obfuscation] private Component selectedComponent;
+        [SerializeField] private Component selectedComponent;
+
+        /// <summary>
+        /// The selected component for which the Control Panel is drawn
+        /// </summary>
         public Component SelectedComponent
         {
             get
@@ -33,13 +39,6 @@ namespace u040.prespective.prepair.inspector
                 {
                     if (value != null)
                     {
-                        //Check whether component is suitable
-                        Editor editor = Editor.CreateEditor(value);
-                        if (!(editor is IControlPanel) && !(editor is IControlPanelUIE))
-                        {
-                            Debug.LogError("Cannot set " + value.GetType().Name + " as the selected component since it does implement an inspector with the IControlPanel interface.");
-                            return;
-                        }
                     }
 
                     //Set new component
@@ -52,7 +51,7 @@ namespace u040.prespective.prepair.inspector
         }
 
         /// <summary>
-        /// Resets the selectes Control Panel and GameObject
+        /// Resets the Control Panel
         /// </summary>
         public void Clear()
         {
@@ -61,50 +60,16 @@ namespace u040.prespective.prepair.inspector
         }
 
         /// <summary>
-        /// Automatically generate a ControlPanelInterface for a component which implements from the IControlPanel interface.
+        /// Automatically generate a ControlPanelInterface for a component which implements the IControlPanel interface.
         /// </summary>
         /// <param name="_component"></param>
-        /// <returns></returns>
+        /// <returns>The newly created Control Panel</returns>
         public static ControlPanelInterface CreateForComponent(Component _component)
         {
             if (_component != null)
             {
-                //Check whether component is suitable
-                Editor editor = Editor.CreateEditor(_component);
-                if (!(editor is IControlPanel))
-                {
-                    Debug.LogError("Cannot create a control panel for " + _component.GetType().Name + " since editor called " + editor.GetType().Name + " it does implement an inspector with the IControlPanel interface.");
-                    return null;
-                }
-
                 //Create the Control Panel and assign component
                 ControlPanelInterface controlPanel = _component.gameObject.AddComponent<ControlPanelInterface>();
-                controlPanel.SelectedGameObject = _component.gameObject;
-                controlPanel.SelectedComponent = _component;
-                return controlPanel;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Automatically generate a ControlPanelInterface for a component which implements from the IControlPanel interface.
-        /// </summary>
-        /// <param name="_component"></param>
-        /// <returns></returns>
-        public static ControlPanelInterface CreateControlPanelForComponent(Component _component)
-        {
-            if (_component != null)
-            {
-                //Check whether component is suitable
-                Editor editor = Editor.CreateEditor(_component);
-                if (!(editor is IControlPanelUIE))
-                {
-                    Debug.LogError("Cannot create a control panel for " + _component.GetType().Name + " since editor called " + editor.GetType().Name + " it does implement an inspector with the IControlPanel interface.");
-                    return null;
-                }
-
-                //Create the Control Panel and assign component
-                ControlPanelInterfaceUIE controlPanel = _component.gameObject.AddComponent<ControlPanelInterfaceUIE>();
                 controlPanel.SelectedGameObject = _component.gameObject;
                 controlPanel.SelectedComponent = _component;
                 return controlPanel;
@@ -116,12 +81,8 @@ namespace u040.prespective.prepair.inspector
         {
             if(_component != null)
             {
-                Editor editor = Editor.CreateEditor(_component);
-                return editor is IControlPanel;
             }
             return false;
         }
-
     }
-}    
-#endif
+}

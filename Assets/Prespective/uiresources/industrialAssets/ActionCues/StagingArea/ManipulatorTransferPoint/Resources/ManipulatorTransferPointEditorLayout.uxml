@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="processors-container">
+        <ui:VisualElement name="location-processor-container" />
+        <ui:VisualElement class="disabled" name="connections-processor-container" />
+        <ui:VisualElement class="disabled" name="transfer-states-processor-container"  />
+        <ui:VisualElement class="disabled" name="manipulator-feedback-processor-container" />
+    </ui:VisualElement>
+</ui:UXML>

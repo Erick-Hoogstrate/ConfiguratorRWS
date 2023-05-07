@@ -1,0 +1,10 @@
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="container-for-product-part" class="custom-exposure" /> 
+
+    <ui:Foldout name="customization-foldout" text="# of instances" class="custom-exposure-foldout">
+        <ui:VisualElement name="container-for-action-selection-popup" class="custom-exposure" /> 
+
+        <ui:VisualElement name="container-for-selected-option" class="custom-exposure" /> 
+    </ui:Foldout>
+</ui:UXML> 

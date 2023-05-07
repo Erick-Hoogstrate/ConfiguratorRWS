@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ue:ObjectField name="build-spline" label="Build Spline" />
+  <ue:ObjectField name="surface-spline" label="Surface Spline" />
+  <ue:DoubleField class="margin-bottom-5px" name="distance-between" label="Distance Between Splines" />
+  <ui:Button name="generated-surface-button" text="Generate Tensor Surface" />
+  <ui:Button name="clear-surface-button" text="Clear Tensor Surface" />
+</ui:UXML>

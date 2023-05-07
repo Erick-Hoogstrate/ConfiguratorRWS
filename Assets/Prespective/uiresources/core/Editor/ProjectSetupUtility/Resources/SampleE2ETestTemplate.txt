@@ -1,0 +1,206 @@
+#if UNITY_EDITOR
+
+using NUnit.Framework;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.TestTools;
+using u040.prespective.core.editor.verification.e2etesting;
+
+namespace {{PRODUCTION_PREFIX}}.testing
+{
+    /// <summary>
+    /// Basic EndToEndTest for core. Creates primitive objects, moves them around and tests playmode.
+    /// Used to validate that the End-To-End Test module works on a basic level
+    /// </summary>
+    public class {{PRODUCTION_PREFIX}}_E2E_Example : A{{PRODUCTION_PREFIX}}E2ETestBase
+    {
+        #region << Constants >>
+
+        /// <summary>
+        /// Delay to use between frames in Editmode (since the duration of an update is not simular to those in playmode)
+        /// </summary>
+        private const float WAIT_FOR_SINGLE_FRAME = .02f;
+
+        #endregion
+        #region << Unity Testrunner Invocation >>
+
+        /// <summary>
+        /// Allows running this test from the Unity Testrunner 
+        /// (Window > General > Testrunner : editmode)
+        /// </summary>
+        /// <returns></returns>
+        [UnityTest]
+        public IEnumerator Run{{PRODUCTION_PREFIX}}E2eExample()
+        {
+            return RunTestInsideTestRunner();
+        }
+
+
+        /// <summary>
+        /// Optional override of default CleanUpTest method for the Unity TestRunner
+        /// </summary>
+        /// <returns></returns>
+        [UnityTearDown]
+        public override IEnumerator CleanUpTest()
+        {
+            //Cleanup specific stuff for this test here
+            yield return base.CleanUpTest();
+        }
+
+
+        /// <summary>
+        /// Other tests that this test depends on (not dependent on other tests)
+        /// </summary>
+        /// <param name="_testArtifact"></param>
+        /// <returns></returns>
+        public override E2ETestPart[] SpecifyTestParts({{PRODUCTION_PREFIX}}E2ETestArtifact _testArtifact)
+        {
+            return new E2ETestPart[] {
+                                    //Defines the test             //Name of the teststep (in the test window) //Defines whether run in playmode
+                    new E2ETestPart(T1_CreateCubeInEditmode(_testArtifact), "Create Cube in Editmode", false),
+                    new E2ETestPart(T2_CreateSphereAndParentToCubeInEditmode(_testArtifact), "Create Sphere in EditMode", false),
+                    new E2ETestPart(T3_MoveCubeInPlaymodeAndVerifyMovement(_testArtifact), "Move Cube in Playmode and verify movement", true),
+                    new E2ETestPart(T4_MoveSphereInPlaymodeAndVerifyMovement(_testArtifact), "Move Sphere back in playmode and verify movement", true)
+            };
+        }
+
+
+        #endregion
+        #region << TEST STEPS >>
+
+
+        /// <summary>
+        /// Create a cube in Editmode, and store it for use in followup steps
+        /// </summary>
+        /// <param name="_testArtifact">reference to the test artifact in which references are stored</param>
+        /// <returns></returns>
+        public static IEnumerator T1_CreateCubeInEditmode({{PRODUCTION_PREFIX}}E2ETestArtifact _testArtifact)
+        {
+            Debug.Log("T1.1 - Wait for the time equivalence of a single frame (WaitForEndOfFrame does not work properly in editmode)");
+            yield return new WaitForSecondsRealtime(WAIT_FOR_SINGLE_FRAME);
+
+            Debug.Log("T1.2 - Create a cube at (0.5, 0.5, 0.5)");
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = Vector3.one * 0.5f;
+
+            Debug.Log("T1.3 - Check the cube actually exists at position (0.5, 0.5, 0.5), note that transform position can have a delta of 5e-5m");
+            Assert.AreEqual(Vector3.Distance(cube.transform.position, new Vector3(0.5f, 0.5f, 0.5f)), 0f, 5e-5f, "Cube Position is not (-0.5, -0.5, -0.5)");
+
+            Debug.Log("T1.4 - Save a reference to the cube so we can access it in next steps");
+            _testArtifact.AddTrackedSceneObject(new E2ESceneObjectDescription("cube", cube.transform));
+
+            Debug.Log("T1.5 - Wait another frame");
+            yield return new WaitForSecondsRealtime(WAIT_FOR_SINGLE_FRAME);
+
+            Debug.Log("T1.6 - Complete test step 1");
+            yield return null;
+        }
+
+
+        /// <summary>
+        /// Create a sphere
+        /// </summary>
+        /// <param name="_testArtifact"></param>
+        /// <returns></returns>
+        public static IEnumerator T2_CreateSphereAndParentToCubeInEditmode({{PRODUCTION_PREFIX}}E2ETestArtifact _testArtifact)
+        {
+            Debug.Log("T2.1 - Retrieve a reference to the cube from step 1");
+            Transform cube = _testArtifact.GetTrackedSceneObjectComponent<Transform>("cube");
+
+            Debug.Log("T2.2 - Create a sphere primitive at (-0.5, -0.5, -0.5)");
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.transform.position = Vector3.one * -0.5f;
+
+            Debug.Log("T2.3 - Check the sphere actually exists at position (-0.5, -0.5, -0.5), note that transform position can have a delta of 5e-5m");
+            Assert.AreEqual(Vector3.Distance(sphere.transform.position, new Vector3(-0.5f, -0.5f, -0.5f)), 0f, 5e-5f, "Sphere Position is not (-0.5, -0.5, -0.5)");
+
+            Debug.Log("T2.4 - Child the spere to the cube, and test success");
+            sphere.transform.SetParent(cube, true);
+            Assert.IsTrue(sphere.transform.parent == cube, "Sphere is not child of Cube");
+
+            Debug.Log("T2.5 - Store a reference to the sphere for access in next steps");
+            _testArtifact.AddTrackedSceneObject(new E2ESceneObjectDescription("sphere", sphere.transform));
+
+            Debug.Log("T2.6 - Wait for the equivalence of a single frame in editmode");
+            yield return new WaitForSecondsRealtime(WAIT_FOR_SINGLE_FRAME);
+            
+            Debug.Log("T2.7 - Complete test step 2");
+            yield return null;
+        }
+
+
+        /// <summary>
+        /// Move the cube and sphere in playmode
+        /// </summary>
+        /// <param name="_testArtifact"></param>
+        /// <returns></returns>
+        public static IEnumerator T3_MoveCubeInPlaymodeAndVerifyMovement({{PRODUCTION_PREFIX}}E2ETestArtifact _testArtifact)
+        {
+            Debug.Log("T3.1 - Retrieve a reference to the cube from step 1");
+            Transform cube = _testArtifact.GetTrackedSceneObjectComponent<Transform>("cube");
+
+            Debug.Log("T3.2 - Move the cube (and sphere) forward until a second has passed at v=0.1234u/s");
+            float waitDuration = 1f;
+            float velocity = 0.1234f;
+
+            yield return new WaitForEndOfFrame();
+
+            yield return new WaitUntil(() =>
+            {
+                Debug.Log(waitDuration + " delta: " + Time.deltaTime);
+                waitDuration -= Time.deltaTime;
+                float frameDelta = Time.deltaTime * velocity;
+
+                cube.transform.position += Vector3.forward * frameDelta;
+                return (waitDuration <= 0f);
+            });
+
+            Debug.Log("T3.3 - Assert the cube (and sphere) have moved ~0.1234m (tolerance 5e-5m, and take frame duration offset in account)");
+            Vector3 endOfFramePosition = new Vector3(0.5f, 0.5f, 0.5f) + (Vector3.forward * 0.1234f * (1f - waitDuration));
+            Assert.AreEqual(0f,
+                Vector3.Distance(cube.transform.position, 
+                endOfFramePosition), 5e-5f, "Cube Position is not expected " + endOfFramePosition);
+
+            Debug.Log("T3.4 - Complete test step 3 but stay in playmode");
+            yield return null;
+        }
+
+
+        /// <summary>
+        /// Move the cube and sphere in playmode
+        /// </summary>
+        /// <param name="_testArtifact"></param>
+        /// <returns></returns>
+        public static IEnumerator T4_MoveSphereInPlaymodeAndVerifyMovement({{PRODUCTION_PREFIX}}E2ETestArtifact _testArtifact)
+        {
+            Debug.Log("T4.1 - Retrieve a reference to the cube from step 1");
+            Transform sphere = _testArtifact.GetTrackedSceneObjectComponent<Transform>("sphere");
+
+            Debug.Log("T4.2 - Move the sphere back until a second has passed at v=0.1234u/s");
+            float waitDuration = 1f;
+            float velocity = 0.1234f;
+            yield return new WaitUntil(() =>
+            {
+                Debug.Log(waitDuration);
+                waitDuration -= Time.deltaTime;
+                float frameDelta = Time.deltaTime * velocity;
+
+                sphere.transform.position += Vector3.back * frameDelta;
+                return (waitDuration <= 0f);
+            });
+
+            Debug.Log("T4.3 - Assert the sphere has moved ~0.1234m (tolerance 5e-5m, and take frame duration offset in account)");
+            Vector3 endOfFramePosition = new Vector3(-0.5f, -0.5f, -0.5f) + (Vector3.back * 0.1234f * (1f - waitDuration));
+            Assert.AreEqual(0f,
+                Vector3.Distance(sphere.transform.position,
+                endOfFramePosition), 5e-5f, "Sphere Position is not expected " + endOfFramePosition);
+
+            Debug.Log("T4.4 - Complete test step 4 and exit playmode");
+            yield return null;
+        }
+
+        #endregion
+    }
+}
+
+#endif

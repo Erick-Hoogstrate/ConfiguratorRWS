@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="action-foldout">
+        <ui:TextField label="Action name" name="action-name"/>
+        <ui:VisualElement name="position-offset-container"/>
+        <ui:VisualElement name="rotation-offset-container"/>
+        <ui:Foldout name="manipulator-actions-foldout" text="Actions">
+            <ui:Button name="add-action-button" text="Add action" class="content-fit-button"/>
+            <ui:VisualElement name="manipulator-actions-container"/>
+        </ui:Foldout>
+    </ui:Foldout>
+</ui:UXML>

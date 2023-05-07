@@ -1,7 +1,5 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
-  <ui:VisualElement class="division margin-bottom-10px" name="custom-editor-ui-container">
-    <ui:Label class="bold margin-bottom-10px" text="Properties" />
-  </ui:VisualElement>
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px" name="inheriting-type-inspector" />
   
   <ui:VisualElement class="division margin-bottom-10px" name="signal-container">
     <ui:Label class="bold margin-bottom-10px" text="Signals"/>
@@ -27,15 +25,4 @@
     <ui:Label class="bold margin-bottom-10px" text="Instance Naming Rule"/>
     <ui:TextField name="instance-naming-rule" />
   </ui:VisualElement>
-
-  <ui:Foldout class="foldout-division margin-bottom-10px" name="gui-debugging-foldout" text="GUI Debugging" value="false">
-    <ui:Toggle name="show-debugging-gui" label="Show Signal Debugging GUI"  />
-
-    <ui:VisualElement name="gui-debugging-fields">
-      <ue:Vector2Field name="text-offset" label="Text Offset" />
-      <ue:ColorField name="text-color" label="Text Color" />
-      <ue:IntegerField name="text-size" label="Text Size" />
-      <ue:IntegerField name="line-spacing" label="Line Spacing" />
-    </ui:VisualElement>
-  </ui:Foldout>
-</UXML>
+</ui:UXML>

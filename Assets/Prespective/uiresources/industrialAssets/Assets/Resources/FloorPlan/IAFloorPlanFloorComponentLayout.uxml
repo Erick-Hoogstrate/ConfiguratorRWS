@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="floor-container">
+        <ui:Button name="floor-remove-button" />
+        <ui:Foldout name="floor-foldout" value="false" text="Floor Foldout">
+            <ue:Vector2Field name="floor-size" label="Size"/>
+            <ue:Vector2Field name="floor-position" label="Position"/>
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,2337 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Preplug</name>
+    </assembly>
+    <members>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.data.Fmi2VariableList.Add(u040.prespective.preplug.fmu.fmi2simulation.data.Fmi2Variable)">
+            <summary>
+            Adds variable to the list if there is an alias the variable wil be added to that variables Alias list
+            </summary>
+            <param name="variable"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetOutputs">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"></exception>
+            todo test this method couldn't find any occurrences in XML files
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.testFunction(System.IntPtr)">
+            <summary>
+            Test Dll presence
+            </summary>
+            <param name="simulator"></param>
+            <returns>result</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.createFMUSimulator(System.String,System.String,System.Int32@)">
+            <summary>
+            Creates the simulator
+            </summary>
+            <param name="fmuPath">path of the fmu</param>
+            <param name="workDir">location of the fmu</param>
+            <param name="state">((Output) string) status</param>
+            <returns>Simulator </returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.initFMU(System.IntPtr)">
+            <summary>
+            Initialize simulation
+            </summary>
+            <param name="simulator"></param>
+            <returns>state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getVarRefForVarName(System.IntPtr,System.String)">
+            <summary>
+            OBSOLOTE you can now get variables with name without  this step.gets the value reference from the given value name
+            </summary>
+            <param name="simulator"></param>
+            <param name="name"></param>
+            <returns>value reference</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setContinuousStatesCustom(System.IntPtr,System.Double[],System.Int32)">
+            <summary>
+             Calls the FMI function fmiSetContinuousStates(..) and sets the local states
+            </summary>
+            <param name="simulator"></param>
+            <param name="stateValues"></param>
+            <param name="arraySize"></param>
+            <returns>fmi status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLocalEventIndicators(System.IntPtr,System.Double[])">
+            <summary>
+            gets the local event indicators
+            </summary>
+            <param name="simulator"></param>
+            <param name="value">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLocalEventIndicatorsPrev(System.IntPtr,System.Double[])">
+            <summary>
+            gets the local event indicators prev
+            </summary>
+            <param name="simulator"></param>
+            <param name="value">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getEventInfoStruct(System.IntPtr,u040.prespective.preplug.fmu.fmi2simulation.data.Fmi2EventInfo@)">
+            <summary>
+            gets the local event info struct 
+            </summary>
+            <param name="simulator"></param>
+            <param name="info">(Output) string</param>
+            <returns>0</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getFMUState(System.IntPtr)">
+            <summary>
+            Returns the current local FMU state
+            </summary>
+            <param name="simulator"></param>
+            <returns>fmi status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getEventIndicatorsSize(System.IntPtr)">
+            <summary>
+            get the number of event indicators and set the local number of event indicators
+            </summary>
+            <param name="simulator"></param>
+            <returns>number of event indicators</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getEventIndicators(System.IntPtr,System.Double[],System.Int32)">
+            <summary>
+            get the event indicators and set the local event indicators
+            </summary>
+            <param name="simulator"></param>
+            <param name="eventIndicators">(Output) string</param>
+            <param name="eventIndicatorsSize"></param>
+            <returns>FMI state</returns>    
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setEventInfo(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Sets the local event info values
+            </summary>
+            <param name="simulator"></param>
+            <param name="callEventUpdate"> bool</param>
+            <param name="newDiscreteStatesNeeded">bool</param>
+            <param name="terminateSimulation">bool</param>
+            <param name="nominalsOfContinuousStatesChanged">bool</param>
+            <param name="valuesOfContinuousStatesChanged">bool</param>
+            <param name="nextEventTimeDefined">bool</param>
+            <param name="nextEventTime"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setEventIterationBools(System.IntPtr)">
+            <summary>
+            sets the local event iterations bools
+            </summary>
+            <param name="simulator"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getNewDiscreteStatesNeeded(System.IntPtr)">
+            <summary>
+            gets the local new discete sates needed
+            </summary>
+            <param name="simulator"></param>
+            <returns>new discrete states needed</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getTerminateSimulation(System.IntPtr)">
+            <summary>
+            gets the local terminate simulation
+            </summary>
+            <param name="simulator"></param>
+            <returns>bool terminate simulation</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getContinuousStates(System.IntPtr,System.Double[],System.Int32)">
+            <summary>
+            Wrapper for the FMI function fmiGetContinuousSates also sets the local states
+            </summary>
+            <param name="simulator"></param>
+            <param name="values">(Output) string</param>
+            <param name="size">size of the values array</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getContinuousStatesSize(System.IntPtr)">
+            <summary>
+            gets the local continuousSatesSize
+            </summary>
+            <param name="simulator"></param>
+            <returns>local continuous state size</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setReal(System.IntPtr,System.Int64[],System.Int32,System.Double[])">
+            <summary>
+            wrapper for function fmiSetReal (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">Array of value references</param>
+            <param name="numVars">length of varRef</param>
+            <param name="values">Array of doubles</param>
+            <returns>fmi2_status int</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getReal(System.IntPtr,System.Int64[],System.Int32,System.Double[])">
+            <summary>
+            wrapper for the function fmiGetReal (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef"> Array of value references</param>
+            <param name="numVars"> Length of varRef Array</param>
+            <param name="array">((Output) string) Array of doubles</param>
+            <returns>fmi2_status int</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getFMIVersion(System.IntPtr)">
+            <summary>
+            Returns the version of "fmi2Functions.h" header file which was used to compile the functions of the fmu
+            </summary>
+            <param name="simulator"></param>
+            <returns>fmu version</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.importReset(System.IntPtr)">
+            <summary>
+            wrapper for the FMI function fmiReset (...)
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setString(System.IntPtr,System.Int64[],System.Int32,System.String[])">
+            <summary>
+            wrapper for the function fmiSetString (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">Array of value references</param>
+            <param name="numVars">Length of varRef Array</param>
+            <param name="values"> Array of string values</param>
+            <exception cref="!:not  yet tested"></exception>
+            <returns>int fmi2_status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getString(System.IntPtr,System.Int64[],System.Int32,System.IntPtr[])">
+            <summary>
+            wrapper for the function fmiGetString (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">An array of value references</param>
+            <param name="numVars">Length of the varRef Array</param>
+            <param name="values">((Output) string) Intptr</param>
+            <returns>int fmi2_status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setInteger(System.IntPtr,System.Int64[],System.Int32,System.Int32[])">
+            <summary>
+            wrapper for fmiGetInteger
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">An array of value references</param>
+            <param name="numVars">Length of the varRef Array</param>
+            <param name="values">((Output) string) Array of input values</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getInteger(System.IntPtr,System.Int64[],System.Int32,System.Int32[])">
+            <summary>
+            wrapper for the fmiGetInteger(...) function
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef"> Array of value references</param>
+            <param name="numVars"> Length of the varRef Array</param>
+            <param name="values"> ((Output) string) int of Array values</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setBoolean(System.IntPtr,System.Int64[],System.Int32,System.Int32[])">
+            <summary>
+            Wrapper for the FMI function fmiSetBoolean (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">Array of value references</param>
+            <param name="numVars">Length of the varRef array</param>
+            <param name="values">Array of int values</param>
+            <exception cref="!:Not tested"></exception>
+            <returns>int fmi2_status_t</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getBoolean(System.IntPtr,System.Int64[],System.Int32,System.Int32[])">
+            <summary>
+            Wrapper for the FMI function fmiGetBoolean (...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRef">Array of value references</param>
+            <param name="numVars">Length of the varRef array</param>
+            <param name="values">((Output) string) Array of int values</param>
+            <returns>int fmi2_status_t</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getTypesPlatform(System.IntPtr,System.IntPtr[])">
+             <summary>
+            Returns the string to uniquely identify the “fmi2TypesPlatform.h” header file used for
+             compilation of the functions of the FMU. 
+             </summary>
+             <param name="simulator"></param>
+             <param name="ptrs"> pointers</param>
+             <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setFMUState(System.IntPtr,System.Int32)">
+            <summary>
+            Sets the fmu state
+            </summary>
+            <param name="simulator"></param>
+            <param name="state"></param>
+            <returns>fmi status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.freeFMUState(System.IntPtr)">
+            <summary>
+            Wrapper for the FMI function fmiSetFMUstate(...)
+            </summary>
+            <param name="simulator"></param>
+            <returns>FMI status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDerivatives(System.IntPtr,System.Double[],System.Int32)">
+            <summary>
+            Wrapper for the FMI function fmiGetDerivates(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="derivatives">(Output) string</param>
+            <param name="arraySize"></param>
+            <returns>FMI status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.enterEventMode(System.IntPtr)">
+            <summary>
+            Wrapper for the FMI function fmiEnterEventMode(...)
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setupExperiment(System.IntPtr,System.Int32,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>
+             Calls the FMI function fmiSetupExperiment(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="toleranceDefined">bool true if the tolereance argument is to be used</param>
+            <param name="tolerance">Solvers internal to the FMU should use this tolerance or fine if tolerance defined is true</param>
+            <param name="startTime">Start time of the experiment</param>
+            <param name="stopTimeDefined">true if the stop time argument is to be used</param>
+            <param name="stopTime">stop time of the experiment</param>
+            <returns>FMi state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.enterInitializationMode(System.IntPtr)">
+            <summary>
+            Calls the FMI function fmiEnterInitializationMode
+            </summary>
+            <param name="simulator"></param>
+            <returns>FMI state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.exitInitializationMode(System.IntPtr)">
+            <summary>
+            Calls the FMI function fmiExitInitializationMode(...)
+            </summary>
+            <param name="simulator"></param>
+            <returns>FMI state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.enterContinuousTimeMode(System.IntPtr)">
+            <summary>
+            Calls the FMI function fmiEnterContinuousTimeMode(...)
+            </summary>
+            <param name="simulator"></param>
+            <returns>FMI state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.newDiscreteStates(System.IntPtr)">
+            <summary>
+            calls the FMI functino fmiNewDiscreteSate(...)
+            </summary>
+            <param name="simulator"></param>
+            <returns>FMI status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.setTime(System.IntPtr,System.Double)">
+            <summary>
+            Wrapper for the FMI function fimSetTime(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="time">Set the current time</param>
+            <returns>FMI state</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.completedIntegratorStep(System.IntPtr,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Wrapper for the FMI function fmiCompletedIntegratorStep(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="noSetFMUStatePriorToCurrentPoint">bool True if fmiSetFMUState will no longerbe called for the time
+            instans prior to current time in this simulation run </param>
+            <param name="enterEventMode">bool enter eventmode</param>
+            <param name="terminateSimulation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getNominalsOfContinuousStates(System.IntPtr,System.Double[],System.Int32)">
+            <summary>
+            Wrapper for the FMI function fmiGetNominalsOfContinuousStates(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="values"> Output</param>
+            <param name="arraySize">Number of nominal values</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDirectionalDerivatives(System.IntPtr,System.Int32[],System.Int32,System.Int32[],System.Int32,System.Double[],System.Double[])">
+            <summary>
+            Wrapper for the FMI function fmiGetDirectionalDerivative(...)
+            </summary>
+            <param name="simulator"></param>
+            <param name="varRefsSeed">value references for the seed vector</param>
+            <param name="varRefSeedSize">size of the varRefsSeed array</param>
+            <param name="varRefs"> Value references for the derivatives/outputs to be processed</param>
+            <param name="sizeVarRef">Size of the varRefs array</param>
+            <param name="seedVector"> The seed vector </param>
+            <param name="values">Output</param>
+            <returns>int status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLastError(System.IntPtr,System.IntPtr[])">
+            <summary>
+            Retrieve the last error message
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.freeMemory(System.IntPtr)">
+            <summary>
+            Release the memory allocated
+            </summary>
+            <param name="simulator"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getModelName(System.IntPtr,System.IntPtr[])">
+            <summary>
+            Get model name
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getModelIdentifier(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get model identifier for model exchange
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer"> (Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getGUID(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get GUID
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDescription(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMU description
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getAuthor(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMU author
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getCopyright(System.IntPtr,System.IntPtr[])">
+            <summary>
+            Get FMU copyright information
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLicense(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMU license information
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getModelVersion(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMU version
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getModelStandardVersion(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMI standard version (always 2.0)
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getGenerationTool(System.IntPtr,System.IntPtr[])">
+            <summary>
+            Get FMU generation tool
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getGenerationDateAndTime(System.IntPtr,System.IntPtr[])">
+            <summary>
+            get FMU generation date and time
+            </summary>
+            <param name="simulator"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getFMUKind(System.IntPtr)">
+            <summary>
+            Get the kind of FMU that is loaded
+            </summary>
+            <param name="simulator"></param>
+            <returns>Fmi2Kind Enum index</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getNamingConvention(System.IntPtr)">
+            <summary>
+            Get variable naming convention used
+            </summary>
+            <param name="simulator"></param>
+            <returns>int fmi2_naming_convention</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDefaultExperimentStop(System.IntPtr)">
+            <summary>
+            get the stop time for the default experiment as specified in the XML file
+            </summary>
+            <param name="simulator"></param>
+            <returns>default experiment stop time</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDefaultExperimentTolerance(System.IntPtr)">
+            <summary>
+            get the tolerance for the default experiment as specified in the XML File
+            </summary>
+            <param name="simulator"></param>
+            <returns> default experiment tolerance</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getDefaultExperimentStep(System.IntPtr)">
+            <summary>
+            Get the step size for the default experiment as specified in the XML file
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getVendorsNum(System.IntPtr)">
+            <summary>
+            get the number of vendors that had annotations in the xml
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getVendorName(System.IntPtr,System.Int32,System.IntPtr[])">
+            <summary>
+            Get the name of the vendor with that had annotations in XML
+            </summary>
+            <param name="simulator"></param>
+            <param name="index"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLogCategoriesNun(System.IntPtr)">
+            <summary>
+            get the number of log categories defined in the XML
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLogCategory(System.IntPtr,System.Int32,System.IntPtr[])">
+            <summary>
+            get the log category by index
+            </summary>
+            <param name="simulator"></param>
+            <param name="index"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getLogCategoryDescription(System.IntPtr,System.Int32,System.IntPtr[])">
+            <summary>
+            get the log description by index
+            </summary>
+            <param name="simulator"></param>
+            <param name="index"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getSourceFilesMENum(System.IntPtr)">
+            <summary>
+            get the number of source files for ME defined in the XML
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getSourceFileME(System.IntPtr,System.Int32,System.IntPtr[])">
+            <summary>
+            Get the FMU source file by index
+            </summary>
+            <param name="simulator"></param>
+            <param name="index"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getVariableListSize(System.IntPtr)">
+            <summary>
+            get the number of variable for FMU
+            </summary>
+            <param name="simulator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.getVariableName(System.IntPtr,System.Int32,System.IntPtr[])">
+            <summary>
+            Get a FMU variable name by vr
+            </summary>
+            <param name="simulator"></param>
+            <param name="vr"></param>
+            <param name="pointer">(Output) string</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.createFMUSimulator(System.String,System.String,System.IntPtr)">
+            <summary>
+            Creates the simulator
+            </summary>
+            <param name="_fmuPathLocal"> path to the fmu file</param>
+            <param name="_workDir">directory of the fmu file</param>
+            <param name="_simulatorRef">simulator</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetEventIndicators">
+            <summary>
+            get the event indicators and set the c++ event indicators
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetEventInfo(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Double)">
+            <summary>
+            Sets the local event info
+            </summary>
+            <param name="_enterEventMode"></param>
+            <param name="_newDiscreteStatesNeeded"></param>
+            <param name="_terminateSimulation"></param>
+            <param name="_nominalsOfContinuousStatesChanged"></param>
+            <param name="_valuesOfContinuousStatesChanged"></param>
+            <param name="_nextEventTimeDefined"></param>
+            <param name="_nextEventTime"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetEventInfo(u040.prespective.preplug.fmu.fmi2simulation.data.EventInfo)">
+            <summary>
+            Sets the local event info
+            </summary>
+            <param name="_eventInfo"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetEventInfoStruct(u040.prespective.preplug.fmu.fmi2simulation.data.Fmi2EventInfo@)">
+            <summary>
+            get the local event info struct
+            </summary>
+            <param name="_info">Output FMI2EventInfo</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLocalEventIndicators">
+            <summary>
+            gets the local event indicators
+            </summary>
+            <returns>event indicators</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLocalEventIndicatorsPrev">
+            <summary>
+            get the previous local event indicators
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetContinuousState">
+            <summary>
+            wrapper for the function fmiGetContinuousStates(...) also sets the local states
+            </summary>
+            <returns>continuous states</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetContinuousStatesCustom(System.Double[])">
+            <summary>
+            Calls the FMI function fmiSetContinuousStates(..) and sets the local states
+            </summary>
+            <param name="_statesLocal"></param>
+            <returns> status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.CompletedIntegratorStep(System.Int32,System.Boolean@,System.Boolean@)">
+            <summary>
+            Wrapper for the FMI function fmiCompletedIntegratorStep(...)
+            </summary>
+            <param name="_noSetFMUStatePriorToCurrentPoint"> bool True if fmiSetFMUState will no longer be called for time
+            instants prior to current time in this simulation run</param>
+            <param name="_enterEventMode">bool</param>
+            <param name="_terminateSimulation">bool</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.UnzipFMU(System.String)">
+            <summary>
+            Unzips an fmu to a given location
+            </summary>
+            <param name="fmuPath"></param>
+            <param name="_unzipLocation"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetNewDiscreteStatesNeeded">
+            <summary>
+            Returns the c++ value of the new discrete states needed
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetTerminateSimulation">
+            <summary>
+            Returns the c++ value of the terminate simulation
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.DestructFMU">
+            <summary>
+            Destruct the FMU session
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetReal(System.Int64[],System.Single[])">
+            <summary>
+            Sets an Array of reals
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <param name="_values">Array of values</param>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetReal(System.Int64,System.Single)">
+            <summary>
+            Sets a real 
+            </summary>
+            <param name="_varRef"> value reference</param>
+            <param name="_values"> float value</param>
+            <returns> bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetReal(System.String[],System.Single[])">
+            <summary>
+            Sets an array of reals
+            </summary>
+            <param name="_names"></param>
+            <param name="_values"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetReal(System.String,System.Single)">
+            <summary>
+            Set a real value
+            </summary>
+            <param name="_name"></param>
+            <param name="_value"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetString(System.Int64[],System.String[])">
+            <summary>
+            Set an Array of string values, NOT YET TESTED!
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <param name="_values">Array of string values</param>
+            <returns>fmi2_status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetString(System.Int64,System.String)">
+            <summary>
+            Set a string value,  NOT YET TESTED!
+            </summary>
+            <param name="_varRef"> value reference</param>
+            <param name="_value"> string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetString(System.String[],System.String[])">
+            <summary>
+            Set an Array of string values,  NOT YET TESTED!
+            </summary>
+            <param name="_names">Array of names</param>
+            <param name="_values">Array of string values</param>
+            <returns>fmi2_status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetString(System.String,System.String)">
+            <summary>
+            Set a string value ,  NOT YET TESTED!
+            </summary>
+            <param name="_names"></param>
+            <param name="_value"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetInteger(System.Int64[],System.Int32[])">
+            <summary>
+            Sets an Array of integers, NOT YET TESTED!
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <param name="_values">Array of int values</param>
+            <returns>fmi2_status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetInteger(System.Int64,System.Int32)">
+            <summary>
+            Sets an integer, NOT YET TESTED!
+            </summary>
+            <param name="_varRef">value reference</param>
+            <param name="_value">value</param>
+            <returns>fmi2_status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetInteger(System.String[],System.Int32[])">
+            <summary>
+            Sets an Array of integers, NOT YET TESTED!
+            </summary>
+            <param name="_names"></param>
+            <param name="_values"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetInteger(System.String,System.Int32)">
+            <summary>
+            Set an integers, NOT YET TESTED
+            </summary>
+            <param name="_name"></param>
+            <param name="_value"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetBoolean(System.Int64[],System.Boolean[])">
+            <summary>
+            Set an Array of booleans
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <param name="_values">Array of boolean values</param>
+            <returns>boolean  fmi2_status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetBoolean(System.Int64,System.Boolean)">
+            <summary>
+            Set a boolean
+            </summary>
+            <param name="_varRef">value reference</param>
+            <param name="_value">boolean value</param>
+            <returns>boolean fmi2_status</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetBoolean(System.String[],System.Boolean[])">
+            <summary>
+            Set an Array of booleans
+            </summary>
+            <param name="_names"></param>
+            <param name="_values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetBoolean(System.String,System.Boolean)">
+            <summary>
+            Set a boolean
+            </summary>
+            <param name="_name"></param>
+            <param name="_value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetReal(System.Int64[])">
+            <summary>
+            get real values
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <returns>float</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetReal(System.Int64)">
+            <summary>
+            Get a real value
+            </summary> 
+            <param name="_varRef"> value reference</param>
+            <returns>float </returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetReal(System.String[])">
+            <summary>
+            Get an array of real values
+            </summary>
+            <param name="_names"></param>
+            <returns>floats</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetReal(System.String)">
+            <summary>
+            Get a real value
+            </summary>
+            <param name="_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetString(System.Int64[])">
+            <summary>
+            Gets an Array of string values
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <returns>An Array of strings</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetString(System.Int32)">
+            <summary>
+            Gets a string value
+            </summary>
+            <param name="_varRef">value reference</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetString(System.String[])">
+            <summary>
+            Get an Array of strings values
+            </summary>
+            <param name="_names"></param>
+            <returns>string []</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetString(System.String)">
+            <summary>
+            Get a string value
+            </summary>
+            <param name="_name"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInteger(System.Int64[])">
+            <summary>
+            Get an Array of int values
+            </summary>
+            <param name="_varRef">Array of int values</param>
+            <returns>int []</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInteger(System.Int64)">
+            <summary>
+            Get an int value
+            </summary>
+            <param name="_varRef">value reference</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInteger(System.String[])">
+            <summary>
+            Get an array of int values
+            </summary>
+            <param name="_names"></param>
+            <returns>int []</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInteger(System.String)">
+            <summary>
+            Get an int value
+            </summary>
+            <param name="_name"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetBoolean(System.Int64[])">
+            <summary>
+            Get an Array of booleans
+            </summary>
+            <param name="_varRef">Array of value references</param>
+            <returns>Array of booleans</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetBoolean(System.Int64)">
+            <summary>
+            Get a boolean
+            </summary>
+            <param name="_varRef"> value reference</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetBoolean(System.String[])">
+            <summary>
+            Get an Array of booleans
+            </summary>
+            <param name="_names"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetBoolean(System.String)">
+            <summary>
+            Get a boolean
+            </summary>
+            <param name="_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetFMIVersion">
+            <summary>
+            Gets the fmi version
+            </summary>
+            <returns>string fmi verion</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.ImportReset">
+            <summary>
+            Wrapper for the FMI function fmiResetT
+            </summary>
+            <returns>fmi2 status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetTypesPlatform">
+            <summary>
+            Returns the string to uniquely identify the fmi2TpesPlatform
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetFMUState">
+            <summary>
+            Returns the current FMU state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.EnterEventMode">
+            <summary>
+            The model enters Event MOde from the continuous time mode and discrete-time equations may become active and relations are not frozen 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDerivatives(System.Int32)">
+            <summary>
+            Wrapper for the FMI function fmiGetDerivatives(...)
+            </summary>
+            <param name="_arraySize"></param>
+            <returns> derivatives</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.EnterInitializationMode">
+            <summary>
+            Calls the FMI function fmiEnterInitializationMode(...)
+            </summary>
+            <returns>status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.ExitInitializationMode">
+            <summary>
+            Calls the FMI function fmiExitInitializationMode(...)
+            </summary>
+            <returns>status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetupExperiment(System.Boolean,System.Double,System.Double,System.Boolean,System.Double)">
+            <summary>
+            Calls the FMI function fmiSetupExperiment(...)
+            </summary>
+            <param name="_toleranceDefined"> true if the tolerance argument is to be used</param>
+            <param name="_tolerance"> solvers internal to the fmu should use this tolereance or finer, if tolerance_defined is true</param>
+            <param name="_startTime"> Start time of the experiment</param>
+            <param name="_stopTimeDefined">True if the stop_time argument ist to be used</param>
+            <param name="_stopTime"> Stop time of the experiment if stop_time is ture</param>
+            <returns>bool status </returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.EnterContinuousTimeMode">
+            <summary>
+            Calls the FMI function fmiEnterContinuousTimeMode(...)
+            </summary>
+            <returns>status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.SetTime(System.Double)">
+            <summary>
+            Wrapper for the fmi function fmiSetTime(...)
+            </summary>
+            <param name="_tCurLocal">set the current time</param>
+            <returns>status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetNominalsOfContinuousStates">
+            <summary>
+            Wrapper for the fmi function fmiSetTime(...)
+            </summary>
+            <param name="tCurLocal">set the current time</param>
+            <returns>status bool</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLastError">
+            <summary>
+            Retrieve the last error message
+            </summary>
+            <remarks>
+            Many functions in the library return pointers to struct. An error is indicated by returning NULL/0-pointer.
+             If error is returned than fmi2_import_get_last_error() functions can be used to retrieve the error message.
+            </remarks>
+            <returns>last error</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.FreeMemory">
+            <summary>
+            release the memory allocated
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetVendorsNum">
+            <summary>
+            get the number of vendors that had annotations in the xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetVendorsName(System.Int32)">
+            <summary>
+            get the name of the vendor with that had annotation in XML
+            </summary>
+            <param name="_index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLogCategoriesNum">
+            <summary>
+            get the number of log categories in the XML
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLogCategory(System.Int32)">
+            <summary>
+            get the log category by index
+            </summary>
+            <param name="_index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLogCategoryDescription(System.Int32)">
+            <summary>
+            Get the log categroy description by index
+            </summary>
+            <param name="_index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetSourceFilesMENum">
+            <summary>
+            get the number of source files for ME defined in the XML
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetSourceFileMe(System.Int32)">
+            <summary>
+            get the ME source file by index
+            </summary>
+            <param name="_index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetModelName">
+            <summary>
+            Get model name
+            </summary>
+            <returns>model name</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetModelIdentifier">
+            <summary>
+            get model identifier for model exchange
+            </summary>
+            <returns>model identifier</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetGUID">
+            <summary>
+            get FMU GUID
+            </summary>
+            <returns>GUID</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDescription">
+            <summary>
+            get FMU description
+            </summary>
+            <returns>description</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetAuthor">
+            <summary>
+            get FMU author
+            </summary>
+            <returns>author</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetCopyright">
+            <summary>
+            Get FMU copyright information
+            </summary>
+            <returns>copyright information</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetLicense">
+            <summary>
+            Get FMU license information
+            </summary>
+            <returns>FMU license</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetModelVersion">
+            <summary>
+            Get FMU version
+            </summary>
+            <returns>FMU version</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetModelStandardVersion">
+            <summary>
+            get FMI standard version always 2.0
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetGenerationTool">
+            <summary>
+            Get FMu generation tool
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetGenerationDateAndTime">
+            <summary>
+            get FMU generation date and time
+            </summary>
+            <returns>FMU generation date and time</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetNamingConvention">
+            <summary>
+            get variable naming convention used
+            </summary>
+            <returns>fmi2_variable_naming_convention_enu_t</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDefaultExperimentStart">
+            <summary>
+            get the start time for default experiment as specified in the XML file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDefaultExperimentStop">
+            <summary>
+            get the start time for default experiment as specified in the XML file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDefaultExperimentTolerance">
+             <summary>
+             get the tolerance for default experiment as specified in the XML file
+             </summary>
+             <returns></returns>
+            
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDefaultExperimentStep">
+            <summary>
+            get the step size for default experiment as specified in the XML file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetFMUKind">
+             <summary>
+            Get the type of FMU 
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetVariableByName(System.String)">
+            <summary>
+            Searches trough the full variable list and returns the variable 
+            </summary>
+            <param name="_name"></param>
+            <returns></returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetOutputList">
+            <summary>
+            Returns a list of Unknown Outputs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetOutputVariableList(u040.prespective.preplug.fmu.fmi2simulation.enums.Fmi2BaseType)">
+            <summary>
+            Returns a list of output Fmi2Variables 
+            </summary>
+            <param name="_type"> the type of variable</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInputVariableList(u040.prespective.preplug.fmu.fmi2simulation.enums.Fmi2BaseType)">
+            <summary>
+            Returns a list of input Fmi2Variables 
+            </summary>
+            <param name="_type"> the type of variable</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetDerivativesList">
+            <summary>
+            Returns a list of unknown Derivatives
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.GetInitialUnknownsList">
+            <summary>
+            returns a list of unknown initials
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Functions.NamesToValueReferences(System.String[],u040.prespective.preplug.fmu.fmi2simulation.enums.Fmi2BaseType)">
+            <summary>
+            Converts names to value references
+            </summary>
+            <param name="_names"></param>
+            <param name="_type"></param>
+            <returns>Array of value references</returns>
+        </member>
+        <member name="T:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Simulator">
+            <summary>
+            A default FMI2 Simulator
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Simulator.#ctor(System.String)">
+            <summary>
+            Create a simulator for a singular FMU
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Simulator.initializeFMU">
+            <summary>
+            Allocate Simulator memory, create instance and set default experiment parameters
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.fmi2simulation.Fmi2Simulator.initializeDefaultExperimentValues">
+            <summary>
+            Get default experiment data from FMU model description
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.fmu.FMU_Simulation.hierarchicalShapeBehavior">
+            <summary>
+            Hierarchical list of the shape behavior (start = parent)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.FMU_Simulation.GetInputsAndOutputs">
+            <summary>
+            gets the input and output names
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.FMU_Simulation.custom_indexShapeBehaviors">
+            <summary>
+            To be filled
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.FMU_Simulation.Start">
+            <summary>
+            Unity Start
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.FMU_Simulation.FixedUpdate">
+            <summary>
+            Unity Update function which is called every frame
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.fmu.FMU_Simulation.checkInputChanges">
+            <summary>
+            Check if inputs are different from last frame
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.presocket.utility.ByteUtility.SOH">
+            <summary>
+            Start Of Heading
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.presocket.utility.ByteUtility.STX">
+            <summary>
+            Start Of Text
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.presocket.utility.ByteUtility.ETX">
+            <summary>
+            End Of Text
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.presocket.utility.PRESocketUtility.GetIpv4Address">
+            <summary>
+            get Ipv4 address
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy">
+            <summary>
+            The signal policy is responsible for loading in the 'known signal database at application startup
+                     and manage the adding of signals when the signal database is updated
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.SignalContracts">
+            <summary>
+            List with active signal contracts
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.UpdateSignalPolicy(u040.prespective.preplug.logicadapter.AdapterSignalDirection,System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}},u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy,System.String,System.Collections.Generic.List{System.Exception}@)">
+            <summary>
+            Import signal contracts after loading them from a database
+            </summary>
+            <param name="_exceptionPrefix"></param>
+            <param name="_failReasons">failed imports</param>
+            <param name="_signalDir"></param>
+            <param name="_signalContactData"></param>
+            <param name="_typePolicy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.ExportSignalPolicy(u040.prespective.preplug.logicadapter.AdapterSignalDirection,u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy,System.Collections.Generic.List{System.Exception}@)">
+            <summary>
+            Export signal contracts before putting them in a database
+            </summary>
+            <param name="_typePolicy"></param>
+            <param name="_failReasons">failed exports</param>
+            <param name="_soughtSignalDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.RemoveSignalContracts(System.String,System.String)">
+            <summary>
+            Remove a signal contract
+            </summary>
+            <param name="_name"></param>
+            <param name="_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.findSignalContracts(System.String,System.String)">
+            <summary>
+            Return a list of all indices that fit the Name or Address
+            </summary>
+            <param name="_name"></param>
+            <param name="_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.getSignalContractsBySignalDirection(u040.prespective.preplug.logicadapter.AdapterSignalDirection)">
+            <summary>
+            Gets a list of SignalContacts in a given direction
+            </summary>
+            <param name="_soughtSignalDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalPolicy.ToString">
+            <summary>
+            SignalPolicy to string (for debugging)
+            </summary>
+            <returns>class as string</returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract">
+            <summary>
+            Signal Contract describes the properties of a single signal
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.SignalDirection">
+            <summary>
+            The direction of this signal (Input, Output or Variable)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Address">
+            <summary>
+            The remote (explicit PLC) Address that goes with this signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Name">
+            <summary>
+            The local (Symbolic) name given to this signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Type">
+            <summary>
+            The type of this signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.StructType">
+            <summary>
+            In case of a struct type; the alias (generally type name, or type name with namespace) used for this type of struct
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Description">
+            <summary>
+            Description of this signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.InitValue">
+            <summary>
+            Initial value of this signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.QoS">
+            <summary>
+            The Quality of service used for this signal
+            Quality-of-service indicates the interval between update requests (higher QoS signals have a higher refresh rate)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Priority">
+            <summary>
+            The priority of the signal
+            Priority indicates, within a frame, when this signal is updated (higher priority signals are updated first)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Fidelity">
+            <summary>
+            Value indicative of the fidelity the algorithm processing this algorithm should enforce
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.OnSignalContractEvent">
+            <summary>
+            Event emitted when a contract is affected by a crud operation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.CustomParams">
+            <summary>
+            Any custom params that apply to this this Signal Contract
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract.Export(u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy)">
+            <summary>
+            Export Type Policy as Dictionary - string, string -
+            </summary>
+            <param name="_typePolicy">A Type Policy Object</param>
+            <returns>Dictionary - string, string</returns>
+            <exception cref="T:System.Exception">List of exceptions</exception>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract">
+            <summary>
+            <description>
+            Contract specifically for serializing and deserializing Enum Type Objects 
+            (Supports both flagged and non-flagged objects)
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="201110">
+                Created for testing DES Throughput Analysis module
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.isFlaggedEnum">
+            <summary>
+            whether this enum type is flagged, and thus supports bitwise multiselection
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.#ctor(System.Type,System.Int32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a new Enum Contract
+            </summary>
+            <param name="_systemType">the type of enum this contract is for</param>
+            <param name="_bytes"></param>
+            <param name="_leadBytes"></param>
+            <param name="_trailBytes"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes a byte array to an enum instance of this contract type
+            </summary>
+            <param name="_bytes">the bytes to convert to this enum - we expect the enum to be valued by an int32</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.DeserializeString(System.String)">
+            <summary>
+            Deserializes a string to an enum instance of this contract type
+            </summary>
+            <param name="_value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.Serialize(System.Object,System.Int32)">
+            <summary>
+            Serializes an enum instance of this contract type to a byte array
+            </summary>
+            <param name="_value">the instance to serialize</param>
+            <param name="_fieldIndex">???</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.EnumContract.SerializeString(System.Object)">
+            <summary>
+            Serializes an enum instance of this contract type to a string
+            </summary>
+            <param name="_value">the instance to serialize</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract" -->
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.StructName">
+            <summary>
+            Base name of a struct
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.StructFullName">
+            <summary>
+            When dealing with multiple types with the same name (but a different namespace)
+            a fullname description of the type will be required
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.ParameterTypeNames">
+            <summary>
+             that need to be serialized (in sequence) before this struct can be deserialized
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.readyForSerialization">
+            <summary>
+            Whether this struct contract is ready for serialization operations
+            (whether serialization type dependencies are resolved with the owner
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.owner">
+            <summary>
+            The Typepolicy 'owning' this structContract
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.serialBindingFlags">
+            <summary>
+            The bindingflags used when (de-)serializing this type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.ParameterSystemTypes">
+            <summary>
+            Array with the parameter systemtypes
+            (NOTE : this requires the struct field order to match the sequence of the constructor function)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.constructor">
+            <summary>
+            The Constructor delegate used 
+            (NOTE : we require a constructor to exist that accepts all field types in order of declaring them in script)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.serializationRecipe">
+            <summary>
+            The recipe to use for serializing this struct
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.linkReflectors(System.Exception@)">
+            <summary>
+            Reflect the systemtype this structContract manages so we know what (system)types it depends on
+            </summary>
+            <param name="_failReason">if this function fails, the reason why</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.StructContract.linkDependencies(System.Exception@)">
+            <summary>
+            Checks the dependant SystemType Contracts, and makes sure they are present and ready for serialization
+            Also sets the total bytesize of a package created following this policy
+            </summary>
+            <param name="_failReason">if this function fails, the reason why</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy">
+            <summary>
+            <description>
+            Class responsible for managing the basetype serialization/deserialization policies
+            for a specific interface. Note that this class cannot be made static since datamaps may differ
+            per interface (e.g. TwinCat ADS doesn't have any wrapping bytes around the byte block, but Siemens does)
+            </description>
+            <version 
+                ver="1.0.1" 
+                author="BBS" 
+                date="210118">
+                Updated to unit040 stylesheet
+            </version>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="190118">
+                Based on Binary Utility, Implemented support for wrapper bytes around values
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.defaultBaseTypeContracts">
+            <summary>
+            Basetype Definitions default for a Unity3D c# project
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.GetEnumContract(System.Type)">
+            <summary>
+            Retrieve an enum contract by Enum Type
+            </summary>
+            <returns>the contract fitting this enum type</returns>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.supportedBaseTypeContracts">
+            <summary>
+            Basetypes Contracts this stream supports
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.supportedStructContracts">
+            <summary>
+            Supported Struct Contracts
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.supportedEnumContracts">
+            <summary>
+            SupportedEnum Contracts
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.GetContract(u040.prespective.preplug.logicadapter.StreamSignalType,System.String,System.Boolean)">
+            <summary>
+            Attempt to retrieve a contract fitting the signaltype
+            (Updated with search for enum)
+            </summary>
+            <param name="_signalType">the signaltype to retrieve</param>
+            <param name="_structName">the name part of the struct or enum (if applicable)</param>
+            <param name="_createIfNotFound">whether adding undefined contracts is allowed</param>
+            <returns>the found type contract</returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.#ctor(u040.prespective.preplug.logicadapter.StreamSignalType[],u040.prespective.preplug.logicadapter.policyadaptation.type.OnNewStructTypeEncountered)">
+            <summary>
+            Create a TypePolicy object
+            </summary>
+            <param name="_baseTypesToExclude">base types to exclude support for (some interfaces do not support certain basetypes)</param>
+            <param name="_onNewStructEncountered">policy to follow when a new structtype is encountered in runtime</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.updateTypePolicy(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Updates (of fills) the policy with settings from the users' policy settings (generally a db or file)
+            </summary>
+            <param name="_baseTypePolicy">settings found for the basetype policy</param>
+            <param name="_structPolicy">settings found for the struct policy</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.bitSerialize(System.String,System.Object,System.Byte[]@,System.Exception@,System.String@,u040.prespective.preplug.logicadapter.StreamSignalType@)">
+            <summary>
+            Serialize an object to a bytearray
+            </summary>
+            <param name="_memberRef">member being serialized (used for failure tracing/ bug fixing)</param>
+            <param name="_value">the value to be bitserialized</param>
+            <param name="_explicitStructType">in case of struct; the explicit typing of the struct we want to use for serialization</param>
+            <param name="_type">the type of streamsignal to serialize</param>
+            <param name="_result">the resulting byte array</param>
+            <param name="_failReason">the reason serialization failed</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.bitserializeBaseType(System.String,System.Object,u040.prespective.preplug.logicadapter.StreamSignalType,System.Byte[]@,System.Exception@)">
+            <summary>
+            Serialize a basetype to bytearray
+            </summary>
+            <param name="_memberRef">member being serialized (used for failure tracing/ bug fixing)</param>
+            <param name="_value">the value to be bitserialized</param>
+            <param name="_type">the type of streamsignal to serialize</param>
+            <param name="_result">the resulting byte array</param>
+            <param name="_failReason">the reason serialization failed</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.bitdeserializeBaseType(System.String,System.Byte[],u040.prespective.preplug.logicadapter.StreamSignalType,System.Object@,System.Exception@)">
+            <summary>
+            Deserializes a Basetype
+            </summary>
+            <param name="_memberRef">member being serialized (used for failure tracing/ bug fixing)</param>
+            <param name="_value">the value to be bitserialized</param>
+            <param name="_type">the type of streamsignal to serialize</param>
+            <param name="_result">the resulting byte array</param>
+            <param name="_failReason">the reason serialization failed</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.isBaseType(u040.prespective.preplug.logicadapter.StreamSignalType)">
+            <summary>
+            Whether or not a streamsignaltype is considered a basetype
+            </summary>
+            <param name="_t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.GetSignalType(System.Object,System.String@)">
+            <summary>
+            Retrieves the signaltype that matches the systemtype
+            </summary>
+            <param name="_o">the object to match by systemtype</param>
+            <param name="_structType">reference to structtype, set if the signaltype is of type struct</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.exportBaseTypes">
+            <summary>
+            return a report of the basetypes currently supported in this interface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.importBaseTypes(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Updates the basetypes in this interface with custom settings from the policy document
+            </summary>
+            <param name="_baseTypeData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.exportStructs(System.Func{u040.prespective.preplug.logicadapter.StreamSignalType,System.String})">
+            <summary>
+            Returns a report of the structs currently supported in this interface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.importStructs(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Updates the structs currently supported in this interface from the policy document
+            </summary>
+            <param name="_structData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.supportsType(System.Type,System.Type[]@)">
+            <summary>
+            Returns whether a (custom) type is supported in this interface
+            (Determines whether the types this struct is dependant on are supported by this interface)
+            </summary>
+            <param name="_type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.TypePolicy.GetTypeAdvanced(System.String)">
+            <summary>
+            Function used to find a type by name
+            </summary>
+            <param name="_typeName">the (full-)name of the type to look for</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract">
+            <summary>
+            <description>
+            Abstract baseclass for all type contracts (for now only baseType and struct)
+                     Type contracts describe the bitwise structure of a class; and how they should be bitserialized
+            </description>
+            <version 
+                ver="1.0.1" 
+                author="BBS" 
+                date="190121">
+                Updated to the unit040 stylesheet
+            </version>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="190121">
+                Abstract class prepped for use in static sized (explicit) typing (non-enumerations)
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.Name">
+            <summary>
+            The name of the basetype we defined
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.SystemType">
+            <summary>
+            c# type associated with this basetype
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.Bytes">
+            <summary>
+            The binary size of this object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.LeadBytes">
+            <summary>
+            The number of leading bytes when this type is communicated  
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.TrailBytes">
+            <summary>
+            The number of trailing bytes when this type is communicated  
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.PackedByteSize">
+            <summary>
+            Returns the size of the binary packet when packed
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.packObject(System.Byte[],u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract)">
+            <summary>
+            Utility function to 'pack' an object conform this policy (i.e. make sure the padding matches leading and trailing bytes)
+            </summary>
+            <param name="_content">the object to 'pack'</param>
+            <param name="_owner">a reference to the calling contract</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract.GetDefaultValue">
+            <summary>
+            Returns the Default Value of the type this contract manages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.type.BaseTypeContract">
+            <summary>
+            <description>
+            Definition of a what construes a basetype in this application
+            and how it is packaged when sent in struct form (byteblock)
+            </description>
+            <version 
+                ver="1.0.1" 
+                author="BBS" 
+                date="210118">
+                Updated to match stylesheet from unit040 
+            </version>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="190116">
+            Base type definition - Basetypes are always fixed size
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.BaseTypeContract.deserialize">
+            <summary>
+            Function used to deserialize an object of this type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.policyadaptation.type.BaseTypeContract.serialize">
+            <summary>
+            Function used to serialize an object of this type
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor">
+            <summary>
+                 Interface for interpreting and managing different types of Stream Policy Databases (e.g. XML, JSON)
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.PolicyInteractionOverrides">
+            <summary>
+            Overrides specific for policy import and export (e.g. the channelPolicy xml node for prelogic needs to be structured a little differently)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.TypePolicy">
+            <summary>
+            Get a handle for the type policy manager
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.SignalPolicy">
+            <summary>
+            Get a handle for the signal policy manager
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.ImportStreamPolicy(u040.prespective.preplug.logicadapter.IStreamAdapterSettings,System.Object,u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,u040.prespective.preplug.logicadapter.IStreamAdapterSettings@,System.Boolean)" -->
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.UpdateStreamPolicy(u040.prespective.preplug.logicadapter.IStreamAdapterSettings,System.Object,u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Boolean)">
+            <summary>
+            Update the Stream Policy while the stream is active
+            </summary>
+            <param name="_streamAdapterSettings">the used stream adapter settings; these may contain values required when exporting stream policy - such as stream IP address</param>
+            <param name="_changes">object containing changes to make to the policy</param>
+            <param name="OnPolicyUpdated">callback to make on completion of the policy changes</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor.ExportStreamPolicy(u040.prespective.preplug.logicadapter.IStreamAdapterSettings,System.Object,u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Boolean)">
+            <summary>
+            Export the stream Policy to a database
+            </summary>
+            <param name="_streamAdapterSettings">the used stream adapter settings; these may contain values required when exporting stream policy - such as stream IP address</param>
+            <param name="_additionalSettings">object containing additional settings for export of the policy</param>
+            <param name="OnPolicyExported">callback to make on completion of the policy export</param>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapterState">
+            <summary>
+            Signal State Enum
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter">
+            <summary>
+             Adapter class to manage the connection between the application specific signal handling and the stream specific signal handling
+             
+             <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+             </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.isConnectedBuffer">
+            <summary>
+            Whether or not this particular signal adapter is plugged in/connected (i.e. the connection between the application and remote is active)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.isIsolatedBuffer">
+            <summary>
+            Whether or not this adapter is running in isolation mode which means no remote connection will be made
+            (Isolation mode is used for unit testing)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.isLive">
+            <summary>
+            Whether or not this particular signal adapter has a 'live' remote connection
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.signalAdapterState">
+            <summary>
+            Reports the current adapter state
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.GetAdapterState">
+            <summary>
+            Get current adapter state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.AppSignalSocket">
+            <summary>
+            Application side signal socket 
+            (should handle event distribution within the application)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.SignalContract">
+            <summary>
+            Contract describing the signal 
+            (contract (Policy) description of this signal)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.TypeContract">
+            <summary>
+            Contract describing the type policy for this particular type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.StreamSignalSocket">
+            <summary>
+            Stream side signal socket
+            (should handle stream-side signal events)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.#ctor(u040.prespective.preplug.logicadapter.policyadaptation.signal.SignalContract,u040.prespective.preplug.logicadapter.policyadaptation.type.ATypeContract)">
+            <summary>
+            Signal Adapter is created based on contract
+            </summary>
+            <param name="_contract"></param>
+            <param name="_typeContract"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.ConnectAdapter">
+            <summary>
+            Connect the signal adapter, if the application is allready running (and the adapter was disconnected previously) this 'unpauzes' the application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.SignalAdapter.DisconnectAdapter">
+            <summary>
+            DisConnect the signal adapter, if the application is allready running (and the adapter was connected previously) this 'pauzes' the application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket">
+            <summary>
+            @INTERFACE : IStreamSignalSocket
+            
+            @ABOUT : Generic interface for stream signal reading, writing and or event based subscription
+            
+            @AUTHOR: Pieter (Unit040)
+            
+            @VERSION:  v1.00 - 30/01/2019 Implemented based on 'Preplug_ArchitectureAnalysis'
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket.LastUpdate">
+            <summary>
+            Last time this signal was updated
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket.LastValue">
+            <summary>
+            Last value buffered by this adapter signal
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket.LiveValue">
+            <summary>
+            Request a live value update (should forward buffered value if input)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket.LiveValueBuffer">
+            <summary>
+            Buffer set to sent to the live stream
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IStreamSignalSocket.onChangeEvent">
+            <summary>
+            Event emitted when a signal was changed
+            INPUT - will trigger on noticing a change in value on the remote device (may not be supported for all adapter types)
+            OUTPUT - will trigger when a new value was sent from the remote device 
+            VARIABLE - will trigger in both of the above cases (should not trigger if the value matches the value we just set to prevent feedback loop!)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.StreamSignalEvent">
+            <summary>
+            Event emitted when a signal was changed
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket">
+            <summary>
+            Socket interface implemented by application to register a listener to a signal adapter
+                    (Should contain sufficient information to tie the application side to the Signal(contract)
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.OnSignalValueChanged(System.Object,u040.prespective.preplug.logicadapter.signaladaptation.StreamSignalEvent)">
+            <summary>
+            Function called when the signal this value was tied to was changed remotely
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.AdapterState">
+            <summary>
+            Delegate to determine if the connection with the remote is live 
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.SetSignalValue">
+            <summary>
+            Delegate to actively attempt to set the remote signal value
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.GetSignalValue">
+            <summary>
+            Delegate to actively attempt to get the remote signal value
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.OnSignalValueChangedEvent">
+            <summary>
+            Delegate used by secundary listeners (such as the Lifecycle manager)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.signaladaptation.IAppSignalSocket.AppSignalBuffer">
+            <summary>
+            buffered signal value (in case the adapter is not yet connected)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.preplug.logicadapter.signaladaptation.AppSignalEvent" -->
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.setSignalDelegate">
+            <summary>
+            Delegate to actively set the Signal with a value; may return exception on fail
+            </summary>
+            <param name="_value">the value and change time to set</param>
+            <param name="_failReason">the reason the set failed</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.getSignalDelegate">
+            <summary>
+            Delegate to actively get the Signal; may return exception on fail
+            </summary>
+            <param name="_value">the value to get</param>
+            <param name="_failReason">the reason the get failed</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.SignalBuffer">
+            <summary>
+            Struct used to buffer the (last) signal value and the change time
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor">
+            <summary>
+            Class for managing the stream signal interactors
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.activeSignalAdaptersBuffer">
+            <summary>
+            All active signal adapters present in this interactor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.GetSignalAdapterIndex(System.String,System.String)">
+            <summary>
+            retrieve the index of a particular interactor managing a particular signal name/address 
+            </summary>
+            <param name="_name">the name of the signal/contract in the adapter to look for</param>
+            <param name="_address">the address of the signal/contract on the PLC in the adapter to look for</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.RegisterAppSignal(System.Object,System.String@)">
+            <summary>
+            Override to register an appSignal within the adapter (generally application specific
+            </summary>
+            <param name="_appSignal"></param>
+            <param name="_registerFailWarning"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.ConnectAllSignalAdapters(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Connects all signal adapters
+            </summary>
+            <param name="_issues"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.PauseAllSignalAdapters(System.Boolean)">
+            <summary>
+            Pause all signal adapters
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.DisconnectAllSignalAdapters(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Disconnects all signal adapters
+            </summary>
+            <param name="_issues"></param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.signaladaptation.AStreamSignalAdapterInteractor.CreateSignalAdapters(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,u040.prespective.preplug.logicadapter.policyadaptation.IStreamPolicyInteractor,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            5) Create the signal adapters based on the available signal contracts.
+               this is mostely Prelogic generic, and may thus be implemented here
+            </summary>
+            <param name="_result"></param>
+            <param name="_policyInteractor"></param>
+            <param name="_params"></param>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.IStreamClient">
+            <summary>
+            Interface for the streamclient
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamClient.StreamAdapterSettings">
+            <summary>
+            StreamAdapterSettings (not the adapter itself) need to be accesible since they are displayed on the Inspector
+            (What are settings for this particular type of stream)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamClient.StreamAdapter">
+            <summary>
+            The adapter in control of the stream
+            (What type of stream are we managing?)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:u040.prespective.preplug.logicadapter.IStreamClient.PolicyInteractor" -->
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamClient.LifeCycleManager">
+            <summary>
+            The manager responsible for managing the content lifecycle
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.configadaptation.IStreamConfigurationInteractor">
+            <summary>
+            Stream Configuration Interface
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.configadaptation.IStreamConfigurationSettings">
+            <summary>
+            Stream Configuration Interface
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.StreamClientState">
+            <summary>
+            Stream Client State
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.StreamAdapterState">
+            <summary>
+            Current state of the streamadapter
+            (Is data transferable from one side of the stream to another?)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.preplug.logicadapter.StreamContentState" -->
+        <member name="T:u040.prespective.preplug.logicadapter.AdapterSignalQoS">
+            <summary>
+            Quality-of-service setting for a specific AdapterSignal
+            (A high quality of service is more timely, but also more taxing on overall application performance)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.AdapterSignalDirection">
+            <summary>
+            The direction this signal travels over the Adapter (NOTE: direction is always determined from the
+            Adaptor; e.g. an input is a simulation output!)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.StreamSignalType">
+            <summary>
+            Generic Signal types supported for subscription (based on the default signal types for Twincat ADS)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.IStreamAdapter">
+            <summary>
+            Stream Adapter Interface
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamAdapter.StreamAdapterSettings">
+            <summary>
+            Property with the settings managing this particular Stream Adapter
+            (What are the settings made for this particular type of stream adapter, can be gateway specific)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamAdapter.StreamPolicyInteractor">
+            <summary>
+            Interactor managing the policy enforced by this stream 
+            (what types are supported as signal, what signals are part of the configuration?)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:u040.prespective.preplug.logicadapter.IStreamAdapter.ContentLifeCycleManager" -->
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamAdapter.SignalAdapterInteractor">
+            <summary>
+            Interactor/manager for the signal Adapters
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamAdapter.StreamAdapterState">
+            <summary>
+            Current state of the stream adapter
+            </summary>
+        </member>
+        <member name="P:u040.prespective.preplug.logicadapter.IStreamAdapter.StreamAdapterEvent">
+            <summary>
+            Event dispatcher for stream adapter events
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.ImportPolicy(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Object,System.Object)">
+            <summary>
+            Imports the Policy (either from the initial state report, or a local database)
+            In runtime the policy is (generally) loaded as the first step of making a connection with a stream, since the policy
+            contains descriptions on how objects should be interpreted
+            </summary>
+            <param name="_configurationData">the configuration data as forwarded by the initial state report</param>
+            <param name="_settings">the actual settings (which may also contain the location of the Policy Database)</param>
+            <param name="_result">the callback made after the procedure is complete (Expected to be ran on the mainthread)</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.preplug.logicadapter.IStreamAdapter.CreateSignalAdapters(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Object,System.Object)" -->
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.RegisterAppSignal(System.Object,System.String@)">
+            <summary>
+            Registers an app Signal with the fitting signal adapter (if any available)
+            </summary>
+            <param name="_appSignal">socket object describing how the signal will be handled in the application</param>
+            <param name="onRegistrationFail">returns exception if the adaptation of this socket fails</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.Connect(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Object,System.Object)">
+            <summary>
+            Connects the stream (client) with its counterpart (server)
+            </summary>
+            <param name="_configurationData">optional override for configuration data</param>
+            <param name="_settings">optional override for stream settings</param>
+            <param name="_result">callback made after the procedure is complete (Expected to be ran on the mainthread)</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.RegisterStreamSignals(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Object,System.Object)">
+            <summary>
+            Registers the Streamsignals with the fitting signal adapter (if any available)
+            </summary>
+            <param name="_result">callback made after the procedure is complete (Expected to be ran on the mainthread)</param>
+            <param name="_configurationData">optional override for configuration data</param>
+            <param name="_settings">optional override for stream settings</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.StartStreamApplication(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate,System.Object,System.Object)">
+            <summary>
+            Starts the stream application (sends a start signal over the stream if any)
+            </summary>
+            <param name="_configurationData">optional override for configuration data</param>
+            <param name="_settings">optional override for stream settings</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.PauseStreamApplication(System.Boolean)">
+            <summary>
+            Pauses the stream application (sends a pause signal over the stream if any)
+            </summary>
+            <param name="_runState">Application run state (pause or continue)</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.StopStreamApplication(System.Object,System.Object)">
+            <summary>
+            Stops the stream application (sends a pauze signal over the stream if any)
+            </summary>
+            <param name="_configurationData">optional override for configuration data</param>
+            <param name="_settings">optional override for stream settings</param>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.IStreamAdapter.ExportPolicy(System.Object,System.Object,u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate)">
+            <summary>
+            Export the Policy to a database
+            </summary>
+            <param name="_configurationData">the data this policy is based on</param>
+            <param name="_settings">the settigns currently active</param>
+            <param name="_result">the callback made after the procedure is completed (either succesfull or failed)</param>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.AContentLifeCycleManager">
+            <summary>
+            Abstract class for content lifecycle manager
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.ConnectionTimeoutDurationSec">
+            <summary>
+            Time in seconds of idleness on the input signal it takes before the
+            connection is deemed timed out (will request the adapter to exhibit reset behavior for the entire connection)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.OutOfSyncTimeoutDurationSec">
+            <summary>
+            Time in seconds of idleness on the input signal it takes before the 
+            data on the stream is considered out-of-date; and a full configuration refresh is requested
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.MaxNoOfRecordedIntervals">
+            <summary>
+            maximum # of intervals recorded (to monitor roundtrip time)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.hasLocalPolicyDatabase">
+            <summary>
+            Whether or not this streamtype uses a local policy database (and thus returns to state local database loaded
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.OnStateChange">
+            <summary>
+            Event thrown on changing a content lifecycle state
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.lifeCycleStreamInputAdapter">
+            <summary>
+            Signal Adapter used for sending our lifecycle response INTO the stream (in case the signal is variable this value may be te same as the output adapter)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.lifeCycleStreamOutputAdapter">
+            <summary>
+            Signal Adapter used for receiving our lifecycle response OUT of the stream (in case the signal is variable this value may be te same as the input adapter)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.streamContentStateBuffer">
+            <summary>
+            Current Stream Content State (do not set directly)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.intervals">
+            <summary>
+            Record with past pingpong intervals to determine the
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.currentInterval">
+            <summary>
+            The Current interval between 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.AContentLifeCycleManager.CommunicateRoundtripInterval(System.Single)">
+            <summary>
+            Called on receiving a value 
+            </summary>
+            <param name="_lastInterval"></param>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.ContentLifeCycleSettings.LifeCycleProcedure">
+            <summary>
+            The lifecycle control procedure we want to perform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.ContentLifeCycleSettings.ConnectionTimeoutDurationSec">
+            <summary>
+            Time in seconds of idleness on the input signal it takes before the
+            connection is deemed timed out (will request the adapter to exhibit reset behavior for the entire connection)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.ContentLifeCycleSettings.OutOfSyncTimeoutDurationSec">
+            <summary>
+            Time in seconds of idleness on the input signal it takes before the 
+            data on the stream is considered out-of-date; and a full configuration refresh is requested
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.ContentLifeCycleSettings.MinimalResponseIntervalSec">
+            <summary>
+            The minimum time we want to wait before we want to send a keep-alive response
+            On streams with minimum bandwidth this may be used to limit throughput just for the keep-alive signal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.ContentLifeCycleSettings.MaxNoOfRecordedIntervals">
+            <summary>
+            maximum # of intervals recorded (to monitor avg. roundtrip time)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.AdapterUtility">
+            <summary>
+            Adapter Utility Class
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.preplug.logicadapter.AdapterUtility.StreamSignalTypeDef">
+            <summary>
+            Definitions that tie an Adapter Signal Type definition to a system c# type
+            </summary>
+        </member>
+        <member name="M:u040.prespective.preplug.logicadapter.AdapterUtility.GetSignalTypeDefIndex(u040.prespective.preplug.logicadapter.StreamSignalType)">
+            <summary>
+            Returns the Index of the IO definition in IOTypeDef
+            if an object isn't present its currently not supported
+            
+            (writing a custom search function is still quicker than using generic array index functions)
+            </summary>
+            <param name="_signalType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.preplug.logicadapter.IStreamAdapterSettings">
+            <summary>
+            Stream Adapter Settings Interface
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+    </members>
+</doc>

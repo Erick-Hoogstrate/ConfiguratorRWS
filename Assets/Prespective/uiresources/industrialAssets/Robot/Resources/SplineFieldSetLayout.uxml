@@ -1,0 +1,8 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="row">
+    <ui:VisualElement class="flex-grow" name="spline-locator" />
+    <ui:Button class="flex-grow" name="add-cue-button" text="Add cue"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="margin-bottom-5px" name="cue-container" />
+</ui:UXML>

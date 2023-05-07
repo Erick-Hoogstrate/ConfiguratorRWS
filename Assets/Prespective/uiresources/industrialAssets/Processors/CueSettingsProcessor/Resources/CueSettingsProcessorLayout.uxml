@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:TextField name="owner-module-field" label="Owner Module" class="custom-exposure"/>
+    <ui:TextField name="spline-length-field" label="Spline Length" class="custom-exposure"/>
+    <ui:Toggle name="draggable-in-scene" label="Draggable In Scene" class="custom-exposure disabled"/>
+    <ue:DoubleField name="distance-from-start-field" label="Distance From Start" class="custom-exposure"/>
+    <ue:DoubleField name="distance-from-end-field" label="Distance From End" class="custom-exposure"/>
+    <ue:DoubleField name="area-size-field" label="Area Size" class="custom-exposure"/>
+</ui:UXML>

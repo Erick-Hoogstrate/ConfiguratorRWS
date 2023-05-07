@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:ScrollView class="window-padding-container">
+		<ui:VisualElement class="margin-bottom-10px">
+			<ui:Toggle name="ignore-cameras-toggle" label="Ignore Cameras" />
+			<ui:Toggle name="ignore-lights-toggle" label="Ignore Lights" />
+		</ui:VisualElement>
+
+		<ui:Button class="margin-bottom-10px" name="isolate-selection" text="Isolate Selection" tooltip="Select objects in the scene/hierarchy to isolate" />
+
+		<ui:VisualElement class="margin-bottom-10px" name="isolation-mode-container">
+			<ui:Button name="exit-isolation-mode" text="Exit Isolation Mode" />
+			<ui:Button name="remove-from-isolation" text="Remove Selection From Isolation" />
+		</ui:VisualElement>
+
+		<ui:Foldout class="foldout-division margin-bottom-10px" text="Error Handling" value="false">
+			<ui:Button name="de-isolate-all" text="De-isolate All" />"
+		</ui:Foldout>
+	</ui:ScrollView>
+</ui:UXML>

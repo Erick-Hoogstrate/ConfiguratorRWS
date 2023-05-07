@@ -1,0 +1,76 @@
+.prespective-inspector {
+	padding-top: 5px;
+	margin-left: -15px;
+	padding-left: 15px;
+}
+
+.standalone-inspector-label {
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+InspectorElement .unity-foldout--depth-0 .unity-base-field > .unity-base-field__label {
+	margin-right: -9px;
+}
+
+InspectorElement .unity-foldout--depth-1 .unity-base-field > .unity-base-field__label {
+	margin-right: -18px;
+}
+
+InspectorElement .unity-foldout--depth-2 .unity-base-field > .unity-base-field__label {
+	margin-right: -27px;
+}
+
+InspectorElement .unity-foldout--depth-3 .unity-base-field > .unity-base-field__label {
+	margin-right: -36px;
+}
+
+InspectorElement .unity-foldout--depth-4 .unity-base-field > .unity-base-field__label {
+	margin-right: -45px;
+}
+
+InspectorElement .unity-foldout--depth-max .unity-base-field > .unity-base-field__label {
+	margin-right: -54px;
+}
+
+InspectorElement .foldout-division.unity-foldout--depth-0 .unity-base-field > .unity-base-field__label {
+	margin-right: -1px;
+}
+
+InspectorElement .foldout-division .unity-foldout--depth-1 .unity-base-field > .unity-base-field__label {
+	margin-right: -10px;
+}
+
+InspectorElement .foldout-division .unity-foldout--depth-2 .unity-base-field > .unity-base-field__label {
+	margin-right: -19px;
+}
+
+InspectorElement .foldout-division .unity-foldout--depth-3 .unity-base-field > .unity-base-field__label {
+	margin-right: -28px;
+}
+
+InspectorElement .foldout-division .unity-foldout--depth-4 .unity-base-field > .unity-base-field__label {
+	margin-right: -37px;
+}
+
+InspectorElement .foldout-division .unity-foldout--depth-max .unity-base-field > .unity-base-field__label {
+	margin-right: -46px;
+}
+
+InspectorElement Label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+}
+
+InspectorElement .unity-base-field__label {
+	width: 40%;
+}
+
+InspectorElement .division Foldout .unity-foldout__content {
+	padding-right: 0px;
+}

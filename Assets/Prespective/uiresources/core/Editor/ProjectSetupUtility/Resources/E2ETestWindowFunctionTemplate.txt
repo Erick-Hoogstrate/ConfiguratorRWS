@@ -1,0 +1,10 @@
+/// <summary>
+/// Add A Prespective Menu Item for accessing the {{E2E_TEST_WINDOW_PREFIX}} type E2E window
+/// </summary>
+[MenuItem("Prespective/DEV Tools/E2ETesting/{{E2E_TEST_WINDOW_PREFIX}} E2ETesting", false, 71)]
+private static void open{{E2E_TEST_WINDOW_PREFIX}}Window()
+{
+	{{E2E_TEST_WINDOW_PREFIX}}E2ETestWindow window = EditorWindow.GetWindow<{{E2E_TEST_WINDOW_PREFIX}}E2ETestWindow>("{{E2E_TEST_WINDOW_PREFIX}} End-to-End Testing");
+	window.minSize = new Vector2(500, 320); 
+}
+

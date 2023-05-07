@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:TextField name="variable-name" label="Variable Name" class="custom-exposure"/>
+    <ue:IntegerField name="range-minimum-value" label="Range Minimum" class="custom-exposure"/>
+    <ue:IntegerField name="range-maximum-value" label="Range Maximum" class="custom-exposure"/>
+</ui:UXML>

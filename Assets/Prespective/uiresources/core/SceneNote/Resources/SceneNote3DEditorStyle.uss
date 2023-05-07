@@ -1,0 +1,10 @@
+#note-text
+{
+	height: 100px;
+}
+
+#note-text > TextInput
+{
+	-unity-text-align: upper-left;
+	white-space: normal;
+}

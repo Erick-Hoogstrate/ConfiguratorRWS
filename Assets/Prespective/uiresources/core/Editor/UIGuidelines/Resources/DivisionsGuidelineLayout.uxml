@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Divisions"/>
+    <ui:TextElement class="margin-bottom-5px" text="Groups of related UI controls/elements should be placed in distinguishable divisions. These are container VisualElements with uss class 'division' (from BaseStyle.uss) applied to them. This class applies padding and a lighter background color." />
+    <ui:TextElement class="margin-bottom-5px" text="Each division should start with a header (in bold) that is descriptive of the contained UI content. 10px of bottom margin for separation with other divisions should be applied."/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:VisualElement class="margin-bottom-10px">
+      <ui:Label class="bold margin-bottom-10px" text="Example: Foo Settings"/>
+      <ui:Toggle label="Foo?" />
+      <ue:IntegerField label="Foo Multiplier" value="3"/>
+    </ui:VisualElement>
+   
+    <ui:Button class="content-fit-button" text="Foo!"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Foldout Divisions"/>
+    <ui:TextElement class="margin-bottom-5px" text="Foldout divisions are Foldouts styled as divisions. They are intended to be used as containers with advanced controls or list content, that should be displayed in a collapsed state initially. Apply uss class 'foldout-division' (from BaseStyle.uss) to a Foldout element to style it as a foldout division. Set it to collapsed state (initially) by setting the Foldout's value attribute to 'false'."/>
+    <ui:TextElement class="margin-bottom-5px" text="To support user workflow, the expanded state of a Foldout (division) can be made persistent by using UIStateUtility.InitTrackedFoldout."/>
+  </ui:VisualElement>
+
+  <ui:Foldout name="foldout-division" class="foldout-division" text="Example: Contained Elements" value="false" view-data-key="styleguide-example-foldout">
+    <ui:Label text="Element 1"/>
+    <ui:Label text="Element 2"/>
+    <ui:Label text="Element 3"/>
+    <ui:Label text="Element 4"/>
+    <ui:Label text="Element 5"/>
+  </ui:Foldout>
+</ui:UXML>

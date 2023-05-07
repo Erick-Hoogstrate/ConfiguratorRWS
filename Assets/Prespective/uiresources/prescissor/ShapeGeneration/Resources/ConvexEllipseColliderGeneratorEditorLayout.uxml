@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+	
+		<ui:VisualElement name="radii" />
+		<ue:IntegerField name="tessellation" label="Tessellation" />
+
+		<ui:Toggle name="use-partial" label="Generate Partial Ellipse" />
+		<ue:DoubleField name="min-main" label="Minimum Percentage Main Ellipse" />
+		<ue:DoubleField name="max-main" label="Maximum Percentage Main Ellipse" />
+		<ue:DoubleField name="min-circle" label="Minimum Percentage Ellipse Circles" />
+		<ue:DoubleField name="max-circle" label="Maximum Percentage Ellipse Circles" />
+		
+		<ui:TextField name="prefix-name" label="Mesh Name Prefix" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="generation-button" text="(Re)Generate Collider" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="store-button" text="Store Collider" />
+		
+	</ui:ScrollView>
+</ui:UXML>

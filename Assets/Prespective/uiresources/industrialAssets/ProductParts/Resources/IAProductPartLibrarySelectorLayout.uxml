@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout name="product-part-selection-foldout" text="{{ProductPartName}}" value ="false">
+    <ui:VisualElement class="margin-bottom-5px" name="warning-message" />
+    <ui:TextField class="margin-bottom-5px custom-exposure" name="asset-GUID-input" label="Asset GUID" />
+    <ui:Button class="content-fit-button margin-bottom-5px custom-exposure" name="btn-assign-by-asset-guid" text="Assign by Asset GUID"/>
+    <ue:ObjectField class="custom-exposure" name="assign-by-scene-object" label="Assign by Scene Object"/>
+    <ui:VisualElement class="disabled" name="asset-version-selector-container"/>
+  </ui:Foldout>
+</ui:UXML>

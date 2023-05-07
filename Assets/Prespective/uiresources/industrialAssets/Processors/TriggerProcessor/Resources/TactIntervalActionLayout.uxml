@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Foldout name="tact-interval-segment-container" text="Tact Intervals"/>
+
+</ui:UXML>

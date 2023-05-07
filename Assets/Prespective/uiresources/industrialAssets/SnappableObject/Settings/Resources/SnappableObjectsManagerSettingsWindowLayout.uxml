@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">    
+    <ui:VisualElement name="main-container" style="padding:10px;">
+        <ui:VisualElement name="settings-ui" class="division margin-bottom-10px">
+            <ui:Label name="settings-ui-label"  text="UI Settings" class="bold margin-bottom-5px"/>
+            <ue:FloatField name="settings-ui-distance-factor" label="Distance factor" class="margin-bottom-10px"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="settings-secondary-snapping" class="division margin-bottom-10px">
+            <ui:Label name="settings-secondary-snapping-label"  text="Secondary Snapping Settings" class="bold margin-bottom-5px"/>
+            <ue:FloatField name="settings-ui-max-distance" label="Max. Distance" class="margin-bottom-5px"/>
+            <ue:FloatField name="settings-ui-max-angle" label="Max. Angle" class="margin-bottom-10px"/>
+        </ui:VisualElement>
+        <ui:Button name="settings-reset-default-button" class="content-fit-button" text="Reset Default"/>
+    </ui:VisualElement>
+</ui:UXML>

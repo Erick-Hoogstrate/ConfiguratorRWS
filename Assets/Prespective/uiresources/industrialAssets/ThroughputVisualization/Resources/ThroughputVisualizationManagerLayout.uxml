@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout class="foldout-division margin-bottom-10px custom-exposure-foldout" name="throughput-visualization-settings" text="Throughput Visualization Settings">
+    <ue:ObjectField class="margin-bottom-10px custom-exposure" name="throughput-visualizer" label="Throughput Visualizer" />
+    <ui:Button class="content-fit-button margin-bottom-10px custom-exposure" name="create-throughput-visualizer" text="Create Throughput Visualizer" />
+    <ui:Button class="content-fit-button margin-bottom-10px custom-exposure" name="add-target-product-part" text="Add Target Product Part"/>
+    <ui:Foldout text="Target Product Parts" name="target-product-part-selectors" value="false" class="custom-exposure-foldout">
+      <ui:VisualElement class="margin-bottom-5px" />
+      <ui:VisualElement name="warning-container" />
+    </ui:Foldout>
+  </ui:Foldout>
+</ui:UXML>

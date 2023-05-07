@@ -1,0 +1,69 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Body Controller Settings" />
+    <ui:Toggle name="execute-in-editor-mode" label="Execute in Editor Mode" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label name="kinematic-bodies-header" class="bold margin-bottom-5px" text="Kinematic Bodies" />
+    <ui:Label class="list-label" text="Sort by:" />
+    <ue:EnumField class="margin-bottom-5px" style="width: 55%;" name="filter" />
+
+    <ui:VisualElement class="row">
+      <ui:Label class="list-label" style="width: 55%" text="Kinematic Body" />
+      <ui:Label class="list-label" style="width: 20%" text="Pass Priority" />
+      <ui:VisualElement class="row" style="width: 10%" tooltip="Enforce Outside Playmode">
+        <ui:Toggle name="override-eop" />
+        <ui:Label class="list-label" text="EOP" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="kinematic-bodies" />
+  </ui:VisualElement>
+
+  <ui:VisualElement name="implemented-warning" class="division margin-bottom-10px">
+    <ui:VisualElement class="row">
+      <ui:Label style="width: 15%; font-size: 45px;" text="&#x26a0;" />
+      <ui:Label  style="overflow: hidden; white-space: initial; width: 85%; vertical-align: middle;"
+                 text="This version of the Fabrik Solver can only solve chains that start with no, one or more kinematic prismatic joints, possibly followed by kinematic wheeljoints and always ending with an End Effector Point."
+                 />
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Fabrik Solver Settings" />
+    <ui:Toggle name="execute-in-editor-mode-fabrik-solver" label="Execute in Editor Mode" />
+    <ui:Toggle name="match-arm-direction" label="Match arm direction to target" />
+    <ui:Toggle name="movable-base" label="Movable base" />
+    <ue:DoubleField name="minimum-offset-to-target" label="Minimum offset to target" />
+    <ue:DoubleField name="minimum-angle-offset-of-arm" label="Minimum angle offset of end arm" tooltip="Only applicable when 'Match arm direction to target' is enabled"/>
+    <ue:IntegerField name="maximum-amount-of-iterations-fabrik-solver" label="Maximum amount of iterations" />
+    <ui:Toggle name="visualize-chain" label="Visualize chain in scene" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:VisualElement class="row">
+      <ui:Label name="fabrik-joints-header" class="bold margin-bottom-5px" style="width: 50%" text="Fabrik Joints &amp; Target" />
+      <ui:Button name="assign-chain" class="margin-bottom-10px" style="width: 45%" text="Assign using kinematics" tooltip="Sets up/Alters Fabrik joints &amp; target according to kinematics." />
+    </ui:VisualElement>
+
+
+    <ui:VisualElement class="row">
+      <ui:Label class="list-label" style="width: 75%" text="Fabrik Joints" name="fabrik-joints-list-header"/>
+      <ui:Label class="list-label" style="width: 15%" text="Index" />
+      <ui:Button class="list-label" style="width: 5%" text="+" tooltip="Insert joint at base" name="base-append-button"/>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="fabrik-joints" class="margin-bottom-5px" />
+    <ui:Button name="reload-properties-joints" class="margin-bottom-10px" text="Reload properties joints" tooltip="Resets the properties of the current joints. (press after altering dimensions)" />
+
+    <ui:VisualElement class="row">
+      <ui:Label class="list-label" style="width: 75%" text="Fabrik target" name="fabrik-targets-list-header"/>
+      <ui:Label class="list-label" style="width: 20%" text="Joint index" />
+    </ui:VisualElement>
+
+    <ui:VisualElement name="fabrik-target" class="margin-bottom-5px" />
+
+  </ui:VisualElement>
+</ui:UXML>

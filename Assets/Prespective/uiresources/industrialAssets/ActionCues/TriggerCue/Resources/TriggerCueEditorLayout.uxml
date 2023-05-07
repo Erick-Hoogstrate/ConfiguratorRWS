@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="action-processors-container">
+        <ui:VisualElement name="cue-settings-processor-container" />
+        <ui:VisualElement name="trigger-processor-container" />
+        <ui:VisualElement name="trigger-state-processor-container" />
+
+    </ui:VisualElement>
+</ui:UXML>

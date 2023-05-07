@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:Foldout text="StagingArea#1" name="main-foldout">
+    <ue:ObjectField name="action-cue" label="ActionCue" class="custom-exposure"/>
+    <ui:Foldout text="Points" name="points-foldout">
+      <ui:VisualElement name="points-in-reach-container" />
+    </ui:Foldout>
+  </ui:Foldout>
+
+</ui:UXML>

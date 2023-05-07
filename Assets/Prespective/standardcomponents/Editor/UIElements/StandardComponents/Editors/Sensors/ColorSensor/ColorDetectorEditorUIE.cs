@@ -1,84 +1,88 @@
-using System.Reflection;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.sensors.light;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.light
 {
     [CustomEditor(typeof(ColorDetector))]
     public class ColorDetectorEditorUIE : StandardComponentEditorUIE<ColorDetector>
     {
-        #region << Live Data Fields >>
-        TextField state;
-        TextField outputSignal;
-        TextField matchPercentage;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField stateField;
+        private TextField outputSignalField;
+        private TextField matchPercentageField;
+
+        //Property Fields
+        private IMGUIContainer warningContainer;
+        private ObjectField colorSensorField;
+        private ColorField referenceColorField;
+        private Slider thresholdSlider;
+        private FloatField thresholdField;
+
+        //Control Panel Properties
+        private TextField stateControlPanel;
+        private TextField outputSignalControlPanel;
+
         #endregion
-        #region << Property Fields>>
-        IMGUIContainer warningContainer;
-        ObjectField colorSensor;
-        ColorField referenceColor;
-        Slider thresholdSlider;
-        FloatField threshold;
-        PropertyField onSignalHigh;
-        PropertyField onSignalLow;
-        #endregion
-        #region << Control Panel Properties >>
-        TextField stateControlPanel;
-        TextField outputSignalControlPanel;
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "ColorDetectorEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Sensors/ColorSensor/ColorDetectorLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            state.value = component.IsActive ? "Active" : "Inactive";
-            state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
-            outputSignal.value = component.OutputSignal ? "High" : "Low" ;
-            matchPercentage.value = (component.MatchFactor * 100f).ToString();
+            stateField.value = component.IsActive ? "Active" : "Inactive";
+            stateField.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
+            outputSignalField.value = component.OutputSignal ? "High" : "Low" ;
+            matchPercentageField.value = (component.MatchFactor * 100f).ToString();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
-            state = root.Q<TextField>(name: "state");
-            state.isReadOnly = true;
+            stateField = root.Q<TextField>(name: "state");
+            stateField.isReadOnly = true;
 
-            outputSignal = root.Q<TextField>(name: "output-signal");
-            outputSignal.isReadOnly = true;
+            outputSignalField = root.Q<TextField>(name: "output-signal");
+            outputSignalField.isReadOnly = true;
 
-            matchPercentage = root.Q<TextField>(name: "match-percentage");
-            matchPercentage.isReadOnly = true;
+            matchPercentageField = root.Q<TextField>(name: "match-percentage");
+            matchPercentageField.isReadOnly = true;
             #endregion
             #region << Properties >>
             warningContainer = root.Q<IMGUIContainer>(name: "warning-container");
-            colorSensor = root.Q<ObjectField>(name: "color-sensor");
-            referenceColor = root.Q<ColorField>(name: "reference-color");
+            colorSensorField = root.Q<ObjectField>(name: "color-sensor");
+            referenceColorField = root.Q<ColorField>(name: "reference-color");
             thresholdSlider = root.Q<Slider>(name: "threshold-slider");
-            threshold = root.Q<FloatField>(name: "threshold");
-            onSignalHigh = root.Q<PropertyField>(name: "on-signal-high");
-            onSignalHigh.bindingPath = "onSignalHigh";
-            onSignalLow = root.Q<PropertyField>(name: "on-signal-low");
-            onSignalLow.bindingPath = "onSignalLow";
+            thresholdField = root.Q<FloatField>(name: "threshold");
 
             warningContainer.onGUIHandler = OnInspectorGUI;
             UIUtility.SetDisplay(warningContainer, component.ColorSensor == null);
 
             UIUtility.InitializeField
             (
-                colorSensor,
+                colorSensorField,
+                component,
                 () => component.ColorSensor,
-                e =>
+                _e =>
                 {
-                    component.ColorSensor = (ColorSensor)e.newValue;
+                    component.ColorSensor = (ColorSensor)_e.newValue;
                     UIUtility.SetDisplay(warningContainer, component.ColorSensor == null);
                 },
                 typeof(ColorSensor)
@@ -86,11 +90,12 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
 
             UIUtility.InitializeField
             (
-                referenceColor,
+                referenceColorField,
+                component,
                 () => component.ReferenceColor,
-                e =>
+                _e =>
                 {
-                    component.ReferenceColor = e.newValue;
+                    component.ReferenceColor = _e.newValue;
                 }
             );
 
@@ -99,21 +104,23 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
             UIUtility.InitializeField
             (
                 thresholdSlider,
+                component,
                 () => component.Threshold * 100f,
-                e =>
+                _e =>
                 {
-                    component.Threshold = e.newValue/100f;
-                    threshold.SetValueWithoutNotify(component.Threshold*100f);
+                    component.Threshold = _e.newValue/100f;
+                    thresholdField.SetValueWithoutNotify(component.Threshold*100f);
                 }
             );
 
             UIUtility.InitializeField
             (
-                threshold,
+                thresholdField,
+                component,
                 () => component.Threshold * 100f,
-                e =>
+                _e =>
                 {
-                    component.Threshold = e.newValue / 100f;
+                    component.Threshold = _e.newValue / 100f;
                     thresholdSlider.SetValueWithoutNotify(component.Threshold*100f);
                 }
             );
@@ -128,28 +135,28 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             stateControlPanel = new TextField("State");
-            UIUtility.ToggleNoBoxAndReadOnly(stateControlPanel, true);
+            UIUtility.SetReadOnlyState(stateControlPanel, true);
 
             outputSignalControlPanel = new TextField("Output Signal");
-            UIUtility.ToggleNoBoxAndReadOnly(outputSignalControlPanel, true);
+            UIUtility.SetReadOnlyState(outputSignalControlPanel, true);
 
             Button enableDisableButton = new Button();
             enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             enableDisableButton.AddToClassList("content-fit-button");
-            enableDisableButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            enableDisableButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.IsActive = !component.IsActive;
                 enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             });
 
-            ScheduleControlPanelUpdate(stateControlPanel);
+            scheduleControlPanelUpdate(stateControlPanel);
 
             _container.Add(stateControlPanel);
             _container.Add(outputSignalControlPanel);
             _container.Add(enableDisableButton);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             stateControlPanel.value = component.IsActive ? "Active" : "Inactive";
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;

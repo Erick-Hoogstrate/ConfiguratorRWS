@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="locator-field-container"/>
+    <ui:TextField name="transfer-pattern-field" label="Transfer Pattern" />
+    <ui:TextField name="target-manipulator-field" label="Target Manipulator" />
+    <ui:Foldout name="advanced-foldout" class="custom-exposure-foldout" text="Advanced Settings">
+        <ui:VisualElement name="advanced-settings-container"/>
+        
+		<ui:VisualElement name="position-offset"/>
+		<ui:VisualElement name="rotation-offset"/>
+    </ui:Foldout>
+</ui:UXML>

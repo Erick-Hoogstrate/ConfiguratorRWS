@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="preferred-velocity" label="Preferred Velocity (deg/s)"/>
+    <ui:TextField class="no-box" name="target-angle" label="Target Angle (deg)"/>
+    <ui:TextField class="no-box" name="continuous" label="Continuous"/>
+    <ui:TextField class="no-box" name="continuous-direction" label="Continuous Direction"/>
+    <ui:TextField class="no-box" name="velocity" label="Velocity (deg/s)"/>
+    <ui:TextField class="no-box" name="position" label="Position (deg)"/>
+    <ui:TextField class="no-box" name="state" label="State"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Driven Servo Motor Properties">
+    <ui:VisualElement name="settings">
+      <ue:ObjectField name="wheel-joint-field" label="Wheel Joint"/>
+      <ue:FloatField name="maximum-velocity" label="Maximum Velocity (deg/s)"/>
+      <ue:FloatField name="acceleration" label="Acceleration (deg/s/s)"/>
+      <ue:FloatField name="zero-offset" label="Zero Offset (deg)"/>
+      <ui:Button name="set-current-offset" text="Set Current Position as Zero Offset"/>
+    </ui:VisualElement>
+    <ui:Label class="font-italic margin-label" name="no-wheel-joint" text="WheelJoint has not been set."/>
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

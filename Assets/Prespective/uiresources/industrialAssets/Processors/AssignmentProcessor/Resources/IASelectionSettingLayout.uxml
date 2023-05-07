@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="selection-conditions-foldout" text="Selection Conditions">
+        <ui:VisualElement name="selection-condition-type-container"/>
+        <ui:Button name="add-condition" text="Add Condition" class="content-fit-button custom-exposure"/>
+        <ui:VisualElement name="selection-conditions-container"/>  
+    </ui:Foldout>
+    
+    <ui:Foldout name="sorting-foldout" text="Sorting" class="custom-exposure-foldout">
+        <ui:VisualElement name="sorting-selector-container" label="Sort By"/>
+        <ui:VisualElement name="sorting-container"/>
+    </ui:Foldout>
+</ui:UXML>

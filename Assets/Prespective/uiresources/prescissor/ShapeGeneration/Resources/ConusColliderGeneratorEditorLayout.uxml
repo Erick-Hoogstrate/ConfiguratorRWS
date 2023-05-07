@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ui:Toggle name="make-normals" label="Make Normals for Mesh" />
+		<ui:Toggle name="inverse-top-bottom-normals" label="Inverse Normals Top Bottom Mesh" />
+		<ui:Toggle name="inverse-side-normals" label="Inverse Normals Side Mesh" />
+		<ui:Toggle name="edit" label="Edit Conus Shape" />
+		<ue:IntegerField name="tessellation" label="Tessellation (# of sides)" />
+		
+		<ue:ColorField name="line-color" label="Scene Line Color" />
+		<ue:ColorField name="label-color" label="Scene Label Color" />
+
+		<ue:EnumField class="margin-bottom-10px" name="scaling-tool" label="Scaling Tool" />
+
+		<ui:VisualElement name="points-container" />
+		<ui:VisualElement name="circle-container" />
+		
+		<ue:DoubleField name="offset-alignment" label="Normal Offset Alignment" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="align-bottom-top-button" text="Align Bottom To Top" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="align-top-bottom-button" text="Align Top To Bottom" />
+		
+		<ui:TextField name="prefix-name" label="Mesh Name Prefix" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="generation-button" text="(Re)Generate Collider" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="reset-button" text="Reset Collider Control Points" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="store-button" text="Store Collider" />
+		
+	</ui:ScrollView>
+</ui:UXML>

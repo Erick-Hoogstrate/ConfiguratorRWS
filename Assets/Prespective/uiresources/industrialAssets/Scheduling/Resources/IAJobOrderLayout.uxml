@@ -1,0 +1,28 @@
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+    <ui:Foldout name="job-content-foldout" text="#{{index}} : {{JobName}}" class="custom-exposure-foldout">
+
+        <ui:TextField name="job-name-field" label="Job Name" class="custom-exposure"/>
+
+        <ui:VisualElement name="job-recipe-popup-container" class="custom-exposure" /> 
+
+        <!-- 03) UXML for IntegerField (int Input) -->
+        <ue:IntegerField name="no-of-product-field" label="# of Product" class="custom-exposure"/>
+
+        <ui:Foldout name="job-variable-foldout" text="Custom Job Settings" class="custom-exposure-foldout">
+
+            <ui:VisualElement name="job-variable-settings-container" class="custom-exposure" /> 
+            
+        </ui:Foldout>
+        <ui:Foldout name="job-advanced-foldout" text="Advanced Job Settings" class="custom-exposure-foldout">
+
+            <ue:DoubleField name="job-introduction-time-field" label="Introduction Time (s)" class="custom-exposure"/>
+
+            <ue:DoubleField name="job-interval-time-field" label="Minimal Work Introduction Interval (s)" class="custom-exposure"/>
+
+        </ui:Foldout>
+    
+    </ui:Foldout>
+
+</ui:UXML>

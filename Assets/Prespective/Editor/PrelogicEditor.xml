@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PrelogicEditor</name>
+    </assembly>
+    <members>
+        <member name="M:u040.prespective.prelogic.editor.editorui.inspectorwindow.PreLogicSimulatorEditorUIE.executeOnEnable">
+            <summary>
+            The Reference to the stream adapter setting should ALWAYS be pulled from the simulator
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prelogic.editor.editorui.inspectorwindow.PreLogicSimulatorEditorUIE.exportPolicy(u040.prespective.preplug.logicadapter.policyadaptation.StreamPolicyDelegate)">
+            <summary>
+            Export the policy database
+            </summary>
+            <param name="_result"></param>
+        </member>
+        <member name="M:u040.prespective.prelogic.editor.editorui.inspectorwindow.component.PreLogicComponentEditorUIE`1.createInheritingTypeEditorUI">
+            <summary>
+            Override this method to Create the custom UI for the inheriting type.
+            </summary>
+            <returns>Returns the UI contained in a single VisualElement. Should return null if no custom UI is needed (A Default Inspector is generated).</returns>
+        </member>
+        <member name="M:u040.prespective.prelogic.PreLogicPostBuild.CopyWeirdSoFiles(System.String,UnityEditor.BuildTarget)">
+            <summary>
+            some so files end with so.1.
+            this method copies those files to the build directory
+            </summary>
+            <param name="_pathToBuildProject"></param>
+        </member>
+    </members>
+</doc>

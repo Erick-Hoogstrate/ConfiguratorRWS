@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement name="cue-settings-processor-container" />
+  <ui:VisualElement name="recipe-processor-container" />
+  <ui:VisualElement name="pattern-processor-container" />
+  <ui:VisualElement name="assignment-processor-container" />
+  <ui:VisualElement name="trigger-processor-container" />
+  <ui:VisualElement name="throughput-visualization-container" />
+</ui:UXML>

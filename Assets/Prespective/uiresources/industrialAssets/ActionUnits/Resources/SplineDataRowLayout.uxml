@@ -1,0 +1,7 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="row" name="spline-data-row">
+    <ue:IntegerField class="no-box" style="width: 7%" name="spline-index" tooltip="Number of spline"/>
+    <ue:EnumField style="width: 45%" name="spline-direction" tooltip="Direction spline goes into the unit"/>
+    <ue:DoubleField style="width: 40%" name="spline-length" tooltip="Total length of spline"/>
+  </ui:VisualElement>
+</ui:UXML>

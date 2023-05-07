@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <!-- The default fieldset for NPrecision Monobehavior -->
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Transform Settings" />
+    <ui:Toggle name="use-rigidbody" label="Use Rigidbody" />
+    <ue:ObjectField name="rigidbody" label="Rigidbody" />
+    <ue:EnumField name="transform-precision" label="Transform Precision" />
+  </ui:VisualElement>
+</ui:UXML>

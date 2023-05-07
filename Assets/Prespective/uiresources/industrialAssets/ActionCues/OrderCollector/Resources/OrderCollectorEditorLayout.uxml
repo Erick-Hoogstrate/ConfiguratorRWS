@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement name="action-processors-container">
+    <ui:VisualElement name="cue-settings-processor-container" />
+    <ui:VisualElement name="collection-area-processor-container" />
+    <ui:VisualElement name="scheduling-processor-container" />
+  </ui:VisualElement>
+
+  <ui:VisualElement name="throughput-visualization-container" />
+</ui:UXML>

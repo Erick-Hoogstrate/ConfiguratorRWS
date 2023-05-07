@@ -1,22 +1,15 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Collections.Generic;
-using System.Reflection;
-using u040.prespective.core;
 using UnityEngine;
-using u040.prespective.utility;
 using System;
 using u040.prespective.prepair.kinematics;
+using u040.prespective.utility.modelmanagement;
+using u040.prespective.core.events;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper
+namespace u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers
 {
     public abstract class DGripperFinger : MonoBehaviour
     {
-        public abstract KinematicBody KinematicBody
-        {
-            get; set;
-        }
+        public abstract KinematicBody KinematicBody { get; set; }
 
         protected List<GameObject> detectedObjects = new List<GameObject>();
         public List<GameObject> DetectedObjects
@@ -56,23 +49,22 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
         /// </summary>
         public bool GenerateRigidbody = false;
 
-        private void Awake()
+        internal void Awake()
         {
             //Make sure colliders are setup properly
             Trigger.isTrigger = true;
-            //Collider.isTrigger = false;
 
             //Create a local event link to pass on the OntriggerStay if the trigger is not on the same gameobject
-            LocalEventLink _link = LocalEventLink.Create(Trigger.gameObject, this);
-            _link.TriggerEnter = onObjectDetected;
-            _link.TriggerExit = onObjectLost;
+            ALocalEventLink link = ALocalEventLink.Create(Trigger.gameObject, this);
+            link.TriggerEnter = onObjectDetected;
+            link.TriggerExit = onObjectLost;
 
             //Generate a rigidbody on the trigger object if necessary
             if (GenerateRigidbody)
             {
-                Rigidbody _rigidbody = Trigger.RequireComponent<Rigidbody>(false);
-                _rigidbody.useGravity = false;
-                _rigidbody.isKinematic = true;
+                Rigidbody rigidbody = Trigger.RequireComponent<Rigidbody>(false);
+                rigidbody.useGravity = false;
+                rigidbody.isKinematic = true;
             }
         }
 
@@ -101,35 +93,6 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
         }
 
         public abstract void SetPosition(double _percentage);
-
-        public void ShowBaseInspector()
-        {
-#if UNITY_EDITOR
-            EditorGUI.BeginDisabledGroup(Application.isPlaying);
-            Trigger = (Collider)EditorGUILayout.ObjectField("Trigger", this.Trigger, typeof(Collider), true);
-            GenerateRigidbody = EditorGUILayout.Toggle("Generate Trigger Rigidbody", GenerateRigidbody);
-            EditorGUI.EndDisabledGroup();
-            EditorGUILayout.Space();
-
-            List<GameObject> _detectedObjectsList = this.DetectedObjects;
-            int _objectCount = _detectedObjectsList.Count;
-            EditorGUILayout.LabelField("Detected Objects (" + _objectCount + ")", EditorStyles.boldLabel);
-            EditorGUI.indentLevel++;
-
-            if (_objectCount == 0)
-            {
-                EditorGUILayout.LabelField("No detected objects", new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Italic });
-            }
-            else
-            {
-                for (int _i = 0; _i < _objectCount; _i++)
-                {
-                    //Readonly field for object
-                    EditorGUILayout.ObjectField(_detectedObjectsList[_i], typeof(GameObject), false);
-                }
-            }
-            EditorGUI.indentLevel--;
-#endif
-        }
+        
     }
 }

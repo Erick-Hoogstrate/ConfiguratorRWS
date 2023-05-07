@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:TextField name="action-name" label="Action Name"/>
+    <ui:VisualElement name="position-offset-container"/>
+    <ui:VisualElement name="rotation-offset-container"/>
+</ui:UXML>

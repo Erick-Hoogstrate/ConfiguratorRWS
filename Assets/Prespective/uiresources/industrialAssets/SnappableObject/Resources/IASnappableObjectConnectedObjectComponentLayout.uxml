@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="connected-snappable-objects-container">
+        <ui:Label name="connected-snappable-objects-label" text="Connected Snappable Objects" class="margin-bottom-10px bold"/>
+        <ui:Label name="connected-snappable-objects-no-found-label" text="No Connected Snappable Objects" class="italic"/>
+        <ui:VisualElement name="connected-snappable-objects-object-container" />
+    </ui:VisualElement>
+</ui:UXML>

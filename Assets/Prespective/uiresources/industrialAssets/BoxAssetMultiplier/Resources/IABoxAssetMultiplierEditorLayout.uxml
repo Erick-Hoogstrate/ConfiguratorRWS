@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container" class="division margin-bottom-10px">
+        <ui:Label name="settings-label" text="Settings" class="margin-bottom-10px bold"/>
+        <ue:ObjectField name="asset-object-field" label="Asset" allow-scene-objects="true"/>
+        <ue:Vector3Field name="asset-size-field" label="Asset Size"/>
+        <ue:Vector3IntField name="instances-field" label="Instances"/>
+        <ue:Vector3Field name="offset-field" label="Offset"/>
+        <ue:Vector3Field name="stack-size-field" label="Stack Size"/>
+    </ui:VisualElement>
+</ui:UXML>

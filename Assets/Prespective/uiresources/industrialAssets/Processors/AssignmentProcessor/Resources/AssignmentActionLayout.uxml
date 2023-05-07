@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout class="disabled" name="on-assignment-started-foldout" text="On Assignment Started">
+        <ui:VisualElement name="on-assigment-started-selector-container"/>
+        <ui:VisualElement name="on-assigment-started-container"/>
+    </ui:Foldout>
+            
+    <ui:Foldout class="disabled" name="on-assignment-staged-foldout" text="On Assignment Staged">
+        <ui:VisualElement name="on-assigment-staged-selector-container"/>
+        <ui:VisualElement name="on-assigment-staged-container"/>
+    </ui:Foldout>
+    
+    <ui:Foldout class="disabled" name="on-assignment-complete-foldout" text="On Assignment Complete">
+        <ui:VisualElement name="on-assigment-completed-selector-container"/>
+        <ui:VisualElement name="on-assigment-completed-container"/>
+    </ui:Foldout>
+</ui:UXML>

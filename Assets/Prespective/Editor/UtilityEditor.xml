@@ -1,0 +1,2223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UtilityEditor</name>
+    </assembly>
+    <members>
+        <member name="F:u040.prespective.utility.editor.editorui.menu.MenuDefinitions.DevMenuItem">
+            <summary>
+            Hides the MenuItem in a beta build
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.menu.MenuDefinitions.SourceOnlyMenuItem">
+            <summary>
+            Shows menu only in source
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconClassRules">
+            <summary>
+            Class describing all iconrules pertaining a single runtime class (e.g. Monobehavior)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconClassRules.ComponentType">
+            <summary>
+            Monobehavior type these rules belong to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconClassRules.IconPriority">
+            <summary>
+            Priority of these rules (as compared to other component types)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconClassRules.rules">
+            <summary>
+            Rules belonging to this Monobehavior type
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconClassRules.TestRule(UnityEngine.GameObject,u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule@)">
+            <summary>
+            Run the fit-test for this set of rules
+            </summary>
+            <param name="_go"></param>
+            <param name="_validRule"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager">
+            <summary>
+            Static init class responsible for managing the display of Icons in the Hierarchy Window
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.activeIcons">
+            <summary>
+            Dictionary containing the icons that are currently active within the Hierarchy Window
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.assemblyRulesBuffer">
+            <summary>
+            The icon rules indexed for the currently active assemblies
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.assemblyRules">
+            <summary>
+            Lazy indexer pattern for retrieving the icon rules
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.IterateUpdateGameObjectRegistrations">
+            <summary>
+            Moved the update of GO registrations to a ienumerator, and now only updating up to 100 objects per tick
+            since the frameload exceeded 100ms = now @I9 5ms (guess we could lower it further)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.updateGameObjectRegistrations">
+            <summary>
+            Update the GameObject registrations in the scene
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconManager.updateHierarchyView(System.Int32,UnityEngine.Rect)">
+            <summary>
+            Update the hierarchy view
+            </summary>
+            <param name="_instanceID">instance ID of the GameObject currently generating the hierarchy view for</param>
+            <param name="_selectionRect">the selection rectangle of this gameobject</param>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule">
+            <summary>
+            Class describing the conditions and the file location for displaying a single icon
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule.IconPath">
+            <summary>
+            Asset path of the icon
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule.RuleTestFunction">
+            <summary>
+            test to perform whether or not the icons should be displayed
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule.IconSize">
+            <summary>
+            preferred size of the icon (generally 20 x 20)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule.#ctor(System.String,UnityEngine.Vector2Int,System.Func{UnityEngine.Object,System.Boolean})">
+            <summary>
+            Constructor for the rule
+            </summary>
+            <param name="_iconPath">path the icon is found</param>
+            <param name="_iconSize"></param>
+            <param name="_testFunction">test to perform whether or not the icons should be displayed</param>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRule.textureBuffer">
+            <summary>
+            Texture buffer for the icon (lazy-loader)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRuleAdditions">
+            <summary>
+            Container class for additional icon rules
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.hierarchywindow.HierarchyWindowIconRuleAdditions.AddedIconRules">
+            <summary>
+            object containing specific icon rules for alternate assemblies
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.DVector3Field">
+            <summary>
+            UIElements DVector3 field
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector3Field.#ctor">
+            <summary>
+            Parameterless constructor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector3Field.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_label">The field label</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector3Field.#ctor(System.String,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_label">The field label</param>
+            <param name="_dVector3">The initial value for the field</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector3Field.SetValueWithoutNotify(u040.prespective.math.doubles.DVector3)">
+            <summary>
+            Set value wihtout notifying callback handler
+            </summary>
+            <param name="_newValue">new value</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.InspectorButtonPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            
+            </summary>
+            <param name="position"></param>
+            <param name="prop"></param>
+            <param name="label"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.InspectorButtonPropertyDrawer.GetTargetObjectOfProperty(UnityEditor.SerializedProperty,System.Int32)">
+            <summary>
+            Gets the value of a specific serialized property
+            note: the targetObject field holds the monobehavior instance, not necassarily the instance signified by a custom drawer
+            this function determines the path that should be walked from the base (Monobehavior) instance to the instance signified by prop
+            
+            Designed specifically for customDrawers (in the inspector)
+            
+            Based on: https://github.com/lordofduct/spacepuppy-unity-framework/SpacepuppyBaseEditor/EditorHelper.cs
+            </summary>
+            <param name="_prop"></param>
+            <param name="_parentLevels"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.InspectorButtonPropertyDrawer.getValueImp(System.Object,System.String,System.Int32)">
+            <summary>
+            Returns the value of the object with name implicitly from source
+            </summary>
+            <param name="_source">the source object</param>
+            <param name="_name">the path + name</param>
+            <param name="_index">the index of this object within an array</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.InspectorButtonPropertyDrawer.getValueImp(System.Object,System.String)">
+            <summary>
+            Get the field or property signified by name within source object
+            https://github.com/lordofduct/spacepuppy-unity-framework/SpacepuppyBaseEditor/EditorHelper.cs
+            </summary>
+            <param name="_source"></param>
+            <param name="_name"></param>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.FileImportField.FileImportButton">
+            <summary>
+            Reference to the File Import Button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.FileImportField.FileImportTextField">
+            <summary>
+            Reference to the File Import Text Field
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.FileImportField.AllowedFileTypes">
+            <summary>
+            Suffixes of the filetypes that can be selected
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.utility.editor.editorui.customuifields.CustomPD" -->
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.CustomPD.IsVisble">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.CustomPD.GetPropertyHeight(UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            Overrides the Original GetPropertyHeight function to return 0 if this property is hidden; otherwise
+            space will still be reserved for the element
+            </summary>
+            <param name="property">this property, which contains the class field and value</param>
+            <param name="label">the GUIContent for this property</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.CustomPD.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            Override on the original OnGui code to be able to hide a field in the inspector (Based on the IS_VISIBLE value)
+            
+            WARNING: The OnGUI function is called multiple times every frame, note that many functions needn't be performed every
+            pass; see the 'Event.current.type = EventType.###' for an overview of the Events that call for an update of the GUI
+            </summary>
+            <param name="position"></param>
+            <param name="property"></param>
+            <param name="label"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.CustomPD.SetFieldVisible(UnityEditor.SerializedProperty,System.String)">
+            <summary>
+            Sets the class boolean IS_VISIBLE to the value of the boolean field value _boolFieldName
+            </summary>
+            <param name="prop">the property of this propertyDrawer (passed in the OnGUI function)</param>
+            <param name="_boolFieldName">the name of the boolean field</param>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer">
+            <summary>
+            Workaround for property field drawing of CustomPropertyDrawers that reside inside a dll while working in the UnityEditor.
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.bufferedDelegates">
+            <summary>
+            buffered delegates used to create explicit visual (DOM) elements for datatypes that exist inside a DLL
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.bufferedManagedPropertyDrawers">
+            <summary>
+            buffered list with managed property drawers
+            (Dont access directly!)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.managedPropertyDrawers">
+            <summary>
+            Local lazy-loading accessor for managed property drawers
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.bufferedPreviouslyUsedExplicitPropertyContentTypes">
+            <summary>
+            buffered list with Explicit propertydrawer content previously requested (and looked up using brute-force)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.CreatePropertyGUI(UnityEditor.SerializedProperty,System.String,System.Boolean,System.String)">
+            <summary>
+            Workaround method to safely create propertyGUIs inside dll.
+            </summary>
+            <param name="_property"></param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException">items </exception>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.RegisterPropertyRefreshListener(UnityEngine.UIElements.VisualElement,UnityEditor.SerializedProperty,System.Boolean)">
+            <summary>
+            Registers an event listener to a VisualElement for the Property Refresh Event, this listener can resolve all Property Refresh events for Child DOM Element
+            </summary>
+            <param name="_eventHandlerElement">>The VisualElement that should get the event listener, and will then be able to handle events from all child DOM Elements</param>
+            <param name="_serializedProperty">The SerializedProperty for which a new PropertyGUI should be crated upon refresh</param>
+            <param name="_verbose"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.getExplicitContentTypeInProperty(UnityEditor.SerializedProperty,System.String,System.String)">
+            <summary>
+            changes the string of managedReferenceFullTypename to be able to find actual types with it
+            </summary>
+            <param name="_propertyToDraw">the current Serialized Property to draw</param>
+            <param name="_propertyName">optional name of the property, used to clearify any exceptions that may happen after a timeout</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.GetAssemblyByName(System.String)">
+            <summary>
+            Returns the Assembly currently loaded into the project with the forwarded name
+            </summary>
+            <param name="name">name of the assembly</param>
+            <returns>the found assembly, or null when not found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.findExplicitPropertyContentType(System.String,System.Boolean)">
+            <summary>
+            Return the type that is indicated with the (full)name _name
+            </summary>
+            <param name="_name">the typename to look for, can be Name or FullName</param>
+            <param name="_isFullName">whether we're dealing with the type fullname</param>
+            <returns>the found type, or null if not found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.getAllu040CustomPropertyDrawerTypes">
+            <summary>
+            returns all types in the current project that implement a custom property drawer Attribute
+            </summary>
+            <returns>all types in the current project that implement a custom property drawer Attribute</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.ManagedPropertyDrawer">
+            <summary>
+            Struct used to manage the fit between a single property drawer and type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.ManagedPropertyDrawer.PropertyContentType">
+            <summary>
+            The type of the Property Content
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.ManagedPropertyDrawer.PropertyDrawerType">
+            <summary>
+            The Type of the Property Drawer used for the property Content
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PrespectivePropertyDrawer.ManagedPropertyDrawer.GetBaseTypes(System.Type,System.Collections.Generic.List{System.Type}@)">
+            <summary>
+            For some silly reason the sort by parent type does not work correctly as such we'll just sort by the # of parent types up to 'object'
+            </summary>
+            <param name="_a"></param>
+            <param name="_baseTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.DQuaternionField">
+            <summary>
+            creates UIElements DQuaternion field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DQuaternionField.#ctor(System.String,u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_label">label</param>
+            <param name="_dVector3">value</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DQuaternionField.SetValueWithoutNotify(u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            set value with out using modify
+            </summary>
+            <param name="_newValue">new value</param>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.ExportFolderField.SelectExportFolderButton">
+            <summary>
+            Reference to the File Import Button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.ExportFolderField.ExportFolderTextField">
+            <summary>
+            Reference to the File Import Text Field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.CreatePropertyGUI(UnityEditor.SerializedProperty)">
+            <summary>
+            Called on initialize of the property
+            </summary>
+            <param name="_property"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.initializePropertyGUI">
+            <summary>
+            Override this method to create and initialize the GUI for the PropertyDrawer. Use 'target' (Type of T) as a reference to the target object.
+            Use 'inspectedObject' as a reference to the inspected Object (likely a MonoBehaviour).
+            </summary>
+            <returns>The visualElement containing the Property GUI</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.invokePropertyRefresh(UnityEngine.UIElements.VisualElement,u040.prespective.utility.editor.editorui.customuifields.PropertyRefreshEventTarget,System.Boolean)">
+            <summary>
+            Invokes a PropertyChangeEvent based on propertyGUI and PropertyRefreshEventTarget
+            </summary>
+            <param name="_propertyGUI">The VisualElement that contains the PropertyGUI</param>
+            <param name="_refreshTarget">The target to receive the event (relative to the passed propertyGUI)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.FindParentProperty(UnityEditor.SerializedProperty,System.Int32)">
+            <summary>
+            Gets the parent SerializedProperty of a relative SerializedProperty
+            </summary>
+            <param name="_serializedProperty">The relative SerializedProperty</param>
+            <param name="_nOfParentLevels">Level of nesting below targeted parent Property</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.GetTargetObjectOfProperty(UnityEditor.SerializedProperty,System.Int32)">
+            <summary>
+            Gets the value of a specific serialized property
+            note: the targetObject field holds the mono behavior instance, not necessarily the instance signified by a custom drawer
+            this function determines the path that should be walked from the base (Mono behavior) instance to the instance signified by prop
+            
+            Designed specifically for customDrawers (in the inspector)
+            
+            Based on: https://github.com/lordofduct/spacepuppy-unity-framework/SpacepuppyBaseEditor/EditorHelper.cs
+            </summary>
+            <param name="_prop">the serialized (inspector field) property</param>
+            <param name="_parentLevels">the # of levels to go up the parent hierarchy to retrieve the target object</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.getValueImplicit(System.Object,System.String,System.Int32)">
+            <summary>
+            Returns the value of the object with name implicitly from source
+            </summary>
+            <param name="_source">the source object</param>
+            <param name="_name">the path + name</param>
+            <param name="_index">the index of this object within an array</param>
+            <returns>the value object, or null if not found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.PropertyDrawerUIE`1.getValueImplicit(System.Object,System.String)">
+            <summary>
+            Get the field or property signified by name within source object
+            https://github.com/lordofduct/spacepuppy-unity-framework/SpacepuppyBaseEditor/EditorHelper.cs
+            </summary>
+            <param name="_source">source object</param>
+            <param name="_name">field or property name to look for</param>
+            <returns>the value object, or null if not found</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.DVector2Field">
+            <summary>
+            creates UIElements DVector2 field
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector2Field.#ctor">
+            <summary>
+            Parameterless constructor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector2Field.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_label">The field label</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector2Field.#ctor(System.String,u040.prespective.math.doubles.DVector2)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_label">The field label</param>
+            <param name="_dVector2">The initial value for the field</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.DVector2Field.SetValueWithoutNotify(u040.prespective.math.doubles.DVector2)">
+            <summary>
+            set value with out using modify
+            </summary>
+            <param name="_newValue">new value</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.utility.editor.editorui.ColorUtility" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.utility.editor.editorui.ColorUtility.StyleColor(UnityEngine.Color)" -->
+        <member name="T:u040.prespective.utility.editor.editorui.inspectorwindow.InspectorDrawerUtility">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.inspectorwindow.InspectorDrawerUtility.DrawInspectorForConcreteAbstractObject(System.String,System.Object,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="_name"></param>
+            <param name="_customObject"></param>
+            <param name="_show"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.inspectorwindow.InspectorDrawerUtility.DrawNativeInspectoreForConcreteAbstractObject(System.String,UnityEngine.Rect,System.Single@,System.Object,System.Boolean@,System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="_name"></param>
+            <param name="_rect"></param>
+            <param name="_currentYPos"></param>
+            <param name="_customObject"></param>
+            <param name="_show"></param>
+            <param name="_fieldsToIgnore"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.inspectorwindow.InspectorDrawerUtility.GetImplicitInspectorDrawer(System.String,System.Object,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="_name"></param>
+            <param name="_object"></param>
+            <param name="_type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.inspectorwindow.InspectorDrawerUtility.GetImplicitNativeInspectorDrawer(System.String,System.Object,System.Type,UnityEngine.Rect)">
+            <summary>
+            
+            </summary>
+            <param name="_name"></param>
+            <param name="_object"></param>
+            <param name="_type"></param>
+            <param name="_rect"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode">
+            <summary>
+            <description>
+            Wrapper for the (Experimental) Graphview.Node class to allow easy serialization
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.GUID">
+            <summary>
+            GUID for this node
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.#ctor">
+            <summary>
+            The Constructor Generates a new GUID
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.GUIContents">
+            <summary>
+            Content Block for the Node Content
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.ParentGraph">
+            <summary>
+            Returns the parent graph this node is a part of
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.ContentPorts">
+            <summary>
+            Return all Ports found in this node
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.getPortByGUID(System.String,u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort@)">
+            <summary>
+            Return if this Node contains a port with GUID
+            </summary>
+            <param name="_guid">the guid to look for</param>
+            <param name="_port">the port the look for</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.InitNodeView">
+            <summary>
+            Initialization should setup the Node GUI based on the input data
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode.UpdateNode">
+            <summary>
+            Update this node every editor update
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView">
+            <summary>
+            <description>
+            Wrapper for the (Experimental) Graphview class to allow easy serialization
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            <version 
+                ver="1.0.1" 
+                author="PWS" 
+                date="19/08/2020">
+                Added Autosave support
+            </version>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.AutoSave">
+            <summary>
+            Accessor for graphview children to invoke an autosave
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView._lastAutoSave">
+            <summary>
+            The buffered time of the last autosave
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView._autosave">
+            <summary>
+            Action to invoke on an autosave
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.GraphName">
+            <summary>
+            The name of this Graph
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.ContentNodes">
+            <summary>
+            Returns all Content Nodes in this Graph
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.ContentGroups">
+            <summary>
+            Returns all Content Groups in this Graph
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.OnSaveCallback">
+            <summary>
+            Save callback. Invoke this action whenever saving the graph is required
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.GetScaledAndTranslatedMouseGraphPosition(UnityEngine.Vector2)">
+            <summary>
+            Retrieve the position of the mouse considering both zooming and panning of the graph
+            
+            Snippet Found in the Shadergraph source (line 122) @
+            https://github.com/Unity-Technologies/ShaderGraph/blob/49288e5f4c6f989d5ab85e4cc025c8c34a04522c/com.unity.shadergraph/Editor/Drawing/Manipulators/GraphDropTarget.cs
+            </summary>
+            <param name="_mousePosition">the mouse position found on the view</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.GetGraphNodeByLocalPoint(UnityEngine.Vector2,u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode@)">
+            <summary>
+            Return the node that exists at this Local Point
+            </summary>
+            <param name="_point">the point in the graph to check</param>
+            <param name="_result">the found node (if any)</param>
+            <returns>whether a node was found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.GetGraphGroupByLocalPoint(UnityEngine.Vector2,u040.prespective.utility.editor.editorui.graphview.SerializableGraphGroup@)">
+            <summary>
+            Return the group/scope that exists at this local Point
+            </summary>
+            <param name="_point">the point in the graph to check</param>
+            <param name="_result">the found group</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.Deserialize``1(``0)">
+            <summary>
+            Deserialize a map using a single data object
+            </summary>
+            <typeparam name="T">the type of the data object (for more explicit overriding)</typeparam>
+            <param name="_data">the data oject</param>
+            <returns>whether deserialization was succesfull</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.DeserializeNode(System.Object)">
+            <summary>
+            Deserialize a single Node - called as first step of deserializing a map
+            </summary>
+            <param name="_nodeData"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.DeserializeGroup(System.Object)">
+            <summary>
+            Deserialize a single Group (Scope) - Called as a second step of deserializing a map
+            </summary>
+            <param name="_nodeData"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.DeserializePort(System.Object)">
+            <summary>
+            Deserialize a single Port - Called as a third step of deserializing a map
+            </summary>
+            <param name="_portData"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.DeserializeConnection(System.Object)">
+            <summary>
+            Deserialize a single Connection (Edge) between 2 ports - Called as a fourth step of deserializing a map
+            </summary>
+            <param name="_connectionData"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.DeserializeCollection(System.String,System.Action{System.Object},System.String)">
+            <summary>
+            Deserializes all data entries in the collection
+            </summary>
+            <param name="_data">the data to deserialize as list of object collection</param>
+            <param name="_singleSerializer">the function to call to serialize a single instance</param>
+            <param name="_collectionID">identifier of the collection (used to decorate any exceptions that might occur)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphView.AddNodeInstanceOnPosition``1(UnityEngine.Vector2)">
+            <summary>
+            Adds a new node instance at a position
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_startPosition">the position to add the node</param>
+            <returns>the new node instance</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData">
+            <summary>
+            <description>
+            Baseclass Datamodel for serialization of the Graph View
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData.GraphName">
+            <summary>
+            Name of the Graph
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData.SerializedNodes">
+            <summary>
+            Serialized string describing the nodes in this graph
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData.SerializedPorts">
+            <summary>
+            Serialized string describing the ports in this graph
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData.SerializedConnections">
+            <summary>
+            Serialized string describing the connections in this graph
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializedGraphData.SerializedGroups">
+            <summary>
+            Serialized string describing the groups in this graph
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializableGraphGroup">
+            <summary>
+            <description>
+            Wrapper for the (Experimental) Graphview.Group class to allow easy serialization
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphGroup.ParentGraph">
+            <summary>
+            Returns the parent graph this node is a part of
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort">
+            <summary>
+            <description>
+            Wrapper for the (Experimental) Graphview.Port class to allow easy serialization
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+                - Note that this class does not INHERIT the Port Class, rather its a wrapper!
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.GUID">
+            <summary>
+            Guid of this Port
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.ParentNode">
+            <summary>
+            Retrieve the parent node of this port
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.CastPort">
+            <summary>
+            Since the port class does not allow for classical inheritance (the InstantiatePort function prevents that)
+            we'll use this class as a wrapper
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.#ctor(UnityEditor.Experimental.GraphView.Port)">
+            <summary>
+            Constructor used when serializing an otherwise unknown port
+            </summary>
+            <param name="_p"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.#ctor(u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode,System.String,UnityEditor.Experimental.GraphView.Orientation,UnityEditor.Experimental.GraphView.Direction,UnityEditor.Experimental.GraphView.Port.Capacity,System.Type,UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Constructor used for instantiation of a port from the owner node
+            </summary>
+            <param name="_parent">the node to set as parent</param>
+            <param name="_portName">the name of this port</param>
+            <param name="_portOrientation">the orientation of this port</param>
+            <param name="_portDirection">the direction of this port</param>
+            <param name="_portCapacity">the capacity of this port</param>
+            <param name="_portType">the type of this port</param>
+            <param name="_parentElement">optional parent element we want to specifically add this port to</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.GetAllSerialConnections">
+            <summary>
+            Retrieve all Connections as serializable object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort.getParentNode(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Retrieve the parent node of this element
+            </summary>
+            <param name="_elem">the element to look at the parent of</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializablePortData">
+            <summary>
+            <description>
+            Base class for the Serializable Port Data
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializablePortData.Name">
+            <summary>
+            The Name of this Port
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializablePortData.GUIDPath">
+            <summary>
+            The GUID Path (GUID Parent Node, GUID self -> Portname) 
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData">
+            <summary>
+            <description>
+            Base class for the Serializable Connection Data (Graphview.Edge)
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.GUIDNodeAndPortA">
+            <summary>
+            GUID Path for the A side Port of this Connection (Edge)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.GUIDNodeAndPortB">
+            <summary>
+            GUID Path for the B Side Port of this Connection (Edge)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.ToString">
+            <summary>
+            Verbose logger for this model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.#ctor(System.String[],System.String[])">
+            <summary>
+            Serialized Constructor for the Serializable Connection Data
+            </summary>
+            <param name="_GUIDNodeAndPortA">GUID Path for the A side Port of this Connection (Edge)</param>
+            <param name="_GUIDNodeAndPortB">GUID Path for the B Side Port of this Connection (Edge)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.#ctor(u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode,u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort,u040.prespective.utility.editor.editorui.graphview.SerializableGraphNode,u040.prespective.utility.editor.editorui.graphview.SerializableGraphPort)">
+            <summary>
+            Instance Constructor  for the Serializable Connection Data
+            </summary>
+            <param name="_node">A owner Node</param>
+            <param name="_port">A owner Port</param>
+            <param name="_othernode">B owner Node</param>
+            <param name="_otherport">B owner Port</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData.CompareTo(u040.prespective.utility.editor.editorui.graphview.SerializableConnectionData)">
+            <summary>
+            Whether this Connection is similar to another connection (unordered pair)
+            </summary>
+            <param name="obj">Connection to check against</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D">
+            <summary>
+            Utility class to draw 2D Prespective Handles
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.ThickLine(UnityEngine.Vector3,UnityEngine.Vector3,System.Int32)">
+            <summary>
+            Draw a line with a specific width
+            </summary>
+            <param name="_from"></param>
+            <param name="_to"></param>
+            <param name="_width"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.ThickLine(UnityEngine.Vector2,UnityEngine.Vector2,System.Int32)">
+            <summary>
+            Draw a line with a specific width
+            </summary>
+            <param name="_from"></param>
+            <param name="_to"></param>
+            <param name="_width"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.Screen2DArrow(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draw a 2D arrow on the scene view window between two Vector3 points.
+            </summary>
+            <param name="_from">Point to draw the arrow from</param>
+            <param name="_to">Point to draw the arrow to</param>
+            <param name="_owner"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.GetWorldPositionOnSceneViewCameraPlane(UnityEngine.Vector2)">
+            <summary>
+            Project a world position to the 2D Drawing plane in front of the Scene Camera.
+            </summary>
+            <param name="_screenPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector3)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_position">The world position at which the TextArea should be drawn on screen</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_position">The world position at which the TextArea should be drawn on screen</param>
+            <param name="_size">The size of the TextArea(px)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector3,UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.TextAnchor,UnityEngine.GUIStyle)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_position">The world position at which the TextArea should be drawn on screen</param>
+            <param name="_size">The size of the TextArea(px)</param>
+            <param name="_screenOffset">The screen offset of the TextArea(px)</param>
+            <param name="_anchor">The anchor point of the TextArea. This determines how the TextArea will be drawn on screen relative to _position</param>
+            <param name="_style">The GUIStyle used to draw the TextArea</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector2)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_screenPosition">The world position at which the TextArea should be drawn on screen</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector2,UnityEngine.Vector2)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_screenPosition">The world position at which the TextArea should be drawn on screen</param>
+            <param name="_size">The size of the TextArea(px)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles2D.SceneTextArea(System.String,UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.TextAnchor,UnityEngine.GUIStyle)">
+            <summary>
+            Draw a TextArea within the SceneView
+            </summary>
+            <param name="_text">Text to display</param>
+            <param name="_screenPosition">The screen position at which the TextArea should be drawn</param>
+            <param name="_size">The size of the TextArea(px)</param>
+            <param name="_screenOffset">The screen offset of the TextArea(px)</param>
+            <param name="_anchor">The anchor point of the TextArea. This determines how the TextArea will be drawn on screen relative to _position</param>
+            <param name="_style">The GUIStyle used to draw the TextArea</param>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos">
+            <summary>
+            Utility class to draw Prespective Gizmos
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawPrespectiveIcon(System.String,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            Draw a Prespective Icon
+            </summary>
+            <param name="_iconName">Name if the icon (including subfolder to the Icons folder)</param>
+            <param name="_origin">Origin (anchor) of the icon in the Scene View</param>
+            <param name="_offset">Screen offset of the icon</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawPrespectiveTextIcon(System.String,System.String,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            Draw a Prespective icon with text at an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">Name if the icon (including subfolder to the Icons folder)</param>
+            <param name="_text">Text to draw over the icon</param>
+            <param name="_origin">Origin (anchor) of the icon in the Scene View</param>
+            <param name="_offset">Screen offset of the icon</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawPrespectiveIcon(System.String,UnityEngine.Vector3,UnityEngine.Vector2,System.Boolean,UnityEngine.Color)">
+            <summary>
+            Draw a Prespective Icon
+            </summary>
+            <param name="_iconName">Name if the icon (including subfolder to the Icons folder)</param>
+            <param name="_origin">Origin (anchor) of the icon in the Scene View</param>
+            <param name="_offset">Screen offset of the icon</param>
+            <param name="_allowScaling">Determines whether the Icon is allowed to be scaled</param>
+            <param name="_tint">A tint to apply to the Icon image</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawPrespectiveTextIcon(System.String,System.String,UnityEngine.Vector3,UnityEngine.Vector2,System.Boolean,UnityEngine.Color)">
+            <summary>
+            Draw a Prespective icon with text at an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">Name if the icon (including subfolder to the Icons folder)</param>
+            <param name="_text">Text to draw over the icon</param>
+            <param name="_origin">Origin (anchor) of the icon in the Scene View</param>
+            <param name="_offset">Screen offset of the icon</param>
+            <param name="_allowScaling">Determines whether the Icon is allowed to be scaled</param>
+            <param name="_tint">A tint to apply to the Icon image</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.bufferIcon(System.String)">
+            <summary>
+            Buffer an Icon to make sure it loads only once
+            </summary>
+            <param name="_iconName">Icon name</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.getPrespectiveIconFromGizmos(System.String,System.String@)">
+            <summary>
+            Get the path relative to Assets/Gizmos for Prespective icon in the Gizmos folder
+            </summary>
+            <param name="_iconName">Name of the icon</param>
+            <param name="_filePath">Relative path to Assets/Gizmos</param>
+            <returns>Whether the icon was found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.getPrespectiveIconFromPrespective(System.String,System.String@)">
+            <summary>
+            Get the absolute path for Prespective icon in the Prespective/*submodule*/Icons folder
+            </summary>
+            <param name="_iconName">Name of the icon</param>
+            <param name="_filePath">Relative path to Assets/Gizmos</param>
+            <returns>Whether the icon was found</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.findAllIconsInFolders(System.String[]@,System.String[])">
+            <summary>
+            Find all icon files in a given set of folder and buffer them
+            </summary>
+            <param name="_storedFilePaths">Icon File Paths buffer</param>
+            <param name="_folders">All folder to search in</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.copyIcon(System.String,System.String@)">
+            <summary>
+            Copy a given icon from Prespective to its equivalent position in the Assets/Gizmos folder
+            </summary>
+            <param name="_prespectiveIconPath">Icon file path in Prespective</param>
+            <param name="_gizmosIconPath">Icon file path in Gizmos where the icon has been copied to</param>
+            <returns>Whether the copy was successful</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.verifyFolder(System.String)">
+            <summary>
+            Make sure the folder exists
+            </summary>
+            <param name="_folder"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.ClearIconBuffer">
+            <summary>
+            Clear the entire buffer and force gizmos to be checked before drawing
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawIcon(System.String,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            Draw an icon with an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">The image filename for the Icon. The file should be placed in the "Assets/Gizmos" folder.</param>
+            <param name="_origin">The origin point of the Gizmo to which it is anchored</param>
+            <param name="_offset">The relative position offset in Icon size</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawTextIcon(System.String,System.String,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            Draw an icon with text at an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">The image filename for the Icon. The file should be placed in the "Assets/Gizmos" folder.</param>
+            <param name="_text">Text to draw over the icon</param>
+            <param name="_origin">The origin point of the Gizmo to which it is anchored</param>
+            <param name="_offset">The relative position offset in Icon size</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawIcon(System.String,UnityEngine.Vector3,UnityEngine.Vector2,System.Boolean,UnityEngine.Color)">
+            <summary>
+            Draw an icon with an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">The image filename for the Icon. The file should be placed in the "Assets/Gizmos" folder.</param>
+            <param name="_origin">The origin point of the Gizmo to which it is anchored</param>
+            <param name="_offset">The relative position offset in Icon size</param>
+            <param name="_allowScaling">Determines whether the Icon is allowed to be scaled</param>
+            <param name="_tint">A tint to apply to the Icon image</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.DrawTextIcon(System.String,System.String,UnityEngine.Vector3,UnityEngine.Vector2,System.Boolean,UnityEngine.Color)">
+            <summary>
+            Draw an icon with text at an offset in the Scene GUI
+            </summary>
+            <param name="_iconName">The image filename for the Icon. The file should be placed in the "Assets/Gizmos" folder.</param>
+            <param name="_text">Text to draw over the icon</param>
+            <param name="_origin">The origin point of the Gizmo to which it is anchored</param>
+            <param name="_offset">The relative position offset in Icon size</param>
+            <param name="_allowScaling">Determines whether the Icon is allowed to be scaled</param>
+            <param name="_tint">A tint to apply to the Icon image</param>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.iconSize3D">
+            <summary>
+            Unity Internal value for 3D Icon Size
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.use3DGizmos">
+            <summary>
+            Unity Internal value for Use 3D Gizmos
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.GetGizmosEnabled">
+            <summary>
+            Get the bool value for whether gizmos are enabled for the last active Scene View
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveGizmos.SetGizmosEnabled(System.Boolean)">
+            <summary>
+            Set the Gizmos Enabled value for all Scene Views
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility">
+            <summary>
+            Utility class to ease drawing Prespective Handles
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.SceneViewCamera">
+            <summary>
+            Get the current Drawing Scene View camera
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.ApplyDefaultHandleMaterial(System.Single)">
+            <summary>
+            Apply the default Handles Material
+            </summary>
+            <param name="_size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.ApplyUnlitHandleMaterial(UnityEngine.Color)">
+            <summary>
+            Apply an unlit Handles Material
+            </summary>
+            <param name="_color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.SceneViewCoordinatesAnchorPoint">
+            <summary>
+            The corner of the Scene View that represents the coordinate (0,0)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.ConvertToDrawingCoordinates(UnityEngine.Vector2,u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.SceneViewCoordinatesAnchorPoint,System.Boolean)">
+            <summary>
+            Convert a point in the scene view in the given coordinate system to the drawing coordinate system. This also accounts for GUI scaling and the SceneView toolbar.
+            </summary>
+            <param name="_coordinates">The coordinates to convert</param>
+            <param name="_anchor">Anchor point to the given coordinate</param>
+            <param name="_guiScaled">Whether the given coordinate is being scaled by GUI</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles3D">
+            <summary>
+            Utility class to draw 3D Prespective Handles
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles3D.Arrow(UnityEngine.Vector3,UnityEngine.Quaternion,System.Single)">
+            <summary>
+            Draw a 3D Arrow gizmo
+            </summary>
+            <param name="_position"></param>
+            <param name="_rotation"></param>
+            <param name="_size"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles3D.PlanePositionHandle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Make a 3D position handle that moves along a plane defined by two axes.
+            </summary>
+            <param name="_handlePosition">The position of the current point in the space of Handles.matrix.</param>
+            <param name="_handleDirection">The direction of the handle in the space of Handles.matrix, only used for rendering of the handle.</param>
+            <param name="_slideDirection1">The first axis of the slider's plane of movement in the space of Handles.matrix.</param>
+            <param name="_slideDirection2">The second axis of the slider's plane of movement in the space of Handles.matrix.</param>
+            <returns>Vector3 The new value modified by the user's interaction with the handle. If the user has not moved the handle, it will return the position value passed into the function. </returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.SceneDragAndDrop">
+            <summary>
+            Custom class to handle Drag And Drop functionality in the inspector
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.SceneDragAndDrop.StartDrag(u040.prespective.utility.editor.editorui.scenegui.ISceneDragReceiver,System.String)">
+            <summary>
+            Start the drag operation
+            </summary>
+            <param name="_receiver"></param>
+            <param name="_title"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenegui.SceneDragAndDrop.StopDrag">
+            <summary>
+            Stop the drag operation
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.scenegui.DraggableObject">
+            <summary>
+            Custom class to make a draggable object
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.UIUtilityImplicit">
+            <summary>
+            <description>
+            Utility class used for implicit (reflection based creation of UIElement Inspectors
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="201116">
+                Moved Implicit Creation Functions here from the Original Utility (which got kinda crowded)
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIUtilityImplicit.standardFieldGeneratorRecipes">
+            <summary>
+            Map with Boxed Field Generator Recipes
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe">
+            <summary>
+            <description>
+            Recipe used to create UIElement inspectors for the most common types
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="201116">
+                Moved Implicit Creation Functions here from the Original Utility (which got kinda crowded)
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.RecipeName">
+            <summary>
+            The name of this recipe, used for error reporting
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.FieldTest">
+            <summary>
+            Function used to test whether a FieldInfo is of the correct type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.FieldGenerator">
+            <summary>
+            Function used to create a new VisualElementField
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.RegisterValueChanged">
+            <summary>
+            Function used to register specific value changed events with the created visual element
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.ValueSetter">
+            <summary>
+            Function used to set the value of the visual element
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIElementFieldGeneratorRecipe.#ctor(System.String,System.Func{System.Reflection.FieldInfo,System.Boolean},System.Func{System.Reflection.FieldInfo,UnityEngine.UIElements.VisualElement,UnityEngine.UIElements.VisualElement},System.Action{UnityEngine.UIElements.VisualElement,u040.prespective.utility.serialization.DynamicCIL.MemberSetterDelegate,System.Object,System.Action{UnityEngine.UIElements.VisualElement,System.Object}},System.Action{UnityEngine.UIElements.VisualElement,System.Object})">
+            <summary>
+            Recipe constructor
+            </summary>
+            <param name="_recipeName">The name of this recipe, used for error reporting</param>
+            <param name="_fieldTest">Function used to test whether a FieldInfo is of the correct type</param>
+            <param name="_fieldGenerator">Function used to create a new VisualElementField</param>
+            <param name="_registerValueChange">Function used to register specific value changed events with the created visual element</param>
+            <param name="_valueSetter">Function used to set the value of the visual element</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.GetFirstParentOfType``1(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Get the first parent VisualElement of a specific type
+            </summary>
+            <typeparam name="T">The type of parent VisualElement</typeparam>
+            <param name="_child">The child VisualElement to find the parent off</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.GenerateBoxedUIFields(System.Object,UnityEngine.UIElements.VisualElement,System.Action{UnityEngine.UIElements.VisualElement,System.Object})">
+            <summary>
+            Generator script to generate UI Fields for a boxed class
+            </summary>
+            <param name="_object">the boxed object to create the fields for</param>
+            <param name="_container">the visual element that should serve as the container for the generated UX fields</param>
+            <param name="_verbose">whether or not verbose logging is active</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.initializeField``1(UnityEngine.UIElements.BaseField{``0},UnityEngine.Object[],System.Func{``0},UnityEngine.UIElements.EventCallback{UnityEngine.UIElements.ChangeEvent{``0}},System.Boolean,System.Int32,System.Type)">
+            <summary>
+            Initializes and returns VisualElement user input 'field'
+            </summary>
+            <typeparam name="T">The type derived from the user input field</typeparam>
+            <param name="_field">The user input field</param>
+            <param name="_targetObjects">Array of objects that will be registered for undo and set dirty</param>
+            <param name="_getValue">Func to get the target value of te field</param>
+            <param name="_onValueChanged">Action that should be performed upon value change</param>
+            <param name="_hasCustomUndo">Set this to true if the built-in undo registration needs to be bypassed for a self-implemented undo</param>
+            <param name="_updateInterval">Update interval in which _getValue will be invoked, default 0</param>
+            <param name="_objectType">Optional object type used for ObjectFields that can get a null value from _getValue</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.BindSliderAndField(UnityEngine.UIElements.Slider,UnityEditor.UIElements.FloatField,UnityEngine.Object,System.Func{System.Single},UnityEngine.UIElements.EventCallback{UnityEngine.UIElements.ChangeEvent{System.Single}},System.Int32)">
+            <summary>
+            Binds the values of a Slider and a numeric Field
+            </summary>
+            <param name="_slider">The Slider instance</param>
+            <param name="_numericField">The FloatField instance</param>
+            <param name="_targetObject">The target object inspected</param>
+            <param name="_getValue">The value getter for the slider</param>
+            <param name="_onValueChange">The value change handler</param>
+            <param name="_updateInterval">The value getter will repeatedly be invoked with this interval to update the value in the UI</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.BindSliderAndField(UnityEngine.UIElements.Slider,UnityEditor.UIElements.FloatField,UnityEngine.Object[],System.Func{System.Single},UnityEngine.UIElements.EventCallback{UnityEngine.UIElements.ChangeEvent{System.Single}},System.Int32,System.Boolean)">
+            <summary>
+            Binds the values of a Slider and a numeric Field
+            </summary>
+            <param name="_slider">The Slider instance</param>
+            <param name="_numericField">The FloatField instance</param>
+            <param name="_targetObjects">The target objects inspected</param>
+            <param name="_getValue">The value getter for the slider</param>
+            <param name="_onValueChange">The value change handler</param>
+            <param name="_updateInterval">The value getter will repeatedly be invoked with this interval to update the value in the UI</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.GetDisplay(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Gets the display state (visibility) of a VisualElement
+            </summary>
+            <param name="_visualElement">Element to get the display state of</param>
+            <returns>True when visibile, false when not visible</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.SetDisplay(UnityEngine.UIElements.VisualElement,System.Boolean)">
+            <summary>
+            Sets the visibility of a VisualElement by passing a bool value
+            </summary>
+            <param name="_visualElement">Element to set the visibility of</param>
+            <param name="_display">Display state, false is invisible, true is visible</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.SetDisplayRecurring(UnityEngine.UIElements.VisualElement,UnityEngine.Object,System.Func{System.Boolean},System.Int32,System.Boolean)">
+            <summary>
+            Create a recurring conditional test for safely setting the visibility of a VisualElement
+            </summary>
+            <typeparam name="T">Type of the target object, inheriting from UnityEnginge.Object</typeparam>
+            <param name="_visualElement">VisualElement to set display state of</param>
+            <param name="_targetObject">The target object of that should exist to perform the test</param>
+            <param name="_displayTest">The test function with bool return to set display state, false is none, true is visible</param>
+            <param name="_msTestInterval">Interval in ms to repeat execution of the test function, set to -1 if recurrense is not necessary</param>
+            <param name="_verbose"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.SetConditionalCallback(UnityEngine.UIElements.VisualElement,UnityEngine.Object,System.Boolean,System.Func{System.Boolean},System.Action{System.Boolean},System.Int32)">
+            <summary>
+            Create a (recurring) conditional test with callback
+            </summary>
+            <typeparam name="T">Type of the target object, inheriting from UnityEnginge.Object</typeparam>
+            <param name="_visualElement">The VisualElement to tie this test to</param>
+            <param name="_targetObject">the target UnityEngine Object</param>
+            <param name="_startState">the start state (at creation time of the conditional)</param>
+            <param name="_conditionTest">The test to check if a condition is met</param>
+            <param name="_handleConditionChanged">The callback that handles the condition result upon change</param>
+            <param name="_msTestInterval">Interval in ms to repeat execution of the test function, set to -1 if recurrence is not necessary</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.CreateSelectionPreview``1(System.Boolean,UnityEngine.UIElements.Button)">
+            <summary>
+            Creates selection preview for UIElements.
+            </summary>
+            <typeparam name="T">Component filter</typeparam>
+            <param name="_checkChildComponents">Include child components in the selection.</param>
+            <param name="_selectionDependentButton">Button to enable/disable based on selection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.SetReadOnlyState``1(UnityEngine.UIElements.TextInputBaseField{``0},System.Boolean)">
+            <summary>
+            Set the readonly state of fields that inherit from TextInputBaseField.
+            Readonly fields will have  the box styling removed by adding class "no-box" (from BaseStyle.uss)
+            </summary>
+            <typeparam name="T">No need to set the generic type, it can be inferred from the explicit type of the field parameter</typeparam>
+            <param name="_field">The field to set the read only state of</param>
+            <param name="_state">Read only state (true = read only, false = normal)</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.SetReadOnlyState``3(UnityEditor.UIElements.BaseCompositeField{``0,``1,``2},System.Boolean)">
+            <summary>
+            Set the readonly state of composite fields.
+            Readonly fields will have  the box styling removed by adding class "no-box" (from BaseStyle.uss)
+            </summary>
+            <typeparam name="TValue">No need to set the generic type, it can be inferred from the explicit type of the field parameter</typeparam>
+            <typeparam name="TField">No need to set the generic type</typeparam>
+            <typeparam name="TFieldValue">No need to set the generic type</typeparam>
+            <param name="_compositeField">The composite field to set the read only state of</param>
+            <param name="_state">The composite field to set the read only state of</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.DelayCompositeField``3(UnityEditor.UIElements.BaseCompositeField{``0,``1,``2})">
+            <summary>
+            Set composite fields to delayed (since the isDelayed is missing in BadeCompositeField)
+            </summary>
+            <typeparam name="TValue">No need to set the generic type, it can be inferred from the explicit type of the field parameter</typeparam>
+            <typeparam name="TField">No need to set the generic type</typeparam>
+            <typeparam name="TFieldValue">No need to set the generic type</typeparam>
+            <param name="_compositeField">The composite field to set the isdelayed state of</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.ConditionalHelpBoxWatcher``1(UnityEngine.UIElements.VisualElement,``0,System.Func{``0,System.Boolean},System.String,System.Action{``0,System.Boolean,System.Boolean},UnityEngine.UIElements.HelpBoxMessageType,System.Int32)">
+            <summary>
+            !!! PLEASE DO NOT USE THIS METHOD, IT HAS WAY TOO MANY RESPONSIBILITIES AND NEEDS TO BE PHASED OUT !!!
+            Creates a conditional IMGUI Helpbox Watcher on a specific dom parent object
+            </summary>
+            <typeparam name="T">the UnityObject this helpbox is watching</typeparam>
+            <param name="_domParent">the DOM object we want to child the helpbox to</param>
+            <param name="_parentObject">the parent UnityObject this helpbox is watching</param>
+            <param name="_conditionTest">boolean return function to check whether or not the message should be displayed</param>
+            <param name="_message">the message to display</param>
+            <param name="_onConditionChanged">optional callback to make when the condition changes</param>
+            <param name="_messageType">the type of IMGUI Helpbox to display</param>
+            <param name="_testInterval">the interval between value tests</param>
+            <returns>whether the warning is active at the time of registration</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper">
+            <summary>
+            MaskField helper
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.SetNewMaskValue``1(System.Int32,``0[],System.Action{``0},System.Action{``0})">
+            <summary>
+            Sets and unsets the elements of the collection corresponding to the maskfield value. Used to (un)set embedded values in the array elements.
+            </summary>
+            <typeparam name="T">array type</typeparam>
+            <param name="_newMaskValue">the maskfield value</param>
+            <param name="_collection">the collection corresponding to the displayed maskfield elements</param>
+            <param name="_setAction">the 'set' action to preform when the element is selected in the maskfield</param>
+            <param name="_unsetAction">the 'unset' action to preform when the element is not selected in the maskfield</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.GetMaskFieldValue``1(``0[],System.Predicate{``0})">
+            <summary>
+            Gets the maskfield value for the collection indexes, where the condition is true. Used to check embedded values into the array elements.
+            </summary>
+            <typeparam name="T">array type</typeparam>
+            <param name="_collection">the collection (corresponding to the maskfield)</param>
+            <param name="_condition">the condition for the index to be selected</param>
+            <returns>the maskvalue</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.GetMaskFieldValue``1(``0[],``0[])">
+            <summary>
+            Gets the corresponding maskvalue for the given selection of a collection.
+            </summary>
+            <typeparam name="T">array type</typeparam>
+            <param name="_selection">the selection from the collection</param>
+            <param name="_collection">the complete collection</param>
+            <returns>the corresponding maskvalue</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.GetSelectionFromMaskField``1(System.Int32,``0[])">
+            <summary>
+            Gets the indexes corresponding to the maskfield value out of the collection.
+            </summary>
+            <typeparam name="T">array type</typeparam>
+            <param name="_maskValue">the mask value to select</param>
+            <param name="_collection">the complete collection corresponding to the displayed maskfield values</param>
+            <returns>An array with the selection</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.expressBinary(System.Int32)">
+            <summary>
+            Expresses a integer value into the binairy code
+            </summary>
+            <param name="_intValue">the value</param>
+            <returns>the binairy code as an array of zeros and ones</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.MaskFieldHelper.expressBinary(System.Byte)">
+            <summary>
+            Expresses a byte value into the binairy code
+            </summary>
+            <param name="_byte">the value</param>
+            <returns>the binairy code as an array of zeros and ones</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateUtility">
+            <summary>
+            Helper class that contains methods to ensure persistence in UI states
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateUtility.InitTrackedFoldout(UnityEngine.UIElements.Foldout,UnityEngine.Object)">
+            <summary>
+            Initialize a foldout to track its collapsed state (value) in UIStateStorage (ScriptableSingleton)
+            If the _targetObject parameter is left null, this state is applied on all other tracked Foldouts with the same name
+            </summary>
+            <param name="_foldout">The Foldout instance to track</param>
+            <param name="_targetObject">The optional target MonoBehaviour. Allows different stored foldout states for similarly named Foldouts in UIs with different target objects.</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateUtility.UpdateTrackedFoldout(System.Boolean,UnityEngine.UIElements.Foldout,UnityEngine.Object)">
+            <summary>
+            Update a specific foldout's value in the UIStateStorage
+            </summary>
+            <param name="_newValue">New value of the foldout's state</param>
+            <param name="_foldout">The foldout of which the state needs to be updated</param>
+            <param name="_targetObject">The component</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateUtility.InitTrackedMenu(UnityEditor.UIElements.ToolbarMenu,System.Boolean@)">
+            <summary>
+            Initialize a tracked Menu in the Prespective Menu window
+            makes the expanded state of a submenu persistent
+            </summary>
+            <param name="_menu">The Menu Header</param>
+            <param name="_storedExpandedState">The stored expanded state as out parameter</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateUtility.RemoveFoldoutState(System.Int32,UnityEngine.UIElements.VisualElement,UnityEngine.Component,System.Boolean)">
+             <summary>
+             Remove a foldout state from a container that lists foldouts. This is used for when you wish to remove one of the foldouts but keep the state of the other foldouts.
+             As the UIStateStorage uses the name to index and names have to be unique it can cause problems when removing a foldout from the list and redrawing it.
+            Example:
+             We have 3 foldouts
+                 foldout-1 -> open
+                 foldout-2 -> open
+                 foldout-3 -> closed
+             When removing foldout-2 and redrawing the Storage isn't correctly updated and will look like:
+                 foldout-1 -> open
+                 foldout-2 -> open
+             But we actually wanted to remove a foldout from that list. So this removes the foldout and overwrites it with the foldout states after it. Resulting in:
+                 foldout-1 -> open
+                 foldout-2 -> closed
+             It also defaults the last foldout name so that no data is left behind. 
+            
+             </summary>
+             <param name="_indexToRemove">Index in the list of foldouts that will be removed</param>
+             <param name="_container">Container in which the foldouts reside</param>
+             <param name="_component">The component that is used to store the foldout states in the UIStateStorage with the UIStateUtility</param>
+             <param name="_clearedState">The default state the cleared foldout should set to</param>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage">
+            <summary>
+            ScriptableSingleton that is used to store UI state data in. Used by UIStateUtility
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.FoldoutStateData.TrackingName">
+            <summary>
+            The Unique tracking name used to identify tracked Foldout
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.FoldoutStateData.Value">
+            <summary>
+            The expanded state value of the tracked Foldout
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.TryGetFoldoutDefaultState(System.String,System.Boolean@)">
+            <summary>
+            Attempts to get the default foldout state stored for a tracking name
+            </summary>
+            <param name="_trackingName">The unique tracking name for the foldout</param>
+            <param name="_value">The default foldout state</param>
+            <returns>Returns true if a default state value could be found for the foldout</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.TryGetFoldoutState(System.String,System.Boolean@)">
+            <summary>
+            Attempts to get the foldout state stored for a tracking name
+            </summary>
+            <param name="_trackingName">The unique tracking name for the foldout</param>
+            <param name="_value">The foldout state</param>
+            <returns>Returns true if a state value could be found for the foldout</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.StoreFoldoutState(System.String,System.Boolean)">
+            <summary>
+            Store a foldout state
+            </summary>
+            <param name="_trackingName">The unique tracking name for the foldout</param>
+            <param name="_value">The foldout expanded state</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.ChangeStoredFoldoutState(System.String,System.Boolean)" -->
+        <member name="F:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.MenuStateData.Name">
+            <summary>
+            The name used to identify the menu item
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.MenuStateData.ExpandedState">
+            <summary>
+            The expanded state of the submenu
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.TryGetMenuState(System.String,System.Boolean@)">
+            <summary>
+            Attempts to get the collapsed state of a menu in the Prespective Menu window
+            </summary>
+            <param name="_name">The uxml name attribute of the menu header</param>
+            <param name="_expandedState">The expanded state</param>
+            <returns>Returns true if a state value could be found for the name</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.uistatepersistence.UIStateStorage.ChangeStoredMenuState(System.String)">
+            <summary>
+            Change the foldout value for a stored foldout
+            </summary>
+            <param name="_name"></param>
+            <param name="_expandedState"></param>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.LayoutCache">
+            <summary>
+            Lazy loading UXML layout utility that automatically caches the loaded uxml.
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.LayoutCache.layout">
+            <summary>
+            Path of the layout for loading the UXML
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.LayoutCache.cache">
+            <summary>
+            Cache of the uxml
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.LayoutCache.#ctor(System.String)">
+            <summary>
+            Constructor for the caching of the layout
+            </summary>
+            <param name="_layoutName">The name of the uxml to be loaded</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.LayoutCache.Clone">
+            <summary>
+            Lazy loading and cloning of the uxml 
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.UIResourceManager.BaseStyleSheet">
+            <summary>
+            StyleSheet for base styles
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.UIResourceManager.InspectorStyleSheet">
+            <summary>
+            StyleSheet for inspector styles
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.UIResourceManager.SkinStyleSheet">
+            <summary>
+            Unity Editor skin-based StyleSheet
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.UIElementView`2">
+            <summary>
+            <description>
+            View Model wrapper for inline Visual Element construction (Init and Update)
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="01/07/2020">
+                First implementation as part of the Actor Motion Path Graph View
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementView`2.parentElement">
+            <summary>
+            The Parent (visual) element of this visual element
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementView`2.regenerate">
+            <summary>
+            The function invoked to (re)-generate this element
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.UIElementView`2.tryUpdateValue">
+            <summary>
+            The function invoked to try and update this element
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIElementView`2.#ctor(`1,System.Func{UnityEngine.UIElements.VisualElement,`0},System.Func{`0,`1,System.Boolean,System.Boolean},u040.prespective.utility.editor.editorui.UIRefreshEvent,System.Boolean)">
+            <summary>
+            View Model Constructor
+            </summary>
+            <param name="_parentElement">The Parent (visual) element of this visual element</param>
+            <param name="_regenerate">The function invoked to (re)-generate this element</param>
+            <param name="_tryUpdateValue">The function invoked to try and update this element</param>
+            <param name="_generateImmediately">whether this constructor should directly try to generate this element (whether to use lazy-loading)</param>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.UIElementView`2.Element">
+            <summary>
+            Reference to the Element managed by this wrapper
+            (if no element is yet set, the element will be created using the Generator function)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIElementView`2.Update(System.Boolean)">
+            <summary>
+            Try update this element (values)
+            </summary>
+            <param name="_forceRedraw">whether or not to mark the parent dirty (and thus request an update of the UI)</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility" -->
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.MAX_STORED_LINE_COUNT">
+            <summary>
+            The maximum number of consecutive lines that can be drawn in one tick
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.N_OF_FRAMES_TO_SPLIT_LOAD_OVER">
+            <summary>
+            The preferred number of frames to split the load balanced load over
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.MAX_MS_TIMEDELTA_FOR_UPDATES">
+            <summary>
+            The max acceptable timedelta for consequitive frame updates
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.sceneLineDataArray">
+            <summary>
+            Buffer for the Actual Scene Lines
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.storedLineCount">
+            <summary>
+            The Actual number of Scene Lines drawn per tick
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.VerboseMode">
+            <summary>
+            Whether verbose logging on this utility is active
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.currentUnixTime">
+            <summary>
+            The Actual current Unix Time
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.executeLoadBalancedUpdates">
+            <summary>
+            Invoked every frame update in the editor 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.DrawSceneLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,System.Double)">
+            <summary>
+            Draw a single line (segment) in the scene
+            </summary>
+            <param name="_start">start point of the line</param>
+            <param name="_end">end point of the line</param>
+            <param name="_color">current line color</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenewindow.SceneHandleUtility.DrawSceneLines(UnityEngine.Vector3[],UnityEngine.Color,System.Double)">
+            <summary>
+            Draw a single line in the scene
+            </summary>
+            <param name="_points">points on the line</param>
+            <param name="_color">current line color</param>
+            <param name="_duration"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.scenewindow.UpdateRequest.ToString">
+            <summary>
+            Debug logging override
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.utility.editor.editorui.scenewindow.SceneLineData" -->
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneLineData.LinePoints">
+            <summary>
+            The Linepoints of this line
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneLineData.LineColor">
+            <summary>
+            The color of this line
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.scenewindow.SceneLineData.EndLifeTime">
+            <summary>
+            The Timepoint this line should no longer be drawn
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.utility.editor.PrespectiveUtilityEditor.SaveAsAsset``1(``0,System.String,System.String,System.Exception@,System.String,System.Boolean,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.utility.editor.PrespectiveUtilityEditor.SaveAsAssetWithName``1(``0,System.String,System.String,System.String,System.Exception@,System.String,System.Boolean,System.Boolean)" -->
+        <member name="M:u040.prespective.utility.editor.PrespectiveUtilityEditor.SaveDataToFBX(UnityEngine.GameObject,System.String)">
+            <summary>
+            saves a gameobject to fbx in FBXExports folder
+            </summary>
+            <param name="gotosave">game object to save</param>
+            <param name="fname">fbx name</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.PrespectiveUtilityEditor.CreateNewPrefab(UnityEngine.GameObject,System.String)">
+            <summary>
+            changes a game object into a prefab
+            </summary>
+            <param name="_obj">game object to change into prefab</param>
+            <param name="_localPath">location of the prefab</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.PrespectiveUtilityEditor.ReplaceWithPrefab(UnityEngine.GameObject,System.String,System.Boolean)">
+            <summary>
+            replace game object with prefab
+            </summary>
+            <param name="_toReplace">game object to replace</param>
+            <param name="_prefabName">prefab name to replace with</param>
+            <param name="_destroy">if should destroy game object</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.PrespectiveUtilityEditor.RemoveIllegalCharacters(System.String)">
+            <summary>
+            Removes illegal characters that cannot be written to the hdd in windows
+            </summary>
+            <param name="_input">string to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.scenemanagement.SceneVectorEditor.InspectorDisplay(UnityEngine.Transform,UnityEngine.GUIContent,u040.prespective.utility.scenemanagement.SceneVector)">
+            <summary>
+            Display functions for managing the vector from the inspector
+            </summary>
+            <param name="_owner">transform connected to scene vector</param>
+            <param name="_title">title of scene vector in inspector</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.scenemanagement.SceneVectorEditor.SceneDisplayVector(UnityEngine.Transform,u040.prespective.utility.scenemanagement.SceneVector,System.Single)">
+            <summary>
+            displays a line that depicts the given vector
+            </summary>
+            <param name="_owner">transform connected to line</param>
+            <param name="_handleSize">size of the line</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.scenemanagement.SceneVectorEditor.SceneDisplayGizmo(UnityEngine.Transform,u040.prespective.utility.scenemanagement.SceneVector,System.Single)">
+            <summary>
+            displays a gizmo that controls the vector if toggled on
+            </summary>
+            <param name="_owner">transform connected to line</param>
+            <param name="_handleSize">size of the gizmo</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.scenemanagement.SceneVectorEditor.interpretVector(UnityEngine.Vector3)">
+            <summary>
+            Determine if the vector matches a shorthand value
+            </summary>
+            <param name="_vector">vector to check</param>
+            <returns>short hand value</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.scenemanagement.SceneVectorEditor.castVector(u040.prespective.utility.scenemanagement.VectorDefaultDirections,UnityEngine.Vector3)">
+            <summary>
+            determines vector depending on short hand
+            </summary>
+            <param name="_dir">short hand</param>
+            <param name="_input">original vector</param>
+            <returns>vector connected to short hand</returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editormanagement.SceneObjectReference`1">
+            <summary>
+            Data wrapper class to shorthand handling of sceneObjects (i.e. components)
+            in the Unity Editor view
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.SceneObjectReference`1.ObjectReference">
+            <summary>
+            Reference to the actual hardtyped object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.SceneObjectReference`1.WasChanged">
+            <summary>
+            was changed
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.SceneObjectReference`1.BoxedObjectReference">
+            <summary>
+            Reference to the boxed object reference (used for SceneObject fields in the UnityEditorWindows
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.SceneObjectReference`1.ObjectReferenceScenePath">
+            <summary>
+            Path to the referenced object - used to serialize/deserialize references in the scene within the UnityEditor
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.utility.editor.editormanagement.EditorValueBuffer" -->
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.IsDeserialized">
+            <summary>
+            is de-serialized
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.SerializedValues">
+            <summary>
+            serialized values
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.PurgeValueBuffer">
+            <summary>
+            button to purge value buffer
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.bufferedValues">
+            <summary>
+            buffer values
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.postSerialization">
+            <summary>
+            if already serialized
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.BufferedValues">
+            <summary>
+            buffered values
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.onPurgeValueBuffer">
+            <summary>
+            purges value buffer
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.BufferValue(System.String,System.String)">
+            <summary>
+            add or change value in buffer
+            </summary>
+            <param name="_key">buffer key</param>
+            <param name="_value">new buffer value</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.RetrieveValue(System.String,System.String@)" -->
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.Serialize">
+            <summary>
+            serialize buffer
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBuffer.Deserialize">
+            <summary>
+            deserializes buffer
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference`1">
+            <summary>
+            Data wrapper class to shorthand handling of sceneObjects (i.e. components)
+            in the Unity Editor view
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference`1.ObjectReference">
+            <summary>
+            Reference to the actual hardtyped object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference`1.WasChanged">
+            <summary>
+            was changed
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference`1.BoxedObjectReference">
+            <summary>
+            Reference to the boxed object reference (used for SceneObject fields in the UnityEditorWindows
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference`1.ObjectReferenceScenePath">
+            <summary>
+            Path to the referenced object - used to serialize/deserialize references in the scene within the UnityEditor
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editormanagement.SelectionUtility">
+            <summary>
+            Utility functions to extend the Unity3D Editor Selection tooling
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.SelectionUtility.ContainsChildren(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            Check whether this object has childeren in the selection
+            </summary>
+            <param name="_t">the transform whose childeren to check for</param>
+            <param name="_allowSelf">whether selection of the transform itself should result in a positive result</param>
+            <returns></returns>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.SelectionUtility.SelectionLengthToSet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.SelectionUtility.AddToSelection(System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            Add a list of GameObjects to the currently active selection in the editor
+            </summary>
+            <param name="_gameObjectsToAddToSelection">List of Gameobjects to add to selection</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.SelectionUtility.ClearFromSelection(System.Collections.Generic.List{UnityEngine.GameObject},System.Collections.Generic.List{UnityEngine.GameObject}@)">
+            <summary>
+            
+            </summary>
+            <param name="_toRemove"></param>
+            <param name="_cleared"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.SelectionUtility.ContainsParents(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="_t"></param>
+            <param name="_allowSelf"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility">
+            <summary>
+            Maintains a object that contains serialized data for storing data that is should be maintained when entering and exiting play mode
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.DATA_PATH">
+            <summary>
+            path where Editor Value Buffer is stored
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.OnBeforeEditorSerialize">
+            <summary>
+            action to apply when exiting play mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.OnAfterEditorDeserialize">
+            <summary>
+            action to apply when entering play mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.internalEditorValueBuffer">
+            <summary>
+            the internally stored buffer
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.editorValueBuffer">
+            <summary>
+            Buffer to transfer values between play mode and edit mode
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.#cctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.BufferValue(System.String,System.String,System.Boolean)">
+            <summary>
+            buffer given value
+            </summary>
+            <param name="_key">key value stored under</param>
+            <param name="_value">value</param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.RetrieveValue(System.String,System.String@)">
+            <summary>
+            retrieve value stored here
+            </summary>
+            <param name="_key">key value stored under</param>
+            <param name="_value">stored value</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.onScriptsLoaded">
+            <summary>
+            fills the buffers
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editormanagement.EditorValueBufferingUtility.onPlayModeStateChanged(UnityEditor.PlayModeStateChange)">
+            <summary>
+            checks for play mode changes and applies serialization de-serialization
+            </summary>
+            <param name="_stateChange">play mode change state</param>
+        </member>
+        <member name="T:u040.prespective.utility.editorui.customuifields.InspectorButtonAttribute">
+            <summary>
+            When this Attribute is used on a void returning method without parameters in a MonoBehavior,
+            PrespectiveEditorUIE.generateDefaultInspector will generate a button that invokes the method.
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.serialization.ReorderableListManager`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.ListHeaderText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.LineHeight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.ButtonHeight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.FieldHeight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.DefaultColor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.SelectedColor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.GetGUISettingsContainer(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="_index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.ClearGUISettings(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="_index"></param>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.GetGUISetting``1(System.Int32,System.String,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_index"></param>
+            <param name="_settingName"></param>
+            <param name="defaultVal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.SetGUISetting``1(System.Int32,System.String,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_index"></param>
+            <param name="_settingName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:u040.prespective.utility.serialization.ReorderableListManager`1.ReorderableList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.serialization.ReorderableListManager`1.ManagedList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.RegisterManager(System.Collections.Generic.List{`0})">
+            <summary>
+            
+            </summary>
+            <param name="_data"></param>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.UnRegisterManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.DrawGUILayout(System.Collections.Generic.List{`0})">
+            <summary>
+            
+            </summary>
+            <param name="_data"></param>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnAddItemGUI">
+            <summary>
+            Add an item, callded from the GUI Function
+            (If set to null, adding will not be supported in this sortable list)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnRemoveItemGUI">
+            <summary>
+            Remove an item, Called from the GUI Function
+            (If set to null, removing will not be supported in this sortable list)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnReorderItemGUI">
+            <summary>
+            Reorder an item, Called from the GUI Function
+            (If set to null, reordering will not be supported in this sortable list)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnRemoveDialog">
+            <summary>
+            Remove dialog function
+            (if left null, no remove dialog will be shown when removing (auto-approved))
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.ElemHeights">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnDrawHeaderGUI">
+            <summary>
+            Default function for drawing the header of the Reorderable list
+            (Simply places the ListHeader text in a label)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnElementHeightCallback">
+            <summary>
+            Default function for returning the element height for a particular list item (rect)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.OnElementDrawCallback">
+            <summary>
+            Default function for displaying a type here (should be overwritten to be usefull)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.serialization.ReorderableListManager`1.SingleLinePosition(UnityEngine.Rect,System.Single,System.Single)">
+            <summary>
+            Derives a rectangle for a single line height rectangle at the specified position.
+            </summary>
+            <remarks>
+            <para>
+            Converts 'full draw area' position into a single line position.  This is useful when
+            starting a group of GUI elements with a single line element.
+            </para>
+            </remarks>
+            <param name="position">A position representing the avaiable draw area.</param>
+            <param name="heightOffset">The extra height offset to add above the single line.</param>
+            <param name="heightFactor">
+            The value to multiply the single line height by to make the line larger or smaller
+            than the standard. (I.e. <c>singleLineHeight * heightFactor</c>)
+            </param>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.onAddItemModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.onRemoveItemModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.serialization.ReorderableListManager`1.onReorderItemModel">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

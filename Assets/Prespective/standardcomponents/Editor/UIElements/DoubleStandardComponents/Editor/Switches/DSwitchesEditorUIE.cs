@@ -1,16 +1,16 @@
 using System;
 using System.Collections;
-using u040.prespective.core;
-using u040.prespective.prepair.ui.buttons;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.virtualhardware.sensors.position;
+using u040.prespective.utility.bridge;
+using u040.prespective.utility.editor.editorui;
+using u040.prespective.utility.editor.editorui.uistatepersistence;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static u040.prespective.prepair.ui.buttons.DBaseSwitch;
+using static u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.switches.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     public abstract class DSwitchesEditorUIE<T> : StandardComponentEditorUIE<T> where T : DBaseSwitch
     {
@@ -24,22 +24,22 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
 
         protected SerializedProperty switchStates;
         protected IEnumerator reselectComponent;
-        private readonly int buttonWidth = 100;
+        private readonly int BUTTON_WIDTH = 100;
 
         #region << Control Panel Fields>>
-        TextField selectedStateControlPanel;
-        TextField idControlPanel;
+        private TextField selectedStateControlPanel;
+        private TextField idControlPanel;
         #endregion
 
-        string noSwitchStatesText = "N/A";
+        private string noSwitchStatesText = "N/A";
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            switchStateTree = Resources.Load<VisualTreeAsset>("Switches/DSwitchStateLayout");
-            base.ExecuteOnEnable();
+            switchStateTree = Resources.Load<VisualTreeAsset>("DSwitchStateLayout");
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             if (component.SelectedState == null || component.SelectedState.Name == null || component.SelectedState.Name == "")
             {
@@ -51,9 +51,9 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             }
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
             #region << Live Data >>
             selectedState = root.Q<TextField>(name: "selected-state");
             selectedState.isReadOnly = true;
@@ -63,7 +63,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             noSaveStatesAvailable = root.Q<Label>(name: "no-states-available");
 
             ListSwitchStateLayout();
-            UpdateStateContainerEnabled();
+            updateStateContainerEnabled();
         }
 
         public void ListSwitchStateLayout()
@@ -84,88 +84,90 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
         {
             int index = component.SwitchStates.FindIndex(_e => _e.Id == _switchState.Id);
 
-            //clone the visualtree from the referenced uxml and add it to the container
+            //clone the visual tree from the referenced UXML and add it to the container
             VisualElement switchStateRoot = switchStateTree.CloneTree();
             _container.Add(switchStateRoot);
 
             Foldout stateFoldout = switchStateRoot.Q<Foldout>(name: "switch-state");
-            Button selectState = new Button();
-            TextField id = switchStateRoot.Q<TextField>(name: "id");
-            Button deleteState = switchStateRoot.Q<Button>(name: "delete-state");
-            TextField name = switchStateRoot.Q<TextField>(name: "name");
-            DoubleField lowerWeight = switchStateRoot.Q<DoubleField>(name: "lower-weight");
-            DoubleField upperWeight = switchStateRoot.Q<DoubleField>(name: "upper-weight");
-            DoubleField position = switchStateRoot.Q<DoubleField>(name: "position");
-            PropertyField onSelected = switchStateRoot.Q<PropertyField>(name: "on-selected");
-            PropertyField onUnselected = switchStateRoot.Q<PropertyField>(name: "on-unselected");
-
             Func<string> getFoldoutText = () => "[" + _switchState.Id + "] " + _switchState.Name;
-
             stateFoldout.text = getFoldoutText();
+            stateFoldout.name += "-" + _switchState.Id;
+            UIStateUtility.InitTrackedFoldout(stateFoldout, component);
 
-            selectState.text = "Select State";
-            selectState.style.width = buttonWidth;
-            stateFoldout.Q<Toggle>().Add(selectState);
-            selectState.RegisterCallback<MouseUpEvent>(_mouseEvent =>
+            Button selectStateButton = new Button();
+            selectStateButton.text = "Select State";
+            selectStateButton.style.width = BUTTON_WIDTH;
+            stateFoldout.Q<Toggle>().Add(selectStateButton);
+            selectStateButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.SelectState(_switchState.Id);
-                PersistentEditorCoroutine.StartCoroutine(redrawWindow());
+                EditorCoroutines.StartEditorCoroutine(redrawWindow());
             });
 
-            deleteState.style.width = buttonWidth;
-            deleteState.style.marginRight = 3;
-            deleteState.RegisterCallback<MouseUpEvent>(_mouseEvent =>
+            TextField idField = switchStateRoot.Q<TextField>(name: "id");
+            Button deleteStateButton = switchStateRoot.Q<Button>(name: "delete-state");
+            deleteStateButton.style.width = BUTTON_WIDTH;
+            deleteStateButton.style.marginRight = 3;
+            deleteStateButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.DeleteState(index);
                 switchStateRoot.parent.Remove(switchStateRoot);
-                PersistentEditorCoroutine.StartCoroutine(redrawWindow());
-                UpdateStateContainerEnabled();
+                EditorCoroutines.StartEditorCoroutine(redrawWindow());
+                updateStateContainerEnabled();
             });
 
+            TextField nameField = switchStateRoot.Q<TextField>(name: "name");
             UIUtility.InitializeField
             (
-                name,
+                nameField,
+                component,
                 () => _switchState.Name,
-                e =>
+                _e =>
                 {
-                    _switchState.Name = e.newValue;
+                    _switchState.Name = _e.newValue;
                     stateFoldout.text = getFoldoutText();
                 }
             );
 
+            DoubleField lowerWeightField = switchStateRoot.Q<DoubleField>(name: "lower-weight");
             UIUtility.InitializeField
             (
-                lowerWeight,
+                lowerWeightField,
+                component,
                 () => _switchState.LowerWeight,
-                e =>
+                _e =>
                 {
-                    _switchState.LowerWeight = e.newValue;
+                    _switchState.LowerWeight = _e.newValue;
                     component.RecalculateTransitions();
-                    lowerWeight.SetValueWithoutNotify(_switchState.LowerWeight);
+                    lowerWeightField.SetValueWithoutNotify(_switchState.LowerWeight);
                     SceneView.RepaintAll();
                 }
             );
 
+            DoubleField upperWeightField = switchStateRoot.Q<DoubleField>(name: "upper-weight");
             UIUtility.InitializeField
             (
-                upperWeight,
+                upperWeightField,
+                component,
                 () => _switchState.UpperWeight,
-                e =>
+                _e =>
                 {
-                    _switchState.UpperWeight = e.newValue;
+                    _switchState.UpperWeight = _e.newValue;
                     component.RecalculateTransitions();
-                    upperWeight.SetValueWithoutNotify(_switchState.UpperWeight);
+                    upperWeightField.SetValueWithoutNotify(_switchState.UpperWeight);
                     SceneView.RepaintAll();
                 }
             );
 
+            DoubleField positionField = switchStateRoot.Q<DoubleField>(name: "position");
             UIUtility.InitializeField
             (
-                position,
+                positionField,
+                component,
                 () => _switchState.Position,
-                e =>
+                _e =>
                 {
-                    _switchState.Position = e.newValue;
+                    _switchState.Position = _e.newValue;
                     component.RecalculateTransitions();
                     SceneView.RepaintAll();
                 }
@@ -173,11 +175,13 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
 
             SerializedProperty serializedSwitchState = switchStates.GetArrayElementAtIndex(index);
 
+            PropertyField onSelectedField = switchStateRoot.Q<PropertyField>(name: "on-selected");
             SerializedProperty serializedOnSelectedEvent = serializedSwitchState.FindPropertyRelative("OnSelected");
-            SerializedProperty serializedOnUnselectedEvent = serializedSwitchState.FindPropertyRelative("OnUnselected");
+            onSelectedField.BindProperty(serializedOnSelectedEvent);
 
-            onSelected.BindProperty(serializedOnSelectedEvent);
-            onUnselected.BindProperty(serializedOnUnselectedEvent);
+            PropertyField onUnselectedField = switchStateRoot.Q<PropertyField>(name: "on-unselected");
+            SerializedProperty serializedOnUnselectedEvent = serializedSwitchState.FindPropertyRelative("OnUnselected");
+            onUnselectedField.BindProperty(serializedOnUnselectedEvent);
         }
 
         protected IEnumerator redrawWindow(VisualElement _inspectorRoot)
@@ -191,7 +195,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             yield return null;
         }
 
-        protected void UpdateStateContainerEnabled()
+        protected void updateStateContainerEnabled()
         {
             UIUtility.SetDisplay(statesContainer, !(statesContainer.childCount == 0));
             UIUtility.SetDisplay(noSaveStatesAvailable, statesContainer.childCount == 0);
@@ -210,18 +214,18 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             selectedStateControlPanel = new TextField("Selected State");
-            UIUtility.ToggleNoBoxAndReadOnly(selectedStateControlPanel, true);
+            UIUtility.SetReadOnlyState(selectedStateControlPanel, true);
 
             idControlPanel = new TextField("ID");
-            UIUtility.ToggleNoBoxAndReadOnly(idControlPanel, true);
+            UIUtility.SetReadOnlyState(idControlPanel, true);
 
-            ScheduleControlPanelUpdate(selectedStateControlPanel);
+            scheduleControlPanelUpdate(selectedStateControlPanel);
 
             _container.Add(selectedStateControlPanel);
             _container.Add(idControlPanel);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             selectedStateControlPanel.value = component.SelectedState != null && component.SelectedState.Name != "" && Application.isPlaying ? component.SelectedState.Name.ToString() : "N/A";
             idControlPanel.value = component.SelectedState != null && Application.isPlaying ? component.SelectedState.Id.ToString() : "N/A";

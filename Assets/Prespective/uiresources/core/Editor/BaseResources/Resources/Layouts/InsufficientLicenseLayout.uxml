@@ -1,0 +1,5 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" xmlns:pre="u040.prespective">
+  <ui:VisualElement class="window-padding-container">
+    <ui:TextElement class="bold" name="license-message" text="This feature of Prespective is not available with [LICENSE_NAME] license."/>
+  </ui:VisualElement>
+</ui:UXML>

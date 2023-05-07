@@ -1,51 +1,59 @@
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.actuators.motors
 {
     [CustomEditor(typeof(DDrivenStepperMotor))]
     public class DDrivenStepperMotorEditorUIE : StandardComponentEditorUIE<DDrivenStepperMotor>
     {
-        #region << Live Data Fields >>
-        TextField preferredVelocity;
-        TextField targetStep;
-        TextField continuous;
-        TextField continuousDirection;
-        TextField velocity;
-        TextField position;
-        TextField state;
+        #region << FIELDS >>
+        private TextField preferredVelocity;
+        private TextField targetStep;
+        private TextField continuous;
+        private TextField continuousDirection;
+        private TextField velocity;
+        private TextField position;
+        private TextField state;
+
+        // Property Fields
+        private VisualElement settings;
+        private ObjectField wheelJointField;
+        private IntegerField stepCountField;
+        private DoubleField maximumVelocityField;
+        private DoubleField accelerationField;
+        private DoubleField decelerationField;
+        private DoubleField zeroOffsetField;
+        private Button setCurrentOffsetButton;
+
+        //Control Panel Fields
+        private TextField velocityControlPanel;
+        private TextField positionControlPanel;
+        private TextField positionStepControlPanel;
+        private TextField stateControlPanel;
+        private IntegerField targetStepControlField;
+
         #endregion
-        #region << Property Fields >>
-        VisualElement settings;
-        VisualElement pulseWithModulationEnabled;
-        Label noWheelJoint;
-        ObjectField wheelJointField;
-        IntegerField stepCount;
-        DoubleField maximumVelocity;
-        DoubleField acceleration;
-        DoubleField zeroOffset;
-        Button setCurrentOffset;
-        #endregion
-        #region << Control Panel Fields >>
-        TextField velocityControlPanel;
-        TextField positionControlPanel;
-        TextField positionStepControlPanel;
-        TextField stateControlPanel;
-        IntegerField targetStepControlPanel;
-        #endregion
-        protected override void ExecuteOnEnable()
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Actuators/Motors/DDrivenStepperMotorLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DDrivenStepperMotorEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             preferredVelocity.value = component.PreferredVelocity.ToString();
             targetStep.value = component.TargetStep.ToString();
@@ -57,9 +65,9 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             state.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
             preferredVelocity = root.Q<TextField>(name: "preferred-velocity");
@@ -86,75 +94,85 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             #endregion
             #region << Properties >>
             settings = root.Q<VisualElement>(name: "settings");
-            pulseWithModulationEnabled = root.Q<VisualElement>(name: "pulse-width-modulation-enabled");
-            noWheelJoint = root.Q<Label>(name: "no-wheel-joint");
             wheelJointField = root.Q<ObjectField>(name: "wheel-joint-field");
-            stepCount = root.Q<IntegerField>(name: "step-count");
-            maximumVelocity = root.Q<DoubleField>(name: "maximum-velocity");
-            acceleration = root.Q<DoubleField>(name: "acceleration");
-            zeroOffset = root.Q<DoubleField>(name: "zero-offset");
-            setCurrentOffset = root.Q<Button>(name: "set-current-offset");
+            stepCountField = root.Q<IntegerField>(name: "step-count");
+            maximumVelocityField = root.Q<DoubleField>(name: "maximum-velocity");
+            accelerationField = root.Q<DoubleField>(name: "acceleration");
+            decelerationField = root.Q<DoubleField>(name: "deceleration");
+            zeroOffsetField = root.Q<DoubleField>(name: "zero-offset");
+            setCurrentOffsetButton = root.Q<Button>(name: "set-current-offset");
 
             UIUtility.InitializeField
             (
                 wheelJointField,
+                component,
                 () => component.KinematicWheelJoint,
-                e =>
+                _e =>
                 {
-                    component.KinematicWheelJoint = (AWheelJoint)e.newValue;
-                    UIUtility.SetDisplay(settings, e.newValue == null ? false : true);
-                    UIUtility.SetDisplay(noWheelJoint, e.newValue == null ? true : false);
+                    component.KinematicWheelJoint = (AWheelJoint)_e.newValue;
                 },
                 typeof(AWheelJoint)
             );
 
-            UIUtility.SetDisplay(settings, component.KinematicWheelJoint == null ? false : true);
-            UIUtility.SetDisplay(noWheelJoint, component.KinematicWheelJoint == null ? true : false);
-
             UIUtility.InitializeField
             (
-                stepCount,
+                stepCountField,
+                component,
                 () => component.StepsPerCycle,
-                e =>
+                _e =>
                 {
-                    component.StepsPerCycle = e.newValue;
+                    component.StepsPerCycle = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                maximumVelocity,
+                maximumVelocityField,
+                component,
                 () => component.MaxVelocity,
-                e =>
+                _e =>
                 {
-                    component.MaxVelocity = e.newValue;
+                    component.MaxVelocity = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                acceleration,
+                accelerationField,
+                component,
                 () => component.Acceleration,
-                e =>
+                _e =>
                 {
-                    component.Acceleration = e.newValue;
+                    component.Acceleration = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                zeroOffset,
-                () => component.ZeroOffset,
-                e =>
+                decelerationField,
+                component,
+                () => component.Deceleration,
+                _e =>
                 {
-                    component.ZeroOffset = e.newValue;
+                    component.Deceleration = _e.newValue;
                 }
             );
 
-            setCurrentOffset.RegisterCallback<MouseUpEvent>(mouseEvent => 
+            UIUtility.InitializeField
+            (
+                zeroOffsetField,
+                component,
+                () => component.ZeroOffset,
+                _e =>
+                {
+                    component.ZeroOffset = _e.newValue;
+                }
+            );
+
+            setCurrentOffsetButton.RegisterCallback<MouseUpEvent>(_mouseEvent => 
             {
                 component.ZeroOffset = component.KinematicWheelJoint.CurrentRevolutionDegrees;
-                zeroOffset.SetValueWithoutNotify(component.ZeroOffset);
+                zeroOffsetField.SetValueWithoutNotify(component.ZeroOffset);
             });
             #endregion
         }
@@ -179,44 +197,48 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             (
                 prefVelocitySlider,
                 prefVelocityField,
+                component,
                 () => (float)component.PreferredVelocity,
-                e => component.PreferredVelocity = e.newValue
+                _e => component.PreferredVelocity = _e.newValue
             );
             #endregion
 
-            targetStepControlPanel = new IntegerField("Target step");
-            targetStepControlPanel.isDelayed = true;
+            targetStepControlField = new IntegerField("Target step");
+            targetStepControlField.isDelayed = true;
             UIUtility.InitializeField
             (
-                targetStepControlPanel,
+                targetStepControlField,
+                component,
                 () => component.TargetStep,
-                e =>
+                _e =>
                 {
-                    component.TargetStep = e.newValue;
+                    component.TargetStep = _e.newValue;
                 }
             );
-            UIUtility.ToggleNoBoxAndReadOnly(targetStepControlPanel, component.Continuous);
+            UIUtility.SetReadOnlyState(targetStepControlField, component.Continuous);
 
-            Toggle continuous = new Toggle("Continuous");
+            Toggle continuousToggle = new Toggle("Continuous");
             UIUtility.InitializeField
             (
-                continuous,
+                continuousToggle,
+                component,
                 () => component.Continuous,
-                e =>
+                _e =>
                 {
-                    component.Continuous = e.newValue;
-                    UIUtility.ToggleNoBoxAndReadOnly(targetStepControlPanel, component.Continuous);
+                    component.Continuous = _e.newValue;
+                    UIUtility.SetReadOnlyState(targetStepControlField, component.Continuous);
                 }
             );
 
-            EnumField continuousDirection = new EnumField("Continuous Direction");
+            EnumField continuousDirectionField = new EnumField("Continuous Direction");
             UIUtility.InitializeField
             (
-                continuousDirection,
+                continuousDirectionField,
+                component,
                 () => component.ContinuousDirection,
-                e =>
+                _e =>
                 {
-                    component.ContinuousDirection = (DDrivenStepperMotor.Direction)e.newValue;
+                    component.ContinuousDirection = (DDrivenStepperMotor.Direction)_e.newValue;
                 }
             );
 
@@ -237,7 +259,7 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             stateControlPanel.isReadOnly = true;
 
             //schedule the updater
-            ScheduleControlPanelUpdate(velocityControlPanel);
+            scheduleControlPanelUpdate(velocityControlPanel);
 
             Button startRotation = new Button();
             startRotation.text = component.Error ? "Reset Error" : (component.IsActive ? "Stop" : "Start");
@@ -256,9 +278,9 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             });
 
             _container.Add(sliderContainer);
-            _container.Add(targetStepControlPanel);
-            _container.Add(continuous);
-            _container.Add(continuousDirection);
+            _container.Add(targetStepControlField);
+            _container.Add(continuousToggle);
+            _container.Add(continuousDirectionField);
             _container.Add(velocityControlPanel);
             _container.Add(positionControlPanel);
             _container.Add(positionStepControlPanel);
@@ -266,8 +288,8 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             _container.Add(startRotation);
         }
 
-        //Define the fields in the control panel that need to be udpated constantly
-        protected override void UpdateControlPanelData()
+        //Define the fields in the control panel that need to be updated constantly
+        protected override void updateControlPanelData()
         {
             velocityControlPanel.value = Application.isPlaying ? component.Velocity.ToString() : "N/A";
             positionControlPanel.value = Application.isPlaying ? component.PositionDegrees.ToString() : "N/A";
@@ -276,7 +298,7 @@ namespace u040.prespective.standardcomponents.kinetics.motor.steppermotor.editor
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
             if (component.Continuous)
             {
-                targetStepControlPanel.value = component.TargetStep;
+                targetStepControlField.value = component.TargetStep;
             }
         }
     }

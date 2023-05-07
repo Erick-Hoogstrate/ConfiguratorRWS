@@ -1,0 +1,1258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PrescissorEditor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prescissor.editor.importexport.prefab.ReplacePrefabsWith">
+            <summary>
+            @CLASS : ReplacePrefabsWith
+            
+            @ABOUT : Replaces all the prefabs with a new prefab of a game object
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented replacing all the prefabs with a new prefab of a game object(09-11-2018)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.importexport.prefab.ReplacePrefabsWith.Start(UnityEngine.GameObject,UnityEngine.GameObject,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            start function that replaces all the prefabs with a given game object
+            </summary>
+            <param name="_prefab">prefab</param>
+            <param name="_goReplace">replace game object</param>
+            <param name="_setParent">set parent of previous prefab</param>
+            <param name="_setPosition"> set position of previous prefab</param>
+            <param name="_setRotation">set rotation of previous prefab</param>
+            <param name="_setScale">set scale of previous prefab</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.importexport.prefab.ReplacePrefabsWith.replace(UnityEngine.GameObject,UnityEngine.GameObject,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            replaces the prefab with game object
+            </summary>
+            <param name="_prefab">prefab</param>
+            <param name="_goReplace">replace game object</param>
+            <param name="_setParent">set parent of previous prefab</param>
+            <param name="_setPosition">set position of previous prefab</param>
+            <param name="_setRotation">set rotation of previous prefab</param>
+            <param name="_setScale">set scale of previous prefab</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher">
+            <summary>
+            @CLASS : MeshPatcher
+            
+            @ABOUT : Makes mesh patches of all the normal planes
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented making mesh patches of normal planes(05-11-2018)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.CreatePatchMeshes(UnityEngine.GameObject[],System.Single,System.Single,System.Single)">
+            <summary>
+            start function to make meshes of normal planes
+            </summary>
+            <param name="_ngo">game objects to creates meshes for</param>
+            <param name="_maximumAngle">maximum angle of planer features</param>
+            <param name="_outerEgdesMergeAngle">maximum angle for outer edges merges</param>
+            <param name="_minimumSize">minimum size of planer mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.getNormalSurfacesOfMesh(UnityEngine.MeshFilter,System.Single)">
+            <summary>
+            finds the normal surfaces of a mesh
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_angleDiff">the maximum angle difference allowed</param>
+            <returns>list normal surface on surface</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.processPlanerSurfaces(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{u040.prespective.math.doubles.DVector3,System.Collections.Generic.List{System.Int32}}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3})">
+            <summary>
+            this determines the data of the normal planes surfaces
+            </summary>
+            <param name="_normalPlanes">list of normal surfaces</param>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <returns>normal surfaces</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.makePlaneMesh(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3[]},u040.prespective.math.doubles.DVector3,UnityEngine.GameObject,System.Single)">
+            <summary>
+            makes a mesh from the planer
+            </summary>
+            <param name="_outerEdges">outer edges</param>
+            <param name="_orignalNormal">normal of the surface</param>
+            <param name="_go">game object of the planer</param>
+            <param name="_minimumSize">minimum mesh area planer size</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.NormalSurfaceData">
+            <summary>
+            data struct of the surface
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.NormalSurfaceData.Normal">
+            <summary>
+            normal of the surface
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.NormalSurfaceData.OuterVertices">
+            <summary>
+            outer vertices of the surface
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshpatching.MeshPatcher.NormalSurfaceData.OuterEdges">
+            <summary>
+            outer edges of the surface
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshpatching.RemovingOuterConnectedTriangles">
+            <summary>
+            @CLASS : RemovingOuterConnectedTriangles
+            
+            @ABOUT : Removes the triangles surface found with a maximum angle difference. The triangle surface is found by taking a first triangle found with a camera and expanding from that
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented removing triangle surface (11-10-2018)
+            @VERSION : 1.10 - Implemented removing or keeping triangle surface along bezier curve in given direction(25-10-2018)
+            @VERSION : 1.20 - Implemented undo function(04-01-2019)
+            @VERSION : 1.30 - Implemented collider check to system with possiblity of giving which meshes are neccessary for the measurement(08-01-2019)
+            @VERSION : 1.35 - Added cancel system(01-02-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.RemovingOuterConnectedTriangles.start(UnityEngine.GameObject[],u040.prespective.core.spline.ADSpline,UnityEngine.Vector3,System.Int32,System.Single,System.Boolean,System.Int32)" -->
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshpatching.RemovingOuterConnectedTriangles.undo">
+            <summary>
+            undos the process of connected outer triangles
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.RemovingOuterConnectedTriangles.getConnectedTriangles(UnityEngine.MeshFilter,System.Int32,System.Single,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.RemovingOuterConnectedTriangles.processMesh(UnityEngine.MeshFilter,System.Collections.Generic.List{System.Int32},System.Boolean)" -->
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher">
+            <summary>
+            @CLASS : GeneralMeshPatcher
+            
+            @ABOUT : Makes mesh patches of all the normal planes within a given maximum degree normal difference
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented beta(26-03-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.start(UnityEngine.GameObject[],System.Single,System.Single,System.Single,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.getNormalSurfacesOfMesh(UnityEngine.MeshFilter,System.Single,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.processPlanerSurfaces(UnityEngine.GameObject,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{u040.prespective.math.doubles.DVector3,System.Collections.Generic.List{System.Int32}}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.breakUpInMaxDegreesPatches(UnityEngine.GameObject,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Collections.Generic.List{System.Int32},System.Single,System.Collections.Generic.List{System.Collections.Generic.List{u040.prespective.math.doubles.DVector3}}@)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.checkNeighbour(System.Int32,System.Int32,System.Int32,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,System.Int32,System.Int32,System.Int32,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.withInMaxAngleCheck(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3},u040.prespective.math.doubles.DVector3,System.Double)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.meshpatching.GeneralMeshPatcher.makePlaneMesh(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3[]},UnityEngine.GameObject,System.Single)" -->
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.FilterTypes">
+            <summary>
+            Types of filters
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueriesProcessingType">
+            <summary>
+            Types of postprocessing actions
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery">
+            <summary>
+            Select a number of objects using various filters (BoundingBox, MeshArea, MeshVolume, Name, Component (e.g. script))
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.InitialMessage">
+            <summary>
+            message what is initialized
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.Verbose">
+            <summary>
+            Log debugging data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.initialMeasurement">
+            <summary>
+            if initial measurement is done
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.multiple">
+            <summary>
+            this is the list of all the objects that are connected the value is the game object instance id
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.listAllIds">
+            <summary>
+            game objects instance ids of all the game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.listMeshFilterIds">
+            <summary>
+            game object instance ids of game objects with mesh filter
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.listAllGameObjects">
+            <summary>
+            list of transforms in the filter
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.previousVersion">
+            <summary>
+            previous version data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.storedDataObjects">
+            <summary>
+            stored data objects
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.Initialized">
+            <summary>
+            if already has initialized system
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.PreviousVersionAvailable">
+            <summary>
+            Boolean to check if a version to go back to is present
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.GoBackVersion">
+            <summary>
+            reverses the previous filter
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.InitialNeededValues(UnityEngine.GameObject)">
+            <summary>
+            The initial information needed to do the comparison (this is done to increase the speed of the filtering since the data needs only be gather ones)
+            Defines initializedGameObject in MeshQueriesManager (extracts components on reference GameObject)
+            </summary>
+            <param name="_objectToBeInspected">root parent of all the objects</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.doInitialMeasurement(UnityEngine.GameObject)">
+            <summary>
+            does 1 single measurement for the initialization
+            </summary>
+            <param name="_go">game object</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.FindSimilar(UnityEngine.GameObject[],u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData[],u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueriesProcessingType,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            starts up the filtering
+            </summary>
+            <param name="_selectedObjects">array with all the game objects to check</param>
+            <param name="_queryData">type of filtering</param>
+            <param name="_processingType">type of post processing</param>
+            <param name="_postProcess">if post-processing is done</param>
+            <returns>list of instance id's of connected objects</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.findSimilarOfObject(UnityEngine.GameObject,u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData[],System.Collections.Generic.List{System.String})">
+            <summary>
+            processes the game object to do the filtering
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_queries">queries</param>
+            <returns>cancel</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.goPresentCheck(UnityEngine.GameObject,u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData[],System.Collections.Generic.List{System.String})">
+            <summary>
+            does the filtering for 1 game object
+            </summary>
+            <param name="_go">game object to check</param>
+            <param name="_queries">queries</param>
+            <returns>cancel</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.filterMethod(UnityEngine.GameObject,u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData[],System.Collections.Generic.List{System.String})">
+            <summary>
+            selects the filter method
+            </summary>
+            <param name="_go">game object to check</param>
+            <param name="_meshQueries">mesh queries</param>
+            <returns>cancel</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.gameObjectHasComponents(System.String[],System.String[])">
+            <summary>
+            Compares _components and _componentsOnGameObject to make sure every component in _components is present in _compomentsOnGameObject
+            </summary>
+            <param name="_components"></param>
+            <param name="_componentsOnGameObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.allIdsCheck(u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData[])">
+            <summary>
+            if full list used
+            </summary>
+            <param name="_meshQueries">queries used for filtering</param>
+            <returns>check</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.checkMaterialsSame(UnityEngine.Material[],UnityEngine.Material[],System.Int32)">
+            <summary>
+            checks if the materials are the same
+            </summary>
+            <param name="_mat">materials to compare to</param>
+            <param name="_checkMat">materials to check</param>
+            <param name="_nmaterials">length of materials to compare to</param>
+            <returns>check</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.materialPresentCheck(UnityEngine.Material[],UnityEngine.Material)">
+            <summary>
+            checks array of materials if material is present
+            </summary>
+            <param name="_materials">array of materials</param>
+            <param name="_checkMat">material to check</param>
+            <returns>check</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.angleCalculation(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3})">
+            <summary>
+            calculates angles of the triangles
+            </summary>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <returns>the calculated angles of the triangle of the mesh filter</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.checkAngles(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Double,System.Collections.Generic.KeyValuePair{System.Double,System.Double}}},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Double,System.Collections.Generic.KeyValuePair{System.Double,System.Double}}})">
+            <summary>
+            looks for pairs looking at mesh
+            </summary>
+            <param name="_originalAngles">original angles to compare to</param>
+            <param name="_checkAngle">angle to compare with</param>
+            <returns>cancel</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.postProcessing(u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueriesProcessingType)">
+            <summary>
+            hides, adds tag or selects all the similar objects
+            </summary>
+            <param name="_ra">post processing type</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery">
+            <summary>
+            data of object for mesh querying
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.GameObjectName">
+            <summary>
+            name object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.ComponentNames">
+            <summary>
+            Name of components on reference GameObject (use in MeshQueryWindowUIE)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.TriangleAngles">
+            <summary>
+            triangle angles mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.MeshArea">
+            <summary>
+            mesh area
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.MeshVolume">
+            <summary>
+            mesh volume
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.Size">
+            <summary>
+            size of object through bounding box
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.GameObjectQuery.ObjectDataMeshQuery.Materials">
+            <summary>
+            materials object
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData">
+            <summary>
+            data classes for mesh querying
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData.Type">
+            <summary>
+            type of filtering
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData.Deviation">
+            <summary>
+            deviation in value or with size the size to look below
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.gameobjectquery.MeshQueryData.#ctor(u040.prespective.prescissor.editor.meshtopology.gameobjectquery.FilterTypes,System.Double)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummyType">type of filtering</param>
+            <param name="_dummyDeviation">deviation in value or with size the size to look below</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud">
+            <summary>
+            @CLASS : MeshPointCloud
+            
+            @ABOUT : Makes new mesh from closed cylinderical shapes
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented making point cloud and then into mesh of closed cylinderical shapes(11-10-2018)
+            @VERSION : 1.10 - Added system that does ray casting in double precission if colliders doesn't work (very heavy)(02-11-2018)
+            @VERSION : 1.20 - Added outliers check to remove the measurements within the point cloud that have outliers(12-11-2018)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.start(UnityEngine.GameObject[],u040.prespective.core.spline.ADSpline,System.Int32,System.Single,System.Int32,System.Single,System.Int32,System.Single,System.Boolean,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.findIntersectionBetweenMeshAndRayCastDouble(System.Collections.Generic.List{UnityEngine.Transform},u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,UnityEngine.RaycastHit@)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.initialize(UnityEngine.GameObject[],System.Collections.Generic.List{UnityEngine.GameObject}@,System.Collections.Generic.List{UnityEngine.GameObject}@)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.makePointCloud(System.Collections.Generic.List{UnityEngine.Transform},u040.prespective.core.spline.ADSpline,System.Int32,System.Single,System.Int32,System.Single,System.Single,System.Boolean,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.threePointCalculation(System.Collections.Generic.List{UnityEngine.Transform},UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.makeSplines(System.Collections.Generic.List{System.Collections.Generic.List{UnityEngine.Vector3}})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.pointcloud.MeshPointCloud.createMeshFromSplines(System.Collections.Generic.List{u040.prespective.core.spline.ADSpline},System.Int32)" -->
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer">
+            <summary>
+            Compares game object meshes and if they are similar they are replaced by a prefab
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalFlippingCheck">
+            <summary>
+            if check for flipped normals
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.SymmetryCheck">
+            <summary>
+            check for symmetry problems
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.ncpu">
+            <summary>
+            number of cores
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.angledifference">
+            <summary>
+            angle difference
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.MakePlanarNormal(UnityEngine.GameObject[],System.Double,System.Double,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            finds the connection between objects and puts them in the right orientation
+            </summary>
+            <param name="_ngo">list game objects</param>
+            <param name="_deviation">deviation of the planar normal</param>
+            <param name="_meshAreaDeviation">planer mesh area being unique deviation</param>
+            <param name="_maxSizeDifference">size for bounds check</param>
+            <param name="_rotationCheck">does complete rotation check</param>
+            <param name="_boundsCheck">boolean to indicated if do bounds check</param>
+            <param name="_perimeterCheck">if uses a extra perimeter is equal check</param>
+            <param name="_keepRotation">keep local rotation the same</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.MakePlanarNormalWithFindingsSimilar(UnityEngine.GameObject[],System.Double,System.Double,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,UnityEngine.GameObject)">
+            <summary>
+            finds the connection between objects and puts them in the right orientation using a mesh area filter
+            </summary>
+            <param name="_ngo">list game objects</param>
+            <param name="_deviation">deviation of the planar normal</param>
+            <param name="_maxSizeDifference">size for bounds check</param>
+            <param name="_meshAreaDeviation">planer mesh area being unique deviation</param>
+            <param name="_rotationCheck">does complete rotation check</param>
+            <param name="_boundsCheck">boolean to indicated if do bounds check</param>
+            <param name="_perimeterCheck">if uses a extra perimeter is equal check</param>
+            <param name="_keepRotation">keep local rotation the same</param>
+            <param name="_similarParent">similar parent of game objects want to check for the find similar</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.getPlanes(UnityEngine.GameObject[],System.Double,System.Action{UnityEngine.MeshFilter},System.Collections.Generic.Dictionary{System.Int32,UnityEngine.Transform}@)">
+            <summary>
+            gets the planes data from game objects and their children
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_meshAreaDeviation">planer mesh area being unique deviation</param>
+            <param name="_act">additional processing if necessary</param>
+            <param name="_listOfTransforms">transform data</param>
+            <returns>planes data</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.getNormalSurfacesOfMesh(UnityEngine.MeshFilter,System.Double,System.Double)">
+            <summary>
+            finds the normal surfaces
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_deviation">planer mesh area being unique deviation</param>
+            <param name="_angleDifference">maximum angle difference allowed within normal planes</param>
+            <returns>dictionary normal surface on surface if cancelled returns null</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkIfNormalPlanesAreTheSame(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{u040.prespective.math.doubles.DVector3,System.Collections.Generic.List{System.Int32}}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Int32,System.Double)">
+            <summary>
+            this determines the normal planes surfaces and checks if they are unique with in a deviation
+            </summary>
+            <param name="_normalPlanes">list of normal surfaces</param>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <param name="_instanceID">instance id of game object</param>
+            <param name="_deviation">planer mesh area being unique deviation</param>
+            <returns>normal surfaces if cancelled returns null</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkDoubles(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Int32,System.Int32}},System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}},System.Collections.Generic.List{System.Double},System.Collections.Generic.Dictionary{System.Int32,UnityEngine.Transform})">
+            <summary>
+            checks which list the double present values should be in
+            </summary>
+            <param name="_doubleCheck">list of objects that are double present</param>
+            <param name="_similarObjects">list of objects found to be similar by mesh area</param>
+            <param name="_similarMeshArea">list of mesh areas used in filter</param>
+            <param name="_listOfTransforms">list of transforms</param>
+            <returns>similar objects corrected for doubles</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findConnectedPlanesWithSimilar(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Double,u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData}},System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}},System.Double,System.Boolean)">
+            <summary>
+            finds the triangle planes that are connected with similar filter first
+            </summary>
+            <param name="_listOfPlanes">all the triangle planes</param>
+            <param name="_similarObjects">list of objects found to be similar by mesh filter</param>
+            <param name="_deviation">deviation of normal surface</param>
+            <param name="_perimeterCheck">if uses a extra perimeter is equal check</param>
+            <returns>connected planes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.getIndexOfPlaneConnectedToInstanceId(System.Int32,System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Double,u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData}},System.Int32)">
+            <summary>
+            gets the index of the plane connected to instance id
+            </summary>
+            <param name="_id">instance id</param>
+            <param name="_listOfPlanes">planes</param>
+            <param name="_amountPlanes">amount of planes</param>
+            <returns>index of connected plane</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findConnectedPlanes(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Double,u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData}},System.Double,System.Boolean)">
+            <summary>
+            finds the triangle planes that are connected
+            </summary>
+            <param name="_listOfPlanes">all the triangle planes</param>
+            <param name="_deviation">deviation of normal surface</param>
+            <param name="_perimeterCheck">if uses a extra perimeter is equal check</param>
+            <returns>connected planes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.createThePLanarFeaturePrefabs(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Double,u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData}},System.Collections.Generic.List{System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Int32,System.Double}}},System.Collections.Generic.Dictionary{System.Int32,UnityEngine.Transform},System.Double,System.Single,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            rotates the function to right angle using normal matching
+            </summary>
+            <param name="_listOfPlanes">list of all the planes</param>
+            <param name="_connectedObjects">list of connected planes</param>
+            <param name="_listOfTransforms">list off all the game objects</param>
+            <param name="_deviation">deviation</param>
+            <param name="_maxSizeDifference">size for bounds check</param>
+            <param name="_rotationCheck">boolean rotation check</param>
+            <param name="_boundsCheck">boolean bounds check</param>
+            <param name="_keepRotation">keep local rotation the same</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.setTransformsRotation(System.Collections.Generic.Dictionary{System.Int32,UnityEngine.Transform})">
+            <summary>
+            sets the tree of the mesh filters on local rotation zero without changing global rotation of children
+            </summary>
+            <param name="_listOfTransforms">list of transforms affected by planer feature</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.applyPrefabRotation(UnityEngine.Transform,UnityEngine.Transform,u040.prespective.math.doubles.DQuaternion,u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            applies the correct rotation to prefab based on the look-at quaternion
+            </summary>
+            <param name="_original">original game object</param>
+            <param name="_prefab">prefab</param>
+            <param name="_originalLookAt">look at rotation original</param>
+            <param name="_prefaLookAt">look at rotation prefab</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findUp(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3},UnityEngine.Transform,System.Double,System.Boolean@)">
+            <summary>
+            finds the forward
+            </summary>
+            <param name="_vert">outer vertices of normal surface</param>
+            <param name="_t">transform</param>
+            <param name="_deviation">deviation</param>
+            <param name="_unique">is unique</param>
+            <returns>up in global space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findCompareDistance(System.Double[],System.Collections.Generic.List{u040.prespective.math.doubles.DVector3},System.Double)">
+            <summary>
+            processed the distances
+            </summary>
+            <param name="_distance">list of distances</param>
+            <param name="vert">vertices</param>
+            <param name="_deviation">deviation</param>
+            <returns>processed distances</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findUniquePoint(System.Collections.Generic.Dictionary{System.Double,u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.FowardData},System.Boolean@)">
+            <summary>
+            finds the longest unique distance
+            </summary>
+            <param name="_forwardDict">dictionary of processed forwards</param>
+            <param name="_unique">is unique</param>
+            <returns>longest distance unique vertex point</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkNormalFlipping(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},UnityEngine.GameObject,UnityEngine.Quaternion,System.Single)">
+            <summary>
+            checks if the normal was flipped in the wrong direction and the reverse it
+            </summary>
+            <param name="_checkVert">global space verts of prefab at (0,0,0)</param>
+            <param name="_compareGO">game object of what becomes prefab</param>
+            <param name="_orginalRot">rotation correction by normals</param>
+            <param name="_length">amount of angles checked between 0 and 360</param>
+            <returns>the corrected inverse local rotation</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.getTotalVerticeDifference(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3})">
+            <summary>
+            gets the total minimum distance between verts
+            </summary>
+            <param name="_checkVert">global space verts of prefab at (0,0,0)</param>
+            <param name="_compareVert">global space verts of game object at (0,0,0)</param>
+            <returns>total distance</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.mininiumDistanceBetweenVertices(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},u040.prespective.math.doubles.DVector3)">
+            <summary>
+            finds minimum distance of 1 vert
+            </summary>
+            <param name="_checkVert">global space verts of prefab at (0,0,0)</param>
+            <param name="_vert">one vert of game object</param>
+            <returns>minimum distance of 1 vert</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkUniqueWithinDeviation``1(System.Double,System.Collections.Generic.Dictionary{System.Double,``0}@,System.Double)">
+            <summary>
+            checks if float is within deviation
+            </summary>
+            <param name="_compare">compare value</param>
+            <param name="_dict">dictionary of values to check against</param>
+            <param name="_deviation">deviation</param>
+            <returns>check</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.findHighestUnique``1(System.Collections.Generic.Dictionary{System.Double,``0},System.Boolean@)">
+            <summary>
+            finds highest value of the keys of dictionary
+            </summary>
+            <typeparam name="T">class inherited of BaseUniqueData</typeparam>
+            <param name="_dict">dictionary</param>
+            <param name="_unique">is unique</param>
+            <returns>highest unique key</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkSymmetry(UnityEngine.GameObject,UnityEngine.GameObject)">
+            <summary>
+            which direction it was mirrored because of symmetry
+            </summary>
+            <param name="_orginal">original game object</param>
+            <param name="_prefab">prefab</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.checkBoundsWithRotation(UnityEngine.GameObject,UnityEngine.GameObject,System.Int32,System.Int32,System.Single,System.Single)">
+            <summary>
+            uses bounds to determine when prefab and original are in the same orientation
+            </summary>
+            <param name="_orginal">original go</param>
+            <param name="_prefab">prefab go</param>
+            <param name="_objectNumber">for progress bar</param>
+            <param name="_objectTotal">for progress bar</param>
+            <param name="_maxSizeDifference">minimum size when to stop measurement</param>
+            <param name="_amountOfAngles">amount of angles</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.determineSize(UnityEngine.GameObject,UnityEngine.Vector3[])">
+            <summary>
+            calculates the bound size in global space
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_vert">vertices</param>
+            <returns>size of bounds</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.determineSize(UnityEngine.Matrix4x4,UnityEngine.Vector3[])">
+            <summary>
+            calculates the bound size in global space using world matrix
+            </summary>
+            <param name="_worldMatrix">the transformation matrix from local to world space</param>
+            <param name="_vert">vertices</param>
+            <returns>size of bounds</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.rotationVerticeCheck(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},UnityEngine.GameObject,System.Int32,System.Int32,System.Boolean,System.Single)">
+            <summary>
+            finds and returns the angle on which the game object and vertices are closed together
+            </summary>
+            <param name="_worldVert">vertices to compare to</param>
+            <param name="_compareGO">game object to compare</param>
+            <param name="_objectNumber">for progress bar</param>
+            <param name="_objectTotal">for progress bar</param>
+            <param name="_global">using global rotation or local rotation</param>
+            <param name="_amountOfAngles">amount of angles</param>
+            <returns>optimal rotation</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.FowardData">
+            <summary>
+            data needed for finding unique forward
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.FowardData.Vertex">
+            <summary>
+            vertex
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData">
+            <summary>
+            data of the normal surfaces
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.Area">
+            <summary>
+            area
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.Perimeter">
+            <summary>
+            perimeter
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.InstanceId">
+            <summary>
+            instance id
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.NormalWorldSpace">
+            <summary>
+            normal in world space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.TriIndeces">
+            <summary>
+            triangle indices
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.OuterVertices">
+            <summary>
+            outer vertices
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.NormalPlanerData.OuterEdges">
+            <summary>
+            outer edges
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.BaseUniqueData">
+            <summary>
+            data needed for finding unique
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.meshtopology.meshreplace.MeshReplacer.BaseUniqueData.RepeatNumber">
+            <summary>
+            repeat number
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.convexmeshhulling.vhacd.ConvexGeneratorVHACD">
+            <summary>
+            Creates multiple convex colliders around a mesh (uses a C++ dll that should be present in folder below asset folder)
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.meshtopology.convexmeshhulling.vhacd.ConvexGeneratorVHACD.Generate(UnityEngine.GameObject[],System.Boolean,u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters)">
+            <summary>
+            Generates a convex mesh for the game objects
+            </summary>
+            <param name="ngo"></param>
+            <param name="dofilter"></param>
+            <param name="_params">configuration of the VHACD request.</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh">
+            <summary>
+            @CLASS : PlanerFeatureRecreateMesh
+            
+            @ABOUT : Makes a planer feature of a mesh and makes that as a new mesh
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 0.10 - Implemented planer feature with of mesh recreates that mesh of planer feature makes a projection on the feature and implements that as its texture(19-10-2018)
+            @VERSION : 0.20 - Remade it with splines instead of bezier curves(18-01-2019)
+            @VERSION : 0.21 - added cancel system(01-02-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.start(UnityEngine.GameObject[],u040.prespective.core.spline.ADSpline,System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Single,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.getNormalSurfacesOfMesh(UnityEngine.MeshFilter,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.processPlanerSurfaces(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{u040.prespective.math.doubles.DVector3,System.Collections.Generic.List{System.Int32}}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.recreateOuterEgdes(System.Collections.Generic.List{System.Collections.Generic.List{u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.NormalPlanerData}},System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.findNormalPlane(System.Collections.Generic.List{UnityEngine.Transform},System.Collections.Generic.List{System.Collections.Generic.List{u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.NormalPlanerData}},u040.prespective.core.spline.ADSpline,System.Int32,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.makePlanerGO(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Int32,System.Int32}},System.Collections.Generic.List{System.Collections.Generic.List{u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.NormalPlanerData}},System.Collections.Generic.List{UnityEngine.Transform},System.Int32,System.Single,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.orderOuterVetices(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3[]})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.findOutLiners(UnityEngine.Transform,System.Collections.Generic.List{UnityEngine.Vector3})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.makeMeshProjection(UnityEngine.Transform,u040.prespective.core.spline.ADSpline,u040.prespective.core.spline.ADSpline,UnityEngine.Vector3,System.Single,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.meshtopology.planarrecreatemesh.PlanarFeatureRecreateMesh.createUVCoord(UnityEngine.Transform,System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3[],System.Int32)" -->
+        <member name="T:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE">
+            <summary>
+            Inspector convex polyhedron generator
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE.scalingToolUpdate(u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.ScalingToolType)">
+            <summary>
+            update scaling tool value effect on inspector visible fields
+            </summary>
+            <param name="_newValue">new scaling tool value</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE.createPoints">
+            <summary>
+            creates points field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE.displayVector3List(System.Collections.Generic.List{UnityEngine.Vector3})">
+            <summary>
+            makes visual element of list of vector3's
+            </summary>
+            <param name="_list">list of vector3's</param>
+            <returns>visual element</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE.setGeneratedButtons">
+            <summary>
+            sets generated buttons visible if necessary
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexpolyhedron.ConvexPolyhedronGeneratorEditorUIE.showCapHandles">
+            <summary>
+            Shows a transformation handle on the Cap and bottom of the hull
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE">
+            <summary>
+            Inspector of conus collider generator
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE.createContainers">
+            <summary>
+            controls which containers to fill
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE.createPoints">
+            <summary>
+            creates points field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE.createCircles">
+            <summary>
+            creates circle field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE.scalingToolUpdate(u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ScalingToolType)">
+            <summary>
+            update scaling tool value effect on inspector visible fields
+            </summary>
+            <param name="_newValue">new scaling tool value</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.inspectorwindow.parametricshapegeneration.convexconus.ConusColliderGeneratorEditorUIE.getTransformCompensatedHandleScale(UnityEngine.Transform,UnityEngine.Vector3)">
+            <summary>
+            Get the desired handle scale used for displaying stuff in the scene taking both location and scale of the transform into account
+            </summary>
+            <param name="_target"></param>
+            <param name="_targetLocalFocus"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshtopology.convexmeshhulling.vhacd.OrganicColliderWindowUIE">
+            <summary>
+            UIE window of VHACD generator
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshtopology.convexmeshhulling.vhacd.OrganicColliderWindowUIE.ConvexDecompositionMode">
+            <summary>
+            convex decomposition mode
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE">
+            <summary>
+            GameObjectQuery Window used to define query filters
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.gameObjectQuery">
+            <summary>
+            GameObjectQuery
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.selectedComponentsToFilterWith">
+            <summary>
+            Components to filter with
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.initializationMessage">
+            <summary>
+            Status label
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.initializedObjectField">
+            <summary>
+            Initialized gameobject object field
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.initializeAllButton">
+            <summary>
+            Initialize all button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.selectMatchingButton">
+            <summary>
+            Select matching button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.undoButton">
+            <summary>
+            Undo button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.redoButton">
+            <summary>
+            Redo button
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.referenceObjectContainer">
+            <summary>
+            All selected reference objects used for matching
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.componentListContainer">
+            <summary>
+            Contains all components on reference object(s)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.selectionHistory">
+            <summary>
+            Query results selection history
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.selectionIndex">
+            <summary>
+            Index of what history step the system is at
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.visualTreeFile">
+            <summary>
+            Window layout (uxml-file)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.executeOnEnable">
+            <summary>
+            Window Style (uss-file)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.initialize">
+            <summary>
+            Initialize all UI elements
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.OpenWindow">
+            <summary>
+            Opens window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.setSelection(UnityEngine.GameObject[])">
+            <summary>
+            Changes the current selection
+            </summary>
+            <param name="_selection">GameObjects to set as selection</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.initializeSelectionChangedCallback">
+            <summary>
+            Initialize select gameobject callback
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.findComponentsOnReferenceObjects(UnityEngine.GameObject[])">
+            <summary>
+            Find all components (scripts) on reference GameObject
+            </summary>
+            <param name="_referenceObject">Reference GameObjects</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.disableTogglesIfNoMeshFilter(UnityEngine.GameObject)">
+            <summary>
+            Deactivate filter toggles if no MeshFilter on reference object(s)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.enableSelectMatchingButton">
+            <summary>
+            Activate SelectButton
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.defineMatchingFilters">
+            <summary>
+            Define MeshQuery filtering depending on toggles (triggered when SelectMatching button is pushed). Creates a new history step when completed.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.componentListTostringList(System.Collections.Generic.List{UnityEngine.Component})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.componentTypes(UnityEngine.Component[])" -->
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.componentsPresentOnAllObjects(UnityEngine.GameObject[])">
+            <summary>
+            Return Component[] of Components present on all GameObjects in _gameObjects
+            </summary>
+            <param name="_gameObjects">GameObject[]</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.gameobjectquery.GameObjectQueryWindowEditorUIE.removeDupes(UnityEngine.Component[])">
+            <summary>
+            Return copy of _input without duplicate types
+            </summary>
+            <param name="_input">Input of Component[]</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshtopology.trianglecounter.TriangleCounterWindowUIE">
+            <summary>
+            TriangleCounter Window used to display the TriangleCount and VertexCount
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.trianglecounter.TriangleCounterWindowUIE.OpenWindow">
+            <summary>
+            Define Window and size
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.trianglecounter.TriangleCounterWindowUIE.getTriangleCount">
+            <summary>
+            Calculate triangle and vertex count
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.scaling.MeshRescalerWindowUIE.OpenWindow">
+            <summary>
+            opens the window created here
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.scaling.MeshRescalerWindowUIE.setDisplayPositionScalingContainer(System.Boolean)">
+            <summary>
+            Set the visibility of the position scaling container based on if position is scaled
+            </summary>
+            <param name="_positionIscaled">if position is scaled</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.scaling.MeshRescalerWindowUIE.setTransformCentreFieldWithSelection">
+            <summary>
+            Sets transform centre field as first value of current selection
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshtopology.findbiggestmeshes.FindBiggestMeshWindow.makeDataStructure">
+            <summary>
+            makes data structure of found results
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshquery.SelectGeometry">
+            <summary>
+            @CLASS : SelectGeometry
+            
+            @ABOUT : Findsa all the game objects of a specific component under a parent
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented beta(11-06-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.editorui.window.meshquery.SelectGeometry.findGeometriesUnderParent``1(UnityEngine.GameObject)" -->
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshquery.SetPivotCenterWithGivenRotation">
+            <summary>
+            @CLASS : SetPivotCenterWithGivenRotation
+            
+            @ABOUT : Sets the pivots of all the game objects to certain rotation and puts the position in the center mesh if possible else in center scene
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented beta (should still look at not moving the meshes that have already been moved)(27-03-2019)
+            @VERSION : 1.10 - Added posibility to indicated if want to set rotation, set position and if should be set to centre of the mesh(07-06-2019)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs">
+            <summary>
+            @CLASS : MergingPrefabs
+            
+            @ABOUT : Merges a selected number of prefabs into 1 merged prefab building from a head prefab
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 0.10 - Implemented merging the prefabs using global and local space to merge the meshes and the ability the replace all the head prefabs with merged mesh(09-07-2018)
+            @VERSION : 0.20 - Implemented replacing new prefabs with merged prefabs if they are the same(18-07-2018)
+            @VERSION : 0.30 - Implemented update new prefabs with merged prefabs if they are the same and share same location(18-07-2018)
+            @VERSION : 0.40 - Implemented replacing selected objects that are not prefabs with merged prefab(25-07-2018)
+            @VERSION : 0.50 - Fixed lighting problem with recalculated normals(31-08-2018)
+            @VERSION : 0.60 - Implemented nested prefab merge(17-12-2018)
+            @VERSION : 0.61 - Implemented deviation input(19-12-2018)
+            @VERSION : 0.65 - Major refactoring update and find merged prefab not checked(16-01-2019)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.MergePrefabs(UnityEngine.GameObject,UnityEngine.GameObject[],System.Boolean,System.Single)">
+            <summary>
+            creates a merged prefab
+            </summary>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="_ngo">other prefabs</param>
+            <param name="_replaceAllHeads">if all the head objects should be replaced with merge</param>
+            <param name="_deviation">deviation in finding same prefab combinations</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.replaceWithMergedPrefab(UnityEngine.GameObject[],System.Collections.Generic.List{System.Single},UnityEngine.GameObject,System.Single,u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData,System.Boolean,System.Boolean)">
+            <summary>
+            replaces the rest of the prefabs with the merged prefab
+            </summary>
+            <param name="_ngo">other prefabs</param>
+            <param name="_listOfDistances">list of distances between game objects</param>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="_deviation">deviation in finding same prefab combinations</param>
+            <param name="_md">merge data</param>
+            <param name="_replaceHead">if head should also be replaced (needed if replace with already existing merged prefab)</param>
+            <param name="_findOnlyHead">find only head prefabs</param>
+            <returns>merged data</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.createMergedPrefab(UnityEngine.GameObject[],UnityEngine.GameObject,System.Boolean,System.Collections.Generic.List{System.Single}@)">
+            <summary>
+            creates the merged prefab
+            </summary>
+            <param name="_ngo">other prefabs</param>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="_replaceAllHeads">if all the head objects should be replaced with merge</param>
+            <param name="_listOfDistances">list of distances between game objects</param>
+            <returns>merge data</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.findSimilarPrefabCombinationWithSameDistance(UnityEngine.GameObject[],System.Collections.Generic.List{System.Single},UnityEngine.GameObject,System.Boolean,System.Single)">
+            <summary>
+            finds the other prefabs that needs to be changed into the new prefab
+            </summary>
+            <param name="_ngo">other prefabs</param>
+            <param name="_listOfDistances">list of distances between game objects</param>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="replacehaed">if head should also be replaced (needed if replace with already existing merged prefab)</param>
+            <param name="_deviation">deviation in finding same prefab combinations</param>
+            <returns>list of other prefabs that need to be changed</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.findPrefabCombinations(System.Collections.Generic.List{UnityEngine.GameObject},System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{UnityEngine.GameObject}},System.Collections.Generic.List{System.Single},System.Single)">
+            <summary>
+            finds the prefab combinations that are the same as original combination
+            </summary>
+            <param name="_listOfInitialGO">list of prefabs that are the same as the main prefab</param>
+            <param name="_listOfCheckGO">list of prefabs that are connected to the rest of the prefab combination</param>
+            <param name="_listOfDistances">list of distances between game objects</param>
+            <param name="_deviation">deviation in finding same prefab combinations</param>
+            <returns>prefabs combinations</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.getAllHeadPrefabs(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            finds the other prefabs that are the same as the head prefab
+            </summary>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="replacehaed">if head should also be replaced (needed if replace with already existing merged prefab)</param>
+            <returns>list of other prefabs that need to be changed</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.axisFlipping(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            checks if the merged prefab needs to be flipped by check if all the bound centres are inside the merged prefab
+            </summary>
+            <param name="_prefab">merged prefab</param>
+            <param name="_listGO">list of original game objects without the head game object</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.createORAddDataInXML(u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData)">
+            <summary>
+            creates or adds to a file the data in a XML format
+            </summary>
+            <param name="_md">merge data</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.updateDataInXML(System.Collections.Generic.List{u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData})">
+            <summary>
+            replaces the data on a file with new data
+            </summary>
+            <param name="_listOfData">list of merge data</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.findMergedPrefabsFromXML">
+            <summary>
+            finds the previously made merged prefabs data
+            </summary>
+            <returns>list of merged prefabs data</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.CreatesNewProcessMergedPrefabs(UnityEngine.GameObject[],System.Single)">
+            <summary>
+            looks if the given prefabs are part of an already existing merged prefab
+            </summary>
+            <param name="_ngo">prefabs to check if part of already existing merged prefab</param>
+            <param name="_deviation">deviation</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.findHeadPrefabConnection(UnityEngine.GameObject[],System.Collections.Generic.List{u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData},System.Single)">
+            <summary>
+            look if one of the given prefab combinations is the same as a merged prefab
+            </summary>
+            <param name="_ngo">prefabs to check if merged before</param>
+            <param name="_listOfData">list of merges data</param>
+            <param name="_deviation">deviation</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.UpdatesNewProcessMergedPrefabs(UnityEngine.GameObject[],System.Single,System.Single)">
+            <summary>
+            looks if the given prefabs are the same as previously created merged prefabs and puts them then back
+            </summary>
+            <param name="_ngo">prefabs to check</param>
+            <param name="_deviation">deviation</param>
+            <param name="_difference">difference between positions allowed</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergingPrefabs.replaceWithMergedPrefabForUpdate(UnityEngine.GameObject[],System.Collections.Generic.List{System.Single},UnityEngine.GameObject,u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            replaces the rest of the prefabs with the merged prefab
+            </summary>
+            <param name="_ngo">other prefabs</param>
+            <param name="_listOfDistances">list of distances between game objects</param>
+            <param name="_headGO">the head prefab everything is build around</param>
+            <param name="_md">merge data</param>
+            <param name="_difference">maximum position difference</param>
+            <param name="_replaceAllHeads">if all the head objects should be replaced with merge</param>
+            <param name="replacehaed">if head should also be replaced (needed if replace with already existing merged prefab)</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData">
+            <summary>
+            this struct has all the information about the merged mesh
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData.FillDataLists(System.String,System.Single,System.Double)">
+            <summary>
+            the lists should be the same length is it is preferred that they are filled at the same time
+            </summary>
+            <param name="_name">prefab name</param>
+            <param name="_distance">distance between prefab and head prefab</param>
+            <param name="_meshArea">mesh area prefab</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.meshquery.MergeData.FillReplaceLocationsDataLists(UnityEngine.Vector3,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            the lists should be the same length is it is preferred that they are filled at the same time
+            </summary>
+            <param name="_pos">position</param>
+            <param name="_name">merge name</param>
+            <param name="_scriptData">variables needed to be added to script</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.meshquery.PutMeshBit">
+            <summary>
+            @CLASS : PutMeshBit
+            
+            @ABOUT : Changes the meshes index format
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented putting the index format of selected and all gameobjects on given format (18/07/2018)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.editor.editorui.window.meshquery.PutMeshBit.changeBitOFMesh(UnityEngine.Rendering.IndexFormat,UnityEngine.GameObject[])" -->
+        <member name="T:u040.prespective.prescissor.editor.editorui.window.ShapeGenerationWindow.Shapes">
+            <summary>
+            shapes generated
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.editor.editorui.window.ShapeGenerationWindow.setVisibilties">
+            <summary>
+            sets field visible depending on type
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.voxelboxhulling.editor.VoxelBoxGeneratorWindowUIE">
+            <summary>
+            UIE Window for Voxel Box Generator
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexellipse.editor.ConvexEllipseColliderGeneratorEditorUIE">
+            <summary>
+            Ellipse generator editor
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexellipse.editor.ConvexEllipseColliderGeneratorEditorUIE.setPartialFields(System.Boolean)">
+            <summary>
+            partial fields visibility
+            </summary>
+            <param name="_partial">if partial used</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexellipse.editor.ConvexEllipseColliderGeneratorEditorUIE.percentageCheck(System.Double)">
+            <summary>
+            checks if percentage correctly input
+            </summary>
+            <param name="_percentage">percentage</param>
+            <returns>corrected percentage</returns>
+        </member>
+    </members>
+</doc>

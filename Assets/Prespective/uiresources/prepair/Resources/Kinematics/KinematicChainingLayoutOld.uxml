@@ -1,7 +1,7 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
 	<ui:VisualElement class="division margin-bottom-10px">
 		<ui:Label class="bold margin-bottom-5px" text="Kinematic Chaining" />
 		<ui:Button class="content-fit-button margin-bottom-5px" name="add-kinematic-transfer-relation" text="Add Kinematic Transfer Relation" />
 		<ui:VisualElement name="kinematic-relations-container" />
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

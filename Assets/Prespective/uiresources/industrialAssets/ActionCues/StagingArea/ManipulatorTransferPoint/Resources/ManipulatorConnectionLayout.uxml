@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout name="connection-foldout" text="Connection">
+    <ui:VisualElement class="row margin-bottom-10px">
+        <ui:VisualElement name="module-container">
+            <ui:Label name="module-label" text="Module:"/>
+            <ue:ObjectField name="module-field" label=""/>
+        </ui:VisualElement>
+        <ui:VisualElement name="manipulator-container">
+            <ui:Label name="manipulator-label" text="Manipulator:"/>
+            <ue:ObjectField name="manipulator-field" label=""/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Foldout name="distance-foldout custom-exposure-foldout" text="Distance to other Transfer Interfaces">
+        <ui:VisualElement class="row margin-bottom-10px">
+            <ui:Label name="empty-label" text=""/>
+            <ui:Label name="direct-label" text="Direct"/>
+            <ui:Label name="routed-label" text="Routed"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="distance-record-container"/>
+    </ui:Foldout>
+  </ui:Foldout>
+</ui:UXML>

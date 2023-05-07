@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="row" name="body-row">
+    <ue:ObjectField style="width: 54%" name="object" />
+    <ue:IntegerField style="width: 20%" name="amount-iterations"/>
+    <ue:IntegerField class="no-box" style="width: 10%" name="index"/>
+    <ui:Button style="width: 5%" name="append-button" text="+" tooltip="Append body"/>
+    <ui:Button style="width: 5%" name="remove-button" text="x" tooltip="Remove body"/>
+  </ui:VisualElement>
+</ui:UXML>

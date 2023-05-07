@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+
+    <ue:EnumField name="assignment-owner-dropdown" label="Module To Use" class="custom-exposure" />
+
+    <ui:VisualElement name="assignment-option-container" />
+    <ui:VisualElement name="on-assignment-success-container"/>
+    <ui:VisualElement name="on-assignment-failure-container"/>
+</ui:UXML>

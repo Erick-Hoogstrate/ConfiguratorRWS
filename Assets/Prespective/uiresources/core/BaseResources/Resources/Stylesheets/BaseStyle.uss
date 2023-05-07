@@ -1,23 +1,32 @@
+/* -- Unity Style Sheet Fixes + Improvements -- */
+
 Button {
 	margin-left: 0;
 	margin-right: 0;
 }
 
+Foldout .unity-foldout__toggle {
+	margin-left: 0px;
+}
+
+.unity-foldout__toggle .unity-toggle__checkmark {
+	margin-top: 3px;
+}
+
 .unity-base-field {
 	height: 19px;
+	margin-bottom: 1px;
 }
 
 Toolbar .unity-base-field {
 	height: auto;
 }
 
-.unity-toggle__checkmark {
-	margin-top: 3px;
+.unity-toggle__label {
+	top: 2px;
 }
 
-.unity-toggle__label {
-	top: 3px;
-}
+/* ---- Prespective Reusable Style Classes ---- */
 
 .content-fit-button {
 	align-self: flex-start;
@@ -33,13 +42,13 @@ Toolbar .unity-base-field {
 	-unity-font-style: bold;
 }
 
+.font-italic {
+	-unity-font-style: italic;
+}
+
 .margin-vertical-10px {
 	margin-top: 10px;
 	margin-bottom: 10px;
-}
-
-.padding-left-10px {
-	padding-left: 10px;
 }
 
 .margin-vertical-5px {
@@ -55,6 +64,10 @@ Toolbar .unity-base-field {
 	margin-bottom: 5px;
 }
 
+.indented-field-10px > .unity-base-field__label {
+	padding-left: 10px;
+}
+
 .display-none {
 	display: none;
 }
@@ -68,24 +81,17 @@ Toolbar .unity-base-field {
 }
 
 .division {
-	padding: 5px 5px 5px 3px;
+	padding: 5px 5px 5px 5px;
 }
 
-Foldout.foldout-division > .unity-foldout__toggle Label {
+.foldout-division > .unity-foldout__toggle Label {
 	-unity-font-style: bold;
 }
 
-Foldout.foldout-division > .unity-foldout__content {
-	margin-top: 5px;
-}
-
-.unity-foldout--depth-1 > Toggle {
-	margin-left: 0px;
-}
-
-.unity-foldout__content {
-	margin-left: 0px;
+.foldout-division > .unity-foldout__content {
 	padding: 0px 5px 5px 5px;
+	margin-top: 5px;
+	margin-left: 0px;
 }
 
 .warning-icon {
@@ -97,75 +103,6 @@ Foldout.foldout-division > .unity-foldout__content {
 	border-width: 0px;
 }
 
-.prespective-inspector {
-	padding-top: 5px;
-	margin-left: -15px;
-	padding-left: 15px;
-}
-
-InspectorElement Label {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	min-width: 0;
-}
-
-InspectorElement Foldout .unity-foldout__toggle {
-	margin-left: 0px;
-}
-
-InspectorElement .unity-base-field__label {
-	width: 40%;
-}
-
-InspectorElement .division Foldout .unity-base-field__label, InspectorElement .foldout-division Foldout .unity-base-field__label {
-	margin-right: -9px;
-}
-
-InspectorElement .division Foldout .unity-foldout__content {
-	padding-right: 0px;
-}
-
-InspectorElement Foldout.foldout-division > .unity-foldout__content {
-	margin-top: 5px;
-}
-
-InspectorElement .division Foldout .unity-foldout__content, InspectorElement .foldout-division Foldout .unity-foldout__content {
-	padding-left: 15px;
-}
-
-InspectorElement .foldout-division Foldout .unity-foldout__content {
-	padding-right: 0px;
-}
-
-.standalone-inspector-label {
-	margin-left: 3px;
-	margin-right: 3px;
-	margin-bottom: 3px;
-	margin-top: 3px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.utilities-theme {
-	border-left-width: 3px;
-	border-left-color: rgb(103, 103, 103);
-}
-
-.standard-components-theme {
-	border-left-width: 3px;
-	border-left-color: rgb(36, 175, 78);
-}
-
-.mechanics-theme {
-	border-left-width: 3px;
-	border-left-color: rgb(72, 144, 191);
-}
-
-.logic-theme {
-	border-left-width: 3px;
-	border-left-color: rgb(189, 76, 0);
-}
-
 .error #unity-text-input {
 	border-color: rgb(170, 10, 1)
 }
@@ -175,17 +112,40 @@ InspectorElement .foldout-division Foldout .unity-foldout__content {
 	padding: 2px;	
 	border-width: 1px;
 	border-color: rgba(0,0,0,0.2);
-	background-color: rgba(255,255,255,0.3);
+	background-color: rgba(0,0,0,0.12);
 }
 
 .foldout-colorfield {
 	width: 40px;
 }
 
-.font-italic {
-	-unity-font-style: italic;
-}
-
 .title {
 	font-size: 18px;
+}
+
+/* ---- Prespective Visual Themes ---- */
+
+.utility-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(103, 103, 103);
+}
+
+.standardcomponents-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(36, 175, 78);
+}
+
+.mechanics-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(70, 132, 193);
+}
+
+.logic-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(189, 76, 0);
+}
+
+.des-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(241, 191, 15);
 }

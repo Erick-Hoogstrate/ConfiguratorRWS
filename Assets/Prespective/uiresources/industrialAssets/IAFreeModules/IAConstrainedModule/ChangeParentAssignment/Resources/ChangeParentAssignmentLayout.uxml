@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="transfer-pattern-popupfield-container"/>
+    <ui:TextField label="Required manipulator" name="required-manipulator" class="custom-exposure"/>
+
+    <ui:Foldout name="manipulator-transfer-point-selection-settings" text="Manipulator Transfer Point Selection Settings" class="custom-exposure-foldout"/>
+    
+    <ui:Foldout name="exposed-macro-variable-foldout" text="Exposed Macro Variables" class="custom-exposure-foldout"/>
+    
+    <ui:VisualElement name="assignment-instructor-container"/>
+</ui:UXML>

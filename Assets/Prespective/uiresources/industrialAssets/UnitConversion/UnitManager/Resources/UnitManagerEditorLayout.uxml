@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division">
+    <ui:Label class="bold margin-bottom-10px" text="Unit Settings" />
+    <ue:EnumField name="unit-of-length" label="Unit of Length" />
+    <ue:EnumField name="angular-unit" label="Angular Unit" />
+    <ue:IntegerField name="number-of-decimals" label="Number of Decimals" />
+  </ui:VisualElement>
+</ui:UXML>

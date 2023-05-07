@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement name="manipulator-orientation-container" />
+  <ui:VisualElement name="manipulator-states-container" />
+  
+  <ui:VisualElement class="division">
+    <ui:Label class="bold margin-bottom-10px" text="State Diagram" />
+    <ui:Button name="open-diagram-window" class="content-fit-button" text="Open Diagram Window" />
+  </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ue:DoubleField name="width" label="Conveyer Width"/>
+  <ue:DoubleField name="height" label="Conveyer Height"/>
+  <ue:DoubleField name="radius" label="Conveyer Radius"/>
+  <ue:DoubleField name="angle" label="Conveyer Angle"/>
+  <ue:IntegerField name="amount-of-segments" label="Amount of Segments"/>
+  <ue:ObjectField name="wheel-joint" label="(Motor) Wheel Joint"/>
+  <ue:EnumField name="direction" label="Movement Direction"/>
+</ui:UXML>

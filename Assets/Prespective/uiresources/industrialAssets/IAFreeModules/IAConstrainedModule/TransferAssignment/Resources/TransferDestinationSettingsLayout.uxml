@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="main-foldout">
+        <ui:VisualElement name="destination-container"/>
+        <ui:VisualElement name="on-arrival-assignment-container"/>
+        <ui:VisualElement class="disabled" name="when-fail-assignment-selector"/>
+        <ui:VisualElement class="disabled" name="when-fail-assignment-container"/>
+        <ui:VisualElement name="base-container"/>
+    </ui:Foldout>
+</ui:UXML>

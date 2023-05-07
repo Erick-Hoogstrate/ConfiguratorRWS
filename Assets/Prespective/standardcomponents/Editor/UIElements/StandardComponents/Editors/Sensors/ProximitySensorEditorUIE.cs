@@ -1,59 +1,70 @@
 using System.Collections.Generic;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     [CustomEditor(typeof(ProximitySensor))]
     public class ProximitySensorEditorUIE : StandardComponentEditorUIE<ProximitySensor>
     {
-        #region << Live Data Fields >>
-        TextField state;
-        TextField outputSignal;
-        Label detectedObjectsLabel;
-        Label noObjectsDetected;
-        VisualElement detectedObjectsContainer;
-        SerializedProperty detectedObjectsListProperty;
-        #endregion
-        #region << Property Fields>>
-        Toggle generateRigidBodies;
-        IMGUIContainer warningContainer;
-        PropertyField onSignalHigh;
-        PropertyField onSignalLow;
-        ObjectField addTrigger;
-        Label noTriggersAssigned;
-        VisualElement triggersContainer;
-        #endregion
-        #region << Control Panel Properties >>
-        TextField stateControlPanel;
-        TextField outputSignalControlPanel;
-        #endregion
-        string detectedObjectsText = "Detected Objects";
-        List<Collider> detectedObjectsList;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField state;
+        private TextField outputSignal;
+        private Label detectedObjectsLabel;
+        private Label noObjectsDetected;
+        private VisualElement detectedObjectsContainer;
+        private SerializedProperty detectedObjectsListProperty;
+        
+        //Property Fields
+        private Toggle generateRigidBodiesToggle;
+        private IMGUIContainer warningContainer;
+        private PropertyField onSignalHighField;
+        private PropertyField onSignalLowField;
+        private ObjectField addTriggerField;
+        private Label noTriggersAssignedLabel;
+        private VisualElement triggersContainer;
+        
+        //Control Panel Properties >>
+        private TextField stateControlPanel;
+        private TextField outputSignalControlPanel;
+        
+        private string detectedObjectsText = "Detected Objects";
+        private List<Collider> detectedObjectsList;
 
-        protected override void ExecuteOnEnable()
+        #endregion
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Sensors/ProximitySensorLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "ProximitySensorEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             state.value = component.IsActive ? "Active" : "Inactive";
             state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
             outputSignal.value = component.OutputSignal ? "High" : "Low";
 
             detectedObjectsLabel.text = detectedObjectsText + " (" + detectedObjectsListProperty.arraySize + ")";
-            UpdateDetectedObjectsContainer();
+            updateDetectedObjectsContainer();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
             state = root.Q<TextField>(name: "state");
@@ -70,45 +81,45 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
             detectedObjectsList = new List<Collider>();
             #endregion
             #region << Properties >>
-            generateRigidBodies = root.Q<Toggle>(name: "generate-rigidbodies");
+            generateRigidBodiesToggle = root.Q<Toggle>(name: "generate-rigidbodies");
             warningContainer = root.Q<IMGUIContainer>(name: "warning-container");
-            onSignalHigh = root.Q<PropertyField>(name: "on-signal-high");
-            onSignalHigh.bindingPath = "onSignalHigh";
-            onSignalLow = root.Q<PropertyField>(name: "on-signal-low");
-            onSignalLow.bindingPath = "onSignalLow";
-            addTrigger = root.Q<ObjectField>(name: "add-trigger");
-            noTriggersAssigned = root.Q<Label>(name: "no-triggers-assigned");
+            onSignalHighField = root.Q<PropertyField>(name: "on-signal-high");
+            onSignalLowField = root.Q<PropertyField>(name: "on-signal-low");
+            addTriggerField = root.Q<ObjectField>(name: "add-trigger");
+            noTriggersAssignedLabel = root.Q<Label>(name: "no-triggers-assigned");
             triggersContainer = root.Q<VisualElement>(name: "triggers-container");
 
             warningContainer.onGUIHandler = OnInspectorGUI;
 
             UIUtility.InitializeField
             (
-                generateRigidBodies,
+                generateRigidBodiesToggle,
+                component,
                 () => component.GenerateTriggerRigidbodies,
-                e =>
+                _e =>
                 {
-                    component.GenerateTriggerRigidbodies = e.newValue;
-                    generateRigidBodies.SetValueWithoutNotify(component.GenerateTriggerRigidbodies);
+                    component.GenerateTriggerRigidbodies = _e.newValue;
+                    generateRigidBodiesToggle.SetValueWithoutNotify(component.GenerateTriggerRigidbodies);
                 }
             );
 
             UIUtility.InitializeField
             (
-                addTrigger,
+                addTriggerField,
+                component,
                 () => null,
-                e =>
+                _e =>
                 {
-                    if (addTrigger.value != null)
+                    if (addTriggerField.value != null)
                     {
                         bool createNewFinger;
-                        createNewFinger = component.AddTrigger((Collider)e.newValue);
+                        createNewFinger = component.AddTrigger((Collider)_e.newValue);
                         if (createNewFinger)
                         {
-                            UpdateTriggerDisplay();
-                            AddTriggerSettings((Collider)addTrigger.value);
+                            updateTriggerDisplay();
+                            addTriggerSettings((Collider)addTriggerField.value);
                         }
-                        addTrigger.SetValueWithoutNotify(null);
+                        addTriggerField.SetValueWithoutNotify(null);
                     }
                 },
                 typeof(Collider)
@@ -116,7 +127,7 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
 
             if (component.TriggerList.Count == 0)
             {
-                UIUtility.SetDisplay(noTriggersAssigned, true);
+                UIUtility.SetDisplay(noTriggersAssignedLabel, true);
                 UIUtility.SetDisplay(triggersContainer, false);
             }
             else
@@ -125,36 +136,36 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
 
                 for (int i = 0; i < component.TriggerList.Count; i++)
                 {
-                    AddTriggerSettings(component.TriggerList[i]);
+                    addTriggerSettings(component.TriggerList[i]);
                 }
 
-                UIUtility.SetDisplay(noTriggersAssigned, false);
+                UIUtility.SetDisplay(noTriggersAssignedLabel, false);
                 UIUtility.SetDisplay(triggersContainer, true);
             }
             #endregion
 
-            ToggleProperties(!EditorApplication.isPlaying);
-            EditorApplication.playModeStateChanged += state =>
+            toggleProperties(!EditorApplication.isPlaying);
+            EditorApplication.playModeStateChanged += _state =>
             {
-                ToggleProperties(!(state == PlayModeStateChange.EnteredPlayMode));
+                toggleProperties(!(_state == PlayModeStateChange.EnteredPlayMode));
             };
-            UpdateTriggerDisplay();
+            updateTriggerDisplay();
         }
 
-        private void ToggleProperties(bool _bool) 
+        private void toggleProperties(bool _bool) 
         {
-            generateRigidBodies.SetEnabled(_bool);
-            onSignalHigh.SetEnabled(_bool);
-            onSignalLow.SetEnabled(_bool);
-            addTrigger.SetEnabled(_bool);
+            generateRigidBodiesToggle.SetEnabled(_bool);
+            onSignalHighField.SetEnabled(_bool);
+            onSignalLowField.SetEnabled(_bool);
+            addTriggerField.SetEnabled(_bool);
             triggersContainer.SetEnabled(_bool);
         }
 
         private int previousArraySize = 0;
-        private void UpdateDetectedObjectsContainer()
+        private void updateDetectedObjectsContainer()
         {
             int arraySize = detectedObjectsListProperty.arraySize;
-            if (arraySize != previousArraySize) //Fix me: if in one tick content changed but array size doenst, no refresh.
+            if (arraySize != previousArraySize) //Fix me: if in one tick content changed but array size doesn't, no refresh.
             {
                 previousArraySize = arraySize;
                 detectedObjectsContainer.Clear();
@@ -181,53 +192,54 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
             EditorGUILayout.HelpBox("Without at least one Trigger Collider assigned, this component cannot function properly.", MessageType.Error);
         }
 
-        private void AddTriggerSettings(Collider _collider)
+        private void addTriggerSettings(Collider _collider)
         {
             VisualElement triggerContainer = new VisualElement();
             triggerContainer.style.flexDirection = FlexDirection.Row;
 
-            ObjectField trigger = new ObjectField();
-            trigger.style.flexGrow = 1;
+            ObjectField triggerField = new ObjectField();
+            triggerField.style.flexGrow = 1;
             Button remove = new Button();
             remove.text = "X";
             remove.style.width = 20;
 
-            trigger.objectType = typeof(Collider);
-            trigger.Q<VisualElement>(className: "unity-object-field__selector").RemoveFromHierarchy();
-            trigger.allowSceneObjects = false;
+            triggerField.objectType = typeof(Collider);
+            triggerField.Q<VisualElement>(className: "unity-object-field__selector").RemoveFromHierarchy();
+            triggerField.allowSceneObjects = false;
 
             UIUtility.InitializeField
             (
-                trigger,
+                triggerField,
+                component,
                 () => _collider,
-                e =>
+                _e =>
                 {
-                    trigger.SetValueWithoutNotify(_collider);
+                    triggerField.SetValueWithoutNotify(_collider);
                 }
             );
 
-            remove.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            remove.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
-                RemoveFinger(_collider, triggerContainer);
-                UpdateTriggerDisplay();
+                removeFinger(_collider, triggerContainer);
+                updateTriggerDisplay();
             });
 
-            triggerContainer.Add(trigger);
+            triggerContainer.Add(triggerField);
             triggerContainer.Add(remove);
 
             triggersContainer.Add(triggerContainer);
         }
 
-        private void RemoveFinger(Collider _trigger, VisualElement _triggercontainer)
+        private void removeFinger(Collider _trigger, VisualElement _triggercontainer)
         {
             component.RemoveTrigger(_trigger);
             _triggercontainer.parent.Remove(_triggercontainer);
         }
 
-        private void UpdateTriggerDisplay()
+        private void updateTriggerDisplay()
         {
             bool isTrigger = component.TriggerList.Count == 0;
-            UIUtility.SetDisplay(noTriggersAssigned, isTrigger);
+            UIUtility.SetDisplay(noTriggersAssignedLabel, isTrigger);
             UIUtility.SetDisplay(triggersContainer, !isTrigger);
             UIUtility.SetDisplay(warningContainer, isTrigger);
         }
@@ -235,28 +247,28 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor.editor
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             stateControlPanel = new TextField("State");
-            UIUtility.ToggleNoBoxAndReadOnly(stateControlPanel, true);
+            UIUtility.SetReadOnlyState(stateControlPanel, true);
 
             outputSignalControlPanel = new TextField("Output Signal");
-            UIUtility.ToggleNoBoxAndReadOnly(outputSignalControlPanel, true);
+            UIUtility.SetReadOnlyState(outputSignalControlPanel, true);
 
             Button enableDisableButton = new Button();
             enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             enableDisableButton.AddToClassList("content-fit-button");
-            enableDisableButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            enableDisableButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.IsActive = !component.IsActive;
                 enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             });
 
-            ScheduleControlPanelUpdate(stateControlPanel);
+            scheduleControlPanelUpdate(stateControlPanel);
 
             _container.Add(stateControlPanel);
             _container.Add(outputSignalControlPanel);
             _container.Add(enableDisableButton);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             stateControlPanel.value = component.IsActive ? "Active" : "Inactive";
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;

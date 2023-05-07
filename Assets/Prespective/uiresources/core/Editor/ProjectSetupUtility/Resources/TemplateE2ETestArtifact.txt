@@ -1,0 +1,137 @@
+#if UNITY_EDITOR
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using u040.prespective.core.editor.editorui.window.verification.e2etesting;
+using u040.prespective.core.editor.verification.e2etesting;
+using UnityEditor;
+using UnityEngine;
+
+namespace {{PRODUCTION_PREFIX}}.testing
+{
+    /// <summary>
+    /// Artifact description for the {{PRODUCTION_PREFIX}} Testcases
+    /// </summary>
+    public class {{PRODUCTION_PREFIX}}E2ETestArtifact: AE2ETestArtifact<{{PRODUCTION_PREFIX}}TestStepData>
+    {
+        /// <summary>
+        /// Function invoked when a new serialized step is added (used by utility functions inside and outside the UnityTestrunner)
+        /// </summary>
+        public override void AddSerializedStepData()
+        {
+            serializedStepData.Add(new {{PRODUCTION_PREFIX}}TestStepData());
+        }
+
+    }
+
+    /// <summary>
+    /// Window definition for the {{PRODUCTION_PREFIX}} E2ETestcases
+    /// </summary>
+    public class {{PRODUCTION_PREFIX}}E2ETestWindow : E2ETestWindow<{{PRODUCTION_PREFIX}}E2ETestArtifact, {{PRODUCTION_PREFIX}}TestStepData>
+    {
+        /// <summary>
+        /// Returns the Foo Bar variant RunTestOutsideTestRunner
+        /// </summary>
+        public override IEnumerator TestModelForUseOutsideTestrunner => ((A{{PRODUCTION_PREFIX}}E2ETestBase)Activator.CreateInstance(CurrentSelectedTest)).RunTestOutsideTestRunner();
+
+        /// <summary>
+        /// Returns all test classes for Industrial Assets
+        /// </summary>
+        public override Type[] GetAllTestClassesForThisModule
+        {
+            get
+            {
+                return {{PRODUCTION_PREFIX}}E2ETestUtility.GetAllE2ETestTypes;
+            }
+        }
+
+        /// <summary>
+        /// Add A Prespective Menu Item for accessing this window
+        /// </summary>
+        [MenuItem("Prespective/DEV Tools/E2ETesting/{{PRODUCTION_PREFIX}} E2ETesting", false, 71)]
+        private static void openWindow()
+        {
+            {{PRODUCTION_PREFIX}}E2ETestWindow window = GetWindow<{{PRODUCTION_PREFIX}}E2ETestWindow>("{{PRODUCTION_PREFIX}} End-to-End Testing");
+            window.minSize = new Vector2(500, 320);
+        }
+    }
+
+
+
+
+
+    /// <summary>
+    /// Test utility used to find all {{PRODUCTION_PREFIX}} Tests in your project
+    /// </summary>
+    public class {{PRODUCTION_PREFIX}}E2ETestUtility : E2ETestUtility
+    {
+        private static Type[] allE2ETestTypes;
+
+        /// <summary>
+        /// Request the type of all {{PRODUCTION_PREFIX}} E2ETests
+        /// </summary> 
+        public static Type[] GetAllE2ETestTypes
+        {
+            get
+            {
+                if (allE2ETestTypes != null)
+                {
+                    return allE2ETestTypes;
+                }
+                // TODO: non-explicit implementation 
+                // Note that the full namespace is required here, due to introduction of UnityEditor.SerializationUtility in Unity 2021.3.x
+                List<Type> t = u040.prespective.utility.serialization.SerializationUtility.GetInheritingTypes(typeof(A{{PRODUCTION_PREFIX}}E2ETestBase), false);
+                for (int i = t.Count - 1; i >= 0; i--)
+                {
+                    if (t[i].IsAbstract)
+                    {
+                        t.RemoveAt(i);
+                    }
+                }
+                allE2ETestTypes = t.ToArray();
+                return allE2ETestTypes;
+            }
+        }
+
+
+        private static string[] allE2ETestNames;
+
+        /// <summary>
+        /// Request the name of all {{PRODUCTION_PREFIX}} E2ETests
+        /// </summary>
+        public static string[] GetAllE2ETestNames
+        {
+            get
+            {
+                if (allE2ETestNames != null)
+                {
+                    return allE2ETestNames;
+                }
+                allE2ETestNames = Array.ConvertAll(GetAllE2ETestTypes, _typeentry => _typeentry.FullName);
+                return allE2ETestNames;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Class that serves as the Basis for all your E2E tests
+    /// </summary>
+    public abstract class A{{PRODUCTION_PREFIX}}E2ETestBase : AE2ETestBase<{{PRODUCTION_PREFIX}}E2ETestArtifact, {{PRODUCTION_PREFIX}}TestStepData>
+    {
+
+    }
+
+    /// <summary>
+    /// Model in which the data will be stored for each step in an End-to-End Test
+    /// (This data will be loaded back into the scene if you start the E2E test from this step later)
+    /// </summary>
+    [System.Serializable]
+    public class {{PRODUCTION_PREFIX}}TestStepData : AE2ESerializedStepData
+    {
+
+    }
+}
+
+#endif
+

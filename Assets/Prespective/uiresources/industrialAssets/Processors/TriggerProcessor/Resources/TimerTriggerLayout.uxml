@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement>
+        <ui:TextField name="timer-name" label="Timer Name" class="custom-exposure"/>
+
+        <!--<ue:EnumField name="interval" label="Interval" class="custom-exposure"/>-->
+        <ui:VisualElement name="interval-selection-container" />
+        <ui:VisualElement name="interval-container" />
+
+        <ue:EnumField name="assignment-trigger" label="On Timer Complete" />
+        <ui:VisualElement name="assignment-trigger-container" />
+
+        <ui:Foldout class="custom-exposure-foldout" name="advanced-timer-settings" text="Advanced Timer Settings">
+            <ue:EnumField name="start" label="Start" class="custom-exposure"/>
+            <ue:EnumField name="start-interval" label="Start Interval" class="custom-exposure"/>
+            <ue:EnumField name="repeat" label="Repeat" class="custom-exposure"/>
+            <ui:Toggle name="trigger-when-set-and-active" label="Trigger when scheduler is set and active" class="custom-exposure"/>
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

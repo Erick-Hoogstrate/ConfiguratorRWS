@@ -1,19 +1,24 @@
-using System.Reflection;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
 using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.gripper.fingers
 {
     [CustomEditor(typeof(DVacuumGripperFinger))]
     public class DVacuumGripperFingerEditorUIE : DGripperFingerEditorUIE<DVacuumGripperFinger>
     {
-        protected override void ExecuteOnEnable()
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("MaterialHandling/Gripper/DVacuumGripperFingerLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DVacuumGripperFingerEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
     }
 }

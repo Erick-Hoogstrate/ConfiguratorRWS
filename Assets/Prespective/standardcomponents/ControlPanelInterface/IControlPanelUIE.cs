@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace u040.prespective.prepair.inspector
+namespace u040.prespective.standardcomponents.userinterface
 {
     public interface IControlPanelUIE
     {

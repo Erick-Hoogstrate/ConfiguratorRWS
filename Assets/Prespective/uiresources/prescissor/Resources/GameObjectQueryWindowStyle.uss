@@ -1,0 +1,7 @@
+.component-label-width Label {
+	width: 180px;
+}
+
+.center-text .unity-double-field__input {
+	-unity-text-align: middle-center;
+}

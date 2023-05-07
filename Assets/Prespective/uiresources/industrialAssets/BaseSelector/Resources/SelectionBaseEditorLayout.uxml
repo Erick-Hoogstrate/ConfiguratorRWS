@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:HelpBox text="While this component is attached to a GameObject, it will receive priority in Scene Selection. When you click (and select) a child object of this GameObject in the scene, the Selection will initially be set to this GameObject." message-type="Info" />
+</ui:UXML>

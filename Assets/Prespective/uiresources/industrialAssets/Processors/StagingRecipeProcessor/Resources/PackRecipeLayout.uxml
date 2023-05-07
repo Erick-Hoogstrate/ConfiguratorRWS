@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Label text="Create Staged Part When" />
+    <ue:EnumField name="create-parent-condition-type" class="custom-exposure"/>
+    <ui:VisualElement name="create-parent-condition-container" style="margin-bottom:5px;"/>
+
+    <ui:Label text="After creating Staged Part" />
+    <ue:EnumField name="after-creation-parent-type" class="custom-exposure"/>
+    <ui:VisualElement name="action-after-creation-parent-container" style="margin-bottom:5px;"/>
+
+</ui:UXML>

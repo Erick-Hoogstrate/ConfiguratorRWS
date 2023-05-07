@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="disabled" name="manipulator-selection-settings-container"/>
+  <ui:Foldout name="transfer-destination-settings-foldout" text="Transfer Destination Settings">
+    <ui:Button name="add-transfer-destination-button" text="Add Transfer Destination Setting" class="content-fit-button"/>
+    <ui:VisualElement name="transfer-destinations-container"/>
+  </ui:Foldout>
+    <ui:VisualElement name="assignment-instructor-container"/>
+</ui:UXML>

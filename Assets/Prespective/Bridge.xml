@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bridge</name>
+    </assembly>
+    <members>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeComponentUtility.SafeDestroyImmediate(UnityEngine.GameObject)">
+            <summary>
+            If DestroyImmediate is called from 2 points in the code on the same Object (Hierarchy)
+            unity will toss an uncatchable error: Don't use DestroyImmediate on the same object in OnDisable or OnDestroy
+            
+            since a situation where 2 calls to a destroy are sometimes unavoidable we can prevent the error from being thrown by
+            using a coroutine
+            
+            (part of fix IAWL-110)
+            </summary>
+            <param name="_gameObjectToDestroy">the gameobject to destroy</param>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeComponentUtility.destroyInNextFrame(UnityEngine.GameObject)">
+            <summary>
+            IEnumerator that destroys the forwarded gameobject in the next frame
+            (part of fix IAWL-110)
+            </summary>
+            <param name="_gameObjectToDestroy">the gameobject to destroy</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeComponentUtility.GetActiveGameObjects">
+            <summary>
+            Add a component to a selected GameObject or create a new GameObject if none are selected.
+            </summary>
+            <param name="T1"></param>
+            <param name="_gameObjectName">The name of the GameObject for when a new one is created</param>
+            <param name="_preventMultiple">Prevent the component from being created if one already exists</param>
+            <param name="_primitiveType">The primitive type of the GameObject if a new GameObject is created</param>
+        </member>
+        <member name="T:u040.prespective.utility.bridge.NotInEditorException">
+            <summary>
+            <description>
+            used to warn users and devs when they are using an editor function outside of the editor.
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200930">
+                Refactor to make the utility ready for export to WebGL
+            </version>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeSceneUtility.GetAllSceneCameras">
+            <summary>
+            Return all Scene Cameras
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeEditorUtility.PingObject(UnityEngine.GameObject)">
+            <summary>
+            Ping an object in the scene like clicking it 
+            </summary>
+            <param name="_gameObject">the object affected by the ping</param>
+        </member>
+        <member name="P:u040.prespective.utility.bridge.PrespectiveBridgeEditorUtility.IsPlayingOrWillChangePlaymode">
+            <summary>
+            State check used to check whether the Unity Editor is switching from Edit to Playmode, or already in Playmode
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility">
+            <summary>
+            <description>
+            Utility for interfacing with asset functions for differing build targets
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200930">
+                Refactor to make the utility ready for export to WebGL
+            </version>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.SaveAsAsset``1(``0,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            save an object as asset
+            </summary>
+            <typeparam name="T">Type of asset</typeparam>
+            <param name="_asset">asset</param>
+            <param name="_folder">folder to send to under asset map (can indicated multiple folders)</param>
+            <param name="_extension">extetion (.asset, .mat, .prefab, ...)</param>
+            <param name="_defaultName">name to take if it has no name</param>
+            <param name="_overwrite">over writes a file if present</param>
+            <param name="_makeCopyIfAlreadyExist">if make copy to new path if already exists</param>
+            <returns>saved object (null if failed)</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.SaveAsAssetWithName``1(``0,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            save an object as asset with given name
+            </summary>
+            <typeparam name="T">Type of asset</typeparam>
+            <param name="_asset">asset</param>
+            <param name="_folder">folder to send to under asset map (can indicated multiple folders)</param>
+            <param name="_extension">extetion (.asset, .mat, .prefab, ...)</param>
+            <param name="_name">asset name</param>
+            <param name="_defaultName">name to take if it has no name</param>
+            <param name="_overwrite">over writes a file if present</param>
+            <param name="_makeCopyIfAlreadyExist">if make copy to new path if already exists</param>
+            <returns>saved object</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.SaveAssets">
+            <summary>
+            Save the assets
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.RefreshAssets">
+            <summary>
+            Import any changed assets. This will import any assets that have changed their content modification data or have been added-removed to the project folder.
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.MarkActiveSceneDirty">
+            <summary>
+            Mark the specified Scene as modified.
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.FindAssets(System.String)">
+            <summary>
+            Search the asset database using the search filter string.
+            </summary>
+            <param name="_name">The filter string can contain search data. See below for details about this string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.FindAssets(System.String,System.String[])">
+            <summary>
+            Search the asset database using the search filter string.
+            </summary>
+            <param name="_filter">The filter string can contain search data. See below for details about this string.</param>
+            <param name="_searchInFolders">The folders where the search will start.</param>
+            <returns>string[] Array of matching asset. Note that GUIDs will be returned. </returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.Refresh(System.Int32)">
+            <summary>
+            0 = Default
+            1 = ForceUpdate
+            2 = ForceSynchronousImport
+            3 = ImportRecursive
+            4 = DontDownloadFromCacheServer
+            5 = ForceUncompressedImport
+            </summary>
+            <param name="_options"></param>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.SetDirty(UnityEngine.Object)">
+            <summary>
+            Dirty the object so it will be saved in the next scene update
+            </summary>
+            <param name="_sceneAsset"></param>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.GetAssetDirectory(UnityEngine.Object)">
+            <summary>
+            
+            </summary>
+            <param name="_asset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.GetAssetPath(UnityEngine.Object)">
+            <summary>
+            
+            </summary>
+            <param name="_asset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.LoadAssetAtPath(System.String,System.Type)">
+            <summary>
+            Load the asset at relative path 
+            </summary>
+            <param name="_assetPath"></param>
+            <param name="_type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.LoadAssetAtPath``1(System.String)">
+            <summary>
+            Load the asset at relative path
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_assetPath">file path relative to the assetpath</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.CreateAsset(UnityEngine.Object,System.String)">
+            <summary>
+            Create an asset at relative path
+            </summary>
+            <param name="_asset">the object to turn into an asset</param>
+            <param name="_assetPath">the relative path to put this asset</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.FileNameCheck(System.String)">
+            <summary>
+            checks the file name for illegal characters and returns the file name without illegal characters
+            </summary>
+            <param name="_fileName">file name</param>
+            <returns>clena file name</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.GetGoodPath(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            makes correct path for inputs
+            </summary>
+            <param name="_name">file name</param>
+            <param name="_folderPath">folder path</param>
+            <param name="_extension">extension (.mat, .asset, ....)</param>
+            <param name="_defaultName">name to take if it has no name</param>
+            <param name="_overwrite">over writes a file if present</param>
+            <returns>path</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.CheckStandardAsset``1(``0)">
+            <summary>
+            checks if given object is standard unity asset
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_object">object to check</param>
+            <returns>if standard asset</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.CheckPathStandardAsset(System.String)">
+            <summary>
+            checks if this is a standard asset of unity
+            </summary>
+            <param name="_path">asset path</param>
+            <returns>if standard asset</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.AssetPathToGUID(System.String)">
+            <summary>
+            gets GUID connected to path
+            </summary>
+            <param name="_path">path</param>
+            <returns>GUID</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.GUIDToAssetPath(System.String)">
+            <summary>
+            gets path connected to GUID
+            </summary>
+            <param name="_path">path</param>
+            <returns>GUID</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeAssetUtility.GetDependencies(System.String)">
+            <summary>
+            Returns an array of all the assets that are dependencies of the asset at the specified pathName.
+            </summary>
+            <param name="_path">path</param>
+            <returns>GUID</returns>
+        </member>
+        <member name="T:u040.prespective.utility.bridge.MonoScriptBridge">
+            <summary>
+            <description>
+            Interface class to be able to reference MonoScript Objects in Prespective regardless of Editor/build target
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200930">
+                Refactor to make the utility ready for export to WebGL
+            </version>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeEditorPrefs.GetFloat(System.String)">
+            <summary>
+            Returns the float value corresponding to key if it exists in the preference file
+            </summary>
+            <param name="_key">Name of key to read float from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeEditorPrefs.GetFloat(System.String,System.Single)">
+            <summary>
+            Returns the float value corresponding to key if it exists in the preference file
+            </summary>
+            <param name="_key">Name of key to read float from.</param>
+            <param name="_defaultValue">Float value to return if the key is not in the storage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgeEditorPrefs.SetFloat(System.String,System.Single)">
+            <summary>
+            Sets the float value of the preference identified by key.
+            </summary>
+            <param name="_key">Name of key to write float into.</param>
+            <param name="_value">Float value to write into the storage.</param>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgePrefabUtility.IsPartOfAnyPrefab(UnityEngine.Object)">
+            <summary>
+            is part of any prefab
+            </summary>
+            <param name="_componentOrGameobjcet">object</param>
+            <returns>if part of any prefab</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgePrefabUtility.IsAnyPrefabInstanceRoot(UnityEngine.GameObject)">
+            <summary>
+            is root of any prefab
+            </summary>
+            <param name="_gameObject">game object</param>
+            <returns>if root of any prefab</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgePrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(UnityEngine.Object)">
+            <summary>
+            get asset path of nearest prefab
+            </summary>
+            <param name="_componentOrGameobjcet">object</param>
+            <returns>asset path</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.PrespectiveBridgePrefabUtility.InstantiatePrefab(UnityEngine.Object)">
+            <summary>
+            instantiates any prefab
+            </summary>
+            <param name="_componentOrGameobjcet">object</param>
+            <returns>instance of prefab</returns>
+        </member>
+        <member name="T:u040.prespective.utility.bridge.EditorCoroutines">
+            <summary>
+            Helper Function that enables running coroutines (ienumerators) in edit and playmode, within the unityEditor
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.bridge.EditorCoroutines.coroutines">
+            <summary>
+            The Coroutines currently active
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.#cctor">
+            <summary>
+            Constructor that registers this feature with the EditorUpdate
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.init">
+            <summary>
+            Make sure the Editor Coroutine behavior is similar between "quick enter playmode" and "normal enter playmode" in the editor
+            i.e. kill all coroutines that attempt to cross the enter playmode boundary
+            (see https://blog.unity.com/technology/enter-play-mode-faster-in-unity-2019-3)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.StartEditorCoroutine(System.Collections.IEnumerator,System.Boolean)">
+            <summary>
+            Starts the forwarded IENumerator, and returns the coroutine GUID
+            </summary>
+            <param name="_coroutine">the ienumerator to run in the editor</param>
+            <param name="_verboseMode">Whether the coroutine should report in the Debug.Log when updated</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.StopEditorCoroutine(System.String)">
+            <summary>
+            Stop a specific coroutine by ID
+            </summary>
+            <param name="_id">the id of the coroutine to stop</param>
+            <returns>Whether the coroutine with GUID was successfully stopped</returns>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.StopAllEditorCoroutines">
+            <summary>
+            Stop all Coroutines currently running within the Editor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.onEditorUpdate">
+            <summary>
+            Invoked every EditorApplication Update, used to manually cycle the enumerators
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.bridge.EditorCoroutines.getCoroutineIndexByID(System.String)">
+            <summary>
+            Retrieve the index of an editor coroutine, if none can be found with the given ID -1 is returned
+            </summary>
+            <param name="_id">the ID to look for</param>
+            <returns>the index at which this was found, or -1 if not found</returns>
+        </member>
+        <member name="T:u040.prespective.utility.bridge.EditorCoroutines.IENumeratorWithID">
+            <summary>
+            class to store an IENumerator with ID - must be a class since we need to be able to cycle through nested IENumerators
+            (so we can remove it later)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.bridge.EditorCoroutines.IENumeratorWithID.GUID">
+            <summary>
+            The Unique Identifier for this IENumerator
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.bridge.EditorCoroutines.IENumeratorWithID.Enumerator">
+            <summary>
+            Reference to the Enumerator
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.bridge.EditorCoroutines.IENumeratorWithID.ParentIENumerators">
+            <summary>
+            Reference to the parentIENumerators that are waiting for the current handle to complete
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.bridge.EditorCoroutines.IENumeratorWithID.VerboseMode">
+            <summary>
+            Whether or not verbose logging should be applied on the ienumerator
+            </summary>
+        </member>
+    </members>
+</doc>

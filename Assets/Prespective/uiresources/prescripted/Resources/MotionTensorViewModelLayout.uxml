@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:TextField class="margin-bottom-10px" name="tensor-name-prefix"  label="Tensor Name Prefix" />
+  <ue:IntegerField name="size"  label="Size" />
+  <ui:VisualElement name="tensor-component-container" />
+  <ui:Toggle name="verbose" label="Verbose" />
+</ui:UXML>

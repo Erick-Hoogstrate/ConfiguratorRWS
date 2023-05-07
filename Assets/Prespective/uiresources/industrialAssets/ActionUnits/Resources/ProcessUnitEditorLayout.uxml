@@ -1,0 +1,28 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout class="foldout-division margin-bottom-10px custom-exposure-foldout" text="Visualization" binding-path="EditorExpandVisualization">
+    <ui:Toggle name="hide-cue-gizmos" label="Hide cue gizmos" />
+  </ui:Foldout>
+  
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Configuration" binding-path="EditorExpandConfiguration">
+    <ui:Toggle name="staging-mode" label="In staging mode" tooltip="If enabled, one can use the process unit as a staging cabinet in a robot sequence. Be Aware! When in staging mode be sure to not snap is to other components." />
+    <ue:EnumField name="in-direction" label="In direction" />
+    <ue:DoubleField name="length-in-direction" label="Length path inwards" />
+    <ue:EnumField name="out-direction" label="Out direction" />
+    <ue:DoubleField name="length-out-direction" label="Length path outwards" />
+  </ui:Foldout>
+  
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Assembly" binding-path="EditorExpandAction">
+    <ui:Foldout text="Timing:" style="margin-top: 8px; -unity-font-style: italic;" binding-path="EditorExpandTiming">
+      <ui:VisualElement class="division" name="timing-container">
+        <ue:DoubleField name="wait-time" label="Process time" tooltip="Time actor stands still in the center of the process unit."/>
+        <ue:DoubleField name="moving-in-time" label="Moving in time" tooltip="Time it takes for a product to move from the start of an in position to the center of the assembly unit" />
+        <ue:DoubleField name="moving-out-time" label="Moving out time" tooltip="Time it takes for an assembly to move from the center to the out position" />
+      </ui:VisualElement>
+    </ui:Foldout>
+
+    
+    <ui:Label text="Product:" style="margin-top: 10px; -unity-font-style: italic;"/>
+    <ui:VisualElement class="division" name="product-container" />
+  </ui:Foldout>
+  
+</ui:UXML>

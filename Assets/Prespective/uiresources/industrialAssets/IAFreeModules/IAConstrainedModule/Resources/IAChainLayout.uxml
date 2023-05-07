@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:TextField name="chain-name" label="Chain Name" class="custom-exposure"/>
+  <ui:Foldout class="custom-exposure-foldout" text="Joints" name="joints-foldout">
+    <ui:VisualElement name="joints-container"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="custom-exposure-foldout" text="End Effector Mounting Point" name="end-effector-mounting-point-foldout">
+    <ui:Toggle name="visualize-reach" label="Visualize Reach" class="custom-exposure"/>
+    <ue:ObjectField name="reference-joint" label="Reference Joint" class="custom-exposure"/>
+    <ui:VisualElement name="mounting-point-position-offset-container"/>
+    <ui:VisualElement name="mounting-point-rotation-offset-container"/>
+  </ui:Foldout>
+
+  <ui:Foldout text="Advanced Settings" name="advanced-settings-foldout">
+    <ui:Toggle name="use-dead-angle" label="Use Dead Angle" class="custom-exposure"/>
+    <ui:VisualElement name="dead-angle-plane-rotation-container"/>
+    <ue:DoubleField name="dead-angle-horizontal" label="Dead Angle Horizontal (deg)" class="custom-exposure"/>
+    <ue:DoubleField name="dead-angle-vertical" label="Dead Angle Vertical (deg)" class="custom-exposure"/>
+  </ui:Foldout>
+</ui:UXML>

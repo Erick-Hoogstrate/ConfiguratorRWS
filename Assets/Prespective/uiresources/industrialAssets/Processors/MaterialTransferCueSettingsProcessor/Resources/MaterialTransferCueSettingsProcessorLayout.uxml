@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:VisualElement name="locator-field-container"/>
+    <ui:TextField name="staging-pattern-field" label="Staging Pattern" />
+    <ui:TextField name="target-staging-recipe-field" label="Target Staging Recipe" />
+    <ue:DoubleField name="position-offset-field" label="Position Offset" />
+</ui:UXML>

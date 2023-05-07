@@ -1,7 +1,7 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ui:VisualElement name="alpha-feature-submenu">
 		<ue:ToolbarMenu class="menu-item menu-header submenu-header" />
 		<ui:VisualElement class="submenu menu-items display-none" />
 		<ui:VisualElement class="menu-divider" />
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

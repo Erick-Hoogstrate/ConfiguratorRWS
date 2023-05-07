@@ -1,53 +1,62 @@
-using System;
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static u040.prespective.standardcomponents.materialhandling.gripper.DGripperBase;
+using static u040.prespective.standardcomponents.virtualhardware.systems.gripper.DGripperBase;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.gripper
 {
     [CustomEditor(typeof(DGripperBase))]
     public class DGripperBaseEditorUIE : StandardComponentEditorUIE<DGripperBase>
     {
-        #region << Live Data Fields >>
-        TextField state;
-        VisualElement stateTextInput;
-        TextField currentClosePercentage;
-        Label grippedObjectsLabel;
-        Label noGrippedObjects;
-        VisualElement gripperObjectsContainer;
-        #endregion
-        #region << Property Fields>>
-        DoubleField closeTime;
-        ObjectField addFinger;
-        Label fingersLabel;
-        Label noFingersLabel;
-        VisualElement fingersContainer;
-        #endregion
-        #region << Values >>
-        string grippedObjectsText = "Gripped Objects";
-        string fingersLabelText = "Fingers";
-        VisualTreeAsset fingerVisualTree;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField stateField;
+        private VisualElement stateTextInput;
+        private TextField currentClosePercentageField;
+        private Label grippedObjectsLabel;
+        private Label noGrippedObjectsLabel;
+        private VisualElement gripperObjectsContainer;
+
+        //Property Fields
+        private DoubleField closeTimeField;
+        private ObjectField addFingerField;
+        private Label fingersLabel;
+        private Label noFingersLabel;
+        private VisualElement fingersContainer;
+
+        //Values
+        private string grippedObjectsText = "Gripped Objects";
+        private string fingersLabelText = "Fingers";
+        private VisualTreeAsset fingerVisualTree;
         #endregion
         #region << Control Panel Properties >>
-        TextField stateControlPanel;
-        TextField currentClosePercentageControlPanel;
+        private TextField stateControlPanel;
+        private TextField currentClosePercentageControlPanel;
+
         #endregion
-        protected override void ExecuteOnEnable()
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("MaterialHandling/Gripper/DGripperBaseLayout");
-            fingerVisualTree = Resources.Load<VisualTreeAsset>("MaterialHandling/Gripper/DGripperFingerLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DGripperBaseEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            fingerVisualTree = Resources.Load<VisualTreeAsset>("DGripperFingerLayout");
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            state.value = component.State.ToString();
+            stateField.value = component.State.ToString();
             switch (component.State)
             {
                 case DGripperBase.GripperState.Open:
@@ -60,7 +69,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                     stateTextInput.style.color = new Color(0.9f, 0.5f, 0f);
                     break;
             }
-            currentClosePercentage.value = component.ClosePercentage.ToString();
+            currentClosePercentageField.value = component.ClosePercentage.ToString();
             grippedObjectsLabel.text = grippedObjectsText + " (" + component.GrippedGameObjects.Count + ")";
             UpdateGripperContainer();
         }
@@ -69,46 +78,47 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
         {
             if (component.GrippedGameObjects.Count == 0)
             {
-                UIUtility.SetDisplay(noGrippedObjects, true);
+                UIUtility.SetDisplay(noGrippedObjectsLabel, true);
                 UIUtility.SetDisplay(gripperObjectsContainer, false);
             }
             else
             {
-                UIUtility.SetDisplay(noGrippedObjects, false);
+                UIUtility.SetDisplay(noGrippedObjectsLabel, false);
                 UIUtility.SetDisplay(gripperObjectsContainer, true);
                 gripperObjectsContainer.Clear();
                 gripperObjectsContainer.Add(UIUtility.CreateObjectLocatorFields(component.GrippedGameObjects));
             }
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
-            root.styleSheets.Add(Resources.Load<StyleSheet>("MaterialHandling/Gripper/GripperBaseStyleSheet"));
+            base.initialize();
+            root.styleSheets.Add(Resources.Load<StyleSheet>("GripperBaseEditorStyle"));
 
             #region << Live Data >>
-            state = root.Q<TextField>(name: "state");
-            state.isReadOnly = true;
-            stateTextInput = state.Q<VisualElement>(name: "unity-text-input");
+            stateField = root.Q<TextField>(name: "state");
+            stateField.isReadOnly = true;
+            stateTextInput = stateField.Q<VisualElement>(name: "unity-text-input");
 
-            currentClosePercentage = root.Q<TextField>(name: "current-close-percentage");
-            currentClosePercentage.isReadOnly = true;
+            currentClosePercentageField = root.Q<TextField>(name: "current-close-percentage");
+            currentClosePercentageField.isReadOnly = true;
 
             grippedObjectsLabel = root.Q<Label>(name: "gripped-objects-label");
-            noGrippedObjects = root.Q<Label>(name: "no-gripped-objects");
+            noGrippedObjectsLabel = root.Q<Label>(name: "no-gripped-objects");
 
             gripperObjectsContainer = root.Q<VisualElement>(name: "gripped-objects-container");
             #endregion
             #region << Properties >>
-            closeTime = root.Q<DoubleField>(name: "close-time");
-            addFinger = root.Q<ObjectField>(name: "add-finger");
+            closeTimeField = root.Q<DoubleField>(name: "close-time");
+            addFingerField = root.Q<ObjectField>(name: "add-finger");
             fingersLabel = root.Q<Label>(name: "fingers-label");
             noFingersLabel = root.Q<Label>(name: "no-fingers");
             fingersContainer = root.Q<VisualElement>(name: "fingers-container");
 
             UIUtility.InitializeField
             (
-                closeTime,
+                closeTimeField,
+                component,
                 () => component.CloseTime,
                 e =>
                 {
@@ -118,19 +128,20 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
 
             UIUtility.InitializeField
             (
-                addFinger,
+                addFingerField,
+                component,
                 () => null,
                 e =>
                 {
-                    if (addFinger.value != null)
+                    if (addFingerField.value != null)
                     {
                         bool createNewFinger;
                         createNewFinger = component.AddFinger((DGripperFinger)e.newValue);
                         if (createNewFinger)
                         {
-                            AddFingerSettings((DGripperFinger)addFinger.value);
+                            AddFingerSettings((DGripperFinger)addFingerField.value);
                         }
-                        addFinger.SetValueWithoutNotify(null);
+                        addFingerField.SetValueWithoutNotify(null);
                     }
                     UpdateFingerLabelDisplay();
                 },
@@ -144,6 +155,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                     AddFingerSettings(component.GripperFingers[_i].Finger);
                 }
             }
+
             UpdateFingerLabelDisplay();
             #endregion
 
@@ -167,18 +179,19 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
             VisualElement fingerSettings = fingerVisualTree.CloneTree();
             fingersContainer.Add(fingerSettings);
 
-            ObjectField finger = fingerSettings.Q<ObjectField>(name: "finger");
-            Toggle invert = fingerSettings.Q<Toggle>(name: "invert");
-            Button remove = fingerSettings.Q<Button>(name: "remove");
+            ObjectField fingerField = fingerSettings.Q<ObjectField>(name: "finger");
+            Toggle invertToggle = fingerSettings.Q<Toggle>(name: "invert");
+            Button removeButton = fingerSettings.Q<Button>(name: "remove");
 
-            finger.objectType = typeof(DGripperFinger);
-            finger.value = _finger;
-            finger.Q<VisualElement>(className: "unity-object-field__selector").RemoveFromHierarchy();
-            finger.allowSceneObjects = false;
+            fingerField.objectType = typeof(DGripperFinger);
+            fingerField.value = _finger;
+            fingerField.Q<VisualElement>(className: "unity-object-field__selector").RemoveFromHierarchy();
+            fingerField.allowSceneObjects = false;
 
             UIUtility.InitializeField
             (
-                invert,
+                invertToggle,
+                component,
                 () => fingerSetting.Inverted,
                 e =>
                 {
@@ -186,7 +199,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                 }
             );
 
-            remove.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            removeButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
             {
                 RemoveFinger(_finger, fingerSettings);
                 UpdateFingerLabelDisplay();
@@ -202,10 +215,10 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             stateControlPanel = new TextField("State");
-            UIUtility.ToggleNoBoxAndReadOnly(stateControlPanel, true);
+            UIUtility.SetReadOnlyState(stateControlPanel, true);
 
             currentClosePercentageControlPanel = new TextField("Current Close Percentage");
-            UIUtility.ToggleNoBoxAndReadOnly(currentClosePercentageControlPanel, true);
+            UIUtility.SetReadOnlyState(currentClosePercentageControlPanel, true);
 
             Button openCloseGripper = new Button();
             openCloseGripper.text = component.TargetClosePercentage == 1f ? "Open" : "Close";
@@ -216,14 +229,14 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                 openCloseGripper.text = component.TargetClosePercentage == 1f ? "Open" : "Close";
             });
 
-            ScheduleControlPanelUpdate(stateControlPanel);
+            scheduleControlPanelUpdate(stateControlPanel);
 
             _container.Add(stateControlPanel);
             _container.Add(currentClosePercentageControlPanel);
             _container.Add(openCloseGripper);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             Color stateColor;
             switch (component.State)

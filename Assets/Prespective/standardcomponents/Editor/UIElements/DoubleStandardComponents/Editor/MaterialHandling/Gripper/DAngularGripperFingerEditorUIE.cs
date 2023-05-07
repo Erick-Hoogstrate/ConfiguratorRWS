@@ -1,42 +1,48 @@
 using System;
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.gripper.fingers
 {
     [CustomEditor(typeof(DAngularGripperFinger))]
     public class DAngularGripperFingerEditorUIE : DGripperFingerEditorUIE<DAngularGripperFinger>
     {
-        #region << Property Fields >>
-        ObjectField wheelJoint;
-        DoubleField lowerLimit;
-        DoubleField upperLimit;
+        #region << FIELDS >>
+        private ObjectField wheelJointField;
+        private DoubleField lowerLimitField;
+        private DoubleField upperLimitField;
+        #endregion
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "DAngularGripperFingerEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("MaterialHandling/Gripper/DAngularGripperFingerLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
-            #region << Properties >>
-            wheelJoint = root.Q<ObjectField>(name: "wheel-joint");
-            lowerLimit = root.Q<DoubleField>(name: "lower-limit");
-            upperLimit = root.Q<DoubleField>(name: "upper-limit");
-            #endregion
+            base.initialize();
+
+            wheelJointField = root.Q<ObjectField>(name: "wheel-joint");
+            lowerLimitField = root.Q<DoubleField>(name: "lower-limit");
+            upperLimitField = root.Q<DoubleField>(name: "upper-limit");
 
             UIUtility.InitializeField
             (
-                wheelJoint,
+                wheelJointField,
+                component,
                 () => component.WheelJoint,
                 e =>
                 {
@@ -47,7 +53,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
 
             UIUtility.InitializeField
             (
-                lowerLimit,
+                lowerLimitField,
+                component,
                 () => component.LowerLimit,
                 e =>
                 {
@@ -59,7 +66,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
 
             UIUtility.InitializeField
             (
-                upperLimit,
+                upperLimitField,
+                component,
                 () => component.UpperLimit,
                 e =>
                 {
@@ -72,8 +80,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
 
         private void UpdateLimit()
         {
-            lowerLimit.value = component.LowerLimit;
-            upperLimit.value = component.UpperLimit;
+            lowerLimitField.value = component.LowerLimit;
+            upperLimitField.value = component.UpperLimit;
         }
     }
 }

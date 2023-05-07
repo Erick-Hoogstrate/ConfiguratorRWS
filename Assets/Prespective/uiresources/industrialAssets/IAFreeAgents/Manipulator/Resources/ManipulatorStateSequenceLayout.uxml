@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+   <ui:TextField name="state-name" class="custom-exposure" label="State Name"/>
+   <ue:EnumField name="state-type" class="custom-exposure" label="State Type"/>
+   <ui:Toggle name="show-preview" class="custom-exposure" label="Show Preview" />
+   <ui:VisualElement name="type-settings"/>
+</ui:UXML>

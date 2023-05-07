@@ -1,16 +1,21 @@
-using System.Reflection;
 using UnityEngine;
-using u040.prespective.prepair.components.sensors;
-using u040.prespective.utility;
+using u040.prespective.utility.modelmanagement;
+using System.Reflection;
+using u040.prespective.prepair.virtualhardware.sensors;
 
-namespace u040.prespective.standardcomponents.sensors.colorsensor
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.light
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class ColorDetector : QuantitativeSensor
     {
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
-
+        #region<properties>
+        /// <summary>
+        /// The Color Sensor this Color Detector uses to see colors.
+        /// </summary>
         public ColorSensor ColorSensor;
 
         [SerializeField] private Color referenceColor = Color.red;
@@ -52,13 +57,16 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
             }
         }
 
-        [SerializeField] private float threshold = 0.75f;
+        [SerializeField]  private float threshold = 0.75f;
         /// <summary>
         /// The minimum MatchFactor to detect a match
         /// </summary>
         public float Threshold
         {
-            get { return this.threshold; }
+            get 
+            { 
+                return this.threshold; 
+            }
             set
             {
                 if (this.threshold != value)
@@ -74,30 +82,57 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
         /// </summary>
         public float MatchFactor
         {
-            get { return this.matchFactor; }
+            get 
+            { 
+                return this.matchFactor; 
+            }
             set
             {
                 if (this.matchFactor != value)
                 {
                     this.matchFactor = Mathf.Clamp(value, 0f, 1f);
-                    this.Flagged = this.matchFactor >= Threshold;
+                    this.flagged = this.matchFactor >= Threshold;
                 }
             }
         }
+        #endregion
 
-        private void Reset()
+        #region<unity functions>
+        /// <summary>
+        /// Unity reset
+        /// </summary>
+        public void Reset()
+        {
+            this.onReset();
+        }
+
+        /// <summary>
+        /// Function run on Unity Reset
+        /// </summary>
+        protected virtual void onReset()
         {
             this.ColorSensor = this.RequireComponent<ColorSensor>(true);
         }
 
-        private void Awake()
+        /// <summary>
+        /// Unity awake
+        /// </summary>
+        public void Awake()
+        {
+            this.onAwake();
+        }
+
+        /// <summary>
+        /// Function run on Unity Awake
+        /// </summary>
+        protected virtual void onAwake()
         {
             //If a color sensor has been assigned
             if (ColorSensor)
             {
                 //Add a listener to its OnValueChanged event
-                ColorSensor.OnValueChanged.AddListener(() => 
-                { 
+                ColorSensor.OnValueChanged.AddListener(() =>
+                {
                     compareColor(ColorSensor.OutputSignal);
                 });
             }
@@ -109,9 +144,12 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
             }
         }
 
-        new private void Start()
+        /// <summary>
+        /// Function run on Unity Start
+        /// </summary>
+        protected override void onStart()
         {
-            base.Start();
+            base.onStart();
 
             //If a color sensor has been assigned
             if (ColorSensor)
@@ -120,7 +158,9 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
                 compareColor(ColorSensor.OutputSignal);
             }
         }
+        #endregion
 
+        #region<compare>
         /// <summary>
         /// Compare a color with the reference color for similarities
         /// </summary>
@@ -128,17 +168,18 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
         protected virtual void compareColor(Color _color)
         {
             //Calculate the differences between the R, G, and B values
-            float _differenceR = Mathf.Abs(ReferenceColor.r - DetectedColor.r);
-            float _differenceG = Mathf.Abs(ReferenceColor.g - DetectedColor.g);
-            float _differenceB = Mathf.Abs(ReferenceColor.b - DetectedColor.b);
+            float differenceR = Mathf.Abs(ReferenceColor.r - DetectedColor.r);
+            float differenceG = Mathf.Abs(ReferenceColor.g - DetectedColor.g);
+            float differenceB = Mathf.Abs(ReferenceColor.b - DetectedColor.b);
 
             //Each value has a potential of contributing a third of the maximum match factor
-            float _contributionR = (1f / 3f) * (1f - _differenceR);
-            float _contributionG = (1f / 3f) * (1f - _differenceG);
-            float _contributionB = (1f / 3f) * (1f - _differenceB);
+            float contributionR = 1f / 3f * (1f - differenceR);
+            float contributionG = 1f / 3f * (1f - differenceG);
+            float contributionB = 1f / 3f * (1f - differenceB);
 
             //Add all contributions together for the resulting match factor
-            MatchFactor = _contributionR + _contributionG + _contributionB;
+            MatchFactor = contributionR + contributionG + contributionB;
         }
+        #endregion
     }
 }

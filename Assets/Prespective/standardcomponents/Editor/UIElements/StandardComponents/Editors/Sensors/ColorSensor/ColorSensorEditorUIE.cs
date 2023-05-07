@@ -1,149 +1,203 @@
-using System.Reflection;
-using u040.prespective.core.editor;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.sensors.light;
+using u040.prespective.utility.editor.editorui;
+using u040.prespective.utility.editor.editorui.scenegui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.light
 {
     [CustomEditor(typeof(ColorSensor))]
     public class ColorSensorEditorUIE : StandardComponentEditorUIE<ColorSensor>
     {
-        #region << Live Data Fields >>
-        TextField state;
-        ColorField outputSignal;
+        #region << FIELDS >>
+        //Live Data Fields 
+        private TextField stateField;
+        private ColorField outputSignalField;
+        
+        //Property Fields
+        private VisualElement warningContainer;
+        private Vector2Field rangeField;
+        private ColorField voidColorField;
+        private PropertyField onValueChangedField;
+        private Toggle fixedRenderingToggle;
+        
+        //Control Panel Properties
+        private TextField stateControlPanel;
+        private ColorField outputSignalControlPanel;
+
         #endregion
-        #region << Property Fields>>
-        VisualElement warningContainer;
-        Vector2Field range;
-        ColorField voidColor;
-        PropertyField onValueChanged;
-        Toggle fixedRendering;
-        #endregion
-        #region << Control Panel Properties >>
-        TextField stateControlPanel;
-        ColorField outputSignalControlPanel;
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "ColorSensorEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Sensors/ColorSensor/ColorSensorLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            state.value = component.IsActive ? "Active" : "Inactive";
-            state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;            
-            outputSignal.value = component.OutputSignal;
+            stateField.value = component.IsActive ? "Active" : "Inactive";
+            stateField.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;            
+            outputSignalField.value = component.OutputSignal;
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
-            state = root.Q<TextField>(name: "state");
-            state.isReadOnly = true;
+            stateField = root.Q<TextField>(name: "state");
+            stateField.isReadOnly = true;
 
-            outputSignal = root.Q<ColorField>(name: "output-signal");
-            outputSignal.showEyeDropper = false;
-            outputSignal.showAlpha = false;
-            outputSignal.Q<IMGUIContainer>().SetEnabled(false);
+            outputSignalField = root.Q<ColorField>(name: "output-signal");
+            outputSignalField.showEyeDropper = false;
+            outputSignalField.showAlpha = false;
+            outputSignalField.Q<IMGUIContainer>().SetEnabled(false);
 
             #endregion
             #region << Properties >>
 
             warningContainer = root.Q<VisualElement>(name: "warning-container");
             IMGUIContainer warningMessage = new IMGUIContainer(OnInspectorGUI);
+            warningContainer.Clear();
             warningContainer.Add(warningMessage);
-            range = root.Q<Vector2Field>(name: "range");
-            voidColor = root.Q<ColorField>(name: "void-color");
-            voidColor.showAlpha = false;
-            onValueChanged = root.Q<PropertyField>(name: "on-value-changed");
-            onValueChanged.bindingPath = "onValueChanged";
-            fixedRendering = root.Q<Toggle>(name: "fixed-rendering");
+            rangeField = root.Q<Vector2Field>(name: "range");
+            voidColorField = root.Q<ColorField>(name: "void-color");
+            voidColorField.showAlpha = false;
+            onValueChangedField = root.Q<PropertyField>(name: "on-value-changed");
+            fixedRenderingToggle = root.Q<Toggle>(name: "fixed-rendering");
 
             UIUtility.SetDisplay(warningContainer, component.FixedRendering);
 
             UIUtility.InitializeField
             (
-                range,
+                rangeField,
+                component,
                 () => component.Range,
-                e =>
+                _e =>
                 {
-                    component.Range = e.newValue;
+                    Undo.RecordObject(component, "Changed range");
+                    component.Range = _e.newValue;
+                    rangeField.SetValueWithoutNotify(component.Range);
+                    SceneView.RepaintAll();
                 }
             );
 
             UIUtility.InitializeField
             (
-                voidColor,
+                voidColorField,
+                component,
                 () => component.VoidColor,
-                e =>
+                _e =>
                 {
-                    component.VoidColor = e.newValue;
+                    Undo.RecordObject(component, "Changed void color");
+                    component.VoidColor = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                fixedRendering,
+                fixedRenderingToggle,
+                component,
                 () => component.FixedRendering,
-                e =>
+                _e =>
                 {
-                    component.FixedRendering = e.newValue;
+                    Undo.RecordObject(component, "Changed fixed rendering");
+                    component.FixedRendering = _e.newValue;
                     UIUtility.SetDisplay(warningContainer, component.FixedRendering);
                 }
             );
             #endregion
 
-            SetFieldsForPlaymode(!EditorApplication.isPlaying);
-            EditorApplication.playModeStateChanged += state =>
+            setFieldsForPlaymode(!EditorApplication.isPlaying);
+            EditorApplication.playModeStateChanged += _state =>
             {
-                SetFieldsForPlaymode(!(state == PlayModeStateChange.EnteredPlayMode));
+                setFieldsForPlaymode(_state != PlayModeStateChange.EnteredPlayMode);
             };
         }
 
-        private void SetFieldsForPlaymode(bool _bool) 
+        private void setFieldsForPlaymode(bool _bool) 
         {
-            range.SetEnabled(_bool);
-            voidColor.SetEnabled(_bool);
-            onValueChanged.SetEnabled(_bool);
-            fixedRendering.SetEnabled(_bool);
+            rangeField.SetEnabled(_bool);
+            voidColorField.SetEnabled(_bool);
+            onValueChangedField.SetEnabled(_bool);
+            fixedRenderingToggle.SetEnabled(_bool);
         }
-
 
         public override void OnInspectorGUI()
         {
             EditorGUILayout.HelpBox("Using multiple ColorSensors with FixedRendering could slow your system down drastically.", MessageType.Warning);
         }
 
-        private void OnSceneGUI()
+        internal void OnSceneGUI()
         {
-            if (component.Range.x < component.Range.y)
-            {
-                //Draw Range Indicator
-                Transform _transform = component.SensorCamera != null ? component.SensorCamera.transform : component.transform;
+            //Draw Range Indicator
+            Transform transform = component.SensorCamera != null ? component.SensorCamera.transform : component.transform;
 
-                Handles.color = Color.red;
-                Vector3 _origin = _transform.position;
-                Vector3 _rangeStart = _origin + (_transform.forward * component.Range.x);
-                Vector3 _rangeEnd = _origin + (_transform.forward * component.Range.y);
-                Handles.DrawLine(_rangeStart, _rangeEnd);
-                float _handleSize = HandleUtility.GetHandleSize(_transform.position);
-                Handles.DotHandleCap(0, _rangeStart, Quaternion.identity, 0.05f * _handleSize, EventType.Repaint);
-                Handles.DotHandleCap(0, _rangeEnd, Quaternion.identity, 0.05f * _handleSize, EventType.Repaint);
+            Vector3 origin = transform.position;
+            Vector3 rangeStart = origin + transform.forward.normalized * component.Range.x;
+            Vector3 rangeEnd = origin + transform.forward.normalized * component.Range.y;
+                
+            float handleSize = HandleUtility.GetHandleSize(transform.position);
+
+            //Draw lines
+            Handles.color = Color.green;
+            Handles.DrawLine(rangeStart, rangeEnd);
+
+            Handles.color = Color.red;
+            Handles.DrawLine(origin, rangeStart);
+
+            //Draw draggable dots
+            Handles.color = Color.red;
+            Vector3 newPosX = Handles.FreeMoveHandle(rangeStart, Quaternion.identity, 0.05f * handleSize, Vector3.zero, Handles.DotHandleCap);
+
+            Handles.color = Color.green;
+            Vector3 newPosY = Handles.FreeMoveHandle(rangeEnd, Quaternion.identity, 0.05f * handleSize, Vector3.zero, Handles.DotHandleCap);
+
+            if (Application.isPlaying)
+            {
+                return;
+            }
+
+            if (newPosX != rangeStart || newPosY != rangeEnd)
+            {
+                Vector3 newYDotVector = component.transform.InverseTransformVector(Vector3.Project(newPosY - origin, component.transform.forward));
+                Vector3 newXDotVector = component.transform.InverseTransformVector(Vector3.Project(newPosX - origin, component.transform.forward));
+
+                float newYDot = newYDotVector.z;
+                float newXDot = newXDotVector.z;
+
+                Undo.RecordObject(component, "Changed range");
+                component.Range = new Vector2(newXDot, newYDot);
+                rangeField.SetValueWithoutNotify(component.Range);
+            }
+
+            //Draw scene labels
+            float newX = PrespectiveHandles2D.DelayedSceneFloatField(null, component.Range.x, "m", (origin + rangeStart) * 0.5f, Vector2.zero);
+            float newY = PrespectiveHandles2D.DelayedSceneFloatField(null, component.Range.y - component.Range.x, "m", (rangeStart + rangeEnd) * 0.5f, Vector2.zero);
+
+            if (newX != component.Range.x || newY != (component.Range.y - component.Range.x))
+            {
+                Undo.RecordObject(component, "Changed range");
+                component.Range = new Vector2(newX, newY + newX);
+                rangeField.SetValueWithoutNotify(component.Range);
             }
         }
+
 
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             stateControlPanel = new TextField("State");
-            UIUtility.ToggleNoBoxAndReadOnly(stateControlPanel, true);
+            UIUtility.SetReadOnlyState(stateControlPanel, true);
 
             outputSignalControlPanel = new ColorField("Output Signal");
             outputSignalControlPanel.showEyeDropper = false;
@@ -153,20 +207,20 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor.editor
             Button enableDisableButton = new Button();
             enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             enableDisableButton.AddToClassList("content-fit-button");
-            enableDisableButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            enableDisableButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.IsActive = !component.IsActive;
                 enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             });
 
-            ScheduleControlPanelUpdate(stateControlPanel);
+            scheduleControlPanelUpdate(stateControlPanel);
 
             _container.Add(stateControlPanel);
             _container.Add(outputSignalControlPanel);
             _container.Add(enableDisableButton);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             stateControlPanel.value = component.IsActive ? "Active" : "Inactive";
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;

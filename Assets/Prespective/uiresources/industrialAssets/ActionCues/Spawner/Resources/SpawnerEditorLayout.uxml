@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label text="Spawner" class="bold margin-bottom-10px" />
+    <ue:DoubleField name="interval" label="Interval" />
+    <ue:IntegerField name="spawn-count" label="Max active spawns" />
+    <ue:IntegerField name="lane-count" label="Spawn Lane Count" />
+    <ue:DoubleField name="lane-distance" label="Distance between Lanes" />
+  </ui:VisualElement>
+  
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label text="Products" class="bold margin-bottom-10px" />
+    <ui:VisualElement name="product-container" />
+    <ui:Button name="add-product" style="width: 200px" text="Add Product"/>
+    <ui:Button name="remove-product" style="width: 200px" text="Remove Product"/>
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division custom-exposure-foldout" name="sceneview-settings" text="Scene View Settings" value="false">
+    <ui:Toggle name="show-spawn-count" label="Show Spawn Count" text=" (Only during simulation)" />
+  </ui:Foldout>
+</ui:UXML>

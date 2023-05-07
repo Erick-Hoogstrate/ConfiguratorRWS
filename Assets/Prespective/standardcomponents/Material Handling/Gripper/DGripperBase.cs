@@ -1,27 +1,17 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Collections.Generic;
-using System.Reflection;
-using u040.prespective.prepair.inspector;
 using UnityEngine;
 using System;
 using u040.prespective.math;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper
+namespace u040.prespective.standardcomponents.virtualhardware.systems.gripper
 {
     public class DGripperBase : MonoBehaviour
     {
-#pragma warning disable 0414 
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
-
-
         /// <summary>
         /// A list of all Gripper Fingers assigned to this GripperBase
         /// </summary>
         public List<DFingerSetting> GripperFingers = new List<DFingerSetting>();
-
 
         /// <summary>
         /// Add a unique Gripper Finger
@@ -34,10 +24,10 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             if (GripperFingers.Find((_entry) => _entry.Finger == _finger) == null)
             {
                 //Add the finger
-                DFingerSetting _setting = new DFingerSetting();
-                _setting.Finger = _finger;
-                _setting.Inverted = _inverted;
-                GripperFingers.Add(_setting);
+                DFingerSetting setting = new DFingerSetting();
+                setting.Finger = _finger;
+                setting.Inverted = _inverted;
+                GripperFingers.Add(setting);
                 return true;
             }
 
@@ -52,16 +42,19 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
         public bool RemoveFinger(DGripperFinger _finger)
         {
             //Find the FingerSetting for this finger
-            DFingerSetting _setting = GripperFingers.Find((_entry) => _entry.Finger == _finger);
+            DFingerSetting setting = GripperFingers.Find((_entry) => _entry.Finger == _finger);
 
             //Remove it from the list
-            return GripperFingers.Remove(_setting);
+            return GripperFingers.Remove(setting);
         }
 
-        private void Awake()
+        internal void Awake()
         {
             //Remove all null fingers from the list
-            GripperFingers.RemoveAll((_entry) => _entry == null);
+            GripperFingers.RemoveAll((_entry) =>
+            {
+                return _entry == null;
+            });
 
             //Force all fingers to the same set position
             moveFingersToPosition(currentClosePercentage);
@@ -70,7 +63,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             storeTransformValues();
         }
 
-        private void FixedUpdate()
+        internal void FixedUpdate()
         {
             //Move objects along with the base if necessary
             processGrippedObjects();
@@ -90,7 +83,6 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
              */
         }
 
-
         #region<<Processing Gripper Objects>>
 
         private Vector3 storedTransformPosition;
@@ -105,71 +97,69 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
              * - Inherit rotational changes
              */
 
-            //Put drag on the rigidbodies
+            //First: Put drag on the rigidbodies
             //For each gripped object
-            for (int _i = 0; _i < grippedObjects.Count; _i++)
+            for (int i = 0; i < grippedObjects.Count; i++)
             {
                 //Try to get the Rigidbody
-                Rigidbody _rigidbody = grippedObjects[_i].Object.GetComponent<Rigidbody>();
+                Rigidbody rigidbody = grippedObjects[i].Object.GetComponent<Rigidbody>();
 
                 //If it has a Rigidbody and Gravity is used
-                if (_rigidbody)
+                if (rigidbody)
                 {
-                    _rigidbody.velocity *= (0.5f * Time.fixedDeltaTime);
-                    _rigidbody.angularVelocity *= (0.5f * Time.fixedDeltaTime);
+                    rigidbody.velocity *= (0.5f * Time.fixedDeltaTime);
+                    rigidbody.angularVelocity *= (0.5f * Time.fixedDeltaTime);
                 }
             }
-
 
             //Second: Inherit positional changes
             //Get current position
-            Vector3 _currentTransformPosition = this.transform.position;
+            Vector3 currentTransformPosition = this.transform.position;
 
             //Check if there has been a change in position
-            if (_currentTransformPosition != storedTransformPosition)
+            if (currentTransformPosition != storedTransformPosition)
             {
                 //Calculate the difference in position
-                Vector3 _deltaTransformPosition = _currentTransformPosition - storedTransformPosition;
+                Vector3 deltaTransformPosition = currentTransformPosition - storedTransformPosition;
 
                 //For each gripped object
-                for (int _i = 0; _i < grippedObjects.Count; _i++)
+                for (int i = 0; i < grippedObjects.Count; i++)
                 {
                     //Buffer the GameObject
-                    GrippedObject _grippedObject = grippedObjects[_i];
+                    GrippedObject grippedObject = grippedObjects[i];
 
                     //Apply the same change in position to the gripped object
-                    _grippedObject.Object.transform.position += _deltaTransformPosition;
+                    grippedObject.Object.transform.position += deltaTransformPosition;
                 }
             }
 
-
             //Third: Inherit rotational changes
             //Get current rotation
-            Quaternion _currentTransformRotation = this.transform.rotation;
+            Quaternion currentTransformRotation = this.transform.rotation;
 
             //Check if there has been a change in rotation
-            if (_currentTransformRotation != storedTransformRotation)
+            if (currentTransformRotation != storedTransformRotation)
             {
                 //Calculate the difference in rotation
-                Quaternion _deltaTransformRotation = _currentTransformRotation * Quaternion.Inverse(storedTransformRotation);
+                Quaternion deltaTransformRotation = currentTransformRotation * Quaternion.Inverse(storedTransformRotation);
 
                 //For each gripped object
-                for (int _i = 0; _i < grippedObjects.Count; _i++)
+                for (int i = 0; i < grippedObjects.Count; i++)
                 {
                     //Buffer the GameObject
-                    GrippedObject _grippedObject = grippedObjects[_i];
+                    GrippedObject grippedObject = grippedObjects[i];
 
                     //Apply the same change in rotation to the gripped object's rotation
-                    _grippedObject.Object.transform.rotation = _deltaTransformRotation * _grippedObject.Object.transform.rotation;
+                    grippedObject.Object.transform.rotation = deltaTransformRotation * grippedObject.Object.transform.rotation;
 
                     //Calculate the new relative position by applying the difference in rotation to the relative vector
-                    Vector3 _rotatedRelativePosition = _deltaTransformRotation * _grippedObject.RelativePosition;
+                    Vector3 rotatedRelativePosition = deltaTransformRotation * grippedObject.RelativePosition;
 
                     //Calculate the difference in relative position
-                    Vector3 _deltaRelativePosition = _rotatedRelativePosition - _grippedObject.RelativePosition;
+                    Vector3 deltaRelativePosition = rotatedRelativePosition - grippedObject.RelativePosition;
 
                     //Apply difference in relative position to the gripped object
-                    _grippedObject.Object.transform.position += _deltaRelativePosition;
+                    grippedObject.Object.transform.position += deltaRelativePosition;
                 }
             }
 
@@ -182,7 +172,6 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             storedTransformPosition = this.transform.position;
             storedTransformRotation = this.transform.rotation;
         }
-
         #endregion
 
         #region<< Gripping Objects >>
@@ -215,63 +204,61 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             fingersCollide = false;
 
             //For each gripper finger
-            for (int _i = 0; _i < GripperFingers.Count; _i++)
+            for (int i = 0; i < GripperFingers.Count; i++)
             {
                 //Get all the objects the finger detects
-                List<GameObject> _objects = GripperFingers[_i].Finger.DetectedObjects;
-
-
+                List<GameObject> gameObjects = GripperFingers[i].Finger.DetectedObjects;
 
                 //For each detected object
-                for (int _j = 0; _j < _objects.Count; _j++)
+                for (int j = 0; j < gameObjects.Count; j++)
                 {
-                    GameObject _object = _objects[_j];
-                    int _count = 0;
+                    GameObject gameObject = gameObjects[j];
+                    int count = 0;
 
                     //Check whether the detected object is another finger
-                    if (GripperFingers.Find((_entry) => _entry.Finger.Trigger.gameObject == _object) != null)
+                    if (GripperFingers.Find((_entry) => _entry.Finger.Trigger.gameObject == gameObject) != null)
                     {
                         fingersCollide = true;
                         continue;
                     }
 
                     //Check whether this object was already detected by other fingers
-                    if (detectedObjects.TryGetValue(_object, out _count))
+                    if (detectedObjects.TryGetValue(gameObject, out count))
                     {
                         //Add 1 to its current value
-                        detectedObjects[_object] = ++_count;
+                        detectedObjects[gameObject] = ++count;
                     }
 
                     //If not already detected
                     else
                     {
                         //Add it as a detected object
-                        detectedObjects.Add(_object, 1);
-                        _count = 1;
+                        detectedObjects.Add(gameObject, 1);
+                        count = 1;
                     }
 
                     //If the objects is detected by all fingers
-                    if (_count == GripperFingers.Count)
+                    if (count == GripperFingers.Count)
                     {
                         //Check whether the object's rigidbody uses gravity
-                        bool _usedGravity = false;
-                        Rigidbody _rigidbody = _object.GetComponent<Rigidbody>();
-                        if (_rigidbody)
+                        bool usedGravity = false;
+                        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+                        if (rigidbody)
                         {
-                            _usedGravity = _rigidbody.useGravity;
-                            _rigidbody.useGravity = false;
+                            usedGravity = rigidbody.useGravity;
+                            rigidbody.useGravity = false;
                         }
 
                         //Create the new datastruct
-                        GrippedObject _grippedObject = new GrippedObject()
+                        GrippedObject grippedObject = new GrippedObject()
                         {
-                            Object = _object,
-                            RelativePosition = _object.transform.position - this.transform.position,
-                            UsedGravity = _usedGravity
+                            Object = gameObject,
+                            RelativePosition = gameObject.transform.position - this.transform.position,
+                            UsedGravity = usedGravity
                         };
 
                         //Add it as a gripped object
-                        grippedObjects.Add(_grippedObject);
+                        grippedObjects.Add(grippedObject);
                     }
                 }
             }
@@ -286,13 +273,13 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
 
         private void clearGrippedObjectsList()
         {
-            for (int _i = 0; _i < grippedObjects.Count; _i++)
+            for (int i = 0; i < grippedObjects.Count; i++)
             {
-                GrippedObject _grippedObject = grippedObjects[_i];
-                Rigidbody _rigidbody = _grippedObject.Object.GetComponent<Rigidbody>();
-                if (_rigidbody)
+                GrippedObject grippedObject = grippedObjects[i];
+                Rigidbody rigidbody = grippedObject.Object.GetComponent<Rigidbody>();
+                if (rigidbody)
                 {
-                    _rigidbody.useGravity = _grippedObject.UsedGravity;
+                    rigidbody.useGravity = grippedObject.UsedGravity;
                 }
             }
             grippedObjects.Clear();
@@ -324,11 +311,11 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             get { return this.targetClosePercentage; }
             set
             {
-                double _clampedValue = PreSpectiveMath.Clamp(value, 0d, 1d);
+                double clampedValue = PreSpectiveMath.Clamp(value, 0d, 1d);
 
-                if (this.targetClosePercentage != _clampedValue)
+                if (this.targetClosePercentage != clampedValue)
                 {
-                    this.targetClosePercentage = _clampedValue;
+                    this.targetClosePercentage = clampedValue;
                 }
             }
         }
@@ -360,24 +347,24 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             if (currentClosePercentage != TargetClosePercentage)
             {
                 //Determine how many percent the gripper still needs to close
-                double _percentageDifference = TargetClosePercentage - currentClosePercentage;
+                double percentageDifference = TargetClosePercentage - currentClosePercentage;
 
                 //If we have an object detected or fingers collider with each other
                 if (grippedObjects.Count > 0 || fingersCollide)
                 {
                     //Only allow moves that open te gripper
-                    _percentageDifference = Math.Min(_percentageDifference, 0d);
+                    percentageDifference = Math.Min(percentageDifference, 0d);
 
                     //If not move should occur, return
-                    if (_percentageDifference == 0d) { return; }
+                    if (percentageDifference == 0d) { return; }
                 }
 
                 //Clamp the percentage so that we never close more than the set speed allows over time
-                double _maxAllowedMove = Time.fixedDeltaTime / this.CloseTime;
-                double _clampedPercentageOverSpeed = PreSpectiveMath.Clamp(_percentageDifference, -_maxAllowedMove, _maxAllowedMove);
+                double maxAllowedMove = Time.fixedDeltaTime / this.CloseTime;
+                double clampedPercentageOverSpeed = PreSpectiveMath.Clamp(percentageDifference, -maxAllowedMove, maxAllowedMove);
 
                 //Determine the position the fingers would need to move to
-                currentClosePercentage = PreSpectiveMath.Clamp(currentClosePercentage + _clampedPercentageOverSpeed, 0d, 1d);
+                currentClosePercentage = PreSpectiveMath.Clamp(currentClosePercentage + clampedPercentageOverSpeed, 0d, 1d);
 
                 //Set all fingers to set percentage
                 moveFingersToPosition(currentClosePercentage);
@@ -390,20 +377,19 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
         /// <param name="_percentage"></param>
         private void moveFingersToPosition(double _percentage)
         {
-
             //Set all fingers to set percentage
-            for (int _i = 0; _i < GripperFingers.Count; _i++)
+            for (int i = 0; i < GripperFingers.Count; i++)
             {
-                double _positionPercentage = _percentage;
+                double positionPercentage = _percentage;
 
                 //if percentage needs to be inverted
-                if (GripperFingers[_i].Inverted)
+                if (GripperFingers[i].Inverted)
                 {
-                    _positionPercentage = 1d - _percentage;
+                    positionPercentage = 1d - _percentage;
                 }
 
                 //Set position of individual finger
-                GripperFingers[_i].Finger.SetPosition(_positionPercentage);
+                GripperFingers[i].Finger.SetPosition(positionPercentage);
             }
         }
 
@@ -442,6 +428,5 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             public DGripperFinger Finger;
             public bool Inverted = false;
         }
-
     }
 }

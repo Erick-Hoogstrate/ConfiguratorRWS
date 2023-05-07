@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+     <ui:Foldout class="foldout-division margin-bottom-10px custom-exposure-foldout" text="Module Connection Point" binding-path="EditorExpandVisualization">
+     <ue:PropertyField name="module-connection-point-orientation" binding-path="ModuleConnectionPoint"/>
+     </ui:Foldout>
+     <ui:Foldout class="foldout-division margin-bottom-10px custom-exposure-foldout" text="Default End Effector Point" binding-path="EditorExpandVisualization">
+     <ue:PropertyField name="default-end-effector-point" binding-path="DefaultEndEffectorPoint"/>
+     </ui:Foldout>
+
+     <ui:Label text="Rotation Offset:" style="margin-top: 10px; -unity-font-style: bold;"/>
+     <ue:EnumField name="default-up-direction" label="Default Up Direction"/>
+     <ue:EnumField name="default-forward-direction" label="Default Forward Direction"/>
+
+</ui:UXML>

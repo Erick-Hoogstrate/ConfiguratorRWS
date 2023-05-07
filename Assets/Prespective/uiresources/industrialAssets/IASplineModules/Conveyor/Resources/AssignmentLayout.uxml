@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	
+	<ui:Foldout class="foldout-division margin-bottom-10px" name="motion-state-foldout" text="MotionStateName" value="false">
+		<ui:TextField name="state-name" label="State Name" />
+		<ue:DoubleField name="state-velocity" label="State Target Velocity (m/s)" />	
+	</ui:Foldout>
+	
+</ui:UXML>

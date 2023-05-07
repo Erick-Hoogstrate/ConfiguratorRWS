@@ -1,0 +1,13 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division">
+    <ui:Label text="Process" display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+
+    <ui:Label text="Timing:" style="margin-top: 8px; -unity-font-style: italic;"/>
+    <ui:VisualElement class="division" name="timing-container">
+      <ue:DoubleField name="wait-time" label="Process time" tooltip="Time actor stands still in the center of the process unit."/>
+    </ui:VisualElement>
+
+    <ui:Label text="Product:" style="margin-top: 10px; -unity-font-style: italic;"/>
+    <ui:VisualElement class="division" name="product-container" />
+  </ui:VisualElement>
+</ui:UXML>

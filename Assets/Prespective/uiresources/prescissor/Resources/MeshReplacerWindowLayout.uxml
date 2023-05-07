@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
     <ui:ScrollView class="window-padding-container">
         <ui:VisualElement class="division margin-bottom-10px">
             <ue:FloatField label="Surface Deviation (%)" tooltip="The deviation factor used when comparing mesh surfaces to determine if the objects are similar." value="2" name="surface-deviation-field" />
@@ -15,4 +15,4 @@
         <ui:VisualElement name="selection-preview" />
         <ui:Button name="replace-button" text="Replace Similar Meshes in Selection" />
     </ui:ScrollView>
-</UXML>
+</ui:UXML>

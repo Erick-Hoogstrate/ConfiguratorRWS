@@ -1,13 +1,11 @@
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.gripper.fingers
 {
     [CustomEditor(typeof(DParallelGripperFinger))]
     public class DParallelGripperFingerEditorUIE : DGripperFingerEditorUIE<DParallelGripperFinger>
@@ -16,15 +14,22 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
         ObjectField prismaticjoint;
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("MaterialHandling/Gripper/DParallelGripperFingerLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DParallelGripperFingerEditorLayout";
+            }
         }
 
-        protected override void Initialize()
+        protected override void executeOnEnable()
         {
-            base.Initialize();
+            base.executeOnEnable();
+        }
+
+        protected override void initialize()
+        {
+            base.initialize();
             #region << Properties >>
             prismaticjoint = root.Q<ObjectField>(name: "prismatic-joint");
             #endregion
@@ -32,6 +37,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
             UIUtility.InitializeField
             (
                 prismaticjoint,
+                component,
                 () => component.PrismaticJoint,
                 e =>
                 {

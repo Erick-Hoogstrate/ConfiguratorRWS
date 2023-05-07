@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+      <ue:PropertyField class="margin-vertical-5px" name="manipulator-patterns" binding-path="manipulationPatterns"/>
+      <ui:Button name="add-pattern" text="Add Pattern"/>
+</ui:UXML>

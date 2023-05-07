@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row">
+        <ui:Label name="recipe-index" text="{recipeIndex}" style="width: 30%"/>
+        <ui:TextField name="var-name" label="Var:" style="width: 30%" value="{VarName}"/>
+        <ue:IntegerField name="preview-value-container" style="width: 30%"/>
+        <!--<ui:VisualElement name="preview-value-parent" style="width: 30%"/>-->
+    </ui:VisualElement>
+</ui:UXML>

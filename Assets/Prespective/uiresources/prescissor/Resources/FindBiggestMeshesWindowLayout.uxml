@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="window-padding-container">
+        <ui:VisualElement class="margin-bottom-10px">
+            <ue:EnumField name="sort-by" label="Sort by" class="margin-bottom-10px" />
+        </ui:VisualElement>
+      
+        <ui:VisualElement name="selection-preview" />
+        <ui:Button class="content-fit-button" name="find-biggest" text="Find" />
+    </ui:VisualElement>
+    
+    <ui:ScrollView name="data-container" class="window-padding-container">
+    </ui:ScrollView>
+</ui:UXML>

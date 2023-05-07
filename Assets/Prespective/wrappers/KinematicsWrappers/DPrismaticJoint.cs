@@ -1,35 +1,13 @@
 using UnityEngine;
-using u040.prespective.core;
+using u040.prespective.core.transformation;
 
-namespace u040.prespective.prepair.kinematics
+namespace u040.prespective.prepair.kinematics.joints.basic
 {
     /// <summary>
     /// Represents a generic Prismatic joint relation between a spline and a geometric object
     /// 
-    /// <para>Copyright (c) 2015-2021 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
     /// </summary>
-#if !RELEASE
-    /// <feature>
-    /// https://unit040.atlassian.net/wiki/spaces/PUD/pages/1207369965/WIP+Double+Prismatic+Joint
-    /// </feature>
-    /// <testing>
-    ///     <Test1>
-    ///     Moving over the spline within limits (CustomPrismaticJointUnitTest)
-    ///     </Test1>
-    ///     <Test2>
-    ///     Moving over the spline outside it limits (CustomPrismaticJointUnitTest)
-    ///     </Test2>
-    ///     <Test3>
-    ///     Moving away from the spline (CustomPrismaticJointUnitTest)
-    ///     </Test3>
-    ///     <Test4>
-    ///     Moving over spline with rotation on it(CustomPrismaticJointUnitTest)
-    ///     </Test4>
-    ///     <Test5>
-    ///     https://unit040.atlassian.net/wiki/spaces/TEST/pages/2818070/Prismatic+Joint
-    ///     </Test5>
-    /// </testing>
-#endif
     [RequireComponent(typeof(DTransform))]
     public class DPrismaticJoint : APrismaticJoint
     {

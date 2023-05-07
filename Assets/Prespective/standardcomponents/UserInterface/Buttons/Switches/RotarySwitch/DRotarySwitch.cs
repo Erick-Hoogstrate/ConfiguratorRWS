@@ -1,17 +1,31 @@
+using System.Reflection;
 using u040.prespective.math;
 using u040.prespective.math.doubles;
 using u040.prespective.prepair;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.prepair.ui.buttons;
-using u040.prespective.utility;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.prepair.virtualhardware.sensors;
+using u040.prespective.prepair.virtualhardware.sensors.position;
+using u040.prespective.utility.modelmanagement;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.switches
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.position
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class DRotarySwitch : DBaseSwitch, ISensor
     {
+        #region<properties>
+        /// <summary>
+        /// The Wheel Joint used for the Rotary Switch
+        /// </summary>
         public AWheelJoint KinematicWheelJoint;
 
+        /// <summary>
+        /// Returns whether the switch has a physical limit 
+        /// </summary>
         public override bool LoopingSwitch
         {
             get 
@@ -24,7 +38,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
             }
         }
 
-        [SerializeField] private DQuaternion storedRotation;
+        [SerializeField]  private DQuaternion storedRotation;
         protected override bool hasMoved
         {
             get
@@ -38,6 +52,9 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
             }
         }
 
+        /// <summary>
+        /// The current position of the switch in percentages over a full rotation
+        /// </summary>
         public override double CurrentPositionPercentage
         {
             get
@@ -49,18 +66,31 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
                 return -1f;
             }
         }
+        #endregion
 
-        private void Reset()
+        #region<unity functions>
+        /// <summary>
+        /// Unity reset
+        /// </summary>
+        public void Reset()
         {
             this.KinematicWheelJoint = this.gameObject.RequireComponent<DWheelJoint>(true);
         }
+        #endregion
 
+        #region<match>
         protected override void matchOuterTransitionsToLimits()
         {
-            SwitchStates[0].LowerTransition = KinematicWheelJoint.RotationLimitMinMaxDeg.X;
-            SwitchStates[SwitchStates.Count - 1].UpperTransition = KinematicWheelJoint.RotationLimitMinMaxDeg.Y;
+            SwitchStates[0].LowerTransition = KinematicWheelJoint.RotationLimitMinMaxDegrees.X;
+            SwitchStates[SwitchStates.Count - 1].UpperTransition = KinematicWheelJoint.RotationLimitMinMaxDegrees.Y;
         }
+        #endregion
 
+        #region<save>
+        /// <summary>
+        /// Add the current position of the switch as a Switch State
+        /// </summary>
+        /// <returns>The newly created Switch State</returns>
         public override DSwitchState SaveCurrentPositionAsState()
         {
             if (this.KinematicWheelJoint)
@@ -69,20 +99,25 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
             }
             return null;
         }
+        #endregion
 
+        #region<select>
+        /// <summary>
+        /// Select an existing switch state by ID. This sets the Wheel Joint to that position.
+        /// </summary>
+        /// <param name="_id">Switch State ID</param>
         public override void SelectState(int _id)
         {
             try
             {
-                double _statePercentage = SwitchStates[_id].Position - this.KinematicWheelJoint.CurrentRevolutionPercentage;
-                double _targetAngle = 360d * _statePercentage;
+                double statePercentage = SwitchStates[_id].Position - this.KinematicWheelJoint.CurrentRevolutionPercentage;
+                double targetAngle = 360d * statePercentage;
 
-                this.KinematicWheelJoint.Rotate(_targetAngle, (IntentData _intent) =>
+                this.KinematicWheelJoint.Rotate(targetAngle, (IntentData _intent) =>
                 {
-                    /*Callback here*/
-                    if (_intent.EnforcableFraction != 1d)
+                    if (_intent.EnforceableFraction != 1d)
                     {
-                        Debug.LogError("Unable to complete rotation. Traveled " + _intent.EnforcableFraction + " times the requested distance.");
+                        Debug.LogError("Unable to complete rotation. Travelled " + _intent.EnforceableFraction + " times the requested distance.");
                     }
                 });
             }
@@ -91,5 +126,6 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
                 Debug.LogWarning("Cannot select state with id '" + _id + "' since it does not exist.");
             }
         }
+        #endregion
     }
 }

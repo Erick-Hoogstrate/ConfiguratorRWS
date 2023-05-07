@@ -2,23 +2,25 @@ using System;
 using System.Collections.Generic;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.logic;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.userinterface.lights
+namespace u040.prespective.standardcomponents.virtualhardware.actuators.lights.logic
 {
-    #pragma warning disable 0618
     public class IndicatorLightLogic : StandardLogicComponent<IndicatorLight>
     {
+        private const string oActive = "oActive";
+        private const string oIntensity = "oIntensity";
+
         protected override Dictionary<SignalInstance, Func<object>> customInputSignalMemberGetters
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         #region <<PLC Signals>>
+
         #region <<Signal Definitions>>
+
         /// <summary>
         /// Declare the IO signals
         /// </summary>
@@ -26,14 +28,18 @@ namespace u040.prespective.standardcomponents.userinterface.lights
         {
             get
             {
-                return new List<SignalDefinition>() {
-                    new SignalDefinition("oActive", PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, "", "Light active", onSignalChanged, null, false),
-                    // new SignalDefinition("oIntensity", PLCSignalDirection.OUTPUT, SupportedSignalType.REAL32, "", "Light intensity", onSignalChanged, null, 1f),
-            };
+                return new List<SignalDefinition>()
+                {
+                    new SignalDefinition(oActive, PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, _xmlNote: "Light active", _onValueChange: onSignalChanged, _baseValue: false),
+                    new SignalDefinition(oIntensity, PLCSignalDirection.OUTPUT, SupportedSignalType.REAL32, _xmlNote: "Light intensity", _onValueChange: onSignalChanged, _baseValue: 1f),
+                };
             }
         }
+
         #endregion
+
         #region <<PLC Outputs>>
+
         /// <summary>
         /// General callback for the IOs
         /// </summary>
@@ -44,14 +50,15 @@ namespace u040.prespective.standardcomponents.userinterface.lights
         /// <param name="_oldValueReceived">the time of the old value change</param>
         void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
         {
-            switch (_signal.definition.defaultSignalName)
+            switch (_signal.Definition.DefaultSignalName)
             {
-                case "oActive":
-                    Target.SetActive((bool)_newValue);
+                case oActive:
+                    Target.SetActive((bool) _newValue);
                     break;
 
-                case "oIntensity":
-                    Target.Intensity = (float)_newValue;;
+                case oIntensity:
+                    Target.Intensity = (float) _newValue;
+                    ;
                     break;
 
                 default:
@@ -59,11 +66,9 @@ namespace u040.prespective.standardcomponents.userinterface.lights
                     break;
             }
         }
-        #endregion
-        #region <<PLC Inputs>>
 
         #endregion
+
         #endregion
     }
-    #pragma warning restore 0618
 }

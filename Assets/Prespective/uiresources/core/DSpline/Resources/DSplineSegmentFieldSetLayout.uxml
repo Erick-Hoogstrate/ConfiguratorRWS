@@ -1,7 +1,7 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ue:ColorField name="color" label="Color" />
 	<ue:DoubleField name="tesselation-angle" label="Tessellation Angle" />
 	<ue:EnumField class="margin-bottom-5px" name="rotation-direction" label="Rotation Direction" />
 	<ue:DoubleField class="no-box margin-bottom-5px" name="maximum-tolerance" label="Maximum Tolerance" />
 	<ui:Button class="content-fit-button" name="reanalyze-tolerance" text="Reanalyze Tolerance" />
-</UXML>
+</ui:UXML>

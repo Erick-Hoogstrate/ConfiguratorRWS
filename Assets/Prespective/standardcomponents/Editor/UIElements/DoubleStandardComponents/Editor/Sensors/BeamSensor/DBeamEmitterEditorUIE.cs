@@ -1,86 +1,67 @@
-using System.Reflection;
-using u040.prespective.core.editor;
-using u040.prespective.math.doubles;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.systems.beam;
+using u040.prespective.utility.editor.editorui;
+using u040.prespective.utility.editor.editorui.scenegui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.sensors.beamsensor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.beam
 {
     [CustomEditor(typeof(DBeamEmitter))]
     public class DBeamEmitterEditorUIE : StandardComponentEditorUIE<DBeamEmitter>
     {
         #region << Live Data Fields >>
-        TextField state;
-        TextField redirectionLimitReached;
+        private TextField state;
         #endregion
         #region << Property Fields>>
-        DoubleField reach;
-        VisualElement originOffsetContainer;
-        DVector3Field originOffset;
-        VisualElement originDirectionContainer;
-        DVector3Field originDirection;
-        IntegerField maxNumberOfHits;
-        ObjectField beamMaterial;
-        DoubleField beamRadius;
+        private FloatField reachField;
+        private Vector3Field originOffset;
+        private Vector3Field originDirection;
+        private ObjectField beamMaterialField;
+        private FloatField beamRadiusField;
         #endregion
         #region << Gizmo Properties >>
-        Toggle useOriginGizmo;
-        FloatField originGizmoSize;
-        Toggle useBeamGizmo;
-        ColorField beamColor;
-        ColorField beamExcessColor;
+        private Toggle showGizmoToggle;
+        private Toggle showBeamToggle;
+        private ColorField gizmoColorField;
         #endregion
         #region << Control Panel Properties >>
-        TextField stateControlPanel;
-        TextField reductionLimitReached;
-        #endregion
-        protected override void ExecuteOnEnable()
-        {
-            visualTree = Resources.Load<VisualTreeAsset>("Sensors/BeamSensor/DBeamEmitterLayout");
-            base.ExecuteOnEnable();
-        }
+        private TextField stateControlPanel;
 
-        protected override void UpdateLiveData()
+        protected override string visualTreeFile => "DBeamEmitterEditorLayout";
+        #endregion
+
+        protected override void updateLiveData()
         {
             state.value = component.IsActive ? "Active" : "Inactive";
             state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
-            redirectionLimitReached.value = component.BeamCompleted.ToString();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
             state = root.Q<TextField>(name: "state");
             state.isReadOnly = true;
-
-            redirectionLimitReached = root.Q<TextField>(name: "redirection-limit-reached");
-            redirectionLimitReached.isReadOnly = true;
             #endregion
             #region << Properties >>
-            reach = root.Q<DoubleField>(name: "reach");
-            originOffsetContainer = root.Q<VisualElement>(name: "origin-offset");
-            originOffset = new DVector3Field("Origin Offset", component.PositionalOffset);
-            originOffsetContainer.Add(originOffset);
-            originDirectionContainer = root.Q<VisualElement>(name: "origin-direction");
-            originDirection = new DVector3Field("Origin Direction", component.OriginDirection);
-            originDirectionContainer.Add(originDirection);
-            maxNumberOfHits = root.Q<IntegerField>(name: "max-number-of-hits");
-            beamMaterial = root.Q<ObjectField>(name: "beam-material");
-            beamRadius = root.Q<DoubleField>(name: "beam-radius");
+            reachField = root.Q<FloatField>(name: "reach");
+            originOffset = root.Q<Vector3Field>(name: "origin-offset");
+            originDirection = root.Q<Vector3Field>(name: "origin-direction");
+            beamMaterialField = root.Q<ObjectField>(name: "beam-material");
+            beamRadiusField = root.Q<FloatField>(name: "beam-radius");
 
             UIUtility.InitializeField
             (
-                reach,
+                reachField,
+                component,
                 () => component.Reach,
-                e =>
+                _e =>
                 {
-                    component.Reach = e.newValue;
+                    component.Reach = _e.newValue;
+                    reachField.SetValueWithoutNotify(component.Reach);
                     SceneView.RepaintAll();
                 }
             );
@@ -88,10 +69,11 @@ namespace u040.prespective.standardcomponents.sensors.beamsensor.editor
             UIUtility.InitializeField
             (
                 originOffset,
+                component,
                 () => component.PositionalOffset,
-                e =>
+                _e =>
                 {
-                    component.PositionalOffset = e.newValue;
+                    component.PositionalOffset = _e.newValue;
                     SceneView.RepaintAll();
                 }
             );
@@ -99,105 +81,81 @@ namespace u040.prespective.standardcomponents.sensors.beamsensor.editor
             UIUtility.InitializeField
             (
                 originDirection,
+                component,
                 () => component.DirectionalOffset,
-                e =>
+                _e =>
                 {
-                    component.DirectionalOffset = e.newValue;
+                    component.DirectionalOffset = _e.newValue;
                     SceneView.RepaintAll();
                 }
             );
 
             UIUtility.InitializeField
             (
-                maxNumberOfHits,
-                () => component.MaxNumberOfHits,
-                e =>
-                {
-                    component.MaxNumberOfHits = e.newValue;
-                }
-            );
-
-            UIUtility.InitializeField
-            (
-                beamMaterial,
+                beamMaterialField,
+                component,
                 () => component.BeamMaterial,
-                e =>
+                _e =>
                 {
-                    component.BeamMaterial = (Material)e.newValue;
+                    component.BeamMaterial = (Material)_e.newValue;
+                    showBeamToggle.SetValueWithoutNotify(component.ShowBeam);
                     SceneView.RepaintAll();
                 },
                 typeof(Material)
             );
 
+            beamRadiusField.isDelayed = true;
             UIUtility.InitializeField
             (
-                beamRadius,
+                beamRadiusField,
+                component,
                 () => component.BeamRadius,
-                e =>
+                _e =>
                 {
-                    component.BeamRadius = e.newValue;
+                    component.BeamRadius = _e.newValue;
+                    beamRadiusField.SetValueWithoutNotify(component.BeamRadius);
                     SceneView.RepaintAll();
                 }
             );
             #endregion
             #region << Gizmo Settings >>
-            useOriginGizmo = root.Q<Toggle>(name: "use-origin-gizmo");
-            originGizmoSize = root.Q<FloatField>(name: "origin-gizmo-size");
-            useBeamGizmo = root.Q<Toggle>(name: "use-beam-gizmo");
-            beamColor = root.Q<ColorField>(name: "beam-color");
-            beamExcessColor = root.Q<ColorField>(name: "beam-excess-color");
+            showGizmoToggle = root.Q<Toggle>(name: "show-gizmo");
+            showBeamToggle = root.Q<Toggle>(name: "show-beam");
+            gizmoColorField = root.Q<ColorField>(name: "gizmo-color");
 
             UIUtility.InitializeField
             (
-                useOriginGizmo,
-                () => component.UseOriginGizmo,
-                e =>
+                showGizmoToggle,
+                component,
+                () => component.ShowGizmo,
+                _e =>
                 {
-                    component.UseOriginGizmo = e.newValue;
+                    component.ShowGizmo = _e.newValue;
                     SceneView.RepaintAll();
                 }
             );
 
             UIUtility.InitializeField
             (
-                originGizmoSize,
-                () => component.OriginGizmoSize,
-                e =>
+                showBeamToggle,
+                component,
+                () => component.ShowBeam,
+                _e =>
                 {
-                    component.OriginGizmoSize = e.newValue;
+                    component.ShowBeam = _e.newValue;
+                    beamMaterialField.SetValueWithoutNotify(component.BeamMaterial);
                     SceneView.RepaintAll();
                 }
             );
 
             UIUtility.InitializeField
             (
-                useBeamGizmo,
-                () => component.UseBeamGizmo,
-                e =>
+                gizmoColorField,
+                component,
+                () => component.GizmoColor,
+                _e =>
                 {
-                    component.UseBeamGizmo = e.newValue;
-                    SceneView.RepaintAll();
-                }
-            );
-
-            UIUtility.InitializeField
-            (
-                beamColor,
-                () => component.BeamColor,
-                e =>
-                {
-                    component.BeamColor = e.newValue;
-                    SceneView.RepaintAll();
-                }
-            );
-
-            UIUtility.InitializeField
-            (
-                beamExcessColor,
-                () => component.BeamExcessColor,
-                e =>
-                {
-                    component.BeamExcessColor = e.newValue;
+                    component.GizmoColor = _e.newValue;
                     SceneView.RepaintAll();
                 }
             );
@@ -207,43 +165,40 @@ namespace u040.prespective.standardcomponents.sensors.beamsensor.editor
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             stateControlPanel = new TextField("State");
-            UIUtility.ToggleNoBoxAndReadOnly(stateControlPanel, true);
-
-            reductionLimitReached = new TextField("Reduction Limit Reached");
-            UIUtility.ToggleNoBoxAndReadOnly(reductionLimitReached, true);
+            UIUtility.SetReadOnlyState(stateControlPanel, true);
 
             Button enableDisableButton = new Button();
             enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             enableDisableButton.AddToClassList("content-fit-button");
-            enableDisableButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            enableDisableButton.RegisterCallback<MouseUpEvent>(_mouseEvent =>
             {
                 component.IsActive = !component.IsActive;
                 enableDisableButton.text = component.IsActive ? "Disable" : "Enable";
             });
 
-            ScheduleControlPanelUpdate(stateControlPanel);
+            scheduleControlPanelUpdate(stateControlPanel);
 
             _container.Add(stateControlPanel);
-            _container.Add(reductionLimitReached);
             _container.Add(enableDisableButton);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             stateControlPanel.value = component.IsActive ? "Active" : "Inactive";
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
-            reductionLimitReached.value = component.BeamCompleted.ToString();
         }
 
         private void OnSceneGUI()
         {
             if (!Application.isPlaying)
             {
-                if (component.UseOriginGizmo)
+                if (component.ShowGizmo && component.BeamDirection != Vector3.zero)
                 {
-                    Handles.color = component.BeamColor;
-                    Handles.SphereHandleCap(0, component.OriginPosition.ToFloat(), Quaternion.identity, HandleUtility.GetHandleSize(component.transform.position) * component.OriginGizmoSize * 0.25f, EventType.Repaint);
-                    Handles.ArrowHandleCap(0, component.OriginPosition.ToFloat(), DQuaternion.FromToRotation(DVector3.Forward, component.OriginDirection).ToFloat(), HandleUtility.GetHandleSize(component.transform.position) * (component.OriginGizmoSize > 0.9f && component.OriginGizmoSize < 1.1f ? 1.1f : component.OriginGizmoSize), EventType.Repaint);
+                    Handles.color = component.GizmoColor;
+                    float handleSize = HandleUtility.GetHandleSize(component.transform.position);
+                    Handles.SphereHandleCap(0, component.BeamOrigin, Quaternion.identity, handleSize * 0.25f, EventType.Repaint);
+                    Handles.ArrowHandleCap(0, component.BeamOrigin, Quaternion.FromToRotation(Vector3.forward, component.BeamDirection), handleSize * 1.5f, EventType.Repaint);
+                    PrespectiveHandles2D.ThickLine(component.BeamOrigin, component.BeamOrigin + component.BeamDirection.normalized * handleSize * 1.35f, _width: 7);
                 }
             }
         }

@@ -1,7 +1,8 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
   <ui:VisualElement class="division margin-bottom-10px">
-    <ui:Label class="bold margin-bottom-10px" text="Control Point handles Settings" />
+    <ui:Label class="bold margin-bottom-10px" text="Control Point Handle Settings" />
     <ue:EnumField name="handle-type" label="Handle Type"/>
+    <ui:TextField name="spline-percentage" label="Spline Percentage"/>
     <ue:EnumField name="handle-gizmo" label="Handle Gizmo"/>
     <ue:EnumField name="handle-space" label="Handle Space"/>
     <ui:VisualElement name="handle-in"/>
@@ -39,10 +40,11 @@
   <ui:VisualElement class="division margin-bottom-10px">
     <ui:Label class="bold margin-bottom-10px" text="Leading And Trailing Segment Settings" />
     <ui:Label class="standalone-inspector-label font-italic" name="multi-select-message" text="Not available in inspector with multi-select." />
+    <ui:Label class="standalone-inspector-label font-italic" name="multiple-control-points-message" text="A Spline needs multiple Control Points to form segments." />
     <ui:VisualElement name="segments-container"/>
   </ui:VisualElement>
 
-  <ui:Foldout class="foldout-division margin-bottom-10px" text="Scene View Settings" value="false">
+  <ui:Foldout name="scene-view-settings-foldout" class="foldout-division margin-bottom-10px" text="Scene View Settings" value="false">
     <ui:Toggle label="Show Normal X Axis" name="show-normal-x-axis"/>
     <ui:Toggle label="Show Normal Y Axis" name="show-normal-y-axis"/>
     <ui:Toggle label="Show Normal Z Axis" name="show-normal-z-axis"/>
@@ -53,4 +55,4 @@
     </ui:VisualElement>
     <ui:Toggle label="Show Handle Limit Axis" name="show-handle-limit-axis"/>
   </ui:Foldout>
-</UXML>
+</ui:UXML>

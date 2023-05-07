@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="input-mode-options-container" />
+    <ui:VisualElement name="value-input-test-field-container" />
+</ui:UXML>

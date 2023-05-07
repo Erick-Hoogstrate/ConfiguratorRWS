@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout name="connection-foldout" text="Connection">
+    <ui:VisualElement name="manipulator-container"/>
+    <ui:VisualElement name="module-container"/>
+    <ui:TextField name="connection-type-field" label="Connection Type: "/>
+  </ui:Foldout>
+</ui:UXML>

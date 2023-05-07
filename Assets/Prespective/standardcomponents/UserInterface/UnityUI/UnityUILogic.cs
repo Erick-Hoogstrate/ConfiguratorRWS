@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.component;
 using u040.prespective.prelogic.signal;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.userinterface.unityui
+namespace u040.prespective.standardcomponents.logic
 {
     public class UnityUILogic : PreLogicComponent
     {
 #pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
+        [SerializeField] private int toolbarTab;
 #pragma warning restore 0414
+
+        private const string INPUT_PREFIX = "i";
+        private const string OUTPUT_PREFIX = "o";
 
         /// <summary>
         /// Print debug logs to console
@@ -23,17 +25,17 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
             get { return signalNames; }
             set
             {
-                List<string> _tempNameList = new List<string>();
-                List<string> _tempDateList = new List<string>();
-                for (int _i = 0; _i < value.Count; _i++)
+                List<string> tempNameList = new List<string>();
+                List<string> tempDateList = new List<string>();
+                for (int i = 0; i < value.Count; i++)
                 {
-                    string _name = value[_i];
-                    _name = _name.Replace(" ", "_");
-                    _tempNameList.Add(_name);
-                    _tempDateList.Add(DateTime.MinValue.ToLongTimeString());
+                    string name = value[i];
+                    name = name.Replace(" ", "_");
+                    tempNameList.Add(name);
+                    tempDateList.Add(DateTime.MinValue.ToLongTimeString());
                 }
-                signalNames = _tempNameList;
-                lastTriggeredTime = _tempDateList;
+                signalNames = tempNameList;
+                lastTriggeredTime = tempDateList;
             }
         }
 
@@ -45,15 +47,12 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
         {
             get { return lastTriggeredTime; }
         }
-        private string defaultTimestamp = DateTime.MinValue.ToLongTimeString();
-        public string DefaultTimestamp { get; }
 
-        private string inputPrefix = "i";
-        private string outputPrefix = "o";
+        public string DefaultTimestamp { get; } = DateTime.MinValue.ToLongTimeString();
 
-        private void Reset()
+        internal void Reset()
         {
-            this.implicitNamingRule.instanceNameRule = "GVLs." + this.GetType().Name + "[{{INDEX_IN_PARENT}}]";
+            this.ImplicitNamingRule.InstanceNameRule = "GVLs." + this.GetType().Name + "[{{INDEX_IN_PARENT}}]";
         }
 
         #region <<PLC Signals>>
@@ -65,21 +64,21 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
         {
             get
             {
-                List<SignalDefinition> _signalDefList = new List<SignalDefinition>();
+                List<SignalDefinition> signalDefList = new List<SignalDefinition>();
 
-                for (int _i = 0; _i < SignalNames.Count; _i++)
+                for (int i = 0; i < SignalNames.Count; i++)
                 {
-                    SignalDefinition _newInputSignalDef = new SignalDefinition(inputPrefix + SignalNames[_i], PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", SignalNames[_i] + " received", null, null, false);
-                    SignalDefinition _newOutputSignalDef = new SignalDefinition(outputPrefix + SignalNames[_i], PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, "", SignalNames[_i] + " confirmed", onSignalChanged, null, false);
+                    SignalDefinition newInputSignalDef = new SignalDefinition(INPUT_PREFIX + SignalNames[i], PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", SignalNames[i] + " received", null, null, false);
+                    SignalDefinition newOutputSignalDef = new SignalDefinition(OUTPUT_PREFIX + SignalNames[i], PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, "", SignalNames[i] + " confirmed", onSignalChanged, null, false);
 
-                    if (!_signalDefList.Contains(_newInputSignalDef) && !_signalDefList.Contains(_newOutputSignalDef))
+                    if (!signalDefList.Contains(newInputSignalDef) && !signalDefList.Contains(newOutputSignalDef))
                     {
-                        _signalDefList.Add(_newInputSignalDef);
-                        _signalDefList.Add(_newOutputSignalDef);
+                        signalDefList.Add(newInputSignalDef);
+                        signalDefList.Add(newOutputSignalDef);
                     }
-                    else { Debug.LogError("Cannot add \"" + SignalNames[_i] + "\" to the list since it already exists within it."); }
+                    else { Debug.LogError("Cannot add \"" + SignalNames[i] + "\" to the list since it already exists within it."); }
                 }
-                return _signalDefList;
+                return signalDefList;
             }
         }
         #endregion
@@ -96,9 +95,9 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
         {
             if ((bool)_newValue)
             {
-                string _signalName = _signal.definition.defaultSignalName.Substring(1);
-                string _inputSignalname = inputPrefix + _signalName;
-                WriteValue(_inputSignalname, false);
+                string signalName = _signal.Definition.DefaultSignalName.Substring(1);
+                string inputSignalname = INPUT_PREFIX + signalName;
+                WriteValue(inputSignalname, false);
             }
         }
         #endregion
@@ -124,7 +123,7 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
         {
             if (SignalNames.Contains(_signalName))
             {
-                if (WriteValue(inputPrefix + _signalName, true))
+                if (WriteValue(INPUT_PREFIX + _signalName, true))
                 {
                     saveTimeStamp(_signalName);
                 }
@@ -137,11 +136,6 @@ namespace u040.prespective.standardcomponents.userinterface.unityui
         {
             lastTriggeredTime[signalNames.IndexOf(_signalName)] = DateTime.Now.ToLongTimeString();
         }
-        private void saveTimeStamp(int _signalID)
-        {
-            lastTriggeredTime[_signalID] = DateTime.Now.ToLongTimeString();
-        }
-
         #endregion
     }
 }

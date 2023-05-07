@@ -1,20 +1,35 @@
-using u040.prespective.prepair.kinematics;
-using u040.prespective.prepair.ui.buttons;
-using u040.prespective.utility;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.prepair.virtualhardware.sensors;
+using u040.prespective.prepair.virtualhardware.sensors.position;
+using u040.prespective.utility.modelmanagement;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.encoders
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.position
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class DRotaryEncoder : DBaseEncoder, ISensor
     {
+        /// <summary>
+        /// The Wheel Joint used for the Rotary Encoder
+        /// </summary>
         public AWheelJoint KinematicWheelJoint;
 
-        private void Reset()
+        /// <summary>
+        /// Unity Reset
+        /// </summary>
+        public void Reset()
         {
             KinematicWheelJoint = this.RequireComponent<DWheelJoint>();
         }
 
-        protected override void FixedUpdate()
+        /// <summary>
+        /// Unity Update
+        /// </summary>
+        public override void FixedUpdate()
         {
             if (KinematicWheelJoint == null)
             {
@@ -22,6 +37,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.encoders
                 return;
             }
 
+            //Call function in DBaseEncoder
             updateValue(this.KinematicWheelJoint.CurrentRevolutionPercentage);
         }
     }

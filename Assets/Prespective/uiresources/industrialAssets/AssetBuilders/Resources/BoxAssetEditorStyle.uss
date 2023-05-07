@@ -1,0 +1,13 @@
+.indented-slider > Label {
+	padding-left: 10px;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.reset-button {
+	width: 100px;
+}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace u040.prespective.core
+namespace u040.prespective.core.topology
 {
     /// <summary>
     /// <description>

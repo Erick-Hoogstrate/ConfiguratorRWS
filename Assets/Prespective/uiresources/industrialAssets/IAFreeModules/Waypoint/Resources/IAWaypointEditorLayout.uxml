@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement name="main-container" class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Waypoint Settings" />
+    <ue:ColorField name="waypoint-color" label="Waypoint Color" />
+    <ui:Toggle name="show-icon" label="Show in Scene View" />
+  </ui:VisualElement>
+</ui:UXML>

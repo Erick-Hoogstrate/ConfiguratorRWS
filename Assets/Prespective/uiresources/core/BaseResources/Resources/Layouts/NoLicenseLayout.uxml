@@ -1,5 +1,5 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" xmlns:pre="u040.prespective">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ui:VisualElement class="window-padding-container">
 		<ui:Label class="bold" text="No Active Prespective License"/>
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

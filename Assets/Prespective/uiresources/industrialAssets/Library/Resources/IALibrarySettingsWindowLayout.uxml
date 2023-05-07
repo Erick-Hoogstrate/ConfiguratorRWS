@@ -1,0 +1,6 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Label text="Shared folder location" class="bold"/>
+    <ui:Label name="shared-folder-location-text" />
+    <ui:Button name="shared-folder-location-browse-button" text="Browse"/>
+    <ui:Button name="ok-button" text="Set shared assets location"/>
+</ui:UXML>

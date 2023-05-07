@@ -1,0 +1,43 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Visualization" binding-path="EditorExpandVisualization">
+    <ui:Toggle name="hide-cue-gizmos" label="Hide cue gizmos" />
+    <ui:Toggle name="hide-input-labels" label="Hide input labels" />
+    <ui:Toggle name="hide-progress-label" label="Hide progress label" tooltip="Shows progress of configuration during play mode"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Configuration" binding-path="EditorExpandConfiguration">
+    <ue:IntegerField name="amount-of-inputs" label="Amount of inputs" />
+    <ui:Foldout text="Inputs" binding-path="EditorExpandInputs">
+      <ui:VisualElement class="row" name="spline-data-row-title">
+        <ui:Label style="width: 10%" text="Nr."/>
+        <ui:Label style="width: 45%" text="Direction"/>
+        <ui:Label style="width: 40%" text="Length"/>
+      </ui:VisualElement>
+      <ui:VisualElement name="inputs-container"/>
+    </ui:Foldout>
+    <ue:DoubleField name="spacing-inputs" label="Spacing between inputs" style="margin-bottom: 10px;"/>
+    <!--<ue:EnumField name="in-direction" label="In direction" />
+    <ue:DoubleField name="length-in-direction" label="Length path inwards" />-->
+    <ue:EnumField name="out-direction" label="Out direction" />
+    <ue:DoubleField name="length-out-direction" label="Length out path" />
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Assembly" binding-path="EditorExpandAction">
+
+    <ui:Foldout text="Timing:" style="margin-top: 8px; -unity-font-style: italic;" binding-path="EditorExpandTiming">
+        <ui:VisualElement name="timing-container">
+          <ue:DoubleField name="wait-time" label="Assemble time" tooltip="Time actor stands still in the center of the assembly unit."/>
+          <ue:DoubleField name="moving-in-time" label="Moving in time" tooltip="Time it takes for a product to move from the start of an in position to the center of the assembly unit" />
+          <ue:DoubleField name="moving-out-time" label="Moving out time" tooltip="Time it takes for an assembly to move from the center to the out position" />
+        </ui:VisualElement>
+    </ui:Foldout>
+
+    <ui:Foldout text="Product supplies:" style="margin-top: 8px; -unity-font-style: italic;" binding-path="EditorExpandProductSupplies">
+        <ui:VisualElement name="supply-container" style="-unity-font-style: normal;"/>
+    </ui:Foldout>
+
+    <ui:Label text="Assembly product:" style="margin-top: 10px; -unity-font-style: italic;"/>
+    <ui:VisualElement class="division" name="assembly-container" />
+  </ui:Foldout>
+  
+</ui:UXML>

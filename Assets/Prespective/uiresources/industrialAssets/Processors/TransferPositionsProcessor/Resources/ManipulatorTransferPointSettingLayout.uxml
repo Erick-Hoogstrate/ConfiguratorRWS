@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:Foldout class="custom-exposure-foldout" name="main-foldout" text="Manipulator Transfer Position">
+		<ui:TextField name="position-name" label="Position Name" class="custom-exposure"/>
+		<ue:ObjectField name="transfer-point" label="Transfer Point" class="custom-exposure"/>
+		<ui:VisualElement name="affected-patterns-and-preview-maskfields-container" label="Affected Patterns"/>
+		<ui:VisualElement name="position-offset"/>
+		<ui:VisualElement name="rotation-offset"/>
+		<ui:Foldout class="custom-exposure-foldout" name="used-pattern-foldout" text="Used Pattern Positions">
+			<ui:Button name="add-position" text="Add Position" class="content-fit-button custom-exposure"/>
+			<ui:VisualElement name="used-pattern-positions-container" />
+		</ui:Foldout>
+		<ui:Foldout class="custom-exposure-foldout disabled" name="actions-foldout" text="Manipulator Transfer Action Points">
+			<ui:Button name="add-action" text="Add Action Point" class="content-fit-button custom-exposure" />
+			<ui:VisualElement name="manipulator-action-point-settings-container" />
+		</ui:Foldout>
+	</ui:Foldout>
+</ui:UXML>

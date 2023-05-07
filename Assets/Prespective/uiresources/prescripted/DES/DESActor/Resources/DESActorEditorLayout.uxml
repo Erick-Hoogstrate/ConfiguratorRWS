@@ -1,0 +1,30 @@
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Transform Settings" />
+    <ui:Toggle name="use-rigidbody" label="Use Rigidbody" />
+    <ue:ObjectField name="rigidbody" label="Rigidbody" />
+    <ue:EnumField name="transform-precision" label="Transform Precision" tooltip="Set the Transformation Precision of this GameObject:&#xA;floating point precision : retains about 1e-2 ~ 1e-3m translation precision and about 1e1 degrees rotation precision, but is much more performant&#xA;double point precision retains about 1e-7 ~ 1e-10m translation precision and about 1e-4 ~ 1e-7 degrees rotation precision, but is less performant"/>
+  </ui:VisualElement>
+  
+  <!-- Visual Element with various DES participant info fields -->
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Specifications" />
+    <ui:TextField name="participant-id" label="Participant ID" />
+    <ui:Toggle name="active-in-simulation" label="Active In Simulation" />
+    <ui:TextField name="activity-state" label="Activity State" />
+  </ui:VisualElement>
+
+   <!-- Visual Element in which we'll inject fields for any public child property (so we don't need to make a uxml for every individual child class to edit new settings) -->
+  <ui:VisualElement class="division margin-bottom-10px" name="inheriting-type-inspector"/>
+
+  <!-- Foldout with  DES participant debuggin fields -->
+  <ui:Foldout class="foldout-division" name="debugging" text="Debugging" value="false">
+    <ui:Toggle name="verbose" label="Verbose" />
+    <ui:Toggle name="report-all-in-inspector" label="Report All Activities In Inspector" />
+    <ue:PropertyField name="event-report" binding-path="EventReport"/>
+    <ue:PropertyField name="activity-report" binding-path="ActivityReport"/>
+  </ui:Foldout>
+
+</ui:UXML>

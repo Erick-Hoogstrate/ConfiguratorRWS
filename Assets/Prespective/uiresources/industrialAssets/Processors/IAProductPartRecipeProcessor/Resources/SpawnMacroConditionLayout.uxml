@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row custom-exposure" name="input-test-container" >
+      <ui:VisualElement name="selected-variable-container" />
+      <ui:VisualElement name="explicit-numeric-Value-input-Mode-container" />
+    </ui:VisualElement>
+    <ui:VisualElement name="selected-macro-response-container" />
+    <!--<ue:P name="macro-response" label="Then: "/>-->
+    <ui:VisualElement name="spawn-macro-response-action-container" />
+</ui:UXML>

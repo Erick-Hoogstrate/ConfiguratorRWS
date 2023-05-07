@@ -1,0 +1,18 @@
+#edit-collider-button{
+    border-width: 1px;
+    border-color: black;
+}
+.edit-collider-disabled{
+    background-color: rgb(56,56,56);
+}
+
+.edit-collider-disabled:hover{
+    background-color: rgb(66,66,66);
+}
+
+.edit-collider-enabled, .edit-collider-enabled:hover{
+    background-color: rgb(106,106,106);
+}
+#new-floor-button{
+    margin-top:10px
+}

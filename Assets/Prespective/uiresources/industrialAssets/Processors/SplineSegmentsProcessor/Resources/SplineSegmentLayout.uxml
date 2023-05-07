@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ue:DoubleField name="start-value" label="Start" class="custom-exposure">
+      <ui:Button name="lock-start" text="L" style="width:10px;"/>
+    </ue:DoubleField>
+
+    <ue:DoubleField name="end-value" label="End" class="custom-exposure">
+      <ui:Button name="lock-end" text="L" style="width:10px;"/>
+    </ue:DoubleField>
+    
+    <ui:VisualElement class="margin-bottom-5px" name="motion-state-container" />
+
+    <ui:Foldout name="parts-on-segment" text="Parts on Segment"  value="false"/>	
+</ui:UXML>

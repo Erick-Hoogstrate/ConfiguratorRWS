@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="settings"/>
+    <ui:VisualElement name="manipulationRecipes"/>
+    <ui:VisualElement name="points-and-routes"/>
+  <ui:VisualElement name="connections"/>
+  <ui:VisualElement name="throughput-visualization-container"/>
+</ui:UXML>

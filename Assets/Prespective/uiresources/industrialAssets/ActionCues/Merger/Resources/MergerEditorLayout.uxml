@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label text="Configuration" class="bold margin-bottom-10px" />
+    <ue:EnumField name="fork-direction" label="Fork direction" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label text="Instructor" class="bold margin-bottom-10px" />
+    <ue:EnumField name="merge-order" label="Merge order" />
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division custom-exposure-foldout" name="sceneview-settings" text="Scene View Settings" value="false">
+    <ui:Toggle name="enable-billboard-selection" label="Enable Billboard Selection" text="" />
+  </ui:Foldout>
+</ui:UXML>

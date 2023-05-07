@@ -1,40 +1,51 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:ScrollView>
-      
-        <ui:TextField picking-mode="Ignore" label="Cue Name" value="filler text" text="Cube" name="cue-name-field" />
-        <ui:TextField picking-mode="Ignore" label="Cue ID" value="filler text" text="39493" name="cue-id-field" readonly="true" />
-        <ui:Toggle label="Show Gizmos in Scene" value="true" name="show-gizmos-toggle" />
-      
-        <ui:VisualElement name="cue-position-settings-div" class="margin-bottom-10px">
-            <ui:Label text="Cue Position Settings" name="cue-position-settings-title" style="-unity-font-style: bold;" />
-            <ui:Toggle label="Show Gizmos in Scene" value="true" name="show-gizmos-toggle" />
-        </ui:VisualElement>
-      
-        <ui:VisualElement name="cue-spline-settings-div" class="margin-bottom-10px">
-            <ui:Label text="Cue Spline Settings" name="cue-spline-settings-title" style="-unity-font-style: bold;" />
-            <ui:TextField picking-mode="Ignore" label="Owner Spline" value="filler text" text="NEW_SPLINE (NEW_SPLINE)" name="owner-spline-field" readonly="true" />
-            <ui:Button text="Refresh Spline Ownership" name="refresh-spline-ownership-button" />
-            <ui:TextField picking-mode="Ignore" label="Total Spline Length (m)" value="filler text" text="1" name="total-spline-length-field" readonly="true" />
-            <ui:TextField picking-mode="Ignore" label="Percentual Position" value="filler text" text="0" name="percentual-position-field" />
-            <ui:TextField picking-mode="Ignore" label="Distance from Start (m)" value="filler text" text="0" name="distance-from-start-field" />
-            <ui:TextField picking-mode="Ignore" label="Distance from End (m)" value="filler text" text="1" name="distance-from-end-field" />
-        </ui:VisualElement>
-      
-        <ui:VisualElement name="cue-trigger-and-instructor-settings-div" class="margin-bottom-10px">
-            <ui:Label text="Cue Thickness " name="cue-trigger-and-instructor-settings-title" style="-unity-font-style: bold;" />
-            <uie:ObjectField label="Cue Instructor" allow-scene-objects="true" name="cue-instructor-field" />
-            <ui:Toggle label="Trigger on Actor Rotation" name="trigger-on-actor-rotation-toggle" />
-            <ui:Toggle label="Trigger on Actor Translation" name="trigger-on-actor-translation-toggle" />
-            <ui:Toggle label="Trigger Actor Continously" name="trigger-actor-continously-toggle" />
-            <ui:Toggle label="Trigger Actor Centerpoint Intersect" name="trigger-actor-centerpoint-intersect-toggle" />
-        </ui:VisualElement>
-      
-        <ui:VisualElement name="cue-thickness-settings-div" class="margin-bottom-10px">
-            <ui:Label text="Cue Thickness Settings" name="cue-trigger-and-instructor-settings-title" style="-unity-font-style: bold;" />
-            <uie:FloatField label="Percentual Thickness (%/100)" value="1" name="percentual-thickness-field" />
-            <uie:FloatField label="Thickness in Units (m)" value="1" name="thickness-in-units-field" />
-            <ui:Toggle label="Draw Label in Sceneview" name="draw-label-in-sceneview-toggle" />
-        </ui:VisualElement>
-      
-    </ui:ScrollView>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Template src="../../../../../core/Transformation/NPrecisionMonoBehavior/Resources/NPrecisionMonoBehaviorTransformSettingsLayout.uxml" name="n-precision-monobehavior-transform-settings" />
+
+  <ui:Instance template="n-precision-monobehavior-transform-settings" name="n-precision-monobehavior-transform-settings" />
+  
+  <ui:VisualElement class="division margin-bottom-10px hide-in-multi-select">
+    <ui:Label class="bold margin-bottom-10px" text="Specifications" />
+    <ui:IMGUIContainer class="margin-bottom-10px display-none" name="no-spline-message" />
+    <ui:TextField name="cue-name" label="Cue Name" tooltip="Name to use for this cue" />
+    <ue:IntegerField name="participant-id" label="Participant ID" />
+  </ui:VisualElement>
+  
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline" name="position-settings">
+    <ui:Label class="bold margin-bottom-10px" text="Cue Position Settings" />
+    <ui:Toggle name="retain-world-position" label="Retain World Position" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline hide-in-multi-select" name="spline-settings">
+    <ui:Label class="bold margin-bottom-10px" text="Cue Spline Settings" />
+    <ui:VisualElement class="margin-bottom-10px" name="owner-spline-container" /><!-- owner spline object locator will be added here -->
+    <ui:Button class="content-fit-button margin-bottom-10px" name="refresh-spline-ownership" text="Refresh Spline Ownership"/>
+    <ue:DoubleField name="spline-length" label="Total Spline Length (m)" />
+    <ue:DoubleField name="percentual-position" label="Percentual Position (%)" tooltip="Position on the Spline expressed as percentage of the total spline length" />
+    <ue:DoubleField name="distance-from-start" label="Distance from Start (m)" tooltip="How far in Unity Units (m) the cue is positioned on the spline" />
+    <ue:DoubleField name="distance-from-end" label="Distance from End (m)" tooltip="How far in Unity Units (m) the is positioned from the end of the spline" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline hide-in-multi-select" name="instructor-settings">
+    <ui:Label class="bold margin-bottom-10px" text="Cue Trigger &amp; Instructor Settings" />
+    <ue:ObjectField name="instructor" label="Cue Instructor" />
+    <ui:Foldout text="Advanced Trigger Settings" value="false">
+      <ui:Toggle name="trigger-on-actor-rotation" label="Trigger on Actor Rotation" tooltip="Whether this cue should trigger if an actor with a rotating motion passes" />
+      <ui:Toggle name="trigger-on-actor-translation" label="Trigger on Actor Translation" tooltip="Whether this cue should trigger if an actor with a translating motion passes" />
+      <ui:Toggle name="trigger-actor-continuously" label="Trigger Actor Continuously" tooltip="Whether this cue should trigger continuously while an actor intersects" />
+      <ui:Toggle name="trigger-actor-inside" label="Trigger Actor When Completely Inside Cue" tooltip="Whether this cue should trigger an event when actor is completely inside it" />
+    </ui:Foldout>    
+  </ui:VisualElement>
+  
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline" name="thickness-settings">
+    <ui:Label class="bold margin-bottom-10px" text="Cue Thickness Settings" />
+    <ue:DoubleField name="percentual-thickness" label="Percentual Thickness (%)" tooltip="Hitbox of this cue expressed in perceptage of the spline length" />
+    <ue:DoubleField name="unit-thickness" label="Thickness in Units (m)" tooltip="Hitbox of this cue expressed in Unity units (m)" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline" name="inheriting-type-inspector"/>
+
+  <ui:Foldout class="foldout-division hide-when-no-owner-spline" name="scene-view-settings" text="Scene View Settings" value="false">
+    <ui:Toggle name="show-gizmos" label="Show Gizmos in Scene View" tooltip="Whether Scene Gizmos should be visible for this Cue" />
+    <ui:Toggle name="draw-label" label="Draw Label in Scene View" tooltip="Whether this cues' name should be visible in sceneview" />
+  </ui:Foldout>
 </ui:UXML>

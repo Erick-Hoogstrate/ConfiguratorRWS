@@ -1,13 +1,11 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ui:VisualElement class="row">
 		<ui:Foldout class="flex-grow margin-bottom-5px" value="false">
 			<ui:TextField name="target" label="Target" />
-			<ui:TextField name="sim-name-formatting" label="Sim Name Formatting" />
-			<ui:TextField name="plc-address-formatting" label="PLC Adress Formatting" />
-			<ui:TextField name="sim-path-separator" max-length="1" label="Sim Path Separator" />
+			<ui:TextField name="plc-address-formatting" label="PLC Address Formatting" />
 			<ui:TextField name="plc-path-separator" max-length="1" label="PLC Path Separator" />
 		</ui:Foldout>
 
 		<ui:Button class="content-fit-button" name="delete" text="x" />
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

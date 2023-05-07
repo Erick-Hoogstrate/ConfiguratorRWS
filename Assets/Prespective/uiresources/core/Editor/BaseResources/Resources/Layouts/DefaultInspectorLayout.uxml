@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Label class="bold margin-bottom-10px" name="default-inspector-header" />
+    <ui:VisualElement name="default-inspector" />
+</ui:UXML>

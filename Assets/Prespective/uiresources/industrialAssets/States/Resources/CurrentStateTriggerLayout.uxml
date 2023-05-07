@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+        <!--<ui:Foldout name="current-state-condition-foldout" class="custom-exposure-foldout" text="{index}:{Test Description}">   --> 
+            <ue:ObjectField name="target-state-owner" label="State Owner Object" class="custom-exposure"/>
+            <ui:VisualElement name="state-category-option-container"/>
+            <ui:VisualElement name="state-option-container"/>
+         <!--</ui:Foldout> --> 
+</ui:UXML>

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <!--<ue:ObjectField name="product-part" label="Product Part" class="custom-exposure"/>-->
+  <ui:TextField name="recipe-name" label="Recipe Name" class="custom-exposure"/>
+  <ui:VisualElement name="product-part-library-selector-container"/>
+  <ui:VisualElement name="product-part-options-container"/>
+  <ue:EnumField name="part-customization" label="Part Customization" class="custom-exposure"/>
+  <ui:VisualElement name="product-part-customization-action-container" />
+</ui:UXML>

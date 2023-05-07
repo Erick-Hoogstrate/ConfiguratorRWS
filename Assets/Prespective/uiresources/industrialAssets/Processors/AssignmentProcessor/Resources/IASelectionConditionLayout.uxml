@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="main-condition-foldout" text="Condition:">
+        <ui:VisualElement name="selection-test-selector-container" label="Selection Test"/>
+        <ui:VisualElement name="selection-test-container"/>
+        <ui:VisualElement class="disabled" name="failed-action-selector-container" label="When failed"/>
+    </ui:Foldout>
+</ui:UXML>

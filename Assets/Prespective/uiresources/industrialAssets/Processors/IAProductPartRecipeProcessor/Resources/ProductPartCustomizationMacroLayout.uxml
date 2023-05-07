@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="macro-variables-foldout" text="Macro Variables" class="custom-exposure">
+        <ui:VisualElement class="row">
+            <ui:Label text="Name" style="width: 35%"/>
+            <ui:Label text="Type" style="width: 30%"/>
+            <ui:Label text="Default Value" style="width: 35%"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="macro-variables-container" />
+        <ui:Button name="add-variable-button" text="Add Variable" class="custom-exposure"/>
+    </ui:Foldout>
+    
+    <ui:Foldout name="position-cases-foldout" text="Position Cases (0)" class="custom-exposure"/>
+</ui:UXML>

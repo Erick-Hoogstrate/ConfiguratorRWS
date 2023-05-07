@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row">
+      <ui:VisualElement name="actor-field-container" />
+      <ui:TextField name="position-field" />
+    </ui:VisualElement>
+</ui:UXML>

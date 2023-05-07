@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="selected-state" label="Selected State"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Rotary Switch Properties">
+    <ue:ObjectField name="wheel-joint" label="Wheel Joint"/>
+    <ui:Toggle name="use-scene-gizmo" label="Use Scene Gizmo"/>
+    <ue:ColorField name="gizmo-color" label="Gizmo Color"/>
+    <ui:Button class="content-fit-button" name="add-new-state" text="Add New State"/>
+    <ui:Label class="font-italic" name="no-states-available" text="No Switch States Available"/>
+    <ui:VisualElement name="states-container" />
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

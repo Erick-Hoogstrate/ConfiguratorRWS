@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Note Text" />
+    <ui:TextField name="note-text" multiline="true" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Visual Settings" />
+
+    <ui:VisualElement class="row">
+      <ui:Slider name="icon-scale-slider" label="Icon Scale" low-value="0.05" high-value="2" />
+      <ue:FloatField name="icon-scale-field" />
+    </ui:VisualElement>
+    
+    <ui:VisualElement class="row">
+      <ui:SliderInt name="note-width-slider" label="Note Width (px)" low-value="100" high-value="500" />
+      <ue:IntegerField name="note-width-field" />
+    </ui:VisualElement>
+    
+    <ue:EnumField name="text-anchor" label="Text Anchor" />
+
+    <ui:VisualElement class="row">
+      <ui:Slider name="note-offset-slider" label="Note Offset (px)" low-value="0" high-value="100" />
+      <ue:FloatField name="note-offset-field" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="margin-vertical-5px">
+        <ue:ObjectField label="Custom Icon Inactive" name="custom-inactive-icon-field" />
+        <ue:ObjectField label="Custom Icon Active" name="custom-active-icon-field" />
+    </ui:VisualElement>
+
+  </ui:VisualElement>
+</ui:UXML>

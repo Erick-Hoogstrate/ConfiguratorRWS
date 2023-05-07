@@ -1,49 +1,59 @@
-using u040.prespective.core;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
+using u040.prespective.utility.bridge;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static u040.prespective.prepair.ui.buttons.DBaseSwitch;
+using static u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.switches.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     [CustomEditor(typeof(DRotarySwitch))]
     public class DRotarySwitchEditorUIE : DSwitchesEditorUIE<DRotarySwitch>
     {
+        #region << FIELDS >>
+        //Property Fields
+        private ObjectField wheelJointField;
+        private Toggle useSceneGizmoToggle;
+        private ColorField gizmoColorField;
+        private Button addNewStateButton;
+        
+        //Control Panel Fields>>
+        private TextField selectedStateControlPanel;
+        private TextField idControlPanel;
 
-        #region << Property Fields>>
-        ObjectField wheelJoint;
-        Toggle useSceneGizmo;
-        ColorField gizmoColor;
-        Button addNewState;
         #endregion
-        #region << Control Panel Fields>>
-        TextField selectedStateControlPanel;
-        TextField idControlPanel;
-        #endregion
-
-
-        protected override void ExecuteOnEnable()
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Switches/DRotarySwitchLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DRotarySwitchEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Properties >>
-            wheelJoint = root.Q<ObjectField>(name: "wheel-joint");
-            useSceneGizmo = root.Q<Toggle>(name: "use-scene-gizmo");
-            gizmoColor = root.Q<ColorField>(name: "gizmo-color");
-            addNewState = root.Q<Button>(name: "add-new-state");
+            wheelJointField = root.Q<ObjectField>(name: "wheel-joint");
+            useSceneGizmoToggle = root.Q<Toggle>(name: "use-scene-gizmo");
+            gizmoColorField = root.Q<ColorField>(name: "gizmo-color");
+            addNewStateButton = root.Q<Button>(name: "add-new-state");
 
             UIUtility.InitializeField
             (
-                wheelJoint,
+                wheelJointField,
+                component,
                 () => component.KinematicWheelJoint,
                 e =>
                 {
@@ -54,7 +64,8 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
 
             UIUtility.InitializeField
             (
-                useSceneGizmo,
+                useSceneGizmoToggle,
+                component,
                 () => component.UseSceneGizmo,
                 e =>
                 {
@@ -65,7 +76,8 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
 
             UIUtility.InitializeField
             (
-                gizmoColor,
+                gizmoColorField,
+                component,
                 () => component.GizmoColor,
                 e =>
                 {
@@ -74,14 +86,15 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
                 }
             );
 
-            addNewState.RegisterCallback<MouseUpEvent>(mouseEvent =>
+            addNewStateButton.RegisterCallback<MouseUpEvent>(mouseEvent =>
             {
                 DSwitchState switchState = component.SaveCurrentPositionAsState();
-                PersistentEditorCoroutine.StartCoroutine(redrawWindow());
-                UpdateStateContainerEnabled();
+                EditorCoroutines.StartEditorCoroutine(redrawWindow());
+                updateStateContainerEnabled();
             });
             #endregion
         }
+
         internal void OnSceneGUI()
         {
             if (component.UseSceneGizmo && component.KinematicWheelJoint != null)
@@ -101,8 +114,8 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
 
                 for (int i = 0; i < component.SwitchStates.Count; i++)
                 {
-                    float correctionalAngle = Vector3.SignedAngle(parentForward, component.KinematicWheelJoint.ForwardDir.GlobalVector.ToFloat(), component.KinematicWheelJoint.AxisDir.GlobalVector.ToFloat());
-                    Quaternion handleDirection = Quaternion.AngleAxis(((float)component.SwitchStates[i].Position * 360f) + correctionalAngle, component.KinematicWheelJoint.AxisDir.GlobalVector.ToFloat()) * parentRotation;
+                    float correctionalAngle = Vector3.SignedAngle(parentForward, component.KinematicWheelJoint.ForwardDirection.GlobalVector.ToFloat(), component.KinematicWheelJoint.AxisDirection.GlobalVector.ToFloat());
+                    Quaternion handleDirection = Quaternion.AngleAxis(((float)component.SwitchStates[i].Position * 360f) + correctionalAngle, component.KinematicWheelJoint.AxisDirection.GlobalVector.ToFloat()) * parentRotation;
 
                     //Draw handle
                     Handles.ArrowHandleCap(0, handleOrigin, handleDirection, size * 0.875f, EventType.Repaint);
@@ -111,8 +124,8 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
                     //Draw transition lines
                     Vector3 fromPosition = component.KinematicWheelJoint.transform.position;
                     float angle = (float)component.SwitchStates[i].UpperTransition * 360f;
-                    Vector3 toVector = (component.KinematicWheelJoint.ForwardDir.GlobalVector.Normalized * component.KinematicWheelJoint.Radius).ToFloat();
-                    Quaternion rotateVector = Quaternion.AngleAxis(angle, component.KinematicWheelJoint.AxisDir.GlobalVector.ToFloat());
+                    Vector3 toVector = (component.KinematicWheelJoint.ForwardDirection.GlobalVector.Normalized * component.KinematicWheelJoint.Radius).ToFloat();
+                    Quaternion rotateVector = Quaternion.AngleAxis(angle, component.KinematicWheelJoint.AxisDirection.GlobalVector.ToFloat());
                     toVector = rotateVector * toVector;
                     Vector3 toPosition = fromPosition + toVector;
                     Handles.DrawLine(fromPosition, toPosition);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="setting-container" class="division">
+        <ui:VisualElement name="anchor-container">
+            <ue:EnumField name="anchor-field" />
+        </ui:VisualElement>
+        <ui:VisualElement name="distance-container">
+            <ue:DoubleField name="distance-field" label="Distance"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

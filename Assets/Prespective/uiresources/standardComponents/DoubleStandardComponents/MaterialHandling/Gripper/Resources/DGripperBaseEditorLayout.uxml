@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="state" label="State"/>
+    <ui:TextField class="no-box" name="current-close-percentage" label="Current Close Percentage"/>
+    <ui:Label class="bold margin-vertical-5px" name="gripped-objects-label" text="Gripped Objects"/>
+    <ui:Label class="font-italic margin-label" name="no-gripped-objects" text="No gripped objects."/>
+    <ui:VisualElement name="gripped-objects-container"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Gripper Base Properties">
+    <ue:DoubleField name="close-time" label="Close Time (s)"/>
+    <ui:VisualElement class="objectfield-with-action">
+      <ue:ObjectField name="add-finger" label="Add Finger"/>
+    </ui:VisualElement>
+    <ui:Label class="bold margin-vertical-5px" name="fingers-label" text="Fingers"/>
+    <ui:Label class="font-italic margin-label" name="no-fingers" text="No fingers have been added."/>
+    <ui:VisualElement name="fingers-container" />
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

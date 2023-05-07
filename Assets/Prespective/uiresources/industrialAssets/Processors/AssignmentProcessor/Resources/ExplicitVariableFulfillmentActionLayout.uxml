@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row">
+        <ue:IntegerField name="explicit-value" style="width: 30%"/>
+    </ui:VisualElement>
+</ui:UXML>

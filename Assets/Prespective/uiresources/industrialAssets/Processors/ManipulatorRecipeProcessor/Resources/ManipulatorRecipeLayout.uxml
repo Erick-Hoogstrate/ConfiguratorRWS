@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:TextField name="recipe-name" label="Recipe Name" class="custom-exposure"/>
+  <ue:ObjectField name="manipulator" label="Manipulator" class="custom-exposure"/>
+  <ui:VisualElement class="disabled" name="applicable-on-chains"/>
+  <ui:Toggle name="include-and-mount-as-default" label="Include &amp; Mount As Default" class="custom-exposure disabled"/>
+
+  <ui:Foldout text="Scene Preview" name="scene-preview-foldout" class="disabled">
+    <ui:Toggle name="preview-toggle" label="Preview in Scene View" class="custom-exposure"/>
+    <ui:VisualElement class="row custom-exposure" name="preview-transparency-container" >
+        <ui:Slider class="flex-grow" name="preview-transparency-slider" label="Preview Transparency" low-value="0" high-value="1"/>
+        <ue:FloatField name="preview-transparency-field" style="width: 60px"/>
+    </ui:VisualElement>
+  </ui:Foldout>
+
+  <ui:Foldout text="Advanced Settings" name="advanced-settings-foldout">
+    <ue:DoubleField name="default-end-effector-velocity" label="Default End-Effector Velocity" class="custom-exposure"/>
+    <ui:Foldout text="Use Staging Ring" name="use-staging-ring-foldout">
+        <ue:ObjectField name="reference-point" label="Reference Point" class="custom-exposure"/>
+        <ue:DoubleField name="staging-ring-radius" label="Staging Ring Radius" class="custom-exposure"/>
+        <ui:VisualElement name="staging-ring-offset"/>
+        <ui:VisualElement name="staging-ring-rotation"/>
+        <ui:VisualElement name="manipulator-rotation" />
+    </ui:Foldout>
+  </ui:Foldout>
+
+  <ui:Foldout text="Staging Approach Recipes" name="approach-foldout">
+    <ui:VisualElement name="approach-recipes-container" />
+  </ui:Foldout>
+</ui:UXML>

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ue:IntegerField name="depth" label="Octree Depth Level" />
+		<ue:ObjectField name="cube" label="Main Cube" />
+		<ue:FloatField name="enlarging-factor" label="Enlarging Factor Main Cube" />
+		<ui:Toggle name="uniform-size" label="Voxels Uniform Size"/>
+		<ui:Toggle name="optimal-rotation" label="Main Cube in Optimal Rotation"/>
+		<ui:Button class="content-fit-button margin-bottom-10px" name="make-button" text="Make Voxels" />
+	</ui:ScrollView>
+</ui:UXML>

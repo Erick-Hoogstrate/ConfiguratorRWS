@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Foldout name="tact-segment-container" text="Tact Interval #">
+        <ui:TextField name="tact-segment-name" label="Tact Segment Name" class="custom-exposure"/>
+        <ue:DoubleField name="duration" label="Duration (sec.)" class="custom-exposure"/>
+        <ui:Foldout name="oncomplete-event-container" text="On Tact Timer Complete" class="custom-exposure-foldout"/>
+        <ui:Button name="add-oncomplete-event" text="Add OnComplete Event" class="custom-exposure"/>
+    </ui:Foldout>
+</ui:UXML>

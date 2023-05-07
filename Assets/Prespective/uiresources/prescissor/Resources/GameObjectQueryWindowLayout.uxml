@@ -1,0 +1,67 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ui:TextElement class="margin-bottom-10px" text="Initialize a game object from the hierarchy that contains a collection to query:" />
+		<ue:ObjectField class="margin-bottom-10px" name="initialized-object" />
+		<ui:Button class="bold margin-bottom-10px" name="initialize-all" text="Initialize All Objects in Scene" style="height: 20px"/>
+
+		<ui:VisualElement class="margin-bottom-10px" style="align-items: center">
+			<ui:VisualElement class="row bold">
+				<ui:Label class="bold" text="Status: "/>
+				<ui:Label class="bold" name="initialization-message" text="Status: " style="color: red"/>
+			</ui:VisualElement>
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:TextElement class="bold margin-bottom-10px" text="Reference Game Object in Collection (Current selection in Hierarchy):"/>
+			<ui:Foldout text="Current Selected Game Objects" value="true">
+				<ui:ScrollView name="component-list-scrollbar" style="height: 95px">
+					<ui:VisualElement class="margin-bottom-10px" name="reference-object-container"/>
+				</ui:ScrollView>
+			</ui:Foldout>
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:VisualElement class="row">
+				<ui:Label class="bold" text="Mesh Filters" style="width: 205px"/>
+				<ui:Label class="bold" text="Deviation (0-100%)"/>
+			</ui:VisualElement>
+
+			<ui:Toggle label="Exact Similar Mesh" class="component-label-width" name="angle-toggle"/>
+
+			<ui:VisualElement class="row">
+				<ui:Toggle label="Mesh Surface Area" class="component-label-width" name="mesh-area-toggle"/>
+				<ue:DoubleField name="mesh-area-field" style="flex-grow: 1"/>
+			</ui:VisualElement>
+
+			<ui:VisualElement class="row">
+				<ui:Toggle label="Mesh Volume" class="component-label-width" name="mesh-volume-toggle"/>
+				<ue:DoubleField name="mesh-volume-field" style="flex-grow: 1" />
+			</ui:VisualElement>
+
+			<ui:VisualElement class="row">
+				<ui:Toggle label="Equal/Smaller (BoundingBox)" class="component-label-width" name="size-toggle"/>
+				<ue:DoubleField name="size-field" style="flex-grow: 1"/>
+			</ui:VisualElement>
+
+			<ui:Toggle label="Material" class="component-label-width" name="material-toggle"/>
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:Label class="bold" text="Object Filters"/>
+			<ui:Toggle class="component-label-width margin-bottom-10px" name="name-toggle" label="Name"/>
+
+			<ui:Label class="bold" text="Components on Reference Object"/>
+			
+			<ui:ScrollView name="component-list-scrollbar" style="height: 95px">
+				<ui:VisualElement class="margin-bottom-10px" name="component-list-container"/>
+			</ui:ScrollView>
+		</ui:VisualElement>
+
+		<ui:VisualElement class="row">
+			<ui:Button class="bold" name="undo-button" text="Undo" style="width: 50%"/>
+			<ui:Button class="bold" name="redo-button" text="Redo" style="width: 50%"/>
+		</ui:VisualElement>
+
+		<ui:Button class="bold" name="select-matching" text="Select Matching"/>
+	</ui:ScrollView>
+</ui:UXML>

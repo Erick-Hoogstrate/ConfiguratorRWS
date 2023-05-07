@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:ScrollView class="window-padding-container">
+	  <ui:Label class="bold margin-bottom-10px" text="Chunking Mesh" />
+	  <ui:Label text="The selected game objects and their children will be chunked" />
+	  <ui:Label text="If nothing selected all with be chunked" />
+      <ue:ObjectField class="margin-bottom-10px" name="chunk-cube" label="Cube make chunks from" />
+	  <ue:Vector3IntField class="margin-bottom-10px" name="number-of-chunks" label="Number of chunks"  />
+	  <ui:Toggle name="put-under" label="Put under new game object" />
+      <ui:Button name="chunk-mesh" text="Create Chunks" />
+      <ui:Button name="undo-button" text="Undo" />
+    </ui:ScrollView>
+</ui:UXML>

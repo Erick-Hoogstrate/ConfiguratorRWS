@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:VisualElement class="division margin-bottom-10px" name="prototype-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Prototype" />
+    <ue:ObjectField class="margin-bottom-10px" name="prototype-object" label="Game Object" />
+    <ue:Vector3Field name="prototype-size" label="Size" />
+    <ue:Vector3Field name="prototype-center" label="Center" />
+    <ue:Vector3Field name="prototype-offset" label="Offset" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="instance-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Pattern" />
+    <ue:Vector3IntField name="current-instance-pattern" label="Current Instances" />
+    <ue:Vector3IntField class="margin-bottom-10px" name="new-instance-pattern" label="New Instances" />
+    <ui:VisualElement class="row">
+      <ui:Button class="content-fit-button" name="generate-instances" text="Generate" />
+      <ui:Button class="content-fit-button" name="clear-instances" text="Clear" />
+    </ui:VisualElement>"
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="sceneview-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Scene View Settings" />
+    <ui:Toggle name="preview-sceneview" label="Preview in Scene View" />
+    
+    <ui:VisualElement class="row">
+      <ui:Slider class="flex-grow" name="preview-opacity-slider" label="Preview Opacity" low-value="0" high-value="1"/>
+      <ue:FloatField name="preview-opacity-value" style="width: 60px" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+  
+</ui:UXML>

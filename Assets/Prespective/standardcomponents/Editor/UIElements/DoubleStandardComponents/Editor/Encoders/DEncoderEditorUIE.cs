@@ -1,55 +1,53 @@
-using u040.prespective.prepair.ui.buttons;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.virtualhardware.sensors.position;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.encoders.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     public abstract class DEncoderEditorUIE<T> : StandardComponentEditorUIE<T> where T : DBaseEncoder
     {
         #region << Live Data Fields >>
-        TextField value;
+        TextField valueField;
         #endregion
         #region << Encoder Properties >>
-        DoubleField cycleValue;
-        DoubleField baseValue;
-        Toggle enableRounding;
-        DoubleField roundingInterval;
-        Toggle capValue;
-        DoubleField minimumValue;
-        DoubleField maximumValue;
-        PropertyField onValueChangedField;
+        DoubleField cycleValueField;
+        DoubleField baseValueField;
+        Toggle enableRoundingToggle;
+        DoubleField roundingIntervalField;
+        Toggle capValueToggle;
+        DoubleField minimumValueField;
+        DoubleField maximumValueField;
         #endregion
         #region << Control Panel Fields >>
         TextField valueControlPanel;
         #endregion
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            value.value = Application.isPlaying ? component.OutputSignal.ToString() : "N/A";
+            valueField.value = Application.isPlaying ? component.OutputSignal.ToString() : "N/A";
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
-            value = root.Q<TextField>(name: "value");
+            valueField = root.Q<TextField>(name: "value");
             #endregion
             #region << Encoder Properties >>
-            cycleValue = root.Q<DoubleField>(name: "cycle-value");
-            baseValue = root.Q<DoubleField>(name: "base-value");
-            enableRounding = root.Q<Toggle>(name: "enable-rounding");
-            roundingInterval = root.Q<DoubleField>(name: "rounding-interval");
-            capValue = root.Q<Toggle>(name: "cap-value");
-            minimumValue = root.Q<DoubleField>(name: "minimum-value");
-            maximumValue = root.Q<DoubleField>(name: "maximum-value");
-            onValueChangedField = root.Q<PropertyField>(name: "on-value-changed");
+            cycleValueField = root.Q<DoubleField>(name: "cycle-value");
+            baseValueField = root.Q<DoubleField>(name: "base-value");
+            enableRoundingToggle = root.Q<Toggle>(name: "enable-rounding");
+            roundingIntervalField = root.Q<DoubleField>(name: "rounding-interval");
+            capValueToggle = root.Q<Toggle>(name: "cap-value");
+            minimumValueField = root.Q<DoubleField>(name: "minimum-value");
+            maximumValueField = root.Q<DoubleField>(name: "maximum-value");
 
             UIUtility.InitializeField
             (
-                cycleValue,
+                cycleValueField,
+                component,
                 () => component.ValuePerWholeCycle,
                 e =>
                 {
@@ -59,28 +57,33 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.encoders.edi
 
             UIUtility.InitializeField
             (
-                baseValue,
+                baseValueField,
+                component,
                 () => component.BaseValue,
                 e =>
                 {
                     component.BaseValue = e.newValue;
+                    minimumValueField.SetValueWithoutNotify(component.MinCapValue);
+                    maximumValueField.SetValueWithoutNotify(component.MaxCapValue);
                 }
             );
 
             UIUtility.InitializeField
             (
-                enableRounding,
+                enableRoundingToggle,
+                component,
                 () => component.EnableRounding,
                 e =>
                 {
                     component.EnableRounding = e.newValue;
-                    UIUtility.SetDisplay(roundingInterval, e.newValue);
+                    UIUtility.SetDisplay(roundingIntervalField, e.newValue);
                 }
             );
 
             UIUtility.InitializeField
             (
-                roundingInterval,
+                roundingIntervalField,
+                component,
                 () => component.RoundingInterval,
                 e =>
                 {
@@ -90,56 +93,61 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.encoders.edi
 
             UIUtility.InitializeField
             (
-                capValue,
+                capValueToggle,
+                component,
                 () => component.CapValue,
                 e =>
                 {
                     component.CapValue = e.newValue;
-                    UIUtility.SetDisplay(minimumValue, e.newValue);
-                    UIUtility.SetDisplay(maximumValue, e.newValue);
+                    UIUtility.SetDisplay(minimumValueField, e.newValue);
+                    UIUtility.SetDisplay(maximumValueField, e.newValue);
 
                 }
             );
 
             UIUtility.InitializeField
             (
-                minimumValue,
+                minimumValueField,
+                component,
                 () => component.MinCapValue,
                 e =>
                 {
                     component.MinCapValue = e.newValue;
+                    baseValueField.SetValueWithoutNotify(component.BaseValue);
+                    maximumValueField.SetValueWithoutNotify(component.MaxCapValue);
                 }
             );
 
             UIUtility.InitializeField
             (
-                maximumValue,
+                maximumValueField,
+                component,
                 () => component.MaxCapValue,
                 e =>
                 {
                     component.MaxCapValue = e.newValue;
+                    minimumValueField.SetValueWithoutNotify(component.MinCapValue);
+                    baseValueField.SetValueWithoutNotify(component.BaseValue);
                 }
             );
-
-            onValueChangedField.bindingPath = "onValueChanged";
-
-            UIUtility.SetDisplay(roundingInterval, component.EnableRounding);
-            UIUtility.SetDisplay(minimumValue, component.CapValue);
-            UIUtility.SetDisplay(maximumValue, component.CapValue);
+            
+            UIUtility.SetDisplay(roundingIntervalField, component.EnableRounding);
+            UIUtility.SetDisplay(minimumValueField, component.CapValue);
+            UIUtility.SetDisplay(maximumValueField, component.CapValue);
             #endregion
         }
 
         public override void ShowControlPanelProperties(VisualElement _container)
         {
             valueControlPanel = new TextField("Value");
-            UIUtility.ToggleNoBoxAndReadOnly(valueControlPanel, true);
+            UIUtility.SetReadOnlyState(valueControlPanel, true);
 
-            ScheduleControlPanelUpdate(valueControlPanel);
+            scheduleControlPanelUpdate(valueControlPanel);
 
             _container.Add(valueControlPanel);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             valueControlPanel.value = Application.isPlaying ? component.OutputSignal.ToString() : "N/A";
         }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:Label class="bold margin-bottom-10px" text="Junction Settings" />
+	<ui:VisualElement class="margin-bottom-5px" name="main-spline-junction-point-container" />
+	<ui:Button class="content-fit-button margin-bottom-10px" name="add-junction-point-button" text="Add Junction Point" />
+	<ui:VisualElement name="connected-spline-junction-point-container" />
+	<ui:Toggle name="enable-snapping-mode-button" label="Enable Snapping Mode" />
+	<ui:VisualElement name="snapping-mode" />
+  <ui:VisualElement name="warning-box" />
+</ui:UXML>

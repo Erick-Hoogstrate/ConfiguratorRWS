@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndustrialAssetsEditor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.industrialassets.editor.library.logic.NameResettingManager">
+            <summary>
+            Class to handle the gameobjects being reset to their original name 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.industrialassets.editor.library.logic.NameResettingManager.AddGameobjectNameToList(UnityEngine.Transform)">
+            <summary>
+            Makes a list of all the gameobject names to set back after the import so that the names can be overwritten
+            </summary>
+            <param name="_parent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.industrialassets.editor.library.logic.NameResettingManager.AddGameobjectNameToList(UnityEngine.Transform,System.Collections.Generic.List{System.String}@,System.Boolean)">
+            <summary>
+            Makes a list of all the gameobject names to set back after the import so that the names can be overwritten
+            </summary>
+            <param name="_parent"></param>
+            <param name="_gameobjectNames"></param>
+            <param name="_root"></param>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:u040.prespective.industrialassets.editor.library.logic.NameResettingManager.SetNamesToNestedNames(UnityEngine.Transform,System.Collections.Generic.List{System.String},System.Boolean,System.Int32)">
+            <summary>
+            Set the names back after the import of an asset
+            </summary>
+            <param name="_parent"></param>
+            <param name="_gameobjectNames"></param>
+            <param name="_root"></param>
+            <param name="_index"></param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+    </members>
+</doc>

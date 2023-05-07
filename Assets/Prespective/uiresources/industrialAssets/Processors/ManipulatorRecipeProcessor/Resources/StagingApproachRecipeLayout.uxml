@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  
+  <ui:Foldout text="Default Approach" name="approach-foldout">
+    <ue:EnumField name="staging-approach-type-field" class="custom-exposure"/>
+    <ui:Toggle name="approach-toggle" label="Include Approach" class="custom-exposure"/>
+    <ue:EnumField name="reachpoint-approach-type-field" class="custom-exposure"/>
+    <ui:VisualElement name="offset-container"/>
+    <ui:Toggle name="departure-toggle" label="Include departure" class="custom-exposure disabled"/>
+    <ue:EnumField name="departure-type-field" class="custom-exposure disabled"/>
+  </ui:Foldout>
+
+</ui:UXML>

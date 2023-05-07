@@ -2,32 +2,36 @@ using System;
 using System.Collections.Generic;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.logic;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.sensors.proximitysensor
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.position.logic
 {
-    #pragma warning disable 0618
     public class ProximitySensorLogic : StandardLogicComponent<ProximitySensor>
     {
+        #region <<CONSTANTS>>
+        private const string I_ACTIVE = "iActive";
+        private const string I_SENSOR_OUTPUT = "iSensorOutput";
+        private const string O_ACTIVE = "oActive";
+        #endregion
+        #region <<PROPERTIES>>
         protected override Dictionary<SignalInstance, Func<object>> customInputSignalMemberGetters
         {
             get
             {
                 return new Dictionary<SignalInstance, Func<object>>
                 {
-                    { GetSignalInstanceByName("iSensorOutput"), () => Target.OutputSignal },
-                    { GetSignalInstanceByName("iActive"), () => Target.IsActive }
+                    {GetSignalInstanceByName(I_SENSOR_OUTPUT), () => Target.OutputSignal},
+                    {GetSignalInstanceByName(I_ACTIVE), () => Target.IsActive}
                 };
             }
         }
 
-        private void Reset()
-        {
-            this.implicitNamingRule.instanceNameRule = "GVLs." + this.GetType().Name + "[{{INDEX_IN_PARENT}}]";
-        }
 
         #region <<PLC Signals>>
+
         #region <<Signal Definitions>>
+
         /// <summary>
         /// Declare the IO signals
         /// </summary>
@@ -35,20 +39,24 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor
         {
             get
             {
-                return new List<SignalDefinition>() {
+                return new List<SignalDefinition>()
+                {
                     //Inputs only
-                    new SignalDefinition("iSensorOutput", PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", "Flagged", null, null, false),
+                    new SignalDefinition(I_SENSOR_OUTPUT, PLCSignalDirection.INPUT, SupportedSignalType.BOOL, _xmlNote: "Flagged", _baseValue: false),
 
                     //Input / output
-                    new SignalDefinition("iActive", PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", "Active", null, null, true),
-                    new SignalDefinition("oActive", PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, "", "Active", onSignalChanged, null, true),
+                    new SignalDefinition(I_ACTIVE, PLCSignalDirection.INPUT, SupportedSignalType.BOOL, _xmlNote: "Active", _baseValue: true),
+                    new SignalDefinition(O_ACTIVE, PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, _xmlNote: "Active", _onValueChange: onSignalChanged, _baseValue: true),
 
                     //Output only
                 };
             }
         }
+
         #endregion
+
         #region <<PLC Outputs>>
+
         /// <summary>
         /// General callback for the IOs
         /// </summary>
@@ -59,10 +67,10 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor
         /// <param name="_oldValueReceived">the time of the old value change</param>
         void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
         {
-            switch (_signal.definition.defaultSignalName)
+            switch (_signal.Definition.DefaultSignalName)
             {
-                case "oActive":
-                    Target.IsActive = (bool)_newValue;
+                case O_ACTIVE:
+                    Target.IsActive = (bool) _newValue;
                     break;
 
                 default:
@@ -72,7 +80,8 @@ namespace u040.prespective.standardcomponents.sensors.proximitysensor
         }
 
         #endregion
+
+        #endregion
         #endregion
     }
-    #pragma warning restore 0618
 }

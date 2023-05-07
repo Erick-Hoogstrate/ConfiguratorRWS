@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Window Padding &amp; Scrolling"/>
+    <ui:TextElement class="margin-bottom-5px" text="Any Prespective feature Editor Window should contain its content in a VisualElement with uss class 'window-padding-container' (from BaseStyle.uss), inside a parent ScrollView element." />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Example"/>
+    <ui:Label class="margin-bottom-5px" name="window-dimensions-label" text="Window Dimensions" />
+    <ui:VisualElement class="prespective-background" name="window-dimensions">
+      <ui:ScrollView>
+        <ui:VisualElement class="window-padding-container">
+          <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label class="bold margin-bottom-10px" text="Settings"/>
+            <ue:IntegerField label="Setting 1" />
+            <ue:IntegerField label="Setting 2" />
+            <ue:IntegerField label="Setting 3" />
+          </ui:VisualElement>
+
+          <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label class="bold margin-bottom-10px" text="Transform"/>
+            <ue:Vector3Field label="Position" />
+            <ue:Vector3Field label="Rotation" />
+          </ui:VisualElement>
+
+          <ui:Button class="content-fit-button" text="Apply"/>
+        </ui:VisualElement>
+      </ui:ScrollView>
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

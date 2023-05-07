@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers;
+using u040.prespective.utility.editor.editorui;
+using u040.prespective.utility.editor.editorui.uistatepersistence;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.systems.gripper.fingers
 {
     public abstract class DGripperFingerEditorUIE<T> : StandardComponentEditorUIE<T> where T : DGripperFinger
     {
@@ -16,46 +15,48 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
         #endregion
         #region << Property Fields >>
         VisualElement fingerSettingsContainer;
-        ObjectField trigger;
-        Toggle generateRigidbody;
-        Label noDetectedObjects;
+        ObjectField triggerField;
+        Toggle generateRigidbodyToggle;
+        Label noDetectedObjectsLabel;
         VisualElement objectLocators;
         #endregion
 
         string detectedObjectsTitle = "Detected Objects";
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             detectedObjectsContainer.text = detectedObjectsTitle + " (" + component.DetectedObjects.Count + ")";
             if (component.DetectedObjects.Count > 0)
             {
                 objectLocators?.Clear();
-                UIUtility.SetDisplay(noDetectedObjects, false);
+                UIUtility.SetDisplay(noDetectedObjectsLabel, false);
                 objectLocators = UIUtility.CreateObjectLocatorFields(component.DetectedObjects);
                 detectedObjectsContainer.Add(objectLocators);
             }
             else
             {
                 objectLocators?.Clear();
-                UIUtility.SetDisplay(noDetectedObjects, true);
+                UIUtility.SetDisplay(noDetectedObjectsLabel, true);
             }
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
             #region << Live Data >>
             detectedObjectsContainer = root.Q<Foldout>(name: "detected-objects");
-            noDetectedObjects = root.Q<Label>(name: "no-detected-objects");
+            UIStateUtility.InitTrackedFoldout(detectedObjectsContainer, component);
+
+            noDetectedObjectsLabel = root.Q<Label>(name: "no-detected-objects");
             #endregion
             #region << Properties >>
             fingerSettingsContainer = root.Q<VisualElement>(name: "finger-settings");
-            trigger = root.Q<ObjectField>(name: "trigger");
-            generateRigidbody = root.Q<Toggle>(name: "generate-rigidbody");
+            triggerField = root.Q<ObjectField>(name: "trigger");
+            generateRigidbodyToggle = root.Q<Toggle>(name: "generate-rigidbody");
             #endregion
 
             EditorApplication.playModeStateChanged += state =>
@@ -63,11 +64,12 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                 fingerSettingsContainer.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
             };
 
-            updateListSchedule = detectedObjectsContainer.schedule.Execute(() => UpdateLiveData()).Every(250);
+            updateListSchedule = detectedObjectsContainer.schedule.Execute(() => updateLiveData()).Every(250);
 
             UIUtility.InitializeField
             (
-                trigger,
+                triggerField,
+                component,
                 () => component.Trigger,
                 e =>
                 {
@@ -75,7 +77,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
                     component.Trigger = _trigger;
                     if (!_trigger.isTrigger)
                     {
-                        trigger.SetValueWithoutNotify(null);
+                        triggerField.SetValueWithoutNotify(null);
                     }
                 },
                 typeof(Collider)
@@ -83,7 +85,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper.editor
 
             UIUtility.InitializeField
             (
-                generateRigidbody,
+                generateRigidbodyToggle,
+                component,
                 () => component.GenerateRigidbody,
                 e =>
                 {

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Label class="standalone-inspector-label" text="Default Instruction:" />
+    <ue:EnumField name="instruction-type" label="Instruction Type" class="custom-exposure" />
+    <ui:VisualElement name="instructor-container" />
+</ui:UXML>

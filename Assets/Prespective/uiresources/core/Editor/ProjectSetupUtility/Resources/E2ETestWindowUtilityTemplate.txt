@@ -1,0 +1,14 @@
+#if UNITY_EDITOR
+
+using System.Collections;
+using System.Collections.Generic;
+{{NAMESPACE_PLACEHOLDER}}
+using UnityEditor;
+using UnityEngine;
+
+public static class PrespectiveE2ETestWindowUtility
+{
+    {{MENU_ITEM_FUNCTION_PLACEHOLDER}}
+}
+
+#endif

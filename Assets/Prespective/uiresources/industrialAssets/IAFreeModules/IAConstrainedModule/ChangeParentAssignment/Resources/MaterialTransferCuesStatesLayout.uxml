@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ue:EnumField name="target-positions" label="Positions to Test" class="custom-exposure"/>
+    <ui:VisualElement name="custom-positions-container"/>
+    <ue:EnumField name="target-state" label="Target State" class="custom-exposure"/>    
+</ui:UXML>

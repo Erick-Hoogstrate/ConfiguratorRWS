@@ -1,0 +1,11 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Toggle class="margin-bottom-10px" name="enable-scene-gizmo" label="Enable Scene Gizmo" />
+  <ui:VisualElement class="division">
+    <ui:VisualElement name="dimensions-label" class="flex-container margin-bottom-5px">
+        <ui:Label class="bold margin-bottom-10px" text="Asset Dimensions" />
+        <ui:Button text="Reset" name="reset-boxasset-configuration" class="reset-button" />
+    </ui:VisualElement>
+
+    <ui:VisualElement name="axes-container" />
+  </ui:VisualElement>
+</ui:UXML>

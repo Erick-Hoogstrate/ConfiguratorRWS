@@ -1,36 +1,44 @@
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.encoders.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     [CustomEditor(typeof(DRotaryEncoder))]
     public class DRotaryEncoderEditorUIE : DEncoderEditorUIE<DRotaryEncoder>
     {
-        #region << Property Fields>>
-        ObjectField wheelJoint;
+        #region << FIELDS >>
+        ObjectField wheelJointField;
+
+        #endregion
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "DRotaryEncoderEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Encoders/DRotaryEncoderLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
-            #region << Properties >>
-            wheelJoint = root.Q<ObjectField>(name: "wheel-joint");
+            wheelJointField = root.Q<ObjectField>(name: "wheel-joint");
 
             UIUtility.InitializeField
             (
-                wheelJoint,
+                wheelJointField,
+                component,
                 () => component.KinematicWheelJoint,
                 e =>
                 {
@@ -38,7 +46,6 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.encoders.edi
                 },
                 typeof(AWheelJoint)
             );
-            #endregion
         }
     }
 }

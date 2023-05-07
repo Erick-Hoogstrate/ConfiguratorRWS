@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="processors-container">
+        <ui:VisualElement name="cue-settings-processor-container" />
+        <ui:VisualElement class="disabled" name="live-feedback-processor-container" />
+    </ui:VisualElement>
+</ui:UXML>

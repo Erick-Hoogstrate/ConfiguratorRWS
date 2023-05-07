@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="disabled-inspector-container" class="margin-bottom-10px display-none">
+        <ui:HelpBox name="disabled-inspector-helpbox" text="The BoxAssetSynchronizer is currently disabled. Links will not be enforced." message-type="Warning"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="main-container" class="division margin-bottom-10px">
+        <ui:Label name="linking-settings-label" text="Linking Settings" class="bold margin-bottom-5px"/>
+        <ui:Label name="no-settings-found-label" text="No linking settings have been added yet." class="font-italic margin-bottom-5px"/>
+        <ui:VisualElement name="settings-container" class="division margin-bottom-10px">
+        </ui:VisualElement>   
+        <ui:Button name="add-new-link-button" text="Add new link" class="content-fit-button"/>
+    </ui:VisualElement>    
+</ui:UXML>

@@ -1,0 +1,14 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="row">
+    <ui:Toggle name="use-cue" tooltip="Check to use" />
+    <ui:VisualElement class="flex-grow" name="cue-locator" />
+    <ui:Button name="remove-cue" style="width: 20px" text="X" tooltip="Remove robot cue" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="reach-point-settings margin-bottom-10px" name="reach-point-settings">
+    <ue:EnumField name="type" label="Type" />
+    <ue:EnumField name="approach-direction" label="Approach Direction" />
+    <ue:DoubleField name="approach-length" label="Approach Length" />
+    <ue:DoubleField name="product-height" label="Product Height" />
+  </ui:VisualElement>
+</ui:UXML>

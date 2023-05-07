@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Invalid Input"/>
+    <ui:TextElement class="margin-bottom-10px" text="In case of numeric fields that should have a limited range, the range should be forced by the initialization script."/>
+    <ue:IntegerField class="margin-bottom-10px" name="limited-integer-field" label="Value with Range 1 - 6"/>
+    <ui:TextElement class="margin-bottom-10px" text="Non-numeric fields should handle invalid input in the UI, by displaying a HelpBox message and applying uss class 'error'. Below is an example of a TextField that should not have numeric characters as input."/>
+    <ui:HelpBox class="display-none margin-bottom-5px" name="no-numeric-char-message" message-type="Error" text="The input can not contain numeric characters!"/>
+    <ui:TextField name="no-numeric-char-field" label="No Numeric Characters"/>
+  </ui:VisualElement>
+</ui:UXML>

@@ -1,34 +1,15 @@
 using UnityEngine;
-using u040.prespective.core;
+using u040.prespective.core.transformation;
 
-namespace u040.prespective.prepair.kinematics
+namespace u040.prespective.prepair.kinematics.joints.basic
 {
     /// <summary>
     /// Represents a generic cylindrical joint limited by its spline and can rotated around its spline with fixed radius
     /// 
-    /// <para>Copyright (c) 2015-2021 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
     /// </summary>
-#if !RELEASE
-    /// <feature>
-    /// [NOT YET MADE]
-    /// </feature>
-    /// <testing>
-    ///     <Test1>
-    ///     Moving away from spline (CustomCylindricalJointUnitTest)
-    ///     </Test1>
-    ///     <Test2>
-    ///     Moving over spline (CustomCylindricalJointUnitTest)
-    ///     </Test2>
-    ///     <Test3>
-    ///     Moving over limits of spline (CustomCylindricalJointUnitTest)
-    ///     </Test3>
-    ///     <Test4>
-    ///     Moving over its cylinder(CustomCylindricalJointUnitTest)
-    ///     </Test4>
-    /// </testing>
-#endif
     [RequireComponent(typeof(DTransform))]
-    public class DCylindricalJoint : ACylindericalJoint
+    public class DCylindricalJoint : ACylindricalJoint
     {
         protected override CustomKinematicJointIntentConversion[] jointConversionLookupTable
         {

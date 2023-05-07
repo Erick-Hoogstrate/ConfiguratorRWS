@@ -1,0 +1,3775 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Prepair</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prepair.kinematics.AKinematicsController">
+            <summary>
+            Controller needed to process Kinematic Bodies in the scene, and their Forward Kinematic Relations
+            (If inverse Kinematics are also present, please use the inheritance AFabrikSolver)
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.UpdateInEditorMode">
+            <summary>
+            Whether or not this CustomPhysicalBodyController should update in Editor Mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.AutoSimulate">
+            <summary>
+            Whether or not this Kinematics Controller should Automatically Simulate on the Fixed Update
+            (Note, if this controller is nested inside for instance a DES Controller - simulation update will be automatically taken ownership of by the DESController
+            If not, the result would lag a single fixed update behind)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.CheckForNewComponentsInterval">
+            <summary>
+            The interval (in Seconds) between re-indexing of components in edit mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.CustomBodyList">
+            <summary>
+            The list with found Custom bodies contained in this controller
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.CustomKinematicBodyList">
+            <summary>
+            The Custom bodies list subset that actually represents Kinematic bodies (i.e. Joints)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.dTransformStored">
+            <summary>
+            Getter for the Double Transform regulating this PhysicalBody
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.lastComponentUpdateTime">
+            <summary>
+            Tracker Date time containing the last moment the list with contained bodies was updated (used outside play mode)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.physicalBodyManager">
+            <summary>
+            Manager for all Physical Bodies in the scene
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.storedIsPlaying">
+            <summary>
+            Is the stored value of Unity application is playing
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AKinematicsController.dTransform">
+            <summary>
+            Lazy getter for the Double Transform component on this controller
+            (If it does not exist yet, it adds the component)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AKinematicsController.SortedKinematicRelations">
+            <summary>
+            Lazy getter and setter with Kinematic bodies sorted by solver pass priority
+            (used in runtime to update all contained bodies in the correct order)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AKinematicsController.PhysicalBodyManager">
+            <summary>
+            Lazy getter for the Body Container Manager (CRUD Manager)
+            (If it does not exist yet, its added with the proper settings
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AKinematicsController.applicationIsPlaying">
+            <summary>
+            If the application is playing (this is a value that can be called off thread)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.Awake">
+            <summary>
+            Called when the scene awakes in play mode
+            please DON'T override or hide this function - override onAwake()!
+            (see https://docs.unity3d.com/Manual/ExecutionOrder.html)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onAwake">
+            <summary>
+            Virtual Awake event Override to support proper polymorphism and inheritance
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.Start">
+            <summary>
+            Called when the scene starts in play mode
+            please DON'T override or hide this function - override onStart()!
+            (https://docs.unity3d.com/Manual/ExecutionOrder.html)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onStart">
+            <summary>
+            Virtual Start event Override to support proper polymorphism and inheritance
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.ManualInitRelations">
+            <summary>
+            Manually initializes the kinematics controller
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.initRelations">
+            <summary>
+            Virtual event used to index all contained (child) bodies and relations
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.Update">
+            <summary>
+            Called every update, but should only be handled in editor mode (outside play mode)
+            please DON'T override or hide this function - override onUpdate()!
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onUpdate">
+            <summary>
+            Virtual Update event Override to support proper polymorphism and inheritance
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.updateOutsidePlaymode">
+            <summary>
+            Called every frame when NOT in play mode; if 'UpdateInEditorMode' is active
+            this function makes sure the kinematic relations stay enforced outside play mode
+            </summary>
+            <returns>whether the update could be properly executed</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.componentUpdateDue">
+            <summary>
+            check if should update
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.FixedUpdate">
+            <summary>
+            Unity fixed update
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.ManualUpdate">
+            <summary>
+            does a update of the controller only works in play mode
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.ManualApply">
+            <summary>
+            Does manual apply kinematics of the controller
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.ManualUpdateCoroutine(System.Diagnostics.Stopwatch,System.Double)">
+            <summary>
+            does a update of the controller only works in play mode
+            </summary>
+            <param name="_watch">stop watch to check if over maximum milliseconds</param>
+            <param name="_maxMilliseconds">maximum milliseconds</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onFixedUpdate">
+            <summary>
+            function run on fixed update
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onFixedUpdateCoroutine(System.Diagnostics.Stopwatch,System.Double)">
+            <summary>
+            function run on fixed update
+            </summary>
+            <param name="_watch">stop watch to check if over maximum milliseconds</param>
+            <param name="_maxMilliseconds">maximum milliseconds</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.applyKinematics(System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody})">
+            <summary>
+            base processing van do kinematics
+            </summary>
+            <param name="_kinematicBodies">kinematic bodies</param>
+            <param name="_act">function to process kinematics body</param>
+            <returns>intent of kinematics</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.applyKinematicsCoroutine(System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody},System.Diagnostics.Stopwatch,System.Double,System.Collections.Generic.List{u040.prespective.prepair.IntentData})">
+            <summary>
+            base processing van do kinematics
+            </summary>
+            <param name="_kinematicBodies">kinematic bodies</param>
+            <param name="_watch">stop watch to check if over maximum milliseconds</param>
+            <param name="_maxMilliseconds">maximum milliseconds</param>
+            <param name="_kinematicsData">intents of kinematics</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.SortedKinematics">
+            <summary>
+            sorts kinematic bodies of the controller
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.setUpdateDTransform(u040.prespective.core.transformation.ADTransform[],System.Boolean)">
+            <summary>
+            set DTransform's manage own sync
+            </summary>
+            <param name="_transforms">DTranform's to set</param>
+            <param name="_enableUpdate">new manage own sync set value</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.setUpdateDTransform(System.Collections.Generic.List{u040.prespective.prepair.Body},System.Boolean)">
+            <summary>
+            set bodies DTransform manage own sync
+            </summary>
+            <param name="_bodies">Bodies</param>
+            <param name="_enableUpdate">new manage own sync set value</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onBodyFound(u040.prespective.prepair.Body)">
+            <summary>
+            on body found processing for manager
+            </summary>
+            <param name="_foundBody">found body</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onCreateNewPhysicalBody(System.UInt32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            on created new body for manager
+            </summary>
+            <param name="_physicalBodyIdentifier">id</param>
+            <param name="_params"></param>
+            <returns>successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onRemovePhysicalBody(System.UInt32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            on removed new body for manager
+            </summary>
+            <param name="_physicalBodyIdentifier">id</param>
+            <param name="_params"></param>
+            <returns>successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onUpdatePhysicalBody(System.UInt32,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            on update new body for manager
+            </summary>
+            <param name="_physicalBodyIdentifier">id</param>
+            <param name="_event"></param>
+            <param name="_params"></param>
+            <returns>successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.onDuplicatePhysicalBody(System.UInt32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            on duplicated new body for manager
+            </summary>
+            <param name="_physicalBodyIdentifier">id</param>
+            <param name="_params"></param>
+            <returns>successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.generateUniquePhysicalBodyIdentifier(System.Collections.Generic.List{u040.prespective.prepair.Body})">
+            <summary>
+            Entry function for generating a new physical body (adds a pass counter to prevent lock conditions
+            </summary>
+            <param name="_current">the currently indexed bodies (that we don't want to contain duplicate IDs)</param>
+            <returns>a Unique ID usable by a physical body not previously used in the current indexed bodies</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.generateUniquePhysicalBodyIdentifier(System.Collections.Generic.List{u040.prespective.prepair.Body},System.UInt32)">
+            <summary>
+            Generates a unique physical body identifier for a newly added physical body
+            </summary>
+            <param name="_current">the currently present physical bodies</param>
+            <param name="_pass">the # of times we failed to create a unique identifier, at 1000 it throws an error</param>
+            <returns>the Unique ID of this Physical Body</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AKinematicsController.getPhysicalBodyByID(System.Collections.Generic.List{u040.prespective.prepair.Body},System.UInt32)">
+            <summary>
+            Explicit Index finder for the Physical Bodies
+            </summary>
+            <param name="_options">the list with options to consider</param>
+            <param name="_id">the ID we're looking for</param>
+            <returns>the index of the sought body, or -1 if the index could not be found</returns>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AKinematicsController.explicitBuffer">
+            <summary>
+            The Explicit (instantiatable) classes we found in this project that inherit from AKinematicController
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AKinematicsController.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AKinematicController 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.KinematicTransferDirection">
+            <summary>
+            Indicates the direction the kinematic relation is in
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation">
+            <summary>
+            relation data between self and other kinematic body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation.TransferDirection">
+            <summary>
+            transfer relation (receive, send, bidirectional)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation.KinematicBody">
+            <summary>
+            connected body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation.Inverse">
+            <summary>
+            inverse relation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation.Ratio">
+            <summary>
+            ration between relation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicTransferRelation.Color">
+            <summary>
+            color of relation
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint">
+            <summary>
+            Represents a generic helical joint
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.pitch">
+            <summary>
+            stored pitch
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.invert">
+            <summary>
+            stored if inverted
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.Pitch">
+            <summary>
+            distance between full rotations
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.Invert">
+            <summary>
+            inverted rotation done
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.initialize">
+            <summary>
+            Initializes self
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AHelicalJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AHelicalJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint">
+            <summary>
+            Represents a generic cylindrical joint limited by its spline and can rotated around its spline with fixed radius
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.originalRotationOffset">
+            <summary>
+            initial rotation offset of joint
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.initialize">
+            <summary>
+            Initializes the joint 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation processing
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_space">transformation space of the translation (global space or local space)</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            applies the intent to joint
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of joints apply</returns>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.ACylindricalJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of ACylindericalJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint">
+            <summary>
+            Represents a generic Prismatic joint relation between a spline and a geometric object
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.ConstrainingSpline">
+            <summary>
+            The constraining spline
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.ApplySoftLimit">
+            <summary>
+            Whether a soft kinematic limit is present within the spline
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.firstInit">
+            <summary>
+            safety check to not throw error on first initialize
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.currentPercentage">
+            <summary>
+            stored current percentage
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.storedPercentage">
+            <summary>
+            stored percentage for chain blocking
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.applyRotationSpline">
+            <summary>
+            if are applying the rotation of the spline to prismatic joint
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.positionalOffset">
+            <summary>
+            stored position offset
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.rotationalOffset">
+            <summary>
+            stored rotation offset
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.softLimit">
+            <summary>
+            stored soft limit
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.CurrentPercentage">
+            <summary>
+            current percentage along the constraining spline
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.RotationalOffset">
+            <summary>
+            the rotation offset of the prismatic joint from its spline
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.KinematicRatio">
+            <summary>
+            ratio on prismatic
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.PositionalOffset">
+            <summary>
+            the offset of the prismatic joint from its spline
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.ApplyRotationSpline">
+            <summary>
+            if are applying the rotation of the spline to prismatic joint
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.SoftLimit">
+            <summary>
+            Soft limit percentage of spline
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.manageRotation">
+            <summary>
+            if manage rotation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.manageTranslation">
+            <summary>
+            if manage translation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.initialize">
+            <summary>
+            initialize self
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.Rotate(u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            rotation change update
+            </summary>
+            <param name="_rotationDifference">rotation difference</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation change update
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.Translate(System.Double,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation change update
+            </summary>
+            <param name="_percentageDifference">percentage changed</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.calculateEnforceableLimitOnSelf(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            limit calculation
+            </summary>
+            <param name="_intent">original intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent limit</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent self
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.KineticChainBlocked">
+            <summary>
+            chain blocked
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.LazySetterCurrentPercentage(System.Double)">
+            <summary>
+            set current percentage without forcing kinematics
+            </summary>
+            <param name="_currentPercentage">current percentage</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.CheckCurrentPercentageStillCorrect">
+            <summary>
+            checks if current percentage is correct and if not updates it
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.ResetToValues(System.Double,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            resets to given values
+            </summary>
+            <param name="_ratio">patio of prismatic joint to force to</param>
+            <param name="_localPosition">force local position</param>
+            <param name="_localRotation">force local rotation</param>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.explicitBuffer">
+            <summary>
+            buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.APrismaticJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of APrismaticJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.WheelWheelRelation">
+            <summary>
+            inherited relation for a wheel-wheel relation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.WheelWheelRelation.Direct">
+            <summary>
+            wheel is rotation is directly taken over
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues">
+            <summary>
+            contains the wheel joint data for the inspector
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.AngleNotation">
+            <summary>
+            angle type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.WheelAngleNotation">
+            <summary>
+            The wheel rotation notation to use when setting the limits
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.ShowInSceneView">
+            <summary>
+            Whether or not this joint is displayed in scene view
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.ShowInSceneViewWhenNotSelected">
+            <summary>
+            Whether or not this joint is displayed in scene view when it isn't selected
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.WheelPlaneColor">
+            <summary>
+            The color of the wheel plane
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.CurrentRotationStateColor">
+            <summary>
+            The color of the current state indicator in the gizmo
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.WheelLimitColor">
+            <summary>
+            The Color of the wheel limits
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.AxisColor">
+            <summary>
+            Color used to draw the Axis Direction
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.KinematicWheelJointInspectorValues.ForwardColor">
+            <summary>
+            Color used to draw the Forward Direction
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint">
+            <summary>
+            Represents a generic Wheel joint with angle limits
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.ApplyKinematicLimit">
+            <summary>
+            Whether a kinematic limit is present
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.radius">
+            <summary>
+            The Radius of this wheel (used for circumference calculations)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.axisDirection">
+            <summary>
+            Stored axis scene vector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.axisDirectionValue">
+            <summary>
+            Stored axis direction
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.forwardRotationDifference">
+            <summary>
+            stored rotation difference between forward and normal
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.forwardDirection">
+            <summary>
+            stored forward scene vector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.minLimitDirection">
+            <summary>
+            stored minimum limit scene vector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.maxLimitDirection">
+            <summary>
+            stored maximum limit scene vector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.rotationLimitMinMaxDegrees">
+            <summary>
+            stored limit minimum maximum in degrees
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.currentRevolutionPercentage">
+            <summary>
+            stored current revolution percentage
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.inspectorValues">
+            <summary>
+            stored inspector values
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.Radius">
+            <summary>
+            The Radius of this wheel (used for circumference calculations)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.AxisDirection">
+            <summary>
+            Lazy-loader for the axis direction manager (the rotation axis for the wheel joint)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GlobalAxisDirection">
+            <summary>
+            Set or get The global direction of this wheel joint's axis (floating point precision)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.LocalAxisDirection">
+            <summary>
+            The local direction of this joints' axis
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.ForwardDirection">
+            <summary>
+            Lazy loader for the forward direction manager (the forward, or 0-position, of the wheel joint)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GlobalForwardDirection">
+            <summary>
+            Set or get the global forward direction of this wheel joint's forward direction
+            (Constrained to/ projected on the Wheel joint axis (planar normal) direction
+            Floating Precision
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.LocalForwardDirection">
+            <summary>
+            The local Forward direction
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.MinLimitDirection">
+            <summary>
+            Lazy loader for the minimum limit direction
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.MaxLimitDirection">
+            <summary>
+            Lazy loader for the maximum limit direction
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.RotationLimitMinMaxDegrees">
+            <summary>
+            The limit in degrees applied to the rotational joint (0 = 0deg, 360 = 1 turn, 720 = 2 turns)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GlobalMinRotLimitDirection">
+            <summary>
+            Global vector describing the minimum rotation limit of this wheel joint
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GlobalMaxRotLimitDirection">
+            <summary>
+            Global vector describing the maximum rotation limit of this wheel joint
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.CurrentRevolutionPercentage">
+            <summary>
+            The revolutions this joint has made since it's start position in circle share (0 = 0%, 1 = 1 turn, 2 = 2 turns, etc.)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GlobalCurrentRotationVector">
+            <summary>
+            Vector indicating the direction of the current rotation of the wheel
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.CurrentRevolutionDegrees">
+            <summary>
+            The revolution this joint has made since it's start position in degrees (0 = 0deg, 360 = 1 turn, 720 = 2 turns)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.CurrentRevolutionRadians">
+            <summary>
+            The revolution this joint has made since the start position in radians (0 = 0deg, 1 = 57,2977.. deg) 
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.InspectorValues">
+            <summary>
+            getter inspector values
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.KinematicRatio">
+            <summary>
+            ratio on wheel
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.manageRotation">
+            <summary>
+            if manage rotation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.manageTranslation">
+            <summary>
+            if manage translation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.getIntentFromTransformChange(System.Collections.Generic.List{u040.prespective.prepair.IntentData}@)">
+            <summary>
+            gets the intents caused by the kinematics body transform changed
+            </summary>
+            <param name="_intents">intent found from change</param>
+            <returns>if change was found</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.storeDTransform">
+            <summary>
+            Store global and local values of position and rotation from DTransform
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.initialize">
+            <summary>
+            initializes self
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.Rotate(u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            rotation change update
+            </summary>
+            <param name="_rotation">rotation changed</param>
+            <param name="_space">transformation space changed in</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.Rotate(System.Double,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            rotation change update
+            </summary>
+            <param name="_rotationDegrees">rotation change in degrees</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation change update (nothing for wheel joint)
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_space">transformation space changed in</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent self
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.KineticChainBlocked">
+            <summary>
+            kinematic chain block
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.calculateEnforceableLimitOnSelf(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            limit calculation
+            </summary>
+            <param name="_intent">original intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent limit</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.angleWithinLimit(System.Double,System.Double@)">
+            <summary>
+            determines if the applied percentage is allowed
+            </summary>
+            <param name="_deg">degrees to check</param>
+            <param name="_closestPossibleAngle"> resulting closed valid degrees</param>
+            <returns>if allowed</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.onAxisDirectionChanged">
+            <summary>
+            Callback made when the Axis direction was changed via Scene Gizmo input
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.setGlobalAxisDirection(u040.prespective.math.doubles.DVector3)">
+            <summary>
+            set global axis
+            </summary>
+            <param name="_newValue">new value</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.onForwardDirectionChanged">
+            <summary>
+            Callback made when the Forward direction was changed via Scene Gizmo input
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.onMinLimitDirectionChanged">
+            <summary>
+            Callback made when the Minimum limit direction was changed via Scene Gizmo input
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.onMaxLimitDirectionChanged">
+            <summary>
+            Callback made when the Maximum limit direction was changed via Scene Gizmo input
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.setForwardRotationDifference(u040.prespective.math.doubles.DVector3)">
+            <summary>
+            sets forward rotation difference depending on given forward
+            </summary>
+            <param name="_forward">forward</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.ResetToValues(System.Double,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            resets to given values
+            </summary>
+            <param name="_ratio">patio of wheel joint to force to</param>
+            <param name="_localPosition">force local position</param>
+            <param name="_localRotation">force local rotation</param>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.explicitBuffer">
+            <summary>
+            buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.basic.AWheelJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AWheelJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle">
+            <summary>
+            triangle description date
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.TriangleType">
+            <summary>
+            type of triangle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.Initlialized">
+            <summary>
+            if initialized
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.Type">
+            <summary>
+            type of triangle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.StoredFixAngle">
+            <summary>
+            stored fixed angle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.StoredHingeAngle">
+            <summary>
+            stored hinge angle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.Color">
+            <summary>
+            triangle color
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.fixPivot">
+            <summary>
+            stored fixed pivot
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.hingePoint">
+            <summary>
+            stored hinge point
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.Normal">
+            <summary>
+            triangle normal
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.FixPivotInvertedAxis">
+            <summary>
+            fixed pivot inverted axis
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.HingePointInvertedAxis">
+            <summary>
+            hinge point inverted axis
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.FixPivot">
+            <summary>
+            fixed pivot
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.HingePoint">
+            <summary>
+            hinge point
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.HingeFixLength">
+            <summary>
+            hinged to fixed length
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.HingeMovingLength">
+            <summary>
+            hinge to moving length
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.IsCompatible">
+            <summary>
+            Check if the current triangle set up is compatible
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.IsLeading">
+            <summary>
+            is leading triangle
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle.Initialize(u040.prespective.math.doubles.DVector3)">
+            <summary>
+            initialize triangle
+            </summary>
+            <param name="_movingPivot">moving pivot position</param>
+            <returns>successful</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver">
+            <summary>
+            A solver that uses triangles to solve a connection between prismatic and 2 wheel joints
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.DrawTriangleGizmo">
+            <summary>
+            if draw triangle gizmo
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.TriangleList">
+            <summary>
+            list of triangles of bar linkage solver
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.EnforceOutsidePlaymode">
+            <summary>
+            if enforced outside play mode
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.initialize">
+            <summary>
+            initializes self
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent self
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.processTriangles">
+            <summary>
+            Calculate and buffer all triangles
+            </summary>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.calculateAngles(u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle,System.Double@,System.Double@)">
+            <summary>
+            Calculate the angles within a triangle
+            </summary>
+            <param name="_triangle"></param>
+            <param name="_hingeAngle"></param>
+            <param name="_fixAngle"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.bufferTriangle(u040.prespective.prepair.kinematics.joints.compound.KinematicTriangle,System.Double,System.Double)">
+            <summary>
+            Buffer the WheelJoint intents for a triangle
+            </summary>
+            <param name="_triangle"></param>
+            <param name="_hingeAngle"></param>
+            <param name="_fixAngle"></param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.AddTriangle(u040.prespective.prepair.kinematics.joints.basic.AWheelJoint,u040.prespective.prepair.kinematics.joints.basic.AWheelJoint,System.Boolean,System.Nullable{UnityEngine.Color})">
+            <summary>
+            Add a new triangle to the TriangleSolver
+            </summary>
+            <param name="_fixPivot"></param>
+            <param name="_hingePoint"></param>
+            <param name="_leadingTriangle"></param>
+            <param name="_color"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.SetLeadingTriangle(System.Int32)">
+            <summary>
+            Use this method to set a Prismatic Triangle and to ensure only one Prismatic Triangle exists
+            </summary>
+            <param name="_triangleIndex"></param>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.compound.ABarLinkageSolver.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of ABarLinkageSolver 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint">
+            <summary>
+            Represents a generic transfer joint which applies the orientation change to a other connected game object with ability to fix orientation
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.FixedRelativePosition">
+            <summary>
+            if fixed relative position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.FixedRelativeRotation">
+            <summary>
+            if fixed relative rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.TransferRotations">
+            <summary>
+            if direct transfer rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.TransferTranslation">
+            <summary>
+            if direct transfer translation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.TransferDirection">
+            <summary>
+            transfer type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.connectedGameobject">
+            <summary>
+            stored connected game object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.connectedDTransform">
+            <summary>
+            stored connected DTransform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storedConnectedGlobalPosition">
+            <summary>
+            stored connected global position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storedConnectedGlobalRotation">
+            <summary>
+            stored connected global rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storedConnectedLocalPosition">
+            <summary>
+            stored connected local position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storedConnectedLocalRotation">
+            <summary>
+            stored connected local rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.initialGlobalRelativeRotation">
+            <summary>
+            initial global rotation difference between connected and self
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.firstInit">
+            <summary>
+            safety check to not throw error on first initialize
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.sendByOther">
+            <summary>
+            if intent processed in apply is send by connected game object
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.ConnectedGameobject">
+            <summary>
+            connected game object
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.manageRotation">
+            <summary>
+            if manage rotation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.manageTranslation">
+            <summary>
+            if manage translation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.checkSpace">
+            <summary>
+            check space
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.initialize">
+            <summary>
+            initialize self
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.getIntentFromTransformChange(System.Collections.Generic.List{u040.prespective.prepair.IntentData}@)">
+            <summary>
+            gets the intents caused by the kinematics body transform changed
+            </summary>
+            <param name="_intents">intent found from change</param>
+            <returns>if change was found</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.Rotate(u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            rotation change update
+            </summary>
+            <param name="_rotationDifference">rotation difference</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation change update
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.extractIntentFromOtherMovement(System.Boolean)">
+            <summary>
+            gets the change from connected game object change
+            </summary>
+            <param name="_translation">if translation change</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent self
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storeDTransform">
+            <summary>
+            stores values after change
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.storeConnectedDTransform">
+            <summary>
+            stores values of connected transform
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.calculateEnforceableLimitOnSelf(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            limit calculation
+            </summary>
+            <param name="_intent">original intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent limit</returns>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.joints.extended.ATransferJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of ATransferJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.IPhysicalRelation">
+            <summary>
+            @INTERFACE : IPhysicalRelation
+            
+            @ABOUT : Interface added to a kinematic joint to add PhysX support
+            
+            @AUTHOR : Pieter (Unit040)
+            
+            @VERSION : v1.00 - 22/03/2019 - Basic working version of a physical kinematic joint
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.IPhysicalRelation.RigidBody">
+            <summary>
+            Reference to the rigidbody controlling this physical relation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.IPhysicalRelation.AssertPhysique">
+            <summary>
+            function called in the late update to assert that physical motion has not caused this object to break out of its constraints
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.IPhysicalRelation.physicalTranslation(UnityEngine.Vector3,System.Boolean,System.Action{System.Single,UnityEngine.Vector3})">
+            <summary>
+            Apply a physical - force based - translation
+            </summary>
+            <param name="_force">the direction and magnitude of the force applied</param>
+            <param name="_isLocal">whether force direction is expressed as a vector in local coordinate space</param>
+            <param name="_forceFeedback">the feedback generated as a result of this translation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.IPhysicalRelation.physicalTranslation(System.Single,System.Boolean,System.Action{System.Single,UnityEngine.Vector3})">
+            <summary>
+            Apply a physical - force based - translation
+            </summary>
+            <param name="_directionalforce">the magnitude of force to apply in this joints' operational direction</param>
+            <param name="_isLocal">whether force direction is expressed as a vector in local coordinate space (used here only for the returned vector)</param>
+            <param name="_forceFeedback">the feedback generated as a result of this translation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.IPhysicalRelation.physicalRotation(UnityEngine.Vector3,System.Boolean,System.Action{System.Single,UnityEngine.Vector3})">
+            <summary>
+            Apply a physical - force based - rotation
+            </summary>
+            <param name="_force">the direction and magnitude of the force applied</param>
+            <param name="_isLocal">whether force direction is expressed as a vector in local coordinate space</param>
+            <param name="_forceFeedback">the feedback generated as a result of this rotation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.IPhysicalRelation.physicalRotation(System.Single,System.Boolean,System.Action{System.Single,UnityEngine.Vector3})">
+            <summary>
+            Apply a physical - force based - rotation
+            </summary>
+            <param name="_directionalforce">the magnitude of force to apply in this joints' operational direction</param>
+            <param name="_isLocal">whether force direction is expressed as a vector in local coordinate space (used here only for the returned vector)</param>
+            <param name="_forceFeedback">he feedback generated as a result of this translation</param>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.AGyroscopicJoint">
+            <summary>
+            Represents a generic gyroscopic joint which keeps a game object orientated to the same up direction
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.LocalColor">
+            <summary>
+            Color of the LocalUp gizmo
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.GlobalColor">
+            <summary>
+            Color of the GlobalUp gizmo
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.LocalUp">
+            <summary>
+            The direction to align to the global up
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.GlobalUp">
+            <summary>
+            The direction to which the local up is aligned to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.ShowInSceneView">
+            <summary>
+            Whether or not this joint is displayed in scene view
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.ShowInSceneViewWhenNotSelected">
+            <summary>
+            Whether or not this joint is displayed in scene view when it isn't selected
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AGyroscopicJoint.checkSpace">
+            <summary>
+            The vector space in which changes to the transform are detected
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AGyroscopicJoint.manageRotation">
+            <summary>
+            Whether to manage rotation of the transform
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AGyroscopicJoint.manageTranslation">
+            <summary>
+            Whether to manage translation of the transform
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AGyroscopicJoint.initialize">
+            <summary>
+            initialize self
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AGyroscopicJoint.Rotate(u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            rotation change update
+            </summary>
+            <param name="_rotationDifference">rotation difference</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AGyroscopicJoint.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            translation change update (nothing for Gyroscopic joint)
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_space">transformation space</param>
+            <param name="_callback">call back (only in force update)</param>
+            <param name="_forceUpdate">if should force a update</param>
+            <returns>intent of update</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AGyroscopicJoint.calculateEnforceableLimitOnSelf(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            limit calculation
+            </summary>
+            <param name="_intent">original intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent limit</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.AGyroscopicJoint.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent self
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">bodies already processed</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.AGyroscopicJoint.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.AGyroscopicJoint.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AGyroscopicJoint 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.TransformationSpace">
+            <summary>
+            indicates which transformation space the kinematic body is checked in
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.KinematicBody">
+            <summary>
+            A Custom Kinematic Body is a Custom Body that is constrained
+            via a kinematic mathematical model and relationships
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.MinimumDistanceCheck">
+            <summary>
+            Minimum translated distance to detect change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.MinimumAngleCheck">
+            <summary>
+            Minimum rotated angle to detect change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.PassPriority">
+            <summary>
+            The priority of this relation within its update pass (higher priority objects are updated first)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.PreventUpdate">
+            <summary>
+            Whether the updating of the transform should be halted (can be used to regenerate the constraint in runtime)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.CallBacks">
+            <summary>
+            Stored callbacks to be done for this body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.VisualizeRelationsInSceneWhenSelected">
+            <summary>
+            Track whether relations should be visualized in scene when selected
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.VisualizeRelationsInSceneAlways">
+            <summary>
+            Track whether relations should always be visualized in scene
+            </summary>
+        </member>
+        <member name="E:u040.prespective.prepair.kinematics.KinematicBody.OnAppliedIntentEventFunction">
+            <summary>
+            Function called when intent was applied to kinematic body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedLocalPosition">
+            <summary>
+            Last known Local Position used for calculating the magnitude of change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedGlobalPosition">
+            <summary>
+            Last known Global Position used for calculating the magnitude of change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedLocalRotation">
+            <summary>
+            Last known Local Rotation used for calculating the magnitude of change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedGlobalRotation">
+            <summary>
+            Last known Global Rotation used for calculating the magnitude of change
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.enforceOutsidePlaymode">
+            <summary>
+            If enforced outside play mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.connectedKinematicRelations">
+            <summary>
+            A list of all kinematic bodies related with their relation to this body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.isInitialized">
+            <summary>
+            If kinematic body has been initialized
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedIsPlaying">
+            <summary>
+            Is the stored value of Unity application is playing
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.KinematicBody.storedAngleDotmargin">
+            <summary>
+            Is the dot angle margin of given angle margin
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.EnforceOutsidePlaymode">
+            <summary>
+            Whether this kinematic relation should be enforced outside play mode (i.e. in the Unity Editor)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.HasBeenInitialized">
+            <summary>
+            If kinematic body has already been initialized
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.ConnectedKinematicRelations">
+            <summary>
+            relations connected to this kinematic body
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.checkSpace">
+            <summary>
+            get transformation space
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.enforceKinematicBody">
+            <summary>
+            if enforced now
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.applicationIsPlaying">
+            <summary>
+            If the application is playing (this is a value that can be called off thread)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.dotAngleMargin">
+            <summary>
+            Is the dot angle margin of given angle margin
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.Awake">
+            <summary>
+            Called when this game object awakes (either in play mode or editor mode)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.onAwake">
+            <summary>
+            Run in Unity Awake function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.checkForCustomBodyController">
+            <summary>
+            Checks whether a parenting BodyController exists
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.manageRotation">
+            <summary>
+            if should check for rotation changes
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.manageTranslation">
+            <summary>
+            if should check for translation changes
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.kinematics.KinematicBody.jointConversionLookupTable">
+            <summary>
+            lookup table how to process intent between custom kinematic bodies
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.initialize">
+            <summary>
+            Method is called as soon as this KinematicBody needs to be initialized. 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.Rotate(u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            Attempt to rotate this (limited) kinematic body using a DQuaternion
+            </summary>
+            <param name="_rotation">DQuaternion rotation intended to apply to the kinematic body</param>
+            <param name="_space">Transformation space this change will be calculated in</param>
+            <param name="_callback">Callback method to receive intent data after intent has been processed</param>
+            <param name="_forceUpdate">If should force an update</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.Translate(u040.prespective.math.doubles.DVector3,u040.prespective.prepair.kinematics.TransformationSpace,System.Action{u040.prespective.prepair.IntentData},System.Boolean)">
+            <summary>
+            Attempt to translate this (limited) kinematic body using a DVector3
+            </summary>
+            <param name="_translation">DVectro3 translation intended to apply to the kinematic body</param>
+            <param name="_space">Transformation space this change will be calculated in</param>
+            <param name="_callback">Callback method to receive intent data after intent has been processed</param>
+            <param name="_forceUpdate">If should force an update</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.calculateEnforceableLimitOnSelf(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            Calculate the maximum enforceable fraction of an intent on this kinematic body
+            </summary>
+            <param name="_intent">The intent to apply to this kinematic body</param>
+            <param name="_alreadyProcessed">A list of already processed kinematic bodies to prevent looping back through already calculated relations</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.KineticChainBlocked">
+            <summary>
+            Void that is executed when the Chain is blocked
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.InitKinematicBody">
+            <summary>
+            Initializes the kinematic relation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.ExtractIntentFromTransformChange">
+            <summary>
+            Updates the kinematic relation
+            </summary>
+            <param name="_limitFeedBack">delegate to do if limit is reached</param>
+            <returns>intent</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.getIntentFromTransformChange(System.Collections.Generic.List{u040.prespective.prepair.IntentData}@)">
+            <summary>
+            gets the intents caused by the kinematics body transform changed
+            </summary>
+            <param name="_intents">intent found from change</param>
+            <returns>if change was found</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.storeDTransform">
+            <summary>
+            Store global and local values of position and rotation from DTransform
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.doOnApplyIntentFunctions(System.Collections.Generic.List{u040.prespective.prepair.IntentData})">
+            <summary>
+            Does the on applied intent functions for given intents
+            </summary>
+            <param name="_intents">intents</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.calculateEnforceableLimitOnSelfAndRelations(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            determines the amount of percentage that is allowed to be applied to this joint, accounting for relation limits
+            </summary>
+            <param name="_intent">angle difference in percentage of rotation applied packed in intent data</param>
+            <param name="_alreadyProcessed">already processed bodies</param>
+            <returns>how much percentage of difference is allowed</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.calculateEnforceableLimitOnRelations(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            Determine the smallest actuatable percentage of the intent through connected relations
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">already processed bodies</param>
+            <returns>limit percentage</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.applyIntent(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@,System.Action{u040.prespective.prepair.IntentData})">
+            <summary>
+            Apply an intent to this body and all its related bodies
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">already processed bodies</param>
+            <param name="_callback">Action that is invoked after inter is applied</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.applyIntentToTransform(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent to transform
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">already processed bodies</param>
+            <returns>intent of apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.applyIntentToRelations(u040.prespective.prepair.IntentData,System.Collections.Generic.List{u040.prespective.prepair.kinematics.KinematicBody}@)">
+            <summary>
+            apply intent to relation's of this body
+            </summary>
+            <param name="_intent">intent</param>
+            <param name="_alreadyProcessed">already processed bodies</param>
+            <returns>intents of relations apply</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.getConversionGenerator(u040.prespective.prepair.kinematics.KinematicBody)">
+            <summary>
+            gets transfer intent generator 
+            </summary>
+            <param name="_other">kinematic body connected to</param>
+            <returns>delegate ONCustomTransferInternGenerator</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.SetKinematicRelation(u040.prespective.prepair.kinematics.KinematicBody,u040.prespective.prepair.kinematics.KinematicTransferDirection,System.Boolean,System.Double,UnityEngine.Color,System.Boolean)">
+            <summary>
+            set kinematic relation to this body
+            </summary>
+            <param name="_kinematicBody">relation body</param>
+            <param name="_transferDirection">transfer direction between relation</param>
+            <param name="_inverse">is inverse</param>
+            <param name="_ratio">ratio</param>
+            <param name="_color">color</param>
+            <param name="_updateRelation">if should update relation</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.RemoveKinematicRelation(u040.prespective.prepair.kinematics.CustomKinematicTransferRelation)">
+            <summary>
+            removes relation
+            </summary>
+            <param name="_relation">relation to remove</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.KinematicBody.RemoveKinematicRelation(u040.prespective.prepair.kinematics.KinematicBody)">
+            <summary>
+            remove relation of body
+            </summary>
+            <param name="_kinematicBody">body</param>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.CallBackData">
+            <summary>
+            the data for the call back
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CallBackData.OriginalTranslation">
+            <summary>
+            original translation done to the callback
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CallBackData.OriginalRotation">
+            <summary>
+            original rotation done to the callback
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CallBackData.CallBack">
+            <summary>
+            the call back function that is done when callback is processed
+            first value is the original amount translated second value is the original amount rotated and third value is the intent done.
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.CallBackData.#ctor(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion,System.Action{u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion,u040.prespective.prepair.IntentData})">
+            <summary>
+            constructor
+            </summary>
+            <param name="_translation">translation done</param>
+            <param name="_rotation">rotation done</param>
+            <param name="_callBackFunction">call back function</param>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.CallBackData.ImplementCallBack(u040.prespective.prepair.IntentData)">
+            <summary>
+            Implements the callback
+            </summary>
+            <param name="_intent">intent done</param>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.OnCustomTransferIntentGenerator">
+            <summary>
+            intent relation converter function
+            </summary>
+            <param name="_intent">intent original</param>
+            <param name="_from">from body</param>
+            <param name="_to">to body</param>
+            <param name="_relation">relation between from and to</param>
+            <returns>processed intent</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.kinematics.CustomKinematicJointIntentConversion">
+            <summary>
+            intent conversion data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicJointIntentConversion.OtherJointType">
+            <summary>
+            other joint type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.kinematics.CustomKinematicJointIntentConversion.TransferIntentGenerator">
+            <summary>
+            conversion function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.kinematics.CustomKinematicJointIntentConversion.#ctor(System.Type,u040.prespective.prepair.kinematics.OnCustomTransferIntentGenerator)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_otherType">other joint type</param>
+            <param name="_generator">conversion function</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.sensors.ISensor">
+            <summary>
+            <description>
+            Interface to mark standard components as a sensor (required to give them an icon in the hierarchy view
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200624">
+                Implemented to assign hierarchy view icons to standard components
+            </version>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder">
+            <summary>
+            Basic encoder used for the LinearEncoder, RotaryEncoder etc.
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.storedBaseValue">
+            <summary>
+            Internal value used in the BaseValue property below. Need SerializeField/Obfuscation to store value between builds.
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.BaseValue">
+            <summary>
+            Base value at zero position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.ValuePerWholeCycle">
+            <summary>
+            Value representation for each cycle of the encoder
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.EnableRounding">
+            <summary>
+            Toggle enable rounding
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.roundingInterval">
+            <summary>
+            Internal rounding interval use in the RoundingInterval property below
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.RoundingInterval">
+            <summary>
+            Set the value to round to. Cannot be set to 0
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.CapValue">
+            <summary>
+            Enable capping Value
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.storedMinCapValue">
+            <summary>
+            Internal stored value used in MinCapValue property below
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.MinCapValue">
+            <summary>
+            Minimum value when capped
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.storedMaxCapValue">
+            <summary>
+            Internal value used in MaxCapValue propterty below
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.MaxCapValue">
+            <summary>
+            Maximum value when capped
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.storedPositionPercentage">
+            <summary>
+            Value to detect change in encoder position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.internalValue">
+            <summary>
+            Internal value that doesn't take rounding and basevalue into account
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.Awake">
+            <summary>
+            Awake runs when script is loaded. Initializes variables/states before application starts
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.updateValue(System.Double,System.Boolean)">
+            <summary>
+            update the encoder with the current position percentage
+            </summary>
+            <param name="_currentPositionPercentage"></param>
+            <param name="_forceUpdate"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseEncoder.FixedUpdate">
+            <summary>
+            Update of physics engine
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch">
+            <summary>
+            base where switch are made from
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.UseSceneGizmo">
+            <summary>
+            if use scene gizmo
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.GizmoColor">
+            <summary>
+            gizmo color
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.SwitchStates">
+            <summary>
+            switch states
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.SelectedState">
+            <summary>
+            selected state
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.LoopingSwitch">
+            <summary>
+            Returns whether the switch has a physical limit 
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.CurrentPositionPercentage">
+            <summary>
+            current position of switch in percentage
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.SelectState(System.Int32)">
+            <summary>
+            Select an existing switch state by ID
+            </summary>
+            <param name="_id">Switch State ID</param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.SaveCurrentPositionAsState">
+            <summary>
+            Add the current position of the switch as a Switch State
+            </summary>
+            <returns>Created Switch State</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.Awake">
+            <summary>
+            Unity awake function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.onAwake">
+            <summary>
+            run on Unity awake function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.FixedUpdate">
+            <summary>
+            Unity fixed update function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.onFixedUpdate">
+            <summary>
+            run on Unity Fixed Update function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.RecalculateTransitions">
+            <summary>
+            recalculates the transitions of the switch
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.UpdateState(System.Boolean)">
+            <summary>
+            Update the switch to check the selected state
+            </summary>
+            <param name="_force">Check even if the switch hasn't moved</param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.checkSelectedState(System.Double)">
+            <summary>
+            Check which state is currently selected
+            </summary>
+            <param name="_switchPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.positionIsBetweenTransitions(System.Double,System.Double,System.Double)">
+            <summary>
+            Check whether the given position is between the given transitions
+            </summary>
+            <param name="_position"></param>
+            <param name="_lowerTransition"></param>
+            <param name="_upperTransition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DeleteState(System.Int32)">
+            <summary>
+            delete switch state
+            </summary>
+            <param name="_id">index to delete</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.SaveState(System.Double,System.String)">
+            <summary>
+            save state
+            </summary>
+            <param name="_position">position</param>
+            <param name="_name">name</param>
+            <returns>switch state</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState">
+            <summary>
+            Switch state data class
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.Position">
+            <summary>
+            position
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.LowerWeight">
+            <summary>
+            lower weight
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.UpperWeight">
+            <summary>
+            upper weight
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.LowerTransition">
+            <summary>
+            lower transition
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.UpperTransition">
+            <summary>
+            upper transition
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.OnSelected">
+            <summary>
+            on select Unity event
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.OnUnselected">
+            <summary>
+            on unselect Unity event
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.#ctor(System.Double,System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_position">position</param>
+            <param name="_name">name</param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch.DSwitchState.#ctor(System.Double,System.Int32,System.String,System.Double,System.Double,UnityEngine.Events.UnityEvent,UnityEngine.Events.UnityEvent)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_position">position</param>
+            <param name="_id">id</param>
+            <param name="_name">name</param>
+            <param name="_lowerWeight">lower weight</param>
+            <param name="_upperWeight">upper weight</param>
+            <param name="_onSelected">Unity event on select</param>
+            <param name="_onUnselected">Unity even on unselect</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.sensors.QualitativeSensor`1">
+            <summary>
+            A qualitative sensor with for a value of type T
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QualitativeSensor`1.OnValueChanged">
+            <summary>
+            A unity event that is fired when the value is changed
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QualitativeSensor`1.IsActive">
+            <summary>
+            Whether the sensor is currently active or not
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QualitativeSensor`1.OutputSignal">
+            <summary>
+            Current output signal of the sensor
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QualitativeSensor`1.value">
+            <summary>
+            The output value of the sensor of type T
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.OnSignalHigh">
+            <summary>
+            A unity event that is fired when the output signal is set from low to high
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.OnSignalLow">
+            <summary>
+            A unity event that is fired when the output signal is set from high to low
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.IsActive">
+            <summary>
+            Whether the sensor is currently active or not
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.OutputSignal">
+            <summary>
+            Current output signal of the sensor, true = High, false = Low
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.flagged">
+            <summary>
+            A bool to track whether the sensor should have a high output WHEN active
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.Start">
+            <summary>
+            Unity start
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.sensors.QuantitativeSensor.onStart">
+            <summary>
+            Function run on Unity Start
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.systems.beam.DBaseBeamReflector">
+            <summary>
+            base class for beam reflectors
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.DBaseBeamReflector.ResolveHit(UnityEngine.Vector3,UnityEngine.RaycastHit,u040.prespective.prepair.virtualhardware.systems.beam.IDBeamEmitter)">
+            <summary>
+            This method is triggered when the Beam Reflector is being hit by a beam
+            </summary>
+            <param name="_hitVector">The direction the beam is coming from</param>
+            <param name="_hit">The hit info from the raycast</param>
+            <param name="_emitter">The Beam Emitter sending out the beam</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.DBaseBeamReflector.LostHit(u040.prespective.prepair.virtualhardware.systems.beam.IDBeamEmitter)">
+            <summary>
+            This method is triggered when the Beam Reflector is no longer being hit by a beam
+            </summary>
+            <param name="_emitter">The Beam Emitter sending out the beam</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPath">
+            <summary>
+            beam path
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPath.EndPoint">
+            <summary>
+            end point
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPath.SetNewRedirectionPointAtIndex(System.Int32,u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint)">
+            <summary>
+            set new direction point at index
+            </summary>
+            <param name="_index">index</param>
+            <param name="_point">point</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.systems.beam.IDBeamTarget">
+            <summary>
+            interface beam targets
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.IDBeamTarget.ResolveHit(UnityEngine.Vector3,UnityEngine.RaycastHit,u040.prespective.prepair.virtualhardware.systems.beam.IDBeamEmitter)">
+            <summary>
+            This method is triggered when the Beam Receiver is being hit by a beam
+            </summary>
+            <param name="_hitVector">The direction the beam is coming from</param>
+            <param name="_hit">The hit info from the ray cast</param>
+            <param name="_emitter">The Beam Emitter sending out the beam</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.IDBeamTarget.LostHit(u040.prespective.prepair.virtualhardware.systems.beam.IDBeamEmitter)">
+            <summary>
+            This method is triggered when the Beam Receiver is no longer being hit by a beam
+            </summary>
+            <param name="_emitter">The Beam Emitter sending out the beam</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint">
+            <summary>
+            beam path point
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint.RedirectionObject">
+            <summary>
+            re direction object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint.InPoint">
+            <summary>
+            in point
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint.OutPoint">
+            <summary>
+            out point
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint.OutDirection">
+            <summary>
+            out direction
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.systems.beam.DBeamPathRedirectionPoint.#ctor(u040.prespective.prepair.virtualhardware.systems.beam.IDBeamTarget,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_redirectionObject">redirection object</param>
+            <param name="_inPoint">in point</param>
+            <param name="_outPoint">out point</param>
+            <param name="_outDirection">out direction</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.systems.beam.IDBeamEmitter">
+            <summary>
+            interface of beam emitters
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor">
+            <summary>
+            base for the driven motors
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.Direction">
+            <summary>
+            direction types
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.IsActive">
+            <summary>
+            is active
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.Error">
+            <summary>
+            in error state
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.Position">
+            <summary>
+            motor position in degrees
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.TargetAngle">
+            <summary>
+            motor target angle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.ContinuousDirection">
+            <summary>
+            motor directionality
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.Continuous">
+            <summary>
+            if continuously running
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.ZeroOffset">
+            <summary>
+            zero offset
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.PreferredVelocity">
+            <summary>
+            motor preferred velocity
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.updateVelocity">
+            <summary>
+            update velocity
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.onFixedUpdate">
+            <summary>
+            function run in Unity fixed update
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.updatePreferredVelocity">
+            <summary>
+            updates preferred velocity
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.determineTipTime(System.Double,System.Double,System.Double)">
+            <summary>
+            determines the time the tip takes
+            </summary>
+            <param name="_currentVelocity">current velocity</param>
+            <param name="_tipDistance">tip distance to do</param>
+            <param name="_accelerationFactor">acceleration factor</param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.updateContinuousTargetVelocity">
+            <summary>
+            update target velocity if continuous state
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.rotationCallback(System.Double,System.Double)">
+            <summary>
+            rotation call back
+            </summary>
+            <param name="_degrees">amount degrees</param>
+            <param name="_percentage">amount percentage</param>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.triggerError">
+            <summary>
+            triggers error state
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DDrivenMotor.ResetError">
+            <summary>
+            reset error
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor">
+            <summary>
+            This is a base component for motors. It handles basic velocity, acceleration and rotation for the motor.
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.DEFAULT_MAX_VELOCITY">
+            <summary>
+            The default value set for Max Velocity
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.DEFAULT_MAX_ACCELERATION">
+            <summary>
+            The default value set for Max Acceleration
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.DEFAULT_MAX_DECELERATION">
+            <summary>
+            The default value set for Max Deceleration
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.ROUNDING_PRECISION">
+            <summary>
+            The margin of rounding values internally
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.KinematicWheelJoint">
+            <summary>
+            The Wheel Joint assigned to the motor, used to actually rotate the object.
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.MaxVelocity">
+            <summary>
+            The maximum amount of rotations the motor can complete each second
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.accelerationValue">
+            <summary>
+            The current acceleration. This can be acceleration, deceleration or something in between.
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.Acceleration">
+            <summary>
+            The amount of acceleration the motor will apply when acceleration
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.Deceleration">
+            <summary>
+            The amount of deceleration the motor will apply when deceleration
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.TargetVelocity">
+            <summary>
+            The velocity value the motor is accelerating/decelerating towards
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.Velocity">
+            <summary>
+            The current velocity of the motor
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.overridePreferredRotationDegrees">
+            <summary>
+            override of the amount degrees rotated this tick
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.onReset">
+            <summary>
+            This method is run upon resetting the component
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.onFixedUpdate">
+            <summary>
+            This method is run upon the fixed update of the component
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.checkRequiredComponents">
+            <summary>
+            Verify that the necessary components and conditions required for operation of the motor are present
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.updateAcceleration">
+            <summary>
+            Update the current acceleration based on the current velocity and target velocity
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.updateVelocity">
+            <summary>
+            Update the current velocity based on the current velocity and acceleration value
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.updateRotation">
+            <summary>
+            Update the current rotation based on the current rotation and velocity
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.virtualhardware.actuators.motors.DBaseMotor.rotationCallback(System.Double,System.Double)">
+            <summary>
+            This method is used as a callback for when the motor tries to rotate towards a certain position
+            </summary>
+            <param name="_degrees">The amount of degrees to motor tried to rotate from its current position</param>
+            <param name="_percentage">The percentage of the amount of degrees it successfully rotated</param>
+        </member>
+        <member name="T:u040.prespective.prepair.virtualhardware.actuators.IActuator">
+            <summary>
+            <description>
+            Interface to mark standard components as an actuator (required to give them an icon in the hierarchy view)
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200624">
+                Implemented to assign hierarchy view icons to standard components
+            </version>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.AGroupMeshScript">
+            <summary>
+            Controls the ungrouping and regrouping of a group of meshes
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.FilepathPackedMesh">
+            <summary>
+            Filepath PackedMesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshFileAlreadyCreated">
+            <summary>
+            If PackedMesh file is already created
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.Indexformat">
+            <summary>
+            index format of grouped mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.InitialGroupedMeshData">
+            <summary>
+            initial data of when the group was made
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedMaterialsAssetsPaths">
+            <summary>
+            the material stored asset paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedMaterialsFileIds">
+            <summary>
+            the material stored file ids
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedVertices">
+            <summary>
+            the stored vertices of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedNormals">
+            <summary>
+            the stored normals of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedColours">
+            <summary>
+            the stored colours of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedUvs">
+            <summary>
+            the stored UV coordinates of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedTriangles">
+            <summary>
+            the stored triangles of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedMeshAssetPaths">
+            <summary>
+            the meshes stored asset paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedMeshFileIds">
+            <summary>
+            the meshes stored file ids
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedMeshNames">
+            <summary>
+            the stored name of meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedGameObjectNames">
+            <summary>
+            the stored name of game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedPositions">
+            <summary>
+            the stored position of game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedRotations">
+            <summary>
+            the stored rotation of game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedScales">
+            <summary>
+            the stored scale of game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UsedParenGameObjectRecords">
+            <summary>
+            the stored parental structure of game objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.TransformRecordOfGroupedGameObjects">
+            <summary>
+            original game objects where group was made from data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.Storedhistory">
+            <summary>
+            stored history of the group. History is used to reapply an action on the current or other objects.
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.GetSerializedData">
+            <summary>
+            if can get serialized data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.ChunkedGrouped">
+            <summary>
+            if should make chunked group when closed
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.ChunkCube">
+            <summary>
+            the chunk cube to build chunking from
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.SetFilenameGroupPackedMesh(System.String)">
+            <summary>
+            Set the filename of the GroupData and PackedMesh
+            </summary>
+            <param name="_filename"></param>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockPosition">
+            <summary>
+            locking of position
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockRotation">
+            <summary>
+            locking of rotation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockScale">
+            <summary>
+            locking of scale
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockSelection">
+            <summary>
+            locking of selection which is locked when group is closed
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockChildren">
+            <summary>
+            locking of children which is locked when group is closed
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockInPlayMode">
+            <summary>
+            locking in play mode
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.LockHierarchy">
+            <summary>
+            locking of hierarchy
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.BubbleLockingData(u040.prespective.core.topology.ILockableTransform)">
+            <summary>
+            What to do with multiple lockable transform in each other (called when an iLockableTransform higher in the scene hierarchy changed its lock settings)
+            </summary>
+            <param name="_parentLockData"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.TestHierarchyChangeAllowed(UnityEngine.Transform,System.Int32[],System.Int32[]@)">
+            <summary>
+            Change transform hierarchy (debuglog because error/warning doesn't work)
+            </summary>
+            <param name="_target"></param>
+            <param name="_previousChildIndex"></param>
+            <param name="_newChildIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.changed">
+            <summary>
+            should not be true else it re-serializes when scene loads
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.GetAppliedHistory">
+            <summary>
+            get applied history
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.InitializeMeshes(System.Collections.Generic.List{UnityEngine.GameObject},u040.prespective.prepair.topology.grouping.GroupingData,System.Boolean)">
+            <summary>
+            initialize meshes to group when first creating it
+            </summary>
+            <param name="_ngo">game objects that are part of the group</param>
+            <param name="_groupingData">grouping data</param>
+            <param name="_dummyAllowStoringNonStoredScene">if are allowed to store the group data when not having saved the scene</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.Add(UnityEngine.GameObject[],System.Boolean,System.Boolean)">
+            <summary>
+            adds the game objects to the group
+            </summary>
+            <param name="_gameObjects">game objects to add</param>
+            <param name="_save">if to save to history</param>
+            <param name="_store">if should store history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.RemoveFromGroup(UnityEngine.GameObject[],System.Boolean,System.Boolean)">
+            <summary>
+            removes a given grouped objects from the group
+            </summary>
+            <param name="_gameObjects">game objects that need to be removed from the group</param>
+            <param name="_save">if to save to history</param>
+            <param name="_store">if should store history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.removeAtIndex(System.Int32)">
+            <summary>
+            removes the record at given index from all the data objects
+            </summary>
+            <param name="_index">index</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.Ungroup(System.Boolean)">
+            <summary>
+            Ungroup the grouped gameobjects and remove parent
+            </summary>
+            <param name="_save">if to save to history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.applyOldParent(UnityEngine.GameObject,System.Int32)">
+            <summary>
+            applies the old parent to the game object
+            </summary>
+            <param name="_gameObject">game object</param>
+            <param name="_index">index of the transform settings list</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.createParentStructure(System.Int32,UnityEngine.Transform,System.Collections.Generic.List{u040.prespective.core.scenechangetracking.BaseTransformRecord})">
+            <summary>
+            creates the parent structure lost from records
+            </summary>
+            <param name="_startPoint">index start point of parent structure in records</param>
+            <param name="_startTransform">transform that is the highest still present parent from parent structure</param>
+            <param name="_records">parent records</param>
+            <returns>parent</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.Pack(System.Boolean,System.Boolean)">
+            <summary>
+            Checks before packing the meshes
+            </summary>
+            <param name="_save">if to save to history=</param>
+            <param name="_store">if should store history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.packing(System.Boolean,System.Boolean)">
+            <summary>
+            Preparation before merging the meshes into one mesh file
+            </summary>
+            <param name="_save">if to save to history=</param>
+            <param name="_store">if should store history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.packGroup(UnityEngine.GameObject,UnityEngine.Rendering.IndexFormat,System.String)">
+            <summary>
+            Merging meshes into one mesh
+            </summary>
+            <param name="_group">group</param>
+            <param name="_indFor">bits size of mesh</param>
+            <param name="_name">name of the merged meshes</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.doChunking(UnityEngine.GameObject)">
+            <summary>
+            Split merged mesh into separate parts
+            </summary>
+            <param name="_cube">chunk cube</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.makeChunkCube(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            Creates a cube to use for chunking the merged/grouped mesh
+            </summary>
+            <param name="_cube">original cube</param>
+            <param name="_processMeshes">game objects how meshes need to be inside the chunk cube</param>
+            <returns>chunk cube</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.UnPack(System.Boolean,System.Boolean)">
+            <summary>
+            Unpacks the single mesh into separate meshes
+            </summary>
+            <param name="_save">if to save to history</param>
+            <param name="_store">if should store history</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.getGroupedMeshIndex(System.Int32)">
+            <summary>
+            finds the grouped mesh index of group mesh (-1 if not found)
+            </summary>
+            <param name="_index">group mesh index</param>
+            <returns>grouped mesh index</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.findGroupGOIndexAndProcess(UnityEngine.GameObject,System.Action{UnityEngine.GameObject,System.Int32},System.Boolean[]@)">
+            <summary>
+            finds the stored index of the game object and processes it
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_action">process action when find index</param>
+            <param name="_found">already found connections to transform records</param>
+            <returns>if found index</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.createGameObjectWithMaterialAndMesh(System.Int32)">
+            <summary>
+            create game object with material
+            </summary>
+            <param name="_index">index of the lists</param>
+            <returns>made game object</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.createNewMesh(System.Int32)">
+            <summary>
+            creates a new mesh from data and stores it
+            </summary>
+            <param name="_index">index of the lists</param>
+            <returns>new mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.getTransformPathsForPrehistory(System.String@)">
+            <summary>
+            gets current transform path for prehistory
+            </summary>
+            <param name="_transformPath">this transform path</param>
+            <returns>prehistory object null if not found</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.getTransformPathsForPrehistory(UnityEngine.GameObject[],System.String@,System.String[]@)">
+            <summary>
+            gets transforms paths of given game objects and current transform path for prehistory
+            </summary>
+            <param name="_ngo">game objects to get transform paths</param>
+            <param name="_tp">this transform path</param>
+            <param name="_ntp">transform paths if given game objects</param>
+            <returns>prehistory object null if not found</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.makeHistory(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String,System.String)">
+            <summary>
+            Creates a history of the group function. Use to reapply action on current or other objects.
+            </summary>
+            <param name="_hist">prehistory</param>
+            <param name="_type">grouping function type</param>
+            <param name="_transformPath">transform path</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.makeHistory(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String,System.String,System.String[])">
+            <summary>
+            Creates a history of the group function. Use to reapply action on current or other objects.
+            </summary>
+            <param name="_hist">prehistory</param>
+            <param name="_type">grouping function type</param>
+            <param name="_tp">transform path</param>
+            <param name="_ntp">transform paths effected</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.makeHistoryOfPack(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String,UnityEngine.Rendering.IndexFormat,System.String,System.Boolean)">
+            <summary>
+            Creates a history of the packing of a number of meshes 
+            </summary>
+            <param name="_hist">prehistory</param>
+            <param name="_tp">transform path</param>
+            <param name="_indfor">index format</param>
+            <param name="_name">mesh name</param>
+            <param name="_chunking">if chunking group</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.ReadHistory(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,UnityEngine.Transform}},u040.prespective.core.scenechangetracking.SaveChangesData,System.Exception@)">
+            <summary>
+            reads the history of group function
+            </summary>
+            <param name="_connections">transform path transform connections</param>
+            <param name="_data">group mesh data</param>
+            <param name="_error">exceptions</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData">
+            <summary>
+            Stores all group data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.Type">
+            <summary>
+            type of grouping
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.IndexFormat">
+            <summary>
+            index format
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.Name">
+            <summary>
+            grouped name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.Chunking">
+            <summary>
+            if chunking
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.TransformPaths">
+            <summary>
+            transform paths
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.MeshGroupData.#ctor(System.String,UnityEngine.Rendering.IndexFormat,System.Boolean,System.String,System.String[])">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummyType">grouping type</param>
+            <param name="_dummyIndexFormat">index format</param>
+            <param name="_dummyChunking">if chunking</param>
+            <param name="_dummyName">grouped name</param>
+            <param name="_dummyTransformPaths">transform paths</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.ApplyExternalHistory(u040.prespective.core.topology.GroupHistoryData,System.Boolean,System.Exception@)">
+            <summary>
+            applies the history given externally
+            </summary>
+            <param name="_data">group history data</param>
+            <param name="_rollback">if need to rollback history</param>
+            <param name="_error">exception</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.getGameObjectsFromTransformRecords(System.Collections.Generic.List{u040.prespective.core.scenechangetracking.BaseTransformRecord},UnityEngine.Transform[],UnityEngine.Transform)">
+            <summary>
+            gets the game objects connected to the transform records
+            </summary>
+            <param name="_records">transform records</param>
+            <param name="_tr">transforms to compare to</param>
+            <param name="_compareParent">parent the transform records are made from</param>
+            <returns>connected game objects</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.checkIfMustReserilizeOnApply">
+            <summary>
+            checks if the class needs to get its original data back from serialized data
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.checkIfNull">
+            <summary>
+            checks if any of the public values are null
+            </summary>
+            <returns>if null</returns>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.lockObject">
+            <summary>
+            lock object
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.OnAfterDeserialize">
+            <summary>
+            gets the data from stored serialized data (GroupData)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.AGroupMeshScript.OnBeforeSerialize">
+            <summary>
+            serializes the data in the group and stores it externally
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.AGroupMeshScript.explicitBuffer">
+            <summary>
+            GroupMeshScript is present or not
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.topology.grouping.AGroupMeshScript.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AGroupMeshScript 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.GroupedMeshData">
+            <summary>
+            data of the grouped game object on creation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupedMeshData.MadeLocalPosition">
+            <summary>
+            original local position group was made
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupedMeshData.MadeLocalRotation">
+            <summary>
+            original local rotation group was made
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupedMeshData.UsedIndices">
+            <summary>
+            indices of objects in the group
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.GroupedMeshData.#ctor(UnityEngine.Transform,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            constructor
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_dummyUsedIndices">indices of objects in the group</param>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.GroupMeshSerialData">
+            <summary>
+            data of group
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedMaterialsAssetsPaths">
+            <summary>
+            material paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedMaterialsFileIds">
+            <summary>
+            material ids
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedVertices">
+            <summary>
+            vertices
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedNormals">
+            <summary>
+            normals
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedColours">
+            <summary>
+            colours
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedUvs">
+            <summary>
+            UV's
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedTriangles">
+            <summary>
+            triangles
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedMeshAssetPaths">
+            <summary>
+            mesh paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedMeshFileIds">
+            <summary>
+            mesh ids
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedMeshNames">
+            <summary>
+            mesh name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedGameObjectNames">
+            <summary>
+            game object name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedPositions">
+            <summary>
+            position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedRotations">
+            <summary>
+            rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedScale">
+            <summary>
+            scale
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.UsedParentTransformRecords">
+            <summary>
+            parent structure data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.TransformRecordOfGroupedGameObjects">
+            <summary>
+            original game objects where group was made from data
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.#ctor(u040.prespective.prepair.topology.grouping.AGroupMeshScript,System.Int32)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_target">group class</param>
+            <param name="_index">which index in group class needs to get data from</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.#ctor(System.String[],System.Int64[],UnityEngine.Vector3[],UnityEngine.Vector3[],UnityEngine.Color[],UnityEngine.Vector2[],System.Collections.Generic.List{System.Int32[]},System.String,System.Int64,System.String,System.String,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Collections.Generic.List{u040.prespective.core.scenechangetracking.BaseTransformRecord},u040.prespective.core.scenechangetracking.BaseTransformRecord)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_usedmaterialsassetspaths"></param>
+            <param name="_usedvertices"></param>
+            <param name="_usednormals"></param>
+            <param name="_usedcolours"></param>
+            <param name="_useduvs"></param>
+            <param name="_usedtriangles"></param>
+            <param name="_usedmeshassetpaths"></param>
+            <param name="_usedmeshnames"></param>
+            <param name="_usedgonames"></param>
+            <param name="_usedpositions"></param>
+            <param name="_usedrotations"></param>
+            <param name="_usedscale"></param>
+            <param name="_usedparenttransformrecords"></param>
+            <param name="_transformrecordofgroupedgameobjects"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.topology.grouping.GroupMeshSerialData.AddTo(u040.prespective.prepair.topology.grouping.AGroupMeshScript)" -->
+        <member name="T:u040.prespective.prepair.topology.grouping.GroupHistorySerialData">
+            <summary>
+            group history data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupHistorySerialData.StoredHistory">
+            <summary>
+            stored history of group
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.GroupHistorySerialData.#ctor(u040.prespective.prepair.topology.grouping.AGroupMeshScript)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_target"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.topology.grouping.GroupHistorySerialData.Assign(u040.prespective.prepair.topology.grouping.AGroupMeshScript)" -->
+        <member name="T:u040.prespective.prepair.topology.grouping.SerializedGroupData">
+            <summary>
+            Stored serialized group data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.SerializedGroupData.SerializedData">
+            <summary>
+            data of grouped objects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.SerializedGroupData.StoredHistorySerializedData">
+            <summary>
+            history data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.SerializedGroupData.InitialGroupedMeshData">
+            <summary>
+            group initial data
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.SerializedGroupData.#ctor(System.Collections.Generic.List{u040.prespective.prepair.topology.grouping.GroupMeshSerialData},u040.prespective.prepair.topology.grouping.GroupHistorySerialData,System.Collections.Generic.List{u040.prespective.prepair.topology.grouping.GroupedMeshData})">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummySerializedData"></param>
+            <param name="_dummyStoredHistorySerializedData"></param>
+            <param name="_dummyInitialGroupedMeshData"></param>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.MeshGrouper">
+            <summary>
+             Merges the meshes into one mesh with maximum vertices depending on the vertex limit and stores that into a group with a group mesh script
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.GroupMesh(UnityEngine.GameObject[],System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Grouping objects
+            </summary>
+            <param name="_gameObjects">game objects to merge</param>
+            <param name="_groupName">name of the group</param>
+            <param name="_save">if to save to history</param>
+            <param name="_allowStoringNonStoredScene">if are allowed to store the group data when not having saved the scene</param>
+            <returns>made group</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.findLowestSharedParent(System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            Finds the lowest shared parent
+            </summary>
+            <param name="_gameObjects">game objects to compare</param>
+            <returns>lowest shared parent</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.makeGroup(System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.Transform,System.String,System.Boolean)">
+            <summary>
+            makes a group
+            </summary>
+            <param name="_gameObjects">the game objects in the group</param>
+            <param name="_parentOfMesh">highest parent of meshes</param>
+            <param name="_groupName">name of group</param>
+            <param name="_allowStoringNonStoredScene">if are allowed to store the group data when not having saved the scene</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.makeHistory(System.String[],System.String,u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase)">
+            <summary>
+            Makes history for prehistory
+            </summary>
+            <param name="_transformPaths">transform paths grouped objects</param>
+            <param name="_groupName">name of group</param>
+            <param name="_hist">prehistory</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.ReadHistory(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,UnityEngine.Transform}},u040.prespective.core.scenechangetracking.SaveChangesData,System.Exception@)">
+            <summary>
+            Does a mesh grouping from history
+            </summary>
+            <param name="_connections">transform path transform connections</param>
+            <param name="_data">mesh grouping data</param>
+            <param name="_error">exceptions</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.MeshGrouper.MeshGrouperData">
+            <summary>
+            Mesh group data for prehistory
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.MeshGrouper.MeshGrouperData.GroupName">
+            <summary>
+            name group
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.MeshGrouper.MeshGrouperData.TransformPaths">
+            <summary>
+            transform paths of group objects
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.grouping.MeshGrouper.MeshGrouperData.#ctor(System.String,System.String[])">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummyGroupName">group name</param>
+            <param name="_dummyTransformPaths">transform paths of group objects</param>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.grouping.GroupingData">
+            <summary>
+            Grouping data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.MaterialPaths">
+            <summary>
+            material paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.MaterialFileIds">
+            <summary>
+            material file id's
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Vertices">
+            <summary>
+            vertices
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Normals">
+            <summary>
+            normals
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Colours">
+            <summary>
+            colours
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.UVS">
+            <summary>
+            uv's
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Traingles">
+            <summary>
+            triangles
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.MeshAssetPath">
+            <summary>
+            mesh path
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.MeshAssetFileId">
+            <summary>
+            mesh file id
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.MeshName">
+            <summary>
+            mesh name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.GameObjectName">
+            <summary>
+            game object name
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Position">
+            <summary>
+            position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Rotation">
+            <summary>
+            rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.Scale">
+            <summary>
+            scale
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.grouping.GroupingData.ParentGameObjectRecords">
+            <summary>
+            parent game object records
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.CustomPhysicalBodyType">
+            <summary>
+            type of body
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.Body">
+            <summary>
+            base class for bodies controlled by kinematics controller
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.PhysicalBodyID">
+            <summary>
+            Unique Identifier for this physical Body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.PhysicalBodyProfile">
+            <summary>
+            The Profile that fits this physical Body
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.Mass">
+            <summary>
+            Mass of this shape (in double precision)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.Velocity">
+            <summary>
+            Current Velocity of this shape (in double precision)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.Acceleration">
+            <summary>
+            Current Acceleration of this shape (in double precision)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.AngularVelocity">
+            <summary>
+            Current Angular Velocity of this shape (in double precision)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.AngularAcceleration">
+            <summary>
+            Current Angular Acceleration of this shape (in double precision)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.previousPosition">
+            <summary>
+            Previous DTransfrom position
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.previousRotation">
+            <summary>
+            previous DTransfrom rotation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.previousVelocity">
+            <summary>
+            Previous body velocity
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.previousAngularVelocity">
+            <summary>
+            Previous body angular velocity
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.storedDTransform">
+            <summary>
+            DTransform buffer
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.Body.storedBodyController">
+            <summary>
+            stored body controller connected to this body
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.Body.DTransform">
+            <summary>
+            Getter for the Double Transform regulating this PhysicalBody
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.Body.BodyController">
+            <summary>
+            Body Controller that this body is connected to
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.Body.HasTranslated(System.Double)">
+            <summary>
+            has translated
+            </summary>
+            <param name="_margin">margin</param>
+            <returns>if translated</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.Body.HasRotated(System.Double)">
+            <summary>
+            has rotated
+            </summary>
+            <param name="_margin">margin</param>
+            <returns>if rotated</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.Body.HasAccelerated(System.Double)">
+            <summary>
+            has accelerated
+            </summary>
+            <param name="_margin">margin</param>
+            <returns>if accelerated</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.Body.HasAngularAccelerated(System.Double)">
+            <summary>
+            has angular accelerated
+            </summary>
+            <param name="_margin">margin</param>
+            <returns>if angular accelerated</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.Body.SetPrevious">
+            <summary>
+            Updates the previous translation and rotation values
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.AlignmentShape">
+            <summary>
+            Shape to be drawn in scene view that is used in an alignment operation
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.AlignmentShape.InputSpaces">
+            <summary>
+            input space
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.AlignmentShape.AlignmentToolTypes">
+            <summary>
+            types of alignment
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.AlignmentShape.GizmoTypes">
+            <summary>
+            gizmo types
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.IsReady">
+            <summary>
+            Whether or not this shape is ready to be used in an alignment operation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.Ngon">
+            <summary>
+            The polygon that describes this alignment shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.Points">
+            <summary>
+            The points of the polygon that describes this alignment shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.DirectionOverride">
+            <summary>
+            Override for the normal to be used in the shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.CenterPointOverride">
+            <summary>
+            Override for the control point to be used in the shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.UseForwardPoint">
+            <summary>
+            use forward point
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.ForwardPoint">
+            <summary>
+            forward point
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.ForwardOnPlane">
+            <summary>
+            that the forward is always projected on plane
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.ShowAdvancedSettings">
+            <summary>
+            show advanced settings
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.InputSpaceValue">
+            <summary>
+            input space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.GizmoTypeMain">
+            <summary>
+            gizmo type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.AlignmentShape.GizmoTypeSecondRelation">
+            <summary>
+            gizmo type of second relation
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.alignment.AlignmentShape.CenterPoint">
+            <summary>
+            [Center point] position of the triangle
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.alignment.AlignmentShape.Direction">
+            <summary>
+            Direction (normal) of the shape
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.alignment.AlignmentShape.PointCount">
+            <summary>
+            The number of points in this alignment shape
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.alignment.AlignmentShape.ToolType">
+            <summary>
+            The index of the alignment tool type
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.Inverse">
+            <summary>
+            Invert the triangle (flips the normal)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.SetToolType(u040.prespective.prepair.alignment.AlignmentShape.AlignmentToolTypes)">
+            <summary>
+            Sets the alignment tool type for this shape according to a tool type index
+            </summary>
+            <param name="_type">The tool type to be used</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.ResetPoints(System.Int32)">
+            <summary>
+            Clears the currently set points and creates new points at a default starting position
+            </summary>
+            <param name="_count">The number of newly created points</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.Update(UnityEngine.Transform)">
+            <summary>
+            Update this shape based on transform _t
+            (unset's this shape if null is passed, otherwise attempts to align the shape to the first few verts in the contained mesh)
+            </summary>
+            <param name="_t">the transform (and contained mesh) to use as a basis for this shape</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.DiffUpdate(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            updates the shape by given transformation difference
+            </summary>
+            <param name="_translation">translation</param>
+            <param name="_rotation">rotation difference</param>
+            <param name="_orginalCentre">original centre rotation around</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.AlignmentShape.UpdateForward(UnityEngine.Transform)">
+            <summary>
+            updates the forward direction
+            </summary>
+            <param name="_t">connected transform</param>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.SceneVectorSettings">
+            <summary>
+            <description>
+            Class containing information on sceneVectors, used as offset in alignment operations
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="TDK" 
+                date="191024">
+                Initial implementation
+            </version>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.SceneVectorSettings.TemporaryTransform">
+            <summary>
+            Object used to position the origin of the sceneVector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.SceneVectorSettings.SceneVector">
+            <summary>
+            The sceneVector itself
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.SceneVectorSettings.GlobalVectorBuffer">
+            <summary>
+            The value buffer of the scene vector in global space
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.Aligner">
+            <summary>
+            Class used to perform an alignment operation between two transforms, based on alignment shapes drawn in scene view
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.alignment.Aligner.AlignmentTypes">
+            <summary>
+            alignment types
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.FromShape">
+            <summary>
+            Alignment shape on the moving transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.ToShape">
+            <summary>
+            Alignment shape on the destination transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.AffectedField">
+            <summary>
+            Index of the combination of fields affected by the alignment
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.FromTransform">
+            <summary>
+            Moving transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.ToTransform">
+            <summary>
+            Destination transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.alignment.Aligner.SceneVectorSettings">
+            <summary>
+            List of scene vector settings that describe the offset of the alignment
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.#ctor">
+            <summary>
+            Standard constructor
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.#ctor(u040.prespective.prepair.alignment.AlignmentShape,u040.prespective.prepair.alignment.AlignmentShape,UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>
+            Aligner used to execute an alignment operation on two transforms
+            </summary>
+            <param name="_fromShape">Alignment shape on the moving transform</param>
+            <param name="_toShape">Alignment shape on the destination transform</param>
+            <param name="_fromTransform">Moving transform</param>
+            <param name="_toTransform">Destination transform</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.ApplyAlignment">
+            <summary>
+            Aligns the two selected objects
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.alignmentByRotation(u040.prespective.math.doubles.DQuaternion,u040.prespective.math.doubles.DQuaternion)">
+            <summary>
+            The actual alignment operation, based on the rotations of both alignment shapes
+            </summary>
+            <param name="_fromRotation">Rotation of the moving shape</param>
+            <param name="_toRotation">Rotation of the destination shape</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.CreateOffsetVector(System.Int32)">
+            <summary>
+            Creates a new sceneVector used as offset in the alignment operation
+            </summary>
+            <param name="_i">Index of the sceneVector</param>
+            <returns>SceneVectorSettings entry of the new offset vector</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.UpdateOffsetVector(System.Int32)">
+            <summary>
+            Updates a sceneVector
+            </summary>
+            <param name="_i">Index of the sceneVector</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.getPositionByVectorIndex(System.Int32)">
+            <summary>
+            Used to calculate the base position of a new scene vector
+            </summary>
+            <param name="_i">Index of the scene vector</param>
+            <returns>Base location of the scene vector</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.ClearOffsetVector">
+            <summary>
+            clears offset vectors
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.RemoveOffsetVector(System.Int32)">
+            <summary>
+            remove single offset vector on index
+            </summary>
+            <param name="_index">index offset vector to remove</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.RefreshOffsetVectorNames(System.String)">
+            <summary>
+            refreshes the offset vectors names
+            </summary>
+            <param name="_baseName">base name of offset vector</param>
+        </member>
+        <member name="M:u040.prespective.prepair.alignment.Aligner.CheckOffsetVectorVector(System.Int32)">
+            <summary>
+            checks if offset vector scene vector still the same and corrects if necessary
+            </summary>
+            <param name="_index">index of offset vector to check</param>
+        </member>
+        <member name="T:u040.prespective.prepair.RemoveEmptyGO">
+            <summary>
+            @CLASS : RemoveEmptyGO
+            
+            @ABOUT : Finds and turns off empty gameobjects
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented finding and removing empty game objects from selected gameobjects and when changed recursively looking if now new empty game object(02-10-2018)
+            @VERSION : 1.10 - Removed the while loop from the system and replaced it with a internal single recheck of parent game objects for faster processing(03-10-2018)
+            @VERSION : 1.20 - Added check for colliders and mone behaviours(29-01-2019)
+            @VERSION : 1.30 - Now can indicated that you want empty game objects removed(07-06-2019)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.RemoveEmptyGO.start(UnityEngine.GameObject[],System.Boolean)">
+            <summary>
+            finds and turns off empty gameobjects
+            </summary>
+            <param name="_gameObjects">array of game objects to check</param>
+            <param name="_remove">if should remove the objects</param>
+        </member>
+        <member name="M:u040.prespective.prepair.RemoveEmptyGO.childrenCheck(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            check of a transform has children and processes it
+            </summary>
+            <param name="_t">transform to check</param>
+            <param name="_remove">if should remove the objects</param>
+            <returns>indicated if the game object was turned off</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.RemoveEmptyGO.processChildLessTransform(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            processess the childless transform to check if it can be removed or turned off because it is empty
+            </summary>
+            <param name="_t">childless transform</param>
+            <param name="_remove">if should remove or turn off game object</param>
+            <returns>this indicates to its parent that the game object was turned off or removed</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.RemoveEmptyGO.isEmpty(UnityEngine.Transform)">
+            <summary>
+            checks if transform is empty
+            </summary>
+            <param name="_t">transform</param>
+            <returns>is empty</returns>
+        </member>
+        <member name="M:u040.prespective.prepair.RemoveEmptyGO.checkDirectChildren(UnityEngine.Transform,System.Boolean)">
+            <summary>
+            checks the direct children of a parent
+            </summary>
+            <param name="_parent">transform of the parent</param>
+            <param name="_remove">if should remove the objects</param>
+            <returns>indicated if any of the children of the game object where turned off</returns>
+        </member>
+        <member name="T:u040.prespective.prepair.IntentData">
+            <summary>
+            data of the intent done
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.Done">
+            <summary>
+            Whether intent has been handled
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.Type">
+            <summary>
+            Type of intent
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.From">
+            <summary>
+            The body the intent comes from
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.To">
+            <summary>
+            The body the intent is sent to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.EnforceableFraction">
+            <summary>
+            limit percentage done
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.OriginalPercentageIntent">
+            <summary>
+            original percentage done
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.OriginalWorldTranslation">
+            <summary>
+            World translation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.OriginalWorldRotation">
+            <summary>
+            Rotation difference
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.LimitedWorldTranslation">
+            <summary>
+            World translation
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.IntentData.LimitedWorldRotation">
+            <summary>
+            Rotation difference
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.IntentData.ToString">
+            <summary>
+            to string of intent data
+            </summary>
+            <returns>string of intent data</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:ScrollView class="window-padding-container">
+		<ui:VisualElement name="selected-meshes" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="get-triangle-count" text="Get Triangle Count in Selection" />
+		<ue:IntegerField name="triangle-count" label="Triangle Count"/>
+		<ue:IntegerField name="vertex-count" label="Vertex Count"/>
+	</ui:ScrollView>
+</ui:UXML>

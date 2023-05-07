@@ -1,16 +1,12 @@
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using u040.prespective.utility.editor;
-using System.Reflection;
-using u040.prespective.core.editor;
+using u040.prespective.core.editor.editorui.inspectorwindow;
 
-namespace u040.prespective.standardcomponents.userinterface.unityui.editor
+namespace u040.prespective.standardcomponents.logic.editor
 {
-    [ObfuscationAttribute(Exclude = true, ApplyToMembers = true, StripAfterObfuscation = false)]
     [CustomEditor(typeof(UnityUILogic))]
-    public class UnityUILogicEditor : PrespectiveEditor
+    public class UnityUILogicEditor : PrespectiveEditorIMGUI
     {
         private UnityUILogic component;
         private SerializedObject soTarget;
@@ -18,7 +14,7 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
         private SerializedProperty signalNamingRuleOverrides;
         private SerializedProperty implicitNamingRule;
         
-        private void OnEnable()
+        internal void OnEnable()
         {
             component = (UnityUILogic)target;
             soTarget = new SerializedObject(target);
@@ -27,7 +23,7 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
             implicitNamingRule = soTarget.FindProperty("implicitNamingRule");
         }
 
-        public override void OnInspectorGUI()
+        public override void DrawInspectorGUI()
         {
             if (licenseState == false)
             {
@@ -36,10 +32,9 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
             }
 
             soTarget.Update();
-            //DrawDefaultInspector();
 
             EditorGUI.BeginChangeCheck();
-            toolbarTab.intValue = GUILayout.Toolbar(toolbarTab.intValue, new string[] { "Properties", "I/O", "Settings", "Debugging" });
+            toolbarTab.intValue = GUILayout.Toolbar(toolbarTab.intValue, new string[] { "Properties", "I/O", "Settings"});
 
             switch (toolbarTab.intValue)
             {
@@ -50,23 +45,23 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
                     
                     if (component.SignalNames.Count > 0)
                     {
-                        for (int _i = 0; _i < component.SignalNames.Count;  _i++)
+                        for (int i = 0; i < component.SignalNames.Count;  i++)
                         {
                             EditorGUI.BeginDisabledGroup(!Application.isPlaying);
                             GUILayout.BeginHorizontal();
                             if (GUILayout.Button("Trigger", new GUIStyle(GUI.skin.button) { margin = new RectOffset(30, 0, 0, 0) }, GUILayout.ExpandWidth(false)))
                             {
-                                component.SendSignal(_i);
+                                component.SendSignal(i);
                             }
                             EditorGUI.EndDisabledGroup();
 
                             EditorGUI.BeginDisabledGroup(Application.isPlaying);
-                            EditorGUILayout.LabelField(_i.ToString() + ":", new GUIStyle(GUI.skin.label) { margin = new RectOffset(0, 0, 0, 0), wordWrap = true, fontStyle = FontStyle.Bold });
-                            component.SignalNames[_i] = EditorGUILayout.TextField(component.SignalNames[_i], GUILayout.ExpandWidth(true)).Replace(" ", "_");
+                            EditorGUILayout.LabelField(i.ToString() + ":", new GUIStyle(GUI.skin.label) { margin = new RectOffset(0, 0, 0, 0), wordWrap = true, fontStyle = FontStyle.Bold });
+                            component.SignalNames[i] = EditorGUILayout.TextField(component.SignalNames[i], GUILayout.ExpandWidth(true)).Replace(" ", "_");
 
                             if (GUILayout.Button("Delete", new GUIStyle(GUI.skin.button) { margin = new RectOffset(30, 0, 0, 0) }, GUILayout.ExpandWidth(false)))
                             {
-                                component.SignalNames.RemoveAt(_i);
+                                component.SignalNames.RemoveAt(i);
                             }
                             GUILayout.EndHorizontal();
                             EditorGUI.EndDisabledGroup();
@@ -81,9 +76,9 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
                     EditorGUI.BeginDisabledGroup(Application.isPlaying);
                     if (GUILayout.Button("Add New Input"))
                     {
-                        List<string> _tmpList = new List<string>(component.SignalNames);
-                        _tmpList.Add("New Input");
-                        component.SignalNames = _tmpList;
+                        List<string> tmpList = new List<string>(component.SignalNames);
+                        tmpList.Add("New Input");
+                        component.SignalNames = tmpList;
                     }
                     EditorGUI.EndDisabledGroup();
                     break;
@@ -94,10 +89,10 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
                     
                     if (component.SignalNames.Count > 0)
                     {
-                        for (int _i = 0; _i < component.SignalNames.Count; _i++)
+                        for (int i = 0; i < component.SignalNames.Count; i++)
                         {
                             //TODO: Check default timestamp
-                            EditorGUILayout.LabelField(component.SignalNames[_i], component.LastTriggeredTime[_i].ToString() == component.DefaultTimestamp ? "Not yet triggered" : component.LastTriggeredTime[_i].ToString());
+                            EditorGUILayout.LabelField(component.SignalNames[i], component.LastTriggeredTime[i].ToString() == component.DefaultTimestamp ? "Not yet triggered" : component.LastTriggeredTime[i].ToString());
                         }
                     }
                     else
@@ -112,25 +107,12 @@ namespace u040.prespective.standardcomponents.userinterface.unityui.editor
                     EditorGUILayout.PropertyField(implicitNamingRule, true);
 
                     break;
-
-                case 3:
-                    component.Verbose = EditorGUILayout.Toggle("VERBOSE", component.Verbose);
-                    component.GUIShowSignalsForDebugging = EditorGUILayout.Toggle("UX Show Signals For Debugging", component.GUIShowSignalsForDebugging);
-                    component.GUITextOffset = EditorGUILayout.Vector2Field("UX Text Offset", component.GUITextOffset);
-                    component.GUITextColor = EditorGUILayout.ColorField("UX Text Color", component.GUITextColor);
-                    component.GUITextSize = EditorGUILayout.IntField("UX Text Size", component.GUITextSize);
-                    component.GUITextLineSpacing = EditorGUILayout.IntField("UX Text Line Spacing", component.GUITextLineSpacing);
-                    break;
             }
 
             if (EditorGUI.EndChangeCheck())
             {
                 soTarget.ApplyModifiedProperties();
             }
-
-            base.OnInspectorGUI();
         }
-
     }
 }
-#endif

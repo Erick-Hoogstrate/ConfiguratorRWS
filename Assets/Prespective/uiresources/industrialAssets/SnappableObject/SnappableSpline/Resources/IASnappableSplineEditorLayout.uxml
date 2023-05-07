@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container">
+        <ui:VisualElement name="general-settings-container" class="division margin-bottom-10px">
+            <ui:Label name="general-settings-label" text="General Settings" class="margin-bottom-10px bold"/>
+            <ue:ObjectField name="general-settings-spline" label="Spline"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="snapping-properties-main-container" class="division margin-bottom-10px">
+            <ui:VisualElement name="snapping-properties-container" class="division margin-bottom-10px">                
+            </ui:VisualElement>
+            <ui:VisualElement name="connected-snappable-object-container" class="division margin-bottom-10px">                
+            </ui:VisualElement>            
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

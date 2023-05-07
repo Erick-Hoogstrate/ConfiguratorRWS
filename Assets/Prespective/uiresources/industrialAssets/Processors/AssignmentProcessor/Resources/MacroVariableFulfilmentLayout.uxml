@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="macro-variable-fulfilment-foldout" text="Var: {VariableName}" class="custom-exposure-foldout">
+        <ui:Label name="recipe-label" text="{RecipeIndex} : {RecipeName}" class="custom-exposure"/>
+        <ui:VisualElement name="selected-fulfillment-action-container" />
+        <ui:VisualElement name="fulfillment-action-container" />
+    </ui:Foldout>
+</ui:UXML>

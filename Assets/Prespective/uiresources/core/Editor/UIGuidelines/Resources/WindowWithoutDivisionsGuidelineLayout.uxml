@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Windows Without Divisions"/>
+    <ui:TextElement text="Whenever the set of UI controls is an Editor Window limited to the extent that no divisions into groups/categories is possible, the layout can be created without using divisions." />
+  </ui:VisualElement>
+</ui:UXML>

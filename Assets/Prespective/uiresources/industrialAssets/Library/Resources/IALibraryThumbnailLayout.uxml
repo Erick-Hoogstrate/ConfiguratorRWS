@@ -1,0 +1,8 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="button"  class="thumbnail-button disabled" >
+        <!-- status icon is handled in code -->
+        <ui:Label name="asset-name"/>
+        <ui:Image name="preview-image" style="width: 150; "/>
+        <ui:IMGUIContainer name="imgui-container"  class="bold" style=" font-weight: bold;"/>
+    </ui:VisualElement>
+</ui:UXML>

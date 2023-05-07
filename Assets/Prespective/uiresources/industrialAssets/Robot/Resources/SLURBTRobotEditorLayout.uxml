@@ -1,0 +1,36 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Visualization" binding-path="EditorExpandVisualization">
+    <ui:Toggle name="hide-robot-reach" label="Hide robot reach" tooltip="Hides the green, blue and red lines  indicating the reach of the robot arm"/>
+    <ui:Toggle name="hide-approaches" label="Hide approaches" tooltip="Hides the approach splines to the robot cues"/>
+    <ui:Toggle name="hide-staging-spline" label="Hide staging path" tooltip="Hides the staging path spline"/>
+    <ue:IntegerField name="iterations-solver" label="Iterations IK system"
+                     tooltip="The maximum amount of iteration the inverse kinematics system preforms. Increasing can resolve in better matching of robot arm visualization, although can influence preformance. This value will not influence the outcome of the simulation and is only for visualization purposes." />
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Configuration" binding-path="EditorExpandConfiguration">
+    <ui:Foldout class="foldout-division margin-bottom-5px" text="Appearance &amp; dimensions" binding-path="EditorExpandAppearanceAndDimensions">
+      <ue:FloatField name="length-lu-arm" label="Length L-U-Arm (m)" tooltip="The length of the first robot arm in meters."/>
+      <ue:FloatField name="length-rb-arm" label="Length R-B-Arm (m)" tooltip="The length of the second robot arm in meters."/>
+      <ue:FloatField name="length-bt-arm" label="Length B-T-Arm (m)" tooltip="The length of the third and last robot arm in meters."/>
+      <ue:DoubleField name="radius-staging-ring" label="Radius staging ring (m)" tooltip="The radius of the staging path which determines the movement of the robot head in meters."/>
+      <ue:DoubleField name="height-staging-ring" label="Height staging ring (m)" tooltip="The height of the staging path from the base of the robot, which determines the movement of the robot head in meters."/>
+      <ue:DoubleField name="dead-angle" label="Dead angle (deg)" tooltip="The dead angle of the robot in degrees."/>
+      <ue:EnumField name="head-type" label="Head type"/>
+    </ui:Foldout>
+    <ue:DoubleField name="default-speed" label="Default speed (m/s)" tooltip="The default movement speed of the robot head. Used when no Transfer Instruction, Transfer Time or Transfer speed could be found for the pick up point in meters per second."/>
+    <ue:DoubleField name="product-height" label="Product height (m)" tooltip="The height form the base of the cue/product from which the robot head should pick up the product in meter."/>
+    <ue:EnumField name="queue-time-policy" label="Queue time policy" tooltip="The order at which pick ups should be handled when priorities are the same."/>
+    </ui:Foldout>
+  
+  <ui:Foldout class="foldout-division margin-bottom-10px" text="Cues in Reach" binding-path="EditorExpandCuesInReach">
+    <ui:Button class="content-fit-button margin-bottom-10px" name="update-cues-in-reach" text="Update Assets in Reach" tooltip="Updates the cues that are within the reach area of the robot."/>
+    <ui:Label class="margin-bottom-10px" text="Check cues to use in Transfer Instructions" />
+    <ui:VisualElement name="splines-in-reach-container" />
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" binding-path="EditorExpandTransferInstructions" text="Transfer Instructions">
+    <ui:Button class="content-fit-button margin-bottom-10px" name="add-transfer-instruction" text="Add Transfer Instruction" tooltip="Adds a transfer instruction. Loads automatically a first suggestion of a pick up and drop off instruction. When their is only one pickup point and one drop off point, it is not nessecary to add a Transfer Instruction."/>
+    <ui:Label class="font-italic" name="no-pickup-or-dropoff" text="Select at least one pick up and one drop off cue from the cues in reach." />
+    <ui:VisualElement name="transfer-instructions-container" />
+  </ui:Foldout>
+</ui:UXML>

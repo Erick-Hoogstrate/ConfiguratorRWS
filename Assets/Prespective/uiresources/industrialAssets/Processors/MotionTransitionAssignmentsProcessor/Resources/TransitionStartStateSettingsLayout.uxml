@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">		
+	<ui:VisualElement name="transition-pop-up-container" />
+	<ui:VisualElement name="start-state-container" />
+	<ui:Label name="slider-label" text="Priority: highest to lowest" />
+	<ui:VisualElement class="row">
+		<ui:Slider name="priority-slider" lowValue="0" highValue="100" class="flex-grow" />
+		<ue:IntegerField name="priority-integerfield" maxLength="3" />
+	</ui:VisualElement>
+</ui:UXML>

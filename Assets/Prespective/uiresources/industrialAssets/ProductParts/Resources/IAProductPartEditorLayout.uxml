@@ -1,0 +1,47 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px" name="general-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Settings" />
+    <ui:TextField class="margin-bottom-10px" name="part-name" label="Name" />
+
+    <ui:VisualElement class="row">
+      <ui:Label class="standalone-inspector-label margin-bottom-10px" text="Size" />
+      <ui:Button class="content-fit-button" name="wrap-size-button" text="Wrap" />
+    </ui:VisualElement>
+
+    <ui:Toggle name="edit-size-toggle" label="Use Scene Gizmo" />
+    <ue:Vector3Field name="part-center" label="Center" />
+    <ue:Vector3Field name="part-dimensions" label="Dimensions" />
+
+    <ui:VisualElement class="margin-bottom-10px" />
+
+    <ui:Label class="standalone-inspector-label margin-bottom-10px" text="Orientation" />
+    <ui:Toggle name="edit-orientation-toggle" label="Use Scene Gizmo" />
+    <ue:Vector3Field name="part-origin" label="Origin" />
+
+    <ui:VisualElement class="row">
+      <ue:EnumField class="flex-grow" label="Up" name="up-direction" include-obsolete-values="false" />
+      <ue:ColorField class="disabled" name="up-color" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="row margin-bottom-10px">
+      <ue:EnumField class="flex-grow" label="Forward" name="forward-direction" include-obsolete-values="false"/>
+      <ue:ColorField class="disabled" name="forward-color" />
+    </ui:VisualElement>
+
+    <ui:Button class="content-fit-button" name="exporter-button" text="Open Asset Exporter" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="recorded-parts-settings">
+    <ui:Label class="bold margin-bottom-10px" name="recorded-product-parts-label" text="Recorded Product Parts (#)" />
+    <ui:Button class="content-fit-button margin-bottom-10px" name="record-content-button" text="Record Content" />
+    <ui:VisualElement name="recorded-parts-container" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="nested-parts-settings">
+    <ui:Label class="bold margin-bottom-10px" name="nested-product-parts-label" text="Nested Product Parts (#)" />
+    <ui:Button class="content-fit-button margin-bottom-10px" name="update-content-button" text="Update Content" />
+    <ui:VisualElement name="nested-parts-container" />
+  </ui:VisualElement>
+  
+  <ui:VisualElement class="division margin-bottom-10px" name="inheriting-type-inspector"/>
+</ui:UXML>

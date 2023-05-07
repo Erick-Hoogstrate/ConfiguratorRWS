@@ -2,40 +2,44 @@ using System;
 using System.Collections.Generic;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.logic;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.sensors.colorsensor
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.light.logic
 {
-    #pragma warning disable 0618
+    /// <summary>
+    /// Logic of color sensor
+    /// </summary>
     public class ColorSensorLogic : StandardLogicComponent<ColorSensor>
     {
-        public int iRed = 0;
-        public int iGreen = 0;
-        public int iBlue = 0;
-        public bool iActive = true;
-        public bool oActive = true;
+        #region << CONSTANTS >>
+        private const string O_ACTIVE = "oActive";
 
+        private const string I_ACTIVE = "iActive";
+        private const string I_SENSOR_OUTPUT = "iSensorOutput";
+        private const string I_RED = "iRed";
+        private const string I_GREEN = "iGreen";
+        private const string I_BLUE = "iBlue";
+        #endregion
+        #region << PROPERTIES >>
         protected override Dictionary<SignalInstance, Func<object>> customInputSignalMemberGetters
         {
             get
             {
                 return new Dictionary<SignalInstance, Func<object>>
                 {
-                    { GetSignalInstanceByName("iSensorOutput"), () => Target.IsActive },
-                    { GetSignalInstanceByName("iRed"), () => Mathf.RoundToInt(Target.OutputSignal.r * 255f) },
-                    { GetSignalInstanceByName("iGreen"), () => Mathf.RoundToInt(Target.OutputSignal.g * 255f) },
-                    { GetSignalInstanceByName("iBlue"), () => Mathf.RoundToInt(Target.OutputSignal.b * 255f) }
+                    {GetSignalInstanceByName(I_SENSOR_OUTPUT), () => Target.IsActive},
+                    {GetSignalInstanceByName(I_RED), () => Mathf.RoundToInt(Target.OutputSignal.r * 255f)},
+                    {GetSignalInstanceByName(I_GREEN), () => Mathf.RoundToInt(Target.OutputSignal.g * 255f)},
+                    {GetSignalInstanceByName(I_BLUE), () => Mathf.RoundToInt(Target.OutputSignal.b * 255f)}
                 };
             }
         }
 
-        private void Reset()
-        {
-            this.implicitNamingRule.instanceNameRule = "GVLs." + this.GetType().Name + "[{{INDEX_IN_PARENT}}]";
-        }
-
         #region <<PLC Signals>>
+
         #region <<Signal Definitions>>
+
         /// <summary>
         /// Declare the IO signals
         /// </summary>
@@ -43,23 +47,27 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
         {
             get
             {
-                return new List<SignalDefinition>() {
+                return new List<SignalDefinition>()
+                {
                     //Inputs only
-                    new SignalDefinition("iSensorOutput", PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", "Flagged", null, null, false),
-                    new SignalDefinition("iRed", PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", "Red color value", null, null, 0),
-                    new SignalDefinition("iGreen", PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", "Green color value", null, null, 0),
-                    new SignalDefinition("iBlue", PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", "Blue color value", null, null, 0),
+                    new SignalDefinition(I_ACTIVE, PLCSignalDirection.INPUT, SupportedSignalType.BOOL, _xmlNote: "iActive", _baseValue: true),
+                    new SignalDefinition(I_SENSOR_OUTPUT, PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", _xmlNote: "Flagged", _baseValue: false),
+                    new SignalDefinition(I_RED, PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", _xmlNote: "Red color value", _baseValue: 0),
+                    new SignalDefinition(I_GREEN, PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", _xmlNote: "Green color value", _baseValue: 0),
+                    new SignalDefinition(I_BLUE, PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", _xmlNote: "Blue color value", _baseValue: 0),
 
                     //Input / output
-                    new SignalDefinition("iActive", PLCSignalDirection.INPUT, SupportedSignalType.BOOL, "", "Active", null, null, true),
-                    new SignalDefinition("oActive", PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, "", "Active", onSignalChanged, null, true),
+                    new SignalDefinition(O_ACTIVE, PLCSignalDirection.OUTPUT, SupportedSignalType.BOOL, _xmlNote: "oActive", _onValueChange: onSignalChanged, _baseValue: true),
 
                     //Output only
                 };
             }
         }
+
         #endregion
+
         #region <<PLC Outputs>>
+
         /// <summary>
         /// General callback for the IOs
         /// </summary>
@@ -70,10 +78,10 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
         /// <param name="_oldValueReceived">the time of the old value change</param>
         void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
         {
-            switch (_signal.definition.defaultSignalName)
+            switch (_signal.Definition.DefaultSignalName)
             {
-                case "oActive":
-                    Target.IsActive = (bool)_newValue;
+                case O_ACTIVE:
+                    Target.IsActive = (bool) _newValue;
                     break;
 
                 default:
@@ -81,8 +89,10 @@ namespace u040.prespective.standardcomponents.sensors.colorsensor
                     break;
             }
         }
+
+        #endregion
+
         #endregion
         #endregion
     }
-    #pragma warning restore 0618
 }

@@ -1,0 +1,25 @@
+.step {
+	padding: 4px;
+	background-color: #4e4e4e;
+	margin: 2px;
+}
+
+.step.active {
+	background-color: #5d7881;
+}
+
+.step.completed {
+	background-color: #636a46;
+}
+
+.step.failed {
+	background-color: #8b2c27;
+}
+
+.step.skip {
+	opacity: 0.5;
+}
+
+.hidden {
+	display: none;
+}

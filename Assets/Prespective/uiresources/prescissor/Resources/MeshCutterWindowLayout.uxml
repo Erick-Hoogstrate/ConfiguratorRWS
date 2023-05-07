@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:ScrollView class="window-padding-container">
+      <ui:VisualElement class="margin-bottom-10px">
+        <ue:Vector3Field name="point" label="Plane Point" />
+        <ue:Vector3Field name="normal" label="Plane Normal" />
+      </ui:VisualElement>
+      
+      <ui:Button name="cut-mesh" text="Cut" />
+      <ui:Button name="undo-button" text="Undo" />
+    </ui:ScrollView>
+</ui:UXML>

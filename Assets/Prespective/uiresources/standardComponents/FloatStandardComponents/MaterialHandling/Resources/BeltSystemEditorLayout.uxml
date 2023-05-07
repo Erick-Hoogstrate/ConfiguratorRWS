@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-label" text="Conveyor Belt Settings"/>
+    <ui:VisualElement class="division margin-bottom-10px" name="belt-system-settings">
+      <ue:ObjectField name="wheel-joint" label="Wheel Joint"/>
+      <ui:TextField class="no-box" name="velocity" label="Velocity"/>
+      <ui:Toggle name="invert-axis" label="Invert Axis"/>
+      <ue:IntegerField name="circumference-points" label="Buffered Circumference Points"/>
+      <ue:IntegerField name="surface-points" label="Buffered Surface Points"/>
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-label" text="Loft Mesh Settings"/>
+    <ui:VisualElement class="division margin-bottom-10px" name="loft-mesh-settings">
+      <ue:ObjectField name="circumference-spline" label="Circumference Spline"/>
+      <ue:ObjectField name="surface-spline" label="Surface Spline"/>
+      <ue:FloatField name="circumference-max-length-deviation" label="Circumference Max Length Deviation"/>
+      <ue:FloatField name="circumference-max-angle-deviation" label="Circumference Max Angle Deviation"/>
+      <ui:Toggle name="invert-surface-normals" label="Invert Surface Normals"/>
+      <ui:Toggle name="show-as-rendered-mesh" label="Show as Rendered Mesh"/>
+      <ui:Button class="content-fit-button" name="generate-surface" text="Generate Surface" />
+      <ui:Button class="content-fit-button" name="clear-surface" text="Clear Surface" />
+      <ui:Button class="content-fit-button" name="generate-loft-mesh" text="Generate Loft Mesh" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="gizmo-settings">
+    <ui:Label class="bold margin-label" text="Gizmo Settings"/>
+    <ui:Toggle name="enable-velocity-gizmo" label="Enable Velocity Gizmo"/>
+    <ui:Toggle name="show-when-not-selected" label="Show When Not Selected"/>
+    <ue:ColorField name="velocity-color" label="Velocity Gizmo Color" />
+  </ui:VisualElement>
+</ui:UXML>

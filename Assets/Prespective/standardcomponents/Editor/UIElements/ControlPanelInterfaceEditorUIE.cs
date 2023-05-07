@@ -1,65 +1,69 @@
-using UnityEngine;
-using UnityEditor;
-using System.Reflection;
-using u040.prespective.core.editor;
-using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 using System.Collections.Generic;
-using u040.prespective.utility.editor;
-using System;
-using UnityEngine.EventSystems;
+using u040.prespective.core.editor.editorui;
+using u040.prespective.core.editor.editorui.inspectorwindow;
+using u040.prespective.standardcomponents.userinterface;
+using u040.prespective.utility.editor.editorui;
+using u040.prespective.utility.editor.editorui.uistatepersistence;
+using UnityEditor;
+using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-namespace u040.prespective.prepair.inspector.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.userinterface
 {
     [CustomEditor(typeof(ControlPanelInterfaceUIE))]
     public class ControlPanelInterfaceEditorUIE : PrespectiveEditorUIE<ControlPanelInterfaceUIE>
     {
-        TextField title;
-        VisualElement settingsContainer;
-        Label settingsLabel;
-        Label noSettingsDisplay;
+        #region << FIELDS >>
+        private TextField titleField;
+        private VisualElement settingsContainer;
+        private Label settingsLabel;
+        private Label noSettingsDisplay;
 
-        Foldout controlPanelProperties;
-        IMGUIContainer warningContainer;
-        ObjectField gameObjectField;
-        VisualElement componentContainer;
-        PopupField<string> componentField;
-        Label noSuitableComponents;
+        private Foldout targetComponentFoldout;
+        private IMGUIContainer warningContainer;
+        private ObjectField gameObjectField;
+        private VisualElement componentContainer;
+        private PopupField<string> componentField;
+        private Label noSuitableComponentsMessage;
 
         private List<Component> suitableComponents = new List<Component>();
         private IControlPanelUIE controlPanel;
         private int componentSelectionIndex = 0;
-        private readonly string SETTINGS_TEXT = "settings";
+        private readonly string SETTINGS_TEXT = "Settings";
 
         private readonly string NO_BOX_CLASS_LIST = "no-box";
 
-        protected override void ExecuteOnEnable()
+        #endregion
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("ControlPanelInterfaceLayout");
-            theme = "standard-components";
-            base.ExecuteOnEnable();
+            get
+            {
+                return "ControlPanelInterfaceEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            theme = VisualTheme.StandardComponents;
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
             #region << Control Panel >>
 
-            title = root.Q<TextField>(name: "title");
-            title.isDelayed = true;
-            controlPanelProperties = root.Q<Foldout>(name: "target-component-foldout");
-            warningContainer = root.Q<IMGUIContainer>(name: "warning-container");
-            gameObjectField = root.Q<ObjectField>(name: "target-gameobject");
-            componentContainer = root.Q<VisualElement>(name: "target-component");
-            noSuitableComponents = root.Q<Label>(name: "no-suitable-components");
-
-            title.tooltip = "Click once to ping target component, click twice to edit title";
-            title.RegisterCallback<MouseDownEvent>(_mouseEvent =>
+            titleField = root.Q<TextField>(name: "title");
+            titleField.isDelayed = true;
+            titleField.tooltip = "Click once to ping target component, click twice to edit title";
+            titleField.RegisterCallback<MouseDownEvent>(_mouseEvent =>
             {
                 if (component.SelectedComponent == null)
                 {
                     Debug.LogError("No component has been set.");
                 }
-                else 
+                else
                 {
                     if (_mouseEvent.clickCount == 1)
                     {
@@ -68,46 +72,57 @@ namespace u040.prespective.prepair.inspector.editor
                     if (_mouseEvent.clickCount > 1)
                     {
 
-                        title.RemoveFromClassList(NO_BOX_CLASS_LIST);
-                        title.isReadOnly = false;
+                        titleField.RemoveFromClassList(NO_BOX_CLASS_LIST);
+                        titleField.isReadOnly = false;
                     }
                 }
             });
 
-            title.RegisterCallback<FocusOutEvent>(_focusOutEvent =>
+            titleField.RegisterCallback<FocusOutEvent>(_focusOutEvent =>
             {
-                title.AddToClassList(NO_BOX_CLASS_LIST);
-                title.isReadOnly = true;
+                titleField.AddToClassList(NO_BOX_CLASS_LIST);
+                titleField.isReadOnly = true;
             });
 
             UIUtility.InitializeField
             (
-                title,
+                titleField,
+                component,
                 () => component.Title,
-                e =>
+                _e =>
                 {
-                    component.Title = e.newValue;
-                    title.AddToClassList(NO_BOX_CLASS_LIST);
-                    title.isReadOnly = true;
+                    component.Title = _e.newValue;
+                    titleField.AddToClassList(NO_BOX_CLASS_LIST);
+                    titleField.isReadOnly = true;
                 }
             );
 
-            if (component.SelectedComponent != null)
-            {
-                controlPanelProperties.value = false;
-            }
+            #region << Properties >>
+            settingsContainer = root.Q<VisualElement>(name: "settings-container");
+            settingsLabel = root.Q<Label>(name: "settings-label");
+            noSettingsDisplay = root.Q<Label>(name: "no-settings-display");
+            UIUtility.SetDisplay(noSettingsDisplay, component.SelectedComponent == null);
+            #endregion
 
-            ;
+            targetComponentFoldout = root.Q<Foldout>(name: "target-component-foldout");
+            UIStateUtility.InitTrackedFoldout(targetComponentFoldout, component);
 
+            warningContainer = root.Q<IMGUIContainer>(name: "warning-container");
             warningContainer.onGUIHandler = OnInspectorGUI;
+
+            gameObjectField = root.Q<ObjectField>(name: "target-gameobject");
+            componentContainer = root.Q<VisualElement>(name: "target-component");
+            noSuitableComponentsMessage = root.Q<Label>(name: "no-suitable-components");
 
             UIUtility.InitializeField
             (
                 gameObjectField,
+                component,
                 () => component.SelectedGameObject,
-                e =>
+                _e =>
                 {
-                    component.SelectedGameObject = (GameObject) e.newValue;
+                    component.SelectedGameObject = (GameObject) _e.newValue;
+                    component.SelectedComponent = null;
                     initializeComponentPopup();
                     drawSettings();
                 },
@@ -117,26 +132,21 @@ namespace u040.prespective.prepair.inspector.editor
 
             #endregion
 
-            #region << Properties >>
-            settingsContainer = root.Q<VisualElement>(name: "settings-container");
-            settingsLabel = root.Q<Label>(name: "settings-label");
-            noSettingsDisplay = root.Q<Label>(name: "no-settings-display");
-            UIUtility.SetDisplay(noSettingsDisplay, component.SelectedComponent == null);
-            #endregion
-
             initializeComponentPopup();
             drawSettings();
         }
 
         private void initializeComponentPopup()
         {
+            UIUtility.SetDisplay(noSuitableComponentsMessage, component.SelectedGameObject != null);
+
             componentContainer.Clear();
 
             if (component.SelectedGameObject == null)
             {
                 component.SelectedComponent = null;
                 settingsLabel.text = SETTINGS_TEXT;
-                title.value = "No component has been set.";
+                titleField.value = "No component has been set.";
             }
             else
             {
@@ -163,7 +173,7 @@ namespace u040.prespective.prepair.inspector.editor
                     setSelectedComponent(componentField.value);
                 }
 
-                UIUtility.SetDisplay(noSuitableComponents, suitableComponents.Count == 0);
+                UIUtility.SetDisplay(noSuitableComponentsMessage, suitableComponents.Count == 0);
             }
         }
 
@@ -173,26 +183,32 @@ namespace u040.prespective.prepair.inspector.editor
             {
                 component.SelectedComponent = null;
                 settingsLabel.text = SETTINGS_TEXT;
-                title.value = "";
+                titleField.value = "";
             }
             else
             {
                 component.SelectedComponent = suitableComponents[suitableComponents.FindIndex(_e => _e.GetType().Name == _typeName)];
                 settingsLabel.text = component.SelectedComponent.GetType().Name + " " + SETTINGS_TEXT;
-                title.value = component.Title;
+                titleField.value = component.Title;
             }
-            //controlPanel = null;
         }
 
         private void drawSettings()
         {
             settingsContainer.Clear();
-            if (component.SelectedComponent != null)
+
+            if (component.SelectedComponent == null)
             {
-                UIUtility.SetDisplay(noSettingsDisplay, component.SelectedComponent == null);
-                controlPanel = (IControlPanelUIE)Editor.CreateEditor(component.SelectedComponent);
-                controlPanel.ShowControlPanelProperties(settingsContainer);
+                //Display No Settings when no component is selected
+                UIUtility.SetDisplay(noSettingsDisplay, true);
+                return;
             }
+
+            UIUtility.SetDisplay(noSettingsDisplay, false);
+            Editor editor = CreateEditor(component.SelectedComponent);
+            controlPanel = (IControlPanelUIE)editor;
+            controlPanel.ShowControlPanelProperties(settingsContainer);
+            DestroyImmediate(editor);
         }
 
         private List<Component> listSuitableComponents()
@@ -214,14 +230,21 @@ namespace u040.prespective.prepair.inspector.editor
             //for each component found check if its editor inherits from icontrolpanel. If it does add it to the list.
             foreach (Component component in allComponents)
             {
+                if (component.GetType() == typeof(ControlPanelInterfaceUIE))
+                {
+                    continue;
+                }
+
                 //create the editor for the component
-                Editor editor = Editor.CreateEditor(component);
+                Editor editor = CreateEditor(component);
 
                 //check if editor is IControlpanel
                 if (editor is IControlPanelUIE)
                 {
                     componentList.Add(component);
                 }
+
+                DestroyImmediate(editor);
             }
 
             return componentList;
@@ -234,12 +257,12 @@ namespace u040.prespective.prepair.inspector.editor
                 if (component.SelectedGameObject == null)
                 {
                     //show warning when no Game object is assigned
-                    EditorGUILayout.HelpBox("No game object assigned", MessageType.Error);
+                    EditorGUILayout.HelpBox("No Game Object assigned.", MessageType.Error);
                 }
                 else
                 {
                     //show warning when no component is assigned
-                    EditorGUILayout.HelpBox("No component assigned", MessageType.Error);
+                    EditorGUILayout.HelpBox("No Component assigned.", MessageType.Error);
                 }
             }
         }

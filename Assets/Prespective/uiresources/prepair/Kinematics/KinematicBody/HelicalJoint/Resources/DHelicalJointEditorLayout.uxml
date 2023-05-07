@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Template src="../../Resources/GenericBodyJointSettingsLayout.uxml" name="generic-joint-settings"/>
+  <ui:Template src="../../Resources/KinematicChainingLayout.uxml" name="kinematic-chaining"/>
+
+  <ui:Instance template="generic-joint-settings" name="generic-joint-settings"/>
+  <ui:Instance template="kinematic-chaining" name="kinematic-chaining-settings"/>
+
+	<ui:VisualElement class="division margin-bottom-10px" name="helical-joint-settings" text="Helical Joint Settings">
+		<ui:Label class="bold margin-bottom-10px" text="Helical Joint Settings" />
+		<ue:ObjectField name="constraining-spline" label="Constraining Spline" />
+		
+		<ui:VisualElement name="settings-container">
+			<ue:DoubleField name="pitch" label="Pitch" />
+			<ui:Toggle name="reverse-direction" label="Reverse Direction" />
+		</ui:VisualElement>
+	</ui:VisualElement>
+</ui:UXML>

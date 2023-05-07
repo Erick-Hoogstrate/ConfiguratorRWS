@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="state" label="State"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Beam Sensor Properties">
+    <ue:FloatField name="reach" label="Reach"/>
+    <ue:Vector3Field name="origin-offset" label="Origin Offset"/>
+    <ue:Vector3Field name="origin-direction" label="Origin Direction"/>
+
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="gizmo-settings">
+    <ui:Label class="bold margin-bottom-5px" text="Gizmo Settings"/>
+    <ui:Toggle name="show-gizmo" label="Show Gizmo"/>
+    <ue:ColorField name="gizmo-color" label="Gizmo Color"/>
+    <ui:Toggle name="show-beam" label="Show Beam"/>
+    <ue:ObjectField name="beam-material" label="Beam Material"/>
+    <ue:FloatField name="beam-radius" label="Beam Radius"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

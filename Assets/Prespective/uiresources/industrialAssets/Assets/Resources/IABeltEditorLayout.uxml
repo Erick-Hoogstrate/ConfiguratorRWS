@@ -1,0 +1,3 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ue:DoubleField name="belt-speed" label="Belt speed (m/s)" />
+</ui:UXML>

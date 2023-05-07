@@ -1,37 +1,48 @@
-using u040.prespective.core;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
+using u040.prespective.utility.bridge;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static u040.prespective.prepair.ui.buttons.DBaseSwitch;
+using static u040.prespective.prepair.virtualhardware.sensors.position.DBaseSwitch;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.switches.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.sensors.position
 {
     [CustomEditor(typeof(DSlideSwitch))]
     public class DSlideSwitchEditorUIE : DSwitchesEditorUIE<DSlideSwitch>
     {
-        #region << Property Fields>>
-        ObjectField prismaticJoint;
-        Toggle useSceneGizmo;
-        ColorField gizmoColor;
-        Button addNewState;
+        #region << FIELDS >>
+        //Property Fields
+        private ObjectField prismaticJoint;
+        private Toggle useSceneGizmo;
+        private ColorField gizmoColor;
+        private Button addNewState;
+        
+        //Control Panel Fields
+        private TextField selectedStateControlPanel;
+        private TextField idControlPanel;
+
         #endregion
-        #region << Control Panel Fields>>
-        TextField selectedStateControlPanel;
-        TextField idControlPanel;
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "DSlideSwitchEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Switches/DSlideSwitchLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Properties >>
             prismaticJoint = root.Q<ObjectField>(name: "prismatic-joint");
@@ -42,6 +53,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             UIUtility.InitializeField
             (
                 prismaticJoint,
+                component,
                 () => component.KinematicPrismaticJoint,
                 e =>
                 {
@@ -53,6 +65,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             UIUtility.InitializeField
             (
                 useSceneGizmo,
+                component,
                 () => component.UseSceneGizmo,
                 e =>
                 {
@@ -63,6 +76,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             UIUtility.InitializeField
             (
                 gizmoColor,
+                component,
                 () => component.GizmoColor,
                 e =>
                 {
@@ -73,11 +87,12 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches.edi
             addNewState.RegisterCallback<MouseUpEvent>(mouseEvent =>
             {
                 DSwitchState switchState = component.SaveState(component.KinematicPrismaticJoint.CurrentPercentage);
-                PersistentEditorCoroutine.StartCoroutine(redrawWindow());
-                UpdateStateContainerEnabled();
+                EditorCoroutines.StartEditorCoroutine(redrawWindow());
+                updateStateContainerEnabled();
             });
             #endregion
         }
+
         internal void OnSceneGUI()
         {
             if (component.UseSceneGizmo && component.KinematicPrismaticJoint && component.KinematicPrismaticJoint.ConstrainingSpline)

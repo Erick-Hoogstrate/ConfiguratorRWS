@@ -2,13 +2,11 @@
   <ui:IMGUIContainer class="margin-bottom-10px" name="imguicontainer" />
   
   <ui:VisualElement class="division margin-bottom-10px">
-    <ui:TextField name="directory-path-field" picking-mode="Ignore" label="Directory Path" />
-    <ui:TextField name="file-name-field" picking-mode="Ignore" label="File Name" />
-    <uie:EnumField name="vertex-limit-field" label="Vertex Limit" value="Center" />
-    <ui:TextField name="name-of-packed-mesh-field" picking-mode="Ignore" label="Name of Packed Mesh" />
+    <ui:TextField name="filepath-packedmesh-field" picking-mode="Ignore" label="Filepath PackedMesh" />
+    <ui:TextField name="filename-group-packedmesh-field" picking-mode="Ignore" label="Filename Group and PackedMesh" />
   </ui:VisualElement>
 
-  <ui:Button text="Close Group" name="group-button" />
-  <ui:Button text="Disband Group" name="disband-group-button" />
+  <ui:Button text="Pack Group" name="pack-button" />
+  <ui:Button text="Ungroup" name="ungroup-button" />
   <ui:Button text="Reapply Serialized Data" name="reapply-button" label="Vertex limit" />
 </ui:UXML>

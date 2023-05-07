@@ -1,10 +1,11 @@
 using System;
 using u040.prespective.prepair;
 using u040.prespective.prepair.kinematics;
-using u040.prespective.utility;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.utility.modelmanagement;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper
+namespace u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers
 {
     public class DParallelGripperFinger : DGripperFinger
     {
@@ -32,21 +33,21 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             }
         }
 
-        private void Reset()
+        internal void Reset()
         {
-            this.PrismaticJoint = this.gameObject.RequireComponent<DPrismaticJoint>(true);
+            this.PrismaticJoint = this.RequireComponent<APrismaticJoint>(APrismaticJoint.GetConcreteExplicitType, true);
         }
 
         public override void SetPosition(double _percent)
         {
             if (PrismaticJoint)
             {
-                double _relativePercentageMove = _percent - PrismaticJoint.CurrentPercentage;
+                double relativePercentageMove = _percent - PrismaticJoint.CurrentPercentage;
 
 
-                PrismaticJoint.Translate(_relativePercentageMove, new Action<IntentData>(_intentData => 
+                PrismaticJoint.Translate(relativePercentageMove, new Action<IntentData>(_intentData => 
                 { 
-                    fingerJammedCallback(_intentData.EnforcableFraction); 
+                    fingerJammedCallback(_intentData.EnforceableFraction); 
                 }));
             }
             else

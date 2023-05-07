@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+       <ui:TextField name="current-state-field" label="Current State" />
+       <ui:VisualElement name="action-processors-container">
+        <ue:PropertyField name="state-change-property" binding-path="StateChangeRecord" />
+    </ui:VisualElement> 
+</ui:UXML>

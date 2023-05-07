@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:TextField name="assignment-name" label="Assignment Name" class="custom-exposure"/>
+    <ui:Foldout class="custom-exposure-foldout" name="assignment-conditions-foldout" text="Conditions">
+        <ui:Button name="add-condition-button" text="Add Condition" class="custom-exposure"/>
+        <ui:VisualElement name="assignment-conditions-container"/>
+    </ui:Foldout>
+    <ui:VisualElement name="applied-pattern-container"/>
+    <ui:Foldout name="exposed-macro-variable-foldout custom-exposure-foldout" text="Exposed Macro Variables">
+            <ui:VisualElement name="exposed-macro-variable-container"/>
+    </ui:Foldout>
+    <ui:VisualElement name="on-assignment-completed-container"/>
+    <!--<ue:EnumField name="on-assignment-completed-successfully" label="On Assignment Completed Successfully"/>-->
+</ui:UXML>

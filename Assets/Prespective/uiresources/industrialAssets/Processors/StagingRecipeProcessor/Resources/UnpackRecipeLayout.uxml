@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Label text="Unpack Staged Part When" />
+    <ue:EnumField name="unpack-condition-type" class="custom-exposure"/>
+    <ui:VisualElement name="unpack-condition-container" style="margin-bottom:5px;"/>
+
+    <ui:Label text="After Unpacking A Part" />
+    <ue:EnumField name="after-unpacking-a-part-type" class="custom-exposure"/>
+    <ui:VisualElement name="action-after-unpacking-a-part-container" style="margin-bottom:5px;"/>
+
+    <ui:Label text="After Unpacking All Parts" />
+    <ue:EnumField name="after-unpacking-all-parts-type" class="custom-exposure"/>
+    <ui:VisualElement name="action-after-unpacking-all-parts-container" style="margin-bottom:5px;"/>
+</ui:UXML>

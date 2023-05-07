@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="value" label="Value"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="Linear Encoder Properties">
+    <ue:ObjectField name="prismatic-joint" label="Prismatic Joint"/>
+    <ue:FloatField name="cycle-value" label="Cycle Value"/>
+    <ue:FloatField name="base-value" label="Base Value"/>
+    <ui:Toggle name="enable-rounding" label="Enable Rounding"/>
+    <ue:FloatField name="rounding-interval" label="Rounding Interval"/>
+    <ui:Toggle name="cap-value" label="Cap Value"/>
+    <ue:FloatField name="minimum-value" label="Minimum Value"/>
+    <ue:FloatField name="maximum-value" label="Maximum Value"/>
+    <ue:PropertyField class="margin-vertical-5px" name="on-value-changed" binding-path="onValueChanged"/>
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

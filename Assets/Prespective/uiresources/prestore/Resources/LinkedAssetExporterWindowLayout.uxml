@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+      <ui:VisualElement class="window-padding-container">
+          <ui:VisualElement class="division margin-bottom-10px">
+            <ui:Label class="bold margin-bottom-10px" text="File Export location" />
+            <ue:ObjectField name="exporting-gameobject" label="Object For Export"/>
+            <ui:TextField name="export-folder" label="Target Export Folder"/>
+            <ui:TextField name="folder-name" label="Folder Name"/>
+          </ui:VisualElement>
+
+          <ui:VisualElement class="division margin-bottom-10px">
+              <ui:Foldout class="foldout-division" text="Export options">
+                <ui:Toggle name="export-textures" label="Textures"/>
+                <ui:Toggle name="export-materials" label="Materials"/>
+                <ui:Toggle name="export-colliders" label="Colliders"/>
+                <ui:Toggle name="export-shaders" label="Shaders"/>
+                <ui:Toggle name="create-prefab-from-selected-object" label="Create prefab from selected object"/>
+                <ui:Toggle name="export-deactivated-objects" label="Export deactivated objects" tooltip="Export the child objects that have been turned off (grayed out in the hierarchy)"/>
+              </ui:Foldout>
+          </ui:VisualElement>
+      </ui:VisualElement>
+
+     <ui:VisualElement class="align-right" style="right: 13px; position: absolute; bottom: 10px;">
+         <ui:Label name="export-button-parent">
+            <ui:Button class="content-fit-button" name="export-button" text="Export"/>
+         </ui:Label>
+     </ui:VisualElement>
+ 
+</ui:UXML>

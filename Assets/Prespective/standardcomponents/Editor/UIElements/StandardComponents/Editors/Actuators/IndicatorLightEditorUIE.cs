@@ -1,29 +1,36 @@
 using System.Collections.Generic;
-using System.Reflection;
-using u040.prespective.core.editor;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.standardcomponents.virtualhardware.actuators.lights;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.userinterface.lights.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.actuators.lights
 {
     [CustomEditor(typeof(IndicatorLight))]
     public class IndicatorLightEditorUIE : StandardComponentEditorUIE<IndicatorLight>
     {
-        #region << Live Data Fields >>
-        TextField state;
-        TextField intensity;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField state;
+        private TextField intensity;
+
+        //Property Fields
+        private ColorField lightColorField;
+        private ColorField baseColorField;
+        private VisualElement materialsContainer;
+        private List<Button> materialButtons = new List<Button>();
         #endregion
-        #region << Property Fields>>
-        ColorField lightColor;
-        ColorField baseColor;
-        VisualElement materialsContainer;
-        List<Button> materialButtons = new List<Button>();
-        #endregion
+
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "IndicatorLightEditorLayout";
+            }
+        }
 
         private Material[] sharedMaterials
         {
@@ -32,14 +39,14 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
                 return component.Renderer.sharedMaterials;
             }
         }
+        #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Actuators/IndicatorLightLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             state.value = component.IsActive ? "Active" : "Inactive";
             state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
@@ -47,9 +54,9 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
             intensity.value = component.Intensity.ToString();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
             state = root.Q<TextField>(name: "state");
@@ -60,13 +67,14 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
 
             #endregion
             #region << Properties >>
-            lightColor = root.Q<ColorField>(name: "light-color");
-            baseColor = root.Q<ColorField>(name: "base-color");
+            lightColorField = root.Q<ColorField>(name: "light-color");
+            baseColorField = root.Q<ColorField>(name: "base-color");
             materialsContainer = root.Q<VisualElement>(name: "material-container");
 
             UIUtility.InitializeField
             (
-                lightColor,
+                lightColorField,
+                component,
                 () => component.LightColor,
                 e =>
                 {
@@ -76,7 +84,8 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
 
             UIUtility.InitializeField
             (
-                baseColor,
+                baseColorField,
+                component,
                 () => component.BaseColor,
                 e =>
                 {
@@ -160,17 +169,17 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
             state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
             stateContainer.Add(state);
 
-            Button activate = new Button();
-            activate.text = component.IsActive ? "Disable" : "Activate";
-            activate.style.width = 120;
-            activate.RegisterCallback<MouseUpEvent>(mouseEvent => 
+            Button enable = new Button();
+            enable.text = component.IsActive ? "Disable" : "Enable";
+            enable.style.width = 120;
+            enable.RegisterCallback<MouseUpEvent>(_mouseEvent => 
             {
                 component.SetActive(!component.IsActive);
                 state.value = component.IsActive ? "Active" : "Inactive";
                 state.Q<VisualElement>(name: "unity-text-input").style.color = component.IsActive ? new Color(0f, 0.5f, 0f) : Color.red;
-                activate.text = component.IsActive ? "Disable" : "Activate";
+                enable.text = component.IsActive ? "Disable" : "Enable";
             });
-            stateContainer.Add(activate);
+            stateContainer.Add(enable);
 
             VisualElement sliderContainer = new VisualElement();
             sliderContainer.AddToClassList("row");
@@ -189,6 +198,7 @@ namespace u040.prespective.standardcomponents.userinterface.lights.editor
             (
                 intensitySlider,
                 intensityField,
+                component,
                 () => component.Intensity,
                 e => component.Intensity = e.newValue
             );

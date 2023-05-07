@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
 	<ui:VisualElement class="division margin-bottom-10px">
 		<ui:Label class="bold margin-bottom-10px" text="Kinematics Controller Settings" />
 		<ui:Toggle name="execute-in-editor-mode" label="Execute in Editor Mode" />
@@ -20,4 +20,4 @@
 
 		<ui:VisualElement name="kinematic-relations" />
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

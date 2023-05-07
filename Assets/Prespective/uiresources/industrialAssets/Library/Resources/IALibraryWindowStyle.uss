@@ -1,0 +1,84 @@
+﻿
+#categories-label{
+    padding: 5px;
+}
+#category-imgui{
+    height:100%; 
+    width: 100%
+}
+#sidebar-icons{
+    padding:10px; 
+    height:50px; 
+    flex-shrink:0
+}
+#refresh-online-button{
+    margin-left:10px
+}
+#toolbar{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#asset-container{
+    flex-wrap: wrap;
+    display: flex;
+    min-width: 400px;
+    align-content: flex-start;
+    justify-content: center;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+
+Toolbar Label {
+    align-self: center;
+    
+}
+.settings-button{
+    /*width: 70px;*/
+    /*height: 20px;*/
+}
+
+/*thumbnail*/
+.thumbnail-button {
+    /*background-color: rgb(82, 82, 82);*/
+    margin: 0px;
+    /*margin-right: 5px;*/
+    padding: 5px;
+    /*flex-wrap: wrap;*/
+    cursor: link;
+}
+.restart-button{
+    align-content: flex-end;
+}
+
+.thumbnail-button:hover {
+    background-color: rgb(90, 90, 90);
+    cursor: link;
+}
+.status-icon:hover {
+    cursor: orbit;
+    background-color: rgb(90, 90, 90);
+}
+.hover-custom{
+    background-color: rgb(90, 90, 90);
+}
+.cursor-hand{
+    cursor: link;
+}
+#asset-name {
+    padding-bottom:2px ;
+    cursor: link;
+}
+
+#preview-image{
+    /*height: 125;*/
+    /*width: 125;*/
+    -unity-background-scale-mode: scale-to-fit;
+    border-color: #3a3a3a;
+    border-width: 3px;
+    border-radius: 1px;
+    cursor: link;
+
+}
+
+/*end thumbnail*/

@@ -1,0 +1,19 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="row">
+    <ui:Label class="list-label bold" style="width: 75%" text="Chain: " name="fabrik-joints-list-header"/>
+    <ui:Label class="list-label" style="width: 15%" text="Index" />
+    <ui:Button class="list-label" style="width: 5%" text="+" tooltip="Insert joint at base" name="base-append-button"/>
+  </ui:VisualElement>
+
+  <ui:VisualElement name="fabrik-joints" />
+  <ui:Button name="reload-properties-joints" text="Reload properties joints" tooltip="Resets the properties of the current joints. (press after altering dimensions)" />
+  
+  <ui:VisualElement class="row">
+    <ui:Label class="list-label" style="width: 75%" text="Target" name="fabrik-targets-list-header" />
+    <ui:Label class="list-label" style="width: 20%" text="Joint index" />
+  </ui:VisualElement>
+
+  <ui:VisualElement name="fabrik-target" />
+  <ui:Toggle name="match-arm-direction" label="Match arm direction to target" />
+  <ui:Button name="remove-chain" text="Remove chain" tooltip="Delete this chain" class="margin-bottom-10px" />
+</ui:UXML>

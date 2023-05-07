@@ -1,0 +1,9 @@
+#window-dimensions-label {
+	color: orange
+}
+
+#window-dimensions {
+	border-width: 1px;
+	border-color: orange;
+	max-height: 200px;
+}

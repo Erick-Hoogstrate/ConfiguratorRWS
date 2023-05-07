@@ -1,0 +1,34 @@
+{
+    "name": "{{PLAYMODE_TEST_CODE_ASSEMBLY_NAME}}",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "Wrappers",
+        "StandardComponents",
+        "{{PRODUCTION_CODE_ASSEMBLY_NAME}}"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Utility.dll",
+        "Core.dll",
+        "Preplug.dll",
+        "Prepair.dll",
+        "Prelogic.dll",
+        "Prescripted.dll",
+        "IndustrialAssets.dll",
+        "Prestore.dll",
+        "Fact.dll",
+        "Prescissor.dll",
+        "Preplay.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

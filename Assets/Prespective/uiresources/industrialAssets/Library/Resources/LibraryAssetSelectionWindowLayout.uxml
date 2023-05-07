@@ -1,0 +1,7 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:TextField name="asset-guid-field" label="GUID" />
+    <ui:TextField name="asset-category-field" label="Category" />
+    <ui:TextField name="asset-name-field" label="Name" />
+    <ui:TextField name="asset-version-field" label="Version" />
+    <ui:Button name="find-asset-button" text="Find Asset" />
+</ui:UXML>

@@ -1,7 +1,7 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
   <ui:VisualElement class="row" name="finger-settings-container">
     <ue:ObjectField name="finger"/>
     <ui:Toggle name="invert" label="Invert"/>
     <ui:Button name="remove" text="X"/>
   </ui:VisualElement>
-</UXML>
+</ui:UXML>

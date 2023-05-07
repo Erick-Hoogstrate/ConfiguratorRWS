@@ -1,146 +1,163 @@
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.actuators.motors
 {
     [CustomEditor(typeof(DDrivenServoMotor))]
     public class DDrivenServoMotorEditorUIE : StandardComponentEditorUIE<DDrivenServoMotor>
     {
-        #region << Live Data Fields >>
-        TextField preferredVelocity;
-        TextField targetAngle;
-        TextField continuous;
-        TextField continuousDirection;
-        TextField velocity;
-        TextField position;
-        TextField state;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField preferredVelocityField;
+        private TextField targetAngleField;
+        private TextField continuousField;
+        private TextField continuousDirectionField;
+        private TextField velocityField;
+        private TextField positionField;
+        private TextField stateField;
+
+        //Property Fields
+        private ObjectField wheelJointField;
+        private DoubleField maximumVelocityField;
+        private DoubleField accelerationField;
+        private DoubleField decelerationField;
+        private DoubleField zeroOffsetField;
+        private Button setCurrentOffsetButton;
+
+        //Control Panel Fields
+        private TextField velocityControlPanel;
+        private TextField positionControlPanel;
+        private TextField stateControlPanel;
+        private FloatField targetAngleControlPanelField;
+
         #endregion
-        #region << Property Fields >>
-        VisualElement settings;
-        VisualElement pulseWithModulationEnabled;
-        Label noWheelJoint;
-        ObjectField wheelJointField;
-        DoubleField maximumVelocity;
-        DoubleField acceleration;
-        DoubleField zeroOffset;
-        Button setCurrentOffset;
-        #endregion
-        #region << Control Panel Fields >>
-        TextField velocityControlPanel;
-        TextField positionControlPanel;
-        TextField stateControlPanel;
-        FloatField targetAngleControlPanel;
-        #endregion
-        protected override void ExecuteOnEnable()
+        #region  << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Actuators/Motors/DDrivenServoMotorLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DDrivenServoMotorEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            preferredVelocity.value = component.PreferredVelocity.ToString();
-            targetAngle.value = component.TargetAngle.ToString();
-            continuous.value = component.Continuous.ToString();
-            continuousDirection.value = component.ContinuousDirection.ToString();
-            velocity.value = component.Velocity.ToString();
-            position.value = component.Position.ToString();
-            state.value = component.Error ? "Error" : (component.IsActive ? "Active" : "Inactive");
-            state.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
+            preferredVelocityField.value = component.PreferredVelocity.ToString();
+            targetAngleField.value = component.TargetAngle.ToString();
+            continuousField.value = component.Continuous.ToString();
+            continuousDirectionField.value = component.ContinuousDirection.ToString();
+            velocityField.value = component.Velocity.ToString();
+            positionField.value = component.Position.ToString();
+            stateField.value = component.Error ? "Error" : (component.IsActive ? "Active" : "Inactive");
+            stateField.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
-            preferredVelocity = root.Q<TextField>(name: "preferred-velocity");
-            preferredVelocity.isReadOnly = true;
+            preferredVelocityField = root.Q<TextField>(name: "preferred-velocity");
+            preferredVelocityField.isReadOnly = true;
 
-            targetAngle = root.Q<TextField>(name: "target-angle");
-            targetAngle.isReadOnly = true;
+            targetAngleField = root.Q<TextField>(name: "target-angle");
+            targetAngleField.isReadOnly = true;
 
-            continuous = root.Q<TextField>(name: "continuous");
-            continuous.isReadOnly = true;
+            continuousField = root.Q<TextField>(name: "continuous");
+            continuousField.isReadOnly = true;
 
-            continuousDirection = root.Q<TextField>(name: "continuous-direction");
-            continuousDirection.isReadOnly = true;
+            continuousDirectionField = root.Q<TextField>(name: "continuous-direction");
+            continuousDirectionField.isReadOnly = true;
 
-            velocity = root.Q<TextField>(name: "velocity");
-            velocity.isReadOnly = true;
+            velocityField = root.Q<TextField>(name: "velocity");
+            velocityField.isReadOnly = true;
 
-            position = root.Q<TextField>(name: "position");
-            position.isReadOnly = true;
+            positionField = root.Q<TextField>(name: "position");
+            positionField.isReadOnly = true;
 
-            state = root.Q<TextField>(name: "state");
-            state.isReadOnly = true;
-            state.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
+            stateField = root.Q<TextField>(name: "state");
+            stateField.isReadOnly = true;
+            stateField.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
             #endregion
             #region << Properties >>
-            settings = root.Q<VisualElement>(name: "settings");
-            pulseWithModulationEnabled = root.Q<VisualElement>(name: "pulse-width-modulation-enabled");
-            noWheelJoint = root.Q<Label>(name: "no-wheel-joint");
             wheelJointField = root.Q<ObjectField>(name: "wheel-joint-field");
-            maximumVelocity = root.Q<DoubleField>(name: "maximum-velocity");
-            acceleration = root.Q<DoubleField>(name: "acceleration");
-            zeroOffset = root.Q<DoubleField>(name: "zero-offset");
-            setCurrentOffset = root.Q<Button>(name: "set-current-offset");
+            maximumVelocityField = root.Q<DoubleField>(name: "maximum-velocity");
+            accelerationField = root.Q<DoubleField>(name: "acceleration");
+            decelerationField = root.Q<DoubleField>(name: "deceleration");
+            zeroOffsetField = root.Q<DoubleField>(name: "zero-offset");
+            setCurrentOffsetButton = root.Q<Button>(name: "set-current-offset");
 
             UIUtility.InitializeField
             (
                 wheelJointField,
+                component,
                 () => component.KinematicWheelJoint,
-                e =>
+                _e =>
                 {
-                    component.KinematicWheelJoint = (AWheelJoint)e.newValue;
-                    UIUtility.SetDisplay(settings, e.newValue == null ? false : true);
-                    UIUtility.SetDisplay(noWheelJoint, e.newValue == null ? true : false);
+                    component.KinematicWheelJoint = (AWheelJoint)_e.newValue;
                 },
                 typeof(AWheelJoint)
             );
 
-            UIUtility.SetDisplay(settings, component.KinematicWheelJoint == null ? false : true);
-            UIUtility.SetDisplay(noWheelJoint, component.KinematicWheelJoint == null ? true : false);
-
             UIUtility.InitializeField
             (
-                maximumVelocity,
+                maximumVelocityField,
+                component,
                 () => component.MaxVelocity,
-                e =>
+                _e =>
                 {
-                    component.MaxVelocity = e.newValue;
+                    component.MaxVelocity = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                acceleration,
+                accelerationField,
+                component,
                 () => component.Acceleration,
-                e =>
+                _e =>
                 {
-                    component.Acceleration = e.newValue;
+                    component.Acceleration = _e.newValue;
                 }
             );
 
             UIUtility.InitializeField
             (
-                zeroOffset,
-                () => component.ZeroOffset,
-                e =>
+                decelerationField,
+                component,
+                () => component.Deceleration,
+                _e =>
                 {
-                    component.ZeroOffset = e.newValue;
+                    component.Deceleration = _e.newValue;
                 }
             );
 
-            setCurrentOffset.RegisterCallback<MouseUpEvent>(_mouseEvent => 
+            UIUtility.InitializeField
+            (
+                zeroOffsetField,
+                component,
+                () => component.ZeroOffset,
+                _e =>
+                {
+                    component.ZeroOffset = _e.newValue;
+                }
+            );
+
+            setCurrentOffsetButton.RegisterCallback<MouseUpEvent>(_mouseEvent => 
             {
                 component.ZeroOffset = component.KinematicWheelJoint.CurrentRevolutionDegrees;
-                zeroOffset.SetValueWithoutNotify(component.ZeroOffset);
+                zeroOffsetField.SetValueWithoutNotify(component.ZeroOffset);
             });
             #endregion
         }
@@ -164,44 +181,48 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
             (
                 prefVelocitySlider,
                 prefVelocityField,
+                component,
                 () => (float)component.PreferredVelocity,
-                e => component.PreferredVelocity = e.newValue
+                _e => component.PreferredVelocity = _e.newValue
             );
             #endregion
 
-            targetAngleControlPanel = new FloatField("Target Angle (deg)");
-            targetAngleControlPanel.isDelayed = true;
+            targetAngleControlPanelField = new FloatField("Target Angle (deg)");
+            targetAngleControlPanelField.isDelayed = true;
             UIUtility.InitializeField
             (
-                targetAngleControlPanel,
+                targetAngleControlPanelField,
+                component,
                 () => (float)component.TargetAngle,
-                e =>
+                _e =>
                 {
-                    component.TargetAngle = e.newValue;
+                    component.TargetAngle = _e.newValue;
                 }
             );
-            UIUtility.ToggleNoBoxAndReadOnly(targetAngleControlPanel, component.Continuous);
+            UIUtility.SetReadOnlyState(targetAngleControlPanelField, component.Continuous);
 
-            Toggle continuous = new Toggle("Continuous");
+            Toggle continuousToggle = new Toggle("Continuous");
             UIUtility.InitializeField
             (
-                continuous,
+                continuousToggle,
+                component,
                 () => component.Continuous,
-                e =>
+                _e =>
                 {
-                    component.Continuous = e.newValue;
-                    UIUtility.ToggleNoBoxAndReadOnly(targetAngleControlPanel, component.Continuous);
+                    component.Continuous = _e.newValue;
+                    UIUtility.SetReadOnlyState(targetAngleControlPanelField, component.Continuous);
                 }
             );
 
-            EnumField continuousDirection = new EnumField("Continuous Direction");
+            EnumField continuousDirectionField = new EnumField("Continuous Direction");
             UIUtility.InitializeField
             (
-                continuousDirection,
+                continuousDirectionField,
+                component,
                 () => component.ContinuousDirection,
-                e =>
+                _e =>
                 {
-                    component.ContinuousDirection = (DDrivenServoMotor.Direction)e.newValue;
+                    component.ContinuousDirection = (DDrivenServoMotor.Direction)_e.newValue;
                 }
             );
 
@@ -218,7 +239,7 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
             stateControlPanel.isReadOnly = true;
 
             //schedule the updater
-            ScheduleControlPanelUpdate(velocityControlPanel);
+            scheduleControlPanelUpdate(velocityControlPanel);
 
             Button startRotation = new Button();
             startRotation.text = component.Error ? "Reset Error" : (component.IsActive ? "Stop" : "Start");
@@ -238,17 +259,17 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
             });
 
             _container.Add(sliderContainer);
-            _container.Add(targetAngleControlPanel);
-            _container.Add(continuous);
-            _container.Add(continuousDirection);
+            _container.Add(targetAngleControlPanelField);
+            _container.Add(continuousToggle);
+            _container.Add(continuousDirectionField);
             _container.Add(velocityControlPanel);
             _container.Add(positionControlPanel);
             _container.Add(stateControlPanel);
             _container.Add(startRotation);
         }
 
-        //Define the fields in the control panel that need to be udpated constantly
-        protected override void UpdateControlPanelData()
+        //Define the fields in the control panel that need to be updated constantly
+        protected override void updateControlPanelData()
         {
             velocityControlPanel.value = Application.isPlaying ? component.Velocity.ToString() : "N/A";
             positionControlPanel.value = Application.isPlaying ? component.Position.ToString() : "N/A";
@@ -256,7 +277,7 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
             stateControlPanel.Q<VisualElement>(name: "unity-text-input").style.color = (component.IsActive && !component.Error) ? new Color(0f, 0.5f, 0f) : Color.red;
             if (component.Continuous)
             {
-                targetAngleControlPanel.value = (float)component.TargetAngle;
+                targetAngleControlPanelField.value = (float)component.TargetAngle;
             }
         }
     }

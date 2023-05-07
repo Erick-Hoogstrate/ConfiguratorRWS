@@ -1,0 +1,84 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="division margin-bottom-10px">
+        <ui:Label class="bold margin-bottom-5px" text="Simulator Settings"/>
+        <ui:TextField name="simulator-name" label="Simulator Name"/>
+    </ui:VisualElement>
+    <ui:VisualElement class="division margin-bottom-10px" name="control-container">
+        <ui:Label class="bold margin-bottom-5px" text="Simulator Control"/>
+        <ui:Toggle name="start-in-playmode" label="Start in Playmode"/>
+        <ui:VisualElement class="row margin-bottom-5px">
+            <ui:Button class="content-fit-button" name="start-simulator" text="Start"/>
+            <ui:Button class="content-fit-button" name="pause-simulator" text="Pause"/>
+            <ui:Button class="content-fit-button" name="stop-simulator" text="Stop"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement class="division margin-bottom-10px">
+        <ui:Label class="bold margin-bottom-5px" text="Simulator Status"/>
+        <ui:TextField class="no-box" name="stream-connection" label="Stream Connection"/>
+        <ui:TextField class="no-box" name="content-lifecycle-state" label="Content Lifecycle State"/>
+        <ui:TextField class="no-box" name="stream-client-state" label="Stream Client State"/>
+    </ui:VisualElement>
+
+    <ui:Foldout class="foldout-division margin-bottom-10px" name="logging-foldout" text="Log Settings">
+        <ui:Toggle name="log-values-to-file" label="Enable Logging"/>
+        <ue:EnumField name="component-reference" label="Component Reference"/>
+        <ui:TextField name="log-path" label="File Path"/>
+        <ui:TextField name="log-file-name" label="File Name"/>
+
+        <ui:TextField class="no-box margin-vertical-5px" name="log-file-preview" label="File Name Preview"/>
+    </ui:Foldout>
+
+    <ui:Foldout name="adapter-settings-foldout" class="foldout-division margin-bottom-10px" text="Adapter Settings">
+        <ui:VisualElement name="adapter-target"/>
+        <ui:VisualElement name="adapter-settings"/>
+        <ue:PropertyField binding-path="contentLifeCycleSettings"/>
+    </ui:Foldout>
+
+    <ui:VisualElement class="division margin-bottom-10px" name="adapter-control-container">
+        <ui:IMGUIContainer name="adapter-control-imguicontainer"/>
+    </ui:VisualElement>
+
+    <ui:Foldout class="foldout-division margin-bottom-10px" name="logic-components" value="false" text="Logic Components (0)"/>
+
+    <ui:Foldout class="foldout-division margin-bottom-10px" name="signal-naming-rules-foldout" value="false" text="Signal Naming Rule Overrides">
+        <ui:VisualElement class="row">
+            <ui:Button class="content-fit-button margin-bottom-10px" name="add-signal-naming-rule" text="+ Add New Rule"/>
+            <ui:Button class="content-fit-button margin-bottom-10px" name="delete-all-signal-naming-rules" text="Delete All"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="margin-bottom-5px" name="signal-naming-rules-container"/>
+        <ui:Button class="content-fit-button" name="apply-signal-naming-rules" text="Apply"/>
+    </ui:Foldout>
+
+    <ui:Foldout class="foldout-division margin-bottom-10px" name="instance-naming-rules-foldout" value="false" text="Instance Naming Rule Overrides">
+        <ui:VisualElement class="row">
+            <ui:Button class="content-fit-button" name="add-instance-naming-rule" text="+ Add New Rule"/>
+            <ui:Button class="content-fit-button margin-bottom-10px" name="delete-all-instance-naming-rules" text="Delete All"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="margin-bottom-5px" name="instance-naming-rules-container"/>
+        <ui:Button class="content-fit-button" name="apply-instance-naming-rules" text="Apply"/>
+    </ui:Foldout>
+
+    <ui:VisualElement class="division margin-bottom-10px">
+        <ui:Label class="bold margin-bottom-5px" text="Policy Settings"/>
+        <ui:TextField name="policy-directory" label="Policy Directory"/>
+        <ui:TextField name="policy-filename" label="Policy Filename"/>
+        <ue:PropertyField class="margin-bottom-10px" binding-path="exportSettings"/>
+
+        <ui:VisualElement class="row margin-bottom-5px">
+            <ui:Button class="content-fit-button" name="export-policy" style="margin-right: 8px" text="Export Policy"/>
+            <ui:Button class="content-fit-button" name="open-policy" text="Open Policy File"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="division" name="import-export-config">
+        <ui:Label class="bold margin-bottom-10px" text="Import/Export Configuration"/>
+        <ue:PropertyField class="margin-bottom-10px" nam="configuration-settings" binding-path="configurationSettings"/>
+
+        <ui:VisualElement class="row margin-bottom-5px">
+            <ui:Button class="content-fit-button" name="export-configuration" style="margin-right: 8px" text="Export Configuration Files"/>
+            <ui:Button class="content-fit-button" name="import-configuration" text="Import Configuration Files"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

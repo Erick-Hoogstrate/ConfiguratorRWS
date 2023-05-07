@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:Foldout class="foldout-division margin-bottom-10px" name="state-change-foldout" text="Last State Change">
+        <ui:VisualElement name="module-locator-container" />
+        <ui:TextField name="sim-time-field" label="Simulation time" class="custom-exposure"/>
+        <ui:TextField name="assignment-field" label="Assignment" class="custom-exposure"/>
+        <ui:VisualElement name="actioncue-locator-container" />
+    </ui:Foldout>
+</ui:UXML>

@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
 	<ui:VisualElement class="row">
 		<ui:Foldout class="flex-grow" name="kinematic-relation" value="false">
 			<ue:ObjectField name="opposing-kinematic-transform" label="Opposing Kinematic Relation"/>
@@ -8,4 +8,4 @@
 		</ui:Foldout>
 		<ui:Button name="delete" text="x" style="align-self: flex-start"/>
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

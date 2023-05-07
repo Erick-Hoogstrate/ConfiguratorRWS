@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Foldout class="foldout-division margin-bottom-5px custom-exposure-foldout" text="Contained Product Settings" name="product-settings-foldout">
+    <ui:VisualElement name="product-part-library-selector-container"/>
+    <ui:VisualElement name="position-offset"/>
+    <ui:VisualElement name="rotation-offset"/>
+  </ui:Foldout>
+</ui:UXML>

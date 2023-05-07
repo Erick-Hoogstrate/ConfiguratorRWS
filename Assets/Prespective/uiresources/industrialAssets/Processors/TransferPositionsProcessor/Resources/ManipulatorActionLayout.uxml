@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:VisualElement class="row custom-exposure" name="joint-row">
+        <ue:EnumField name="transfer-action-type"  style="width: 90%" />
+        <ui:Button style="width: 5%" name="remove-button" text="x" tooltip="Remove action"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="transfer-action-container" style="margin-bottom:5px;" />
+</ui:UXML>

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+	<ui:VisualElement name="position" />
+	<ui:VisualElement name="rotation" />
+	<ui:VisualElement name="scale" />
+</ui:UXML>

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Toggle name="turned-on" label="ON"/>
+  <ue:DoubleField name="static-friction" label="Static Friction" />
+  <ue:DoubleField name="dynamic-friction" label="Dynamic Friction" />
+  <ue:DoubleField name="velocity" label="Velocity" />
+  <ui:VisualElement name="velocity-direction" />
+</ui:UXML>

@@ -1,0 +1,148 @@
+#if UNITY_EDITOR
+
+using NUnit.Framework;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.TestTools;
+
+namespace {{PRODUCTION_PREFIX}}.testing
+{
+    /// <summary>
+    /// Example script to show how to setup a normal unittests that can be runned from the Unity Testrunner
+    /// </summary>
+    public class SampleUnitTest
+    {
+        #region << Synchronous Test Example >>
+
+        /// <summary>
+        /// due to the 'SetUp' attribute This function is runned before all functions with 'Test' attributes in this class
+        /// </summary>
+        [SetUp]
+        public void SynchronousSetupExample()
+        {
+            Debug.Log("Here you'll want to setup the scene with objects used in synchronous tests");
+        }
+
+
+        /// <summary>
+        /// Due to the 'Test' attribute this function will show up in- and run from the Unity Testrunner
+        /// </summary>
+        /// <param name="_red">the red color component - should be 0 for black</param>
+        /// <param name="_green">the green color component - should be 0 for black</param>
+        /// <param name="_blue">the blue color component - should be 0 for black</param>
+        /// <param name="_alpha">the alpha color component - should be 1 (?) for black</param>
+        [Test]                          //Marking a function with 'Test' marks it as a synchronous unittest function
+        //[TestCase(1, 1, 1, 1)]        //NOTE : setting up a test with default failing cases is bad practice (it will prevent the testrunner from running a clean run)  
+        [TestCase(0, 0, 0, 1)]          //By creating a testcase you can create pre-argumented test variants (test fixtures)
+        public void ColorInputTestBlack(float _red, float _green, float _blue, float _alpha)
+        {
+            _red = Mathf.Round(_red);
+            _green = Mathf.Round(_green);
+            _blue = Mathf.Round(_blue);
+            _alpha = Mathf.Round(_alpha);
+
+            //assign color based on input color
+            Color newColor = new Color(_red, _green, _blue, _alpha);
+
+            //Use the Assert class to test conditions
+            Assert.That(newColor, Is.EqualTo(Color.black));
+        }
+
+        /// <summary>
+        /// due to the 'Teardown' attribute this function will be runned after all 'Test' functions in this class have completed
+        /// </summary>
+        [TearDown]
+        public void SynchronousTeardownExample()
+        {
+            Debug.Log("Here you'll want to teardown any objects created within the scene in the setup and/or synchronous tests");
+        }
+
+        #endregion
+        #region << Asynchronous/Enumerated Test Example >>
+
+        /// <summary>
+        /// Due to the 'UnitySetUp' attribute This function is runned before all functions with 'UnityTest' attributes in this class
+        /// </summary>
+        [UnitySetUp]
+        public void AsynchronousSetupExample()
+        {
+            Debug.Log("Here you'll want to setup the scene with objects used in the asynchronous (ienumerated) tests");
+        }
+
+        /// <summary>
+        /// values (arguments) for an ienumerated testcase for the red parameter
+        /// Ienumerated Tests cannot be parameterized via Testcase - here you should use ValueSource with an array of values for each
+        /// parameter, where each index is a test
+        /// </summary>
+        private static float[] ienumerationTestCaseValuesRed = new float[] { 0f };
+
+        /// <summary>
+        /// values (arguments) for an ienumerated testcase for the green parameter
+        /// Ienumerated Tests cannot be parameterized via Testcase - here you should use ValueSource with an array of values for each
+        /// parameter, where each index is a test
+        /// </summary>
+        private static float[] ienumerationTestCaseValuesGreen = new float[] { 0f };
+
+        /// <summary>
+        /// values (arguments) for an ienumerated testcase for the blue parameter
+        /// Ienumerated Tests cannot be parameterized via Testcase - here you should use ValueSource with an array of values for each
+        /// parameter, where each index is a test
+        /// </summary>
+        private static float[] ienumerationTestCaseValuesBlue = new float[] { 0f };
+
+        /// <summary>
+        /// values (arguments) for an ienumerated testcase for the alpha parameter
+        /// Ienumerated Tests cannot be parameterized via Testcase - here you should use ValueSource with an array of values for each
+        /// parameter, where each index is a test
+        /// </summary>
+        private static float[] ienumerationTestCaseValuesAlpha = new float[] { 1f };
+
+        /// <summary>
+        /// Due to the 'UnityTest' attribute this function will show up in- and run from the Unity Testrunner as an ienumerator (asynchronous)
+        /// (NOTE : for test parameterization use ValueSource, not TestCase
+        /// </summary>
+        /// <param name="_red">the red color component - should be 0 for black</param>
+        /// <param name="_green">the green color component - should be 0 for black</param>
+        /// <param name="_blue">the blue color component - should be 0 for black</param>
+        /// <param name="_alpha">the alpha color component - should be 1 (?) for black</param>
+        [UnityTest]                          //Marking a function with 'UnityTest' marks it as a asynchronous unittest function
+        public IEnumerator ColorInputTestBlackAsync(
+            [ValueSource("ienumerationTestCaseValuesRed")] float _red,
+            [ValueSource("ienumerationTestCaseValuesGreen")] float _green,
+            [ValueSource("ienumerationTestCaseValuesBlue")] float _blue,
+            [ValueSource("ienumerationTestCaseValuesAlpha")] float _alpha)
+        {
+            Debug.Log("Running async test [ColorInputTestBlackAsync]");
+
+            _red = Mathf.Round(_red);
+            _green = Mathf.Round(_green);
+            _blue = Mathf.Round(_blue);
+            _alpha = Mathf.Round(_alpha);
+
+            yield return new WaitForSecondsRealtime(.2f);
+
+            //assign color based on input color
+            Color newColor = new Color(_red, _green, _blue, _alpha);
+
+            //Use the Assert class to test conditions
+            Assert.That(newColor, Is.EqualTo(Color.black));
+
+            //always yield return null at the end of a ienumerator test function
+            yield return null;
+        }
+
+        /// <summary>
+        /// due to the 'UnityTearDown' attribute this function will be runned after all 'UnityTest' functions in this class have completed
+        /// </summary>
+        [UnityTearDown]
+        public void AsynchronousTeardownExample()
+        {
+            Debug.Log("Here you'll want to teardown any objects created within the scene in the setup and/or asynchronous (ienumerated) tests");
+        }
+
+
+        #endregion
+    }
+}
+
+#endif

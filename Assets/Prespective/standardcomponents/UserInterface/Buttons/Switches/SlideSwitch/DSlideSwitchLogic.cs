@@ -1,26 +1,38 @@
+using System;
 using System.Collections.Generic;
-using System.Reflection;
 using u040.prespective.prelogic;
-using u040.prespective.prelogic.component;
 using u040.prespective.prelogic.signal;
-using UnityEngine;
+using u040.prespective.standardcomponents.logic;
 
-namespace u040.prespective.standardcomponents.userinterface.buttons.switches
+namespace u040.prespective.standardcomponents.virtualhardware.sensors.position.logic
 {
-    public class DSlideSwitchLogic : PreLogicComponent
+    /// <summary>
+    /// Logic of the DSlide Switch
+    /// </summary>
+    public class DSlideSwitchLogic : StandardLogicComponent<DSlideSwitch>
     {
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
+        #region << CONTANTS >>
+        private const string I_SELECTED_ID = "iSelectedID";
+        #endregion
 
-        public DSlideSwitch SlideSwitch;
-
-        //public string iSelectedState = "N/A";
-        public int iSelectedId = -1;
-
+        #region << PROPERTIES >>
+        protected override Dictionary<SignalInstance, Func<object>> customInputSignalMemberGetters
+        {
+            get
+            {
+                {
+                    return new Dictionary<SignalInstance, Func<object>>
+                    {
+                        {GetSignalInstanceByName(I_SELECTED_ID), () => Target.SelectedState.Id}
+                    };
+                }
+            }
+        }
 
         #region <<PLC Signals>>
+
         #region <<Signal Definitions>>
+
         /// <summary>
         /// Declare the IO signals
         /// </summary>
@@ -31,31 +43,15 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
                 return new List<SignalDefinition>()
                 {
                     //Inputs
-                    //new SignalDefinition("iSelectedState", PLCSignalDirection.INPUT, SupportedSignalType.STRING, "", "Selected State", null, null, "N/A"),
-                    new SignalDefinition("iSelectedID", PLCSignalDirection.INPUT, SupportedSignalType.INT32, "", "Selected ID", null, null, -1),
+                    new SignalDefinition(I_SELECTED_ID, PLCSignalDirection.INPUT, SupportedSignalType.INT32, _xmlNote: "Selected ID", _baseValue: -1),
                 };
             }
         }
-        #endregion
-        #endregion
 
-        #region <<Update>>
-        private void FixedUpdate()
-        {
-            readComponent();
-        }
         #endregion
 
+        #endregion
 
-        void readComponent()
-        {
-            if (SlideSwitch.SelectedState.Id != this.iSelectedId) // || SlideSwitch.SelectedState.Name != this.iSelectedState)
-            {
-                //this.iSelectedState = SlideSwitch.SelectedState.Name;
-                this.iSelectedId = SlideSwitch.SelectedState.Id;
-                //WriteValue("iSelectedState", this.iSelectedState);
-                WriteValue("iSelectedID", this.iSelectedId);
-            }
-        }
+        #endregion
     }
 }

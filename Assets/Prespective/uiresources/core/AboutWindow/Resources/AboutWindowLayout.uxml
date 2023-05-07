@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" xmlns:pre="u040.prespective">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
   <ui:ScrollView class="window-padding-container">
     <ui:VisualElement name="logo" />
     <ui:Label class="display-none" name="recompiling-message" text="The project is being recompiled using .NET 4.6. Please wait..." />
@@ -11,7 +11,7 @@
 
       <ui:TextElement class="display-none margin-bottom-10px" name="first-use-message" text="Thank you for downloading Prespective! This About window will help you find our user documentation and bug reporter. When updates to Prespective are avaible, you will also be notified through this window. For future use, access this window by selecting 'Prespective → About' from the menu."/>
 
-      <ui:Foldout class="foldout-division margin-bottom-10px" name="settings-foldout" value="false" text="Required Project Settings">
+      <ui:Foldout class="foldout-division margin-bottom-10px" name="settings-foldout" value="false" text="Unity Project Settings">
         <ui:TextElement class="margin-bottom-10px" text="Prespective requires specific Unity Project Settings. Please review the settings below."/>
         <ui:VisualElement class="settings-table" name="required-settings">
           <ui:VisualElement class="settings-column">
@@ -30,7 +30,9 @@
             <ui:Label class="settings-table-cell" name="current-friction-type" />
           </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button class="content-fit-button" text="Apply Required Settings" name="apply-required-settings"/>
+        <ui:Button class="content-fit-button margin-bottom-10px" text="Apply Required Settings" name="apply-required-settings"/>
+        <ui:TextElement class="margin-bottom-10px" text="Prespective has a recommended scene lighting setup. By applying the recommended setup, the current scene lighting will be removed."/>
+        <ui:Button class="content-fit-button margin-bottom-10px" text="Set Recommended Scene Lighting" name="set-recommended-scene-lighting"/>
       </ui:Foldout>
 
       <ui:Foldout class="foldout-division margin-bottom-10px" name="update-foldout" value="false" text="Update">
@@ -73,4 +75,4 @@
       <ui:Button class="menu-button" name="report-bug-button" text="Report a Bug" />
     </ui:VisualElement>
   </ui:ScrollView>
-</UXML>
+</ui:UXML>

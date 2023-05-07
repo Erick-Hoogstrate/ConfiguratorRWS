@@ -2,10 +2,11 @@ using System;
 using u040.prespective.math.doubles;
 using u040.prespective.prepair;
 using u040.prespective.prepair.kinematics;
-using u040.prespective.utility;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.utility.modelmanagement;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.materialhandling.gripper
+namespace u040.prespective.standardcomponents.virtualhardware.systems.gripper.fingers
 {
     public class DAngularGripperFinger : DGripperFinger
     {
@@ -39,7 +40,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             {
                 if (WheelJoint)
                 {
-                    return this.WheelJoint.RotationLimitMinMaxDeg.X;
+                    return this.WheelJoint.RotationLimitMinMaxDegrees.X;
                 }
                 return 0d;
             }
@@ -47,8 +48,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             {
                 if (WheelJoint && LowerLimit != value)
                 {
-                    DVector2 _newLimits = new DVector2(value, this.WheelJoint.RotationLimitMinMaxDeg.Y);
-                    this.WheelJoint.RotationLimitMinMaxDeg = _newLimits;
+                    DVector2 newLimits = new DVector2(value, this.WheelJoint.RotationLimitMinMaxDegrees.Y);
+                    this.WheelJoint.RotationLimitMinMaxDegrees = newLimits;
                 }
             }
         }
@@ -58,7 +59,7 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             {
                 if (WheelJoint)
                 {
-                    return this.WheelJoint.RotationLimitMinMaxDeg.Y;
+                    return this.WheelJoint.RotationLimitMinMaxDegrees.Y;
                 }
                 return 0d;
             }
@@ -66,8 +67,8 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             {
                 if (WheelJoint && UpperLimit != value)
                 {
-                    DVector2 _newLimits = new DVector2(this.WheelJoint.RotationLimitMinMaxDeg.X, value);
-                    this.WheelJoint.RotationLimitMinMaxDeg = _newLimits;
+                    DVector2 newLimits = new DVector2(this.WheelJoint.RotationLimitMinMaxDegrees.X, value);
+                    this.WheelJoint.RotationLimitMinMaxDegrees = newLimits;
                 }
             }
         }
@@ -78,14 +79,14 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
             {
                 if (WheelJoint)
                 {
-                    DVector2 _limits = WheelJoint.RotationLimitMinMaxDeg;
-                    return _limits.Y - _limits.X;
+                    DVector2 limits = WheelJoint.RotationLimitMinMaxDegrees;
+                    return limits.Y - limits.X;
                 }
                 return 0d;
             }
         }
 
-        private void Reset()
+        internal void Reset()
         {
             this.WheelJoint = this.gameObject.RequireComponent<DWheelJoint>(true);
         }
@@ -94,13 +95,13 @@ namespace u040.prespective.standardcomponents.materialhandling.gripper
         {
             if (WheelJoint)
             {
-                double _relativeAngle = this.angleOfFreedom * _percent;
-                double _absoluteAngle = WheelJoint.RotationLimitMinMaxDeg.X + _relativeAngle;
-                double _moveIntent = _absoluteAngle - this.WheelJoint.CurrentRevolutionDegrees;
+                double relativeAngle = this.angleOfFreedom * _percent;
+                double absoluteAngle = WheelJoint.RotationLimitMinMaxDegrees.X + relativeAngle;
+                double moveIntent = absoluteAngle - this.WheelJoint.CurrentRevolutionDegrees;
 
-                WheelJoint.Rotate(_moveIntent, new Action<IntentData>(_intentData => 
+                WheelJoint.Rotate(moveIntent, new Action<IntentData>(_intentData => 
                 { 
-                    fingerJammedCallback(_intentData.EnforcableFraction); 
+                    fingerJammedCallback(_intentData.EnforceableFraction); 
                 }));
             }
             else

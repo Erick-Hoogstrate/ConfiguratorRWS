@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:ScrollView class="window-padding-container">
+	<ui:VisualElement class="margin-bottom-5px" name="test-choice-container" style="justify-content: right;"/>
+
+	<ui:VisualElement class="division margin-bottom-10px" name="settings-division">
+		<ui:Label class="bold margin-bottom-10px" text="Settings" />
+		<ui:Toggle name="exclude-playmode-steps-toggle" label="Exclude Playmode Steps" tooltip="Prevent test from executing all Playmode steps." />
+    <ui:VisualElement class="margin-bottom-5px" name="start-choice-container" />
+	</ui:VisualElement>
+
+	<ui:Button class="margin-bottom-10px" name="start-test-button" text="Run Test" />
+  <ui:Button class="margin-bottom-10px" name="open-test-script-button" text="Open Test Script" />
+	<ui:Button class="margin-bottom-10px" name="stop-test-button" text="Stop Test" />
+	<ui:Label class="margin-bottom-10px" name="current-running-test" text="" />
+	<ui:Button class="margin-bottom-10px" name="clear-button" text="Clear (Scene/Prefabs/TestArtifact/Assets)" />
+
+	<ui:Foldout class="foldout-division margin-bottom-10px" name="test-steps-foldout" text="All Test Steps">
+		<ui:VisualElement name="test-steps-container" class="test-steps-container margin-bottom-10px" />
+	</ui:Foldout>
+	</ui:ScrollView>
+</ui:UXML>

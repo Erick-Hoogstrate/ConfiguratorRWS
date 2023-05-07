@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Specifications" />
+    <ui:TextField name="participant-id" label="Participant ID" />
+    <ui:Toggle name="active-in-simulation" label="Active In Simulation" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="inheriting-type-inspector"/>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="cues-division" text="Cues" value="false">
+    <ui:VisualElement name="cues-container"/>
+    <ui:Button name="add-cue" class="content-fit-button" text="Add Cue"/>    
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="debugging" text="Debugging" value="false">
+    <ui:Toggle name="verbose" label="Verbose" />
+    <ui:Toggle name="report-all-in-inspector" label="Report All Activities In Inspector" />
+    <ue:PropertyField name="event-report" binding-path="EventReport"/>
+    <ue:PropertyField name="activity-report" binding-path="ActivityReport"/>
+  </ui:Foldout>
+</ui:UXML>

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+	<ui:VisualElement name="segment-container" />
+
+	<ui:VisualElement name="motion-states-container" />
+				
+	<ui:VisualElement name="assignment-container" />
+			
+    <ui:VisualElement name="state-processor-container" label="Conveyor States" />	
+	
+</ui:UXML>

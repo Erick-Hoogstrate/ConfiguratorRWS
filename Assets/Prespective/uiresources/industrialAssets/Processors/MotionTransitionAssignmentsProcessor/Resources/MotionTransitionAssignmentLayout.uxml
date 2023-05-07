@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">		
+		<ui:TextField name="transition-name" label="Transition Name" />
+		<ui:VisualElement name="result-state" label="Result State" />	
+		<ui:Foldout name="affected-segments" text="Affected Segments" value="false">
+		</ui:Foldout>
+		<ui:Foldout name="transition-start-state-settings" text="Transition Start State Settings" value="false">
+		</ui:Foldout>
+</ui:UXML>

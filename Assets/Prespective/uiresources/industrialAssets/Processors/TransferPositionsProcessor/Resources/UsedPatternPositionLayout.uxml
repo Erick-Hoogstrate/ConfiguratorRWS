@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:VisualElement class="row">
+      <ui:VisualElement name="position-container"/>
+        <ui:VisualElement name="selected-assignment-container"/>
+        <ui:Button name="remove-position"/>
+    </ui:VisualElement>
+</ui:UXML>

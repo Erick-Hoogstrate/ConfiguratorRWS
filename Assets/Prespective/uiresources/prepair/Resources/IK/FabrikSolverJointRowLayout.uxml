@@ -1,8 +1,8 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
   <ui:VisualElement class="row" name="joint-row">
     <ue:ObjectField style="width: 75%" name="object" />
     <ue:IntegerField class="no-box" style="width: 10%" name="index"/>
     <ui:Button style="width: 5%" name="append-button" text="+" tooltip="Append joint"/>
     <ui:Button style="width: 5%" name="remove-button" text="x" tooltip="Remove target"/>
   </ui:VisualElement>
-</UXML>
+</ui:UXML>

@@ -99,9 +99,9 @@ Module MFileOptions
         Dim compType As ComponentTypesEnum = compString(1)
         Dim location As Point = New Point(compString(2), compString(3))
         Dim canvas As CCanvas = canvasPlant
-        Dim size As Size = New Size(compString(5), compString(6))
-        Dim rotation As Integer = compString(7)
-        Dim color As Color = Color.FromArgb(compString(8))
+        Dim size As Size = New Size(compString(4), compString(5))
+        Dim rotation As Integer = compString(6)
+        Dim color As Color = Color.FromArgb(compString(7))
 
         Select Case compType
             Case ComponentTypesEnum.Square
@@ -280,94 +280,6 @@ Module MFileOptions
         End Try
 
 
-
-
-
-        ''Define general waterway Json structure
-        'Dim waterwaysinit As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("doors", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("traffic_lights", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("walls", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("water", tempvarempty))
-        'waterwaysinit.Add(New Newtonsoft.Json.Linq.JProperty("embankments", tempvarempty))
-
-        ''Add general waterway Json structure
-        'Dim waterway As JArray = initial("waterways")
-        'waterway.Add(waterwaysinit)
-
-
-
-        ''Define general door Json structure template
-        'Dim door As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'door.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
-        'door.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        'door.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        'door.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        'door.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        ''Add general doors Json structure
-        'Dim doors As JArray = waterwaysinit("doors")
-        'doors.Add(door)
-
-
-
-
-        ''Define general traffic light Json structure template
-        'Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'TL.Add(New Newtonsoft.Json.Linq.JProperty("type", tempvarname))
-        'TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        'TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", tempvarname))
-        'TL.Add(New Newtonsoft.Json.Linq.JProperty("name", tempvarname))
-        'TL.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        ''Add general traffic light Json structure
-        'Dim TLs As JArray = waterwaysinit("traffic_lights")
-        'TLs.Add(TL)
-
-
-
-
-        ''Define general wall Json structure template
-        'Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", tempvarname))
-        'wall.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        'wall.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        ''Add general wall Json structure
-        'Dim walls As JArray = waterwaysinit("walls")
-        'walls.Add(wall)
-
-
-
-
-        ''Define general water Json structure template
-        'Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'water.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        'water.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        'water.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        ''Add general water Json structure
-        'Dim waters As JArray = waterwaysinit("water")
-        'waters.Add(water)
-
-
-
-
-
-        ''Define general embankment Json structure template
-        'Dim embankment As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", tempvarname))
-        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", tempvarname))
-        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", tempvarname))
-        'embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
-
-        ''Add general water Json structure
-        'Dim embankments As JArray = waterwaysinit("embankments")
-        'embankments.Add(embankment)
-
-
         'Define general waterway Json structure
         Dim waterwaysinit1 As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
         waterwaysinit1.Add(New Newtonsoft.Json.Linq.JProperty("position", tempvarposition))
@@ -489,7 +401,7 @@ Module MFileOptions
                 door.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
                 door.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
                 door.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                door.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, comp.Location.Y, comp.Location.X})))
+                door.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, 0, comp.Location.X})))
 
                 'Add general doors Json structure
                 Dim doors As JArray = waterwaysinit("doors")
@@ -499,11 +411,11 @@ Module MFileOptions
 
                 'Define general traffic light Json structure template
                 Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", 0))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, 150, comp.Location.X})))
 
                 'Add general traffic light Json structure
                 Dim TLs As JArray = waterwaysinit("traffic_lights")
@@ -513,11 +425,11 @@ Module MFileOptions
 
                 'Define general traffic light Json structure template
                 Dim TL As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", comp.Type.ToString))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("type", 1))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("scale", comp.Size.Height))
                 TL.Add(New Newtonsoft.Json.Linq.JProperty("name", comp.Name.ToString))
-                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
+                TL.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, 150, comp.Location.X})))
 
                 'Add general traffic light Json structure
                 Dim TLs As JArray = waterwaysinit("traffic_lights")
@@ -529,7 +441,7 @@ Module MFileOptions
                 Dim wall As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
                 wall.Add(New Newtonsoft.Json.Linq.JProperty("direction", rotation))
                 wall.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Height))
-                wall.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
+                wall.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.Y, comp.Location.X, 0})))
 
                 'Add general wall Json structure
                 Dim walls As JArray = waterwaysinit("walls")
@@ -541,7 +453,7 @@ Module MFileOptions
                 Dim water As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
                 water.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width))
                 water.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
-                water.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({comp.Location.X, comp.Location.Y, 0})))
+                water.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({CInt(comp.Location.Y * 1.5), 100, CInt(comp.Location.X * 1.75)})))
 
                 'Add general water Json structure
                 Dim waters As JArray = waterwaysinit("water")
@@ -553,7 +465,7 @@ Module MFileOptions
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("length", comp.Size.Width))
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("width", comp.Size.Height))
                 embankment.Add(New Newtonsoft.Json.Linq.JProperty("height", CDbl(comp.Size.Height.ToString)))
-                embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({CDbl(comp.Location.Y.ToString), CDbl(comp.Location.X.ToString), 0})))
+                embankment.Add(New Newtonsoft.Json.Linq.JProperty("position", New Newtonsoft.Json.Linq.JArray({CDbl((comp.Location.Y * 1.1).ToString), comp.Size.Height * 1.75, CInt(comp.Location.X * 1.75)})))
 
                 'Add general water Json structure
                 Dim embankments As JArray = waterwaysinit("embankments")
@@ -564,23 +476,8 @@ Module MFileOptions
 
         Next
 
-
-        'Data to store
-
-        'saveFile.WriteLine("Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color")
-
-        'For Each comp As CComponent In canvasPlant.Controls.OfType(Of CComponent)()
-        '    'Name, Type, Location.X, Location.Y, Canvas(0 = plant, 1 = GUI), Size.Width, Size.Height, Rotation, Color.
-        '    saveFile.WriteLine(comp.Name + ", " + Convert.ToInt32(comp.Type).ToString + ", " + comp.Location.X.ToString + ", " _
-        '                           + comp.Location.Y.ToString + ", " + ComponentCanvasToInt(comp).ToString + ", " + comp.Size.Width.ToString + ", " + comp.Size.Height.ToString _
-        '                           + ", " + comp.Rotation.ToString + ", " + comp.BackColor.ToArgb.ToString)
-        'Next
-
-
-
-
         'Saving
-        MsgBox(initial.ToString(Newtonsoft.Json.Formatting.Indented))
+        'MsgBox(initial.ToString(Newtonsoft.Json.Formatting.Indented))
         IO.File.WriteAllText(workingFileName, initial.ToString(Newtonsoft.Json.Formatting.Indented))
 
         changedAfterSave = False
@@ -588,60 +485,3 @@ Module MFileOptions
     End Sub
 
 End Module
-
-
-
-
-
-''create JSON Object
-'Dim oError As Newtonsoft.Json.Linq.JObject = New Newtonsoft.Json.Linq.JObject
-'oError.Add(New Newtonsoft.Json.Linq.JProperty("Error", "Help"))
-'oError.Add(New Newtonsoft.Json.Linq.JProperty("URL", "URL"))
-
-'Create jArray
-
-'New Newtonsoft.Json.Linq.JArray({itm.ActionRequest, itm.QueryState})
-
-'add
-'jParams.Add("DeviceId", 123)
-
-
-
-
-
-'Backup solitions for writing JSON inside "waterways"
-''Option 1
-'Dim json2 = JObject.Parse("{
-'            ""waterways"": [{
-'                ""width"": ""id2"",
-'                ""height"": ""field2""
-'            }]
-'        }")
-
-'Dim dataOfJson1 As JArray = jParams.SelectToken("waterways")
-
-'Dim dataofJson2 As JArray = json2.SelectToken("waterways")
-
-'For Each innerData As JObject In dataofJson2
-'dataOfJson1.Add(innerData)
-'Next
-
-
-
-
-
-
-''Options 2
-'Dim dataObject2 = JObject.Parse("{
-'            ""waterways"": [{
-'                ""id"": ""id2"",
-'                ""field"": ""field2""
-'            }]
-'        }")
-
-'Dim tussenstop As JArray = jParams.SelectToken("waterways")
-
-'tussenstop.Merge(dataObject2.SelectToken("waterways"))
-
-'Dim mergedArray = jParams.SelectToken("waterways")
-'MsgBox(mergedArray.ToString)

@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PrepairEditor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE">
+            <summary>
+            Inspector layout of a group GameObject
+            Editor script for AGroupMeshScript (UIElements)
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.filenameGroupPackedMeshField">
+            <summary>
+            Filename of GroupData and PackedMesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.filepathPackedMeshField">
+            <summary>
+            Filepath of PackedMesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.imguiContainer">
+            <summary>
+            Warnings at the top of Inspector
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.packButton">
+            <summary>
+            Button to pack meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.ungroupButton">
+            <summary>
+            Button to ungroup
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.reapplyButton">
+            <summary>
+            Button to reserialize
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.differentGroupAtPath">
+            <summary>
+            A different group is found at specified filepath
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.noGroupDataFile">
+            <summary>
+            No GroupData file found
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.noPackedMeshFile">
+            <summary>
+            No PackedMesh file found
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.visualTreeFile">
+            <summary>
+            Link to uxml
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.executeOnEnable">
+            <summary>
+            Visual theme
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.initialize">
+            <summary>
+            Main method
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.CheckLockState">
+            <summary>
+            Sets text on Pack button
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.CheckGroupDataFile">
+            <summary>
+            Check if GroupData file exists
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.CheckPackedMeshFile">
+            <summary>
+            Check if PackedMesh file exists
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.topology.grouping.GroupMeshScriptEditorUIE.OnIMGUIContainer">
+            <summary>
+            Shows warning in Inspector if file not existing
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.DPrismaticJointEditorUIE">
+            <summary>
+            Represents a generic Prismatic joint relation between a spline and a geometric object
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.extended.DGyroscopicJointEditorUIE">
+            <summary>
+            Represents a generic gyroscopic joint which keeps a game object orientated to the same up direction
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DWheelJointEditorUIE.getValueLabel(u040.prespective.prepair.kinematics.joints.basic.AWheelJoint,System.String,System.Double)">
+            <summary>
+            Generate a string value for a label for a specific notation
+            </summary>
+            <param name="_wheelJointTarget"></param>
+            <param name="_labelPrefix"></param>
+            <param name="_degreeValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DWheelJointEditorUIE.drawWheelPlane(u040.prespective.prepair.kinematics.joints.basic.AWheelJoint,System.Single)">
+            <summary>
+            Draw the wheel plane fill and its circumference in the scene
+            </summary>
+            <param name="_wheelJointTarget"></param>
+            <param name="_handleSize"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DWheelJointEditorUIE.calculateCircleSectionPoints(u040.prespective.prepair.kinematics.joints.basic.AWheelJoint,System.Single)">
+            <summary>
+            Calculate all circumference (necessary) points on the circle
+            </summary>
+            <param name="_wheelJointTarget"></param>
+            <param name="_handleSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DWheelJointEditorUIE.drawWheelPlaneCircumference(UnityEngine.Vector3[],UnityEngine.Color)">
+            <summary>
+            Draw (part of) the circle circumference with the calculated circumference points
+            </summary>
+            <param name="_points"></param>
+            <param name="_color"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DWheelJointEditorUIE.drawWheelPlaneFill(UnityEngine.Vector3,UnityEngine.Vector3[],UnityEngine.Color)">
+            <summary>
+            Draw (part of) the circle fill with the calculated circumference points
+            </summary>
+            <param name="_centerPoint"></param>
+            <param name="_circumferencePoints"></param>
+            <param name="_color"></param>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.basic.DCylindricalJointEditorUIE">
+            <summary>
+            Cylindrical joint editor
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.inspectorwindow.kinematics.joints.compound.DBarLinkageSolverEditorUIE.glDrawColoredTriangle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color)">
+            <summary>
+            Draw a colored triangle in sceneview
+            </summary>
+            <param name="_centerpoint">the centerpoint of the circle</param>
+            <param name="_outlinePoints">the outline points on the bounds of the unitcircle</param>
+            <param name="_color">color to give the circle</param>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.alignment.SecondRelation">
+            <summary>
+            what type of second relation used to align with
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart">
+            <summary>
+            visual element for alignment shape editor
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.PartTransform">
+            <summary>
+            transform of this part
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.Shape">
+            <summary>
+            alignment shape's editor of this part
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.OnSecondRelationChange">
+            <summary>
+            the action run when second relation is changed
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.#ctor(u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_aligner">aligner connected to it</param>
+            <param name="_window">window of this part</param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.createSecondRelationFields">
+            <summary>
+            creates the second relation fields
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.listPoints">
+            <summary>
+            makes fields for points of part
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.setForwardPointField">
+            <summary>
+            sets forward field
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.setProjectedForward">
+            <summary>
+            projects forward on plane if indicated
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.OnSecondRelationChangeOtherPart(u040.prespective.prepair.editor.editorui.window.alignment.SecondRelation)">
+            <summary>
+            function to do when other has second relation change
+            </summary>
+            <param name="_relationChange">changed second relation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart.BufferShape">
+            <summary>
+            buffers shape values
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow">
+            <summary>
+            window for alignment tool
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.aligner">
+            <summary>
+            aligner of window
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.partA">
+            <summary>
+            first alignment shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.partB">
+            <summary>
+            second alignment shape
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.alignmentContainer">
+            <summary>
+            main container of alignment processes (buttons alignment type)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.OpenWindow">
+            <summary>
+            open alignment tool window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.addOffsetVector(System.Int32)">
+            <summary>
+            adds offset vector
+            </summary>
+            <param name="_index">index offset vector</param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.refreshOffsetVectorNames">
+            <summary>
+            refreshes vector offset names
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.CheckAlignmentPossible">
+            <summary>
+            checks if alignment is possible and turns the container on depending on that
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.alignment.AlignmentToolWindow.TransformPartUpdate(u040.prespective.prepair.editor.editorui.window.alignment.AlignmentPart)">
+            <summary>
+            function to do when transform of part is updated
+            </summary>
+            <param name="_part">part</param>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow">
+            <summary>
+            Isolated given objects with maintaining connections going into and out off play mode
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.inIsolationMode">
+            <summary>
+            is in isolation mode
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.objectSelection">
+            <summary>
+            selection objects
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.sceneName">
+            <summary>
+            scene name of isolation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.OpenWindow">
+            <summary>
+            open isolation window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.switchIsolationMode">
+            <summary>
+            switch between isolation mode
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow.removeSelectionFromIsolation">
+            <summary>
+            remove from isolation
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow">
+            <summary>
+            Creates the GroupingTool window
+            Editor script for MeshGrouper (UIElements Inspector)
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.groupMeshScript">
+            <summary>
+            Script added to a grouped GameObject
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.meshGrouper">
+            <summary>
+            Groups multiple meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.groupName">
+            <summary>
+            Name of Group
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.visualTreeFile">
+            <summary>
+            Link to uxml file
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.OpenWindow">
+            <summary>
+            Opens GroupingTool window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.executeOnEnable">
+            <summary>
+            Load StyleSheet for window layout
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.initialize">
+            <summary>
+            Main method
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.setSelectionButtons(UnityEngine.UIElements.Button[])">
+            <summary>
+            Enable/disable buttons
+            </summary>
+            <param name="_buttons"></param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.GroupSelectedObjects">
+            <summary>
+            Group GameObjects when pushing "Group Selection" button
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.AddSelectionToGroup">
+            <summary>
+            Add GameObject to group
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.RemoveSelectionFromGroup">
+            <summary>
+            Remove GameObject from group
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotMovementTypes">
+            <summary>
+            types of pivot moving
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow">
+            <summary>
+            Pivot Mover editor window
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OpenWindow">
+            <summary>
+            opens pivot tool window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OnSelectionChange">
+            <summary>
+            Unity on selection changed
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape">
+            <summary>
+            alignment shape made for use in editor
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.OnShapeChanged">
+            <summary>
+            on shape changed unity event
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.style">
+            <summary>
+            GUI Style to use for the triangle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.shapeColor">
+            <summary>
+            Color to be used by the alignment triangle
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.ShapeColor">
+            <summary>
+            Color to be used by the alignment triangle
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.#ctor(UnityEngine.Color)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_color">color triangle</param>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.SceneDrawShape">
+            <summary>
+            draw shape in scene
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape.freeHandleFunction(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion,System.Single,UnityEngine.EventType)">
+            <summary>
+            dummy function for free handle DOES NOTHING
+            </summary>
+            <param name="_id"></param>
+            <param name="_pos"></param>
+            <param name="_rot"></param>
+            <param name="_size"></param>
+            <param name="_event"></param>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.scenewindow.alignment.ShapeChangeEvent">
+            <summary>
+            unity event on shape changed
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.BlanketRayTraceOverPath">
+            <summary>
+            @CLASS : ColliderPath
+            
+            @ABOUT : Creates a collider path of the scene for a given path
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented creating a collider path(04-09-2018)
+            @VERSION : 1.10 - Implemented proto for clossed mesh collider path(07-09-2018)
+            @VERSION : 1.20 - Implemented getting results from multiple splines(19-12-2018)
+            @VERSION : 1.30 - Implemented nurbs curve colliders(03-01-2019)
+            @VERSION : 1.40 - Implemented Coons patch(07-01-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.start(UnityEngine.GameObject[],u040.prespective.core.spline.ADSpline[],System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.initialMeasurement(System.Collections.Generic.List{UnityEngine.GameObject})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.startCameraRayCasting(UnityEngine.Camera,u040.prespective.core.spline.ADSpline,System.Int32,System.Int32,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.castRay(UnityEngine.Camera,System.Int32,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.createMesh(System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.utility.TraingleHitrecord},UnityEngine.Vector3,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.correctDirection(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,System.Single,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.makeNURBSMesh(System.Collections.Generic.List{u040.prespective.prepair.editor.BlanketRayTraceOverPath.LineData},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,System.Single,System.Single,System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.processPlanerSurfaces(UnityEngine.GameObject,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{u040.prespective.math.doubles.DVector3,System.Collections.Generic.List{System.Int32}}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.breakUpInMax90DegreesPatches(UnityEngine.GameObject,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,u040.prespective.math.doubles.DVector3},System.Collections.Generic.List{System.Int32},System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.checkNeighbour(System.Int32,System.Int32,System.Int32,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,System.Int32,System.Int32,System.Int32,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.withInAngleCheck(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3},u040.prespective.math.doubles.DVector3,System.Double)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.processLines(System.Collections.Generic.List{u040.prespective.prepair.editor.BlanketRayTraceOverPath.LineData},System.Single,System.Single)" -->
+        <member name="M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.makeClosedMesh(UnityEngine.Mesh)">
+            <summary>
+            makes a closed mesh
+            </summary>
+            <param mesh="newmesh"></param>
+            <returns>closed mesh</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.findConntectedEdges(System.Collections.Generic.List{UnityEngine.Vector3[]},UnityEngine.Vector3[],System.Boolean@)" -->
+        <member name="M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.findOuterEdges(UnityEngine.Mesh)">
+            <summary>
+            finds the outer egdes
+            </summary>
+            <param mesh="mes"></param>
+            <returns>outer edges</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.checkEdge(System.Int32,System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Int32[],UnityEngine.Vector3[])" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.makeCoonsMesh(u040.prespective.math.doubles.DVector3[],u040.prespective.math.doubles.DVector3[],System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prepair.editor.BlanketRayTraceOverPath.getCoonsPatch(u040.prespective.math.doubles.DVector3[],u040.prespective.math.doubles.DVector3[],u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch@)" -->
+        <member name="T:u040.prespective.prepair.colliders.CreateColliderOfOctree">
+            <summary>
+            @CLASS : CreateColliderOfOctree
+            
+            @ABOUT : Makes collider of box colliders by using octree
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented created collider with and without given starting cube(27-08-2019)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.colliders.CreateColliderOfOctree.CreateCollider(UnityEngine.GameObject[],System.Int32,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            creates a collider of box colliders of given game objects and their children
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_depthLevel">octree max depth level</param>
+            <param name="_enlargingFactor">enlarging factor of octree cube</param>
+            <param name="_uniformSize">if octree cube have uniform size</param>
+            <param name="_useOptimalRotation">find optimal rotation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.colliders.CreateColliderOfOctree.CreateCollider(UnityEngine.GameObject[],UnityEngine.GameObject,System.Int32)">
+            <summary>
+            creates a collider of box colliders of given game objects and their children
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_cube">starting cube to make octree from</param>
+            <param name="_depthLevel">octree max depth level</param>
+        </member>
+        <member name="M:u040.prespective.prepair.colliders.CreateColliderOfOctree.baseProcess(UnityEngine.GameObject[],System.Int32,System.Func{UnityEngine.GameObject,System.Int32,System.Collections.Generic.List{u040.prespective.utility.collectionmanagement.OctreeTriangleData}})">
+            <summary>
+            base process for making collider of octree
+            </summary>
+            <param name="_ngo"> game objects</param>
+            <param name="_depthLevel">octree max depth level</param>
+            <param name="_act">process delegate for creating octree</param>
+        </member>
+        <member name="T:u040.prespective.prepair.topology.editor.IsolateSelectionUtility">
+            <summary>
+            Isolated given objects with maintaining connections going into and out off play mode
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.editor.IsolateSelectionUtility.toIgnoreInIsolation">
+            <summary>
+            Component Types to ignore when targeting for isolation mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prepair.topology.editor.IsolateSelectionUtility.beforeIsolationApply">
+            <summary>
+            Function to run before isolation is applied, makes sure you don't lose reference to the objects that were hidden
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.editor.IsolateSelectionUtility.HideSelectedObjects(UnityEngine.Object[],u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference{UnityEngine.Transform}@)">
+            <summary>
+            add given objects to isolation
+            </summary>
+            <param name="_toHide">objects to add to isolation</param>
+            <param name="_isolatedTransforms">current objects in isolation</param>
+        </member>
+        <member name="M:u040.prespective.prepair.topology.editor.IsolateSelectionUtility.IsolateSelection(System.Boolean,UnityEngine.Object[],System.Boolean,System.Boolean,u040.prespective.utility.editor.editormanagement.SceneObjectCollectionReference{UnityEngine.Transform}@)">
+            <summary>
+            isolates or de-isolates the value
+            </summary>
+            <param name="_doIsolate">if so isolate</param>
+            <param name="_activeGOs">object to ignore in isolation</param>
+            <param name="_ignoreCameras">if should ignore camera's in isolation</param>
+            <param name="_ignoreLights">if should ignore lights in isolation</param>
+            <param name="_isolatedTransforms">current objects in isolation</param>
+        </member>
+    </members>
+</doc>

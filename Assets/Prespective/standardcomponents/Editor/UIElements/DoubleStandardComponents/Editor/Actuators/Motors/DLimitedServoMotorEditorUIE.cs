@@ -1,181 +1,201 @@
-using System.Reflection;
 using u040.prespective.math.doubles;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.actuators.motors
 {
     [CustomEditor(typeof(DLimitedServoMotor))]
     public class DLimitedServoMotorEditorUIE : StandardComponentEditorUIE<DLimitedServoMotor>
     {
-        #region << Live Data Fields >>
-        TextField targetDegrees;
-        TextField position;
+        #region << FIELDS >>
+        //Live Data Fields
+        private TextField targetDegreesField;
+        private TextField positionField;
+        
+        //Property Fields
+        private VisualElement settings;
+        private VisualElement pulseWithModulationEnabled;
+        private Label noWheelJointLabel;
+        private ObjectField wheelJointField;
+        private EnumField rotationRangeField;
+        private DoubleField timePerDegreesField;
+        private DoubleField dampingField;
+        private DoubleField deadAngleField;
+        private Toggle pulseWidthModulationField;
+        private DoubleField zeroDegreePulseWidthField;
+        private DoubleField oneEightyDegpulseWidthField;
+        private DoubleField deadBandWidthField;
+        
+        //Control Panel Fields
+        private TextField positionControlPanel;
+        private DoubleField pulseWidthControlPanelField;
+
         #endregion
-        #region << Property Fields >>
-        VisualElement settings;
-        VisualElement pulseWithModulationEnabled;
-        Label noWheelJoint;
-        ObjectField wheelJointField;
-        EnumField rotationRange;
-        DoubleField timePerDegrees;
-        DoubleField damping;
-        DoubleField deadAngle;
-        Toggle pulseWidthModulation;
-        DoubleField zeroDegreePulseWidth;
-        DoubleField oneEightyDegpulseWidth;
-        DoubleField deadBandWidth;
-        #endregion
-        #region << Control Panel Fields >>
-        TextField positionControlPanel;
-        DoubleField pulseWidthConrolPanel;
-        #endregion
-        protected override void ExecuteOnEnable()
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Actuators/Motors/DLimitedServoMotorLayout");
-            base.ExecuteOnEnable();
+            get
+            {
+                return "DLimitedServoMotorEditorLayout";
+            }
+        }
+        #endregion
+
+        protected override void executeOnEnable()
+        {
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
-            targetDegrees.value = component.Target.ToString();
-            position.value = component.Position.ToString();
+            targetDegreesField.value = component.Target.ToString();
+            positionField.value = component.Position.ToString();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
-            targetDegrees = root.Q<TextField>(name: "target-degrees");
-            targetDegrees.isReadOnly = true;
+            targetDegreesField = root.Q<TextField>(name: "target-degrees");
+            targetDegreesField.isReadOnly = true;
 
-            position = root.Q<TextField>(name: "position");
-            position.isReadOnly = true;
+            positionField = root.Q<TextField>(name: "position");
+            positionField.isReadOnly = true;
             #endregion
+
             #region << Properties >>
             settings = root.Q<VisualElement>(name: "settings");
             pulseWithModulationEnabled = root.Q<VisualElement>(name: "pulse-width-modulation-enabled");
-            noWheelJoint = root.Q<Label>(name: "no-wheel-joint");
             wheelJointField = root.Q<ObjectField>(name: "wheel-joint-field");
-            rotationRange = root.Q<EnumField>(name: "rotation-range");
-            timePerDegrees = root.Q<DoubleField>(name: "time-per-degrees");
-            damping = root.Q<DoubleField>(name: "damping");
-            deadAngle = root.Q<DoubleField>(name: "dead-angle");
-            pulseWidthModulation = root.Q<Toggle>(name: "pulse-width-modulation");
+            rotationRangeField = root.Q<EnumField>(name: "rotation-range");
+            timePerDegreesField = root.Q<DoubleField>(name: "time-per-degrees");
+            dampingField = root.Q<DoubleField>(name: "damping");
+            deadAngleField = root.Q<DoubleField>(name: "dead-angle");
+            pulseWidthModulationField = root.Q<Toggle>(name: "pulse-width-modulation");
 
             UIUtility.InitializeField
             (
                 wheelJointField,
+                component,
                 () => component.KinematicWheelJoint,
-                e =>
+                _e =>
                 {
-                    component.KinematicWheelJoint = (AWheelJoint)e.newValue;
-                    UIUtility.SetDisplay(settings, e.newValue == null ? false : true);
-                    UIUtility.SetDisplay(noWheelJoint, e.newValue == null ? true : false);
+                    component.KinematicWheelJoint = (AWheelJoint)_e.newValue;
                 },
                 typeof(AWheelJoint)
             );
 
-            UIUtility.SetDisplay(settings, component.KinematicWheelJoint == null ? false : true);
-            UIUtility.SetDisplay(noWheelJoint, component.KinematicWheelJoint == null ? true : false);
-
             UIUtility.InitializeField
             (
-                rotationRange,
+                rotationRangeField,
+                component,
                 () => component.RotationRange,
-                e =>
+                _e =>
                 {
-                    component.RotationRange = (DContinuousServoMotor.Range)e.newValue;
+                    component.RotationRange = (DContinuousServoMotor.Range)_e.newValue;
+                    deadBandWidthField.SetValueWithoutNotify(component.DeadBandWidth);
+                    oneEightyDegpulseWidthField.label = component.RotationRange == DContinuousServoMotor.Range.D_180 ? "180 Deg Pulse Width (ms)" : "270 Deg Pulse Width (ms)";
                 }
             );
 
             UIUtility.InitializeField
             (
-                timePerDegrees,
+                timePerDegreesField,
+                component,
                 () => component.SecondsPer60Degrees,
-                e =>
+                _e =>
                 {
-                    component.SecondsPer60Degrees = e.newValue;
-                    timePerDegrees.SetValueWithoutNotify(component.SecondsPer60Degrees);
+                    component.SecondsPer60Degrees = _e.newValue;
+                    timePerDegreesField.SetValueWithoutNotify(component.SecondsPer60Degrees);
                 }
             );
 
             UIUtility.InitializeField
             (
-                damping,
+                dampingField,
+                component,
                 () => component.Damping,
-                e =>
+                _e =>
                 {
-                    component.Damping = e.newValue;
-                    damping.SetValueWithoutNotify(component.Damping);
+                    component.Damping = _e.newValue;
+                    dampingField.SetValueWithoutNotify(component.Damping);
                 }
             );
 
             UIUtility.InitializeField
             (
-                deadAngle,
+                deadAngleField,
+                component,
                 () => component.DeadAngle,
-                e =>
+                _e =>
                 {
-                    component.DeadAngle = e.newValue;
-                    deadAngle.SetValueWithoutNotify(component.DeadAngle);
+                    component.DeadAngle = _e.newValue;
+                    deadAngleField.SetValueWithoutNotify(component.DeadAngle);
+                    deadBandWidthField.SetValueWithoutNotify(component.DeadBandWidth);
                 }
             );
 
             UIUtility.InitializeField
             (
-                pulseWidthModulation,
+                pulseWidthModulationField,
+                component,
                 () => component.EnablePWM,
-                e =>
+                _e =>
                 {
-                    component.EnablePWM = e.newValue;
-                    UIUtility.SetDisplay(pulseWithModulationEnabled, component.EnablePWM ? true : false);
+                    component.EnablePWM = _e.newValue;
+                    UIUtility.SetDisplay(pulseWithModulationEnabled, component.EnablePWM);
                 }
             );
 
             #region << Pulse Width Modulation Settings >>
-            UIUtility.SetDisplay(pulseWithModulationEnabled, component.EnablePWM ? true : false);
+            UIUtility.SetDisplay(pulseWithModulationEnabled, component.EnablePWM);
 
-            zeroDegreePulseWidth = root.Q<DoubleField>(name: "zero-degree-pulse-width");
-            oneEightyDegpulseWidth = root.Q<DoubleField>(name: "180-degree-pulse-width");
-            deadBandWidth = root.Q<DoubleField>(name: "dead-band-width");
+            zeroDegreePulseWidthField = root.Q<DoubleField>(name: "zero-degree-pulse-width");
+            oneEightyDegpulseWidthField = root.Q<DoubleField>(name: "180-degree-pulse-width");
+            deadBandWidthField = root.Q<DoubleField>(name: "dead-band-width");
 
             UIUtility.InitializeField
             (
-                zeroDegreePulseWidth,
+                zeroDegreePulseWidthField,
+                component,
                 () => component.PulseWidthDefinition.X,
-                e =>
+                _e =>
                 {
-                    component.PulseWidthDefinition = new DVector2(e.newValue, component.PulseWidthDefinition.Y);
-                    zeroDegreePulseWidth.SetValueWithoutNotify(component.PulseWidthDefinition.X);
+                    component.PulseWidthDefinition = new DVector2(_e.newValue, component.PulseWidthDefinition.Y);
+                    zeroDegreePulseWidthField.SetValueWithoutNotify(component.PulseWidthDefinition.X);
+                    deadBandWidthField.SetValueWithoutNotify(component.DeadBandWidth);
                 }
             );
 
             UIUtility.InitializeField
             (
-                oneEightyDegpulseWidth,
+                oneEightyDegpulseWidthField,
+                component,
                 () => component.PulseWidthDefinition.Y,
-                e =>
+                _e =>
                 {
-                    component.PulseWidthDefinition = new DVector2(component.PulseWidthDefinition.X, e.newValue);
-                    oneEightyDegpulseWidth.SetValueWithoutNotify(component.PulseWidthDefinition.Y);
+                    component.PulseWidthDefinition = new DVector2(component.PulseWidthDefinition.X, _e.newValue);
+                    oneEightyDegpulseWidthField.SetValueWithoutNotify(component.PulseWidthDefinition.Y);
+                    deadBandWidthField.SetValueWithoutNotify(component.DeadBandWidth);
                 }
             );
 
             UIUtility.InitializeField
             (
-                deadBandWidth,
+                deadBandWidthField,
+                component,
                 () => component.DeadBandWidth,
-                e =>
+                _e =>
                 {
-                    component.DeadBandWidth = e.newValue;
-                    deadBandWidth.SetValueWithoutNotify(component.DeadBandWidth);
+                    component.DeadBandWidth = _e.newValue;
+                    deadBandWidthField.SetValueWithoutNotify(component.DeadBandWidth);
+                    deadAngleField.SetValueWithoutNotify(component.DeadAngle);
                 }
             );
             #endregion
@@ -184,50 +204,54 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor.editor
 
         public override void ShowControlPanelProperties(VisualElement _container)
         {
-            DoubleField target = new DoubleField("Target (deg)");
-            target.isDelayed = true;
+            DoubleField targetField = new DoubleField("Target (deg)");
+            targetField.isDelayed = true;
             UIUtility.InitializeField
             (
-                target,
+                targetField,
+                component,
                 () => component.Target,
-                e =>
+                _e =>
                 {
-                    component.Target = e.newValue;
-                    target.SetValueWithoutNotify(component.Target);
-                    pulseWidthConrolPanel.SetValueWithoutNotify(component.PulseWidth);
+                    component.Target = _e.newValue;
+                    targetField.SetValueWithoutNotify(component.Target);
+                    pulseWidthControlPanelField.SetValueWithoutNotify(component.PulseWidth);
                 }
             );
 
-            pulseWidthConrolPanel = new DoubleField("Pulse Width (ms)");
-            pulseWidthConrolPanel.isDelayed = true;
+            pulseWidthControlPanelField = new DoubleField("Pulse Width (ms)");
+            pulseWidthControlPanelField.isDelayed = true;
+
             UIUtility.InitializeField
             (
-                pulseWidthConrolPanel,
+                pulseWidthControlPanelField,
+                component,
                 () => component.PulseWidth,
-                e =>
+                _e =>
                 {
-                    component.PulseWidth = e.newValue;
-                    pulseWidthConrolPanel.SetValueWithoutNotify(component.PulseWidth);
-                    target.SetValueWithoutNotify(component.Target);
+                    component.PulseWidth = _e.newValue;
+                    pulseWidthControlPanelField.SetValueWithoutNotify(component.PulseWidth);
+                    targetField.SetValueWithoutNotify(component.Target);
                 }
             );
-            UIUtility.SetDisplay(pulseWidthConrolPanel, component.EnablePWM);
+
+            UIUtility.SetDisplay(pulseWidthControlPanelField, component.EnablePWM);
 
             positionControlPanel = new TextField("Position (deg)");
             positionControlPanel.AddToClassList("no-box");
             positionControlPanel.isReadOnly = true;
 
-            ScheduleControlPanelUpdate(target);
+            scheduleControlPanelUpdate(targetField);
 
-            _container.Add(target);
-            _container.Add(pulseWidthConrolPanel);
+            _container.Add(targetField);
+            _container.Add(pulseWidthControlPanelField);
             _container.Add(positionControlPanel);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             positionControlPanel.value = Application.isPlaying ? component.Position.ToString() : "N/A";
-            UIUtility.SetDisplay(pulseWidthConrolPanel, component.EnablePWM);
+            UIUtility.SetDisplay(pulseWidthControlPanelField, component.EnablePWM);
         }
     }
 }

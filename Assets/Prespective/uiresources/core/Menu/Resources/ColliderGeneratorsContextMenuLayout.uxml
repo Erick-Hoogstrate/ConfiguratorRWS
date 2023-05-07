@@ -1,6 +1,9 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
 	<ui:VisualElement class="context-menu-container" name="mechanics-contextmenu">
 		<ue:ToolbarButton class="menu-item menu-action" name="edged-compound-solver" text="Edged Compound Solver" />
 		<ue:ToolbarButton class="menu-item menu-action" name="organic-collider" text="Organic Collider (VHACD)" />
+		<ue:ToolbarButton class="menu-item menu-action" name="conus-generator" text="Conus Generator" />
+		<ue:ToolbarButton class="menu-item menu-action" name="ellipse-generator" text="Ellipse Generator" />
+		<ue:ToolbarButton class="menu-item menu-action" name="polyhedron-generator" text="Polyhedron Generator" />
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

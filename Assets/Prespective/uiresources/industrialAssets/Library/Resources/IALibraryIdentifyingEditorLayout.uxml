@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+    <ui:TextField label="Name" name="name-text" readonly="true" class="no-box"/>
+    <ui:TextField label="Version" name="version-text" readonly="true" class="no-box"/>
+    <ui:TextField label="Guid" name="guid-text" readonly="true" class="no-box"/>
+
+    <ui:Button name="save-changes-button" text="Save"/>
+    <ui:Button name="change-to-new-button" text="Change to new asset"/>
+</ui:UXML>

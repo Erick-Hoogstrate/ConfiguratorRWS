@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="row">
+    <ui:VisualElement class="flex-grow" name="cue-locator" />
+    <ui:Button name="remove-cue" style="width: 20px" text="X" tooltip="Remove robot cue" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="margin-bottom-10px" name="reach-point-settings" style="margin-left: 20px">
+    <ue:EnumField name="type" label="Type" />
+  </ui:VisualElement>
+</ui:UXML>

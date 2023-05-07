@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:ScrollView class="window-padding-container">
+	  <ui:Label class="bold margin-bottom-10px" text="Chunking Mesh" />
+	  <ui:Label text="Selected game objects are the game objects that are ignored for destroying chunk" />
+	  <ue:IntegerField name="size"  label="Size" />
+	  <ui:VisualElement name="destroy-cubes-container" />
+      <ui:Button name="destroy-chunk" text="Destroy Chunk" />
+      <ui:Button name="undo-button" text="Undo" />
+    </ui:ScrollView>
+</ui:UXML>

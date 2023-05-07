@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+        <ui:Foldout name="assignment-condition-foldout" class="custom-exposure-foldout" text="{index}:{Test Description}">       
+            <ui:VisualElement name="selected-condition-options-container" />
+            <ui:VisualElement name="selected-condition-container" />
+            <ue:EnumField name="selected-failure-action" label="If test fails:" binding-path="FailResponse" class="custom-exposure"/>
+        </ui:Foldout>
+</ui:UXML>

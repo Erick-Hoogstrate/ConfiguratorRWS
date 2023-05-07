@@ -1,72 +1,78 @@
-using System.Reflection;
-using u040.prespective.prepair.kinematics;
-using u040.prespective.standardcomponents.editor;
-using u040.prespective.standardcomponents.kinetics.motor.linearactuator;
-using u040.prespective.utility.editor;
+using u040.prespective.prepair.kinematics.joints.basic;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
+using u040.prespective.utility.editor.editorui;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow.virtualhardware.actuators.motors
 {
     [CustomEditor(typeof(DLinearActuator))]
     public class DLinearActuatorEditorUIE : StandardComponentEditorUIE<DLinearActuator>
     {
-        #region << Live Data Fields >>
+        #region << FIELDS >>
+        //Live Data Fields
         TextField targetField;
-        TextField position;
-        #endregion
-        #region << Property Fields>>
+        TextField positionField;
+
+        //Property Fields
         IMGUIContainer warningContainer;
-        ObjectField prismaticJoint;
-        Toggle invertPosition;
-        DoubleField extendSpeed;
-        DoubleField extendTime;
-        DoubleField retractSpeed;
-        DoubleField retractTime;
-        #endregion
-        #region << Control Panel Fields >>
+        ObjectField prismaticJointField;
+        Toggle invertPositionField;
+        DoubleField extendSpeedField;
+        DoubleField extendTimeField;
+        DoubleField retractSpeedField;
+        DoubleField retractTimeField;
+
+        //Control Panel Fields
         DoubleField positionControlPanel;
+
+        #endregion
+        #region << PROPERTIES >>
+        protected override string visualTreeFile
+        {
+            get
+            {
+                return "DLinearActuatorEditorLayout";
+            }
+        }
         #endregion
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            visualTree = Resources.Load<VisualTreeAsset>("Actuators/DLinearActuatorLayout");
-            base.ExecuteOnEnable();
+            base.executeOnEnable();
         }
 
-        protected override void UpdateLiveData()
+        protected override void updateLiveData()
         {
             targetField.value = (component.Target * 100).ToString();
-            position.value = (component.Position * 100).ToString();
+            positionField.value = (component.Position * 100).ToString();
         }
 
-        protected override void Initialize()
+        protected override void initialize()
         {
-            base.Initialize();
+            base.initialize();
 
             #region << Live Data >>
             targetField = root.Q<TextField>(name: "target");
             targetField.isReadOnly = true;
-            position = root.Q<TextField>(name: "position");
-            position.isReadOnly = true;
-
+            positionField = root.Q<TextField>(name: "position");
+            positionField.isReadOnly = true;
             #endregion
             #region << Properties >>
             warningContainer = root.Q<IMGUIContainer>(name: "warning-container");
-            prismaticJoint = root.Q<ObjectField>(name: "prismatic-joint-field");
-            invertPosition = root.Q<Toggle>(name: "invert-position");
-            extendSpeed = root.Q<DoubleField>(name: "extending-speed");
-            extendTime = root.Q<DoubleField>(name: "extending-time");
-            retractSpeed = root.Q<DoubleField>(name: "retracting-speed");
-            retractTime = root.Q<DoubleField>(name: "retracting-time");
-
+            prismaticJointField = root.Q<ObjectField>(name: "prismatic-joint-field");
+            invertPositionField = root.Q<Toggle>(name: "invert-position");
+            extendSpeedField = root.Q<DoubleField>(name: "extending-speed");
+            extendTimeField = root.Q<DoubleField>(name: "extending-time");
+            retractSpeedField = root.Q<DoubleField>(name: "retracting-speed");
+            retractTimeField = root.Q<DoubleField>(name: "retracting-time");
             warningContainer.onGUIHandler = OnInspectorGUI;
 
             UIUtility.InitializeField
             (
-                prismaticJoint,
+                prismaticJointField,
+                component,
                 () => component.KinematicPrismaticJoint,
                 e =>
                 {
@@ -77,7 +83,8 @@ namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor.editor
 
             UIUtility.InitializeField
             (
-                invertPosition,
+                invertPositionField,
+                component,
                 () => component.InvertPosition,
                 e =>
                 {
@@ -85,68 +92,72 @@ namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor.editor
                 }
             );
 
-            extendSpeed.isDelayed = true;
+            extendSpeedField.isDelayed = true;
             UIUtility.InitializeField
             (
-                extendSpeed,
+                extendSpeedField,
+                component,
                 () => component.ExtendingMoveSpeed,
                 e =>
                 {
                     component.ExtendingMoveSpeed = e.newValue;
-                    extendSpeed.SetValueWithoutNotify(component.ExtendingMoveSpeed);
-                    extendTime.SetValueWithoutNotify(component.ExtendingCycleTime);
+                    extendSpeedField.SetValueWithoutNotify(component.ExtendingMoveSpeed);
+                    extendTimeField.SetValueWithoutNotify(component.ExtendingCycleTime);
                 }
             );
 
-            extendTime.isDelayed = true;
+            extendTimeField.isDelayed = true;
             UIUtility.InitializeField
             (
-                extendTime,
+                extendTimeField,
+                component,
                 () => component.ExtendingCycleTime,
                 e =>
                 {
                     component.ExtendingCycleTime = e.newValue;
-                    extendSpeed.SetValueWithoutNotify(component.ExtendingMoveSpeed);
-                    extendTime.SetValueWithoutNotify(component.ExtendingCycleTime);
+                    extendSpeedField.SetValueWithoutNotify(component.ExtendingMoveSpeed);
+                    extendTimeField.SetValueWithoutNotify(component.ExtendingCycleTime);
                 }
             );
 
-            retractSpeed.isDelayed = true;
+            retractSpeedField.isDelayed = true;
             UIUtility.InitializeField
             (
-                retractSpeed,
+                retractSpeedField,
+                component,
                 () => component.RetractingMoveSpeed,
                 e =>
                 {
                     component.RetractingMoveSpeed = e.newValue;
-                    retractTime.SetValueWithoutNotify(component.RetractingCycleTime);
-                    retractSpeed.SetValueWithoutNotify(component.RetractingMoveSpeed);
+                    retractTimeField.SetValueWithoutNotify(component.RetractingCycleTime);
+                    retractSpeedField.SetValueWithoutNotify(component.RetractingMoveSpeed);
                 }
             );
 
-            retractTime.isDelayed = true;
+            retractTimeField.isDelayed = true;
             UIUtility.InitializeField
             (
-                retractTime,
+                retractTimeField,
+                component,
                 () => component.RetractingCycleTime,
                 e =>
                 {
                     component.RetractingCycleTime = e.newValue;
-                    retractSpeed.SetValueWithoutNotify(component.RetractingMoveSpeed);
-                    retractTime.SetValueWithoutNotify(component.RetractingCycleTime);
+                    retractSpeedField.SetValueWithoutNotify(component.RetractingMoveSpeed);
+                    retractTimeField.SetValueWithoutNotify(component.RetractingCycleTime);
                 }
             );
-            #endregion
 
             EditorApplication.playModeStateChanged += state =>
             {
-                prismaticJoint.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
-                invertPosition.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
-                extendSpeed.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
-                extendTime.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
-                retractSpeed.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
-                retractTime.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                prismaticJointField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                invertPositionField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                extendSpeedField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                extendTimeField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                retractSpeedField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
+                retractTimeField.SetEnabled(!(state == PlayModeStateChange.EnteredPlayMode));
             };
+            #endregion
         }
 
         public override void OnInspectorGUI()
@@ -176,21 +187,22 @@ namespace u040.prespective.standardcomponents.kinetics.motor.dcmotor.editor
             (
                 targetSlider,
                 targetField,
+                component,
                 () => (float)component.Target,
                 e => component.Target = e.newValue
             );
             #endregion
 
             positionControlPanel = new DoubleField("Position (%)");
-            UIUtility.ToggleNoBoxAndReadOnly(positionControlPanel, true);
+            UIUtility.SetReadOnlyState(positionControlPanel, true);
 
-            ScheduleControlPanelUpdate(positionControlPanel);
+            scheduleControlPanelUpdate(positionControlPanel);
 
             _container.Add(sliderContainer);
             _container.Add(positionControlPanel);
         }
 
-        protected override void UpdateControlPanelData()
+        protected override void updateControlPanelData()
         {
             positionControlPanel.value = component.Position;
         }

@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Position">
+    <ui:Label class="bold margin-bottom-5px" text="Sensor Distance (m)"/>
+    <ue:FloatField name="distance-start" label="From begin:"/>
+    <ue:FloatField name="distance-end" label="From end:"/>
+  </ui:VisualElement>   
+
+<ui:Foldout class="foldout-division margin-bottom-10px custom-exposure-foldout" name="properties" text="Sensor Events">
+    <ui:VisualElement class="margin-bottom-5px" name="on-cue-enter-container"/>
+    <ui:VisualElement class="margin-bottom-5px" name="on-cue-exit-container"/>
+    <ui:VisualElement class="margin-bottom-5px" name="on-cue-center-container"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division custom-exposure-foldout" text="Scene View Settings" value="false">
+    <ui:Toggle name="enable-billboard-selection" label="Enable Billboard Selection" text="" />
+  </ui:Foldout>
+</ui:UXML>

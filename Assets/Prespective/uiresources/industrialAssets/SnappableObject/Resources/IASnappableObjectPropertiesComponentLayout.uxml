@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="snapping-properties-container">
+        <ui:Label name="snapping-properties-label" text="Snapping Properties" class="margin-bottom-10px bold"/>
+        <ue:EnumField name="snapping-properties-enum" label="I/O"/>
+        <ui:Toggle name="snapping-properties-toggle"  label="Directional"/>        
+        <ue:Vector3Field name="snapping-properties-vector3" label="Direction" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="row custom-exposure" name="row-container" >
+    <ue:EnumField name="comparator"/>
+    <ui:VisualElement name="explicit-value-container" />
+  </ui:VisualElement>
+</ui:UXML>

@@ -1,4 +1,4 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
   <ui:VisualElement class="division margin-bottom-10px" text="Generic Joint Settings">
 		
     <ui:Label class="bold margin-bottom-5px" 
@@ -42,4 +42,4 @@
 		</ui:Foldout>
     
 	</ui:VisualElement>
-</UXML>
+</ui:UXML>

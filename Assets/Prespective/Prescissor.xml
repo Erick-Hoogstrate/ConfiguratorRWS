@@ -1,0 +1,2180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Prescissor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prescissor.meshtopology.splitting.SplitterTypes">
+            <summary>
+            gives the different techniques a mesh can be split
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter">
+            <summary>
+            Splits the mesh into individual meshes
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.turnedOffGameObjects">
+            <summary>
+            objects turned off by splitting
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.addedGameObjects">
+            <summary>
+            objects added by splitting
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.SplitMeshTriangle(UnityEngine.GameObject[],System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            gets all the mesh filters to check and starts the mesh splitting for triangle splitting
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_checkSameValue">also checks if values are the same for triangle and octree</param>
+            <param name="_save">if saved in prehistory</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.SplitMeshVertexDistance(UnityEngine.GameObject[],System.Boolean,System.Single,System.Boolean)">
+            <summary>
+            gets all the mesh filters to check and starts the mesh splitting for vertex splitting
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_mininumDistanceBetween">minimum distance between vertices</param>
+            <param name="_save">if saved in prehistory</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.SplitMeshOctreeVertices(UnityEngine.GameObject[],System.Boolean,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            gets all the mesh filters to check and starts the mesh splitting for vertex octree splitting
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_checkSameValue">also checks if values are the same for triangle and octree</param>
+            <param name="_maximumDepthLevel">maximum depth level of octree</param>
+            <param name="_save">if saved in prehistory</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.SplitMeshMaterial(UnityEngine.GameObject[],System.Boolean,System.Boolean)">
+            <summary>
+            gets all the mesh filters to check and starts the mesh splitting for splitting on material
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_save">if saved in prehistory</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.baseSplitting(UnityEngine.GameObject[],System.Action{System.Int32,System.Int32,UnityEngine.MeshFilter},u040.prespective.prescissor.meshtopology.splitting.SplitterTypes,System.Boolean,System.Boolean,System.Single,System.Int32,System.Boolean)">
+            <summary>
+            base splitting
+            </summary>
+            <param name="_ngo">game objects to process</param>
+            <param name="_act">splitting action</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.groupCheck(UnityEngine.Transform)">
+            <summary>
+            checks if is part of a group and if that is allowed
+            </summary>
+            <param name="_t">transform</param>
+            <returns>if allowed</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.Undo">
+            <summary>
+            undo's previous mesh splitting
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.findVerticesWithOctree(UnityEngine.MeshFilter,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            gets the vertices through octree and then finds the connected triangles and the creates the split meshes
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_meshNumber">for progress bar</param>
+            <param name="_meshNumberTotal">for progress bar</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+            <param name="_maxDepthLevel">maximum depth level of octree</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.getVerticesWithOctree(UnityEngine.MeshFilter,UnityEngine.Vector3[],System.Int32)">
+            <summary>
+            this creates a octree and finds the vertices in octree that are close together
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_vert">vertices</param>
+            <param name="_maxDepthLevel">maximum depth level of octree</param>
+            <returns>list of connected vertex indices</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.findConnectedTriangles(System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32})">
+            <summary>
+            finds the triangles for the vertices
+            </summary>
+            <param name="resultvertices">list of connected vertex indices</param>
+            <param name="_tri">triangles</param>
+            <returns>a list of triangles bellowing to the vertices</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.meshSplitterTriangels(UnityEngine.MeshFilter,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            mesh splitting with triangles
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_meshNumber">for progress bar</param>
+            <param name="_meshNumberTotal">for progress bar</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.findSplitMeshesOfIndicesList(UnityEngine.MeshFilter,UnityEngine.Mesh,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Boolean,System.Boolean,System.Int32@,System.String)">
+            <summary>
+            finds and creates the split meshes of a list of triangle indices
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_mes">mesh</param>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <param name="_indices">list of indices to check</param>
+            <param name="_movePivotCentre">move pivot of split mesh to centre mesh</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+            <param name="_splitNumber">split number reference</param>
+            <param name="_progressBarText">text for progress bar</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.createSplitMeshTriangle(System.Int32,System.Boolean,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,UnityEngine.Vector3},System.Collections.Generic.List{System.Int32}@)">
+            <summary>
+            finds the split mesh triangle indices
+            </summary>
+            <param name="_checkIndex">first triangle index</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <param name="_checkTri">reference to triangles that need to be checked</param>
+            <returns>list triangle indices of split mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.getClosedTriangle(System.Int32,System.Boolean,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,System.Int32},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,UnityEngine.Vector3},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            finds the triangles that share a vertex or vertex location
+            </summary>
+            <param name="_triToCheck">index of triangles to check</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+            <param name="_tri">triangles</param>
+            <param name="_vert">vertices</param>
+            <param name="_checkTri">reference to triangles that need to be checked</param>
+            <returns>triangles indices that are connected</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.meshSplitterVertices(UnityEngine.MeshFilter,System.Single,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            mesh splitting with vertices
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_minDistanceBetween">max distance between vertices</param>
+            <param name="_meshNumber">for display bar</param>
+            <param name="_meshNumberTotal">for display bar</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre=</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.createSplitMeshVertices(System.Int32,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,UnityEngine.Vector3},System.Single,System.Collections.Generic.List{System.Int32}@)">
+            <summary>
+            gets the vertices indices of the connected vertices to check index vertex
+            </summary>
+            <param name="_checkIndex">begin index</param>
+            <param name="_vert">vertices</param>
+            <param name="_minDistanceBetween">minimum distance between vertices</param>
+            <param name="_checkVert">reference to the vertices that need to be checked</param>
+            <returns>list of vertices indices</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.getClosedVerts(System.Int32,System.Single,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,UnityEngine.Vector3},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            checks all vertices if they are close by
+            </summary>
+            <param name="_vertIndex">vertex index</param>
+            <param name="_minDistanceBetween">distance to check</param>
+            <param name="_vert">vertices</param>
+            <param name="_checkVert">vertices to check</param>
+            <returns>all vertices that where found to be close by</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.meshSplitterSubMeshes(UnityEngine.MeshFilter,System.Boolean)">
+            <summary>
+            splits the mesh into its sub meshes
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_movePivotCentre">if move the pivot to centre of new split mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.createGOWithMesh(UnityEngine.MeshFilter,UnityEngine.Mesh,System.Boolean,System.Int32,System.Boolean,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            create game object and adds a mesh
+            </summary>
+            <param name="_mf">mesh filter</param>
+            <param name="_mes">original mesh</param>
+            <param name="_useVertices">if is looked at the vertices index or triangle index</param>
+            <param name="_splitNumber">which split this is</param>
+            <param name="_movePivotCentre">if need to move the pivot to the centre</param>
+            <param name="_listOfIndeces">list of indices to make mesh from</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.makeHistory(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String[],u040.prespective.prescissor.meshtopology.splitting.SplitterTypes,System.Boolean,System.Boolean,System.Single,System.Int32)">
+            <summary>
+            makes history of mesh splitter
+            </summary>
+            <param name="_hist">prehistory</param>
+            <param name="_ntp">transform paths</param>
+            <param name="_sp">splitting type</param>
+            <param name="_movPivotCentre">if need to move the pivot to the centre</param>
+            <param name="_checkSameValue">also checks if values are the same</param>
+            <param name="_minDistanceBetween">minimum distance between vertices</param>
+            <param name="_maxDepthLevel">maximum depth level of octree</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.ReadHistory(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,UnityEngine.Transform}},u040.prespective.core.scenechangetracking.SaveChangesData,System.Exception@)">
+            <summary>
+            reads the data given and implements the mesh splitter
+            </summary>
+            <param name="_connections">transform path transform connections</param>
+            <param name="_data">mesh splitter data</param>
+            <param name="_error">exceptions</param>
+            <returns>if successful</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData">
+            <summary>
+            data class mesh splitter history
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.TransformPaths">
+            <summary>
+            transform paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.Type">
+            <summary>
+            splitting type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.MovePivotCentre">
+            <summary>
+            move pivot to centre
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.CheckSameValue">
+            <summary>
+            check if triangles are the same
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.MinDistanceBetween">
+            <summary>
+             minimum distance
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.MaxDepthLevel">
+            <summary>
+            maximum depth level octree
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.splitting.MeshSplitter.MeshSplitterData.#ctor(System.String[],u040.prespective.prescissor.meshtopology.splitting.SplitterTypes,System.Boolean,System.Boolean,System.Single,System.Int32)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummyTransformPaths">transform paths</param>
+            <param name="_dummyType">splitting type</param>
+            <param name="_dummyMovePivotCentre">move pivot to centre</param>
+            <param name="_dummyCheckSameValue">check if triangles are the same</param>
+            <param name="_dummyMinDistanceBetween">minimum distance</param>
+            <param name="_dummyMaxDepthLevel">maximum depth level octree</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters">
+            <summary>
+            Parameters used for initialization of VHACD.
+            see Vhacd constructors for usage
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Concavity">
+            <summary>
+             Maximum allowed concavity (default=0.0025, range=0.0-1.0)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Alpha">
+            <summary>
+            Controls the bias toward clipping along symmetry planes (default=0.05, range=0.0-1.0)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Beta">
+            <summary>
+            Controls the bias toward clipping along revolution axes (default=0.05, range=0.0-1.0)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.MINVolumePerCh">
+            <summary>
+             Controls the adaptive sampling of the generated convex-hulls (default=0.0001, range=0.0-0.01)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Resolution">
+            <summary>
+             Maximum number of voxels generated during the voxelization stage (default=100,000, range=10,000-16,000,000)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.MaxNumVerticesPerCh">
+            <summary>
+            Controls the maximum number of triangles per convex-hull (default=64, range=4-1024)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.PlaneDownSampling">
+            <summary>
+            Controls the granularity of the search for the \"best\" clipping plane (default=4, range=1-16)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.ConvexHullDownSampling">
+            <summary>
+            Controls the precision of the convex-hull generation process during the clipping plane selection stage (default=4, range=1-16)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Pca">
+            <summary>
+            Enable/disable normalizing the mesh before applying the convex decomposition (default=0, range={0,1})
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.Mode">
+            <summary>
+            0: voxel-based approximate convex decomposition, 1: tetrahedron-based approximate convex decomposition (default=0, range={0,1})
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.ConvexHullApproximation">
+            <summary>
+            Enable/disable approximation when computing convex-hulls (default=1, range={0,1})
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.OclAcceleration">
+            <summary>
+            Enable/disable OpenCL acceleration (default=0, range={0,1})
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.MaxConvexHulls">
+            <summary>
+             Maximum number of convex hulls to produce
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.ProjectHullVertices">
+            <summary>
+            This will project the output convex hull vertices onto the original source mesh to increase the floating point accuracy of the results
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters.#ctor(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_concavity"></param>
+            <param name="_alpha"></param>
+            <param name="_beta"></param>
+            <param name="_minVolumePerCh"></param>
+            <param name="_resolution"></param>
+            <param name="_maxNumVerticesPerCh"></param>
+            <param name="_planeDownSampling"></param>
+            <param name="_convexHullDownSampling"></param>
+            <param name="_pca"></param>
+            <param name="_mode"></param>
+            <param name="_convexHullApproximation"></param>
+            <param name="_oclAcceleration"></param>
+            <param name="_maxConvexHulls"></param>
+            <param name="_projectHullVertices"></param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Vhacd">
+            <summary>
+            Creates multiple convex colliders around a mesh (uses a C++ dll that should be present in folder below asset folder)
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+            <summary>
+            Creates multiple convex colliders around a mesh (uses a C++ dll that should be present in folder below asset folder)
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Vhacd.#ctor(u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters)">
+            <summary>
+            Initialize new vhacd instance
+            </summary>
+            <param name="_parameters">desired configuration</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Vhacd.createParameters(u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Parameters)">
+            <summary>
+            Create parameters and initialize a new instance and return instance
+            </summary>
+            <param name="_parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Vhacd.DLL_PATH">
+            <summary>
+            Name of the cpp dll
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.convexmeshhulling.vhacd.Vhacd.createParameters(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Method to initialize the vhacd instance on cpp side
+            </summary>
+            <param name="_concavity"></param>
+            <param name="_alpha"></param>
+            <param name="_beta"></param>
+            <param name="_minVolumePerCh"></param>
+            <param name="_resolution"></param>
+            <param name="_maxNumVerticesPerCh"></param>
+            <param name="_planeDownSampling"></param>
+            <param name="_convexHullDownSampling"></param>
+            <param name="_pca"></param>
+            <param name="_mode"></param>
+            <param name="_convexHullApproximation"></param>
+            <param name="_oclAcceleration"></param>
+            <param name="_maxConvexHulls"></param>
+            <param name="_projectHullVertices"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData">
+            <summary>
+            data class for finding biggest mesh ordering
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.Name">
+            <summary>
+            name mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.NumberOfVertices">
+            <summary>
+            number of vertices
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.NumberOfTriangles">
+            <summary>
+            number of triangles
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.NumberOfInstances">
+            <summary>
+            number of instances
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.ConnectedGameObject">
+            <summary>
+            connected game object
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData.#ctor(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_go">game object</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshFilterType">
+            <summary>
+            filter types biggest mesh
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.findbiggestmeshes.FindBiggestMeshes">
+            <summary>
+            Applies a ordering to the given meshes
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.findbiggestmeshes.FindBiggestMeshes.OrderBy(UnityEngine.GameObject[],u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshFilterType)">
+            <summary>
+            filters the game objects on given filter type
+            </summary>
+            <param name="_gameObjects">array of game objects to check</param>
+            <param name="_type">type of filtering</param>
+            <returns>filter results</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.findbiggestmeshes.FindBiggestMeshes.processGO(UnityEngine.GameObject,System.Collections.Generic.List{u040.prespective.prescissor.meshtopology.findbiggestmeshes.BiggestMeshData}@,System.Collections.Generic.Dictionary{System.String,System.Int32}@)">
+            <summary>
+            process a game object to get the filter data
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_filterData">filter data reference</param>
+            <param name="_foundPrefabsConnection">found prefab connection reference</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.scaling.ScaleProcess">
+            <summary>
+            type of scale processing
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler">
+            <summary>
+            Remakes the mesh to an effect of the scale
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.RescaleToHighest(UnityEngine.GameObject[])">
+            <summary>
+            start function to change meshes because of their scale
+            </summary>
+            <param name="_gameobjectsToProcess">selected game objects</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.SetScaleToIdentity(UnityEngine.GameObject[])">
+            <summary>
+            sets scale to identity
+            </summary>
+            <param name="_gameobjectsToProcess">selected game objects</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.EnlargeMesh(UnityEngine.GameObject[],System.Single,System.Boolean,UnityEngine.Vector3)">
+            <summary>
+            increases the size of a mesh
+            </summary>
+            <param name="_gameobjectsToProcess">selected game objects</param>
+            <param name="_inlargingFactor">how much the size is increased or decreased (cannot flip)</param>
+            <param name="_scalePosition">if should scale the position to with same factor</param>
+            <param name="_positionScalingCentrePoint">where the position scaling is done from in world space</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.InverseMesh(UnityEngine.GameObject[],System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            inverse the axis in global space of game objects and their children
+            </summary>
+            <param name="_gameobjectsToProcess">selected game objects</param>
+            <param name="_inversex">inverse global x axis</param>
+            <param name="_inversey">inverse global x axis</param>
+            <param name="_inversez">inverse global x axis</param>
+            <param name="_inversePosition">inverse global positions of all game objects and their children</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.createMatrixStructureToHead(UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>
+            create matrix to head
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_head">head transform</param>
+            <returns>matrix to head</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.changePivotTransform(UnityEngine.Transform,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            change pivot of transform and repeat for children
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_inversex">inverse global x axis</param>
+            <param name="_inversey">inverse global x axis</param>
+            <param name="_inversez">inverse global x axis</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.changePivot(UnityEngine.Transform,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            change pivot of transform
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_inversex">inverse global x axis</param>
+            <param name="_inversey">inverse global x axis</param>
+            <param name="_inversez">inverse global x axis</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.determineInversed(UnityEngine.Vector3)">
+            <summary>
+            determine if mesh should be inverted because of negative scaling
+            </summary>
+            <param name="_appliedScale">scaling that will be applied</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetToIdentityScale(UnityEngine.GameObject[])">
+            <summary>
+            Resets the game objects and their children to (1,1,1) scale
+            </summary>
+            <param name="_gameobjectsToProcess">game objects to process</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.resetTransformAndChildren(UnityEngine.Transform,System.Collections.Generic.Dictionary{UnityEngine.Transform,u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetTransformData},System.Collections.Generic.Dictionary{UnityEngine.MeshFilter,u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData})">
+            <summary>
+            Resets transform and its children
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_transformData">data of the original transforms</param>
+            <param name="_meshData">data of the original meshes</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.resetVerticesFromGlobalVertices(UnityEngine.MeshFilter,u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData)">
+            <summary>
+            Resets vertices from global vertices
+            </summary>
+            <param name="_meshFilter">mesh filter</param>
+            <param name="_originalMeshData">mesh data of original mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.baseProcess(UnityEngine.GameObject[],System.Action{UnityEngine.Transform,UnityEngine.GameObject})">
+            <summary>
+            base processing for re-meshing
+            </summary>
+            <param name="_gameobjectsToProcess"></param>
+            <param name="_act"></param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.getHighest(UnityEngine.Vector3)">
+            <summary>
+            finds the highest value of a vector3
+            </summary>
+            <param name="_scale">vector3 value</param>
+            <returns>highest value</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.remakeMeshForScale(UnityEngine.Transform,UnityEngine.Vector3,System.Boolean,System.Boolean,UnityEngine.Matrix4x4)">
+            <summary>
+            changes the mesh to compensated for the highest scale
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_scaleFactor">scale effect on vertices</param>
+            <param name="_inverse">inverse mesh</param>
+            <param name="_applyScaleGlobally">applies the scale globally</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.createAndApplyNewMesh(UnityEngine.Transform,UnityEngine.Rendering.IndexFormat,System.Int32,UnityEngine.Vector3[],UnityEngine.Vector3[],UnityEngine.Vector2[],System.Int32[][],System.String)">
+            <summary>
+            Creates mesh and adds to mesh filter
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_indexFormat">index format</param>
+            <param name="_amountSubMeshes">amount sub meshes</param>
+            <param name="_newVetices">vertices</param>
+            <param name="_newNormals">normals</param>
+            <param name="_uv">UV's</param>
+            <param name="_newTriangles">triangles</param>
+            <param name="_meshName">mesh name</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.fixCollider(UnityEngine.Transform,UnityEngine.Mesh,UnityEngine.Vector3)">
+            <summary>
+            fixes the colliders that have been changed because of the scale change
+            </summary>
+            <param name="_transform">transform to check</param>
+            <param name="_mesh">original mesh</param>
+            <param name="_scaling">scaling applied</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData">
+            <summary>
+            Data struct to store data needed for hard resetting the mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData.GlobalVertices">
+            <summary>
+            Vertices in global space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData.GlobalNormals">
+            <summary>
+            Normals in global space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData.TriangleInverted">
+            <summary>
+            If the triangles need to be inverted because of negative scaling
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetMeshData.#ctor(UnityEngine.Vector3[],UnityEngine.Vector3[],System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_globalVertices">vertices in global space</param>
+            <param name="_globalNormals">normals in global space</param>
+            <param name="_trianglesInverted">if the triangles need to be inverted</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetTransformData">
+            <summary>
+            Data struct to store data needed for hard resetting the transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetTransformData.GlobalPosition">
+            <summary>
+            Vertices in global space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetTransformData.LossyScale">
+            <summary>
+            Normals in global space
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.scaling.MeshRescaler.HardResetTransformData.#ctor(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_globalPosition">global position</param>
+            <param name="_lossyScale">lossy scale</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.splinesurface.SplineSurfaceCreator">
+            <summary>
+            @CLASS : SplineSurfaceCreator
+            
+            @ABOUT : Makes spline along the surface on given height
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented making surface spline(25-02-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.splinesurface.SplineSurfaceCreator.start(UnityEngine.GameObject[],u040.prespective.core.spline.ADSpline,System.Int32,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.splinesurface.SplineSurfaceCreator.initialize(UnityEngine.GameObject[],System.Collections.Generic.List{UnityEngine.GameObject}@)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.splinesurface.SplineSurfaceCreator.findSurfacePoints(u040.prespective.core.spline.ADSpline,System.Int32,System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.splinesurface.SplineSurfaceCreator.createSurfaceSpline(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3})" -->
+        <member name="T:u040.prespective.prescissor.meshtopology.merge.MergeSelected">
+            <summary>
+            @CLASS : MergeSelected
+            
+            @ABOUT : Mergese the meshes into one mesh with maximum vertices depending on the vertice limit
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented mesh merge with limit of 65535 vertices (unity limit) per mesh merge for single and multi meshes (26-06-2018)
+            @VERSION : 1.10 - Implemented a more ifficient multi material merge (28-06-2018)
+            @VERSION : 1.20 - Implemented merging in global space (29-06-2018)
+            @VERSION : 1.30 - Implemented giving vertice limit (16 - 32 bit) (11-07-2018)
+            @VERSION : 1.40 - Fixed lighting problem with recalculated normals and triangle inversion with reversing triangles and now checks if selected object is active (31-08-2018)
+            @VERSION : 1.45 - Implemented undo function and removed the flip correction it seems to have been undone by unity? (15-01-2019)
+            @VERSION : 1.46 - Refactoring removed pivot mover and build the global space merge differently (21-01-2019)
+            @VERSION : 1.50 - Refactoring now multi materials and single materials can be merged together check before hand if they all should have colours and/or uvs(14-02-2019)
+            @VERSION : 1.60 - Added move to certain pivot location and rotation(18-03-2019)
+            @VERSION : 1.61 - Small bugfix move pivot and implemented inputing selfmade name(20-03-2019)
+            @VERSION : 1.70 - Implemented storing merged mesh in Resource folder(21-03-2019)
+            @VERSION : 1.80 - Refactoring removed the single material postprocessing to make a general all material processing(24-04-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.mergeMesh(UnityEngine.GameObject[],UnityEngine.GameObject,System.Boolean,UnityEngine.GameObject,UnityEngine.Rendering.IndexFormat,System.String,System.Boolean)" -->
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.undo">
+            <summary>
+            undo function for the destroy and create
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.findMaterialsGOConnection(System.Collections.Generic.List{UnityEngine.GameObject},System.Boolean,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.makeColours(UnityEngine.Mesh,UnityEngine.Material[])" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.findMultipleMaterialsConnectedGO(System.Collections.Generic.List{UnityEngine.Material[]})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.makeMultiMaterialMergedMesh(System.Collections.Generic.Dictionary{UnityEngine.Material[],System.Collections.Generic.List{System.Int32}},System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,System.Boolean,UnityEngine.Rendering.IndexFormat,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.makeGOWithMesh(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{System.Int32}},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Color},System.Collections.Generic.List{UnityEngine.Vector2},System.Collections.Generic.List{UnityEngine.Material},UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Rendering.IndexFormat,System.Boolean,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.makeHistory(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String[],UnityEngine.GameObject,System.Boolean,System.String,UnityEngine.Rendering.IndexFormat,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.meshtopology.merge.MergeSelected.ReadHistory(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,UnityEngine.Transform}},u040.prespective.core.scenechangetracking.SaveChangesData,System.Exception@)" -->
+        <member name="T:u040.prespective.prescissor.meshtopology.merge.MergeUtility">
+            <summary>
+            @CLASS : MergeSelected
+            
+            @ABOUT : Merges the meshes into one mesh with maximum vertices depending on the vertex limit
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Took merge functions from GroupMeshScript and copied them to here
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.merge.MergeUtility.ResourceFilePath">
+            <summary>
+            The default path where merged meshes are stored
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.MergeMesh(UnityEngine.GameObject[],UnityEngine.GameObject,UnityEngine.Rendering.IndexFormat,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            merges meshes of given game objects and their children
+            </summary>
+            <param name="_gameObjects">game objects</param>
+            <param name="_parentofmesh">the parent of new merged meshes</param>
+            <param name="_indexFormat">index format of merged meshes (16 of 32 bit)</param>
+            <param name="_name">name of merged meshes</param>
+            <param name="_destroyMergedObjects">if old meshes that where merged need to be destroyed</param>
+            <param name="_overwrite">optional parameter to overwrite existing mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.MergeMesh(UnityEngine.GameObject[],UnityEngine.Vector3,UnityEngine.GameObject,UnityEngine.Rendering.IndexFormat,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            merges meshes of given game objects and their children
+            </summary>
+            <param name="_gameObjects">game objects</param>
+            <param name="_centerOfMergedMeshes">center of all the merged meshes</param>
+            <param name="_parentofmesh">the parent of new merged meshes</param>
+            <param name="_indexFormat">index format of merged meshes (16 of 32 bit)</param>
+            <param name="_name">name of merged meshes</param>
+            <param name="_destroyMergedObjects">if old meshes that where merged need to be destroyed</param>
+            <param name="_overwrite">optional parameter to overwrite existing mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.findMaterialsGOConnection(System.Collections.Generic.List{UnityEngine.GameObject},System.Boolean,System.Boolean)">
+            <summary>
+            finds the material connection from list of game objects
+            </summary>
+            <param name="_listgo">list of game objects</param>
+            <param name="_coloursPresent">if any mesh in the merged meshes has colours</param>
+            <param name="_uvsPresent">if any mesh in the merged meshes has UV's</param>
+            <returns>list with materials connected to game objects</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.makeColours(UnityEngine.Mesh,UnityEngine.Material[])">
+            <summary>
+            makes a colour array for a multi material
+            </summary>
+            <param name="_mes">original mesh</param>
+            <param name="_materials">materials of the multi material</param>
+            <returns>colours array</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.findMultipleMaterialsConnectedGO(System.Collections.Generic.List{UnityEngine.Material[]})">
+            <summary>
+            creates a list of list with materials that have the same material combination
+            </summary>
+            <param name="_materials">list of materials connected to game objects</param>
+            <returns>list connected</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.makeMultiMaterialMergedMesh(System.Collections.Generic.Dictionary{UnityEngine.Material[],System.Collections.Generic.List{System.Int32}},System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.GameObject,UnityEngine.Vector3,System.String,System.Boolean,System.Boolean,UnityEngine.Rendering.IndexFormat)">
+            <summary>
+            creates the merged meshes of multi materials
+            </summary>
+            <param name="_multipleMaterialConnected">dictionary of objects that have the same multi material combination</param>
+            <param name="_listgo">list of game objects</param>
+            <param name="_parentOfMesh">parent of given merged meshes</param>
+            <param name="_centerOfMesh">center of mesh</param>
+            <param name="_indfor">vertex limit index</param>
+            <param name="_name">name of the merged meshes</param>
+            <param name="_overwrite">optional parameter to overwrite existing mesh</param>
+            <returns>made merged meshes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.makeGOWithMesh(UnityEngine.Vector3,System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Color},System.Collections.Generic.List{UnityEngine.Vector2},System.Collections.Generic.List{UnityEngine.Material},UnityEngine.Rendering.IndexFormat,System.String,System.Int32,System.Boolean)">
+            <summary>
+            creates the new game object with the mesh
+            </summary>
+            <param name="_position">position of game object</param>
+            <param name="_vert">vertices</param>
+            <param name="_subTri">sub triangles</param>
+            <param name="_norm">normals</param>
+            <param name="_col">colours</param>
+            <param name="_uv">UV map</param>
+            <param name="_mat">materials</param>
+            <param name="_indfor">vertex limit index</param>
+            <param name="_name">name of the merged meshes</param>
+            <param name="_number">mesh number</param>
+            <param name="_overwrite">optional parameter to overwrite existing mesh</param>
+            <returns>made game object</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.merge.MergeUtility.checkInverted(UnityEngine.Vector3)">
+            <summary>
+            checks if the triangles need to be inverted
+            </summary>
+            <param name="_scale">lossy scale of transform of mesh</param>
+            <returns>if triangles inverted</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.merge.MergingData">
+            <summary>
+            data of a merge
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.merge.MergingData.MergedObject">
+            <summary>
+            the created merged object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.merge.MergingData.IndicesObjectsMergeMadeOff">
+            <summary>
+            the indices of the object merged made of
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator">
+            <summary>
+            Creates voxel hull of Unity cubes of given meshes
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.standardMaterial">
+            <summary>
+            creates standard material
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.CreateBoxHull(UnityEngine.GameObject[],System.Int32,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            creates voxels of Unity cubes of given game objects and their children
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_depthLevel">octree max depth level</param>
+            <param name="_enlargingFactor">enlarging factor of octree cube</param>
+            <param name="_uniformSize">if octree cube have uniform size</param>
+            <param name="_useOptimalRotation">find optimal rotation</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.CreateBoxHull(UnityEngine.GameObject[],UnityEngine.GameObject,System.Int32)">
+            <summary>
+            creates voxels of Unity cubes of given game objects and their children
+            </summary>
+            <param name="_ngo">game objects</param>
+            <param name="_cube">starting cube to make octree from</param>
+            <param name="_depthLevel">octree max depth level</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.baseProcess(UnityEngine.GameObject[],System.Int32,System.Func{UnityEngine.GameObject,System.Int32,System.Collections.Generic.List{u040.prespective.utility.collectionmanagement.OctreeTriangleData}})">
+            <summary>
+            base process for making collider of octree
+            </summary>
+            <param name="_ngo"> game objects</param>
+            <param name="_depthLevel">octree max depth level</param>
+            <param name="_act">process delegate for creating octree</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.MergeOctreeCubes(System.Collections.Generic.List{u040.prespective.utility.collectionmanagement.OctreeTriangleData})">
+            <summary>
+            merges the octree cubes to created bigger octree cubes
+            </summary>
+            <param name="_triangleData">original octree cube data</param>
+            <returns>new octree cubes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.mergeCubes(u040.prespective.math.doubles.DQuaternion,System.Collections.Generic.List{u040.prespective.utility.collectionmanagement.OctreeTriangleData})">
+            <summary>
+            merges the octree cubes if possible
+            </summary>
+            <param name="_localRot">local rotation</param>
+            <param name="_triangleData">octree cubes to merge</param>
+            <returns>merged octree cubes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.getOctreeCubesWithSameSize(System.Collections.Generic.List{u040.prespective.utility.collectionmanagement.OctreeTriangleData})">
+            <summary>
+            gets the octree cubes that have the same size
+            </summary>
+            <param name="_triangleData">octree cubes</param>
+            <returns>octree cubes with the same sizes</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.voxelboxhulling.VoxelBoxGenerator.getCubeMaterial(UnityEngine.GameObject,System.Int32[])">
+            <summary>
+            gets cube material based on triangles present in octree
+            </summary>
+            <param name="_go">original game object of octree</param>
+            <param name="_triangleIndices">triangle indices in octree</param>
+            <returns>best material found</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.voxelboxhulling.NonConvexMeshCompoundCollider">
+            <summary>
+            @CLASS : MakeNonConvexMeshCompoundCollider
+            
+            @ABOUT : Make non convex mesh compound collider
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented beta (27-03-2019)
+            @VERSION : 1.10 - Made static (02-10-2020)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.prescissor.meshtopology.voxelboxhulling.NonConvexMeshCollider" -->
+        <member name="T:u040.prespective.prescissor.meshtopology.trianglecounter.TriangleCounter">
+            <summary>
+            Counts the triangles and vertices of meshes given
+             
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.trianglecounter.TriangleCounter.TriangleVertexCount(UnityEngine.GameObject[],System.Int32@)">
+            <summary>
+            counts up the triangle count of the game objects and their children
+            </summary>
+            <param name="_gameObjects">array game objects</param>
+            <param name="_vertCount">vertex count</param>
+            <returns>triangle count</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper">
+            <summary>
+            @CLASS : MeshFlipper
+            
+            @ABOUT : Flips the triangel and/or the normals of a mesh
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented flipping the triangles and normals and inputting them in new game object with stored mesh(15-04-2019)
+            @VERSION : 1.10 - Implemented prehistory(16-04-2019)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.start(UnityEngine.GameObject[],System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            start function for the mesh flipper
+            </summary>
+            <param name="_gameObjects">selected game objects to flip with their children</param>
+            <param name="_flipNormals">if normals are flipped</param>
+            <param name="_flipMeshTriangles">if mesh need to be flipped</param>
+            <param name="_save">if saves</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.undo">
+            <summary>
+            undo function for the destroy and create
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.flipMesh(UnityEngine.Mesh,System.Boolean,System.Boolean)">
+            <summary>
+            makes the flip mesh of a mesh and stores it
+            </summary>
+            <param name="_mesh">mesh</param>
+            <param name="_flipNormals">if normals need to be flipped</param>
+            <param name="_flipMesh">if mesh need to be flipped</param>
+            <returns>flipped mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.makeHistory(u040.prespective.core.scenechangetracking.ASceneChangeTrackingBase,System.String[],System.Boolean,System.Boolean)">
+            <summary>
+            makes the history of mesh flipper and sends it to prehistory when needed
+            </summary>
+            <param name="_hist">prehistory</param>
+            <param name="_ntp">transform paths</param>
+            <param name="_flipNormals">if normals are flipped</param>
+            <param name="_flipMesh">if mesh need to be flipped</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.ReadHistory(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,UnityEngine.Transform}},u040.prespective.core.scenechangetracking.SaveChangesData,System.Exception@)">
+            <summary>
+            reads the data given and implements the mesh flipper
+            </summary>
+            <param name="_connections">transform path transform connections</param>
+            <param name="_data">mesh flipper data</param>
+            <param name="_error">exceptions</param>
+            <returns>if succesfull</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.MeshFlipperData">
+            <summary>
+            data of mesh flipping
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.MeshFlipperData.TransformPaths">
+            <summary>
+            transform paths
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.MeshFlipperData.FlipNormals">
+            <summary>
+            if normals flipped
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.MeshFlipperData.FlipMesh">
+            <summary>
+            if mesh triangles flipped
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.meshtopology.normalflipping.MeshFlipper.MeshFlipperData.#ctor(System.String[],System.Boolean,System.Boolean)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_dummyTransformPaths">transform paths</param>
+            <param name="_dummyFlipNormals">if normals flipped</param>
+            <param name="_dummyFlipMesh">if mesh triangles flipped</param>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator">
+            <summary>
+            base shape generator in scene
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.AddMeshCollider">
+            <summary>
+            should add mesh collider with generated mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.meshObject">
+            <summary>
+            object mesh is stored in
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.generatedMesh">
+            <summary>
+            generates mesh of generator
+            </summary>
+            <returns>created mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.GetMesh">
+            <summary>
+            get mesh of generator
+            </summary>
+            <returns>mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.CreateMesh">
+            <summary>
+            creates mesh of current setting of the generator
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.MeshObjectCheckCreation(UnityEngine.Transform,UnityEngine.Mesh,UnityEngine.MeshFilter)">
+            <summary>
+            checks mesh filter present and creates one if not
+            </summary>
+            <param name="_t">main transform mesh object</param>
+            <param name="_mesh">mes to add</param>
+            <param name="_mf">mesh filter</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.BaseShapeGenerator.StoreCollider">
+            <summary>
+            store the collider in collider folder
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve">
+            <summary>
+            @CLASS : BezierCurve
+            
+            @ABOUT : Makes bezier curve of variable amount of points
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented bezier curve(07-01-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.#ctor(u040.prespective.math.doubles.DVector3[])" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.#ctor(UnityEngine.Vector3[])" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.#ctor(System.Collections.Generic.List{u040.prespective.math.doubles.DVector3})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.#ctor(System.Collections.Generic.List{UnityEngine.Vector3})" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.getValueAt(System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.getValueAtDouble(System.Double)" -->
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.getB(System.Int32,System.Int32,System.Double)">
+            <summary>
+            gets the bernstein basis polynomial
+            </summary>
+            <param i="i"></param>
+            <param m="n"></param>
+            <param t="t"></param>
+            <returns>value</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.bezierDifferentialValueAt(System.Double)">
+            <summary>
+            get differential of bezier curve at point (experimental should not use)
+            </summary>
+            <param point="t"></param>
+            <returns>value</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.BezierCurve.getA(System.Int32,System.Int32)">
+            <summary>
+            special self made coefficient for differential
+            </summary>
+            <param i="i"></param>
+            <param n="n"></param>
+            <returns>value</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve1Variable">
+            <summary>
+            @CLASS : ICurve1Variable
+            
+            @ABOUT : 1 variable formula interface
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented interface(07-01-2019)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.beziercurve.LinearCurveBetweenPoints">
+            <summary>
+            @CLASS : LinearCurveBetweenPoints
+            
+            @ABOUT : Makes a linear line between 2 points from 0 to 1
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented linear curve(07-01-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.LinearCurveBetweenPoints.#ctor(UnityEngine.Vector3,UnityEngine.Vector3)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.LinearCurveBetweenPoints.#ctor(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3)" -->
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.LinearCurveBetweenPoints.getValueAtDouble(System.Double)">
+            <summary>
+            gets point at given value
+            </summary>
+            <param value="u"></param>
+            <returns>point</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.beziercurve.LinearCurveBetweenPoints.getValueAt(System.Single)">
+            <summary>
+            gets point at given value
+            </summary>
+            <param value="u"></param>
+            <returns>point</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve2Variables">
+            <summary>
+            @CLASS : ICurve2Variables
+            
+            @ABOUT : 2 variables formula interface
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented interface(07-01-2019)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator">
+            <summary>
+            Used to generated an ellipse collider with mesh filter to given object
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.Radii">
+            <summary>
+            radii of the ellipse
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.Tessellation">
+            <summary>
+            tessellation of the ellipse
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.PartialEllipse">
+            <summary>
+            if creating partial ellipse
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.MainPercentages">
+            <summary>
+            main ellipse percentages for partial
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.CirclePercentages">
+            <summary>
+            circle ellipse percentages for partial
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.PrefixName">
+            <summary>
+            Prefix name for mesh
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.generatedMesh">
+            <summary>
+            generates mesh of conus
+            </summary>
+            <returns>created mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.generateMesh(u040.prespective.math.doubles.DVector3,System.Int32,System.String)">
+            <summary>
+            generates ellipse collider and put on this object
+            </summary>
+            <param name="_radii">radii ellipse</param>
+            <param name="_tessellation">tessellation on ellipse created</param>
+            <param name="_namePrefix">prefix to mesh name</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.generateMesh(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector2,u040.prespective.math.doubles.DVector2,System.Int32,System.String)">
+            <summary>
+            generates partial ellipse collider and put on this object
+            </summary>
+            <param name="_radii">radii ellipse</param>
+            <param name="_mainPercentageRange">percentage of main ellipse want to use must be between 0 and 1</param>
+            <param name="_circlePercentageRange">percentage of circles on the ellipse want to use must be between 0 and 1</param>
+            <param name="_tessellation">tessellation on ellipse created</param>
+            <param name="_namePrefix">prefix to mesh name</param>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexellipse.AConvexEllipseColliderGenerator.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AConvexEllipseColliderGenerator 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility">
+            <summary>
+            Static Library class for drawing a 3D Mesh over a set of line points
+            <para>Copyright (c) Prespective, Unit040 BV. All Rights Reserved. See License.txt in the project root for license information.</para>
+            </summary>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="190603">
+            </version>
+            <testing>
+            [None]
+            </testing>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.DrawLineMesh(UnityEngine.Mesh,UnityEngine.Material)">
+            <summary>
+            Actually draw the line mesh in the scene
+            </summary>
+            <param name="_mesh"></param>
+            <param name="_mat"></param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.GenerateSmoothLineMesh(UnityEngine.Transform,System.Collections.Generic.List{UnityEngine.Vector3},System.Single)">
+            <summary>
+            Creates a smooth line mesh
+            </summary>
+            <param name="_owner"></param>
+            <param name="_linePoints"></param>
+            <param name="_radius"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.generateSmoothBodyMesh(UnityEngine.Transform,System.Collections.Generic.List{u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection},System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@)">
+            <summary>
+            Generates a smooth line body
+            </summary>
+            <param name="_crossSections"></param>
+            <param name="_verts"></param>
+            <param name="_tris"></param>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.smoothEndTriIndices">
+            <summary>
+            Vertex triangle indices for creating a smooth 4-sided flat end
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.smoothStartTriIndices">
+            <summary>
+            Vertex triangle indices for creating a smooth 4-sided flat start
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.smoothBridgeTriIndices">
+            <summary>
+            Vertex triangle indices for creating a smooth 4-sided bridge between cross sections
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.generateSmoothNormals(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{UnityEngine.Vector3}@)">
+            <summary>
+            Generates the normals on a list of verts (not used
+            </summary>
+            <param name="_verts"></param>
+            <param name="_tris"></param>
+            <param name="_normals"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection">
+            <summary>
+            Simple Cross section of a line with 4 corner points; used to construct a line mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.Point">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.Normal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.UpDirection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.Offset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.NW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.NE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.SW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.SE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector2)">
+            <summary>
+            constructor
+            </summary>
+            <param name="_point"></param>
+            <param name="_normal"></param>
+            <param name="_upDirection"></param>
+            <param name="_offset"></param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.linerevolve.LineMeshUtility.PointLineCrossSection.Recalc(UnityEngine.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="_mOffset"></param>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator">
+            <summary>
+            Creates a conus on the game object
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ScalingToolType">
+            <summary>
+            Conus move types
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ConusEditMode">
+            <summary>
+            Whether the conus is currently in editor mode
+            (and we will thus display gizmos in the inspector)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.SceneLabelColor">
+            <summary>
+            The colour to use for scene labels
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.SceneLineColor">
+            <summary>
+            The colour to use for scene lines
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.MakeNormals">
+            <summary>
+            If normals are created while making mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.InverseNormalsTopBottom">
+            <summary>
+            Inverse top bottom meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.InverseNormalsSides">
+            <summary>
+            Inverse side created meshes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.Tessellation">
+            <summary>
+            The number of segments this cylinder contains
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.AlignmentOffset">
+            <summary>
+            Offset of alignment
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ScalingTool">
+            <summary>
+            Conus move type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.PrefixName">
+            <summary>
+            Prefix name for mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.localLowerCirclePlane">
+            <summary>
+            The Plane in local space the lower circle of the Conus is located on
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.lowerCircleRadius">
+            <summary>
+            The radius in local space of the lower circle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.localUpperCirclePlane">
+            <summary>
+            The Plane in local space the upper circle of the conus is located on
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.upperCircleRadius">
+            <summary>
+            The radius in local space of the upper circle
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.conusPoints">
+            <summary>
+            Property for managing the conus definition points
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.storedPreviousConusPoints">
+            <summary>
+            Conus points of previously made mesh
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ConusPoints">
+            <summary>
+            Conus points
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.updateConus">
+            <summary>
+            Force the conus to redefine the control points and redraw the vector shape
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.ResetConusPoints">
+            <summary>
+            Reset the Conus origin points
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.alignToMeshPoints(UnityEngine.Transform)">
+            <summary>
+            Align this triangles points to the closest mesh points found in transform _t
+            </summary>
+            <param name="_t">the transform to align to</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.generatedMesh">
+            <summary>
+            generates mesh of conus
+            </summary>
+            <returns>created mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.generateMesh(System.Boolean,System.Boolean,System.Boolean,System.Int32,System.String)">
+            <summary>
+            Generate conus mesh
+            </summary>
+            <param name="_makeNormals">make normals</param>
+            <param name="_inverseNormalTopBottom">inverse normals top and bottom conus</param>
+            <param name="_inverseNormalSides">inverse normals sides conus</param>
+            <param name="_tesselation">amount tessellation</param>
+            <param name="_namePrefix">prefix to mesh name</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.GetPointsOnCircles(System.Single,UnityEngine.Vector3[]@,UnityEngine.Vector3[]@)">
+            <summary>
+            Gets points from lower and upper part of conus
+            </summary>
+            <param name="_transformCompHandleScale"></param>
+            <param name="_lowerCoords">found lower points</param>
+            <param name="_upperCoords">found upper points</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.GetPointsOnCircles(System.Int32,UnityEngine.Vector3[]@,UnityEngine.Vector3[]@)">
+            <summary>
+            Gets points from lower and upper part of conus
+            </summary>
+            <param name="_amountPointPerCircle">amount points on circle</param>
+            <param name="_lowerCoords">found lower points</param>
+            <param name="_upperCoords">found upper points</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.GetPointsOnCircles(System.Int32,u040.prespective.math.doubles.DVector3,System.Double,System.Boolean,u040.prespective.math.doubles.DVector3[]@)">
+            <summary>
+            Gets points from lower or upper part of conus
+            </summary>
+            <param name="_amountPointPerCircle">amount points on circle</param>
+            <param name="_centre">centre</param>
+            <param name="_radius">radius</param>
+            <param name="_upper">if upper points</param>
+            <param name="_coords">found points</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.AlignTopToBottom">
+            <summary>
+            Align top to bottom
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.AlignBottomToTop">
+            <summary>
+            Align bottom to top
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexconus.AConusGenerator.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AConusColliderGenerator 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh">
+            <summary>
+                <description>
+                    Creates a loft mesh using splines
+                </description>
+                <version 
+                    ver="1.0.0" 
+                    author="TGE, BBS" 
+                    date="210203">
+                    Made copy of LoftMesh and set to double
+                </version>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.GenerateLoftMeshSurface(UnityEngine.GameObject)" -->
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.ClearLoftMeshSurface">
+            <summary>
+            clears the loft surface by destroying any existing surface guide splines
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.GenerateLoftMesh(UnityEngine.GameObject,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.generateLoftMeshPart(u040.prespective.core.spline.ADSpline,u040.prespective.core.spline.ADSpline,u040.prespective.core.spline.ADSpline,System.Double,System.Double,System.Double,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.localizeCurve(System.Collections.Generic.Dictionary{System.Double,u040.prespective.math.doubles.DVector3},u040.prespective.math.doubles.DPlane)" -->
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.mediateCPs(System.Double[],System.Double[],System.Int32,System.Double)">
+            <summary>
+            Mediates between the control points k1 on curve 1 and control points k2 on curve2
+            </summary>
+            <param name="_k1">the control points on curve 1</param>
+            <param name="_k2">the control points on curve 2</param>
+            <param name="_len">the desired number of resulting control points</param>
+            <param name="_prog">the progression and thus weighting of the control points (0 = fully curve1, 1 = fully curve2</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.loft.DLoftMesh.SetOptimalSplineOrientation">
+            <summary>
+            orients the spline to set rotation with the up and forward rotated to correct direction
+            </summary>
+            <returns>if successful</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator">
+            <summary>
+            Creates mesh of top and bottom polyhedron
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.ScalingToolType">
+            <summary>
+            Polyhedron move types
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.MakeNormals">
+            <summary>
+            Make normals self
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.InverseNormalsTopBottom">
+            <summary>
+            Inverse normals top bottom
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.InverseNormalsSides">
+            <summary>
+            Inverse normals sides
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.GenerationRadius">
+            <summary>
+            Radius
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.GenerationHeight">
+            <summary>
+            Height
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.EditMode">
+            <summary>
+            Are in edit mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.AllowSkew">
+            <summary>
+            Allow skew
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.NumberOfPoints">
+            <summary>
+            Number of points
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.ScalingTool">
+            <summary>
+            Polyhedron type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.FoldoutTop">
+            <summary>
+            Fold out top
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.FoldoutBottom">
+            <summary>
+            Fold out bottom
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.FoldoutColors">
+            <summary>
+            Fold out colors
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.SceneTopColor">
+            <summary>
+            Top color
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.SceneBotColor">
+            <summary>
+            Bottom color
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.SceneMidColor">
+            <summary>
+            Mid plane color
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.PrefixName">
+            <summary>
+            Prefix name for mesh
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.AlignmentOffset">
+            <summary>
+            Offset of alignment
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.PointsTop">
+            <summary>
+            Top points
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.PointsBot">
+            <summary>
+            Bottom points
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.storedPreviousTopPoints">
+            <summary>
+            previously made top points
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.storedPreviousBottomPoints">
+            <summary>
+            previously made bottom points
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.TopPolyCenterPoint">
+            <summary>
+            Property for controlling the top points directly by centroid
+            getting returns the top centroid, setting translates the points to match the centroid
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.TopPolyNormal">
+            <summary>
+            Returns the average normal of the top polygon
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.BottomPolyCenterPoint">
+            <summary>
+            Property for controlling the bottom points directly by centroid
+            getting returns the top centroid, setting translates the points to match the centroid
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.BottomPolyNormal">
+            <summary>
+            Returns the average normal of the top polygon
+            (since the vector direction matches with the direction of the 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.GeneratePoints(System.Int32,System.Single,System.Single)">
+            <summary>
+            Generated points
+            </summary>
+            <param name="_numberOfPoints"></param>
+            <param name="_generationRadius"></param>
+            <param name="_generationHeight"></param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.generatedMesh">
+            <summary>
+            generates mesh of polyhedron
+            </summary>
+            <returns>created mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.generateMesh(System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Generated mesh
+            </summary>
+            <param name="_makeNormals">created normals self</param>
+            <param name="_inverseNormalTopBottom">inverse normal tops and bottom</param>
+            <param name="_inverseNormalSides">inverse normal sides</param>
+            <param name="_namePrefix">prefix to mesh name</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.AlignTopToBottom">
+            <summary>
+            Align top to bottom
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.AlignBottomToTop">
+            <summary>
+            Align bottom to top
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.explicitBuffer">
+            <summary>
+            Buffered type
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prescissor.parametricshapegeneration.convexpolyhedron.AConvexPolyhedronGenerator.GetConcreteExplicitType">
+            <summary>
+            Retrieve the preferred Concrete Explicit Inheritance Class of AConvexPolyhedronGenerator 
+            (which is located in a different assembly, so we need to index it in runtime)
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch">
+            <summary>
+            @CLASS : CoonsPatch
+            
+            @ABOUT : Makes Coons patch of 4 lines
+                     
+            @AUTHOR : Tymen (Unit040)
+            
+            @VERSION : 1.00 - Implemented Coons patch(07-01-2019)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch.#ctor(u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve1Variable,u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve1Variable,u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve1Variable,u040.prespective.prescissor.parametricshapegeneration.beziercurve.ICurve1Variable)" -->
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch.getValueAtDouble(System.Double,System.Double)">
+            <summary>
+            gets point at given values
+            </summary>
+            <param value="u"></param>
+            <param value="v"></param>
+            <returns>point</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch.getValueAt(System.Single,System.Single)">
+            <summary>
+            gets point at given values
+            </summary>
+            <param value="u"></param>
+            <param value="v"></param>
+            <returns>point</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.coonspatch.CoonsPatch.getSurplus(System.Double,System.Double)">
+            <summary>
+            calculates the surplus for this coons patch
+            </summary>
+            <param value="u"></param>
+            <param value="v"></param>
+            <returns>surplus</returns>
+        </member>
+        <member name="T:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility">
+            <summary>
+            utility for shape generation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCap(UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCap(UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_verts">vertices</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCapFromCentre(UnityEngine.Vector3[],UnityEngine.Vector3,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_centre">centre of cap to build from</param>
+            <param name="_verts">vertices</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCapFromCentre(UnityEngine.Vector3[],UnityEngine.Vector3,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_centre">centre of cap to build from</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCapWithTransform(UnityEngine.Transform,UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_t">transform to do transformation with</param>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.FillConcaveCapWithTransform(UnityEngine.Transform,UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            creates a mesh for given cap
+            </summary>
+            <param name="_t">transform to do transformation with</param>
+            <param name="_cap">cap to build mesh for</param>
+            <param name="_verts">vertices</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.BridgeMatchedBoundaries(UnityEngine.Vector3[],UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            builds mesh between 2 caps
+            </summary>
+            <param name="_upper">upper cap</param>
+            <param name="_lower">lower cap</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.BridgeMatchedBoundaries(UnityEngine.Vector3[],UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            builds mesh between 2 caps
+            </summary>
+            <param name="_upper">upper cap</param>
+            <param name="_lower">lower cap</param>
+            <param name="_verts">vertices</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.BridgeMatchedBoundariesWithTransform(UnityEngine.Transform,UnityEngine.Vector3[],UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            builds mesh between 2 caps
+            </summary>
+            <param name="_t">transform to do transformation with</param>
+            <param name="_upper">upper cap</param>
+            <param name="_lower">lower cap</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.BridgeMatchedBoundariesWithTransform(UnityEngine.Transform,UnityEngine.Vector3[],UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            builds mesh between 2 caps
+            </summary>
+            <param name="_t">transform to do transformation with</param>
+            <param name="_upper">upper cap</param>
+            <param name="_lower">lower cap</param>
+            <param name="_verts">vertices</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.BridgeMatchedBoundariesWithTransformSpecialCase(UnityEngine.Transform,UnityEngine.Vector3[],UnityEngine.Vector3[],System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Boolean)">
+            <summary>
+            special case for the boolean generator when top and bottom caps are not the same amount vertices
+            </summary>
+            <param name="_t">transform to do transformation with</param>
+            <param name="_upper">upper cap</param>
+            <param name="_lower">lower cap</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_invNormals">if normals are inverted</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.makeOneSide(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,System.Boolean,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@,System.Int32@)">
+            <summary>
+            generates a side mesh between 2 lower and 2 upper vertices
+            </summary>
+            <param name="_startUpper">start upper vertex</param>
+            <param name="_nextUpper">next upper vertex</param>
+            <param name="_startLower">start lower vertex</param>
+            <param name="_nextLower">next lower vertex</param>
+            <param name="_invNormals">if normals are inverted</param>
+            <param name="_verts">vertices</param>
+            <param name="_norms">normals</param>
+            <param name="_tris">triangles</param>
+            <param name="_amountVertices">amount of vertices present in mesh</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.GetPointsOnCircleOnPlane(u040.prespective.math.doubles.DPlane,u040.prespective.math.doubles.DVector3,System.Double,System.Int32)">
+            <summary>
+            generates points from a circle
+            </summary>
+            <param name="_plane">plane of circle</param>
+            <param name="_centrePoint">centre point</param>
+            <param name="_radius">radius</param>
+            <param name="_sectionCount">amount of points on circle</param>
+            <returns>made points</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.circlePosXZ(System.Double,System.Double)">
+            <summary>
+            gets circle position on X Z plane
+            </summary>
+            <param name="_cirleShare">percentage on the circle</param>
+            <param name="_radius">radius of circle</param>
+            <returns>point on circle</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.CreateEllipse(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion,System.String,System.Int32)">
+            <summary>
+            creates an ellipse of given radii from centre and with given rotation
+            </summary>
+            <param name="_centre">centre ellipse</param>
+            <param name="_radii">radii ellipse</param>
+            <param name="_rotation">rotation ellipse</param>
+            <param name="_meshName">mesh name</param>
+            <param name="_sectionCount">amount of sections on ellipse (needs to be above 2)</param>
+            <returns>mesh of created ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.CreateEllipse(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DQuaternion,u040.prespective.math.doubles.DVector2,u040.prespective.math.doubles.DVector2,System.String,System.Int32)">
+            <summary>
+            creates an ellipse of given radii from centre and with given rotation
+            </summary>
+            <param name="_centre">centre ellipse</param>
+            <param name="_radii">radii ellipse</param>
+            <param name="_rotation">rotation ellipse</param>
+            <param name="_mainPercentageRange">percentage of main ellipse want to use must be between 0 and 1</param>
+            <param name="_circlePercentageRange">percentage of circles on the ellipse want to use must be between 0 and 1</param>
+            <param name="_meshName">mesh name</param>
+            <param name="_sectionCount">amount of sections on ellipse (needs to be above 2)</param>
+            <returns>mesh of created ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.percentageCheck(u040.prespective.math.doubles.DVector2)">
+            <summary>
+            check percentage correctly set
+            </summary>
+            <param name="_percentage">percentage</param>
+            <returns>corrected percentage</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.GetPointsOnEllipse(u040.prespective.math.doubles.DQuaternion,u040.prespective.math.doubles.DVector3,System.Double,System.Double,System.Int32)">
+            <summary>
+            creates the points on an ellipse from centre
+            </summary>
+            <param name="_rotation">amount ellipse is rotated</param>
+            <param name="_centre">centre of ellipse</param>
+            <param name="_radiusx">radius along x-axis</param>
+            <param name="_radiusz">radius along z-axis</param>
+            <param name="_sectionCount">amount of sections on the ellipse</param>
+            <returns>points on the ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.ellipsePosXZ(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            gets ellipse position on X Z plane formula from https://en.wikipedia.org/wiki/Ellipse
+            </summary>
+            <param name="_theta">theta on ellipse in radians</param>
+            <param name="_radiusx">radius along x-axis</param>
+            <param name="_radiusz">radius along z-axis</param>
+            <param name="_y">y-axis value</param>
+            <returns>point on ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.ellipsePosXY(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            gets ellipse position on X Y plane formula from https://en.wikipedia.org/wiki/Ellipse
+            </summary>
+            <param name="_theta">theta on ellipse in radians</param>
+            <param name="_radiusx">radius along x-axis</param>
+            <param name="_radiusy">radius along y-axis</param>
+            <param name="_z">z-axis value</param>
+            <returns>point on ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.ellipsePosYZ(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            gets ellipse position on Y Z plane formula from https://en.wikipedia.org/wiki/Ellipse
+            </summary>
+            <param name="_theta">theta on ellipse in radians</param>
+            <param name="_radiusy">radius along y-axis</param>
+            <param name="_radiusz">radius along z-axis</param>
+            <param name="_x">x-axis value</param>
+            <returns>point on ellipse</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.CreateCube(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,System.String)">
+            <summary>
+            creates cube of given extends on given centre
+            </summary>
+            <param name="_centre">centre</param>
+            <param name="_extends">extends</param>
+            <param name="_rotation">rotation of the cube</param>
+            <param name="_meshName">mesh name</param>
+            <returns>created cube mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.CreateSubMeshCube(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,System.String)">
+            <summary>
+            Creates cube of given extends on given centre which each side combination (top/bottom, right/left, forward/backward) being its own sub mesh
+            </summary>
+            <param name="_centre">centre</param>
+            <param name="_extends">extends</param>
+            <param name="_rotation">rotation of the cube</param>
+            <param name="_meshName">mesh name</param>
+            <returns>created cube mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.createCubeMeshWithoutTraingles(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,System.String)">
+            <summary>
+            Creates cube mesh without setting its triangles
+            </summary>
+            <param name="_centre">centre</param>
+            <param name="_extends">extends</param>
+            <param name="_rotation">rotation of the cube</param>
+            <param name="_meshName">mesh name</param>
+            <returns>created cube mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.parametricshapegeneration.ShapeGeneratorUtility.CreateCylinder(u040.prespective.math.doubles.DVector3,System.Double,System.Double,u040.prespective.math.doubles.DQuaternion,System.String,System.Int32)">
+            <summary>
+            creates cylinder of given radius and height from given centre
+            </summary>
+            <param name="_centre">centre cylinder</param>
+            <param name="_radius">radius cylinder</param>
+            <param name="_height">height cylinder</param>
+            <param name="_rotation">rotation cylinder (identity is orientated over y-axis)</param>
+            <param name="_meshName">name of mesh</param>
+            <param name="_tessellation">tessellation of top bottom of cylinder</param>
+            <returns>cylinder mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.CreatePartialMesh(UnityEngine.Mesh,System.Collections.Generic.List{System.Int32},System.Boolean,System.String,System.Boolean,System.String)">
+            <summary>
+            creates a partial mesh from a mesh and return it
+            </summary>
+            <param name="_mesh">the total mesh</param>
+            <param name="_listOfIndeces">list of indices to make the partial mesh from these can be either triangle or vertice indeces</param>
+            <param name="_useVertices">if using vertice or triangle indeces</param>
+            <param name="_meshName">mesh name (if empty takes original mesh name)</param>
+            <param name="_save">if should save mesh</param>
+            <param name="_directory">directory to save to (if empty saves to Resources)</param>
+            <returns>partial mesh</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.MergeOuterEdgesNormalPlane(System.Double,System.Collections.Generic.List{u040.prespective.math.doubles.DVector3[]}@,System.Collections.Generic.List{u040.prespective.math.doubles.DVector3}@)">
+            <summary>
+            processes a normal plane to merge the outer edges when possible
+            </summary>
+            <param name="_difference">maximum difference</param>
+            <param name="_outerEgdes">outer edges</param>
+            <param name="_outerVertices">outer vertices</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.edgeCheckEqual(u040.prespective.math.doubles.DVector3[],u040.prespective.math.doubles.DVector3[])">
+            <summary>
+            checks if the edges are equal
+            </summary>
+            <param name="_edge1">edge 1</param>
+            <param name="_edge2">edge 2</param>
+            <returns>check</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.checkOnLine(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,System.Double)">
+            <summary>
+            checks if point is on line between points within a differnce
+            this is done by making a function for al the x, y and z coordinates by new variable t
+            this t is goes from 0 to 1 on the line
+            </summary>
+            <param name="_beginPoint">begin point line</param>
+            <param name="_endPoint">end point line</param>
+            <param name="_checkPoint">point to check on line</param>
+            <param name="_difference">maximum difference</param>
+            <returns>check on line</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceArray(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceArrayDouble(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceList(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceListDouble(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceDictionairy(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.VertInWorldSpaceDictionairyDouble(UnityEngine.Transform,UnityEngine.Vector3[])">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.vertInWorldSpaceConcurrentDictionairy(UnityEngine.Transform,UnityEngine.Vector3[],System.Int32)">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <param name="_ncpu">number of processors</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.vertInWorldSpaceConcurrentDictionairyDouble(UnityEngine.Transform,UnityEngine.Vector3[],System.Int32)">
+            <summary>
+            gets the vertices of game object in worldspace
+            </summary>
+            <param name="_t">transform</param>
+            <param name="_vert">vertices</param>
+            <param name="_ncpu">number of processors</param>
+            <returns>vertices in world space</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.AddVertexToMesh(UnityEngine.Mesh,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            adds given point to mesh
+            </summary>
+            <param name="_mesh">mesh</param>
+            <param name="_addedPoint">added point</param>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.getClosedPointOnLineSegment(u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            gets closed point on line segment
+            </summary>
+            <param name="_linePoint1">first point line segment</param>
+            <param name="_linePoint2">second point line segment</param>
+            <param name="_point">point to check</param>
+            <returns>closed point</returns>
+        </member>
+        <member name="M:u040.prespective.prescissor.PreScissorUtility.checkEdge(System.Int32[],UnityEngine.Vector3[],System.Int32[],UnityEngine.Vector3[])">
+            <summary>
+            checks if edges are equal
+            </summary>
+            <param name="_tri">vertex indices edge check</param>
+            <param name="_vert">vertex points edge check</param>
+            <param name="_triCheck">vertex indices edge compare</param>
+            <param name="_vertCheck">vertex points edge compare</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

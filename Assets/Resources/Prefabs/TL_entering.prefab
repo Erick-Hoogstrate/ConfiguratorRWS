@@ -1,179 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &535303851798567233
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3127427811362943753}
-  - component: {fileID: 7595657169872589974}
-  m_Layer: 0
-  m_Name: Red2
-  m_TagString: sensor
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3127427811362943753
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535303851798567233}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7595657169872589974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535303851798567233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c280814ba22f3604e8a79fa614d64ffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.Trafficsensors[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 4309621601921607869}
---- !u!1 &1338634998837402198
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5143664000018332299}
-  - component: {fileID: 2089950169165588255}
-  m_Layer: 0
-  m_Name: Q_Red1
-  m_TagString: indicator
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5143664000018332299
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338634998837402198}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2089950169165588255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338634998837402198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5071c07b691040f47810c05e31b5c364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.TrafficLight[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 7623370811226888983}
---- !u!1 &1417293109968650135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6700831692399859308}
-  - component: {fileID: 8319113290677320464}
-  m_Layer: 0
-  m_Name: Q_Green
-  m_TagString: indicator
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6700831692399859308
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417293109968650135}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8319113290677320464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417293109968650135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5071c07b691040f47810c05e31b5c364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.TrafficLight[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 2854682270667120460}
 --- !u!1 &1694810601119418828
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,159 +34,6 @@ Transform:
   m_Father: {fileID: 4309621601414488612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2127945818695503037
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4744985967472389703}
-  - component: {fileID: 127026831440670147}
-  m_Layer: 0
-  m_Name: Red1
-  m_TagString: sensor
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4744985967472389703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127945818695503037}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &127026831440670147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127945818695503037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c280814ba22f3604e8a79fa614d64ffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.Trafficsensors[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 4309621601273493933}
---- !u!1 &3122116930198420761
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4973514865752159219}
-  m_Layer: 0
-  m_Name: Logic Preperation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4973514865752159219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3122116930198420761}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5143664000018332299}
-  - {fileID: 6700831692399859308}
-  - {fileID: 8836830590408241725}
-  - {fileID: 4744985967472389703}
-  - {fileID: 1865432071723487111}
-  - {fileID: 3127427811362943753}
-  m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3270783340003759995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1865432071723487111}
-  - component: {fileID: 3729301273041946859}
-  m_Layer: 0
-  m_Name: Green
-  m_TagString: sensor
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1865432071723487111
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3270783340003759995}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3729301273041946859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3270783340003759995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c280814ba22f3604e8a79fa614d64ffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.Trafficsensors[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 4309621600525317956}
 --- !u!1 &4309621599860745020
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +575,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4309621600525317956
 MonoBehaviour:
@@ -988,7 +661,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4309621600530617399
 MeshFilter:
@@ -1621,7 +1294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4309621601273493933
 MonoBehaviour:
@@ -1703,7 +1376,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7363551431390454555}
-  - {fileID: 4973514865752159219}
   - {fileID: 4309621601880625998}
   - {fileID: 4309621601545892592}
   - {fileID: 4309621600530617395}
@@ -1871,7 +1543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4309621601545892599
 MeshFilter:
@@ -2138,7 +1810,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4309621601880625997
 MeshFilter:
@@ -2256,7 +1928,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4309621601414488612}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4309621601921607869
 MonoBehaviour:
@@ -2309,61 +1981,3 @@ MonoBehaviour:
   texture: {fileID: 0}
   VoidColor: {r: 0, g: 0, b: 0, a: 1}
   Range: {x: 0, y: 3}
---- !u!1 &8652300166571272808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8836830590408241725}
-  - component: {fileID: 1483695053288517314}
-  m_Layer: 0
-  m_Name: Q_Red2
-  m_TagString: indicator
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8836830590408241725
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8652300166571272808}
-  m_LocalRotation: {x: -0.027584147, y: -0.008743681, z: -0.013020563, w: -0.99949646}
-  m_LocalPosition: {x: 0.57865596, y: -0.02940609, z: -0.32268488}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4973514865752159219}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1483695053288517314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8652300166571272808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5071c07b691040f47810c05e31b5c364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUIShowSignalsForDebugging: 1
-  GUITextOffset: {x: 0, y: 0}
-  GUITextColor: {r: 1, g: 0, b: 0, a: 1}
-  GUITextSize: 12
-  GUITextLineSpacing: 4
-  signalNamingRuleOverrides:
-  - ruleTarget: $ALL
-    simAddressPathFormat: '{{INST_NAME}}_{{IO_NAME}}'
-    plcAddressPathFormat: '{{INST_NAME}}.{{IO_NAME}}'
-    simPathSeparator: 95
-    plcPathSeparator: 46
-  implicitNamingRule:
-    instanceNameRule: GVLs.TrafficLight[{{INDEX_IN_PARENT}}]
-  Target: {fileID: 6768072075048646974}

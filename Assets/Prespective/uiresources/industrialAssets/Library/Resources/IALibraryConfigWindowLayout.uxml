@@ -1,0 +1,11 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+    <ui:VisualElement class="window-padding-container">
+        <!--    <ui:TextField label="Name"  name="name-text" />-->
+        <ui:TextField label="Category" name="category-text"/>
+        <ui:TextField label="Version" name="version-text"/>
+        <ui:Toggle label="Supports current version" name="support-current-version-toggle"/>
+        <ui:Toggle label="Favourited" name="favourited-toggle"/>
+        <ui:Button name="save-button" text="Save"/>
+    </ui:VisualElement>
+</ui:UXML>

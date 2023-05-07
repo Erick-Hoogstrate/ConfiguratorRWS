@@ -1,4 +1,4 @@
-﻿.menu-header {
+.menu-header {
 	height: 24px;
 	margin-left: 0px;
 	margin-top: 2px;
@@ -16,14 +16,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.context-icon {
-	height: 12px;
-	width: 12px;
-	align-self: flex-end;
-	-unity-text-align: middle-center;
-	left: 3px;
 }
 
 .context-menu-container .menu-item {
@@ -58,11 +50,11 @@
 }
 
 #mechanics-menu .menu-header, #mechanics-menu .menu-item, #mechanics-contextmenu .menu-item {
-	border-left-color: rgb(72, 144, 191);
+	border-left-color: rgb(70, 132, 193);
 }
 
 #mechanics-menu .menu-header:hover, #mechanics-menu .menu-item:hover, #mechanics-contextmenu .menu-item:hover {
-	border-left-color: rgba(72, 144, 191, 0.5);
+	border-left-color: rgba(70, 132, 193, 0.5);
 }
 
 #logic-menu .menu-header, #logic-menu .menu-item {
@@ -73,12 +65,18 @@
 	border-left-color: rgba(189, 76, 0, 0.5);
 }
 
-#prespective-menu .menu-header, #prespective-menu .menu-item {
-	border-left-color: rgb(0, 0, 0);
+#industrial-assets-menu .menu-header, #industrial-assets-menu .menu-item {
+	border-left-color: rgb(205, 205, 205);
 }
 
-#prespective-menu .menu-header:hover, #prespective-menu .menu-item:hover {
-	border-left-color: rgba(0, 0, 0, 0.5);
+#industrial-assets-menu .menu-header:hover, #industrial-assets-menu .menu-item:hover {
+	border-left-color: rgba(205, 205, 205, 0.5);
+}
+
+.context-menu {
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
 }
 
 .menu-divider {

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement class="row custom-exposure" name="customization-variable-container">
+      <ui:TextField name="variable-name" style="width: 35%"/>
+      <ue:EnumField name="variable-type" style="width: 30%"/>
+      
+      <ui:VisualElement name="default-value-container" />
+    </ui:VisualElement>
+</ui:UXML>

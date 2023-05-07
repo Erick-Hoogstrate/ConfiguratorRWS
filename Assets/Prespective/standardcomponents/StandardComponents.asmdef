@@ -1,30 +1,30 @@
 {
-    "name": "StandardComponents",
-    "references": [
-        "UtilityEditor",
-        "PrepairEditor",
-        "Prelogic",
-        "Prepair",
-        "Core",
-        "Utility",
-        "Prescripted",
-        "PrescriptedEditor",
-        "CoreEditor",
-        "APA",
-        "APAEditor",
-        "Wrappers",
-        "PrescissorEditor",
-        "Prescissor",
-        "Preplug",
-        "PreplugEditor"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "StandardComponents",
+  "references": [
+    "Wrappers"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [
+    "UtilityEditor.dll",
+    "PrepairEditor.dll",
+    "Prelogic.dll",
+    "Prepair.dll",
+    "Core.dll",
+    "Utility.dll",
+    "Prescripted.dll",
+    "PrescriptedEditor.dll",
+    "CoreEditor.dll",
+    "PrescissorEditor.dll",
+    "Prescissor.dll",
+    "Preplug.dll",
+    "PreplugEditor.dll",
+    "Bridge.dll",
+    "IndustrialAssets.dll",
+    "IndustrialAssetsEditor.dll"
+  ],
+  "autoReferenced": true,
+  "defineConstraints": []
 }

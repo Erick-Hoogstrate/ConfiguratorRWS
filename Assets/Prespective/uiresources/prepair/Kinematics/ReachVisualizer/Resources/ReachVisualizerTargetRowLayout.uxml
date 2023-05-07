@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="row" name="target-row">
+    <ue:ObjectField style="width: 34%" name="object" />
+    <ue:Vector3Field style="width: 35%" name="local-direction"/>
+    <ue:ColorField style="width: 20%" name="color"/>
+    <ui:Button style="width: 5%" name="remove-button" text="x" tooltip="Remove target"/>
+  </ui:VisualElement>
+</ui:UXML>

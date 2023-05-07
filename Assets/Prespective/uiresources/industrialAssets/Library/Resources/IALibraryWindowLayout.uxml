@@ -1,0 +1,34 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ue:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-size="200" orientation="horizontal">
+    <ui:VisualElement>
+      <ui:Label name="categories-label" text="Categories" class="bold"/>
+      <ui:IMGUIContainer name="category-imgui"/>
+
+      <ui:VisualElement name="sidebar-icons" class="row">
+        <ui:Image name="settings-button" text="cog" class="settings-button" />
+        <ui:Image name="refresh-online-button" text="Refresh" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+    
+    <ui:VisualElement>
+      <ui:ScrollView class="asset-container window-padding-container flex-grow">
+        <ui:VisualElement class="division margin-bottom-10px" name="online-assets" text="Industrial Assets" value="true">
+          <ue:Toolbar name="toolbar" class="margin-bottom-10px">
+            <ui:VisualElement class="row flex-grow">
+              <ui:Label text="Sort By: "/>
+              <ue:ToolbarMenu name="sorting-filter"/>
+            </ui:VisualElement>
+
+            <ue:ToolbarSearchField/>
+          </ue:Toolbar>
+
+          <ui:VisualElement class="row ">
+            <ui:Toggle name="downloaded-only-toggle" text=" Imported" class="flex-grow"/>
+          </ui:VisualElement>
+
+          <ui:VisualElement  class="row wrap" name="asset-container" />
+        </ui:VisualElement>
+      </ui:ScrollView>
+    </ui:VisualElement>
+  </ue:TwoPaneSplitView>
+</ui:UXML>

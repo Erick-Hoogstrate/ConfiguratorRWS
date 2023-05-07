@@ -1,4 +1,4 @@
-﻿<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
   <ui:VisualElement class="row" name="target-row">
     <ue:ObjectField style="width: 75%" name="object" />
     <ue:IntegerField style="width: 15%" name="joint-index"/>
@@ -6,4 +6,4 @@
   </ui:VisualElement>
 
   <ui:Button name="trigger-target-button" text="Trigger solver" tooltip="Triggers solver to do a calculation, when enabled" />
-</UXML>
+</ui:UXML>

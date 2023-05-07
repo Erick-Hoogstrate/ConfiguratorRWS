@@ -2,25 +2,34 @@ using System;
 using System.Collections.Generic;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.logic;
 using UnityEngine;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
+namespace u040.prespective.standardcomponents.virtualhardware.actuators.motors.logic
 {
     public class DContinuousServoMotorLogic : StandardLogicComponent<DContinuousServoMotor>
     {
+        private const string oTarget = "oTarget";
+        private const string oPulseWidth = "oPulseWidth";
+        private string iPosition = "iPosition";
+
         protected override Dictionary<SignalInstance, Func<object>> customInputSignalMemberGetters
         {
             get
             {
                 return new Dictionary<SignalInstance, Func<object>>
                 {
-                    { GetSignalInstanceByName("iPosition"), () => Target.Position }
+                    {
+                        GetSignalInstanceByName(iPosition), () => Target.Position
+                    }
                 };
             }
         }
 
         #region <<PLC Signals>>
+
         #region <<Signal Definitions>>
+
         /// <summary>
         /// Declare the IO signals
         /// </summary>
@@ -28,18 +37,22 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
         {
             get
             {
-                return new List<SignalDefinition>() {
+                return new List<SignalDefinition>()
+                {
                     ////Input Only
-                    new SignalDefinition("iPosition", PLCSignalDirection.INPUT, SupportedSignalType.REAL64, "", "Position (deg)", null, null, 0d),
+                    new SignalDefinition(iPosition, PLCSignalDirection.INPUT, SupportedSignalType.REAL64, "", "Position (deg)", null, null, 0d),
 
                     ////Outputs only
-                    new SignalDefinition("oTarget", PLCSignalDirection.OUTPUT, SupportedSignalType.REAL64, "", "Target (deg)", onSignalChanged, null, 0d),
-                    new SignalDefinition("oPulseWidth", PLCSignalDirection.OUTPUT, SupportedSignalType.REAL64, "", "Pulse Width (ms)", onSignalChanged, null, 1d),
+                    new SignalDefinition(oTarget, PLCSignalDirection.OUTPUT, SupportedSignalType.REAL64, "", "Target (deg)", onSignalChanged, null, 0d),
+                    new SignalDefinition(oPulseWidth, PLCSignalDirection.OUTPUT, SupportedSignalType.REAL64, "", "Pulse Width (ms)", onSignalChanged, null, 1d),
                 };
             }
         }
+
         #endregion
+
         #region <<PLC Outputs>>
+
         /// <summary>
         /// General callback for the IOs
         /// </summary>
@@ -50,14 +63,14 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
         /// <param name="_oldValueReceived">the time of the old value change</param>
         void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
         {
-            switch (_signal.definition.defaultSignalName)
+            switch (_signal.Definition.DefaultSignalName)
             {
-                case "oTarget":
-                    Target.Target = (double)_newValue;
+                case oTarget:
+                    Target.Target = (double) _newValue;
                     break;
 
-                case "oPulseWidth":
-                    Target.PulseWidth = (double)_newValue;
+                case oPulseWidth:
+                    Target.PulseWidth = (double) _newValue;
                     break;
 
                 default:
@@ -65,7 +78,9 @@ namespace u040.prespective.standardcomponents.kinetics.motor.servomotor
                     break;
             }
         }
+
         #endregion
+
         #endregion
     }
 }

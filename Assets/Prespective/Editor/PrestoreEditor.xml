@@ -1,0 +1,1059 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PrestoreEditor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow">
+            <summary>
+            Linked Asset Exporter interactive window
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.linkedAssetExporter">
+            <summary>
+            Linked Asset Exporter
+            </summary>
+        </member>
+        <member name="P:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.visualTreeFile">
+            <summary>
+            Link to layout file
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.exportButton">
+            <summary>
+            Button used for call for export
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.exportButtonLabel">
+            <summary>
+            Parent label of export button to display tooltip on when button is disabled
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.OpenWindow">
+            <summary>
+            Open window code
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.executeOnEnable">
+            <summary>
+            Apply theme on window enable
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.initialize">
+            <summary>
+            Initializes the window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.initializeFileExportLocation">
+            <summary>
+            Initialized the file export location fields
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.initializeExportOptions">
+            <summary>
+            Initialized the export options
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.initializeExportButton">
+            <summary>
+            Initialized the export button
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.editor.LinkedAssetExporterWindow.applyToggleSettings(UnityEngine.UIElements.Toggle)">
+            <summary>
+            Applies some toggle styling options for alignment
+            </summary>
+            <param name="_toggle">Target Toggle to change settings of</param>
+        </member>
+        <member name="T:u040.prespective.prestore.prehistory.LinkedAssetExporter">
+            <summary>
+            Simple Asset Exporter to make sure all unique resource assets present in a
+            game object are put in a specific folder for quick and easy exporting as asset pack
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.TargetExportFolder">
+            <summary>
+            Relative filepath (from Assets folder) in which the exported files will be put
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.FolderName">
+            <summary>
+            The main folder this exporter fill create to export the resources to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.MeshesSubFolder">
+            <summary>
+            The Folder this exporter will export the meshes to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ShadersSubFolder">
+            <summary>
+            The Folder this exporter will export the shader to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.MaterialSubFolder">
+            <summary>
+            The Folder this exporter will export the materials to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.TextureSubFolder">
+            <summary>
+            The Folder this exporter will export the textures to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.TempFolder">
+            <summary>
+            The Folder this exporter will use for temporary files
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.PrefabSubFolder">
+            <summary>
+            The Folder this exporter will export the prefab to
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.Verbose">
+            <summary>
+            Include Debug.Log's or not
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportPrefab">
+            <summary>
+            Should the export include a prefab of the exported gameobject
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportShaders">
+            <summary>
+            Should the export include any exportable shaders (Built-in shaders excluded)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportColliders">
+            <summary>
+            Should the export include any colliders
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportMaterials">
+            <summary>
+            Should the export include any materials
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportTextures">
+            <summary>
+            Should the export include any textures
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportDisabledGameObjects">
+            <summary>
+            Should the export include disabled gameobjects
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.LinkedAssetExporter.deactivatedGameObjects">
+            <summary>
+            List to keep track of deactivated GameObjects in export
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.DoExport">
+            <summary>
+            Sets the exporting in motion
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.ExportLinkedAssets(UnityEngine.GameObject,System.String)">
+            <summary>
+            Exports linked assets of _go to _baseFolder
+            </summary>
+            <param name="_go">GameObject to export</param>
+            <param name="_baseFolder">path to place exported assets at</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.recurseTransform(UnityEngine.Transform,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}})">
+            <summary>
+            Recursive method that finds out everything about every (child-) game object in _t
+            </summary>
+            <param name="_t"></param>
+            <param name="_meshAssetsToCopyAndRelink"></param>
+            <param name="_meshAssetsToExportAndRelink"></param>
+            <param name="_boundMaterials"></param>
+            <param name="_unboundMaterials"></param>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.exportPrefab(UnityEngine.GameObject,System.String)">
+            <summary>
+            Exports a prefab when ExportPrefab is true
+            </summary>
+            <param name="_go">GameObject to create a prefab of</param>
+            <param name="_baseFolder">Base path to export folder</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.createRequiredFolders(UnityEngine.GameObject,System.String@)">
+            <summary>
+            Create the folders required for exporting this asset
+            </summary>
+            <param name="_parentGameObject">the root game object of this export action</param>
+            <param name="_baseFolder">the full path to the export base folder for later reference</param>
+            <returns>whether the folders were successfully created</returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.createMaterialRegistration(UnityEngine.Transform,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}})">
+            <summary>
+            Creates the registration required for export of materials
+            </summary>
+            <param name="_t"></param>
+            <param name="_boundMaterials">dictionary containing registration of bound materials</param>
+            <param name="_unboundMaterials">dictionary containing registration of unbound materials</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.exportMaterials(System.String,System.Boolean,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}})">
+            <summary>
+            Exports the materials, shaders and textures, based on settings
+            </summary>
+            <param name="_baseFolder">Path to export folder base</param>
+            <param name="_materialsAreBound">are materials bounds or not</param>
+            <param name="_boundMaterials">list of bound materials</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.linkMaterials(System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMaterialRegistration,System.Collections.Generic.List{u040.prespective.prestore.prehistory.MaterialIndexRegistration}})">
+            <summary>
+            Link materials
+            </summary>
+            <param name="_materialRegistration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.linkExportedMeshAssets(System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Link the exported meshes to the mesh filters in the scene
+            </summary>
+            <param name="_meshAssetsToCopyAndRelink"></param>
+            <param name="_meshAssetsToExportAndRelink"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.createMeshRegistrations(UnityEngine.Transform,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}},System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Creates a registration to a mesh assets origin (separates bound- and unbound registrations)
+            </summary>
+            <param name="_mf"></param>
+            <param name="_meshType"></param>
+            <param name="_foundMeshPath"></param>
+            <param name="_meshAssetsToCopyAndRelink"></param>
+            <param name="_meshAssetsToExportAndRelink"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.exportAllBoundMeshes(System.String,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Exports all meshes currently bound to only an instance, or a file that prevents direct editing (those managed by Unity3D (e.g. FBX, COLLADA))
+            NOTE : the path should be relative to the application data path
+            TODO : make this function multithreaded
+            </summary>
+            <param name="_folder"></param>
+            <param name="_boundedMeshes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.copyAllUnboundMeshes(System.String,System.Collections.Generic.Dictionary{u040.prespective.prestore.prehistory.ExportableMeshRegistration,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Copies unbound materials
+            </summary>
+            <param name="_folder">path to copy to</param>
+            <param name="_unboundedMeshes">list of unbounded mashes</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.copyUnboundMesh(UnityEngine.MeshFilter,System.String,UnityEngine.Mesh@)">
+            <summary>
+            Copies unbound mesh
+            </summary>
+            <param name="_referenceToMeshFilterWithUnboundMesh">MeshFilter reference</param>
+            <param name="_exportFullPath">full path to copy to</param>
+            <param name="_refToExportedMesh">reference to exported mesh</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.duplicateAndExportBoundMesh(UnityEngine.MeshFilter,System.String,UnityEngine.Mesh@)">
+            <summary>
+            Duplicates a mesh currently in the mesh filter and exports it to the given path
+            NOTE : the path should be relative to the application data path
+            TODO : make this function multithreaded
+            </summary>
+            <param name="_meshfilterToExport"></param>
+            <param name="_exportFullPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.generateFullFilePath(System.String,UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            Based on the proxy path given by the user; generate a full file path
+            </summary>
+            <param name="_proxyPath"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prestore.prehistory.LinkedAssetExporter.makeSureReportingFolderExists(System.String,System.Boolean,System.Exception@,System.Boolean)" -->
+        <member name="M:u040.prespective.prestore.prehistory.LinkedAssetExporter.getRelativePath(System.String,System.String)">
+            <summary>
+            Returns the Relative folder path of 2 full file or folder paths
+            </summary>
+            <param name="_pathRelativeTo">the folder we want to find the relative path to</param>
+            <param name="_fullPath">the folder who we want to get the relative URL for</param>
+            <returns>Unix notation relative folder path</returns>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.MaterialIndexRegistration.TransformPath">
+            <summary>
+            The path that goes with this game object
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.MaterialIndexRegistration.MaterialIndex">
+            <summary>
+            The index this material has within the game objects renderer
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.op_Equality(u040.prespective.prestore.prehistory.ExportableMaterialRegistration,u040.prespective.prestore.prehistory.ExportableMaterialRegistration)">
+            <summary>
+            equality operator override
+            </summary>
+            <param name="_c1"></param>
+            <param name="_c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.op_Inequality(u040.prespective.prestore.prehistory.ExportableMaterialRegistration,u040.prespective.prestore.prehistory.ExportableMaterialRegistration)">
+            <summary>
+            inequality operator override
+            </summary>
+            <param name="_c1"></param>
+            <param name="_c2"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.Equals(System.Object)" -->
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.Comparison(u040.prespective.prestore.prehistory.ExportableMaterialRegistration,u040.prespective.prestore.prehistory.ExportableMaterialRegistration)">
+            <summary>
+            Comparator function for use in the Bi-directional registration table
+            </summary>
+            <param name="_a"></param>
+            <param name="_b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.GetHashCode">
+            <summary>
+            Creates a hash code (for use in collections) by adding the registrations
+            (note that hash code need not be unique, it only needs to indicate comparison conflict)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMaterialRegistration.ToString">
+            <summary>
+            Simple override for debugging
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.ExportableMeshRegistration.AssetPath">
+            <summary>
+            AssetPath is a unique identification method, but may not always be possible (instanced mesh, mesh part of a bound file (e.g. COLLADA, FBX))
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.ExportableMeshRegistration.VertexCount">
+            <summary>
+            Vertex Count is a *quite* accurate model identification method - it rarely happens that 2 models have the same number of vertices
+            (But it does happen)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.ExportableMeshRegistration.FirstNonIdentityVertCoordinate">
+            <summary>
+            Uniqueness of a mesh can be even more precisely established using the relative coordinate of a number of verts found off-origin
+            (distinguishes between scaled variants of the same mesh)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.ExportableMeshRegistration.SceneScaling">
+            <summary>
+            If the scaling of the meshes is non-identity we must not only copy the mesh, but we must also transform its vertices and normals
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.prehistory.ExportableMeshRegistration.NewMeshReference">
+            <summary>
+            Finally, we can use this field to store a reference to the newly exported mesh asset
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.op_Equality(u040.prespective.prestore.prehistory.ExportableMeshRegistration,u040.prespective.prestore.prehistory.ExportableMeshRegistration)">
+            <summary>
+            equality operator override
+            </summary>
+            <param name="_c1"></param>
+            <param name="_c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.op_Inequality(u040.prespective.prestore.prehistory.ExportableMeshRegistration,u040.prespective.prestore.prehistory.ExportableMeshRegistration)">
+            <summary>
+            inequality operator override
+            </summary>
+            <param name="_c1"></param>
+            <param name="_c2"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.Equals(System.Object)" -->
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.Comparison(u040.prespective.prestore.prehistory.ExportableMeshRegistration,u040.prespective.prestore.prehistory.ExportableMeshRegistration)">
+            <summary>
+            Comparator function for use in the Bi-directional registration table
+            </summary>
+            <param name="_a"></param>
+            <param name="_b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.GetHashCode">
+            <summary>
+            Creates a hash code (for use in collections) by adding the registrations
+            (note that hash code need not be unique, it only needs to indicate comparison conflict)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.prestore.prehistory.ExportableMeshRegistration.ToString">
+            <summary>
+            Simple override for debugging
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.DataType">
+            <summary>
+            data type for storing mesh data
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.XMLCollada">
+            <summary>
+            Makes COLLADA file from game object
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.prestore.editor.assets.XMLCollada.NORMAL_MAP_NAME">
+            <summary>
+            name of the normal map texture location
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.XMLCollada.WriteCollada(UnityEngine.GameObject[],System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            makes a COLLADA file of the game objects in the folder path
+            </summary>
+            <param name="_ngo">game object</param>
+            <param name="_folderPath">folder path</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.XMLCollada.ReadCollada(System.String,System.String)">
+            <summary>
+            reads a COLLADA file on the path
+            </summary>
+            <param name="_path">path</param>
+            <param name="_folderName">folder name where to store the materials and textures</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.COLLADA">
+            <summary>
+            base collada data struct
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.COLLADA.MakeColladaFile(UnityEngine.GameObject,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            makes the structure of the COLLADA file for game object
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.COLLADA.ReadCollada(System.String)">
+            <summary>
+            reads the COLLADA file and puts it content into the scene
+            </summary>
+            <param name="_folderPath">path of folder where to store meshes textures and materials</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.COLLADA.getMaterialsAndTexturesInGOTree(UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Texture2D}@)">
+            <summary>
+            gets the unique materials from a game objects tree
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_listTex">list of textures</param>
+            <returns>list of materials</returns>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.COLLADA.getsLibraryGeometries(UnityEngine.GameObject,System.Collections.Generic.Dictionary{UnityEngine.Material,System.Int32},System.Boolean)">
+            <summary>
+            creates the library geometries for game object tree
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_materialIndexDict">dictionary with which materials are connected to which indices</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <returns>library geometries</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.AssetCollada">
+            <summary>
+            asset data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.AssetCollada.Make(System.Boolean,System.Boolean)">
+            <summary>
+            fills the values of the asset COLLADA
+            </summary>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.UnitCollada">
+            <summary>
+            unit data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.UnitCollada.Make(System.Int32,System.String)">
+            <summary>
+            fills values for unit collada
+            </summary>
+            <param name="_m">unit value</param>
+            <param name="_n">unit type</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.MaterialCollada">
+            <summary>
+            material data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MaterialCollada.Make(System.Int32,System.String)">
+            <summary>
+            fills the values of the asset COLLADA
+            </summary>
+            <param name="_i">id number</param>
+            <param name="_n">name</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.InstanceEffectCollada">
+            <summary>
+            instance effect data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.ImageCollada">
+            <summary>
+            image data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ImageCollada.Make(System.Int32,System.String,UnityEngine.Texture2D)">
+            <summary>
+            fills the values of the image COLLADA
+            </summary>
+            <param name="_idNumber">id number</param>
+            <param name="_name">texture name</param>
+            <param name="_texture">texture</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ImageCollada.Read(System.String,System.String@)">
+            <summary>
+            reads the data from image library
+            </summary>
+            <param name="_folderPath">path of folder where to store textures</param>
+            <param name="_texturePath">the path to the texture stored here</param>
+            <returns>its internal id</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.EffectCollada">
+            <summary>
+            effect data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.EffectCollada.Make(System.Int32,UnityEngine.Material,System.Boolean)">
+            <summary>
+            fills values of effect COLLADA
+            </summary>
+            <param name="_i">id number</param>
+            <param name="_mat">material of effect</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.EffectCollada.Read(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,UnityEngine.Material@)">
+            <summary>
+            makes and returns the material and gives it its texture
+            </summary>
+            <param name="_texs">textures</param>
+            <param name="_folderPath">path of folder where to store materials</param>
+            <param name="_matName">name of the material</param>
+            <param name="_mat">material</param>
+            <returns>internal material id</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.TechniqueCollada">
+            <summary>
+            technique data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.TechniqueCollada.Make(UnityEngine.Material,System.Boolean)">
+            <summary>
+            fills values of technique COLLADA
+            </summary>
+            <param name="_mat">material of effect</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.TechniqueCollada.Read(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            returns the material stored here
+            </summary>
+            <param name="_texs">textures</param>
+            <param name="_folderPath">path of folder where to store materials</param>
+            <param name="_matName">name of the material</param>
+            <returns>material</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.DiffuseCollada">
+            <summary>
+            diffuse data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.DiffuseCollada.MakeColor(UnityEngine.Material)">
+            <summary>
+            inputs the colour of the material
+            </summary>
+            <param name="_mat">material</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.DiffuseCollada.ReadColor">
+            <summary>
+            reads colour stored here
+            </summary>
+            <returns>colour</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.NewParamColloda">
+            <summary>
+            new param data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.NewParamColloda.Make(System.String,System.String,System.Boolean)">
+            <summary>
+            fills values param collada
+            </summary>
+            <param name="_selfID">self id</param>
+            <param name="_id">next id</param>
+            <param name="_useSurface"></param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.SurfaceCollada">
+            <summary>
+            surface data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.Sampler2DCollada">
+            <summary>
+            sampler 2D data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.Shadercollada">
+            <summary>
+            shader data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.MainTextureCollada">
+            <summary>
+            texture data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.NormalMapCollada">
+            <summary>
+            normal map data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.GeometryCollada">
+            <summary>
+            geometry data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.GeometryCollada.Make(UnityEngine.Mesh,System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            fills the values of the geometry COLLADA
+            </summary>
+            <param name="_mes">mesh</param>
+            <param name="_matsIndeces">indices of the materials</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.GeometryCollada.Read(System.String,System.Boolean,UnityEngine.Mesh@)">
+            <summary>
+            finds the stored mesh here
+            </summary>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_folderPath">path of folder where to store meshes</param>
+            <param name="_mes">mesh</param>
+            <returns>internal mesh id</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.MeshCollada">
+            <summary>
+            mesh data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MeshCollada.Make(UnityEngine.Mesh,System.String,System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            fills the values of the mesh COLLADA
+            </summary>
+            <param name="_mes">mesh</param>
+            <param name="_id">material id</param>
+            <param name="_matsIndeces">indices of the materials</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MeshCollada.Read(System.Boolean)">
+            <summary>
+            makes the stored mesh here
+            </summary>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <returns>mesh</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.SourceCollada">
+            <summary>
+            source data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.SourceCollada.Make(System.String,UnityEngine.Mesh,u040.prespective.prestore.editor.assets.DataType,System.Boolean)">
+            <summary>
+            fills the values of the source COLLADA
+            </summary>
+            <param name="_i">id number</param>
+            <param name="_mes">mesh</param>
+            <param name="_dt">type of data</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.FloatArrayCollada">
+            <summary>
+            float array data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.FloatArrayCollada.Make(System.String,UnityEngine.Mesh,u040.prespective.prestore.editor.assets.DataType,System.Boolean)">
+            <summary>
+            fills the values of the float array COLLADA
+            </summary>
+            <param name="_name">id number</param>
+            <param name="_mes">mesh</param>
+            <param name="_dt">type of data</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.Accessor">
+            <summary>
+            accessor data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.Param">
+            <summary>
+            param data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.VerticeCollada">
+            <summary>
+            vertex data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.VerticeCollada.Make(System.String)">
+            <summary>
+            fills the vertex COLLADA
+            </summary>
+            <param name="_name">id number</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.TriangleCollada">
+            <summary>
+            triangle data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.TriangleCollada.Make(System.String,System.String,System.Int32[],System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            fills the triangle COLLADA
+            </summary>
+            <param name="_name">id number</param>
+            <param name="_mat">material symbol</param>
+            <param name="_tri">triangles</param>
+            <param name="_colCheck">colour present check</param>
+            <param name="_uvCheck">UV present check</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.InputCollada">
+            <summary>
+            input data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.VisualSceneCollada">
+            <summary>
+            visual scene data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.VisualSceneCollada.Make(System.String,UnityEngine.GameObject,System.Collections.Generic.Dictionary{UnityEngine.Material,System.Int32},System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            fills the values of the visual scene COLLADA
+            </summary>
+            <param name="_name">name</param>
+            <param name="_go">game object</param>
+            <param name="_materialIndexDict">dictionary with the indices linked to the materials</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.VisualSceneCollada.Read(System.Collections.Generic.Dictionary{System.String,UnityEngine.GameObject},System.Collections.Generic.Dictionary{System.String,UnityEngine.Material},System.Collections.Generic.Dictionary{System.String,UnityEngine.Mesh},System.Boolean,System.Boolean)">
+            <summary>
+            finds the game object structure and materials and puts them into the scene on correct orientation
+            </summary>
+            <param name="_ngo">game objects with meshes</param>
+            <param name="_mats">materials</param>
+            <param name="_meshes">meshes</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.NodeCollada">
+            <summary>
+            node data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.NodeCollada.Make(UnityEngine.GameObject,System.Collections.Generic.Dictionary{UnityEngine.Material,System.Int32},System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            makes the node for a game object in the visual scene
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_materialIndexDict">dictionary with the indices linked to the materials</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.NodeCollada.Read(System.Collections.Generic.Dictionary{System.String,UnityEngine.GameObject},System.Collections.Generic.Dictionary{System.String,UnityEngine.Material},System.Collections.Generic.Dictionary{System.String,UnityEngine.Mesh},UnityEngine.Transform,System.Boolean,System.Boolean)">
+            <summary>
+            makes the node structure and gives the game objects their materials and orientation
+            </summary>
+            <param name="_ngo">game objects with meshes</param>
+            <param name="_mats">materials</param>
+            <param name="_meshes">meshes</param>
+            <param name="_parent">nodes parent</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_globalSpace">if should store transform in global space</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.TranslateCollada">
+            <summary>
+            translate data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.TranslateCollada.Make(UnityEngine.Vector3,System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            inputs the local position
+            </summary>
+            <param name="_locPos">local position</param>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_culture"> culture of values to string</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.TranslateCollada.Read(System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            gets the stored local position
+            </summary>
+            <param name="_rightHanded">if should be right handed mesh</param>
+            <param name="_culture">culture of values to string</param>
+            <returns>local position</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.RotateCollada">
+            <summary>
+            rotated data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.RotateCollada.Make(UnityEngine.Vector3,System.Single,System.String,System.Globalization.CultureInfo)">
+            <summary>
+            inputs the local rotation of 1 axis
+            </summary>
+            <param name="_rotAxis">rotation axis</param>
+            <param name="_degrees">degrees of rotation</param>
+            <param name="_name">axis name</param>
+            <param name="_culture">culture of values to string</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.RotateCollada.Read(System.Globalization.CultureInfo)">
+            <summary>
+            gets the stored degree value
+            </summary>
+            <param name="_culture">culture of values to string</param>
+            <returns>local rotation</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.ScaleCollada">
+            <summary>
+            scale data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ScaleCollada.Make(UnityEngine.Vector3,System.Globalization.CultureInfo)">
+            <summary>
+            inputs the local scale
+            </summary>
+            <param name="_locsc">local scale</param>
+            <param name="_culture">culture of values to string</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ScaleCollada.Read(System.Globalization.CultureInfo)">
+            <summary>
+            gets the stored local scale
+            </summary>
+            <param name="_culture">culture of values to string</param>
+            <returns>local scale</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.MatrixCollada">
+            <summary>
+            transformaton matrix data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MatrixCollada.Make(UnityEngine.Matrix4x4,System.Globalization.CultureInfo)">
+            <summary>
+            fills the values of the matrix collada
+            </summary>
+            <param name="_matrix">matrix</param>
+            <param name="_culture">culture of values to string</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MatrixCollada.Read(System.Globalization.CultureInfo)">
+            <summary>
+            gets the transformation matrix stored here
+            </summary>
+            <param name="_culture">culture of values to string</param>
+            <returns>transformation matrix</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.ColliderCollada">
+            <summary>
+            base collider data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ColliderCollada.BaseMake(UnityEngine.Collider)">
+            <summary>
+            fills base collider data
+            </summary>
+            <param name="_c">collider</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.ColliderCollada.BaseRead(UnityEngine.Collider)">
+            <summary>
+            base collider read
+            </summary>
+            <param name="_c">collider</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.BoxColliderCollada">
+            <summary>
+            box collider data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.BoxColliderCollada.Make(UnityEngine.BoxCollider,System.Globalization.CultureInfo)">
+            <summary>
+            fills box collider data
+            </summary>
+            <param name="_bc">box collider</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.BoxColliderCollada.Read(UnityEngine.GameObject,System.Globalization.CultureInfo)">
+            <summary>
+            gets values of box collider
+            </summary>
+            <param name="_go">game object added to</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.SphereColliderCollada">
+            <summary>
+            sphere collider data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.SphereColliderCollada.Make(UnityEngine.SphereCollider,System.Globalization.CultureInfo)">
+            <summary>
+            fills sphere collider data
+            </summary>
+            <param name="_sc">sphere collider</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.SphereColliderCollada.Read(UnityEngine.GameObject,System.Globalization.CultureInfo)">
+            <summary>
+            gets values of sphere collider
+            </summary>
+            <param name="_go">game object added to</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.CapsuleColliderCollada">
+            <summary>
+            capsule collider data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.CapsuleColliderCollada.Make(UnityEngine.CapsuleCollider,System.Globalization.CultureInfo)">
+            <summary>
+            fills capsule collider data
+            </summary>
+            <param name="_cc">capsule collider</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.CapsuleColliderCollada.Read(UnityEngine.GameObject,System.Globalization.CultureInfo)">
+            <summary>
+            gets values of capsule collider
+            </summary>
+            <param name="_go">game object added to</param>
+            <param name="_culture">culture info</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.MeshColliderCollada">
+            <summary>
+            mesh collider data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MeshColliderCollada.Make(UnityEngine.MeshCollider)">
+            <summary>
+            fills mesh collider data
+            </summary>
+            <param name="_mc">mesh collider</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.MeshColliderCollada.Read(UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,UnityEngine.Mesh})">
+            <summary>
+            gets values of mesh collider
+            </summary>
+            <param name="_go">game object added to</param>
+            <param name="_meshes">meshes</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.InstanceGeometryCollada">
+            <summary>
+            instance geometry data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.InstanceGeometryCollada.Make(UnityEngine.GameObject,System.Collections.Generic.Dictionary{UnityEngine.Material,System.Int32},System.Int32,System.Boolean)">
+            <summary>
+            fills values instance geometry
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_materialIndexDict">materials</param>
+            <param name="_id">id</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.InstanceGeometryCollada.Read(System.Collections.Generic.Dictionary{System.String,UnityEngine.Material},UnityEngine.Material[]@)">
+            <summary>
+            gets values from instance geometry
+            </summary>
+            <param name="_mats">materials</param>
+            <param name="_mat">found materials</param>
+            <returns>id</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.BindMaterialCollada">
+            <summary>
+            bind material data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.BindMaterialCollada.Make(UnityEngine.GameObject,System.Collections.Generic.Dictionary{UnityEngine.Material,System.Int32},System.Boolean)">
+            <summary>
+            fills the values of bind material COLLADA
+            </summary>
+            <param name="_go">game object</param>
+            <param name="_materialIndexDict">materials</param>
+            <param name="_storeTextures">if should store textures</param>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.BindMaterialCollada.Read(System.Collections.Generic.Dictionary{System.String,UnityEngine.Material})">
+            <summary>
+            gets the material data
+            </summary>
+            <param name="_mats">materials</param>
+            <returns>found materials</returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.InstanceMaterialCollada">
+            <summary>
+            instance material data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.InstanceMaterialCollada.ShouldSerializebind_vertex_input">
+            <summary>
+            a function to make the serializer ignore it when not set
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.BindVertexInputCollada">
+            <summary>
+            bind vertex input data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.TechniqueCoreCollada">
+            <summary>
+            techniqe core data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.ShadowsCollada">
+            <summary>
+            shadows data collada
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.SceneCollada">
+            <summary>
+            scene data collada
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prestore.editor.assets.SceneCollada.Make(System.String)">
+            <summary>
+            fills scene date 
+            </summary>
+            <param name="_url">url</param>
+        </member>
+        <member name="T:u040.prespective.prestore.editor.assets.InstanceVisualSceneCollada">
+            <summary>
+            instance visual scene data collada
+            </summary>
+        </member>
+    </members>
+</doc>

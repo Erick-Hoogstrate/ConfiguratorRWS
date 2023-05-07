@@ -1,5 +1,6 @@
 {
     "name": "StandardComponentsEditor",
+    "rootNamespace": "",
     "references": [
         "StandardComponents",
         "Prepair",
@@ -8,11 +9,10 @@
         "UtilityEditor",
         "CoreEditor",
         "PrepairEditor",
-        "APAEditor",
         "PrelogicEditor",
-        "APA",
         "Prelogic",
-        "Prescissor"
+        "Prescissor",
+        "Bridge"
     ],
     "includePlatforms": [
         "Editor"

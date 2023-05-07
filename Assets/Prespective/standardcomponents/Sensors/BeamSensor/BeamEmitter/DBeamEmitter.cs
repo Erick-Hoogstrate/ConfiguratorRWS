@@ -1,295 +1,426 @@
 using System.Collections.Generic;
-using System.Reflection;
-using u040.prespective.utility;
 using UnityEngine;
-using u040.prespective.prepair.components.sensors;
 using System;
+using u040.prespective.prescissor.parametricshapegeneration.linerevolve;
+using System.Reflection;
+using u040.prespective.prepair.virtualhardware.actuators;
+using u040.prespective.prepair.virtualhardware.systems.beam;
 
-using u040.prespective.math.doubles;
-using u040.prespective.math;
-
-namespace u040.prespective.standardcomponents.sensors.beamsensor
+namespace u040.prespective.standardcomponents.virtualhardware.systems.beam
 {
-    public class DBeamEmitter : MonoBehaviour, IDBeamEmitter, ISensor
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
+    public class DBeamEmitter : MonoBehaviour, IDBeamEmitter, IActuator
     {
-        #region<<NOTES>>
-        /*
-         FIXME: 
-         If a reflector would ever change its reflecting properties (way of reflection, or reflecting at all), but the position 
-         of the rayCast hit would not change, validatePath() would not detect this change and thus would not update the ray even 
-         though the ray would need to be reflecting in a different way.
-         */
+        #region<constants>
+        private const string DEFAULT_BEAM_MATERIAL_PATH = "BeamEmitter/DefaultBeamEmitterMaterial";
+        private const float MIN_REACH = 0.05f;
+        private const int MAX_HITS = 25;
         #endregion
 
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
+        #region<properties>
+        [SerializeField]  private GameObject beamMeshGameObject = null;
+        private DBeamPath path = new DBeamPath();
 
-        /*Settings*/
-        [SerializeField] private bool isActive = true;
-        public bool IsActive { get { return isActive; } set { isActive = value; } }
-        [SerializeField] private double reach = 5d;
-        public double Reach {
+        /// <summary>
+        /// Set the Emitter to be Active/Inactive
+        /// </summary>
+        public bool IsActive = true;
+
+        /// <summary>
+        /// Draw the gizmo in the Scene View
+        /// </summary>
+        public bool ShowGizmo = true;
+
+        /// <summary>
+        /// The color for the gizmo drawn in the Scene View
+        /// </summary>
+        public Color GizmoColor = Color.white;
+
+        [SerializeField] private float reach = 5f;
+        /// <summary>
+        /// The reach of the beam cast by the Beam Emitter
+        /// </summary>
+        public float Reach {
             get 
             { 
                 return reach; 
             } 
             set 
             { 
-                reach = Math.Abs(value); 
+                reach = Math.Max(value, MIN_REACH); 
             } 
         }
 
-
-
-        [SerializeField] private DVector3 positionalOffset = DVector3.Zero;
-        public DVector3 PositionalOffset
+        /// <summary>
+        /// A positional offset for the origin of the beam
+        /// </summary>
+        public Vector3 PositionalOffset = Vector3.zero;
+        
+        /// <summary>
+        /// The direction of the beam from the Beam Emitter
+        /// </summary>
+        public Vector3 BeamDirection
         {
-            get { return positionalOffset; }
-            set
-            {
-                positionalOffset = value;
+            get 
+            { 
+                return transform.TransformDirection(DirectionalOffset.normalized); 
             }
         }
-        public DVector3 OriginPosition
+
+        /// <summary>
+        /// A rotational offset for the origin of the beam
+        /// </summary>
+        public Vector3 DirectionalOffset = Vector3.forward;
+
+        /// <summary>
+        /// The global point of origin of the beam
+        /// </summary>
+        public Vector3 BeamOrigin
         {
-            get { return transform.TransformPoint(positionalOffset.ToFloat()).ToDouble(); }
+            get
+            {
+                return transform.TransformPoint(PositionalOffset);
+            }
         }
 
-        [SerializeField] private DVector3 directionalOffset = DVector3.Forward;
-        public DVector3 DirectionalOffset
+        [SerializeField]  private bool showBeam = true;
+        /// <summary>
+        /// Draw the beam (mesh) in the Scene View
+        /// </summary>
+        public bool ShowBeam
         {
-            get { return directionalOffset; }
+            get { return this.showBeam; }
             set
             {
-                if (directionalOffset != value)
+                if (showBeam != value)
                 {
-                    directionalOffset = value;
-                    if (directionalOffset.Magnitude == 0d)
+                    showBeam = value;
+                    if (showBeam && BeamMaterial == null)
                     {
-                        Debug.LogWarning("Origin has currently no direction. No laser will be projected.");
+                        loadDefaultBeamMaterial();
+                    }
+
+                    generateBeamMesh();
+                }
+            }
+        }
+
+        [SerializeField] private Material storedBeammaterial;
+        /// <summary>
+        /// The material used to draw the beam mesh in the Scene View
+        /// </summary>
+        public Material BeamMaterial
+        {
+            get
+            {
+                return this.storedBeammaterial;
+            }
+            set
+            {
+                if (storedBeammaterial != value)
+                {
+                    if (storedBeammaterial == null && !ShowBeam)
+                    {
+                        ShowBeam = true;
+                    }
+
+                    storedBeammaterial = value;
+
+                    if (storedBeammaterial == null && ShowBeam)
+                    {
+                        ShowBeam = false;
                     }
                 }
             }
         }
-        public DVector3 OriginDirection
-        {
-            get { return transform.TransformDirection(DirectionalOffset.Normalized.ToFloat()).ToDouble(); }
-        }
 
-
-        [SerializeField] private int maxNumberOfHits = 25; //FIXME: If value is changed to lower value during play mode (which u shouldn't do anyway), path doesnt get recalculated until the targets within the new path ask for an update.
-        public int MaxNumberOfHits { get { return maxNumberOfHits; } set { maxNumberOfHits = Mathf.Max(1, value); } }
-        /*********/
-
-        /*Data*/
-        [SerializeField] private bool beamCompleted = true;
-        public bool BeamCompleted { get { return beamCompleted; } set { beamCompleted = value; } }
-        [SerializeField] private DBeamPath path = null;
-        public DBeamPath Path { get { return path; } set { path = value; } }
-        /******/
-
-        /*Debugging*/
-        [SerializeField] private bool useBeamGizmo = true;
-        public bool UseBeamGizmo { get { return useBeamGizmo; } set { useBeamGizmo = value; } }
-        [SerializeField] private bool useOriginGizmo = true;
-        public bool UseOriginGizmo { get { return useOriginGizmo; } set { useOriginGizmo = value; } }
-        [SerializeField] private float originGizmoSize = 1f;
-        public float OriginGizmoSize { get { return originGizmoSize; } set { originGizmoSize = value; } }
-        [SerializeField] private Color beamColor = Color.red;
-        public Color BeamColor { get { return beamColor; } set { beamColor = value; } }
-        [SerializeField] private Color beamRestColor = Color.blue;
-        public Color BeamExcessColor { get { return beamRestColor; } set { beamRestColor = value; } }
-
-        [SerializeField] private Material beamMaterial;
-        public Material BeamMaterial { get { return beamMaterial; } set { beamMaterial = value; } }
-        [SerializeField] private double beamRadius = 0.001d;
-        public double BeamRadius
+        [SerializeField]  private float beamRadius = 0.0025f;
+        /// <summary>
+        /// The thickness of the beam mesh in the Scene View
+        /// </summary>
+        public float BeamRadius
         {
             get { return beamRadius; }
             set
             {
-                //checks if lower then allowed radius
-                if (value >= 0.00000001d) beamRadius = value;
-                else beamRadius = 0.00000001d;
+                if (BeamRadius != value)
+                {
+                    beamRadius = Mathf.Max(0.0001f, value);
+                    generateBeamMesh();
+                }
             }
         }
+        #endregion
 
-        
-        /*******/
-        [HideInInspector]
-        [SerializeField] private GameObject beamMeshGO = null;
-
-
-        private void FixedUpdate()
+        #region<unity functions>
+        /// <summary>
+        /// Unity reset
+        /// </summary>
+        public void Reset()
         {
-            if (IsActive)
-            {
-                if (Path != null)
-                {
-                    //Validate the path
-                    validatePath();
-                }
-                if (Path == null) //If there is no path, No else if because needs to be able to reset first, then create right after
-                {
-                    //Create empty path object
-                    Path = new DBeamPath();
-
-                    //Calculate the path
-                    buildPath();
-                }
-                if (useBeamGizmo) drawPath();
-            }
-            else if (!IsActive && Path != null)
-            {
-                resetPath();
-            }
+            loadDefaultBeamMaterial();
         }
 
-        private void OnDisable()
+        /// <summary>
+        /// Unity on disable
+        /// </summary>
+        public void OnDisable()
         {
             resetPath();
         }
 
-        public void buildPath()
+        /// <summary>
+        /// Unity fixed update
+        /// </summary>
+        public void FixedUpdate()
         {
-            BeamCompleted = recurseRayCast(Path, Reach);
+            if (!IsActive)
+            {
+                resetPath();
+                return;
+            }
 
+            //Make sure colliders are synchronized with transforms
+            Physics.SyncTransforms();
+
+            //If there is a change in the beam path
+            if (!validatePath())
+            {
+                //Create the new beam
+                updatePath();
+            }
+        }
+        #endregion
+
+        #region<path>
+        private void updatePath()
+        {
+            //Get a list of all targets that were hit last update
+            List<IDBeamTarget> previousHitTargets = path.ConvertAll(_point => _point.RedirectionObject);
+
+            //Create a new path
+            path = new DBeamPath();
+            if (BeamDirection == Vector3.zero)
+            {
+                Debug.LogError("Unable to cast beam. Direction is 0.");
+            }
+
+            //Add emitter as a point
+            path.Add(new DBeamPathRedirectionPoint(null, this.BeamOrigin, this.BeamOrigin, this.BeamDirection));
+
+            //Calculate the new path
+            path = recurseRayCast(path, Reach);
+
+            //Get a list of all targets that are currently being hit
+            List<IDBeamTarget> newTargets = path.ConvertAll(_point => _point.RedirectionObject);
+            
+            //Process all lost hits for targets no longer being hit
+            handleLostHits(previousHitTargets, newTargets);
+
+            //Generate the beam mesh
             this.generateBeamMesh();
         }
 
-        public void resetPath(int fromPoint = 0)
+        private bool validatePath()
         {
-            for (int i = 0; i < Path.Count; i++)
-            {
-                if (Path[i].getRedirectionObject() != null) Path[i].getRedirectionObject().lostHit();
-            }
-            Path = null;
-            if (this.beamMeshGO != null) { this.beamMeshGO.GetComponent<MeshFilter>().mesh = null; }
-        }
+            float remainingDistance = Reach;
+            int pathCount = path.Count;
 
-        public void validatePath()
-        {
-            double _remainingDistance = Reach;
-            int pathCount = Path.Count;
+            if (path.Count == 0)
+            {
+                return false;
+            }
+
+            //If emitter moved/rotated
+            if (path[0].OutPoint != this.BeamOrigin || path[0].OutDirection != this.BeamDirection)
+            {
+                return false;
+            }
 
             //Recalculate path
             //Cast ray from point, does hit point match? If not, origin point has changed
             for (int i = 0; i < pathCount; i++)
             {
-                if (i == 0 && (Path[0].getOutPoint() != this.OriginPosition || Path[0].getOutDirection() != this.OriginDirection))
-                {
-                    resetPath(i); //TODO: recalculate from path[i]
-                    break;
-                }
-                else if (i < MaxNumberOfHits) //prevent it from detecting hits in the 'rest'ray when maxNumberOfReflections is reached
-                {
-                    RaycastHit hit;
-                    bool raycastHit = Physics.Raycast(Path[i].getOutPoint().ToFloat(), Path[i].getOutDirection().ToFloat(), out hit, (float)_remainingDistance);
+                bool isLastPathSection = i == pathCount - 1;
 
-                    if (raycastHit)
+                RaycastHit hit;
+                bool raycastHit = Physics.Raycast(path[i].OutPoint, path[i].OutDirection, out hit, remainingDistance);
+
+                //If raycast hit something
+                if (raycastHit)
+                {
+                    //If did not hit end or next as expected
+                    if ((isLastPathSection && path.EndPoint != hit.point) || (!isLastPathSection && hit.point != path[i + 1].InPoint))
                     {
-                        if ((i == pathCount - 1 && Path.endPoint.ToFloat() != hit.point) || (i != pathCount - 1 && hit.point != Path[i + 1].getInPoint().ToFloat()))
-                        {
-                            resetPath(i); //TODO: recalculate from path[i]
-                            break;
-                        }
-                        else
-                        {
-                            _remainingDistance -= hit.distance; //if all is good, retract hit.distance from remaining distance and cast next ray
-                        }
+                        return false;
                     }
+
+                    //If hit is as expected
                     else
                     {
-                        if (i != pathCount - 1 || Path[i].getOutPoint() + Path[i].getOutDirection().Normalized * _remainingDistance != Path.endPoint)
-                        {
-                            resetPath(i); //TODO: recalculate from path[i]
-                            break;
-                        }
+                        remainingDistance -= hit.distance;
+                    }
+                }
+
+                //If raycast did not hit something
+                else
+                {
+                    //If end is not as expected
+                    if (!isLastPathSection || path[i].OutPoint + path[i].OutDirection.normalized * remainingDistance != path.EndPoint)
+                    {
+                        return false;
                     }
                 }
             }
-        }
-
-        public void drawPath()
-        {
-            //only draws a path if no mesh beam is made
-            if (this.beamMaterial == null)
-            {
-                //Draw the path lines
-                for (int i = 0; i < Path.Count - 1; i++)
-                {
-                    Debug.DrawLine(Path[i].getOutPoint().ToFloat(), Path[i + 1].getInPoint().ToFloat(), BeamColor);
-                }
-
-                Debug.DrawLine(Path[Path.Count - 1].getOutPoint().ToFloat(), Path.endPoint.ToFloat(), BeamCompleted ? BeamColor : BeamExcessColor);
-            }
-        }
-
-        private void generateBeamMesh()
-        {
-            if (this.useBeamGizmo && this.beamMaterial != null && Path.Count != 0)
-            {
-                //creates the beam gameobject if neccessary
-                if (this.beamMeshGO == null)
-                {
-                    this.beamMeshGO = new GameObject("BeamMeshObject");
-                    this.beamMeshGO.transform.SetParent(this.transform);
-                    this.beamMeshGO.transform.localPosition = Vector3.zero;
-                    this.beamMeshGO.transform.localRotation = Quaternion.identity;
-                    this.beamMeshGO.transform.localScale = Vector3.one;
-
-                    this.beamMeshGO.AddComponent<MeshFilter>();
-                    this.beamMeshGO.AddComponent<MeshRenderer>();
-                }
-
-                List<Vector3> points = new List<Vector3>();
-                points.Add(Path[0].getOutPoint().ToFloat());
-                //Draw the path lines
-                for (int i = 0; i < Path.Count - 1; i++)
-                {
-                    points.Add(Path[i + 1].getInPoint().ToFloat());
-                }
-                //only add point if endpoint is not equal to last found point since cannot make mesh over zero length
-                if (Path.endPoint != Path[Path.Count - 1].getInPoint()) points.Add(Path.endPoint.ToFloat());
-
-                this.beamMeshGO.GetComponent<MeshFilter>().mesh = LineMeshUtility.GenerateSmoothLineMesh(this.transform, points, (float)this.beamRadius);
-                this.beamMeshGO.GetComponent<Renderer>().material = this.BeamMaterial;
-            }
-        }
-
-
-        protected virtual bool recurseRayCast(DBeamPath _path, double _remainingDistance, int _recursionProtection = 0)
-        {
-            if (_path.Count == 0)
-            {
-                Path.Add(new DBeamPathRedirectionPoint(null, this.OriginPosition, this.OriginPosition, this.OriginDirection));
-            }
-
-            DBeamPathRedirectionPoint _lastPoint = _path[_path.Count - 1];
-
-            if (_recursionProtection >= MaxNumberOfHits)
-            {
-                _path.endPoint = _lastPoint.getOutPoint() + (_lastPoint.getOutDirection().Normalized * _remainingDistance); //Hit nothing
-                return false;
-            }
-
-
-            RaycastHit hit;
-            if (Physics.Raycast(_lastPoint.getOutPoint().ToFloat(), _lastPoint.getOutDirection().ToFloat(), out hit, (float)_remainingDistance))
-            {
-                IDBeamTarget target = hit.collider.transform.GetComponent<IDBeamTarget>(); //Get IBeamTarget interface component
-                if (target != null) //Hit target
-                {
-                    DBeamPathRedirectionPoint _newHit = target.resolveHit(_lastPoint.getOutDirection().Normalized, hit);
-                    _path.Add(_newHit);
-                    return recurseRayCast(_path, _remainingDistance - hit.distance, ++_recursionProtection);
-                }
-                else _path.endPoint = hit.point.ToDouble(); //Hit non-target
-            }
-            else _path.endPoint = _lastPoint.getOutPoint() + (_lastPoint.getOutDirection().Normalized * _remainingDistance); //Hit nothing
 
             return true;
         }
+
+        protected virtual DBeamPath recurseRayCast(DBeamPath _path, float _remainingDistance, int _recursionProtection = 0)
+        {
+            //Get last redirection point
+            DBeamPathRedirectionPoint lastPoint = _path[_path.Count - 1];
+
+            //Prevent from exceeding max hit count
+            if (_recursionProtection >= MAX_HITS)
+            {
+                _path.EndPoint = lastPoint.OutPoint + (lastPoint.OutDirection.normalized * _remainingDistance); //Hit nothing
+                Debug.LogWarning(this.GetType().Name + " on " + this.gameObject.name + " has exceeded its maximum allowed number of hits of " + MAX_HITS + ".");
+                return path;
+            }
+
+            RaycastHit hit;
+            //If the raycast hits something
+            if (Physics.Raycast(lastPoint.OutPoint, lastPoint.OutDirection, out hit, (float)_remainingDistance))
+            {
+                IDBeamTarget beamTarget = hit.collider.transform.GetComponent<IDBeamTarget>(); //Get IBeamTarget interface component
+
+                //A compatible beam target was hit
+                if (beamTarget != null)
+                {
+                    //Get the data on the hit
+                    DBeamPathRedirectionPoint newHit = beamTarget.ResolveHit(lastPoint.OutDirection.normalized, hit, this);
+
+                    //Add the hitpoint to the list
+                    _path.Add(newHit);
+
+                    //Cast the remainig ray from the new hit point
+                    return recurseRayCast(_path, _remainingDistance - hit.distance, ++_recursionProtection);
+                }
+
+                //Some other non beam system collider was hit
+                else
+                {
+                    //Mark this as the endpoint for the beam path
+                    _path.EndPoint = hit.point;
+                }
+            }
+
+            //If raycast does not hit
+            else
+            {
+                _path.EndPoint = lastPoint.OutPoint + (lastPoint.OutDirection.normalized * _remainingDistance); //Hit nothing
+            }
+
+            return path;
+        }
+
+        private void resetPath()
+        {
+            //Register hit lost for each target
+            for (int i = 0; i < path.Count; i++)
+            {
+                if (path[i].RedirectionObject != null)
+                {
+                    path[i].RedirectionObject.LostHit(this);
+                }
+            }
+
+            //Clear path
+            path = new DBeamPath();
+
+            //Clear beam mesh
+            if (this.beamMeshGameObject != null)
+            {
+                this.beamMeshGameObject.GetComponent<MeshFilter>().mesh = null;
+            }
+        }
+        #endregion
+
+        #region<lost hit>
+        private void handleLostHits(List<IDBeamTarget> _previousHits, List<IDBeamTarget> _newHits)
+        {
+            //For each target that was previously hit
+            foreach(IDBeamTarget currentHit in _previousHits)
+            {
+                //Skip if null
+                if (currentHit == null)
+                {
+                    continue; 
+                }
+
+                //If it is no longer being hit
+                if (!_newHits.Contains(currentHit))
+                {
+                    //Register lost hit
+                    currentHit.LostHit(this);
+                }
+            }
+        }
+        #endregion
+
+        #region<beam mesh>
+        private void generateBeamMesh()
+        {
+            if (ShowBeam && this.BeamMaterial != null && path.Count != 0)
+            {
+                //creates the beam gameobject if neccessary
+                if (this.beamMeshGameObject == null)
+                {
+                    this.beamMeshGameObject = new GameObject("BeamMeshObject");
+                    this.beamMeshGameObject.transform.SetParent(this.transform);
+                    this.beamMeshGameObject.transform.localPosition = Vector3.zero;
+                    this.beamMeshGameObject.transform.localRotation = Quaternion.identity;
+                    this.beamMeshGameObject.transform.localScale = Vector3.one;
+                    this.beamMeshGameObject.hideFlags = HideFlags.HideAndDontSave;
+
+                    this.beamMeshGameObject.AddComponent<MeshFilter>();
+                    this.beamMeshGameObject.AddComponent<MeshRenderer>();
+                }
+
+                List<Vector3> points = new List<Vector3>();
+                points.Add(path[0].OutPoint);
+                //Draw the path lines
+                for (int i = 0; i < path.Count - 1; i++)
+                {
+                    points.Add(path[i + 1].InPoint);
+                }
+                //only add point if endpoint is not equal to last found point since cannot make mesh over zero length
+                if (path.EndPoint != path[path.Count - 1].InPoint)
+                {
+                    points.Add(path.EndPoint);
+                }
+
+                this.beamMeshGameObject.GetComponent<MeshFilter>().mesh = LineMeshUtility.GenerateSmoothLineMesh(this.transform, points, (float)this.beamRadius);
+                this.beamMeshGameObject.GetComponent<Renderer>().material = this.BeamMaterial;
+            }
+            else
+            {
+                if (this.beamMeshGameObject != null)
+                {
+                    Destroy(this.beamMeshGameObject);
+                }
+            }
+        }
+
+        private void loadDefaultBeamMaterial()
+        {
+            BeamMaterial = Resources.Load<Material>(DEFAULT_BEAM_MATERIAL_PATH);
+        }
+        #endregion
     }
 }

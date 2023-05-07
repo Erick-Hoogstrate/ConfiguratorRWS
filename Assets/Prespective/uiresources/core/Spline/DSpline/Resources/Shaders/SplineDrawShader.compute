@@ -1,0 +1,182 @@
+#pragma kernel DrawSpline
+
+struct LineData
+{
+	float3 Position;
+	float4 Rotation;
+	float Length;
+};
+
+struct PointData
+{
+    float3 Position;
+    float4 Rotation;
+};
+
+RWStructuredBuffer<PointData> points;
+RWStructuredBuffer<LineData> lines;
+uint amountLines;
+float3 direction;
+float4 parentRotation;
+matrix localToGlobal;
+
+void setLine(uint _index, float3 _position, float4 _rotation, float _length)
+{
+	LineData data;
+	data.Position = _position;
+	data.Rotation = _rotation;
+	data.Length = _length;
+	lines[_index] = data;
+}
+
+float4 QuaternionQuaternionMutliplication(float4 _lhs, float4 _rhs)
+{
+    return float4(
+        _lhs.w * _rhs.x + _lhs.x * _rhs.w + _lhs.y * _rhs.z - _lhs.z * _rhs.y,
+        _lhs.w * _rhs.y + _lhs.y * _rhs.w + _lhs.z * _rhs.x - _lhs.x * _rhs.z,
+        _lhs.w * _rhs.z + _lhs.z * _rhs.w + _lhs.x * _rhs.y - _lhs.y * _rhs.x,
+        _lhs.w * _rhs.w - _lhs.x * _rhs.x - _lhs.y * _rhs.y - _lhs.z * _rhs.z);
+}
+
+float3 QuaternionVectorMutliplication(float4 _a, float3 _b)
+{
+    float num = _a.x * 2.0;
+    float num2 = _a.y * 2.0;
+    float num3 = _a.z * 2.0;
+    float num4 = _a.x * num;
+    float num5 = _a.y * num2;
+    float num6 = _a.z * num3;
+    float num7 = _a.x * num2;
+    float num8 = _a.x * num3;
+    float num9 = _a.y * num3;
+    float num10 = _a.w * num;
+    float num11 = _a.w * num2;
+    float num12 = _a.w * num3;
+
+    float3 result;
+    result.x = (1.0 - (num5 + num6)) * _b.x + (num7 - num12) * _b.y + (num8 + num11) * _b.z;
+    result.y = (num7 + num12) * _b.x + (1.0 - (num4 + num6)) * _b.y + (num9 - num10) * _b.z;
+    result.z = (num8 - num11) * _b.x + (num9 + num10) * _b.y + (1.0 - (num4 + num5)) * _b.z;
+    return result;
+}
+
+float3 MultiplyPoint3x4(float3 _point)
+{
+    return float3(
+        localToGlobal._m00 * _point.x + localToGlobal._m01 * _point.y + localToGlobal._m02 * _point.z + localToGlobal._m03,
+        localToGlobal._m10 * _point.x + localToGlobal._m11 * _point.y + localToGlobal._m12 * _point.z + localToGlobal._m13,
+        localToGlobal._m20 * _point.x + localToGlobal._m21 * _point.y + localToGlobal._m22 * _point.z + localToGlobal._m23);
+}
+
+float3 NormaLized(float3 _a)
+{
+    float mag = sqrt(_a.x * _a.x + _a.y * _a.y + _a.z * _a.z);
+    return _a / mag;
+}
+
+float Distance(float3 _a, float3 _b)
+{
+    return sqrt(((_a.x - _b.x) * (_a.x - _b.x)) + ((_a.y - _b.y) * (_a.y - _b.y)) + ((_a.z - _b.z) * (_a.z - _b.z)));
+}
+
+float3 Cross(float3 _lhs, float3 _rhs)
+{
+    float3 crossResult;
+    crossResult.x = (_lhs.y * _rhs.z) - (_lhs.z * _rhs.y);
+    crossResult.y = (_lhs.z * _rhs.x) - (_lhs.x * _rhs.z);
+    crossResult.z = (_lhs.x * _rhs.y) - (_lhs.y * _rhs.x);
+    return crossResult;
+}
+
+float4 LookRotation(float3 _forward, float3 _upwards)
+{
+    _forward = NormaLized(_forward);
+    _upwards = NormaLized(_upwards);
+
+    float3 vector1 = _forward;
+    float3 vector2 = NormaLized(Cross(_upwards, vector1));
+    float3 vector3 = Cross(vector1, vector2);
+    float m00 = vector2.x;
+    float m01 = vector2.y;
+    float m02 = vector2.z;
+    float m10 = vector3.x;
+    float m11 = vector3.y;
+    float m12 = vector3.z;
+    float m20 = vector1.x;
+    float m21 = vector1.y;
+    float m22 = vector1.z;
+
+
+    float num8 = (m00 + m11) + m22;
+    float4 quaternion;
+    if (num8 > 0.0)
+    {
+        float num = sqrt(num8 + 1.0);
+        quaternion.w = num * 0.5;
+        num = 0.5 / num;
+        quaternion.x = (m12 - m21) * num;
+        quaternion.y = (m20 - m02) * num;
+        quaternion.z = (m01 - m10) * num;
+        return quaternion;
+    }
+    if ((m00 >= m11) && (m00 >= m22))
+    {
+        float num7 = sqrt(((1.0 + m00) - m11) - m22);
+        float num4 = 0.5 / num7;
+        quaternion.x = 0.5 * num7;
+        quaternion.y = (m01 + m10) * num4;
+        quaternion.z = (m02 + m20) * num4;
+        quaternion.w = (m12 - m21) * num4;
+        return quaternion;
+    }
+    if (m11 > m22)
+    {
+        float num6 = sqrt(((1.0 + m11) - m00) - m22);
+        float num3 = 0.5 / num6;
+        quaternion.x = (m10 + m01) * num3;
+        quaternion.y = 0.5 * num6;
+        quaternion.z = (m21 + m12) * num3;
+        quaternion.w = (m20 - m02) * num3;
+        return quaternion;
+    }
+
+    float num5 = sqrt(((1.0 + m22) - m00) - m11);
+    float num2 = 0.5 / num5;
+    quaternion.x = (m20 + m02) * num2;
+    quaternion.y = (m21 + m12) * num2;
+    quaternion.z = 0.5 * num5;
+    quaternion.w = (m01 - m10) * num2;
+    return quaternion;
+}
+
+float3 getPoint(uint _index)
+{
+    float4 rot = QuaternionQuaternionMutliplication(parentRotation, points[_index].Rotation);
+    return MultiplyPoint3x4(points[_index].Position) + QuaternionVectorMutliplication(rot, direction);
+
+}
+
+[numthreads(32, 1, 1)]
+void DrawSpline(uint3 _id : SV_DispatchThreadID)
+{
+	if (_id.x < amountLines)
+	{
+		float3 beginLine = getPoint(_id.x);
+		float3 endLine = getPoint(_id.x + 1);
+		float3 pos = (endLine + beginLine) / 2;
+
+        float3 up;
+        up.x = 0.0;
+        up.y = 1.0;
+        up.z = 0.0;
+        float3 lineDirection = NormaLized(endLine - beginLine);
+        if (lineDirection.x == up.x && lineDirection.y == up.y && lineDirection.z == up.z)
+        {
+            up.x = 0.0;
+            up.y = 0.0;
+            up.z = 1.0;
+        }
+		float4 rot = LookRotation(lineDirection, up);
+		setLine(_id.x, pos,  rot, Distance(beginLine, endLine) / 2.0);
+	}
+}

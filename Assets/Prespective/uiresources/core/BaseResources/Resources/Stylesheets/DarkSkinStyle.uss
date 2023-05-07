@@ -9,3 +9,8 @@
 .foldout-division, .division {
 	background-color: #424242;
 }
+
+.industrialassets-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(205, 205, 205);
+}

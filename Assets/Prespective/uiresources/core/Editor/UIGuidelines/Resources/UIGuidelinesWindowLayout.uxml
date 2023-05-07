@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ue:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-size="200" orientation="horizontal">
+    <ui:VisualElement name="sidebar">
+      <ui:Label class="bold margin-vertical-5px" text="UI Guidelines"/>
+      <ui:IMGUIContainer class="flex-grow" name="sidebar-treeview"/>
+    </ui:VisualElement>
+
+    <ui:VisualElement name="content">
+      <ui:ScrollView class="flex-grow">
+        <ui:VisualElement class="margin-bottom-10px" name="guideline-content">
+          <ui:Label class="font-italic" text="Select a Guideline" />
+        </ui:VisualElement>
+      </ui:ScrollView>
+
+      <ui:VisualElement class="division" name="example-resources">
+        <ui:Label class="bold margin-bottom-10px" text ="Example Resources"/>
+        
+        <ui:VisualElement class="row" name="resource-editor-links">
+          <ui:Label text="-"/>
+        </ui:VisualElement>
+      </ui:VisualElement>
+    </ui:VisualElement>
+  </ue:TwoPaneSplitView>
+</ui:UXML>

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="owner-spline-container" />
+    <ui:TextField label="Length" name="spline-length" class="custom-exposure" />
+	<ui:Toggle label="Add Physics at end" name="add-physics" class="margin-bottom-10px custom-exposure" />
+</ui:UXML>

@@ -1,0 +1,45 @@
+{
+    "name": "{{PRODUCTION_EDITORONLY_CODE_ASSEMBLY_NAME}}",
+    "rootNamespace": "",
+    "references": [
+        "StandardComponents",
+        "StandardComponentsEditor",
+        "Wrappers",
+        "{{PRODUCTION_CODE_ASSEMBLY_NAME}}"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Utility.dll",
+        "UtilityEditor.dll",
+        "Core.dll",
+        "CoreEditor.dll",
+        "Preplug.dll",
+        "PreplugEditor.dll",
+        "Prepair.dll",
+        "PrepairEditor.dll",
+        "Prelogic.dll",
+        "PrelogicEditor.dll",
+        "Prescripted.dll",
+        "PrescriptedEditor.dll",
+        "IndustrialAssets.dll",
+        "IndustrialAssetsEditor.dll",
+        "Prestore.dll",
+        "PrestoreEditor.dll",
+        "Bridge.dll",
+        "Fact.dll",
+        "FactEditor.dll",
+        "Prescissor.dll",
+        "PreplayEditor.dll",
+        "Preplay.dll",
+        "PrescissorEditor.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

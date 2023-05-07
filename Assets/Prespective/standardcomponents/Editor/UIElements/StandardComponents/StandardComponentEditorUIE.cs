@@ -1,13 +1,14 @@
-using Apache.NMS.ActiveMQ.Threads;
-using u040.prespective.core.editor;
-using u040.prespective.prepair.inspector;
+using u040.prespective.core.editor.editorui;
+using u040.prespective.core.editor.editorui.inspectorwindow;
+using u040.prespective.standardcomponents.userinterface;
+using u040.prespective.utility.editor.editorui.uistatepersistence;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace u040.prespective.standardcomponents.editor
+namespace u040.prespective.standardcomponents.editor.editorui.inspectorwindow
 {
-    public abstract class StandardComponentEditorUIE<T> : PrespectiveEditorUIE<T>, IControlPanelUIE where T : Component
+    public abstract class StandardComponentEditorUIE<T> : PrespectiveEditorUIE<T>, IControlPanelUIE where T : MonoBehaviour
     {
         protected Foldout properties;
         protected IVisualElementScheduledItem updateListSchedule;
@@ -16,19 +17,32 @@ namespace u040.prespective.standardcomponents.editor
 
         private int updateTime = 100;
 
-        protected override void Initialize()
+        protected override void initialize()
         {
             #region << Live Data >>
-            VisualElement liveData = root.Q<VisualElement>(name: "live-data");
-            if (liveData != null)
+            //Live data is not persistently implemented as a foldout, apply foldout tracking when it is.
+            Foldout liveDataFoldout = root.Q<Foldout>("live-data");
+
+            if (liveDataFoldout != null)
             {
-                ScheduleUpdate(liveData);
-                //updateListSchedule = liveData.schedule.Execute(() => UpdateLiveData()).Every(updateTime);
+                UIStateUtility.InitTrackedFoldout(liveDataFoldout, component);
+            }
+
+            //Foldouts can also be queried as a VisualElement, because of inheritance.
+            VisualElement liveDataElement = root.Q<VisualElement>(name: "live-data");
+
+            if (liveDataElement != null)
+            {
+                scheduleUpdate(liveDataElement);
             }
             #endregion
 
             #region << Properties >>
             properties = root.Q<Foldout>(name: "properties");
+            if (properties != null) 
+            { 
+                UIStateUtility.InitTrackedFoldout(properties, component);
+            }
             #endregion
 
             #region << Control Panel >>
@@ -38,7 +52,7 @@ namespace u040.prespective.standardcomponents.editor
             Button generateControlPanel = root.Q<Button>(name: "generate-control-panel");
             generateControlPanel.RegisterCallback<MouseUpEvent>(mouseEvent =>
             {
-                ControlPanelInterface.CreateControlPanelForComponent(component);
+                ControlPanelInterfaceUIE.CreateControlPanelForComponent(component);
             });
             #endregion
 
@@ -53,25 +67,24 @@ namespace u040.prespective.standardcomponents.editor
             #endregion
         }
 
-        protected void ScheduleUpdate(VisualElement _visualElement)
+        protected void scheduleUpdate(VisualElement _visualElement)
         {
-            updateListSchedule = _visualElement.schedule.Execute(() => UpdateLiveData()).Every(updateTime);
+            updateListSchedule = _visualElement.schedule.Execute(() => updateLiveData()).Every(updateTime);
         }
 
-        protected void ScheduleControlPanelUpdate(VisualElement _visualElement)
+        protected void scheduleControlPanelUpdate(VisualElement _visualElement)
         {
-            updateControlPanelSchedule = _visualElement.schedule.Execute(() => UpdateControlPanelData()).Every(updateTime);
+            updateControlPanelSchedule = _visualElement.schedule.Execute(() => updateControlPanelData()).Every(updateTime);
         }
 
-        protected override void ExecuteOnEnable()
+        protected override void executeOnEnable()
         {
-            theme = "standard-components";
-            base.ExecuteOnEnable();
+            theme = VisualTheme.StandardComponents;
         }
 
-        protected virtual void UpdateLiveData() { }
+        protected virtual void updateLiveData() { }
 
-        protected virtual void UpdateControlPanelData() { }
+        protected virtual void updateControlPanelData() { }
 
 
         public abstract void ShowControlPanelProperties(VisualElement _container);

@@ -1,0 +1,13 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Control Point Handle Settings" />
+    <ue:EnumField name="handle-type" label="Handle Type"/>
+    <ue:EnumField name="handle-gizmo" label="Handle Gizmo"/>
+    <ue:EnumField name="handle-space" label="Handle Space"/>
+    <ui:VisualElement name="handle-in"/>
+    <ui:VisualElement name="handle-out"/>
+    <ue:DoubleField name="handle-in-length" label="Handle IN length"/>
+    <ue:DoubleField name="handle-out-length"  label="Handle OUT length"/>
+    <ue:DoubleField name="handle-in-out-length"  label="Handle IN/OUT length"/>
+  </ui:VisualElement>
+</ui:UXML>

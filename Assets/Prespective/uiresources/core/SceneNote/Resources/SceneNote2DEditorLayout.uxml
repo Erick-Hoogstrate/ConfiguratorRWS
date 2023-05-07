@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Note Text" />
+    <ui:TextField name="note-text" multiline="true" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Visual Settings" />
+    <ue:EnumField label="Screen Anchor" name="screen-anchor-field" />
+    <ue:Vector2IntField label="Anchor Offset" name="anchor-offset-field" />
+    <ue:EnumField label="Note Position" name="note-position-field" />
+    <ue:Vector2IntField label="Note Size" name="note-size-field" />
+    
+    <ui:VisualElement class="margin-vertical-5px">
+        <ue:ObjectField label="Custom Icon Inactive" name="custom-inactive-icon-field" />
+        <ue:ObjectField label="Custom Icon Active" name="custom-active-icon-field" />
+    </ui:VisualElement>
+
+    <ui:Toggle label="Display Note" name="display-note-field" />
+  </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+    <ui:Foldout name="foldout-field" text="State #-1 : [No State Name]" class="custom-exposure-foldout">
+
+        <ui:TextField name="basic-state-name" label="State Name:" class="custom-exposure"/>
+
+    </ui:Foldout>
+
+
+</ui:UXML> 

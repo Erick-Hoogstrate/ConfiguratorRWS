@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ui:TextField name="recipe-name" label="Recipe Name" class="custom-exposure"/>
+    <ue:ObjectField name="staged-part" label="Staged Part" class="custom-exposure"/>
+    <ue:EnumField name="staging-recipe-type" class="custom-exposure"/>
+    <ui:Foldout class="custom-exposure-foldout" name="advanced-settings-foldout" text="Advanced Settings">
+        <ui:VisualElement name="recipe-handling-container"/>
+    </ui:Foldout>
+</ui:UXML>

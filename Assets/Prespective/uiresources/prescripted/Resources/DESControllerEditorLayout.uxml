@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Simulation Status" />
+		<ui:TextField class="no-box" name="simulation-frame" label="Current Simulation Frame (#)" />
+		<ui:TextField class="no-box" name="simulation-time" label="Current Simulation Time (s)" />
+		<ui:TextField class="no-box" name="frame-time" label="Simulation Time per Frame (s)" />
+		<ui:TextField class="no-box" name="participants-awake" label="Awake Participants" />
+		<ui:TextField class="no-box" name="participants-asleep" label="Asleep Participants" />
+	</ui:VisualElement>
+
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Controller Settings" />
+		<ui:Toggle label="Auto Start Simulation in Playmode" name="auto-start-in-playmode"/>				<!-- binding-path="AutoStartSimulationInPlaymode" -->
+		<ui:Button class="content-fit-button margin-bottom-10px" name="pause-resume" text="Pause Simulation" />
+		<ue:DoubleField name="time-multiplier" label="Time Multiplier" />		<!-- binding-path="TimeMultiplier" -->
+		<ue:DoubleField name="startup-delay" label="Simulation Startup Delay" />	<!-- binding-path="SimulationStartupDelay" -->
+		<ui:Toggle label="Limit Simulation Timeframe" name="limit-timeframe"  /> <!-- binding-path="LimitSimulationTimeFrame" -->
+		<ui:VisualElement name="time-frame-settings">
+			<ue:DoubleField name="time-frame-settings-start" label="Start Time (s)"/>
+			<ue:DoubleField name="time-frame-settings-end" label="End Time (s)"/>
+		</ui:VisualElement>
+		<ue:IntegerField name="solver-passes" label="Max Solver Passes per Frame"  /> <!-- binding-path="MaxSolverPassesPerFrame" -->
+		<ue:IntegerField name="max-calculations" label="Max Calculations per Solver Pass"  /> <!-- binding-path="MaxCalculationsPerSolverPass" -->
+		<ui:Toggle label="Use Stable State" name="use-stable-state"  />  <!-- binding-path="UseStableState" -->
+	</ui:VisualElement>
+
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Advanced Settings" />
+		<ui:Toggle label="Use Spline Island" name="spline-islands"/>  
+		<ui:Toggle label="Calculation Over Multiple Frames" name="multi-frame-calculation"/>
+		<ue:DoubleField label="Maximum Milliseconds Per Tick" name="maximum-time"/>
+		<ui:Toggle label="Correct Multiplier For Multiple Frames" name="multiplier-correction"/>
+	</ui:VisualElement>
+	
+	<ui:Foldout class="foldout-division margin-bottom-10px" name="debugging-foldout" text="Debugging" value="false">
+		<ui:Toggle label="Verbose" name="use-verbose" /> <!-- binding-path="Verbose" -->
+		<ui:Toggle label="Break at Critical Simulation Event" name="break-at-critical-sim-event"  /> <!-- binding-path="BreakAtCriticalSimulationEvent" -->
+		<ui:Toggle label="Pause at Specified Frame" name="pause-at-frame" /> <!-- binding-path="PauseAtSpecifiedFrame" -->
+    <ue:IntegerField name="pause-settings-frame-no" label="Specified Frame Index"/>
+	</ui:Foldout>
+
+</ui:UXML>

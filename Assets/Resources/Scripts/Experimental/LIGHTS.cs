@@ -36,14 +36,7 @@ public class LIGHTS : PreLogicComponent
     }
     private void Update()
     {
-        if (CoLights.Detector.name.Contains("green"))
-        {
-            CoLights.SensorBoolean = !CoLights.Detector.OutputSignal;
-        }
-        else
-        {
-            CoLights.SensorBoolean = CoLights.Detector.OutputSignal;
-        }
+        CoLights.SensorBoolean = CoLights.Detector.OutputSignal;
 
         if (oldValue != CoLights.SensorBoolean)
         {

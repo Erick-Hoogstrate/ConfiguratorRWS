@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ue:ObjectField name="spline" label="Constraining DSpline" />
+    <ue:DoubleField name="thickness" label="Thickness" />
+    <ue:CurveField name="velocity-curve" label="Velocity Curve" />
+    <ue:EnumField name="motion-mode" label="Component Motion Mode" class="margin-bottom-10px" />
+    <ue:EnumField name="motion-type" label="Component Motion Type" class="margin-bottom-10px" />
+    <ue:EnumField name="start-mode" label="Spline Start Mode" class="margin-bottom-10px" />
+    <ue:DoubleField name="start-percentage" label="Start Percentage Override" />
+    <ue:DoubleField name="look-offset" label="Look Offset" />
+</ui:UXML>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="List Views"/>
+    <ui:TextElement class="margin-bottom-5px" text="User-managed list views should be contained in Foldouts or foldout divisions. The Foldout title should clearly describe the list and show the number of entries in the format 'description (n)'." />
+    <ui:TextElement class="margin-bottom-5px" text="An 'Add' button should always be placed within the Foldout above the list items." />
+    <ui:TextElement class="margin-bottom-5px" text="List items with an extended set of UI controls, should always be contained in individual (sub) Foldouts. These should be collapsed initially." />
+    <ui:TextElement class="margin-bottom-5px" text="List items can have an individual remove button. Buttons can be added to foldouts with UIUtility.AddVisualElementToFoldoutHeader." />
+  </ui:VisualElement>
+
+  <ui:Foldout name="list-container" class="foldout-division" text="Example: Items in List (5)">
+    <ui:Button class="content-fit-button margin-bottom-5px" text="Add Item"/>
+    
+    <ui:Foldout class="margin-bottom-5px" text="Item 1" value="false">
+      <ui:Toggle label="Exists" value="true" />
+      <ue:ColorField label="Color" />
+    </ui:Foldout>
+
+    <ui:Foldout class="margin-bottom-5px" text="Item 2" value="false">
+      <ui:Toggle label="Exists" value="true" />
+      <ue:ColorField label="Color" />
+    </ui:Foldout>
+
+    <ui:Foldout class="margin-bottom-5px" text="Item 3" value="false">
+      <ui:Toggle label="Exists" value="true" />
+      <ue:ColorField label="Color" />
+    </ui:Foldout>
+
+    <ui:Foldout class="margin-bottom-5px" text="Item 4" value="false">
+      <ui:Toggle label="Exists" value="true" />
+      <ue:ColorField label="Color" />
+    </ui:Foldout>
+
+    <ui:Foldout class="margin-bottom-5px" text="Item 5" value="false">
+      <ui:Toggle label="Exists" value="true" />
+      <ue:ColorField label="Color" />
+    </ui:Foldout>
+  </ui:Foldout>
+</ui:UXML>

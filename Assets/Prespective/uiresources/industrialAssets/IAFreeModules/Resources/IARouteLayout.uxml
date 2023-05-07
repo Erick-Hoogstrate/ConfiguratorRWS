@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    
+    <ui:Foldout name="route-settings" class="foldout-division margin-bottom-10px" text="Route Settings">
+        <ue:ColorField name="route-color" label="Color" />
+        <ui:Toggle name="show-route" label="Show in scene view"/>
+    </ui:Foldout>
+    
+    <ui:VisualElement name="route-definition-container"/>
+</ui:UXML>

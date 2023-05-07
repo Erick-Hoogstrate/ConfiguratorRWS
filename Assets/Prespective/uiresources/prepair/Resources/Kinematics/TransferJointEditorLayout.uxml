@@ -1,6 +1,6 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
-  <ui:Template src="GenericJointSettingsLayout.uxml" name="generic-joint-settings"/>
-  <ui:Template src="KinematicChainingLayoutOld.uxml" name="kinematic-chaining"/>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Template src="../../Resources/GenericJointSettingsLayout.uxml" name="generic-joint-settings"/>
+  <ui:Template src="../../Resources/KinematicChainingLayoutOld.uxml" name="kinematic-chaining"/>
 
   <ui:Instance template="generic-joint-settings" name="generic-joint-settings"/>
   <ui:Instance template="kinematic-chaining" name="kinematic-chaining-settings"/>
@@ -11,4 +11,4 @@
     <ue:EnumField name="check-space" label="Checkspace" />
   </ui:VisualElement>
   
-</UXML>
+</ui:UXML>

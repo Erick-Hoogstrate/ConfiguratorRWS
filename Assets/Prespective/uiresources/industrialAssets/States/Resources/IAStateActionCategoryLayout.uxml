@@ -1,0 +1,9 @@
+<!--In this header we define that all visual elements that exist in the UnityEngine namespace should get prefix 'ui', whereas visual elements in the editor namespace should get 'ue' prefix-->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+       <ui:TextField name="category-name" label="State Category Name:" class="custom-exposure"/>
+       <ui:Foldout name="category-content-foldout" text="Category States" class="custom-exposure-foldout">
+         <ui:Button name="create-state-button" text="Create New State" class="custom-exposure"/>
+         <ui:VisualElement name="container-for-nested-states" />
+         <ui:VisualElement name="container-for-current-state" /> 
+       </ui:Foldout>
+</ui:UXML> 

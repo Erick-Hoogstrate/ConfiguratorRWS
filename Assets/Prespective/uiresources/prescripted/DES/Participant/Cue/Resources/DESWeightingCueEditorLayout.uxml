@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:Template src="../../../../../core/Transformation/NPrecisionMonoBehavior/Resources/NPrecisionMonoBehaviorTransformSettingsLayout.uxml" name="n-precision-monobehavior-transform-settings" />
+
+  <ui:Instance template="n-precision-monobehavior-transform-settings" name="n-precision-monobehavior-transform-settings" />
+  
+  <ui:VisualElement class="division margin-bottom-10px hide-in-multi-select">
+    <ui:Label class="bold margin-bottom-10px" text="Specifications" />
+    <ue:IntegerField name="participant-id" label="Participant ID" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px hide-when-no-owner-spline hide-in-multi-select" name="spline-settings">
+    <ui:Label class="bold margin-bottom-10px" text="Cue Spline Settings" />
+	<ue:ObjectField name="add-spline" label="Add Spline" />
+    <ui:Label class="bold margin-bottom-10px" text="Connected Splines" />
+    <ui:VisualElement class="margin-bottom-10px" name="splines-container" />
+  </ui:VisualElement>
+</ui:UXML>

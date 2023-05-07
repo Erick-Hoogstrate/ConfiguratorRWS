@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:Foldout text="Cue#1" name="main-foldout">
+    <ui:Toggle name="preview-approach-path-in-scene" label="Preview Approach Path In Scene" class="disabled"/>
+    <ui:VisualElement name="approach-recipe-container" />
+    <ui:VisualElement name="approach-container" />
+  </ui:Foldout>
+
+</ui:UXML>

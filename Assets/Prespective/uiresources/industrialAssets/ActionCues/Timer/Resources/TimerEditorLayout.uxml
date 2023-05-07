@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+<ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Position">
+    <ui:Label class="bold margin-bottom-5px" text="Wait Time (s)"/>
+    <ue:DoubleField name="wait-time" label="Wait time:"/>
+  </ui:VisualElement>   
+</ui:UXML>

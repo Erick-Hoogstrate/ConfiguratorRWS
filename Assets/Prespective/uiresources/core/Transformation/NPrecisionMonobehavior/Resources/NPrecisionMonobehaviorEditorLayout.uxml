@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <!-- Default fieldset for NPrecision Monobehavior from template -->
+  <ui:Template src="NPrecisionMonoBehaviorTransformSettingsLayout.uxml" name="n-precision-monobehavior-transform-settings"/>
+  <ui:Instance template="n-precision-monobehavior-transform-settings" name="n-precision-monobehavior-transform-settings"/>
+
+  <!-- Default Inspector -->
+  <ui:VisualElement class="division margin-bottom-10px" name="inheriting-type-inspector"/>
+</ui:UXML>

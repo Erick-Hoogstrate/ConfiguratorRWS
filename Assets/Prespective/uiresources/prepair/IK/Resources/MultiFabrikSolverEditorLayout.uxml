@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement name="kinematics-controller-container" />
+  
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Fabrik Solver Settings" />
+    <ui:Toggle name="execute-in-editor-mode-fabrik-solver" label="Execute in Editor Mode" />
+    <ue:DoubleField name="minimum-offset-to-target" label="Minimum offset to target" />
+    <ue:DoubleField name="minimum-angle-offset-of-arm" label="Minimum angle offset of end arm" tooltip="Only applicable when 'Match arm direction to target' is enabled"/>
+    <ue:IntegerField name="maximum-amount-of-iterations-fabrik-solver" label="Maximum amount of iterations" />
+    <ui:Toggle name="visualize-chain" label="Visualize chain in scene" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:VisualElement class="row">
+      <ui:Label class="bold margin-bottom-5px" style="width: 55%" text="Fabrik Chains" />
+      <ui:Button name="add-chain" class="margin-bottom-10px" style="width: 40%" text="Add chain" tooltip="Adds a chain to fill in." />
+    </ui:VisualElement>
+    <ui:VisualElement name="chains-container" class="margin-bottom-5px" />
+  </ui:VisualElement>
+</ui:UXML>

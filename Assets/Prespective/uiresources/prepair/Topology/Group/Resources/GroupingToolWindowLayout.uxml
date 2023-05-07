@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:Label class="bold margin-bottom-10px" text="Create New Group" />
+			<ui:TextField class="margin-bottom-10px" name="new-group-name" label="Group Name" text="New Group" />
+			<ui:Button name="group-selection" text="Group Selection" />
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:Label class="bold margin-bottom-10px" text="Manage Group Contents" />
+			<ue:ObjectField class="margin-bottom-10px" name="loaded-group" label="Loaded Group" />
+			<ui:VisualElement  class="display-none" name="edit-group-container">
+				<ui:Button name="add-selection" text="Add Selection to Group" />
+				<ui:Button name="remove-selection" text="Remove Selection from Group"/>
+			</ui:VisualElement>
+		</ui:VisualElement>
+	</ui:ScrollView>
+</ui:UXML>

@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="live-data" text="Live Data">
+    <ui:TextField class="no-box" name="target-degrees" label="Target (deg)"/>
+    <ui:TextField class="no-box" name="position" label="Position(deg)"/>
+  </ui:Foldout>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="properties" text="DC Motor Properties">
+    <ui:VisualElement name="settings">
+      <ue:ObjectField name="wheel-joint-field" label="Wheel Joint"/>
+      <ue:EnumField name="rotation-range" label="Rotation Range"/>
+      <ue:DoubleField name="time-per-degrees" label="Time Per 60 Degrees(s)"/>
+      <ue:DoubleField name="dead-angle" label="Dead Angle (deg)"/>
+      <ui:Toggle name="pulse-width-modulation" label="Pulse Width Modulation"/>
+      <ui:VisualElement name="pulse-width-modulation-enabled">
+        <ue:DoubleField name="zero-degree-pulse-width" label="0 Deg Pulse Width (ms)"/>
+        <ue:DoubleField name="180-degree-pulse-width" label="180 Deg Pulse Width (ms)"/>
+        <ue:DoubleField name="dead-band-width" label="Dead Band Width (ms)"/>
+      </ui:VisualElement>
+    </ui:VisualElement>
+  </ui:Foldout>
+
+  <ui:VisualElement class="division margin-bottom-10px" name="control-panel" text="Control Panel">
+    <ui:Label class="bold margin-bottom-5px" text="Control Panel"/>
+    <ui:Button class="content-fit-button margin-bottom-5px" name="generate-control-panel" text="Generate Control Panel"/>
+  </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,1690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreEditor</name>
+    </assembly>
+    <members>
+        <member name="T:u040.prespective.core.editor.editorui.window.AboutWindow">
+            <summary>
+            <description>
+            Shows required project settings, first use message, available update, module info and links to documentation and bug report.
+            </description>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.AboutWindow.OpenWindow">
+            <summary>
+            <description>
+            Opens Window
+            </description>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.AboutWindow.OnDestroy">
+            <summary>
+            <description>
+            Dispose dynamicsManager on destroy
+            </description>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI">
+            <summary>
+            Uniform baseclass to manage Unity Editor Events in a *somewhat* easier to understand manner
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnBeforeEditorSerialize">
+            <summary>
+            Called before the editor serializes when changing play/edit mode
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnAfterEditorDeserialize">
+            <summary>
+            Called after the editor has properly deserialized (called after Init WIndow Panels and Init Window)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnEnable">
+            <summary>
+            Called in the OnEnable event, after Init Window, but before Init Window Panels
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnDisable">
+            <summary>
+            Called when the window is disabled
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnDestroy">
+            <summary>
+            Called when the window is destroyed
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnFocus">
+            <summary>
+            Called when the window receives focus
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnLostFocus">
+            <summary>
+            Called when the window has lost focus
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnEditorUpdate">
+            <summary>
+            Called when the editor window has updated
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.DoOnDuringSceneGUI">
+            <summary>
+            Called when the Scene GUI has updated
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.RegisteredPanels">
+            <summary>
+            Backup list with registered panels (used for disposal)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.InitWindowPanels">
+            <summary>
+            This function should make sure all panels contained in this window are (re)-instantiated so they're ready to receive window event
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.OnEnable">
+            <summary>
+            The first event called after the window was created (DO NOT HIDE PLEASE)
+            Makes sure the listeners are present for pre/post serialization recognition
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.onBeforeEditorSerialize">
+            <summary>
+            Called before the editor switches play/editor mode, indicating the editor window should buffer all its volatile values to prevent loss by serialization
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.onDirectlyAfterEditorDeserialize">
+            <summary>
+            Called directly after the editor has switched play/editor mode, although values set through deserialization would be effective here - it does not seem to work with the
+            editor window updates, so we'll call a Co-routine here first to make sure everything has restarted properly
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.applyValuesAfterFirstUIUpdate">
+            <summary>
+            The IEnumerator that makes sure everything has restarted properly before we place back values after deserialization
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI.OnAfterEditorDeserialize">
+            <summary>
+            Called when everything has restarted properly
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowPanelIMGUI.IsInitialized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowPanelIMGUI.Init(u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowIMGUI,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="_parentWindow"></param>
+            <param name="_params"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowPanelIMGUI.OnPanelGUI(UnityEngine.Rect)">
+            <summary>
+            
+            </summary>
+            <param name="_windowRect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.window.PrespectiveEditorWindowPanelIMGUI.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.menu.PrespectiveMenu">
+            <summary>
+            Window that allows access to all Prespective Features, including a separate submenu for Alpha Features
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.setMenuItemsDisplay(UnityEditor.UIElements.ToolbarMenu,System.Boolean)">
+            <summary>
+            Hide/show menu items in a menu
+            </summary>
+            <param name="_menuHeader">Menu to hide/how items of</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.rotateMenuArrow(UnityEditor.UIElements.ToolbarMenu,System.Boolean)">
+            <summary>
+            Rotatates the arrow of a ToolbarMenu 90 degrees
+            </summary>
+            <param name="menuArrow">The ToolbarMenu instance</param>
+            <param name="_rotateBack">Has the arrow been rotated before, and should it be rotated back?</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.getPositionInEditor(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Returns the position of a VisualElement in the Editor as a Rect based on the position of its containing window
+            </summary>
+            <param name="_target">VisualElement to return the position of</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.setMenuActionCallbacks(UnityEngine.UIElements.VisualElement,System.String)">
+            <summary>
+            Sets the callbacks for a group of menu items that perform an action, based on the name of the menu item and its entry in callbackEntries
+            </summary>
+            <param name="_root">VisualElement containing menu items</param>
+            <param name="_contextMenuPrefix">Optional context menu prefix (used for standard component context menus)</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.listAlphaFeatureMenuItems">
+            <summary>
+            Lists the Alpha Features in the menu
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.placeAlphaFeatureMenuItem(System.Reflection.MethodInfo,u040.prespective.utility.editor.editorui.menu.AlphaFeatureAttribute)">
+            <summary>
+            Places an alpha feature menu item in a suitable submenu
+            </summary>
+            <param name="_methodInfo">MethodInfo for the alpha feature method</param>
+            <param name="_attribute">AlphaFeature attribute for the method</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.createAlphaFeatureSubmenu(System.String)">
+            <summary>
+            Creates an alpha feature submenu
+            </summary>
+            <param name="_name">Name for the submenu</param>
+            <returns>VisualElement containing the submenu</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.createAlphaFeatureMenuItem(System.Reflection.MethodInfo,u040.prespective.utility.editor.editorui.menu.AlphaFeatureAttribute)">
+            <summary>
+            Creates an alpha feature menu item
+            </summary>
+            <param name="_methodInfo">MethodInfo for the alpha feature method</param>
+            <param name="_attribute">AlphaFeature attribute for the method</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.openContextMenu(UnityEngine.UIElements.VisualTreeAsset,UnityEditor.UIElements.ToolbarMenu)">
+            <summary>
+            Opens a Context Menu
+            </summary>
+            <param name="_visualTree">The visual tree for the context menu</param>
+            <param name="_menu">The menu button that will open the context menu (used to determine position)</param>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.ContextMenuData">
+            <summary>
+            struct containing the name of the VisualTreeAsset that should be used for the context menu of a button with a given name
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.ContextMenu">
+            <summary>
+            Subclass for context menu
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.ContextMenu.OpenMenu(UnityEngine.UIElements.VisualElement,UnityEngine.Rect,System.String)">
+            <summary>
+            Opens a context menu using EditorWindow.ShowAsDropDown
+            </summary>
+            <param name="_menuItems">VisualElement containing the menu items for the context menu</param>
+            <param name="_position">Position where the context menu should be shown</param>
+            <param name="_contextMenuPrefix">Optional context menu prefix (used for standard components)</param>
+            <returns>The ContextMenu instance</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.menu.PrespectiveMenu.ContextMenu.Init(UnityEngine.UIElements.VisualElement,System.String)">
+            <summary>
+            Initializes the context menu
+            </summary>
+            <param name="_menuItems">VisualElement containing the menu items for the context menu</param>
+            <param name="_contextMenuPrefix">Optional context menu prefix (used for standard components)</param>
+            <returns>The ContextMenu instance</returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.VisualTheme">
+            <summary>
+            Enum used in Editors and EditorWindows to define the visual theme category
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE">
+            <summary>
+            editor for ADSpline
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.ControlPointPosition">
+            <summary>
+            control point positions
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.TranslationSpace">
+            <summary>
+            translation space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.minMaxZoomLODLimits">
+            <summary>
+            The limits in m's from the spline we want to have high-to-low tessellation precision on a spline
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.minMaxSplineSceneLineSegements">
+            <summary>
+            The maximum number of tessellated segments we want to (visually) allow on screen
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.onSplineChanged">
+            <summary>
+            if spline value is changed event function
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.renderCustomGizmo(u040.prespective.core.spline.ADSpline,UnityEditor.GizmoType)">
+            <summary>
+            Called every time the gizmo is drawn in the editor view
+            </summary>
+            <param name="_spline">the spline for which to draw the gizmo</param>
+            <param name="_gizmoType">gizmo type (not used)</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.drawOnSceneView(u040.prespective.core.spline.ADSpline)">
+            <summary>
+            Draw the spline in scene view
+            </summary>
+            <param name="_spline"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.drawSplineInEditorScene(u040.prespective.core.spline.ADSpline,UnityEngine.Camera,System.Boolean@)">
+            <summary>
+            Draws the Spline in the scene if its on scene, and also considers the distance to the camera to determine the visual subdivision of the spline to be drawn
+            </summary>
+            <param name="_spline">the spline to draw</param>
+            <param name="_camera">the camera to use for on-screen detection</param>
+            <param name="_isVisibleOnScreen">if visible on screen</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.splineIsVisibleInScene(u040.prespective.core.spline.ADSpline,UnityEngine.Camera,System.Single@)">
+            <summary>
+            Return whether this spline is visible on the camera _cam
+            </summary>
+            <param name="_spline">the spline to test</param>
+            <param name="_camera">the camera to use for on-screen detection</param>
+            <param name="_shortestSplineDistToCam">the distance from the cam to the closest CONTROL POINT on the spline</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.determineSceneDrawLoD(u040.prespective.core.spline.ADSpline,System.Single)">
+            <summary>
+            Simple algorithm to modulate the scene drawing of a (tessellated) spline
+            </summary>
+            <param name="_spline">the spline to determine the LoD for</param>
+            <param name="_shortestSplineDistToCam">the shortest distance between this spline and the scene view camera</param>
+            <returns>the LoD Modifier; 1e-7 = low level of detail, 1 = high level of detail</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.drawSplineInEditor(u040.prespective.core.spline.ADSpline,u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile[],System.Single)">
+            <summary>
+            Draw a directional normal line for a Spline
+            </summary>
+            <param name="_spline">the spline to use the directional normal line for</param>
+            <param name="_direction">the local drawing direction (e.g. vector3.up for the y-direction normal line)</param>
+            <param name="_color">the line color to use</param>
+            <param name="_lodModifier">calculated LoD modifier for this spline</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.determineSegmentTesselationStepSize(u040.prespective.core.spline.DSplineCurveSegment,System.Single)">
+            <summary>
+            Using the tessellation applied on the Curve Segment and the LoD Modifier, determine the required tessellation step size
+            to use for drawing this segment in the scene
+            </summary>
+            <param name="_segment">the segment to determine tessellation for</param>
+            <param name="_lodModifier">the LoD Modifier; 1e-7 = low level of detail, 1 = high level of detail</param>
+            <returns>integer giving the step size to apply</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.drawSplineSegmentPart(u040.prespective.core.spline.DSplineCurveSegment,u040.prespective.core.spline.TesselatedNormalDescription[],u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile[],UnityEngine.Transform,UnityEngine.Quaternion,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Draws a single line based on a single spline segment part in the scene
+            </summary>
+            <param name="_segment">the spline segment to draw</param>
+            <param name="_tessellatedBuffer">tessellated values of segment</param>
+            <param name="_normalLineProfiles">normal line profile</param>
+            <param name="_parent">parent for local to global calculation</param>
+            <param name="_parentRotation">parent rotation for local to global calculation</param>
+            <param name="_localVector">the local drawing direction (e.g. vector3.up for the y-direction normal line)</param>
+            <param name="_normalModifier">the normal modifier to use for scaling the normal line</param>
+            <param name="_startIndexInBuffer">the start index to use for drawing</param>
+            <param name="_endIndexInBuffer">the end index to use for drawing</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.DrawSplineLine(u040.prespective.core.spline.ADSpline)">
+            <summary>
+            Draw a Spline in de Scene View
+            </summary>
+            <param name="_spline">The spline to draw</param>
+            <returns>Whether something was drawn</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.DrawSplineLine(u040.prespective.core.spline.ADSpline,System.Double,System.Double)">
+            <summary>
+            Draw a Spline in de Scene View
+            </summary>
+            <param name="_spline">The spline to draw</param>
+            <param name="_startPercentage">The start percentage to start drawing from</param>
+            <param name="_endPercentage">The end percentage to stop drawing</param>
+            <returns>Whether something was drawn</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.DrawSplineLine(u040.prespective.core.spline.ADSpline,System.Double,System.Double,u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile[])">
+            <summary>
+            Draw a Spline in de Scene View
+            </summary>
+            <param name="_spline">The spline to draw</param>
+            <param name="_startPercentage">The start percentage to start drawing from</param>
+            <param name="_endPercentage">The end percentage to stop drawing</param>
+            <param name="_normals">A list of normals (vectors) and the colors to drawn them in</param>
+            <returns>Whether successfully drawn</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.spline.DSplineEditorUIE.drawControlPointLabel(u040.prespective.core.spline.ADSpline,u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Draw a control point label in the scene view
+            </summary>
+            <param name="_spline">the owning spline</param>
+            <param name="_cp">the control point to create the label for</param>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile">
+            <summary>
+            Simple struct to manage a normal line profile (generally z or y)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile.NormalLineColor">
+            <summary>
+            The color to use for this normal line
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.spline.NormalLineProfile.NormalLineDirection">
+            <summary>
+            The Direction to use for this normal line
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.transformation.NPrecisionMonoBehaviorEditorUIE">
+            <summary>
+            Fallback Editor class for Child classes of NPrecisionMonoBehavior
+            Creates a UIElements based inspector with the standard NPrecisionMonoBehaviorTransformSettings
+            and a default inspector with fields for the class fields in the child class
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.transformation.NPrecisionMonoBehaviorEditorUIE`1">
+            <summary>
+            Base class that can be used to create Editors for any class that inherits from NPrecisionMonoBehavior
+            When the UXML layout of the inheriting Editor uses 'NPrecisionMonoBehaviorTransformSettings' as a template,
+            the method initializeNPrecisonMonoBehaviorTransformSettings can be reused to initialize the fields.
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorUIE`1.executeOnEnable">
+            <summary>
+            Code that should only be executed once goes here. Set the visual theme here ('theme').
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorUIE`1.Reinitialize">
+            <summary>
+            Completely reinitializes the editor VisualElement (this includes clearing the VisualElement and recloning the visual tree)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorUIE`1.reinitializeConditionally(System.Func{System.Boolean},System.Int32)">
+            <summary>
+            This method will make the Editor (read: Inspector) refresh when a specified condition check returns true
+            </summary>
+            <param name="_checkCondition">Bool returning condition check function</param>
+            <param name="_conditionCheckInterval">Interval in ms to repeat the condition check</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorUIE`1.generateDefaultInspector(UnityEngine.UIElements.VisualElement,System.Type)">
+            <summary>
+            Generates the default inspector for a UIE inspector
+            </summary>
+            <param name="_container">The container to generate the default inspector in. Should be empty (no child elements) intially!</param>
+            <param name="_parentTypeLimit">All fields/InspectorButton-methods  from inheriting classes up to the this type will be included</param>
+            <returns>a visual element with inspector fields mimicing the 'Default Inspector' for this component type</returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.topology.BasicLockableTransformEditorUIE">
+            <summary>
+            Basic lockable transform editor inspector
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.editorui.inspectorwindow.topology.BasicLockableTransformEditorUIE.visualTreeFile">
+            <summary>
+            visual tree of inspector
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.topology.BasicLockableTransformEditorUIE.executeOnEnable">
+            <summary>
+            inspector execute on enable
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.topology.BasicLockableTransformEditorUIE.initialize">
+            <summary>
+            run on initialization of inspector
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI">
+            <summary>
+            <description>
+            Base editor from which all Prespective editors should inherit
+            </description>
+            <version ver="1.0.2" author="BBS" date="210119">
+                Updated license state with type parameter
+            </version>
+            <version ver="1.0.1" author="THS" date="200908">
+                License Lock Functionality
+            </version>
+            <version ver="1.0.0" author="THS" date="190917">
+                Initial implementation
+            </version>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI.licenseState">
+            <summary>
+            Lazy loader for License State
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI.OnInspectorGUI">
+            <summary>
+            creates an inspector that dirties the scene when changed
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI.labelTexture">
+            <summary>
+            The texture to use for the controlpoint backdrop
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI.labelStyle">
+            <summary>
+            The controlpoint label style 
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.editorui.inspectorwindow.PrespectiveEditorIMGUI.ColorIcon(UnityEngine.Color)">
+            <summary>
+            Returns a 10x10 solid color icon
+            </summary>
+            <param name="_color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.LaunchUtility">
+            <feature>
+            https://unit040.atlassian.net/wiki/spaces/PRDO/pages/2365947914
+            </feature>
+            <summary>
+            Utility that initializes on load and checks for first use, active session and update availability.
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.LaunchUtility.firstUse">
+            <summary>
+            Returns false if PP key exists, sets the key with value 1 otherwise
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.LaunchUtility.FirstUse">
+            <summary>
+            Public, private settable property to buffer value of firstUse
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.LaunchUtility.activeSession">
+            <summary>
+            Returns true if PP key is set to 1, returns false otherwise
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.LaunchUtility.notifyUpdates">
+            <summary>
+            Returns false true if PP key exists and set to 1, returns false otherwise and sets key to one if not exists
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.LaunchUtility.NotifyUpdates">
+            <summary>
+            Public, private settable property to buffer value of notifyUpdates
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.LaunchUtility.#cctor">
+            <summary>
+            Invokes Init after first EditorApplication update cycle
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.LaunchUtility.Init">
+            <summary>
+            Initializes public buffer properties and UpdateCheckUtility. Opens about window on first use or available update
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.LaunchUtility.SetActiveSession">
+            <summary>
+            Sets PP key for active session to 1
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.LaunchUtility.UnsetActiveSession">
+            <summary>
+            Sets PP key for active session to 0
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.LaunchUtility.SetUpdateNotificationPreference(System.Boolean)">
+            <summary>
+            Sets PP key for active session based on user input
+            </summary>
+            <param name="state">User input for update notification preference</param>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ProxyCredentialsPopup">
+            <summary>
+            Prespective license credentials popup window
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ProxyCredentialsPopup.Init(System.String)">
+            <summary>
+            Initialization void
+            </summary>
+            <param name="_proxyUrl">URL to show</param>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ALicenseResult">
+            <summary>
+            Abstract base class for license results
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.ALicenseResult.InfoBox">
+            <summary>
+            Result used for UI display
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.ALicenseResult.LicenseKey">
+            <summary>
+            The license key in use
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.ALicenseResult.Type">
+            <summary>
+            Given Prespective License Type
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.ALicenseResult.LastRequestDateTime">
+            <summary>
+            Last request DateTime
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.IsActive">
+            <summary>
+            Whether the license is active
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.GetLicenseInfoToSave">
+            <summary>
+            License information that can be saved in local file for building on external
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseResult.SetLicenseFromInfo(System.String)">
+            <summary>
+            Sets the current license from the License info coming from the file
+            </summary>
+            <param name="_licenseInfo"></param>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.OfflineTimeoutDateTime">
+            <summary>
+            Timeout for offline timeout
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.ExpiryDateTime">
+            <summary>
+            License Expiry DateTime
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseResult.IsOfflineTimeExpired">
+            <summary>
+            Default checkup whether the offline time is expired
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseResult.IsExpired">
+            <summary>
+            Return whether the license is expired.
+            </summary>
+            <returns>true if expired, false when valid</returns>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.DaysSinceLastRequest">
+            <summary>
+            Days since last request
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.DaysTillExpiry">
+            <summary>
+            Days till Expiry date
+            </summary>
+        </member>
+        <member name="P:u040.prespective.core.editor.security.ALicenseResult.DaysTillOfflineTimeout">
+            <summary>
+            Days till offline time expires
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensEditorPreferenceStorage.SaveLicense(u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensLicenseKey,System.String)">
+            <summary>
+            Save License
+            </summary>
+            <param name="_license">Crypto Lens License Key</param>
+            <param name="_uuid">Unique Identifier</param>
+            <returns>true when save went as expected</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensEditorPreferenceStorage.LoadLicense(System.String)">
+            <summary>
+            Loading License
+            </summary>
+            <param name="_uuid">unique identifier</param>
+            <returns>Updated license file</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensEditorPreferenceStorage.DeleteLicense">
+            <summary>
+            Delete License
+            </summary>
+            <returns>true is removed successfully</returns>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensLicenseServerInteractor.WEB_DOMAIN">
+            <summary>
+            webdomain of external server
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.CryptoLens.CryptoLensLicenseServerInteractor.WEB_URL">
+            <summary>
+            web URL of the external server
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult">
+            <summary>
+            Dataclass used for activating prespective license
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.WEB_DOMAIN">
+            <summary>
+            webdomain of external server
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.WEB_URL">
+            <summary>
+            web URL of the external server
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.WEB_URI">
+            <summary>
+            web URI of external server
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.ActivateLicense(u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult,System.String[]@)">
+            <summary>
+            License activation
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.DeactivateLicense(u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult,System.String[]@)">
+            <summary>
+            License Deactivate
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.ValidateLicense(u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult,System.String[]@)">
+            <summary>
+            License update
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.HandleLicenseRequestResult(System.String,u040.prespective.core.editor.security.LicenseType,System.String[]@)">
+            <summary>
+            Handle the license response
+            </summary>
+            <param name="_serverResponse"></param>
+            <param name="_licenseType"></param>
+            <param name="_infoStrings">list of additional objects, item[0] is an errorResult</param>
+            <returns></returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.GetServerDomain">
+            <summary>
+            returns server domain
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.GetServerUrl">
+            <summary>
+            returns server URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.GetServerUri">
+            <summary>
+            Returns server URI
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.UploadToWebserver(u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult,u040.prespective.core.editor.security.LicenseAction)">
+            <summary>
+            Factor data to a webform to send to the license server based on the selected action
+            </summary>
+            <param name="_currentLicense">license object with preferred values</param>
+            <param name="_licenseAction">(De-)Activate or update</param>
+            <returns>the updated license class</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.sendToWebServer(u040.prespective.core.editor.security.LicenseAction,UnityEngine.WWWForm)">
+            <summary>
+            Connection to the webserver / license server
+            </summary>
+            <param name="_endpoint">endpoint action</param>
+            <param name="_content">unity wwwform</param>
+            <returns>json string response from server</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.ConvertServerResultToClass(System.String,u040.prespective.core.editor.security.LicenseType,u040.prespective.core.editor.security.LicenseProviders.TenQuality.ErrorResult@)">
+            <summary>
+            Parse result from license server
+            </summary>
+            <param name="_resultFromServer">the raw data from the license server (in json)</param>
+            <param name="_licenseType"></param>
+            <param name="_errorResult"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.ParseOfflineTimout(u040.prespective.core.editor.security.LicenseProviders.TenQuality.ExpirationType,System.Int32)">
+            <summary>
+            Set license struct data to offline expiry datetime
+            </summary>
+            <param name="_expirationType">Explicit expiry type</param>
+            <param name="_amount">amount of expiration type</param>
+            <returns>DateTime object</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseServerInteractor.parseExpirationType(System.String)">
+            <summary>
+            String to Expiration type
+            </summary>
+            <param name="_expirationString">string from server's JSON</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.LicenseProviders.TenQuality.ExpirationType">
+            <summary>
+            expiration type enum
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.ACTIVATION_ID">
+            <summary>
+            Constants used for writing registry values
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetSkuCodeFromLicenseType(u040.prespective.core.editor.security.LicenseType)">
+            <summary>
+            Get the correct sku code from a licensetype
+            </summary>
+            <param name="_licenseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetLicenceTypeFromSkuCode(System.String)">
+            <summary>
+            Get the correct sku code from a licensetype
+            </summary>
+            <param name="_licenseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.SaveLicense(u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityLicenseRequestResult,System.String)">
+            <summary>
+            Save license information to registry
+            </summary>
+            <param name="_license"></param>
+            <param name="_uuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.LoadLicense(System.String)">
+            <summary>
+            Retrieve license information from registry
+            </summary>
+            <param name="_uuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.DeleteLicense">
+            <summary>
+            Remove license information
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetLicenseKey(System.String)">
+            <summary>
+            Retrieve Current license key in use
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setLicenseKey(System.String,System.String)">
+            <summary>
+            Write license key to registry
+            </summary>
+            <param name="_licKey">license key</param>
+            <param name="_key">security key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetActivationID(System.String)">
+            <summary>
+            Return activation ID of current license
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setActivationID(System.String,System.String)">
+            <summary>
+            Write activation ID to registry
+            </summary>
+            <param name="_actID">current activation ID</param>
+            <param name="_key">security key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetLastRequest(System.String)">
+            <summary>
+            Returns when the last license update request was sent
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setLastRequest(System.DateTime,System.String)">
+            <summary>
+            Write the last request datetime value to the registry
+            </summary>
+            <param name="_lastReq">last request datetime</param>
+            <param name="_key">security key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setLastRequest(System.String)">
+            <summary>
+            Write the last request datetime to the registry
+            </summary>
+            <param name="_key">security key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetLicenseExpiryDate(System.String)">
+            <summary>
+            Get License Expiry Date from the registry
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setLicenseExpiryDate(System.DateTime,System.String)">
+            <summary>
+            Write expiration date to the registry
+            </summary>
+            <param name="_expDate"> expiration date to write</param>
+            <param name="_key">security key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetOfflineExpiryDate(System.String)">
+            <summary>
+            Get License Expiry Date from the registry
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetSku(System.String)">
+            <summary>
+            Retrieve the name of the SKU number of the license
+            </summary>
+            <param name="_key">ID key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setSku(u040.prespective.core.editor.security.LicenseType,System.String)">
+            <summary>
+            Set the current SKU    
+            </summary>
+            <param name="_licenseType">SKU number</param>
+            <param name="_key">Identifier key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.GetLicenseState(System.String)">
+            <summary>
+            Return the current activation state of the license
+            </summary>
+            <param name="_key">security key</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityRegistryLicenseStorage.setLicenseState(System.Boolean,System.String)">
+            <summary>
+            Write license state to the registry
+            </summary>
+            <param name="_active">activated state</param>
+            <param name="_key">security key</param>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityUtility.STORE_CODE">
+            <summary>
+            store code needed to connect to external server
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.LicenseProviders.TenQuality.TenQualityUtility.LicenseActionToEndpointActions">
+            <summary>
+            Lookup connecting license action to actual endpoint string
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ALicenseServerInteractor`1">
+            <summary>
+            Abstract implementation of ILicenseServerInteractors with base functions
+            </summary>
+            <typeparam name="T">Inherits from ALicenseResult</typeparam>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.ActivateLicense(System.Object,System.String[]@)">
+            <summary>
+            Activate License
+            </summary>
+            <param name="_license">Placeholder License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.DeactivateLicense(System.Object,System.String[]@)">
+            <summary>
+            Deactivate License
+            </summary>
+            <param name="_license">Current License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.ValidateLicense(System.Object,System.String[]@)">
+            <summary>
+            Validate License
+            </summary>
+            <param name="_license">Current License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.GetServerDomain">
+            <summary>
+            Server domain without protocol
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.GetServerUrl">
+            <summary>
+            Base server URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.ActivateLicense(`0,System.String[]@)">
+            <summary>
+            Activation call on the license server
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.DeactivateLicense(`0,System.String[]@)">
+            <summary>
+            Deactivation call to the license server
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseServerInteractor`1.ValidateLicense(`0,System.String[]@)">
+            <summary>
+            Deactivation call to the license server
+            </summary>
+            <param name="_license"></param>
+            <param name="_infoStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.InvalidLicenseException">
+            <summary>
+            License Exception
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ILicenseServerInteractor">
+            <summary>
+            Base interface for listing all implementations
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor.ActivateLicense(System.Object,System.String[]@)">
+            <summary>
+            Activate License
+            </summary>
+            <param name="_license">Placeholder License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor.DeactivateLicense(System.Object,System.String[]@)">
+            <summary>
+            Deactivate License
+            </summary>
+            <param name="_license">Current License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor.ValidateLicense(System.Object,System.String[]@)">
+            <summary>
+            Validate License
+            </summary>
+            <param name="_license">Current License</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor.GetServerDomain">
+            <summary>
+            Returns Server domain
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor.GetServerUrl">
+            <summary>
+            Returns server URI
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ILicenseServerInteractor`1">
+            <summary>
+            Explicit interface definition
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor`1.ActivateLicense(`0,System.String[]@)">
+            <summary>
+            Activate License
+            </summary>
+            <param name="_license">Placeholder license object</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor`1.DeactivateLicense(`0,System.String[]@)">
+            <summary>
+            Deactivate License
+            </summary>
+            <param name="_license">Current license</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ILicenseServerInteractor`1.ValidateLicense(`0,System.String[]@)">
+            <summary>
+            
+            </summary>
+            <param name="_license">Current active license</param>
+            <param name="_infoStrings">Array of supporting messages</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.LicenseCompatibilityAttribute">
+            <summary>
+            Attribute used to Filtering features per license type
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ILicenseFactory`1">
+            <summary>
+            Interface for setting up a new License Provider
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.PreBuildProcessor">
+            <summary>
+            Prebuild processor for Prespective license checking
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ILicenseStorage`1">
+            <summary>
+            License Storage Interface
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:u040.prespective.core.editor.security.LicenseManagerWindow" -->
+        <member name="T:u040.prespective.core.editor.security.EditorPlayingLock">
+            <summary>
+            Lock Playmode when license is inactive
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.EditorPlayingLock.#cctor">
+            <summary>
+            register an event handler when the class is initialized
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.EditorPlayingLock.LockPlayModeState(UnityEditor.PlayModeStateChange)">
+            <summary>
+            Function that is called whenever the unity editor _state changes
+            </summary>
+            <param name="_state"></param>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.License">
+            <summary>
+            Core object for connecting for Prespective License Management
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.License.TIME_SERVER">
+            <summary>
+            NTP time server
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.security.License.TIME_OUT_IN_SECONDS">
+            <summary>
+            Timeout in seconds for connecting to the remote server
+            </summary>
+        </member>
+        <member name="E:u040.prespective.core.editor.security.License.OnLicenseCheckCompleted">
+            <summary>
+            Event when form send is completed
+            </summary>
+        </member>
+        <member name="E:u040.prespective.core.editor.security.License.OnServerCheckCompleted">
+            <summary>
+            Event when server check is completed
+            </summary>
+        </member>
+        <member name="E:u040.prespective.core.editor.security.License.OnLicenseStateUpdated">
+            <summary>
+            Event when license state has changed
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetLicenseState">
+            <summary>
+            Get the current license state
+            </summary>
+            <returns>true when active</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetLicenseStateWithType(u040.prespective.core.editor.security.LicenseType@)">
+            <summary>
+            License Check for license locking
+            </summary>
+            <param name="_type">current activated license type</param>
+            <returns>true when active</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetLicenseInfoToSave">
+            <summary>
+            License Info used for oa cloud build
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetLicenseExpired">
+            <summary>
+            Check license expiry on expiry date 
+            </summary>
+            <returns>true is expired</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetLicenseOfflineTimeout">
+            <summary>
+            Check license expiry on offline and expiry date 
+            </summary>
+            <returns>true if expired</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.UploadForm(u040.prespective.core.editor.security.LicenseAction,u040.prespective.core.editor.security.LicenseType,System.String)">
+            <summary>
+            Upload the form to the license server
+            </summary>
+            <param name="_licenseAction">action for prespective license</param>
+            <param name="_licenseType">Current selected prespective license type</param>
+            <param name="_licenseKey">Current prespective license key</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.ShowSerialInUse(System.String)">
+            <summary>
+            Show part of the serial as obfuscated chars (*)
+            </summary>
+            <param name="_serial"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.PerformServerCheck">
+            <summary>
+            Checks whether the external server is available
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.pingServer">
+            <summary>
+            ICMP ping to external server
+            </summary>
+            <returns>true if available</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.getLicenseServerHttpCheck(System.Uri,System.String,System.String)">
+            <summary>
+            Check the whether the web server is available via a http head check
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.License.GetInternetAvailable">
+            <summary>
+            Returns whether the internet is available
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.CertificateValidationIssuerLevel">
+            <summary>
+            Certificate handler to check if the server is actually the expected server
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.CertificateValidationIssuerLevel.ValidateCertificate(System.Byte[])">
+            <summary>
+            Checks the public key whether it matches the expected key and checks the server itself (make sure it is not a shadow clone
+            </summary>
+            <param name="_certificateData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.ALicenseValidator`1">
+            <summary>
+            <summary>
+            Abstract License Validator Class
+            </summary>
+            <typeparam name="T">Type that inherits from LicenseResult</typeparam>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.security.ALicenseValidator`1.HandleLicenseAction(`0,u040.prespective.core.editor.security.LicenseAction,u040.prespective.core.editor.security.LicenseType)">
+            <summary>
+            Handle Generic License Events
+            </summary>
+            <param name="_license">Current License</param>
+            <param name="_action"></param>
+            <param name="_type"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.LicenseKeyToSceneFile">
+            <summary>
+             Class to add Prespective key to the active unity scene file for external (build) build purposes
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.security.PrespectiveLock">
+            <summary>
+            License Locking Utility Class
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.topology.SceneTransformLockingManager">
+            <summary>
+            The Scene Transform Locking Manager is responsible for updating the locked transforms (and making sure they stay where they are supposed to stay) during editor runtime
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.SceneTransformLockingManager.sceneLockableTransforms">
+            <summary>
+            Local dictionary 
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.SceneTransformLockingManager.isRunningUpdate">
+            <summary>
+            Whether or not a coroutine is currently running
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.SceneTransformLockingManager.updateTransformLocks">
+            <summary>
+            Callback made by the editor update function (only triggered when not currently already making a loop)
+            
+            TODO : generalize an interface to run on all GameObjects in the scene (also required for icons)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.SceneTransformLockingManager.updateSelection">
+            <summary>
+            Actually update the selection that was made (may need to be simplified/ coroutines to run properly on weaker machines)
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.SceneTransformLockingManager.itterateTransformLocks">
+            <summary>
+            Moved the update of GO registrations to a enumerator, and now only updating up to 100 objects per tick
+            since the frame load exceeded 100ms = now @I9 5ms (guess we could lower it further)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.SceneTransformLockingManager.onLockValueSet(UnityEngine.Transform,u040.prespective.core.editor.topology.TransformSetting,u040.prespective.core.topology.ILockableTransform,System.Boolean)">
+            <summary>
+            function run on changing locked value
+            </summary>
+            <param name="_transform">transform</param>
+            <param name="_settingMade">setting changed in</param>
+            <param name="_interface">main lockable transform</param>
+            <param name="_wasOnChild">was child of main</param>
+        </member>
+        <member name="T:u040.prespective.core.editor.topology.ParentUtility">
+            <summary>
+            Helper static library class for creating and removing a parent in the hierarchy
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.CreateParent(System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.Quaternion,System.Boolean)">
+            <summary>
+            Creates a parent and set that parent to given rotation
+            </summary>
+            <param name="_selected">game objects to set under parent</param>
+            <param name="_rotation">rotation</param>
+            <param name="_isLocal">rotation is set in local space</param>
+            <returns>created parent</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.CreateParent(System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.Vector3,System.Boolean)">
+            <summary>
+            Creates a parent and set that parent to given position
+            </summary>
+            <param name="_selected">game objects to set under parent</param>
+            <param name="_position">position</param>
+            <param name="_isLocal">rotation is set in local space</param>
+            <returns>created parent</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.CreateParent(System.Collections.Generic.List{UnityEngine.GameObject},UnityEngine.Vector3,UnityEngine.Quaternion,System.Boolean)">
+            <summary>
+            Creates a parent and set that parent to given position and rotation
+            </summary>
+            <param name="_selected">game objects to set under parent</param>
+            <param name="_position">position</param>
+            <param name="_rotation">rotation</param>
+            <param name="_isLocal">rotation is set in local space</param>
+            <returns>created parent</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.intListSorter(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Sorts a list of Integers based on (1) shortest list, (2) lowest value if of equal length
+            </summary>
+            <param name="_a"></param>
+            <param name="_b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.setGameObjectsParent(UnityEngine.Transform,System.Collections.Generic.List{UnityEngine.GameObject})">
+            <summary>
+            sets game objects parent
+            </summary>
+            <param name="_parent">parent</param>
+            <param name="_selected">game objects</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.RemoveEmptyParent(UnityEngine.Transform)">
+            <summary>
+            remove target transform and resets transform tree
+            </summary>
+            <param name="_target">target transform to remove</param>
+            <returns>children</returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.topology.TransformSetting">
+            <summary>
+            Transform setting
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.topology.TransformLockingData">
+            <summary>
+            Object for storing and processing lockable transform
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.PositionLockSpace">
+            <summary>
+            Position lock space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.PositionLockValue">
+            <summary>
+            Position lock value
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.RotationLockSpace">
+            <summary>
+            Rotation lock space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.RotationLockValue">
+            <summary>
+            Rotation lock value
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.ScaleLockSpace">
+            <summary>
+            Scale lock space
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.ScaleLockValue">
+            <summary>
+            Scale lock value
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.ChildTransformData">
+            <summary>
+            Child transform data
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.SelectionFilter">
+            <summary>
+            Selection filter
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.LockChildren">
+            <summary>
+            Lock children options
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.LockSelection">
+            <summary>
+            Lock selection options
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TransformLockingData.LockInPlaymode">
+            <summary>
+            If should lock in play mode
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.TransformLockingData.#ctor(UnityEngine.Transform,u040.prespective.core.topology.ILockableTransform,System.Boolean,System.Collections.Generic.List{u040.prespective.core.topology.ILockableTransform}@)">
+            <summary>
+            Creates a new set of data points to be able to enforce locking of transforms 
+            </summary>
+            <param name="_owner">Transform to create the data for</param>
+            <param name="_interface">Interface defining what properties should be recorded</param>
+            <param name="_isChildOfInterface">whether this is a child transform of the owner of the interface (means recordings should always be local)</param>
+            <param name="_handledChildLocks"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.TransformLockingData.generateChildLocks(UnityEngine.Transform,u040.prespective.core.topology.ILockableTransform,System.Boolean,System.Collections.Generic.Dictionary{UnityEngine.Transform,u040.prespective.core.editor.topology.TransformLockingData}@,System.Collections.Generic.List{u040.prespective.core.topology.ILockableTransform}@)">
+            <summary>
+            Recursively through the child transforms to gather locking data
+            </summary>
+            <param name="_owner"></param>
+            <param name="_interface"></param>
+            <param name="_isChildOfInterface"></param>
+            <param name="_childLocks"></param>
+            <param name="_handledChildLocks"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.TransformLockingData.EnactLock(UnityEngine.Transform,u040.prespective.core.topology.ILockableTransform,System.Boolean,System.Action{UnityEngine.Transform,u040.prespective.core.editor.topology.TransformSetting,u040.prespective.core.topology.ILockableTransform,System.Boolean})">
+            <summary>
+            Enact lock
+            </summary>
+            <param name="_owner">owner</param>
+            <param name="_interface">main lockable transform</param>
+            <param name="_isChildOfInterface">owner child of main</param>
+            <param name="_lockEnactedCallback">call back</param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.topology.TrackableGameObjectEditorUIE">
+            <summary>
+            <description>
+            UIElements Inspector for the ATrackableGameObject Monobehavior
+            </description>
+            <version 
+                ver="1.0.0" 
+                author="PWS" 
+                date="200819">
+                First implementation for use with the MotionPathGraph, to prevent it losing references
+            </version>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor">
+            <summary>
+            Class to create DScene Vector editor in IMG and UIE
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.InspectorDisplay(u040.prespective.core.transformation.ADTransform,UnityEngine.GUIContent,u040.prespective.core.scenemanagement.DSceneVector)">
+            <summary>
+            Display functions for managing the vector from the inspector
+            </summary>
+            <param name="_owner">transform connected to scene vector</param>
+            <param name="_title">title of scene vector in inspector</param>
+            <param name="_sceneVector">scene vector to create inspector for</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.CreateFields(u040.prespective.core.scenemanagement.DSceneVector,u040.prespective.core.transformation.ADTransform,UnityEngine.Object,System.Action{u040.prespective.core.scenemanagement.DSceneVector,System.Boolean})">
+            <summary>
+            creates the field for UIElements inspector
+            </summary>
+            <param name="_sceneVector">scene vector to create fields for</param>
+            <param name="_connectedTransform">scene vector connected transform</param>
+            <param name="_targetObject">object of the scene vector</param>
+            <param name="_gizmoTurnedOnOffAction">gizmo's turned off delegate</param>
+            <returns>created fields</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.SceneDisplayVector(u040.prespective.core.transformation.ADTransform,u040.prespective.core.scenemanagement.DSceneVector,System.Double)">
+            <summary>
+            Displays a line that depicts the given vector
+            </summary>
+            <param name="_owner">transform connected to line</param>
+            <param name="_handleSize">size of the line</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.SceneDisplayGizmo(u040.prespective.core.transformation.ADTransform,u040.prespective.core.scenemanagement.DSceneVector,System.Double,System.Double)">
+            <summary>
+            Displays a gizmo that controls the vector if toggled on
+            </summary>
+            <param name="_owner">transform connected to line</param>
+            <param name="_sceneVector">scene vector</param>
+            <param name="_handleSize">size of the gizmo</param>
+            <param name="_vectorLength">length of vector</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.interpretVector(u040.prespective.math.doubles.DVector3)">
+            <summary>
+            Determine if the vector matches a shorthand value
+            </summary>
+            <param name="_vector">vector to check</param>
+            <returns>short hand value</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.scenemanagement.DSceneVectorEditor.castVector(u040.prespective.utility.scenemanagement.VectorDefaultDirections,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            Determines vector depending on short hand
+            </summary>
+            <param name="_dir">short hand</param>
+            <param name="_input">original vector</param>
+            <returns>vector connected to short hand</returns>
+        </member>
+        <member name="T:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE">
+            <summary>
+            editor for ADSpline Control points (the control points of the ADSpline)
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.renderCustomGizmo(u040.prespective.core.spline.ADSplineControlPoint,UnityEditor.GizmoType)">
+            <summary>
+            Called on rendering the gizmo (Each target object in the targets array)
+            </summary>
+            <param name="_controlPoint">static reference to this control point</param>
+            <param name="_gizmoType">Type of Gizmo (Generally not used)</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.OnSceneGUI">
+            <summary>
+            What the user sees in the scene view
+            </summary>
+        </member>
+        <member name="T:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.OnHandleFunction">
+            <summary>
+            The handle function to execute in different handle setting cases
+            </summary>
+            <param name="_controlPoint"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.brokenHandles(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Set the handle mode for this control point to broken
+            </summary>
+            <param name="_controlPoint">the control point we're working with</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.continuousHandles(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Set the handle mode for this control point to continuous
+            </summary>
+            <param name="_controlPoint">the control point we're working with</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.outHandle(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Set the handle mode for this control point to just out handle
+            </summary>
+            <param name="_controlPoint">the control point we're working with</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.inHandle(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Set the handle mode for this control point to just in handle
+            </summary>
+            <param name="_controlPoint">the control point we're working with</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.createNewGlobalHandle(u040.prespective.math.doubles.DVector3,u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Creates a new free move handle for controlling the spline control point vector
+            </summary>
+            <param name="_globalHandle">the world position the handle should be at</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.setGlobalHandleAndLength(System.Int32,u040.prespective.core.spline.ADSplineControlPoint,u040.prespective.math.doubles.DVector3)">
+            <summary>
+            Set the length and position of a global handle
+            </summary>
+            <param name="_id">the function id</param>
+            <param name="_controlPoint"></param>
+            <param name="_newGlobal"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.drawHandlesInSceneView(u040.prespective.core.spline.ADSplineControlPoint,u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.OnHandleFunction[])">
+            <summary>
+            Draws the Control point handles in the scene view
+            </summary>
+            <param name="_splineControlPoint">the control point we want to draw</param>
+            <param name="_handles">the function options to be called</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.drawLimitPlaneNormal(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Draws the limit plane used to constrain the handle (vectors)
+            </summary>
+            <param name="_splineControlPoint"></param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.drawNormalInSceneView(u040.prespective.core.spline.ADSplineControlPoint)">
+            <summary>
+            Draws the control point normals in the scene view
+            </summary>
+            <param name="_splineControlPoint">the control point to draw the normals for</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.spline.DSplineControlPointEditorUIE.setValueByHandleSpace``1(``0,``0,``0)">
+            <summary>
+            Depending on the handle space sets either value1 or value2 to the new value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_value1">Value to set to _newvalue when the handle space is Local</param>
+            <param name="_value2">Value to set to _newvalue when the handle space is Global</param>
+            <param name="_newValue">The new value to set either _value1 or _value2 to</param>
+        </member>
+        <member name="M:u040.prespective.core.editor.PrespectiveSceneUtility.GetMousePositionInSceneView">
+            <summary>
+            Get the mouse position in the sceneview relative to the drawing grid.
+            </summary>
+            <returns>Current mouse postion in scene view</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.PrespectiveSceneUtility.IsMouseAtWorldPosition(UnityEngine.Vector3,System.Single)">
+            <summary>
+            Check whether the mouse cursor is at a screen position within a given margin
+            </summary>
+            <param name="_worldPosition">The world position (projected on screen)</param>
+            <param name="_screenPixelMargin">The margin offset of the cursor on screen</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.PrespectiveSceneUtility.IsMouseAtScreenPosition(UnityEngine.Vector2,System.Single)">
+            <summary>
+            Check whether the mouse cursor is at a screen position within a given margin
+            </summary>
+            <param name="_screenPosition">The position on screen</param>
+            <param name="_screenPixelMargin">The margin offset of the cursor on screen</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.transformation.editor.DTransformMenuEditor.DTransformAccuracySettingsWindow.Init(UnityEditor.MenuCommand)">
+            <summary>
+            Opens a new Instruction Builder window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.transformation.editor.DTransformEditorUIE.moveInspectorToTop(u040.prespective.core.transformation.ADTransform)">
+            <summary>
+            This editor function has been moved to a co-routine since it can get real heavy when runned on a large installation
+            </summary>
+            <param name="_dtransform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:u040.prespective.UpdateCheckUtility">
+            <feature>
+            https://unit040.atlassian.net/wiki/spaces/PRDO/pages/2366079030
+            </feature>
+            <summary>
+            Utility for easy access to DLL version, latest version according to API and update availability
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="P:u040.prespective.UpdateCheckUtility.DLLVersion">
+            <summary>
+            Returns ddl version
+            </summary>
+        </member>
+        <member name="P:u040.prespective.UpdateCheckUtility.LatestVersion">
+            <summary>
+            Returns latest version
+            </summary>
+        </member>
+        <member name="P:u040.prespective.UpdateCheckUtility.UpdateAvailable">
+            <summary>
+            Returns true when an update is available
+            </summary>
+        </member>
+    </members>
+</doc>

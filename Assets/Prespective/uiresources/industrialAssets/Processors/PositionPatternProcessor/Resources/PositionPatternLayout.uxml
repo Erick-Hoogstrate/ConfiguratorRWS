@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:TextField name="pattern-name" label="Pattern Name" class="custom-exposure"/>
+    <!--<ue:EnumField name="pattern-type" label="Pattern Type" class="custom-exposure"/> Removed this field because of only 1 valid option in current implementation, more options will be supported in the future --> 
+    <ui:VisualElement name="pattern-type-action-container" />    
+    <ui:Foldout class="custom-exposure-foldout" name="scene-preview-foldout" text="Scene Preview">
+        <ui:Toggle name="preview-in-scene" label="Preview in Scene" class="custom-exposure"/>
+        <ui:VisualElement class="row custom-exposure" name="preview-transparency-container" >
+            <ui:Slider class="flex-grow" name="preview-transparency-slider" label="Preview Transparency" low-value="0" high-value="1"/>
+            <ue:FloatField name="preview-transparency-field" style="width: 60px"/>            
+        </ui:VisualElement>
+        <ue:ColorField name="preview-color" label="Preview Color" class="custom-exposure"/>
+        <ui:VisualElement name="variable-previews-container" />
+    </ui:Foldout>
+</ui:UXML>

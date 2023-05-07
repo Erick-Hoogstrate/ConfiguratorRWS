@@ -1,18 +1,11 @@
 using System;
 
-namespace u040.prespective.core
+namespace u040.prespective.core.spline
 {
-
     /// <summary>
-    /// <description>
-    /// Explicit Wrapper class for the ADSpline
-    /// </description>
-    /// <version 
-    ///     ver="1.0.0" 
-    ///     author="PWS" 
-    ///     date="200727">
-    ///     - Resorted to wrapper classes to prevent having to relink all explict implementations of monobehavior when updating the version of prespective
-    /// </version>
+    /// Creates a Spline with double precision in the Unity Editor
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
     /// </summary>
     public class DSpline : ADSpline
     {

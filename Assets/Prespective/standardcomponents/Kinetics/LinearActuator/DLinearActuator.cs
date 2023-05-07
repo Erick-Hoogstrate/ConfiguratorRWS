@@ -1,28 +1,43 @@
-using System;
-using System.Reflection;
-using u040.prespective.prepair.inspector;
 using u040.prespective.prepair.kinematics;
-using u040.prespective.utility;
 using UnityEngine;
 using u040.prespective.math;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+using System;
+using u040.prespective.utility.modelmanagement;
+using System.Reflection;
+using u040.prespective.prepair.kinematics.joints.basic;
 
-namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
+namespace u040.prespective.standardcomponents.virtualhardware.actuators.motors
 {
+    /// <summary>
+    /// Represents a generic conveyor belt moving id single direction
+    /// 
+    /// <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+    /// </summary>
     public class DLinearActuator : MonoBehaviour
     {
-#pragma warning disable 0414
-        [SerializeField] [Obfuscation] private int toolbarTab;
-#pragma warning restore 0414
-
+        /// <summary>
+        /// The Prismatic Joint used for the Linear Actuator
+        /// </summary>
         public APrismaticJoint KinematicPrismaticJoint;
 
+        /// <summary>
+        /// The target percentage on the Prismatic Joint the Linear Actuator tries to move to
+        /// </summary>
         public double Target = 0d;
+
+        /// <summary>
+        /// Whether the Target and Position on the Prismatic Joint are inverted
+        /// </summary>
         public bool InvertPosition = false;
 
+        private const double MIN_EXTENDING_TIME = 0.0001d;
         [SerializeField] private double extendingCycleTime = 1d;
+
+        private bool missingComponentsWarned = false;
+
+        /// <summary>
+        /// The time (s) required for the Linear Actuator to do a full extensions
+        /// </summary>
         public double ExtendingCycleTime
         {
             get
@@ -39,22 +54,26 @@ namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
             set
             {
                 //If value has changed and is positive
-                if (this.extendingCycleTime != value && value > 0d)
+                if (this.extendingCycleTime != value)
                 {
                     //set value
-                    this.extendingCycleTime = value;
+                    this.extendingCycleTime = Math.Max(value, MIN_EXTENDING_TIME);
 
                     //If we have a spline set, set the MoveSpeed accordingly
                     if (this.KinematicPrismaticJoint && this.KinematicPrismaticJoint.ConstrainingSpline)
                     {
-                        ExtendingMoveSpeed = this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength / value;
+                        ExtendingMoveSpeed = this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength / extendingCycleTime;
                     }
                 }
             }
         }
 
-
+        private const double MIN_EXTENDING_SPEED = 0.0001d;
         [SerializeField] private double extendingMoveSpeed = 1d;
+
+        /// <summary>
+        /// The speed (m/s) at which the Linear Actuator extends
+        /// </summary>
         public double ExtendingMoveSpeed
         {
             get
@@ -64,15 +83,20 @@ namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
             set
             {
                 //If value has changed and is positive
-                if (this.extendingMoveSpeed != value && value > 0d)
+                if (this.extendingMoveSpeed != value)
                 {
                     //Set value
-                    this.extendingMoveSpeed = value;
+                    this.extendingMoveSpeed = Math.Max(value, MIN_EXTENDING_SPEED);
                 }
             }
         }
 
+        private const double MIN_RETRACTING_TIME = 0.0001d;
         [SerializeField] private double retractingCycleTime = 1d;
+
+        /// <summary>
+        /// The time (s) required for the Linear Actuator to do a full retractions
+        /// </summary>
         public double RetractingCycleTime
         {
             get
@@ -89,22 +113,25 @@ namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
             set
             {
                 //If value has changed and is positive
-                if (this.retractingCycleTime != value && value > 0d)
+                if (this.retractingCycleTime != value)
                 {
                     //set value
-                    this.retractingCycleTime = value;
+                    this.retractingCycleTime = Math.Max(value, MIN_RETRACTING_TIME);
 
                     //If we have a spline set, set the MoveSpeed accordingly
                     if (this.KinematicPrismaticJoint && this.KinematicPrismaticJoint.ConstrainingSpline)
                     {
-                        RetractingMoveSpeed = this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength / value;
+                        RetractingMoveSpeed = this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength / retractingCycleTime;
                     }
                 }
             }
         }
 
-
+        private const double MIN_RETRACTING_SPEED = 0.0001d;
         [SerializeField] private double retractingMoveSpeed = 1d;
+        /// <summary>
+        /// The speed (m/s) at which the Linear Actuator retracts
+        /// </summary>
         public double RetractingMoveSpeed
         {
             get
@@ -114,14 +141,17 @@ namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
             set
             {
                 //If value has changed and is positive
-                if (this.retractingMoveSpeed != value && value > 0d)
+                if (this.retractingMoveSpeed != value)
                 {
                     //Set value
-                    this.retractingMoveSpeed = value;
+                    this.retractingMoveSpeed = Math.Max(value, MIN_RETRACTING_SPEED);
                 }
             }
         }
 
+        /// <summary>
+        /// The Position of the Linear Actuator on the Prismatic Joint. This is affected by Invert Position.
+        /// </summary>
         public double Position
         {
             get
@@ -148,24 +178,28 @@ namespace u040.prespective.standardcomponents.kinetics.motor.linearactuator
             }
         }
 
-
-        internal void Reset()
+        public void Reset()
         {
-            this.KinematicPrismaticJoint = this.RequireComponent<DPrismaticJoint>(true);
+            this.KinematicPrismaticJoint = this.RequireComponent<APrismaticJoint>(APrismaticJoint.GetConcreteExplicitType, true);
         }
 
-        internal void FixedUpdate()
+        public void FixedUpdate()
         {
-            if (this.KinematicPrismaticJoint != null)
+            if (this.KinematicPrismaticJoint != null && this.KinematicPrismaticJoint.ConstrainingSpline != null)
             {
                 if (Position != Target)
                 {
                     double moveSpeed = (Target - Position > 0d) ? ExtendingMoveSpeed : RetractingMoveSpeed;
 
-                    double speedPercentage = (moveSpeed * Time.deltaTime) / this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength;
+                    double speedPercentage = moveSpeed * Time.fixedDeltaTime / this.KinematicPrismaticJoint.ConstrainingSpline.SplineLength;
                     double travelDistance = PreSpectiveMath.Clamp(Target - Position, -speedPercentage, speedPercentage);
                     setPosition(Position + travelDistance);
                 }
+            }
+            else if (!missingComponentsWarned)
+            {
+                Debug.LogError("Linear Actuator " + this.name + " is unable to function because either no PrismaticJoint has been assigned, or the assigned PrismaticJoint has no Spline assigned.");
+                missingComponentsWarned = true;
             }
         }
 

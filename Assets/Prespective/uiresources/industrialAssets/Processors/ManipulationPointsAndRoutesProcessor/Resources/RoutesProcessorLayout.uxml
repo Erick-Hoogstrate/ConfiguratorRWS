@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+
+  <ui:Foldout text="Points In Reach" name="points-in-reach-foldout" class="margin-bottom-5px custom-exposure-foldout">
+    <ui:VisualElement name="action-cues-in-reach-container" />
+  </ui:Foldout>
+  <ui:Foldout text="Way Points (Manager)" name="way-points-foldout" class="margin-bottom-5px custom-exposure-foldout">
+    <ui:Button name="add-way-point-button" text="Create Waypoint"/>
+    <ui:VisualElement name="way-points-container" />
+  </ui:Foldout>
+  <ui:Foldout text="Routes" name="routes-foldout" class="margin-bottom-5px custom-exposure-foldout disabled">
+    <ui:VisualElement name="routes-container" />
+    <ui:Button name="add-route-button" text="Add Route"/>
+  </ui:Foldout>
+  
+</ui:UXML>

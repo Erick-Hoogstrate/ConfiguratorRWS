@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division">
+    <ui:Label class="bold margin-bottom-10px" text="Button Styling"/>
+    <ui:TextElement class="margin-bottom-10px" text="Button instances should use the uss class 'content-fit-button' (from BaseStyle.uss). This will prevent them from unnecessarily taking up the entire width of their parent element, and adds 20px of horzontal padding on both sides. Additionally, use uss classes for vertical margin 'margin-bottom-10px', 'margin-vertical-5px' or 'margin-vertical-5px' depending on context, to separate the Button from the rest of the GUI." />
+    <ui:Button class="margin-bottom-10px content-fit-button" text="Button with Content Fit" />
+    
+    <ui:TextElement class="margin-bottom-10px" text="A group of related buttons is best placed in a container element that forces uniform width." />
+
+    <ui:VisualElement class="row margin-bottom-10px">
+      <ui:VisualElement name="button-container">
+        <ui:Button text="Button"/>
+        <ui:Button text="Second Button"/>
+        <ui:Button text="3rd Button"/>
+      </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:TextElement class="margin-bottom-10px" text="Alternatively, related buttons can be aligned in a horizontal row:" />
+
+    <ui:VisualElement class="row margin-bottom-10px">
+      <ui:Button class="content-fit-button" text="First Button"/>
+      <ui:Button class="content-fit-button" text="Second Button"/>
+      <ui:Button class="content-fit-button" text="Third button"/>
+    </ui:VisualElement>
+
+    <ui:TextElement class="margin-bottom-10px" text="Several utility methods exist to style a set of default buttons:" />
+
+    <ui:VisualElement class="row">
+      <ui:Button name="up"/>
+      <ui:Button name="down"/>
+      <ui:Button name="remove"/>
+    </ui:VisualElement>
+    
+  </ui:VisualElement>
+  
+</ui:UXML>

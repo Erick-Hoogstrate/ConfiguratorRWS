@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:Foldout class="margin-bottom-5px" name="spline-junction-point-foldout" text="Junction Point" value="true" >
+		<ue:ObjectField name="target-spline" label="Target Spline" />
+		<ui:VisualElement name="spline-warning-box" />
+		<ue:EnumField name="junction-mode" label="Junction Mode" />
+		<ue:EnumField name="access-switching" label="Access Switching"  />
+		<ui:VisualElement name="target-control-point" />
+		<ue:DoubleField name="spline-percentage" label="Spline Percentage" />
+		<ue:DoubleField name="distance-from-spline-start" label="Distance From Spline Start" />
+		<ue:DoubleField name="distance-from-spline-end" label="Distance From Spline End" />
+	</ui:Foldout>
+</ui:UXML>

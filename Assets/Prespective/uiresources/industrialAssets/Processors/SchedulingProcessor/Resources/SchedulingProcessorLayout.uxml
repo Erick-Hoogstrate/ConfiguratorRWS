@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+    <ue:ObjectField name="scheduling-instructor" label="Scheduling instructor (Optional)" class="margin-bottom-10px custom-exposure" tooltip="Please assign a Scheduler if you want this Order Collector to finish Workorders." />
+</ui:UXML>

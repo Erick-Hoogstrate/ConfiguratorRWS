@@ -1,9 +1,10 @@
 {
     "name": "Wrappers",
+    "rootNamespace": "",
     "references": [
         "Prescripted",
-        "Core",
         "PrescriptedEditor",
+        "Core",
         "Utility",
         "Prelogic",
         "PrelogicEditor",
@@ -14,7 +15,9 @@
         "Prestore",
         "PrestoreEditor",
         "Fact",
-        "FactEditor"
+        "FactEditor",
+        "IndustrialAssets",
+        "IndustrialAssetsEditor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

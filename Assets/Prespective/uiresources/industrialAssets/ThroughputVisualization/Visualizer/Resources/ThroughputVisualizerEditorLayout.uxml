@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Content Settings" />
+    <ue:EnumField name="throughput-type" label="Throughput Type" />
+  </ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Visual Settings" />
+    <ue:ColorField name="text-color" label="Text Color" />
+    <ue:ColorField name="background-color" label="Background Color" />
+    <ue:IntegerField name="font-size" label="Font Size" />
+    <ue:EnumField name="horizontal-anchor" label="Horizontal Anchor Point" />
+    <ue:EnumField name="vertical-anchor" label="Vertical Anchor Point" />
+  </ui:VisualElement>
+</ui:UXML>

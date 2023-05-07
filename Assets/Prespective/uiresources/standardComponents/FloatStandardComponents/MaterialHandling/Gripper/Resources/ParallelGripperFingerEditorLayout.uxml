@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
+  <ui:VisualElement class="division margin-bottom-10px" name="finger-settings" text="Parallel Gripper Finger Settings">
+    <ui:Label class="bold" name="paralell-finger-settings" text="Paralell Finger Settings"/>
+    <ue:ObjectField name="prismatic-joint" label="Prismatic Joint"/>
+    <ue:ObjectField name="trigger" label="Trigger"/>
+    <ui:Toggle name="generate-rigidbody" label="Generate Rigidbody"/>
+  </ui:VisualElement>
+
+  <ui:Foldout class="foldout-division margin-bottom-10px" name="detected-objects" text="Detected Objects">
+    <ui:Label class="font-italic" name="no-detected-objects" text="No detected objects."/>
+  </ui:Foldout>
+</ui:UXML>

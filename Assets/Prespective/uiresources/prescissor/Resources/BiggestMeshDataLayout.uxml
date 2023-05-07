@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:Foldout name="biggest-data">
+      <ui:TextField name="data-name" label="Name"/>
+      <ue:IntegerField name="number-of-vertices" label="Number Of Vertices"/>
+      <ue:IntegerField name="number-of-triangles" label="Number Of Triangles"/>
+      <ue:IntegerField name="number-of-instances" label="Number Of Instances"/>
+      <ui:VisualElement name="connected-gameobject"/>
+    </ui:Foldout>
+</ui:UXML>

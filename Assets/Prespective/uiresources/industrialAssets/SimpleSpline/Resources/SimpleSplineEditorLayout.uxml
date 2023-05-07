@@ -1,0 +1,15 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:VisualElement class="division margin-bottom-10px">
+		<ui:Label class="bold margin-bottom-10px" text="Spline Specifications" />
+		<ue:DoubleField class="no-box" name="spline-length" label="Spline Length (m)" />
+	</ui:VisualElement>
+
+  <ui:VisualElement class="division margin-bottom-10px">
+    <ui:Label class="bold margin-bottom-10px" text="Add/Insert Control Point" />
+    <ui:VisualElement name="target-control-point" />
+    <ue:EnumField name="position" label="Position" />
+    <ue:EnumField name="translation-space" label="Translation Space" />
+    <ui:VisualElement class="margin-bottom-5px" name="translation"/>
+    <ui:Button class="content-fit-button" name="add-control-point" text="Add Control Point" />
+  </ui:VisualElement>
+</ui:UXML>
