@@ -48,7 +48,7 @@ public class DOORS : PreLogicComponent
     void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
     {
         //light = GetComponent<CO_LIGHTS>().Light;
-        if (_signal.definition.defaultSignalName == AdressQ)
+        if (_signal.Definition.DefaultSignalName == AdressQ)
         {
             CoDoors.ActuatorBoolean = (bool)_newValue;
             CoDoors.Overwrite = (bool)_newValue;
@@ -76,7 +76,7 @@ public class DOORS : PreLogicComponent
     // Remove default Signal Naming Rule Override list size of size 1. 
     private void OnValidate()
     {
-        signalNamingRuleOverrides.Clear();
+        SignalNamingRuleOverrides.Clear();
         ComponentName = this.name.Split("_").Last();
 /*        if (ComponentName == "Close")
         {

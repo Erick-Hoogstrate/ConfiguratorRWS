@@ -1,0 +1,156 @@
+/* -- Unity Style Sheet Fixes + Improvements -- */
+
+Button {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+Foldout .unity-foldout__toggle {
+	margin-left: 0px;
+}
+
+.unity-foldout__toggle .unity-toggle__checkmark {
+	margin-top: 3px;
+}
+
+.unity-base-field {
+	height: 19px;
+	margin-bottom: 1px;
+}
+
+Toolbar .unity-base-field {
+	height: auto;
+}
+
+.unity-toggle__label {
+	top: 2px;
+}
+
+/* ---- Prespective Reusable Style Classes ---- */
+
+.content-fit-button {
+	align-self: flex-start;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.window-padding-container {
+	padding: 10px 15px;
+}
+
+.bold {
+	-unity-font-style: bold;
+}
+
+.font-italic {
+	-unity-font-style: italic;
+}
+
+/* Add word wrap to a label, this looks a little weird but this is how it's defined in unity. */
+.word-wrap{
+	white-space:normal;
+}
+
+.margin-vertical-10px {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.margin-vertical-5px {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.margin-bottom-10px {
+	margin-bottom: 10px;
+}
+
+.margin-bottom-5px {
+	margin-bottom: 5px;
+}
+
+.indented-field-10px > .unity-base-field__label {
+	padding-left: 10px;
+}
+
+.display-none {
+	display: none;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.flex-grow {
+	flex-grow: 1
+}
+
+.division {
+	padding: 5px 5px 5px 5px;
+}
+
+.foldout-division > .unity-foldout__toggle Label {
+	-unity-font-style: bold;
+}
+
+.foldout-division > .unity-foldout__content {
+	padding: 0px 5px 5px 5px;
+	margin-top: 5px;
+	margin-left: 0px;
+}
+
+.warning-icon {
+	margin-right: 8px;
+}
+
+.no-box #unity-text-input {
+	background-color: rgba(0, 0, 0, 0);
+	border-width: 0px;
+}
+
+.error #unity-text-input {
+	border-color: rgb(170, 10, 1)
+}
+
+.objectfield-with-action {
+	margin: 3px;
+	padding: 2px;	
+	border-width: 1px;
+	border-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.12);
+}
+
+.foldout-colorfield {
+	width: 40px;
+}
+
+.title {
+	font-size: 18px;
+}
+
+/* ---- Prespective Visual Themes ---- */
+
+.utility-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(103, 103, 103);
+}
+
+.standardcomponents-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(36, 175, 78);
+}
+
+.mechanics-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(70, 132, 193);
+}
+
+.logic-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(189, 76, 0);
+}
+
+.des-theme {
+	border-left-width: 3px;
+	border-left-color: rgb(241, 191, 15);
+}

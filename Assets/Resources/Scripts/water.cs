@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Reflection;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.component;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
 using UnityEngine;
 
 namespace u040.prespective.standardcomponents.userinterface.buttons.encoders
 {
     public class water : MonoBehaviour
     {
-        public LinearEncoder WaalEnc;
-        public LinearEncoder ARKEnc;
-        public LinearEncoder kolk1Enc;
-        public LinearEncoder kolk2Enc;
+        public DLinearEncoder WaalEnc;
+        public DLinearEncoder ARKEnc;
+        public DLinearEncoder kolk1Enc;
+        public DLinearEncoder kolk2Enc;
 
         public GameObject kolk1;
         public GameObject kolk2;

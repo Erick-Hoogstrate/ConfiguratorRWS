@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="segment-container" class="row">
+        <ui:Label name="segment-index-field"/>
+        <ui:TextField name="segment-text-field" class="flex-grow"/>
+        <ui:Button name="delete-segment-button">
+            <ui:Image name="delete-segment-button-image"/>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

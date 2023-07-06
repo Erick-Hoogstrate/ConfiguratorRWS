@@ -24,7 +24,7 @@ public class ActuatorLogic : PreLogicComponent
     }
     void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
     {
-        if (_signal.definition.defaultSignalName == Adress + ActuatorName)
+        if (_signal.Definition.DefaultSignalName == Adress + ActuatorName)
         {
             Debug.Log((bool)_newValue);
             Debug.Log(ActuatorBoolean);
@@ -43,6 +43,6 @@ public class ActuatorLogic : PreLogicComponent
     // Remove default Signal Naming Rule Override list size of size 1. 
     private void OnValidate()
     {
-        signalNamingRuleOverrides.Clear();
+        SignalNamingRuleOverrides.Clear();
     }
 }

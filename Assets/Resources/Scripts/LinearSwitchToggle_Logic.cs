@@ -3,6 +3,7 @@ using System.Reflection;
 using u040.prespective.prelogic;
 using u040.prespective.prelogic.component;
 using u040.prespective.prelogic.signal;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
 using UnityEngine;
 
 namespace u040.prespective.standardcomponents.userinterface.buttons.switches
@@ -13,7 +14,7 @@ namespace u040.prespective.standardcomponents.userinterface.buttons.switches
         [SerializeField] [Obfuscation] private int toolbarTab;
 #pragma warning restore 0414
 
-        public SlideSwitch SlideSwitch;
+        public DSlideSwitch SlideSwitch;
         public bool toggle;   
 
         public override List<SignalDefinition> SignalDefinitions

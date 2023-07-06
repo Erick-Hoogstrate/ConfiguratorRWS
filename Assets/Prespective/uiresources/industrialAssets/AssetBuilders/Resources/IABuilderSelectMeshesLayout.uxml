@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container">
+        <ui:VisualElement name="iabuilder-select-meshes-container" class="division">
+            <ui:VisualElement name="iabuilder-meshes-origin-container">
+                <ui:Label name="iabuilder-meshes-origin-label" text="Origin" class="bold"/>
+                <ue:Vector3Field name="iabuilder-meshes-origin-offset" label="Offset"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="iabuilder-meshes-meshes-container">
+                <ui:VisualElement class="row">
+                    <ui:Label name="iabuilder-meshes-meshes-label" text="Meshes" class="bold"/>
+                    <ui:Button name="iabuilder-meshes-meshes-add-children-button" class="content-fit-button"/>
+                </ui:VisualElement>
+                
+                <ue:Vector3Field name="iabuilder-meshes-origin-offset" label="Offset"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

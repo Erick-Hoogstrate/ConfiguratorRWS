@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="spline-manager-container">
+        <ui:VisualElement name="splines-container">
+        </ui:VisualElement>
+        <ui:VisualElement name="no-spline-container">
+            <ui:Label name="no-splines-label" text="No splines have been added" class="font-italic margin-bottom-10px"/>
+        </ui:VisualElement>
+        <ui:Button name="add-spline-button"  class="content-fit-button row">
+            <ui:Image name="add-spline-button-image"/>
+            <ui:Label name="add-spline-button-label" text="Add Spline"/>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

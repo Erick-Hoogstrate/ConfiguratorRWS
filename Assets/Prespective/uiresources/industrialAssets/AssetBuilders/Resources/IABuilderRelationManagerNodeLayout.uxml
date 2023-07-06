@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="node-container" class="row">
+        <ui:VisualElement name="node-value-label-container" >
+            <ui:Label name="node-value-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="node-value-input-container">
+            <ue:FloatField name="node-value-input" />
+        </ui:VisualElement>
+        <ui:Button name="node-delete-button"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="setting-container" class="row">
+        <ui:VisualElement name="scale-setting-popup" />
+        <ui:VisualElement name="segment-setting-popup" />
+        <ui:Button name="split-button"/>
+    </ui:VisualElement>
+</ui:UXML>

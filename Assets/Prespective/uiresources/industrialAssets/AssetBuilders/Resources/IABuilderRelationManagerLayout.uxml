@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements"
+         xmlns:custom="u040.prespective.utility.editor.editorui.customuifields">
+    <ui:VisualElement name="relation-manager-container">
+        <ui:TextField name="axis-title-field" label="Name" class="bold margin-bottom-10px"/>
+        <ui:VisualElement name="nodes-header" class="row">
+            <ui:Label name="nodes-label" text="Nodes" class="bold flex-grow"/>
+            <custom:ToggleButton name="add-node-button" text="Add Node" tooltip="Move the mouse in the Scene View to add the Node along the axis."/>
+        </ui:VisualElement>
+        <ui:VisualElement name="nodes-container" class="division">
+        </ui:VisualElement>
+        <ui:Label name="segments-label" text="Segments" class="bold"/>
+        <ui:VisualElement name="segment-container" class="division">
+        </ui:VisualElement>
+        <ui:Button name="add-segment-button" text="Add New Segment" class="content-fit-button"/>
+    </ui:VisualElement>
+</ui:UXML>

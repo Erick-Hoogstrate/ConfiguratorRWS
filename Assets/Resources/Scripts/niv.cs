@@ -2,6 +2,8 @@
 using UnityEngine;
 using u040.prespective.standardcomponents.userinterface.buttons.encoders;
 using u040.prespective.standardcomponents.userinterface.lights;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
+using u040.prespective.standardcomponents.virtualhardware.actuators.lights;
 
 public class niv : MonoBehaviour
 {
@@ -12,10 +14,10 @@ public class niv : MonoBehaviour
     public Text Waal;
     public Text diff;
 
-    public LinearEncoder WaalEnc;
-    public LinearEncoder ARKEnc;
-    public LinearEncoder kolk1Enc;
-    public LinearEncoder kolk2Enc;
+    public DLinearEncoder WaalEnc;
+    public DLinearEncoder ARKEnc;
+    public DLinearEncoder kolk1Enc;
+    public DLinearEncoder kolk2Enc;
     public GameObject Downstream_EnteringTL_East_Q_Red;
     public GameObject Downstream_EnteringTL_East_Q_Green;
     public GameObject Downstream_EnteringTL_East_Q_Sper;

@@ -13,9 +13,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foldoutStateDefaults:
-  - rAC3N1ojCn: foldout-name|Type Of Object (with spaces) / GLOBAL
-    hwm3FtLX0K: 0
-  - rAC3N1ojCn: selected-product-part-and-version|Product Part Spawner
-    hwm3FtLX0K: 1
-  foldoutStateData: []
-  menuStateData: []
+  - NW363diYSJ: foldout-name|Type Of Object (with spaces) / GLOBAL
+    C4P6Rv8S01: 0
+  - NW363diYSJ: selected-product-part-and-version|Product Part Spawner
+    C4P6Rv8S01: 1
+  foldoutStateData:
+  - NW363diYSJ: logging-foldout|Configurator#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: adapter-settings-foldout|Configurator#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: logic-components|Configurator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|Configurator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: instance-naming-rules-foldout|Configurator#*#2
+    C4P6Rv8S01: 0
+  menuStateData:
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: 
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: utilities-menu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: scene-hierarchy-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: mesh-utilities-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: standard-components-menu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: motor-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: gripper-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: beam-sensor-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: color-sensor-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: mechanics-menu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: kinematics-submenu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: logic-menu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: industrial-assets-menu
+    BB96jlNw0k: 0
+  - UUe6wtjCyj: alpha-features-menu
+    BB96jlNw0k: 0

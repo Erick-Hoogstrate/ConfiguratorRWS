@@ -1,0 +1,55 @@
+﻿<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+	<ui:ScrollView class="window-padding-container">
+		<ui:VisualElement class="row division display-none margin-bottom-10px" name="warning-tool-handle-position">
+			<ui:VisualElement class="warning-icon" style="width: 26px; height: 24px"/>
+			<ui:TextElement text="Unity's Tool Handle Position is set to 'Center'. Set it to 'Pivot' in the menu to see pivot pisitions." style="-unity-text-align: middle-left"/>
+		</ui:VisualElement>
+
+		<ui:VisualElement class="row division display-none margin-bottom-10px" name="warning-tool-handle-rotation">
+			<ui:VisualElement class="warning-icon" style="width: 26px; height: 24px"/>
+			<ui:TextElement text="Unity's Tool Handle Rotation is set to 'Global'. Set it to 'Local' in the menu to see pivot rotation." style="-unity-text-align: middle-left"/>
+		</ui:VisualElement>
+		
+		<ui:HelpBox class="margin-bottom-10px" text="Please select an object to change its Pivot" message-type="Warning" name="warning-tool-object-selected"/>
+
+		<ui:VisualElement class="division margin-bottom-10px">
+			<ui:Label class="bold margin-bottom-10px" text="Pivot Movement Type" />
+			<ui:Toggle name="manual-target-transform" label="Manual Target Transform" />
+			<ui:Toggle name="target-object-choise" label="Target Object" />
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px" name="pivot-movement-options">
+			<ui:Label class="bold margin-bottom-10px" text="Pivot Transformation Type" />
+			<ui:Toggle name="transformation-move" label="Move" />
+			<ui:Toggle name="transformation-rotate" label="Rotate" />
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px" name="target-element">
+			<ui:Label class="bold margin-bottom-10px" text="Align Pivot to Another Object" />
+			<ue:ObjectField class="margin-bottom-10px" name="target-object" label="Target Object" />
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px" name="pivot-edit-mode">
+			<ui:Label class="bold margin-bottom-10px" text="Pivot Edit Mode" />
+			<ui:Toggle name="free-movement" label="Free Movement" />
+			<ui:Toggle name="snap-self" label="Snap to itself" />	
+		</ui:VisualElement>
+
+		<ui:VisualElement class="division margin-bottom-10px" name="pivot-transform-controller">
+			<ui:Label class="bold margin-bottom-10px" text="New Pivot Transform" />
+			<ui:VisualElement class="margin-bottom-10px" name="new-pivot-position">
+				<ui:Label text="Position" />
+				<ue:Vector3Field />
+			</ui:VisualElement>
+			<ui:VisualElement class="margin-bottom-10px" name="new-pivot-rotation">
+				<ui:Label text="Rotation" />
+				<ue:Vector3Field />
+			</ui:VisualElement>
+			<ui:Button class="content-fit-button margin-bottom-10px" name="get-mesh-center" text="Get Mesh Center of Selected Object" />
+			<ui:Toggle name="check-children" label="Include Children for Mesh Center" />
+		</ui:VisualElement>
+
+		<ui:Button class="content-fit-button margin-bottom-10px" name="change-pivot" text="Apply" />
+		<ui:Button class="content-fit-button margin-bottom-10px" name="undo-pivot" text="Undo Previously Applied Pivot" />
+	</ui:ScrollView>
+</ui:UXML>

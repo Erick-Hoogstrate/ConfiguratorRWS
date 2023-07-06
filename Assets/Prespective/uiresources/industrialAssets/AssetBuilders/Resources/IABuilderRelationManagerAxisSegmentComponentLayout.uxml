@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="axis-segment-container" class="margin-bottom-10px">
+        <ui:Label name="axis-segment-name-label"   class="bold"/>
+        <ui:TextField name="axis-segment-length-label"  />
+        <ui:TextField name="physical-min-length-text"  />
+        <ue:FloatField name="axis-segment-min-length-field" label="Minimum Length"/>
+        <ue:FloatField name="axis-segment-max-length-field" label="Maximum Length"/>
+        <ui:TextField name="physical-max-length-text"  />
+    </ui:VisualElement>
+</ui:UXML>

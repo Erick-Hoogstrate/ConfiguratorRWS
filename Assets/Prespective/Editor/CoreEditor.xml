@@ -11,6 +11,16 @@
             </description>
             </summary>
         </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.AboutWindow.USER_DOCUMENTATION_URL">
+            <summary>
+            The link to the user documentation.
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.editorui.window.AboutWindow.BUG_REPORTING_URL">
+            <summary>
+            The link to report a bug. This link is currently the external service desk on atlassian. 
+            </summary>
+        </member>
         <member name="M:u040.prespective.core.editor.editorui.window.AboutWindow.OpenWindow">
             <summary>
             <description>
@@ -1315,6 +1325,33 @@
             <param name="_interface">main lockable transform</param>
             <param name="_wasOnChild">was child of main</param>
         </member>
+        <member name="T:u040.prespective.core.editor.topology.TopologyContextMenu">
+            <summary>
+            Editor class that implements static helper functions from the ParentUtility to perform topology operations from a context menu
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TopologyContextMenu.MODIFIER">
+            <summary>
+            A modifier must be used to create a context menu on right click since Unity uses right mouse button for camera adjustment
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TopologyContextMenu.MOUSE_BUTTON">
+            <summary>
+            Mouse button we want the context menu to respond to (1 = RMB)
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.editor.topology.TopologyContextMenu.EVENT_TYPE">
+            <summary>
+            Mouse event we want the context menu to respond to
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.TopologyContextMenu.#cctor">
+            <summary>
+            Static constructor registers scene event response delegate
+            </summary>
+        </member>
         <member name="T:u040.prespective.core.editor.topology.ParentUtility">
             <summary>
             Helper static library class for creating and removing a parent in the hierarchy
@@ -1349,6 +1386,21 @@
             <param name="_rotation">rotation</param>
             <param name="_isLocal">rotation is set in local space</param>
             <returns>created parent</returns>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.CreateEmptyParentWithIdentityRotationFromSelection">
+            <summary>
+            Uses the current Object Selection to create an empty parent with identity rotation
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.CreateEmptyParentWithChildRotationFromSelection">
+            <summary>
+            Uses the current Object Selection to create an empty parent with rotation of the first child
+            </summary>
+        </member>
+        <member name="M:u040.prespective.core.editor.topology.ParentUtility.RemoveEmptyParentFromSelection">
+            <summary>
+            Uses the current Object Selection to remove the selected empty parent (only one object may be selected)
+            </summary>
         </member>
         <member name="M:u040.prespective.core.editor.topology.ParentUtility.intListSorter(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
             <summary>

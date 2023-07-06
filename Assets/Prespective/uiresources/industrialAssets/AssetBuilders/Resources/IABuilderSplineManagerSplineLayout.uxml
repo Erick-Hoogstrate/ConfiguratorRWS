@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:custom="u040.prespective.utility.editor.editorui.customuifields"
+>
+    <ui:VisualElement name="spline-container" class="margin-bottom-10px">
+        <ui:VisualElement name="header-container" class="row">
+            <ui:VisualElement name="spline-label-container" class="bold row flex-grow">
+                <ui:Label name="spline-label-label"/>
+                <ui:Image name="spline-label-image"/>
+            </ui:VisualElement>
+            <ui:Button name="delete-spline-button"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="axis-container" class="row">
+            <ui:Label name="axis-label" text="Axis"/>
+
+            <custom:ToggleButton name="spline-axis-x-button" text="X"/>
+            <custom:ToggleButton name="spline-axis-y-button" text="Y"/>
+            <custom:ToggleButton name="spline-axis-z-button" text="Z"/>
+
+        </ui:VisualElement>
+        <ue:Vector3Field name="offset-field" label="Offset"/>
+        <ue:EnumField name="direction-field" label="Direction"/>
+        <ue:ColorField name="color-field" label="Color" show-alpha="false"/>
+
+    </ui:VisualElement>
+</ui:UXML>

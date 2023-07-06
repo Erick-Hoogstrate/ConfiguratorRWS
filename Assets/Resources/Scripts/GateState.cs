@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using u040.prespective.standardcomponents.kinetics.motor.linearactuator;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
 
 public class GateState : MonoBehaviour
 {

@@ -134,7 +134,7 @@ public class SensorLogic : PreLogicComponent
     // Remove default Signal Naming Rule Override list size of size 1. 
     private void OnValidate()
     {
-        signalNamingRuleOverrides.Clear();
+        SignalNamingRuleOverrides.Clear();
     }
 
 }

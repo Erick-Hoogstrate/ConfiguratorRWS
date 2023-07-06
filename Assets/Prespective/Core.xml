@@ -3948,11 +3948,6 @@
             Default interval in milliseconds between change checks (generally only relevant in editor mode)
             </summary>
         </member>
-        <member name="F:u040.prespective.core.spline.ADSpline.RADIUS">
-            <summary>
-            Radius of the drawn spline
-            </summary>
-        </member>
         <member name="F:u040.prespective.core.spline.ADSpline.SIZE">
             <summary>
             Size of the control points drawing
@@ -3991,6 +3986,11 @@
         <member name="F:u040.prespective.core.spline.ADSpline.DefaultNormalRightColor">
             <summary>
             The Default Normal color to use for this spline
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.spline.ADSpline.SplineDrawingConversionFactor">
+            <summary>
+            Conversion Factor based on distance to determine the size of drawing
             </summary>
         </member>
         <member name="F:u040.prespective.core.spline.ADSpline.controlPointBackgroundTexture">
@@ -4137,6 +4137,11 @@
         <member name="F:u040.prespective.core.spline.ADSpline.DrawGizmo">
             <summary>
             If the gizmo is drawn
+            </summary>
+        </member>
+        <member name="F:u040.prespective.core.spline.ADSpline.DrawRadius">
+            <summary>
+            Radius of the drawn spline
             </summary>
         </member>
         <member name="P:u040.prespective.core.spline.ADSpline.NPrecisionAffectedChildComponentTypes">
@@ -4539,6 +4544,28 @@
             <summary>
             to do if assigned rigid body from NPrecision
             </summary>
+        </member>
+        <member name="M:u040.prespective.core.spline.ADSpline.SplitSpline(System.Double,System.Double)">
+            <summary>
+            Makes a separate spline of current spline of a part of spline
+            </summary>
+            <param name="_beginSplinePercentage">begin percentage of part</param>
+            <param name="_endSplinePercentage">end percentage of part</param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.core.spline.ADSpline.calculatedHandlePoints(System.Double,System.Double,System.Double,System.Double,u040.prespective.math.doubles.DVector3,u040.prespective.math.doubles.DVector3,u040.prespective.math.spline.doubles.DNURBSCurve3D,u040.prespective.math.doubles.DVector3@,u040.prespective.math.doubles.DVector3@)">
+            <summary>
+            Calculates the handle points
+            </summary>
+            <param name="_beginSplinePercentage">begin percentage of spline on curve</param>
+            <param name="_endSplinePercentage">end percentage of spline on curve</param>
+            <param name="_beginSegmentPercentage">percentage on begin of the segment</param>
+            <param name="_totalSegmentPercentageDifference">total percentage covert by the segment</param>
+            <param name="_beginPoint">begin point new curve</param>
+            <param name="_endPoint">end point new curve</param>
+            <param name="_curve">old curve</param>
+            <param name="_handle1">found handle 1</param>
+            <param name="_handle2">found handle 2</param>
         </member>
         <member name="F:u040.prespective.core.spline.ADSpline.explicitBuffer">
             <summary>

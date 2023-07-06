@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using u040.prespective.standardcomponents.userinterface.buttons.switches;
 using u040.prespective.standardcomponents.userinterface.buttons.encoders;
+using u040.prespective.standardcomponents.virtualhardware.sensors.position;
 
 public class bd : MonoBehaviour
 {
@@ -753,7 +754,7 @@ public class bd : MonoBehaviour
         }
 
 
-        if (innergate_open_sensor.GetComponent<RotarySwitch>().SelectedState.Id == 0)
+        if (innergate_open_sensor.GetComponent<DRotarySwitch>().SelectedState.Id == 0)
         {
             inner_gate_is_moving = false;
             
@@ -774,7 +775,7 @@ public class bd : MonoBehaviour
 
         //}
 
-        if (innergate_closed_sensor.GetComponent<RotarySwitch>().SelectedState.Id == 0)
+        if (innergate_closed_sensor.GetComponent<DRotarySwitch>().SelectedState.Id == 0)
         {
             //inner_gate_is_moving = false;
             //inner_lock_is_closing = false;

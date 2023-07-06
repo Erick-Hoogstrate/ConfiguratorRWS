@@ -1,6 +1,0 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements" >
-  <ui:Button name="set-leading" text="Set as Leading"/>
-  <ue:ObjectField name="moving-pivot" label="Moving Pivot"/>
-  <ue:ObjectField name="fixed-pivot" label="Fixed Pivot"/>
-  <ue:ObjectField name="hinge-pivot" label="Hinge Pivot"/>
-</UXML>

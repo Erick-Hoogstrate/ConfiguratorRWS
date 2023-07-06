@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="main-container">
+        <ui:VisualElement name="iabuilder-main-title-container" class="division" style="padding-bottom:10px;">
+            <ui:VisualElement class="row bold margin-bottom-5px">
+                <ui:Label name="iabuilder-main-title" text="Default text" class="flex-grow"/>
+                <ui:Label name="iabuilder-tab-counter" text="(0/10)"/>
+            </ui:VisualElement>
+            <ui:VisualElement>
+                <ui:Label name="iabuilder-subtitle" Text="Default subtitle" class="font-italic"/>
+            </ui:VisualElement>
+        </ui:VisualElement>      
+    </ui:VisualElement>
+</ui:UXML>

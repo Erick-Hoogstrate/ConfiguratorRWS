@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements"
+         xmlns:custom="u040.prespective.utility.editor.editorui.customuifields"
+>
+    <ui:VisualElement name="review-container">
+        <ui:VisualElement name="axis-container" class="row margin-bottom-10px">
+            <custom:ToggleButton name="review-axis-x-button" text="X-axis" />
+            <custom:ToggleButton name="review-axis-y-button" text="Y-axis" />
+            <custom:ToggleButton name="review-axis-z-button" text="Z-axis" />
+        </ui:VisualElement>
+        <ui:TextField name="asset-name-field" label="Asset Name"/>
+        <ui:HelpBox name="asset-name-not-allowed-helpbox" text="An Industrial Asset with this name is not allowed." message-type="Error"/>
+        <ui:VisualElement name="asset-name-exists-container">
+            <ui:Toggle name="overwrite-asset-toggle" label="Overwrite Existing Asset"/>
+            <ui:HelpBox name="asset-name-exists-helpbox" text="An Industrial Asset with this name already exists." message-type="Warning"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="remove-original-objects-container" class="margin-bottom-10px">
+            <ui:Toggle name="remove-original-objects-toggle" label="Remove Original Objects"/>
+            <ui:HelpBox name="remove-original-object-warning-helpbox"
+                        text="The original Mesh Objects will be removed from the scene. If another component or child transform on the object prevents it from being removed, its Mesh Filter and Mesh Renderer are removed instead."
+                        class="word-wrap display-none" message-type="Info"/>
+        </ui:VisualElement>
+        <ui:Label name="verification-label" text="Click 'Apply' to initialize the asset." class="font-italic" />
+    </ui:VisualElement>
+
+</ui:UXML>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="no-transforms-found-container">
+        <ui:Label name="no-transforms-found-label" text="No Child Transforms have been assigned." class="font-italic"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="transform-container" class="margin-bottom-10px">
+
+    </ui:VisualElement>
+    <ui:VisualElement name="add-transform-container" >
+        <ue:ObjectField name="add-transform-field" label="Add Transform"/>
+    </ui:VisualElement>
+</ui:UXML>

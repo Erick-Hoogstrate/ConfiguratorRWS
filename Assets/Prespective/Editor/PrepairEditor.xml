@@ -275,6 +275,28 @@
             </summary>
             <param name="_part">part</param>
         </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotMovementTypes">
+            <summary>
+            types of pivot moving
+            </summary>
+        </member>
+        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow">
+            <summary>
+            Pivot Mover editor window
+            
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OpenWindow">
+            <summary>
+            opens pivot tool window
+            </summary>
+        </member>
+        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OnSelectionChange">
+            <summary>
+            Unity on selection changed
+            </summary>
+        </member>
         <member name="T:u040.prespective.prepair.editor.editorui.window.topology.IsolationToolWindow">
             <summary>
             Isolated given objects with maintaining connections going into and out off play mode
@@ -374,28 +396,6 @@
         <member name="M:u040.prespective.prepair.editor.editorui.window.topology.grouping.GroupingToolWindow.RemoveSelectionFromGroup">
             <summary>
             Remove GameObject from group
-            </summary>
-        </member>
-        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotMovementTypes">
-            <summary>
-            types of pivot moving
-            </summary>
-        </member>
-        <member name="T:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow">
-            <summary>
-            Pivot Mover editor window
-            
-            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
-            </summary>
-        </member>
-        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OpenWindow">
-            <summary>
-            opens pivot tool window
-            </summary>
-        </member>
-        <member name="M:u040.prespective.prepair.editor.editorui.window.topology.PivotToolWindow.OnSelectionChange">
-            <summary>
-            Unity on selection changed
             </summary>
         </member>
         <member name="T:u040.prespective.prepair.editor.editorui.scenewindow.alignment.EditorAlignmentShape">

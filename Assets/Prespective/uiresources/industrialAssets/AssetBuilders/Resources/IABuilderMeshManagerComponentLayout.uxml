@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
+    <ui:VisualElement name="mesh-manager-container">
+        <ui:VisualElement name="mesh-manager-inspector-container">
+            <ui:VisualElement name="mesh-manager-origin-inspector-container" class="margin-bottom-10px">
+                <ui:Label name="origin-offset-label" text="Origin" class="bold margin-bottom-5px"/>
+                <ue:Vector3Field name="origin-offset-field" label="Offset"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="mesh-manager-selected-meshes-container">
+                <ui:VisualElement name="mesh-manager-selected-meshes-header" class="row margin-bottom-10px" >
+                    <ui:Label name="selected-meshes-label" class="bold flex-grow"/>
+                    <ui:Button name="add-all-child-meshes-button" text="Add All Children Meshes"  />
+                </ui:VisualElement>
+                <ui:VisualElement name="original-mesh-objects-container" class="margin-bottom-10px">
+                </ui:VisualElement>
+                <ui:VisualElement name="show-more-less-container">
+                    <ui:Button name="show-more-less-button" class="content-fit-button font-italic row" >
+                        <ui:Image name="show-more-less-button-image"/>
+                        <ui:Label name="show-more-less-button-label"/>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:Label name="no-meshes-selected-label" text="No Meshes have been selected." class="font-italic"/>
+                <ui:VisualElement name="mesh-manager-add-mesh-container" class="margin-vertical-10px">
+                    <ui:Label name="add-mesh-label" text="Add" class="bold"/>
+                    <ue:ObjectField name="add-mesh-field" allow-scene-objects="true" label="Mesh to add"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

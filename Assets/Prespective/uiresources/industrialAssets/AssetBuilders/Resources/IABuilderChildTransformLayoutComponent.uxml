@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements"
+         xmlns:custom="u040.prespective.utility.editor.editorui.customuifields">
+    <ui:VisualElement name="transform-component-container">
+        <ui:VisualElement name="header-container" class="row">
+            <ue:ObjectField label="Transform" name="transform-field" allow-scene-objects="false"/>
+            <ui:Image name="transform-error-image" tooltip="Transform Position needs to be within the asset."/>
+            <custom:ToggleButton name="edit-button" text="Edit"/>
+            <ui:Button name="remove-button"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="edit-container" class="display-none row">
+            <ue:Vector3Field name="edit-offset-field" class="flex-grow"/>
+            <ui:Button name="offset-to-closest-point-button" tooltip="Set offset to closest point on the bounding box">
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

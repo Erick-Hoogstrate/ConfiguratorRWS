@@ -7,7 +7,9 @@ using UnityEngine;
 
 namespace u040.prespective.standardcomponents.userinterface.lights
 {
-    using u040.prespective.standardcomponents.sensors.colorsensor;
+    using u040.prespective.prepair.virtualhardware.actuators;
+    using u040.prespective.standardcomponents.virtualhardware.actuators.lights;
+    using u040.prespective.standardcomponents.virtualhardware.sensors.light;
 
     public class CO_LIGHTS : MonoBehaviour, IActuator
     {

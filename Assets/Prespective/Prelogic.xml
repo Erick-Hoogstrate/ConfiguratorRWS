@@ -1639,9 +1639,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:u040.prespective.prelogic.adapters.opcua.OPCUAStreamAdapter">
+            <summary>
+            OPCUA Stream adapter implementation
+            </summary>
+        </member>
         <member name="M:u040.prespective.prelogic.adapters.opcua.OPCUAStreamAdapter.ClientKeepAlive(Opc.Ua.Client.Session,Opc.Ua.Client.KeepAliveEventArgs)">
             <summary>
-            todo implement status feedback for Prelogic
+            Keep client alive
             </summary>
             <param name="_sender"></param>
             <param name="_keepAliveEventArgs"></param>

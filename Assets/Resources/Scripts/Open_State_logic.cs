@@ -52,7 +52,7 @@ public class Open_State_logic : PreLogicComponent
     /// <param name="_oldValueReceived">the time of the old value change</param>
     void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
     {
-        switch (_signal.definition.defaultSignalName)
+        switch (_signal.Definition.DefaultSignalName)
         {
             case "oToggle":
                 oToggle = (bool)_newValue;
@@ -63,7 +63,7 @@ public class Open_State_logic : PreLogicComponent
                 }
                 break;
             default:
-                Debug.LogWarning("Unknown Signal received:" + _signal.definition.defaultSignalName);
+                Debug.LogWarning("Unknown Signal received:" + _signal.Definition.DefaultSignalName);
                 break;
         }
     }

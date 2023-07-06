@@ -194,6 +194,59 @@
             <param name="_name"></param>
             <returns></returns>
         </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.ToggleButton">
+            <summary>
+            A button that toggles on and off. And can also be connected to other buttons and automatically toggle between buttons
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.UxmlFactory">
+            <summary>
+            Define the button for unity and use the Button attributes
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.CLASS_DISABLED">
+            <summary>
+            uss class used to style a button that is disabled
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.CLASS_ENABLED">
+            <summary>
+            uss class used to style a button that is enabled
+            </summary>
+        </member>
+        <member name="F:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.toggled">
+            <summary>
+            Backing value that defines if the button is currently toggled
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.Toggled">
+            <summary>
+            Property that defines if the button is currently toggled
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.#ctor">
+            <summary>
+            Constructor, is also needed by unity to register the visual element
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.Toggle">
+            <summary>
+            Toggle the value of the ToggleButton and refresh the styling to match
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.RefreshStyle">
+            <summary>
+            Refresh the toggle styling of the button
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.customuifields.ToggleButton.InitializeConnectedToggleButtons(System.Boolean,System.Action,u040.prespective.utility.editor.editorui.customuifields.ToggleButton[])">
+            <summary>
+            Connect buttons to one another to automatically toggle between buttons.
+            </summary>
+            <param name="_alwaysEnabled">When true always one button will be enabled.</param>
+            <param name="_onToggled">The action to execute when the button is toggled.</param>
+            <param name="_connectedButtons">The connected buttons that will be disabled when this button is enabled.</param>
+        </member>
         <member name="F:u040.prespective.utility.editor.editorui.customuifields.FileImportField.FileImportButton">
             <summary>
             Reference to the File Import Button
@@ -1147,20 +1200,6 @@
             <param name="_color"></param>
             <returns></returns>
         </member>
-        <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.SceneViewCoordinatesAnchorPoint">
-            <summary>
-            The corner of the Scene View that represents the coordinate (0,0)
-            </summary>
-        </member>
-        <member name="M:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.ConvertToDrawingCoordinates(UnityEngine.Vector2,u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandlesUtility.SceneViewCoordinatesAnchorPoint,System.Boolean)">
-            <summary>
-            Convert a point in the scene view in the given coordinate system to the drawing coordinate system. This also accounts for GUI scaling and the SceneView toolbar.
-            </summary>
-            <param name="_coordinates">The coordinates to convert</param>
-            <param name="_anchor">Anchor point to the given coordinate</param>
-            <param name="_guiScaled">Whether the given coordinate is being scaled by GUI</param>
-            <returns></returns>
-        </member>
         <member name="T:u040.prespective.utility.editor.editorui.scenegui.PrespectiveHandles3D">
             <summary>
             Utility class to draw 3D Prespective Handles
@@ -1403,6 +1442,14 @@
             <typeparam name="TFieldValue">No need to set the generic type</typeparam>
             <param name="_compositeField">The composite field to set the isdelayed state of</param>
         </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UIUtility.StyleButtonWithImage(UnityEngine.UIElements.Button,UnityEngine.Texture2D)">
+            <summary>
+            Style a button with an image
+            </summary>
+            <param name="_button">The button to style</param>
+            <param name="_texture">The texture to show on the button</param>
+            <returns></returns>
+        </member>
         <member name="M:u040.prespective.utility.editor.editorui.UIUtility.ConditionalHelpBoxWatcher``1(UnityEngine.UIElements.VisualElement,``0,System.Func{``0,System.Boolean},System.String,System.Action{``0,System.Boolean,System.Boolean},UnityEngine.UIElements.HelpBoxMessageType,System.Int32)">
             <summary>
             !!! PLEASE DO NOT USE THIS METHOD, IT HAS WAY TOO MANY RESPONSIBILITIES AND NEEDS TO BE PHASED OUT !!!
@@ -1632,6 +1679,34 @@
             <summary>
             Unity Editor skin-based StyleSheet
             </summary>
+        </member>
+        <member name="T:u040.prespective.utility.editor.editorui.UILogger">
+            <summary>
+            Log Visual elements
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UILogger.LogVisualElement(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Log a string representation of the visual element and it's children recursively.
+            The log will contain the type, the name and the classes.
+            </summary>
+            <param name="_element"></param>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UILogger.VisualElementToString(UnityEngine.UIElements.VisualElement)">
+            <summary>
+            Generate a string representation of the visual element and it's children recursively
+            The log will contain the type, the name and the classes.
+            </summary>
+            <param name="_element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:u040.prespective.utility.editor.editorui.UILogger.generateLogVisualElement(UnityEngine.UIElements.VisualElement,System.String@,System.Int32)">
+            <summary>
+            Recursively generate a string that represents the uxml structure of the visual element.
+            </summary>
+            <param name="_element"></param>
+            <param name="_content"></param>
+            <param name="_indent"></param>
         </member>
         <member name="T:u040.prespective.utility.editor.editorui.UIElementView`2">
             <summary>

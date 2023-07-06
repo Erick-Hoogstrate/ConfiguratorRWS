@@ -3219,6 +3219,22 @@
             <returns></returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:u040.prespective.math.spline.doubles.DNURBSCurve3D.getKnotVectorNURBS(System.Int32,System.Int32)" -->
+        <member name="M:u040.prespective.math.spline.doubles.DNURBSCurve3D.GetImplicitPoint(System.Double)">
+            <summary>
+            The implicit point on curve (The NURBS Book - Les Piegl, Wayne Tiller p.81)
+            </summary>
+            <param name="_percentageOnCurve">percentage on curve</param>
+            <returns>implicit point</returns>
+        </member>
+        <member name="M:u040.prespective.math.spline.doubles.DNURBSCurve3D.NCalculation(System.Double,System.Int32,System.Double[])">
+            <summary>
+            Calculates the N values of NURBS curve depending (The NURBS Book - Les Piegl, Wayne Tiller p.50)
+            </summary>
+            <param name="_percentage">percentage on curve</param>
+            <param name="_currentOrder">current order of previous results</param>
+            <param name="_previousNResults">previous N values</param>
+            <returns>N values</returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:u040.prespective.math.spline.doubles.DNURBSCurve3D.GetNURBSCurvePoint(System.Int32,System.Double[],System.Collections.Generic.List{u040.prespective.math.doubles.DVector3},System.Double)" -->
         <!-- Badly formed XML comment ignored for member "M:u040.prespective.math.spline.doubles.DNURBSCurve3D.findBSplineSpan(System.Int32,System.Int32,System.Double,System.Double[])" -->
         <!-- Badly formed XML comment ignored for member "M:u040.prespective.math.spline.doubles.DNURBSCurve3D.NURBSFunction(System.Int32,System.Double,System.Int32,System.Double[])" -->
@@ -9121,6 +9137,11 @@
               </version>
             </versions>
         </member>
+        <member name="F:u040.prespective.utility.collectionmanagement.TypedList.cachedListType">
+            <summary>
+            Cache for the getting the type of a generic list for the <see cref="M:u040.prespective.utility.collectionmanagement.TypedList.IsGenericList(System.Type)"/>
+            </summary>
+        </member>
         <member name="M:u040.prespective.utility.collectionmanagement.TypedList.GetAllTypedObjects``1">
             <summary>
             Gets all components of type
@@ -9469,6 +9490,13 @@
             <param name="_checkValue">value to find index of</param>
             <param name="_checkFunction">function to check if this is the index you want (first value array value, second value given check value)</param>
             <returns>found index (-1 if not present)</returns>
+        </member>
+        <member name="M:u040.prespective.utility.collectionmanagement.TypedList.IsGenericList(System.Type)">
+            <summary>
+            Extension method to find out whether this is a generic list  
+            </summary>
+            <param name="_type">The type that will be checked if it is a generic list</param>
+            <returns></returns>
         </member>
         <member name="T:u040.prespective.utility.collectionmanagement.CreateOctree">
             <summary>
@@ -11943,6 +11971,31 @@
             <param name="_input">original vector</param>
             <returns>vector connected to short hand</returns>
         </member>
+        <member name="T:u040.prespective.utility.scenemanagement.PrespectiveSceneViewUtility">
+            <summary>
+            Utility class to ease coordinate handling in scene view.
+            <para>Copyright (c) 2015-2023 Prespective, Unit040 Beheer B.V. All Rights Reserved. See License.txt in the project Prespective folder for license information.</para>
+            </summary>
+        </member>
+        <member name="T:u040.prespective.utility.scenemanagement.PrespectiveSceneViewUtility.SceneViewCoordinatesAnchorPoint">
+            <summary>
+            The corner of the Scene View that represents the coordinate (0,0)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.scenemanagement.PrespectiveSceneViewUtility.ScreenGUIScale">
+            <summary>
+            Return the value of the GUI scaling.
+            </summary>
+        </member>
+        <member name="M:u040.prespective.utility.scenemanagement.PrespectiveSceneViewUtility.ConvertToDrawingCoordinates(UnityEngine.Vector2,u040.prespective.utility.scenemanagement.PrespectiveSceneViewUtility.SceneViewCoordinatesAnchorPoint,System.Boolean)">
+            <summary>
+            Convert a point in the scene view in the given coordinate system to the drawing coordinate system. This also accounts for GUI scaling and the SceneView toolbar.
+            </summary>
+            <param name="_coordinates">The coordinates to convert</param>
+            <param name="_anchor">Anchor point to the given coordinate</param>
+            <param name="_guiScaled">Whether the given coordinate is being scaled by GUI</param>
+            <returns>The converted coordinates</returns>
+        </member>
         <member name="T:u040.prespective.utility.scenemanagement.SceneObjectContainerManager`2">
             <summary>
             Helper class for Tracking/Managing an enumeration of specific child objects
@@ -12094,6 +12147,16 @@
         <member name="T:u040.prespective.utility.scenemanagement.CameraUtils">
             <summary>
             
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.scenemanagement.CameraUtils.UsingURP">
+            <summary>
+            Getter to see if the Universal Render Pipeline is used in this Unity project. (value is unserializedly stored)
+            </summary>
+        </member>
+        <member name="P:u040.prespective.utility.scenemanagement.CameraUtils.CurrentCamera">
+            <summary>
+            Getter for the current camera to work around the fact that Camera.current is not fully supported (yet) with URP. (date: 2023-02-03) 
             </summary>
         </member>
         <member name="M:u040.prespective.utility.scenemanagement.CameraUtils.ZoomToFit(UnityEngine.Camera,UnityEngine.Transform,UnityEngine.Vector2Int,System.Boolean)">

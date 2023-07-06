@@ -49,7 +49,7 @@ public class Output_Bool_Logic: PreLogicComponent
     /// <param name="_oldValueReceived">the time of the old value change</param>
     void onSignalChanged(SignalInstance _signal, object _newValue, DateTime _newValueReceived, object _oldValue, DateTime _oldValueReceived)
     {
-        if (_signal.definition.defaultSignalName == gameObject.name) 
+        if (_signal.Definition.DefaultSignalName == gameObject.name) 
         {
             OutputBool = (bool)_newValue;
             if (BooleanToggle.Boolean != OutputBool)
@@ -59,7 +59,7 @@ public class Output_Bool_Logic: PreLogicComponent
         }
         else 
         {
-            Debug.LogWarning("Unknown Signal received:" + _signal.definition.defaultSignalName);
+            Debug.LogWarning("Unknown Signal received:" + _signal.Definition.DefaultSignalName);
         }
     }
     #endregion

@@ -5,9 +5,7 @@ using u040.prespective.prelogic.component;
 using u040.prespective.prelogic.signal;
 using UnityEngine;
 using u040.prespective.standardcomponents.kinetics.motor.linearactuator;
-
-
-
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
 
 public class CO_DOORS : MonoBehaviour
 {

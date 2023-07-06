@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements"
+         xmlns:custom="u040.prespective.utility.editor.editorui.customuifields">
+    <ui:VisualElement name="original-mesh-objects-container">
+        <ui:VisualElement name="mesh-object-select" class="row">
+            <custom:ToggleButton name="edit-mesh-filter-toggle" text="Edit" />
+            <ue:ObjectField name="mesh-filter-field" allow-scene-objects="false"/>
+            <ui:Button name="remove-mesh-button" />
+        </ui:VisualElement>
+            <ui:VisualElement name="mesh-object-edit" class="division">
+                <ue:Vector3Field name="mesh-object-edit-position" label="Position"/>
+                <ue:Vector3Field name="mesh-object-edit-rotation" label="Rotation"/>
+                <ue:Vector3Field name="mesh-object-edit-scale" label="Scale"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

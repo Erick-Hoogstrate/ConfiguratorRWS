@@ -1,7 +1,0 @@
-<UXML xmlns:ui="UnityEngine.UIElements" xmlns:ue="UnityEditor.UIElements">
-	<ui:ScrollView class="window-padding-container">
-		<ue:IntegerField name="boxes-per-edge" label="Boxes per Edge" tooltip="The number of boxes used per edge along its bounding box. Should be between 3 and 100. Higher values result in more precise compound colliders."/>
-		<ui:Toggle class="margin-bottom-10px" name="merge-boxes" label="Merge Boxes" tooltip="Determines if the found boxes that make up the Edged Compound Solver should be merged together when possible" />
-		<ui:Button class="content-fit-button" name="generate-collider" text="Generate Colliders For Selection" />
-	</ui:ScrollView>
-</UXML>

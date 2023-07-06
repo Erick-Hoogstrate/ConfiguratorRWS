@@ -8,8 +8,10 @@ using LitJson;
 using System.Text.Json;
 using System; //Need this for the convert.Int32
 using u040.prespective.standardcomponents.kinetics.motor.linearactuator;
-using u040.prespective.standardcomponents.sensors.colorsensor;
 using u040.prespective.standardcomponents.userinterface.lights;
+using u040.prespective.standardcomponents.virtualhardware.actuators.motors;
+using u040.prespective.standardcomponents.virtualhardware.sensors.light;
+using u040.prespective.standardcomponents.virtualhardware.actuators.lights;
 
 // [ExecuteInEditMode]
 public class ConfiguratorV7 : MonoBehaviour
@@ -307,7 +309,7 @@ public class ConfiguratorV7 : MonoBehaviour
                                 }
                                 else
                                 {
-                                    item.GetComponent<LIGHTS>().implicitNamingRule.instanceNameRule = "";
+                                    item.GetComponent<LIGHTS>().ImplicitNamingRule.InstanceNameRule = "";
                                     item.GetComponent<LIGHTS>().AdressQ = TwinCATinstanceNameRule + item.name;
                                     item.GetComponent<LIGHTS>().AdressI = "INPUTS." + item.name.Replace("dvar_M2_M_", "ivar_").Replace("_Q", "");
                                 }
@@ -387,7 +389,7 @@ public class ConfiguratorV7 : MonoBehaviour
                         UnityEngine.GameObject Tag = new GameObject(TagName);
                         Tag.transform.parent = parent.transform;
                         Tag.AddComponent<DOORS>();
-                        Tag.GetComponent<DOORS>().implicitNamingRule.instanceNameRule = "";
+                        Tag.GetComponent<DOORS>().ImplicitNamingRule.InstanceNameRule = "";
                         Tag.GetComponent<DOORS>().AdressQ = instanceNameRule + TagName;
                         Tag.GetComponent<DOORS>().AdressI = "INPUTS." + TagName.Replace("dvar_M2_M_", "ivar_").Replace("_Q","") + (TagName.Split("_").Last() == "Close" ? "d" : "");
                     }
@@ -445,9 +447,9 @@ public class ConfiguratorV7 : MonoBehaviour
                     
                     UnityEngine.GameObject Tag = new GameObject(TagName);
                     Tag.transform.parent = parent.transform;
-                    Tag.AddComponent<Closed_State_logic>().implicitNamingRule.instanceNameRule = instance;
-                    Tag.GetComponent<Closed_State_logic>().signalNamingRuleOverrides[0].simAddressPathFormat = "{{IO_NAME}}";
-                    Tag.GetComponent<Closed_State_logic>().signalNamingRuleOverrides[0].plcAddressPathFormat = "{{INST_NAME}}.{{IO_NAME}}";
+                    Tag.AddComponent<Closed_State_logic>().ImplicitNamingRule.InstanceNameRule = instance;
+                    Tag.GetComponent<Closed_State_logic>().SignalNamingRuleOverrides[0].simAddressPathFormat = "{{IO_NAME}}";
+                    Tag.GetComponent<Closed_State_logic>().SignalNamingRuleOverrides[0].plcAddressPathFormat = "{{INST_NAME}}.{{IO_NAME}}";
                 }
                 else
                 {
@@ -464,9 +466,9 @@ public class ConfiguratorV7 : MonoBehaviour
 
                     UnityEngine.GameObject Tag = new GameObject(TagName);
                     Tag.transform.parent = parent.transform;
-                    Tag.AddComponent<Closed_State_logic>().implicitNamingRule.instanceNameRule = instance;
-                    Tag.GetComponent<Closed_State_logic>().signalNamingRuleOverrides[0].simAddressPathFormat = "{{IO_NAME}}";
-                    Tag.GetComponent<Closed_State_logic>().signalNamingRuleOverrides[0].plcAddressPathFormat = "{{INST_NAME}}.{{IO_NAME}}";
+                    Tag.AddComponent<Closed_State_logic>().ImplicitNamingRule.InstanceNameRule = instance;
+                    Tag.GetComponent<Closed_State_logic>().SignalNamingRuleOverrides[0].simAddressPathFormat = "{{IO_NAME}}";
+                    Tag.GetComponent<Closed_State_logic>().SignalNamingRuleOverrides[0].plcAddressPathFormat = "{{INST_NAME}}.{{IO_NAME}}";
                 }
             }
         }
