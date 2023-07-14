@@ -31,10 +31,7 @@ public class LIGHTS : PreLogicComponent
     bool oldValue;
     public bool ActuatorBoolean;
 
-    private void Start()
-    {
-        this.EnsureComponent<CO_LIGHTS>(ref CoLights);
-    }
+
     private void Update()
     {
         CoLights.SensorBoolean = CoLights.Detector.OutputSignal;
@@ -79,6 +76,7 @@ public class LIGHTS : PreLogicComponent
     // Remove default Signal Naming Rule Override list size of size 1. 
     private void OnValidate()
     {
+        this.EnsureComponent<CO_LIGHTS>(ref CoLights);
         SignalNamingRuleOverrides.Clear();
     }
 }

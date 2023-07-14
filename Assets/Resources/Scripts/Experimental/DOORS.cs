@@ -20,10 +20,7 @@ public class DOORS : PreLogicComponent
     bool oldValue;
     public bool ActuatorBoolean;
 
-    private void Start()
-    {
-        this.EnsureComponent<CO_DOORS>(ref CoDoors);
-    }
+
     private void Update()
     {
         if (oldValue != CoDoors.SensorBoolean)
@@ -76,6 +73,7 @@ public class DOORS : PreLogicComponent
     // Remove default Signal Naming Rule Override list size of size 1. 
     private void OnValidate()
     {
+        this.EnsureComponent<CO_DOORS>(ref CoDoors);
         SignalNamingRuleOverrides.Clear();
         ComponentName = this.name.Split("_").Last();
 /*        if (ComponentName == "Close")
