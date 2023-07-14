@@ -22,14 +22,295 @@ MonoBehaviour:
     C4P6Rv8S01: 1
   - NW363diYSJ: adapter-settings-foldout|Configurator#*#2
     C4P6Rv8S01: 1
+  - NW363diYSJ: $ALL-0|Configurator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: live-data|Test#*#2/IndicatorLight#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: properties|Test#*#2/IndicatorLight#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: target-component-foldout|Test#*#2/IndicatorLight#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: input-signal-foldout|Test#*#2/INPUTS#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Test#*#2/INPUTS#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Test#*#2/INPUTS#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Test#*#2/INPUTS#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: logging-foldout|PreLogicSimulator#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: adapter-settings-foldout|PreLogicSimulator#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: logic-components|PreLogicSimulator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: instance-naming-rules-foldout|PreLogicSimulator#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/INPUTS#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/INPUTS#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/INPUTS#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/INPUTS#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Traffic light entering 4#*#4/Logic Preperation#*#1/Q_Red1#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Traffic light entering 4#*#4/Logic Preperation#*#1/Q_Red1#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Traffic light entering 4#*#4/Logic Preperation#*#1/Q_Red1#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Traffic light entering 4#*#4/Logic Preperation#*#1/Q_Red1#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|Traffic light entering 4#*#4/Logic Preperation#*#1/Q_Red1#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Sensors#*#1/ivar_North_HW_EnteringTL_BNH_East_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Traffic Lights#*#0/Indicators#*#0/dvar_M2_M_North_HW_EnteringTL_BNH_East_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Closed#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Closed#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Closed#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Closed#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|PreLogicSimulator#*#2/Sensors#*#2/ivar_North_HW_Gate_BNH_East_Closed#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: logging-foldout|Test#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: adapter-settings-foldout|Test#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: logic-components|Test#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Test#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|Test#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: instance-naming-rules-foldout|Test#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Close#*#7
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Close#*#7
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Close#*#7
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Close#*#7
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Open#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Open#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Open#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Open#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Red#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Red#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Red#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Red#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Green#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Green#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Green#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Leaving_East_Q_Green#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_RedRed#*#2
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Green#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Close#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Close#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Close#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_West_Q_Close#*#3
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Close#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Close#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Close#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Close#*#1
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Open#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Open#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Open#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Open#*#4
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Close#*#5
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Close#*#5
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Close#*#5
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_East_Q_Close#*#5
+    C4P6Rv8S01: 0
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Open#*#6
+    C4P6Rv8S01: 0
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Open#*#6
+    C4P6Rv8S01: 0
+  - NW363diYSJ: variable-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Open#*#6
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate2_West_Q_Open#*#6
+    C4P6Rv8S01: 0
   - NW363diYSJ: logic-components|Configurator#*#2
     C4P6Rv8S01: 0
   - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2
     C4P6Rv8S01: 0
-  - NW363diYSJ: $ALL-0|Configurator#*#2
-    C4P6Rv8S01: 0
   - NW363diYSJ: instance-naming-rules-foldout|Configurator#*#2
     C4P6Rv8S01: 0
+  - NW363diYSJ: live-data|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/Components#*#0/Configuration1#*#0/Traffic
+      light entering || TL_Entering_West#*#3/indicator Red#*#1
+    C4P6Rv8S01: 1
+  - NW363diYSJ: properties|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/Components#*#0/Configuration1#*#0/Traffic
+      light entering || TL_Entering_West#*#3/indicator Red#*#1
+    C4P6Rv8S01: 1
+  - NW363diYSJ: target-component-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/Components#*#0/Configuration1#*#0/Traffic
+      light entering || TL_Entering_West#*#3/indicator Red#*#1
+    C4P6Rv8S01: 1
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Red#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Red#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_RedRed#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_RedRed#*#2
+    C4P6Rv8S01: 1
+  - NW363diYSJ: output-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Open#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: input-signal-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Open#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Tags#*#0/dvar_M2_M_Gate1_East_Q_Open#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0/KinematicsController#*#0/TwinCAT#*#2/Traffic
+      Lights#*#1/Tags#*#0/dvar_M2_M_TL_Entering_West_Q_Red#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: logging-foldout|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 1
+  - NW363diYSJ: logic-components|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: signal-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: $ALL-0|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: instance-naming-rules-foldout|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 0
+  - NW363diYSJ: adapter-settings-foldout|Configurator#*#2/PreLogicSimulator#*#0
+    C4P6Rv8S01: 1
   menuStateData:
   - UUe6wtjCyj: 
     BB96jlNw0k: 0
