@@ -208,6 +208,11 @@ public class ConfiguratorV7 : MonoBehaviour
         KinematicsController = CreateGameObject("KinematicsController", PreLogicSimulator);
         Components = CreateGameObject("Components", KinematicsController);
 
+        // Automatically add Pre Logic Simulator to GameObject
+        PreLogicSimulator.AddComponent<u040.prespective.prelogic.PreLogicSimulator>();
+
+        // Automatically add Pre Logic Simulator to GameObject
+        KinematicsController.AddComponent<u040.prespective.prepair.kinematics.DKinematicsController>();
 
         //////////////////////// Tags //////////////////////////////
         PLC = CreateGameObject("PLC", KinematicsController);
